@@ -1,12 +1,14 @@
 {
-  "passed": 431,
+  "passed": 589,
   "errors": [],
   "warnings": [
     "Unity Editor, C# compiler and package restore not available: no compile, Play Mode or build verification.",
     "Source ground is not mathematically seamless; runtime mirror repetition joins matching edge pixels.",
     "Sprite pose/scale consistency and platform/combat feel require visual Play Mode review.",
     "WAVs and loop seams checked numerically; listening, Unity audio/Shader import, hit-stop/camera timing and device mix remain unverified.",
-    "Combo checks inspect C# contracts and numeric profiles only; buffering/reset boundaries, air steering and sprite continuity require Unity Play Mode."
+    "Combo checks inspect C# contracts and numeric profiles only; buffering/reset boundaries, air steering and sprite continuity require Unity Play Mode.",
+    "Skill boundaries use catalog data; accounting and JSON round trips use a Python reference model tied to source contracts, not executed C#/JsonUtility/File.Replace.",
+    "Korean HUD uses OS font fallback; glyph coverage, binding/floor contacts, save permissions and presentation require Unity Play Mode on target OS."
   ],
   "checks": [
     "Protected unchanged: 01-insights.md",
@@ -132,6 +134,10 @@
     "Unique GUID: Assets/Resources/Shaders",
     "Metadata present: Assets/Resources/Shaders/HitFlash.shader",
     "Unique GUID: Assets/Resources/Shaders/HitFlash.shader",
+    "Metadata present: Assets/Resources/Skills",
+    "Unique GUID: Assets/Resources/Skills",
+    "Metadata present: Assets/Resources/Skills/catalog.json",
+    "Unique GUID: Assets/Resources/Skills/catalog.json",
     "Metadata present: Assets/Scenes",
     "Unique GUID: Assets/Scenes",
     "Metadata present: Assets/Scenes/Main.unity",
@@ -160,6 +166,34 @@
     "Unique GUID: Assets/Scripts/ParallaxBackground.cs",
     "Metadata present: Assets/Scripts/PlayerController2D.cs",
     "Unique GUID: Assets/Scripts/PlayerController2D.cs",
+    "Metadata present: Assets/Scripts/Progression",
+    "Unique GUID: Assets/Scripts/Progression",
+    "Metadata present: Assets/Scripts/Progression/CoreRecord.cs",
+    "Unique GUID: Assets/Scripts/Progression/CoreRecord.cs",
+    "Metadata present: Assets/Scripts/Progression/SkillProgressionService.cs",
+    "Unique GUID: Assets/Scripts/Progression/SkillProgressionService.cs",
+    "Metadata present: Assets/Scripts/Progression/SkillSaveStore.cs",
+    "Unique GUID: Assets/Scripts/Progression/SkillSaveStore.cs",
+    "Metadata present: Assets/Scripts/Progression/SkillSession.cs",
+    "Unique GUID: Assets/Scripts/Progression/SkillSession.cs",
+    "Metadata present: Assets/Scripts/Skills",
+    "Unique GUID: Assets/Scripts/Skills",
+    "Metadata present: Assets/Scripts/Skills/DestructibleTarget2D.cs",
+    "Unique GUID: Assets/Scripts/Skills/DestructibleTarget2D.cs",
+    "Metadata present: Assets/Scripts/Skills/EncounterRewardBridge.cs",
+    "Unique GUID: Assets/Scripts/Skills/EncounterRewardBridge.cs",
+    "Metadata present: Assets/Scripts/Skills/SilverStitchSkill.cs",
+    "Unique GUID: Assets/Scripts/Skills/SilverStitchSkill.cs",
+    "Metadata present: Assets/Scripts/Skills/SkillDefinition.cs",
+    "Unique GUID: Assets/Scripts/Skills/SkillDefinition.cs",
+    "Metadata present: Assets/Scripts/Skills/SkillPracticeWorld.cs",
+    "Unique GUID: Assets/Scripts/Skills/SkillPracticeWorld.cs",
+    "Metadata present: Assets/Scripts/Skills/SkillStroke.cs",
+    "Unique GUID: Assets/Scripts/Skills/SkillStroke.cs",
+    "Metadata present: Assets/Scripts/Skills/StitchBinding.cs",
+    "Unique GUID: Assets/Scripts/Skills/StitchBinding.cs",
+    "Metadata present: Assets/Scripts/Skills/StitchSurface2D.cs",
+    "Unique GUID: Assets/Scripts/Skills/StitchSurface2D.cs",
     "Metadata present: Assets/Scripts/SpriteAnimator.cs",
     "Unique GUID: Assets/Scripts/SpriteAnimator.cs",
     "Scene has exactly camera and bootstrap",
@@ -427,6 +461,120 @@
     "Source contract: slash frame begins at contact time and then recovers",
     "Original ordinary hit-stop, shake and flash tuning preserved",
     "Source contract: only successful fourth hit requests stronger 0.03x/0.11s hit-stop",
+    "Skills: six unique skills and five doom identities",
+    "Skills: catalog/rules version agrees",
+    "Skills: only sword and silver are implemented",
+    "Skills: encounter identity is separate from silver skill and Mikhail ownership",
+    "Skills: production stage expression and constants match v6.1",
+    "Skills: new game owns sword with 120 valid uses",
+    "Skills: basic_sword thresholds",
+    "Skills: basic_sword stage order",
+    "Skills: catalog boundary basic_sword 0 -> 1",
+    "Skills: catalog boundary basic_sword 150 -> 1",
+    "Skills: catalog boundary basic_sword 151 -> 2",
+    "Skills: catalog boundary basic_sword 399 -> 2",
+    "Skills: catalog boundary basic_sword 400 -> 3",
+    "Skills: catalog boundary basic_sword 401 -> 3",
+    "Skills: silver_stitch thresholds",
+    "Skills: silver_stitch stage order",
+    "Skills: catalog boundary silver_stitch 0 -> 1",
+    "Skills: catalog boundary silver_stitch 29 -> 1",
+    "Skills: catalog boundary silver_stitch 30 -> 2",
+    "Skills: catalog boundary silver_stitch 79 -> 2",
+    "Skills: catalog boundary silver_stitch 80 -> 3",
+    "Skills: catalog boundary silver_stitch 81 -> 3",
+    "Skills: pendulum_rewind thresholds",
+    "Skills: pendulum_rewind stage order",
+    "Skills: catalog boundary pendulum_rewind 0 -> 1",
+    "Skills: catalog boundary pendulum_rewind 29 -> 1",
+    "Skills: catalog boundary pendulum_rewind 30 -> 2",
+    "Skills: catalog boundary pendulum_rewind 79 -> 2",
+    "Skills: catalog boundary pendulum_rewind 80 -> 3",
+    "Skills: catalog boundary pendulum_rewind 81 -> 3",
+    "Skills: curtain_call_waltz thresholds",
+    "Skills: curtain_call_waltz stage order",
+    "Skills: catalog boundary curtain_call_waltz 0 -> 1",
+    "Skills: catalog boundary curtain_call_waltz 29 -> 1",
+    "Skills: catalog boundary curtain_call_waltz 30 -> 2",
+    "Skills: catalog boundary curtain_call_waltz 79 -> 2",
+    "Skills: catalog boundary curtain_call_waltz 80 -> 3",
+    "Skills: catalog boundary curtain_call_waltz 81 -> 3",
+    "Skills: resonance_forge thresholds",
+    "Skills: resonance_forge stage order",
+    "Skills: catalog boundary resonance_forge 0 -> 1",
+    "Skills: catalog boundary resonance_forge 29 -> 1",
+    "Skills: catalog boundary resonance_forge 30 -> 2",
+    "Skills: catalog boundary resonance_forge 79 -> 2",
+    "Skills: catalog boundary resonance_forge 80 -> 3",
+    "Skills: catalog boundary resonance_forge 81 -> 3",
+    "Skills: canvas_carve thresholds",
+    "Skills: canvas_carve stage order",
+    "Skills: catalog boundary canvas_carve 0 -> 1",
+    "Skills: catalog boundary canvas_carve 29 -> 1",
+    "Skills: catalog boundary canvas_carve 30 -> 2",
+    "Skills: catalog boundary canvas_carve 79 -> 2",
+    "Skills: catalog boundary canvas_carve 80 -> 3",
+    "Skills: catalog boundary canvas_carve 81 -> 3",
+    "Skills: stage combo limits 2/3/4",
+    "Skills: sword step, wave and afterimage tuning retained",
+    "Skills: combo snapshots one use context and stage at first strike",
+    "Skills: wave, enemy, destructible and terrain effects share the chain context",
+    "Skills: locked and unimplemented skills cannot activate; contexts scoped to session",
+    "Skills: only first applied effect with target identity credits an active non-preview use",
+    "Skills: count/stage/ledger mutate before synchronous save and transfer presentation",
+    "Skills: mastery transfers boss doom once; basic sword only sets its mastery flag",
+    "Skills: attempt reset invalidates delayed contexts without resetting progress",
+    "Skills: reward is idempotent and saved before acquisition notice",
+    "Skills: lethal effect credits use before delayed encounter reward",
+    "Skills: bootstrap wires persistence, binding, boss reward, silver and practice world in order",
+    "Skills: R/death retry flushes reward, saves progress and only resets transient world",
+    "Skills: pause/quit flushes lethal-frame reward before saving regardless of session callback order",
+    "Skills: damage/death cancel sword and delayed silver credit",
+    "Skills: silver binding alters boss action; existing bind and committed attacks cannot be farmed",
+    "Skills: silver support requires real floor contact, fixed span and state-changing bind/cut",
+    "Skills: silver cooldown/installation limits and empty activations cannot generate growth",
+    "Skills: expired/cut floor keeps standing player supported until leaving",
+    "Skills: save schema validates identities, counts, derived stages and notary ledger",
+    "Skills: versioned saves validate temp JSON then replace; backup/corrupt/future safeguards present",
+    "Skills: save on changes, pause/quit and retry failed writes",
+    "Skills: usage log is per-session JSONL with timing, encounter and acceptance/rejection reason",
+    "Skills: acquisition/mastery notice, log and presentation hook connected",
+    "Skills: Korean count/stage HUD includes locked state and Korean OS font fallback",
+    "Skills: preview and boundary fixtures are debug-gated and cannot overwrite main slot",
+    "Skills: reference: whiff, immunity/no change and missing target give zero",
+    "Skills: reference: whole combo and multiple targets give at most one use",
+    "Skills: reference: fresh activation with real destructible effect counts",
+    "Skills: reference: closed, old attempt, foreign session and preview cannot count",
+    "Skills: reference: locked silver and unimplemented skill cannot activate",
+    "Skills: reference: duplicate boss clear grants silver once without free uses",
+    "Skills: reference: silver waits for real effect; bind/support share one activation",
+    "Skills: reference: basic_sword 150+1 crosses stage; current activation stays at old form",
+    "Skills: reference: basic_sword 399+1 crosses stage; current activation stays at old form",
+    "Skills: reference: silver_stitch 29+1 crosses stage; current activation stays at old form",
+    "Skills: reference: silver_stitch 79+1 crosses stage; current activation stays at old form",
+    "Skills: reference: basic mastery adds no doom; silver transfers exactly one ledger entry",
+    "Skills: reference: post-mastery uses do not repeat doom transfer",
+    "Skills: reference JSON schema covers all serializable CoreRecord/SkillProgress/NotaryEntry fields",
+    "Skills: reference JSON disk round trip: new_game",
+    "Skills: reference JSON disk round trip: acquired_mastered",
+    "Skills: reference JSON disk round trip: debug",
+    "Skills: reference: death/restart retains ownership, counts, stages and transferred ledger",
+    "Skills: reference: restored encounter history prevents duplicate reward",
+    "Skills: no unfinished method marker/conflict/truncated tail: SkillDefinition",
+    "Skills: no unfinished method marker/conflict/truncated tail: SilverStitchSkill",
+    "Skills: no unfinished method marker/conflict/truncated tail: StitchBinding",
+    "Skills: no unfinished method marker/conflict/truncated tail: StitchSurface2D",
+    "Skills: no unfinished method marker/conflict/truncated tail: SkillStroke",
+    "Skills: no unfinished method marker/conflict/truncated tail: EncounterRewardBridge",
+    "Skills: no unfinished method marker/conflict/truncated tail: DestructibleTarget2D",
+    "Skills: no unfinished method marker/conflict/truncated tail: SkillPracticeWorld",
+    "Skills: no unfinished method marker/conflict/truncated tail: CoreRecord",
+    "Skills: no unfinished method marker/conflict/truncated tail: SkillProgressionService",
+    "Skills: no unfinished method marker/conflict/truncated tail: SkillSaveStore",
+    "Skills: no unfinished method marker/conflict/truncated tail: SkillSession",
+    "Skills: no unfinished method marker/conflict/truncated tail: CombatMotor2D",
+    "Skills: no unfinished method marker/conflict/truncated tail: PlayerController2D",
+    "Skills: no unfinished method marker/conflict/truncated tail: JanhyangBoss",
     "C# delimiters balanced (not compile): SpriteAnimator.cs",
     "C# delimiters balanced (not compile): Health.cs",
     "C# delimiters balanced (not compile): CombatMotor2D.cs",
@@ -439,7 +587,19 @@
     "C# delimiters balanced (not compile): AudioManager.cs",
     "C# delimiters balanced (not compile): ImpactFeedback.cs",
     "C# delimiters balanced (not compile): ImpactCameraShake.cs",
-    "C# delimiters balanced (not compile): PrototypeProjectSetup.cs"
+    "C# delimiters balanced (not compile): PrototypeProjectSetup.cs",
+    "C# delimiters balanced (not compile): SkillDefinition.cs",
+    "C# delimiters balanced (not compile): EncounterRewardBridge.cs",
+    "C# delimiters balanced (not compile): SkillStroke.cs",
+    "C# delimiters balanced (not compile): StitchBinding.cs",
+    "C# delimiters balanced (not compile): StitchSurface2D.cs",
+    "C# delimiters balanced (not compile): SilverStitchSkill.cs",
+    "C# delimiters balanced (not compile): DestructibleTarget2D.cs",
+    "C# delimiters balanced (not compile): SkillPracticeWorld.cs",
+    "C# delimiters balanced (not compile): CoreRecord.cs",
+    "C# delimiters balanced (not compile): SkillProgressionService.cs",
+    "C# delimiters balanced (not compile): SkillSaveStore.cs",
+    "C# delimiters balanced (not compile): SkillSession.cs"
   ],
   "audio_metrics": [
     {
@@ -582,6 +742,199 @@
       "knockback_multiplier": 1.7
     }
   ],
+  "skill_metrics": {
+    "verification": "source_contracts_and_python_reference_model_only",
+    "checks": 114,
+    "boundaries": [
+      {
+        "skillId": "basic_sword",
+        "uses": 0,
+        "stage": 1
+      },
+      {
+        "skillId": "basic_sword",
+        "uses": 150,
+        "stage": 1
+      },
+      {
+        "skillId": "basic_sword",
+        "uses": 151,
+        "stage": 2
+      },
+      {
+        "skillId": "basic_sword",
+        "uses": 399,
+        "stage": 2
+      },
+      {
+        "skillId": "basic_sword",
+        "uses": 400,
+        "stage": 3
+      },
+      {
+        "skillId": "basic_sword",
+        "uses": 401,
+        "stage": 3
+      },
+      {
+        "skillId": "silver_stitch",
+        "uses": 0,
+        "stage": 1
+      },
+      {
+        "skillId": "silver_stitch",
+        "uses": 29,
+        "stage": 1
+      },
+      {
+        "skillId": "silver_stitch",
+        "uses": 30,
+        "stage": 2
+      },
+      {
+        "skillId": "silver_stitch",
+        "uses": 79,
+        "stage": 2
+      },
+      {
+        "skillId": "silver_stitch",
+        "uses": 80,
+        "stage": 3
+      },
+      {
+        "skillId": "silver_stitch",
+        "uses": 81,
+        "stage": 3
+      },
+      {
+        "skillId": "pendulum_rewind",
+        "uses": 0,
+        "stage": 1
+      },
+      {
+        "skillId": "pendulum_rewind",
+        "uses": 29,
+        "stage": 1
+      },
+      {
+        "skillId": "pendulum_rewind",
+        "uses": 30,
+        "stage": 2
+      },
+      {
+        "skillId": "pendulum_rewind",
+        "uses": 79,
+        "stage": 2
+      },
+      {
+        "skillId": "pendulum_rewind",
+        "uses": 80,
+        "stage": 3
+      },
+      {
+        "skillId": "pendulum_rewind",
+        "uses": 81,
+        "stage": 3
+      },
+      {
+        "skillId": "curtain_call_waltz",
+        "uses": 0,
+        "stage": 1
+      },
+      {
+        "skillId": "curtain_call_waltz",
+        "uses": 29,
+        "stage": 1
+      },
+      {
+        "skillId": "curtain_call_waltz",
+        "uses": 30,
+        "stage": 2
+      },
+      {
+        "skillId": "curtain_call_waltz",
+        "uses": 79,
+        "stage": 2
+      },
+      {
+        "skillId": "curtain_call_waltz",
+        "uses": 80,
+        "stage": 3
+      },
+      {
+        "skillId": "curtain_call_waltz",
+        "uses": 81,
+        "stage": 3
+      },
+      {
+        "skillId": "resonance_forge",
+        "uses": 0,
+        "stage": 1
+      },
+      {
+        "skillId": "resonance_forge",
+        "uses": 29,
+        "stage": 1
+      },
+      {
+        "skillId": "resonance_forge",
+        "uses": 30,
+        "stage": 2
+      },
+      {
+        "skillId": "resonance_forge",
+        "uses": 79,
+        "stage": 2
+      },
+      {
+        "skillId": "resonance_forge",
+        "uses": 80,
+        "stage": 3
+      },
+      {
+        "skillId": "resonance_forge",
+        "uses": 81,
+        "stage": 3
+      },
+      {
+        "skillId": "canvas_carve",
+        "uses": 0,
+        "stage": 1
+      },
+      {
+        "skillId": "canvas_carve",
+        "uses": 29,
+        "stage": 1
+      },
+      {
+        "skillId": "canvas_carve",
+        "uses": 30,
+        "stage": 2
+      },
+      {
+        "skillId": "canvas_carve",
+        "uses": 79,
+        "stage": 2
+      },
+      {
+        "skillId": "canvas_carve",
+        "uses": 80,
+        "stage": 3
+      },
+      {
+        "skillId": "canvas_carve",
+        "uses": 81,
+        "stage": 3
+      }
+    ],
+    "json_roundtrip_fixtures": [
+      "new_game",
+      "acquired_mastered",
+      "debug"
+    ],
+    "unity_callbacks_executed": false,
+    "csharp_jsonutility_executed": false
+  },
   "unity_executed": false,
   "csharp_compiled": false
 }

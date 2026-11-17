@@ -10,6 +10,7 @@ namespace RewindNotary
         public const float MoveSpeed = 6.5f;
         public const float JumpSpeed = 12f;
         private CombatMotor2D motor;
+        public SilverStitchSkill Silver { get; set; }
         private float axis, lastGrounded = float.NegativeInfinity, jumpPressed = float.NegativeInfinity;
         private bool cutJump;
         private void Awake()
@@ -32,6 +33,7 @@ namespace RewindNotary
                 cutJump = true;
             if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0))
                 motor.Attack();
+            if (Input.GetKeyDown(KeyCode.Q)) Silver?.Activate();
         }
         private void FixedUpdate()
         {
@@ -58,6 +60,7 @@ namespace RewindNotary
         public void ClearInput()
         {
             axis = 0f; cutJump = false;
+            Silver?.ResetAttempt();
             jumpPressed = lastGrounded = float.NegativeInfinity;
         }
         private void OnDestroy()

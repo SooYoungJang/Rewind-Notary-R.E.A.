@@ -9,11 +9,13 @@ namespace RewindNotary
         public bool Telegraphing => windup > 0f;
         private CombatMotor2D motor, player;
         private float windup, cooldown, jumpTimer;
+        private StitchBinding stitchBinding;
         private AudioManager.VoiceHandle warningVoice;
         private void Awake() { motor = GetComponent<CombatMotor2D>(); }
         public void Initialize(CombatMotor2D target)
         {
             player = target;
+            stitchBinding = GetComponent<StitchBinding>();
             motor.Health.Damaged += OnDamaged;
             motor.Health.Died += OnDefeated;
             player.Health.Died += CancelWarning;
@@ -42,6 +44,8 @@ namespace RewindNotary
             if (motor.Health == null || motor.Health.Dead) return;
             motor.RefreshGround();
             if (!Active || player == null || player.Health.Dead) { motor.Move(0); return; }
+            // Delay the next joint action without pulling/teleporting the target or changing tuning.
+            if (stitchBinding != null && stitchBinding.Bound) { motor.Move(0); return; }
             cooldown -= Time.fixedDeltaTime;
             jumpTimer -= Time.fixedDeltaTime;
             if (motor.Stunned) { CancelWarning(); return; }

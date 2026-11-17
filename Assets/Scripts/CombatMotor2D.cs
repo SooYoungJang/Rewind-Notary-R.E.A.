@@ -15,6 +15,7 @@ namespace RewindNotary
         public bool Attacking { get; private set; }
         public bool Stunned => Time.time < stunUntil;
         public int ComboStep => comboStep;
+        public SkillSession Skills { get; set; }
         public event System.Action Landed;
         public event System.Action AttackStarted;
         private float attackStartedAt, comboExpiresAt, stunUntil, landUntil;
@@ -22,6 +23,9 @@ namespace RewindNotary
         private int comboStep, attackStep;
         private Health opponent;
         private int damage;
+        private UseContext chainUse, activeUse;
+        private SkillStageDefinition chainProfile;
+        private int ComboLimit => Health.IsPlayer && chainProfile != null ? chainProfile.comboLimit : PlayerCombo.Length;
         public const float AttackDuration = 0.32f;
         public const float ComboGraceSeconds = 0.18f;
         public const float AirAcceleration = 45f, AirDrag = 6f;
@@ -113,7 +117,9 @@ namespace RewindNotary
                 Face(speed);
                 return;
             }
-            Body.linearVelocity = new Vector2(Attacking ? 0f : speed, Body.linearVelocity.y);
+            float attackMove = Attacking && chainProfile != null && Time.time - attackStartedAt < chainProfile.stepSeconds
+                ? Facing * chainProfile.stepSpeed : 0f;
+            Body.linearVelocity = new Vector2(Attacking ? attackMove : speed, Body.linearVelocity.y);
             if (!Attacking) Face(speed);
         }
         public void Jump(float velocity)
@@ -129,7 +135,7 @@ namespace RewindNotary
             if (Attacking)
             {
                 // The final step and a chain reset by landing cannot reserve another swing.
-                if (!Health.IsPlayer || comboStep == 0 || comboStep >= PlayerCombo.Length || queuedAttack) return false;
+                if (!Health.IsPlayer || comboStep == 0 || comboStep >= ComboLimit || queuedAttack) return false;
                 float elapsed = Time.time - attackStartedAt;
                 if (elapsed < activeAttack.BufferOpen || elapsed >= activeAttack.Duration) return false;
                 queuedAttack = true;
@@ -142,6 +148,12 @@ namespace RewindNotary
         }
         private void BeginAttack(int step)
         {
+            if (step == 1 && Skills != null)
+            {
+                chainUse = Skills.Progression.BeginUse(SkillRules.BasicSword, Skills.PreviewStage);
+                chainProfile = Skills.Progression.Catalog.Get(SkillRules.BasicSword).Profile(chainUse.Stage);
+            }
+            activeUse = chainUse;
             attackStep = comboStep = step;
             activeAttack = step == 0 ? BossAttack : PlayerCombo[step - 1];
             attackStartedAt = Time.time;
@@ -153,12 +165,17 @@ namespace RewindNotary
         }
         private void ResetCombo()
         {
+            // Landing closes the chain, but the in-flight swing still owns its context until recovery.
+            if (!Attacking) Skills?.Progression.EndUse(chainUse ?? activeUse);
+            chainUse = null;
             comboStep = 0;
             queuedAttack = false;
             comboExpiresAt = float.NegativeInfinity;
         }
         private void CancelAttack()
         {
+            Skills?.Progression.EndUse(activeUse);
+            activeUse = null;
             Attacking = false;
             ResetCombo();
         }
@@ -166,13 +183,37 @@ namespace RewindNotary
         {
             // Mark even a whiff/immune target as delivered: one contact query per swing.
             strikeDelivered = true;
-            if (opponent == null || opponent.Dead) return;
             Bounds blade = new Bounds(transform.position + new Vector3(Facing * activeAttack.Reach, 1f, 0),
                 new Vector3(activeAttack.Width, activeAttack.Height, 2f));
+            // The short wave extends only the last strike, with the SAME activation and damage query.
+            if (Health.IsPlayer && chainProfile != null && attackStep == ComboLimit && chainProfile.waveReach > 0f)
+            {
+                blade.center += new Vector3(Facing * chainProfile.waveReach * 0.5f, 0, 0);
+                blade.size += new Vector3(chainProfile.waveReach, 0, 0);
+                SkillStroke.Show(transform.position + new Vector3(Facing, 1, 0),
+                    transform.position + new Vector3(Facing * (activeAttack.Reach + activeAttack.Width * 0.5f + chainProfile.waveReach), 1, 0),
+                    new Color(0.2f, 0.85f, 1f), 0.16f);
+            }
+            if (Health.IsPlayer && chainProfile != null && chainProfile.afterimageSeconds > 0f)
+                SkillStroke.Afterimage(Animation.GetComponent<SpriteRenderer>(), chainProfile.afterimageSeconds);
+            if (Skills != null)
+            {
+                foreach (var destructible in DestructibleTarget2D.All)
+                    if (blade.Intersects(destructible.Bounds))
+                        Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Destructible,
+                            destructible.TargetId, destructible.Hit(damage * activeAttack.DamageMultiplier), damage * activeAttack.DamageMultiplier));
+                foreach (var surface in StitchSurface2D.All)
+                    if (blade.Intersects(surface.Bounds))
+                        Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.TerrainMechanism,
+                            surface.TargetId, surface.Cut(false)));
+            }
+            if (opponent == null || opponent.Dead) return;
             var target = opponent.GetComponent<Collider2D>();
             if (target != null && blade.Intersects(target.bounds)
                 && opponent.Hit(damage * activeAttack.DamageMultiplier, transform.position, activeAttack.Knockback))
             {
+                Skills?.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Enemy,
+                    opponent.gameObject.name, true, damage * activeAttack.DamageMultiplier));
                 AudioManager.Play(AudioManager.Sfx.Hit);
                 if (!opponent.IsPlayer)
                 {
@@ -194,9 +235,9 @@ namespace RewindNotary
                 if (elapsed >= activeAttack.Duration)
                 {
                     Attacking = false;
-                    if (queuedAttack && comboStep > 0 && comboStep < PlayerCombo.Length)
+                    if (queuedAttack && comboStep > 0 && comboStep < ComboLimit)
                         BeginAttack(comboStep + 1);
-                    else if (comboStep > 0 && comboStep < PlayerCombo.Length)
+                    else if (comboStep > 0 && comboStep < ComboLimit)
                     {
                         comboExpiresAt = attackStartedAt + activeAttack.Duration + ComboGraceSeconds;
                     }

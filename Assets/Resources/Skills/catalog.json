@@ -1,0 +1,197 @@
+{
+  "rulesVersion": "v6.1-t0-1",
+  "skills": [
+    {
+      "skillId": "basic_sword",
+      "displayName": "기본 검술",
+      "sourceId": "cassel",
+      "doomId": "",
+      "implemented": true,
+      "stage2At": 151,
+      "stage3At": 400,
+      "stages": [
+        {
+          "stage": 1,
+          "name": "햇병아리 베기",
+          "effectId": "basic_sword",
+          "comboLimit": 2,
+          "stepSpeed": 0,
+          "stepSeconds": 0,
+          "waveReach": 0,
+          "afterimageSeconds": 0
+        },
+        {
+          "stage": 2,
+          "name": "청금의 궤적",
+          "effectId": "basic_sword",
+          "comboLimit": 3,
+          "stepSpeed": 2.5,
+          "stepSeconds": 0.1,
+          "waveReach": 0.85,
+          "afterimageSeconds": 0
+        },
+        {
+          "stage": 3,
+          "name": "원죄공증검 — 카셀 제0식",
+          "effectId": "basic_sword",
+          "comboLimit": 4,
+          "stepSpeed": 2.5,
+          "stepSeconds": 0.1,
+          "waveReach": 0.85,
+          "afterimageSeconds": 0.22
+        }
+      ]
+    },
+    {
+      "skillId": "silver_stitch",
+      "displayName": "은실 박음질",
+      "sourceId": "mikhail",
+      "doomId": "heart_rupture",
+      "implemented": true,
+      "stage2At": 30,
+      "stage3At": 80,
+      "stages": [
+        {
+          "stage": 1,
+          "name": "홑박음질",
+          "effectId": "stitch_bind",
+          "reach": 2.6,
+          "cooldown": 0.65,
+          "bindSeconds": 1,
+          "lifetime": 4,
+          "maxSpan": 1,
+          "installationLimit": 1,
+          "cutDamage": 0
+        },
+        {
+          "stage": 2,
+          "name": "교차 재단",
+          "effectId": "stitch_cross_floor",
+          "reach": 2.6,
+          "cooldown": 0.65,
+          "bindSeconds": 1.4,
+          "lifetime": 4,
+          "maxSpan": 4.5,
+          "installationLimit": 1,
+          "cutDamage": 0
+        },
+        {
+          "stage": 3,
+          "name": "운명 봉합·절단",
+          "effectId": "stitch_cut",
+          "reach": 2.6,
+          "cooldown": 0.65,
+          "bindSeconds": 1.4,
+          "lifetime": 4,
+          "maxSpan": 4.5,
+          "installationLimit": 1,
+          "cutDamage": 3
+        }
+      ]
+    },
+    {
+      "skillId": "pendulum_rewind",
+      "displayName": "진자 되감기",
+      "sourceId": "julius",
+      "doomId": "rapid_aging",
+      "implemented": false,
+      "stage2At": 30,
+      "stage3At": 80,
+      "stages": [
+        {
+          "stage": 1,
+          "name": "진자 보법",
+          "effectId": "not_implemented"
+        },
+        {
+          "stage": 2,
+          "name": "이중 시간선",
+          "effectId": "not_implemented"
+        },
+        {
+          "stage": 3,
+          "name": "제로 아워",
+          "effectId": "not_implemented"
+        }
+      ]
+    },
+    {
+      "skillId": "curtain_call_waltz",
+      "displayName": "커튼콜 원무",
+      "sourceId": "valeria",
+      "doomId": "leg_punishment",
+      "implemented": false,
+      "stage2At": 30,
+      "stage3At": 80,
+      "stages": [
+        {
+          "stage": 1,
+          "name": "회전 검무",
+          "effectId": "not_implemented"
+        },
+        {
+          "stage": 2,
+          "name": "스포트라이트 스텝",
+          "effectId": "not_implemented"
+        },
+        {
+          "stage": 3,
+          "name": "그랑 피날레",
+          "effectId": "not_implemented"
+        }
+      ]
+    },
+    {
+      "skillId": "resonance_forge",
+      "displayName": "공명 단조",
+      "sourceId": "gabriel",
+      "doomId": "eternal_silence",
+      "implemented": false,
+      "stage2At": 30,
+      "stage3At": 80,
+      "stages": [
+        {
+          "stage": 1,
+          "name": "진동 타격",
+          "effectId": "not_implemented"
+        },
+        {
+          "stage": 2,
+          "name": "화음 축적 폭발",
+          "effectId": "not_implemented"
+        },
+        {
+          "stage": 3,
+          "name": "여섯 시의 파종",
+          "effectId": "not_implemented"
+        }
+      ]
+    },
+    {
+      "skillId": "canvas_carve",
+      "displayName": "여백 도려내기",
+      "sourceId": "irina",
+      "doomId": "blindness",
+      "implemented": false,
+      "stage2At": 30,
+      "stage3At": 80,
+      "stages": [
+        {
+          "stage": 1,
+          "name": "물감 획",
+          "effectId": "not_implemented"
+        },
+        {
+          "stage": 2,
+          "name": "풍경 덧칠",
+          "effectId": "not_implemented"
+        },
+        {
+          "stage": 3,
+          "name": "자화상 완성",
+          "effectId": "not_implemented"
+        }
+      ]
+    }
+  ]
+}

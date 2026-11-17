@@ -10,6 +10,10 @@ namespace RewindNotary
         private JanhyangBoss bossAI;
         private CameraTarget2D cameraTarget;
         private CinemachineCamera virtualCamera;
+        private SkillSession skills;
+        private EncounterRewardBridge reward;
+        private StitchBinding bossBinding;
+        private Font hudFont;
         private bool checkpoint, won, initialized;
         private float deathTimer;
         private string failure;
@@ -24,6 +28,10 @@ namespace RewindNotary
             Application.targetFrameRate = 60;
             Physics2D.gravity = new Vector2(0f, -9.81f);
             Child("Audio").AddComponent<AudioManager>();
+            hudFont = Font.CreateDynamicFontFromOSFont(new[] { "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans CJK KR", "Arial Unicode MS" }, 18);
+            skills = Child("Skill session").AddComponent<SkillSession>();
+            skills.Initialize();
+            skills.PresentationRequested += PresentSkill;
             Camera camera = Camera.main;
             if (camera == null)
             {
@@ -37,12 +45,19 @@ namespace RewindNotary
             camera.transform.SetPositionAndRotation(new Vector3(0, 2.7f, -10), Quaternion.identity);
             Child("Level").AddComponent<LevelBuilder>().Build();
             player = CreateActor("Rea", LevelBuilder.StartPoint, "rea-sheet", 6, 0.75f, true);
+            player.Skills = skills;
             controller = player.gameObject.AddComponent<PlayerController2D>();
             boss = CreateActor("Janhyang - yesterday's Rea", LevelBuilder.BossStart, "janhyang-sheet", 12, 0.35f);
             boss.Face(-1);
             player.SetOpponent(boss.Health); boss.SetOpponent(player.Health);
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), boss.GetComponent<Collider2D>());
+            bossBinding = boss.gameObject.AddComponent<StitchBinding>();
             bossAI = boss.gameObject.AddComponent<JanhyangBoss>(); bossAI.Initialize(player);
+            reward = boss.gameObject.AddComponent<EncounterRewardBridge>();
+            reward.Initialize(boss.Health, skills.Progression);
+            controller.Silver = player.gameObject.AddComponent<SilverStitchSkill>();
+            controller.Silver.Initialize(skills, boss);
+            SkillPracticeWorld.Build(Child("Skill practice").transform, player, boss);
 
             cameraTarget = Child("Camera target").AddComponent<CameraTarget2D>();
             cameraTarget.Player = player.transform; cameraTarget.Snap();
@@ -59,6 +74,7 @@ namespace RewindNotary
             var shake = virtualCamera.gameObject.AddComponent<ImpactCameraShake>();
             Child("Impact feedback").AddComponent<ImpactFeedback>().Initialize(shake);
             Child("Parallax").AddComponent<ParallaxBackground>().Initialize(camera);
+            skills.PresentRestoredState();
         }
         private GameObject Child(string label)
         {
@@ -74,6 +90,7 @@ namespace RewindNotary
         private void Update()
         {
             if (!initialized) return;
+            if (Debug.isDebugBuild || Application.isEditor) UpdateSkillDebug();
             if (Input.GetKeyDown(KeyCode.R)) { ResetRun(true); return; }
             if (player.Health.Dead)
             {
@@ -90,11 +107,17 @@ namespace RewindNotary
             if (!checkpoint && player.transform.position.x >= 35f)
             { checkpoint = true; bossAI.Activate(); }
             if (!boss.Health.Dead && boss.transform.position.y < -7f)
-                boss.ResetAt(LevelBuilder.BossStart);
+            { bossBinding.Break(); boss.ResetAt(LevelBuilder.BossStart); }
             if (boss.Health.Dead && !won) won = true;
         }
         private void ResetRun(bool fromStart)
         {
+            // A retry in the lethal-hit frame must deliver the queued reward before invalidating uses.
+            reward.Flush();
+            skills.Progression.ResetAttempt();
+            skills.Save();
+            SkillPracticeWorld.ResetAttempt();
+            bossBinding.Break();
             if (fromStart) checkpoint = false;
             ImpactFeedback.ResetEffects();
             AudioManager.ResetPlayback(checkpoint);
@@ -106,6 +129,36 @@ namespace RewindNotary
             cameraTarget.Snap();
             virtualCamera.PreviousStateIsValid = false;
         }
+        private void UpdateSkillDebug()
+        {
+            int preview = Input.GetKeyDown(KeyCode.F1) ? 1 : Input.GetKeyDown(KeyCode.F2) ? 2
+                : Input.GetKeyDown(KeyCode.F3) ? 3 : Input.GetKeyDown(KeyCode.F4) ? 0 : -1;
+            if (preview >= 0)
+            {
+                ResetRun(false);
+                skills.SetPreview(preview);
+            }
+            if (Input.GetKeyDown(KeyCode.F5) || Input.GetKeyDown(KeyCode.F6))
+            {
+                ResetRun(false);
+                skills.SetPreview(0);
+                skills.Progression.SeedBoundary(Input.GetKeyDown(KeyCode.F6));
+            }
+        }
+        private void PresentSkill(string cue, string skillId)
+        {
+            if (player == null) return;
+            Color color = cue == "doom_transfer" || cue == "doom_restored" ? new Color(1f, 0.3f, 0.4f) : Color.cyan;
+            SkillStroke.Show(player.transform.position + Vector3.up * 0.3f,
+                player.transform.position + Vector3.up * 2.5f, color, 0.8f);
+        }
+        private string SkillLabel(string id)
+        {
+            var progress = skills.Progression.Record.Get(id);
+            string name = skills.Progression.Catalog.Get(id).displayName;
+            return name + " · " + progress.validUseCount + "회 · " + progress.stage + "단계"
+                + (progress.acquired ? "" : " (미보유)");
+        }
         private void OnGUI()
         {
             Matrix4x4 previous = GUI.matrix;
@@ -114,6 +167,7 @@ namespace RewindNotary
                 (Screen.height - 720 * scale) / 2f, 0), Quaternion.identity, Vector3.one * scale);
             var title = new GUIStyle(GUI.skin.label) { fontSize = 24, fontStyle = FontStyle.Bold };
             var label = new GUIStyle(GUI.skin.label) { fontSize = 17 };
+            if (hudFont != null) { title.font = hudFont; label.font = hudFont; }
             if (failure != null)
             {
                 GUI.Box(new Rect(220, 210, 840, 220), "");
@@ -126,8 +180,23 @@ namespace RewindNotary
             GUI.Label(new Rect(36, 28, 380, 34), "REWIND NOTARY  /  REA", title);
             GUI.Label(new Rect(36, 64, 370, 25), "Rea    " + player.Health.Current + " / " + player.Health.Maximum, label);
             Bar(new Rect(36, 99, 366, 15), player.Health, new Color(0.18f, 0.82f, 0.73f));
-            GUI.Label(new Rect(28, 640, 1160, 30), "A/D or arrows: move   |   Space/W/Up: jump   |   J/Z/Left click: sword   |   R: restart", label);
+            GUI.Box(new Rect(20, 154, 440, 132), "");
+            GUI.Label(new Rect(36, 164, 420, 28), SkillLabel(SkillRules.BasicSword), label);
+            GUI.Label(new Rect(36, 194, 420, 28), SkillLabel(SkillRules.SilverStitch), label);
+            string mode = skills.Progression.Record.testData ? "검증 저장 (본 저장과 분리)" : "본 저장";
+            if (skills.PreviewStage != 0) mode += " · 형태 " + skills.PreviewStage + "단계 미리보기 (집계 제외)";
+            GUI.Label(new Rect(36, 224, 420, 52), mode, new GUIStyle(label) { wordWrap = true });
+            if (!string.IsNullOrEmpty(skills.Notice))
+            {
+                GUI.Box(new Rect(470, 30, 785, 94), "");
+                GUI.Label(new Rect(486, 43, 750, 78), skills.Notice, new GUIStyle(label) { wordWrap = true });
+            }
+            if (!string.IsNullOrEmpty(skills.StorageError))
+                GUI.Label(new Rect(28, 424, 1200, 65), skills.StorageError, new GUIStyle(label) { wordWrap = true });
+            GUI.Label(new Rect(28, 640, 1220, 30), "A/D·방향키: 이동 | Space/W/↑: 점프 | J/Z/좌클릭: 검술 | Q: 은실 | R: 재시작 (성장 보존)", label);
             GUI.Label(new Rect(28, 673, 1160, 28), checkpoint ? "Arena checkpoint active. Watch for the gold windup." : "Move right. Test the ledges and gap, then enter the arena.", label);
+            if (Debug.isDebugBuild || Application.isEditor)
+                GUI.Label(new Rect(28, 606, 1220, 28), "검증: F1~F3 형태 미리보기 | F4 실제 단계 | F5 경계 150/29 | F6 경계 399/79 (검증 저장)", label);
             if (bossAI.Active)
             {
                 GUI.Box(new Rect(405, 535, 470, 76), "");
@@ -141,6 +210,19 @@ namespace RewindNotary
                 GUI.Label(new Rect(420, 312, 460, 35), won ? "Press R to test again." : "Returning to the checkpoint.", label);
             }
             GUI.matrix = previous;
+        }
+        private void OnDestroy()
+        {
+            if (skills != null) skills.PresentationRequested -= PresentSkill;
+            if (hudFont != null) Destroy(hudFont);
+        }
+        private void OnApplicationPause(bool paused) { if (paused) FlushProgress(); }
+        private void OnApplicationQuit() { FlushProgress(); }
+        private void FlushProgress()
+        {
+            if (!initialized) return;
+            reward.Flush();
+            skills.Save();
         }
         private static void Bar(Rect rect, Health health, Color color)
         {
