@@ -5,12 +5,14 @@ namespace RewindNotary
     // Small code-native prototype VFX. No damage, movement or independent progression callbacks.
     public sealed class SkillStroke : MonoBehaviour
     {
+        public static Transform WorldRoot;
         private Sprite sprite;
         private SpriteRenderer visual;
         private float lifetime, started;
         public static void Show(Vector3 from, Vector3 to, Color color, float seconds)
         {
             var go = new GameObject("Skill stroke");
+            if (WorldRoot != null) go.transform.SetParent(WorldRoot, false);
             var effect = go.AddComponent<SkillStroke>();
             effect.sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
             effect.visual = go.AddComponent<SpriteRenderer>();
@@ -24,6 +26,7 @@ namespace RewindNotary
         public static void Afterimage(SpriteRenderer source, float seconds)
         {
             var go = new GameObject("Sword mastery afterimage");
+            if (WorldRoot != null) go.transform.SetParent(WorldRoot, false);
             var effect = go.AddComponent<SkillStroke>();
             effect.visual = go.AddComponent<SpriteRenderer>();
             effect.visual.sprite = source.sprite; effect.visual.flipX = source.flipX;

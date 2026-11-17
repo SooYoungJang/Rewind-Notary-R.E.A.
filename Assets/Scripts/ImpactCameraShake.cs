@@ -6,6 +6,7 @@ namespace RewindNotary
     // Only correct the final camera state: never move the follow target or physics body.
     public sealed class ImpactCameraShake : CinemachineExtension
     {
+        public static bool Enabled = true;
         private float started, duration, amplitude;
         private float Envelope
         {
@@ -18,6 +19,7 @@ namespace RewindNotary
         }
         public void Shake(float strength, float seconds)
         {
+            if (!Enabled) { Clear(); return; }
             float remaining = Mathf.Max(0f, started + duration - Time.unscaledTime);
             amplitude = Mathf.Max(amplitude * Envelope, strength);
             duration = Mathf.Max(remaining, seconds);
@@ -27,6 +29,7 @@ namespace RewindNotary
         protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam,
             CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
         {
+            if (!Enabled) { Clear(); return; }
             if (stage != CinemachineCore.Stage.Finalize) return;
             if (deltaTime < 0f) { Clear(); return; }
             float strength = amplitude * Envelope;

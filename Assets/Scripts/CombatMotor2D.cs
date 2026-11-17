@@ -224,6 +224,7 @@ namespace RewindNotary
         }
         private void Update()
         {
+            if (!GameInput.GameplayEnabled) return;
             if (Health == null) return;
             Animation.SetCombatVisual(Time.time < Health.InvulnerableUntil, Health.Dead);
             if (Health.Dead) return;

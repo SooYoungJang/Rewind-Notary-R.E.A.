@@ -62,6 +62,7 @@ namespace RewindNotary
         }
         private void Update()
         {
+            if (!GameInput.GameplayEnabled) return;
             if (retiring && !PlayerOnFloor()) { retiring = false; floor.enabled = false; RestoreVisual(); }
             if (!Installed) return;
             if (Time.time >= until) { Retire(); return; }

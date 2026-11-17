@@ -41,6 +41,7 @@ namespace RewindNotary
         }
         private void FixedUpdate()
         {
+            if (!GameInput.GameplayEnabled) return;
             if (motor.Health == null || motor.Health.Dead) return;
             motor.RefreshGround();
             if (!Active || player == null || player.Health.Dead) { motor.Move(0); return; }

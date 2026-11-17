@@ -102,6 +102,14 @@ namespace RewindNotary
             EmitSimple(newlyAcquired ? "acquired" : "encounter_complete", rewardSkillId, encounterId);
             return newlyAcquired;
         }
+        public void SetStoryFlag(string flag, bool enabled)
+        {
+            if (string.IsNullOrWhiteSpace(flag)) throw new ArgumentException(nameof(flag));
+            bool has = Record.storyFlags.Contains(flag);
+            if (has == enabled) return;
+            if (enabled) Record.storyFlags.Add(flag); else Record.storyFlags.Remove(flag);
+            Changed?.Invoke();
+        }
         public void EnableDebugRecord()
         {
             if (Record.testData) return;

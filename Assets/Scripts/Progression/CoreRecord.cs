@@ -19,15 +19,17 @@ namespace RewindNotary
     [Serializable]
     public sealed class CoreRecord
     {
-        public const int SchemaVersion = 1;
+        public const int SchemaVersion = 2;
         public int schemaVersion = SchemaVersion;
         public string rulesVersion = SkillRules.Version;
-        public string slotId = "main", savedUtc;
+        public string slotId = "slot-1", savedUtc;
         public long revision;
         public bool testData, basicMasteryReached, firstTransferPending;
         public List<SkillProgress> skills = new List<SkillProgress>();
         public List<NotaryEntry> ledger = new List<NotaryEntry>();
         public List<string> completedEncounters = new List<string>();
+        public List<string> storyFlags = new List<string> { "hub_open" };
+        public string lastStageId = "prototype";
         public SkillProgress Get(string id) => skills.Find(s => s.skillId == id);
         public static CoreRecord NewGame(SkillCatalog catalog)
         {
@@ -49,8 +51,14 @@ namespace RewindNotary
                 throw new InvalidOperationException("Unsupported save/rules version; original file retained");
             if (skills == null || skills.Count != 6 || ledger == null || ledger.Count != 5 || completedEncounters == null)
                 throw new InvalidOperationException("Incomplete core record");
-            if (testData != (slotId == "debug") || (!testData && slotId != "main"))
+            if (testData != (slotId == "debug") || (!testData && slotId != "slot-1" && slotId != "slot-2" && slotId != "slot-3"))
                 throw new InvalidOperationException("Invalid save slot");
+            if (storyFlags == null || string.IsNullOrEmpty(lastStageId))
+                throw new InvalidOperationException("Incomplete story state");
+            var flags = new HashSet<string>();
+            foreach (string flag in storyFlags)
+                if (string.IsNullOrWhiteSpace(flag) || !flags.Add(flag))
+                    throw new InvalidOperationException("Invalid story flag");
             var ids = new HashSet<string>();
             foreach (var progress in skills)
             {

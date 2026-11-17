@@ -23,21 +23,16 @@ namespace RewindNotary
         private void OnAttackStarted() { AudioManager.Play(AudioManager.Sfx.Swing); }
         private void Update()
         {
-            if (motor.Health == null || motor.Health.Dead) return;
-            axis = (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1f : 0f)
-                - (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1f : 0f);
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-                jumpPressed = Time.time;
-            bool held = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
-            if (!held && (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow)))
-                cutJump = true;
-            if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0))
-                motor.Attack();
-            if (Input.GetKeyDown(KeyCode.Q)) Silver?.Activate();
+            if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead) return;
+            axis = GameInput.Horizontal;
+            if (GameInput.JumpDown) jumpPressed = Time.time;
+            if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
+            if (GameInput.AttackDown) motor.Attack();
+            if (GameInput.SilverDown) Silver?.Activate();
         }
         private void FixedUpdate()
         {
-            if (motor.Health == null || motor.Health.Dead) return;
+            if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead) return;
             motor.RefreshGround();
             if (motor.Grounded) lastGrounded = Time.time;
             if (Time.time - jumpPressed <= JumpBuffer && Time.time - lastGrounded <= CoyoteTime && !motor.Stunned)
@@ -56,6 +51,11 @@ namespace RewindNotary
             }
             if (motor.Body.linearVelocity.y < -18f)
                 motor.Body.linearVelocity = new Vector2(motor.Body.linearVelocity.x, -18f);
+        }
+        public void SuspendInput()
+        {
+            axis = 0f; cutJump = false;
+            jumpPressed = lastGrounded = float.NegativeInfinity;
         }
         public void ClearInput()
         {

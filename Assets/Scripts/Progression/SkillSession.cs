@@ -10,6 +10,8 @@ namespace RewindNotary
         public SkillProgressionService Progression { get; private set; }
         public string Notice { get; private set; }
         public string StorageError => string.Join("\n", new[] { store?.LastError, logError }).Trim();
+        public bool LastSaveSucceeded => !dirty;
+        public int ActiveSlot => store.Slot;
         public int PreviewStage { get; private set; }
         public event Action<string, string> PresentationRequested;
         public event Action<string> SoundRequested;
@@ -18,21 +20,20 @@ namespace RewindNotary
         public string SaveDirectory { get; private set; }
         public string UseLogPath => logPath;
         private float noticeUntil, retryAt;
-        private bool dirty;
+        private bool dirty, closed;
         private readonly string sessionId = Guid.NewGuid().ToString("N");
         [Serializable]
         private sealed class LogRow
         {
-            public string utc, sessionId, rulesVersion, buildId, encounterId;
+            public string utc, sessionId, rulesVersion, buildId, encounterId, slotId;
             public float gameSeconds, realtimeSeconds;
             public ProgressionEvent result;
         }
-        public void Initialize()
+        public void Initialize(SkillSaveStore selectedStore, CoreRecord record)
         {
             var catalog = SkillCatalog.Load();
             SaveDirectory = Path.Combine(Application.persistentDataPath, "SkillSystem");
-            store = new SkillSaveStore(SaveDirectory, catalog);
-            var record = store.Load();
+            store = selectedStore;
             string recoveryNotice = store.LastError;
             logPath = Path.Combine(SaveDirectory, "uses-" + sessionId + ".jsonl");
             Progression = new SkillProgressionService(catalog, record);
@@ -40,12 +41,12 @@ namespace RewindNotary
             Progression.Event += OnEvent;
             Progression.EmitSimple("session_start", "", "loaded_or_new_120");
             Save();
-            Debug.Log("[Skill] 저장: " + SaveDirectory + " / 사용 로그: " + logPath);
+            Debug.Log("[Skill] 저장: " + SaveDirectory + " / 슬롯: " + store.Slot + " / 사용 로그: " + logPath);
             if (!string.IsNullOrEmpty(recoveryNotice)) Show(recoveryNotice, "save_recovered", "");
         }
         public void Save()
         {
-            if (Progression == null) return;
+            if (Progression == null || closed) return;
             dirty = !store.Save(Progression.Record);
             retryAt = Time.unscaledTime + 5f;
         }
@@ -56,7 +57,7 @@ namespace RewindNotary
         }
         private void OnEvent(ProgressionEvent result)
         {
-            var row = new LogRow { utc = DateTime.UtcNow.ToString("O"), sessionId = sessionId,
+            var row = new LogRow { utc = DateTime.UtcNow.ToString("O"), sessionId = sessionId, slotId = store.SlotId,
                 rulesVersion = SkillRules.Version, buildId = Application.version,
                 encounterId = EncounterRewardBridge.PrototypeEncounter,
                 gameSeconds = Time.time, realtimeSeconds = Time.unscaledTime, result = result };
@@ -69,7 +70,7 @@ namespace RewindNotary
             string name = string.IsNullOrEmpty(result.skillId) ? "" : Progression.Catalog.Get(result.skillId).displayName;
             switch (result.kind)
             {
-                case "acquired": Show(name + " 획득 — Q로 사용", "acquired", result.skillId); break;
+                case "acquired": Show(name + " 획득 — Q / 패드 Y로 사용", "acquired", result.skillId); break;
                 case "stage_up": Show(name + " " + result.stage + "단계 — 동작 체화", "stage_up", result.skillId); break;
                 case "doom_transfer": Show("극의 완전 재현 · 제1종언: 심장 파열 → 레아", "doom_transfer", result.skillId); break;
                 case "doom_restored": Show("종언 원장 복구 · 제1종언: 심장 파열 → 레아", "doom_restored", result.skillId); break;
@@ -101,10 +102,12 @@ namespace RewindNotary
         }
         private void OnApplicationPause(bool paused) { if (paused) Save(); }
         private void OnApplicationQuit() { Save(); }
-        private void OnDestroy()
+        private void OnDestroy() { Close(); }
+        public void Close(bool save = true)
         {
-            if (Progression == null) return;
-            Save(); Progression.Changed -= Save; Progression.Event -= OnEvent;
+            if (Progression == null || closed) return;
+            if (save) Save(); Progression.Changed -= Save; Progression.Event -= OnEvent;
+            closed = true; dirty = false;
         }
     }
 }

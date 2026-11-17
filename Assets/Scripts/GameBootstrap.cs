@@ -11,6 +11,8 @@ namespace RewindNotary
         private CameraTarget2D cameraTarget;
         private CinemachineCamera virtualCamera;
         private SkillSession skills;
+        private GameShell shell;
+        private GameObject world;
         private EncounterRewardBridge reward;
         private StitchBinding bossBinding;
         private Font hudFont;
@@ -20,17 +22,31 @@ namespace RewindNotary
 
         private void Start()
         {
-            try { Build(); initialized = true; }
+            try
+            {
+                Application.targetFrameRate = 60;
+                Physics2D.gravity = new Vector2(0f, -9.81f);
+                Time.timeScale = 1f;
+                Child("Audio").AddComponent<AudioManager>();
+                hudFont = Font.CreateDynamicFontFromOSFont(new[] { "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans CJK KR", "Arial Unicode MS" }, 18);
+                shell = gameObject.AddComponent<GameShell>();
+                shell.Initialize(this, hudFont);
+            }
             catch (System.Exception exception) { failure = exception.Message; Debug.LogException(exception); }
         }
-        private void Build()
+        public void StartStage(SkillSaveStore store, CoreRecord record)
         {
-            Application.targetFrameRate = 60;
-            Physics2D.gravity = new Vector2(0f, -9.81f);
-            Child("Audio").AddComponent<AudioManager>();
-            hudFont = Font.CreateDynamicFontFromOSFont(new[] { "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans CJK KR", "Arial Unicode MS" }, 18);
+            if (world != null) throw new System.InvalidOperationException("이미 스테이지가 실행 중입니다.");
+            world = new GameObject("Playable stage"); world.transform.SetParent(transform, false);
+            SkillStroke.WorldRoot = world.transform;
+            checkpoint = won = false; deathTimer = 0;
+            Build(store, record); initialized = true;
+            if (GameShell.DebugAvailable) ApplyStageOverride(shell.Settings.Value.stageOverride);
+        }
+        private void Build(SkillSaveStore store, CoreRecord record)
+        {
             skills = Child("Skill session").AddComponent<SkillSession>();
-            skills.Initialize();
+            skills.Initialize(store, record);
             skills.PresentationRequested += PresentSkill;
             Camera camera = Camera.main;
             if (camera == null)
@@ -61,7 +77,7 @@ namespace RewindNotary
 
             cameraTarget = Child("Camera target").AddComponent<CameraTarget2D>();
             cameraTarget.Player = player.transform; cameraTarget.Snap();
-            camera.gameObject.AddComponent<CinemachineBrain>();
+            if (camera.GetComponent<CinemachineBrain>() == null) camera.gameObject.AddComponent<CinemachineBrain>();
             virtualCamera = Child("Cinemachine follow camera").AddComponent<CinemachineCamera>();
             virtualCamera.Follow = cameraTarget.transform;
             var lens = LensSettings.Default;
@@ -78,7 +94,7 @@ namespace RewindNotary
         }
         private GameObject Child(string label)
         {
-            var go = new GameObject(label); go.transform.SetParent(transform, false); return go;
+            var go = new GameObject(label); go.transform.SetParent(world != null ? world.transform : transform, false); return go;
         }
         private CombatMotor2D CreateActor(string label, Vector2 position, string sheet, int hp, float immunity, bool isPlayer = false)
         {
@@ -89,9 +105,9 @@ namespace RewindNotary
         }
         private void Update()
         {
-            if (!initialized) return;
+            if (!initialized || !shell.Playing || !GameInput.CanPlay) return;
             if (Debug.isDebugBuild || Application.isEditor) UpdateSkillDebug();
-            if (Input.GetKeyDown(KeyCode.R)) { ResetRun(true); return; }
+            if (GameInput.RetryDown) { ResetRun(true); return; }
             if (player.Health.Dead)
             {
                 deathTimer += Time.deltaTime;
@@ -135,15 +151,35 @@ namespace RewindNotary
                 : Input.GetKeyDown(KeyCode.F3) ? 3 : Input.GetKeyDown(KeyCode.F4) ? 0 : -1;
             if (preview >= 0)
             {
-                ResetRun(false);
-                skills.SetPreview(preview);
+                shell.SetStageOverride(preview);
             }
             if (Input.GetKeyDown(KeyCode.F5) || Input.GetKeyDown(KeyCode.F6))
             {
                 ResetRun(false);
-                skills.SetPreview(0);
+                shell.SetStageOverride(0);
                 skills.Progression.SeedBoundary(Input.GetKeyDown(KeyCode.F6));
             }
+        }
+        public void ApplyStageOverride(int stage)
+        {
+            if (!initialized || !GameShell.DebugAvailable || skills.PreviewStage == stage) return;
+            ResetRun(false);
+            skills.SetPreview(stage);
+        }
+        public void SuspendInput() { if (controller != null) controller.SuspendInput(); }
+        public void StopStage()
+        {
+            // Caller has saved successfully; close the session before deferred destruction.
+            if (skills != null) { skills.PresentationRequested -= PresentSkill; skills.Close(false); }
+            initialized = false; SkillStroke.WorldRoot = null;
+            ImpactFeedback.ResetEffects(); AudioManager.ResetPlayback(false);
+            if (world != null) { world.SetActive(false); Destroy(world); world = null; }
+            player = boss = null; controller = null; skills = null; reward = null;
+        }
+        public void AbortStage()
+        {
+            if (skills != null) skills.Save();
+            StopStage();
         }
         private void PresentSkill(string cue, string skillId)
         {
@@ -171,19 +207,19 @@ namespace RewindNotary
             if (failure != null)
             {
                 GUI.Box(new Rect(220, 210, 840, 220), "");
-                GUI.Label(new Rect(245, 235, 800, 40), "Prototype could not start. Check Console.", title);
+                GUI.Label(new Rect(245, 235, 800, 40), "시작할 수 없습니다. 콘솔을 확인해 주세요.", title);
                 GUI.Label(new Rect(245, 285, 780, 130), failure, new GUIStyle(label) { wordWrap = true });
                 GUI.matrix = previous; return;
             }
-            if (!initialized) { GUI.matrix = previous; return; }
+            if (!initialized || !shell.Playing) { GUI.matrix = previous; return; }
             GUI.Box(new Rect(20, 18, 400, 128), "");
-            GUI.Label(new Rect(36, 28, 380, 34), "REWIND NOTARY  /  REA", title);
-            GUI.Label(new Rect(36, 64, 370, 25), "Rea    " + player.Health.Current + " / " + player.Health.Maximum, label);
+            GUI.Label(new Rect(36, 28, 380, 34), "리와인드 공증록: 레아", title);
+            GUI.Label(new Rect(36, 64, 370, 25), "레아    " + player.Health.Current + " / " + player.Health.Maximum, label);
             Bar(new Rect(36, 99, 366, 15), player.Health, new Color(0.18f, 0.82f, 0.73f));
             GUI.Box(new Rect(20, 154, 440, 132), "");
             GUI.Label(new Rect(36, 164, 420, 28), SkillLabel(SkillRules.BasicSword), label);
             GUI.Label(new Rect(36, 194, 420, 28), SkillLabel(SkillRules.SilverStitch), label);
-            string mode = skills.Progression.Record.testData ? "검증 저장 (본 저장과 분리)" : "본 저장";
+            string mode = skills.Progression.Record.testData ? "검증 저장 (본 저장과 분리)" : "슬롯 " + skills.ActiveSlot + " 저장";
             if (skills.PreviewStage != 0) mode += " · 형태 " + skills.PreviewStage + "단계 미리보기 (집계 제외)";
             GUI.Label(new Rect(36, 224, 420, 52), mode, new GUIStyle(label) { wordWrap = true });
             if (!string.IsNullOrEmpty(skills.Notice))
@@ -193,21 +229,21 @@ namespace RewindNotary
             }
             if (!string.IsNullOrEmpty(skills.StorageError))
                 GUI.Label(new Rect(28, 424, 1200, 65), skills.StorageError, new GUIStyle(label) { wordWrap = true });
-            GUI.Label(new Rect(28, 640, 1220, 30), "A/D·방향키: 이동 | Space/W/↑: 점프 | J/Z/좌클릭: 검술 | Q: 은실 | R: 재시작 (성장 보존)", label);
-            GUI.Label(new Rect(28, 673, 1160, 28), checkpoint ? "Arena checkpoint active. Watch for the gold windup." : "Move right. Test the ledges and gap, then enter the arena.", label);
+            GUI.Label(new Rect(28, 640, 1220, 30), "이동 A/D·방향키·스틱 | 점프 Space/W/↑·A | 검술 J/Z/좌클릭·X | 은실 Q·Y | 일시정지 Esc·메뉴", label);
+            GUI.Label(new Rect(28, 673, 1160, 28), checkpoint ? "투기장 복귀 지점 활성 · 금빛 예고를 살피세요. R / 보기 버튼: 재시작" : "오른쪽으로 이동해 발판과 틈을 건너 대련장으로 향하세요. R / 보기 버튼: 재시작", label);
             if (Debug.isDebugBuild || Application.isEditor)
                 GUI.Label(new Rect(28, 606, 1220, 28), "검증: F1~F3 형태 미리보기 | F4 실제 단계 | F5 경계 150/29 | F6 경계 399/79 (검증 저장)", label);
             if (bossAI.Active)
             {
-                GUI.Box(new Rect(405, 535, 470, 76), "");
-                GUI.Label(new Rect(425, 544, 440, 26), "JANHYANG  /  YESTERDAY'S REA     " + boss.Health.Current + " / 12", label);
-                Bar(new Rect(425, 579, 430, 12), boss.Health, new Color(0.47f, 0.65f, 0.92f));
+                GUI.Box(new Rect(405, 510, 470, 76), "");
+                GUI.Label(new Rect(425, 519, 440, 26), "잔향 · 어제의 레아     " + boss.Health.Current + " / 12", label);
+                Bar(new Rect(425, 554, 430, 12), boss.Health, new Color(0.47f, 0.65f, 0.92f));
             }
             if (player.Health.Dead || won)
             {
-                GUI.Box(new Rect(390, 240, 500, 130), "");
-                GUI.Label(new Rect(420, 260, 460, 42), won ? "PROTOTYPE CLEARED" : "RETRYING...", title);
-                GUI.Label(new Rect(420, 312, 460, 35), won ? "Press R to test again." : "Returning to the checkpoint.", label);
+                GUI.Box(new Rect(485, 270, 500, 130), "");
+                GUI.Label(new Rect(515, 290, 460, 42), won ? "테스트 대련 완료" : "다시 도전합니다…", title);
+                GUI.Label(new Rect(515, 342, 460, 35), won ? "R / 패드 보기 버튼으로 다시 도전하세요." : "복귀 지점으로 돌아갑니다.", label);
             }
             GUI.matrix = previous;
         }
@@ -218,11 +254,12 @@ namespace RewindNotary
         }
         private void OnApplicationPause(bool paused) { if (paused) FlushProgress(); }
         private void OnApplicationQuit() { FlushProgress(); }
-        private void FlushProgress()
+        public bool FlushProgress()
         {
-            if (!initialized) return;
+            if (!initialized) return true;
             reward.Flush();
             skills.Save();
+            return skills.LastSaveSucceeded;
         }
         private static void Bar(Rect rect, Health health, Color color)
         {
