@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 28
+  companyName: RewindNotaryPrototype
+  productName: Rewind Notary
+  defaultScreenWidth: 1280
+  defaultScreenHeight: 720
+  defaultIsNativeResolution: 1
+  runInBackground: 1
+  resizableWindow: 1
+  fullscreenMode: 3
+  colorSpace: 0
+  activeInputHandler: 0
+  scriptingRuntimeVersion: 1
+  apiCompatibilityLevelPerPlatform: {}
+  applicationIdentifier:
+    Standalone: com.rewindnotary.prototype
+  bundleVersion: 0.1.0
