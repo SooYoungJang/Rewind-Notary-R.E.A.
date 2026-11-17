@@ -16,8 +16,10 @@ namespace RewindNotary
         {
             motor = GetComponent<CombatMotor2D>();
             motor.Landed += OnLanded;
+            motor.AttackStarted += OnAttackStarted;
         }
         private void OnLanded() { AudioManager.Play(AudioManager.Sfx.Land); }
+        private void OnAttackStarted() { AudioManager.Play(AudioManager.Sfx.Swing); }
         private void Update()
         {
             if (motor.Health == null || motor.Health.Dead) return;
@@ -28,21 +30,22 @@ namespace RewindNotary
             bool held = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
             if (!held && (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow)))
                 cutJump = true;
-            if ((Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)) && motor.Attack())
-                AudioManager.Play(AudioManager.Sfx.Swing);
+            if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0))
+                motor.Attack();
         }
         private void FixedUpdate()
         {
             if (motor.Health == null || motor.Health.Dead) return;
             motor.RefreshGround();
             if (motor.Grounded) lastGrounded = Time.time;
-            motor.Move(axis * MoveSpeed);
             if (Time.time - jumpPressed <= JumpBuffer && Time.time - lastGrounded <= CoyoteTime && !motor.Stunned)
             {
                 motor.Jump(JumpSpeed);
                 AudioManager.Play(AudioManager.Sfx.Jump);
                 jumpPressed = lastGrounded = float.NegativeInfinity;
             }
+            // Jump first so a simultaneous jump/attack receives air control immediately.
+            motor.Move(axis * MoveSpeed);
             if (cutJump)
             {
                 if (motor.Body.linearVelocity.y > 0f)
@@ -57,6 +60,11 @@ namespace RewindNotary
             axis = 0f; cutJump = false;
             jumpPressed = lastGrounded = float.NegativeInfinity;
         }
-        private void OnDestroy() { if (motor != null) motor.Landed -= OnLanded; }
+        private void OnDestroy()
+        {
+            if (motor == null) return;
+            motor.Landed -= OnLanded;
+            motor.AttackStarted -= OnAttackStarted;
+        }
     }
 }

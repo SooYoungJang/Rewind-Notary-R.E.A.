@@ -104,14 +104,23 @@ namespace RewindNotary
             elapsed = 0f;
             view.sprite = clips[state][0];
         }
-        private void Update()
+        public void PlayAttack(float attackElapsed, float strikeTime, float duration)
         {
             if (!ready) return;
+            state = Pose.Attack;
+            // Existing row 3: preparation -> raised blade -> slash/contact -> recovery.
+            // The motor owns this clock, so the hit and slash frame cannot drift apart.
+            int index = attackElapsed < strikeTime * 0.5f ? 0 : attackElapsed < strikeTime ? 1
+                : attackElapsed < strikeTime + (duration - strikeTime) * 0.5f ? 2 : 3;
+            view.sprite = clips[Pose.Attack][index];
+        }
+        private void Update()
+        {
+            if (!ready || state == Pose.Attack) return;
             elapsed += Time.deltaTime;
-            float fps = state == Pose.Idle ? 6f : state == Pose.Attack ? 12.5f : 12f;
+            float fps = state == Pose.Idle ? 6f : 12f;
             var frames = clips[state];
-            int index = Mathf.FloorToInt(elapsed * fps);
-            index = state == Pose.Attack ? Mathf.Min(index, frames.Length - 1) : index % frames.Length;
+            int index = Mathf.FloorToInt(elapsed * fps) % frames.Length;
             view.sprite = frames[index];
         }
         private void OnDestroy()

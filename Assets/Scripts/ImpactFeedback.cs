@@ -7,6 +7,7 @@ namespace RewindNotary
     {
         public static ImpactFeedback Instance { get; private set; }
         public const float SwordStopScale = 0.05f, SwordStopSeconds = 0.065f;
+        public const float FinisherStopScale = 0.03f, FinisherStopSeconds = 0.11f;
         public const float HurtStopScale = 0.2f, HurtStopSeconds = 0.045f;
         public const float SwordShake = 0.07f, HurtShake = 0.18f, DefeatShake = 0.32f;
         private ImpactCameraShake cameraShake;
@@ -30,6 +31,12 @@ namespace RewindNotary
             if (Instance == null || !Instance.isActiveAndEnabled) return;
             Instance.HitStop(HurtStopScale, HurtStopSeconds);
             Instance.cameraShake?.Shake(HurtShake, 0.22f);
+        }
+        public static void ComboFinisherHit()
+        {
+            if (Instance == null || !Instance.isActiveAndEnabled) return;
+            Instance.HitStop(FinisherStopScale, FinisherStopSeconds);
+            Instance.cameraShake?.Shake(SwordShake, 0.12f);
         }
         public static void BossDefeated()
         {

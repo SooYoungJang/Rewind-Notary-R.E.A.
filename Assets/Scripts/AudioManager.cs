@@ -14,7 +14,7 @@ namespace RewindNotary
         [Range(0f, 1f)] public float MasterVolume = 0.8f;
         [Range(0f, 1f)] public float SfxVolume = 0.7f;
         [Range(0f, 1f)] public float MusicVolume = 0.4f;
-        private static readonly string[] Names = { "swing", "hit", "hurt", "jump", "land",
+        private static readonly string[] Names = { "swing", "hit", "hurt", "jump", "land-thud",
             "boss-warning", "boss-attack", "boss-defeat", "player-down" };
         private readonly AudioClip[] clips = new AudioClip[Names.Length];
         private readonly AudioSource[] voices = new AudioSource[PoolSize];

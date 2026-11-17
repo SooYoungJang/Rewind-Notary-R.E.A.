@@ -22,8 +22,8 @@ Assets/Resources/Audio/Sfx/hurt.wav
 Assets/Resources/Audio/Sfx/hurt.wav.meta
 Assets/Resources/Audio/Sfx/jump.wav
 Assets/Resources/Audio/Sfx/jump.wav.meta
-Assets/Resources/Audio/Sfx/land.wav
-Assets/Resources/Audio/Sfx/land.wav.meta
+Assets/Resources/Audio/Sfx/land-thud.wav
+Assets/Resources/Audio/Sfx/land-thud.wav.meta
 Assets/Resources/Audio/Sfx/player-down.wav
 Assets/Resources/Audio/Sfx/player-down.wav.meta
 Assets/Resources/Audio/Sfx/swing.wav
@@ -77,6 +77,7 @@ Assets/Scripts/PlayerController2D.cs.meta
 Assets/Scripts/SpriteAnimator.cs
 Assets/Scripts/SpriteAnimator.cs.meta
 BUILD-REPORT.md
+FEEDBACK-REPORT.md
 FILE-LIST.txt
 Packages/manifest.json
 ProjectSettings/EditorBuildSettings.asset
