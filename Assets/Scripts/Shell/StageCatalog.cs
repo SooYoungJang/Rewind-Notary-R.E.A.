@@ -21,7 +21,12 @@ namespace RewindNotary
             new StageEntry("gallery", "제5구역 · 하얀 캔버스 화랑 / 색채의 온실", "districts_open"),
             new StageEntry("janhyang", "잔향전", "janhyang_open"),
             new StageEntry("cassel", "카셀전", "cassel_open"),
-            new StageEntry("prototype", "기존 테스트 스테이지 · 이동 / 검술 / 잔향 대련", "", true)
+            new StageEntry("prototype", "기존 테스트 스테이지 · 이동 / 검술 / 잔향 대련", "", true),
+            new StageEntry("practice_julius", "기술 대련 · 율리우스 잔향 (진자 보상)", "", true),
+            new StageEntry("practice_valeria", "기술 대련 · 발레리아 잔향 (원무 보상)", "", true),
+            new StageEntry("practice_gabriel", "기술 대련 · 가브리엘 잔향 (단조 보상)", "", true),
+            new StageEntry("practice_irina", "기술 대련 · 이리나 잔향 (화폭 보상)", "", true),
+            new StageEntry("skill_lab", "전체 기술 연습장 · 즉시 지급 / 검증 저장", "", true)
         };
         public static StageEntry Find(string id) => System.Array.Find(All, entry => entry.Id == id);
     }

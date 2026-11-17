@@ -22,6 +22,9 @@ namespace RewindNotary
         public string name, effectId;
         public float stepSpeed, stepSeconds, waveReach, afterimageSeconds;
         public float reach, cooldown, bindSeconds, lifetime, maxSpan;
+        public int damage, burstDamage, markLimit;
+        public float duration, returnWindow, freezeSeconds, jumpSpeed, plungeSpeed;
+        public float burstRadius, markSeconds, counterWindow, echoSeconds, echoDelay;
     }
 
     [Serializable]

@@ -94,24 +94,48 @@
       "displayName": "진자 되감기",
       "sourceId": "julius",
       "doomId": "rapid_aging",
-      "implemented": false,
+      "implemented": true,
       "stage2At": 30,
       "stage3At": 80,
       "stages": [
         {
           "stage": 1,
           "name": "진자 보법",
-          "effectId": "not_implemented"
+          "effectId": "pendulum_thrust",
+          "reach": 3.2,
+          "cooldown": 2.2,
+          "duration": 0.16,
+          "returnWindow": 1.5,
+          "damage": 1,
+          "burstDamage": 0,
+          "freezeSeconds": 0,
+          "burstRadius": 4
         },
         {
           "stage": 2,
           "name": "이중 시간선",
-          "effectId": "not_implemented"
+          "effectId": "pendulum_cross",
+          "reach": 3.2,
+          "cooldown": 2.2,
+          "duration": 0.16,
+          "returnWindow": 1.5,
+          "damage": 1,
+          "burstDamage": 2,
+          "freezeSeconds": 0,
+          "burstRadius": 4
         },
         {
           "stage": 3,
           "name": "제로 아워",
-          "effectId": "not_implemented"
+          "effectId": "pendulum_zero",
+          "reach": 3.2,
+          "cooldown": 2.6,
+          "duration": 0.16,
+          "returnWindow": 1.5,
+          "damage": 1,
+          "burstDamage": 3,
+          "freezeSeconds": 2,
+          "burstRadius": 4
         }
       ]
     },
@@ -120,24 +144,51 @@
       "displayName": "커튼콜 원무",
       "sourceId": "valeria",
       "doomId": "leg_punishment",
-      "implemented": false,
+      "implemented": true,
       "stage2At": 30,
       "stage3At": 80,
       "stages": [
         {
           "stage": 1,
           "name": "회전 검무",
-          "effectId": "not_implemented"
+          "effectId": "waltz_rise",
+          "reach": 1.6,
+          "cooldown": 0.7,
+          "duration": 0.32,
+          "lifetime": 3,
+          "jumpSpeed": 10,
+          "plungeSpeed": 18,
+          "damage": 1,
+          "burstDamage": 0,
+          "burstRadius": 2.4
         },
         {
           "stage": 2,
           "name": "스포트라이트 스텝",
-          "effectId": "not_implemented"
+          "effectId": "waltz_step",
+          "reach": 1.6,
+          "cooldown": 0.7,
+          "duration": 0.32,
+          "lifetime": 3,
+          "jumpSpeed": 10,
+          "plungeSpeed": 18,
+          "damage": 1,
+          "burstDamage": 0,
+          "burstRadius": 2.4
         },
         {
           "stage": 3,
           "name": "그랑 피날레",
-          "effectId": "not_implemented"
+          "effectId": "waltz_finale",
+          "reach": 1.6,
+          "cooldown": 0.7,
+          "duration": 0.32,
+          "lifetime": 3,
+          "jumpSpeed": 10,
+          "plungeSpeed": 18,
+          "damage": 1,
+          "burstDamage": 3,
+          "burstRadius": 2.4
         }
       ]
     },
@@ -146,24 +197,57 @@
       "displayName": "공명 단조",
       "sourceId": "gabriel",
       "doomId": "eternal_silence",
-      "implemented": false,
+      "implemented": true,
       "stage2At": 30,
       "stage3At": 80,
       "stages": [
         {
           "stage": 1,
           "name": "진동 타격",
-          "effectId": "not_implemented"
+          "effectId": "forge_break",
+          "reach": 2.4,
+          "cooldown": 0.7,
+          "duration": 0.25,
+          "damage": 1,
+          "burstDamage": 0,
+          "burstRadius": 3,
+          "markLimit": 0,
+          "markSeconds": 4,
+          "counterWindow": 0,
+          "plungeSpeed": 18,
+          "lifetime": 3
         },
         {
           "stage": 2,
           "name": "화음 축적 폭발",
-          "effectId": "not_implemented"
+          "effectId": "forge_chord",
+          "reach": 2.4,
+          "cooldown": 0.7,
+          "duration": 0.25,
+          "damage": 1,
+          "burstDamage": 3,
+          "burstRadius": 3,
+          "markLimit": 3,
+          "markSeconds": 4,
+          "counterWindow": 0,
+          "plungeSpeed": 18,
+          "lifetime": 3
         },
         {
           "stage": 3,
           "name": "여섯 시의 파종",
-          "effectId": "not_implemented"
+          "effectId": "forge_bell",
+          "reach": 2.4,
+          "cooldown": 0.9,
+          "duration": 0.25,
+          "damage": 1,
+          "burstDamage": 4,
+          "burstRadius": 3.5,
+          "markLimit": 3,
+          "markSeconds": 4,
+          "counterWindow": 0.45,
+          "plungeSpeed": 18,
+          "lifetime": 3
         }
       ]
     },
@@ -172,24 +256,51 @@
       "displayName": "여백 도려내기",
       "sourceId": "irina",
       "doomId": "blindness",
-      "implemented": false,
+      "implemented": true,
       "stage2At": 30,
       "stage3At": 80,
       "stages": [
         {
           "stage": 1,
           "name": "물감 획",
-          "effectId": "not_implemented"
+          "effectId": "canvas_stroke",
+          "reach": 2.4,
+          "cooldown": 0.45,
+          "lifetime": 3,
+          "installationLimit": 1,
+          "damage": 1,
+          "burstDamage": 0,
+          "burstRadius": 2,
+          "echoSeconds": 0,
+          "echoDelay": 0.3
         },
         {
           "stage": 2,
           "name": "풍경 덧칠",
-          "effectId": "not_implemented"
+          "effectId": "canvas_cross",
+          "reach": 2.4,
+          "cooldown": 0.45,
+          "lifetime": 3,
+          "installationLimit": 2,
+          "damage": 1,
+          "burstDamage": 2,
+          "burstRadius": 2,
+          "echoSeconds": 0,
+          "echoDelay": 0.3
         },
         {
           "stage": 3,
           "name": "자화상 완성",
-          "effectId": "not_implemented"
+          "effectId": "canvas_portrait",
+          "reach": 2.4,
+          "cooldown": 0.45,
+          "lifetime": 3,
+          "installationLimit": 2,
+          "damage": 1,
+          "burstDamage": 2,
+          "burstRadius": 2,
+          "echoSeconds": 5,
+          "echoDelay": 0.3
         }
       ]
     }

@@ -272,7 +272,7 @@ namespace RewindNotary
                 for (int i = 0; i < StageCatalog.All.Length; i++)
                 {
                     var stage = StageCatalog.All[i];
-                    Row(i, stage.Name + "  [" + stage.Status(selectedRecord) + "]", new Rect(160, 141 + i * 44, 960, 40));
+                    Row(i, stage.Name + "  [" + stage.Status(selectedRecord) + "]", new Rect(80 + (i / 7) * 570, 141 + (i % 7) * 56, 550, 50));
                     if (Page != renderedPage) break;
                 }
                 if (Page == renderedPage) Row(StageCatalog.All.Length, "뒤로", new Rect(160, 542, 960, 40));
@@ -287,7 +287,7 @@ namespace RewindNotary
                 }
                 if (Page == ShellPage.Settings)
                 {
-                    GUI.Label(new Rect(210, 525, 880, 52), "좌우로 조절 · 단계 미리보기는 보유 기술에만 적용하며 성장 집계에서 제외됩니다.\n실제 단계로 돌아가도 이번 플레이의 검증 저장 격리는 유지됩니다.", textStyle);
+                    GUI.Label(new Rect(210, 525, 880, 52), "좌우로 조절 · 단계 미리보기는 전체 기술을 검증 저장에 지급하며 성장 집계에서 제외됩니다.\n실제 단계로 돌아가도 이번 플레이의 검증 저장 격리는 유지됩니다.", textStyle);
                 }
             }
             string status = message ?? (Page == ShellPage.Settings ? Settings.Error

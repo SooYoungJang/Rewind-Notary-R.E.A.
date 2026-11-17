@@ -43,6 +43,7 @@ namespace RewindNotary
         {
             if (!GameInput.GameplayEnabled) return;
             if (motor.Health == null || motor.Health.Dead) return;
+            if (motor.Temporal != null && motor.Temporal.Frozen) return;
             motor.RefreshGround();
             if (!Active || player == null || player.Health.Dead) { motor.Move(0); return; }
             // Delay the next joint action without pulling/teleporting the target or changing tuning.

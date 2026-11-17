@@ -19,6 +19,7 @@ namespace RewindNotary
         {
             if (motor.Health.Dead || motor.Stunned || motor.Attacking || Time.time < readyAt) return false;
             if (motor.Defense != null && motor.Defense.BlocksActions) return false;
+            if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions) return false;
             var use = session.Progression.BeginUse(SkillRules.SilverStitch, session.PreviewStage);
             if (use == null) return false;
             var profile = session.Progression.Catalog.Get(SkillRules.SilverStitch).Profile(use.Stage);

@@ -17,9 +17,12 @@ namespace RewindNotary
         public int ComboStep => comboStep;
         public SkillSession Skills { get; set; }
         public PlayerDefense2D Defense { get; private set; }
+        public BenefactorSkillRunner BenefactorSkills { get; set; }
+        public TemporalActor2D Temporal { get; set; }
+        public event System.Action<Bounds, int> BasicStrikeDelivered;
         public event System.Action Landed;
         public event System.Action AttackStarted;
-        private float attackStartedAt, comboExpiresAt, stunUntil, landUntil;
+        private float attackStartedAt, comboExpiresAt, stunUntil, landUntil, lastHitAt;
         private bool strikeDelivered, groundSampled, queuedAttack;
         private int comboStep, attackStep;
         private Health opponent;
@@ -119,7 +122,9 @@ namespace RewindNotary
         public void Move(float speed)
         {
             if (Health.Dead || Stunned) return;
+            if (Temporal != null && Temporal.Frozen) return;
             if (Defense != null && Defense.DriveMovement()) return;
+            if (BenefactorSkills != null && BenefactorSkills.DriveMovement()) return;
             if (Health.IsPlayer && !Grounded)
             {
                 // Attacking uses exactly the same air control as jumping/falling.
@@ -145,6 +150,7 @@ namespace RewindNotary
         }
         public bool Attack()
         {
+            if ((Temporal != null && Temporal.Frozen) || (BenefactorSkills != null && BenefactorSkills.BlocksActions)) return false;
             if (Health.Dead || Stunned) return false;
             if (Defense != null && Defense.BlocksActions) return false;
             if (Attacking)
@@ -226,6 +232,7 @@ namespace RewindNotary
                         Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.TerrainMechanism,
                             surface.TargetId, surface.Cut(false)));
             }
+            if (Health.IsPlayer) BasicStrikeDelivered?.Invoke(blade, strikeDamage);
             if (opponent == null || opponent.Dead) return;
             var target = opponent.GetComponent<Collider2D>();
             if (target != null && blade.Intersects(target.bounds)
@@ -245,6 +252,7 @@ namespace RewindNotary
         {
             if (!GameInput.GameplayEnabled) return;
             if (Health == null) return;
+            if (Temporal != null && Temporal.Frozen) return;
             Animation.SetCombatVisual(Time.time < Health.InvulnerableUntil, Health.Dead);
             if (Health.Dead) return;
             if (Attacking)
@@ -273,22 +281,34 @@ namespace RewindNotary
         private void ReceiveHit(Vector2 source)
         {
             Defense?.Interrupt();
+            BenefactorSkills?.Interrupt();
             Animation.FlashHit();
             CancelAttack();
+            lastHitAt = Time.time;
             stunUntil = Time.time + 0.18f;
             float away = transform.position.x >= source.x ? 1f : -1f;
             Body.linearVelocity = new Vector2(away * 5f, 4f) * Health.KnockbackMultiplier;
+            Temporal?.RememberImpulse();
         }
         private void Die()
         {
+            BenefactorSkills?.Interrupt();
+            Temporal?.Release();
             Defense?.ResetDefense();
             CancelAttack();
             Body.linearVelocity = Vector2.zero;
             Animation.Play(SpriteAnimator.Pose.Land, true);
             Animation.SetCombatVisual(false, true);
         }
+        public void DelayCombatClock(float seconds)
+        {
+            attackStartedAt += seconds; comboExpiresAt += seconds; landUntil += seconds;
+            stunUntil += Mathf.Min(seconds, Time.time - lastHitAt);
+        }
         public void ResetAt(Vector2 feet)
         {
+            BenefactorSkills?.ResetAttempt();
+            Temporal?.Release();
             Defense?.ResetDefense();
             transform.position = feet;
             Body.position = feet;
@@ -301,7 +321,7 @@ namespace RewindNotary
             Animation.ResetVisual();
             Animation.Play(SpriteAnimator.Pose.Idle, true);
         }
-        private void OnDisable() { Defense?.ResetDefense(); CancelAttack(); }
+        private void OnDisable() { BenefactorSkills?.Interrupt(); Temporal?.Release(); Defense?.ResetDefense(); CancelAttack(); }
         private void OnDestroy()
         {
             if (Health != null) { Health.Damaged -= ReceiveHit; Health.Died -= Die; }

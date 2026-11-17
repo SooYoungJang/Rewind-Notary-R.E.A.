@@ -117,6 +117,11 @@ namespace RewindNotary
             Record = UnityEngine.JsonUtility.FromJson<CoreRecord>(UnityEngine.JsonUtility.ToJson(Record));
             Record.testData = true; Record.slotId = "debug"; ResetAttempt(); Changed?.Invoke();
         }
+        public void GrantPracticeSkills()
+        {
+            EnableDebugRecord();
+            foreach (string id in BenefactorIds.All) CompleteEncounter("practice_grant:" + id, id);
+        }
         public void SeedBoundary(bool mastery)
         {
             EnableDebugRecord();
@@ -124,9 +129,12 @@ namespace RewindNotary
             Record = CoreRecord.NewGame(Catalog); Record.testData = true; Record.slotId = "debug";
             Record.Get(SkillRules.BasicSword).validUseCount = mastery ? 399 : 150;
             Record.Get(SkillRules.BasicSword).stage = mastery ? 2 : 1;
-            var silver = Record.Get(SkillRules.SilverStitch);
-            silver.acquired = true; silver.acquiredEncounterId = "debug_fixture";
-            silver.validUseCount = mastery ? 79 : 29; silver.stage = mastery ? 2 : 1;
+            foreach (string id in BenefactorIds.All)
+            {
+                var skill = Record.Get(id);
+                skill.acquired = true; skill.acquiredEncounterId = "debug_fixture:" + id;
+                skill.validUseCount = mastery ? 79 : 29; skill.stage = mastery ? 2 : 1;
+            }
             Record.Validate(Catalog); ResetAttempt(); Changed?.Invoke();
             EmitSimple("debug_seed", "", mastery ? "399/79" : "150/29");
         }

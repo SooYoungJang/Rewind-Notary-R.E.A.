@@ -14,6 +14,8 @@ namespace RewindNotary
         private GameShell shell;
         private GameObject world;
         private EncounterRewardBridge reward;
+        private BenefactorEncounter encounter;
+        private SkillPracticeArena2D practice;
         private StitchBinding bossBinding;
         private Font hudFont;
         private bool checkpoint, won, initialized;
@@ -46,6 +48,8 @@ namespace RewindNotary
         private void Build(SkillSaveStore store, CoreRecord record)
         {
             skills = Child("Skill session").AddComponent<SkillSession>();
+            encounter = BenefactorEncounter.ForStage(record.lastStageId);
+            skills.EncounterId = record.lastStageId == "skill_lab" ? "practice_skill_lab" : encounter.EncounterId;
             skills.Initialize(store, record);
             skills.PresentationRequested += PresentSkill;
             Camera camera = Camera.main;
@@ -64,16 +68,31 @@ namespace RewindNotary
             player.Skills = skills;
             controller = player.gameObject.AddComponent<PlayerController2D>();
             boss = CreateActor("Janhyang - yesterday's Rea", LevelBuilder.BossStart, "janhyang-sheet", 12, 0.35f);
+            boss.Temporal = boss.gameObject.AddComponent<TemporalActor2D>();
+            boss.gameObject.AddComponent<ResonanceTarget2D>();
             boss.Face(-1);
             player.SetOpponent(boss.Health); boss.SetOpponent(player.Health);
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), boss.GetComponent<Collider2D>());
             bossBinding = boss.gameObject.AddComponent<StitchBinding>();
             bossAI = boss.gameObject.AddComponent<JanhyangBoss>(); bossAI.Initialize(player);
             reward = boss.gameObject.AddComponent<EncounterRewardBridge>();
+            reward.EncounterId = encounter.EncounterId; reward.RewardSkillId = encounter.SkillId;
             reward.Initialize(boss.Health, skills.Progression);
             controller.Silver = player.gameObject.AddComponent<SilverStitchSkill>();
             controller.Silver.Initialize(skills, boss);
+            player.BenefactorSkills = player.gameObject.AddComponent<BenefactorSkillRunner>();
+            player.BenefactorSkills.Initialize(skills, boss, controller.Silver);
             SkillPracticeWorld.Build(Child("Skill practice").transform, player, boss);
+            if (record.lastStageId != "prototype")
+            {
+                practice = Child("Remaining skill practice").AddComponent<SkillPracticeArena2D>();
+                practice.Initialize(player, boss);
+            }
+            if (record.lastStageId == "skill_lab")
+            {
+                skills.Progression.GrantPracticeSkills();
+                player.ResetAt(new Vector2(SkillGeometry.PracticeStart, 0));
+            }
 
             cameraTarget = Child("Camera target").AddComponent<CameraTarget2D>();
             cameraTarget.Player = player.transform; cameraTarget.Snap();
@@ -133,6 +152,10 @@ namespace RewindNotary
             skills.Progression.ResetAttempt();
             skills.Save();
             SkillPracticeWorld.ResetAttempt();
+            SkillProjectile2D.ClearAll(); practice?.ResetAttempt();
+            foreach (var target in ResonanceTarget2D.All) target.ResetAttempt();
+            foreach (var lamp in PracticeLamp2D.All) lamp.ResetAttempt();
+            foreach (var hazard in PracticeTemporalHazard2D.All) hazard.ResetAttempt();
             bossBinding.Break();
             if (fromStart) checkpoint = false;
             ImpactFeedback.ResetEffects();
@@ -174,7 +197,7 @@ namespace RewindNotary
             initialized = false; SkillStroke.WorldRoot = null;
             ImpactFeedback.ResetEffects(); AudioManager.ResetPlayback(false);
             if (world != null) { world.SetActive(false); Destroy(world); world = null; }
-            player = boss = null; controller = null; skills = null; reward = null;
+            player = boss = null; controller = null; skills = null; reward = null; practice = null;
         }
         public void AbortStage()
         {
@@ -216,19 +239,22 @@ namespace RewindNotary
             GUI.Label(new Rect(36, 28, 380, 34), "리와인드 공증록: 레아", title);
             GUI.Label(new Rect(36, 64, 370, 25), "레아    " + player.Health.Current + " / " + player.Health.Maximum, label);
             Bar(new Rect(36, 99, 366, 15), player.Health, new Color(0.18f, 0.82f, 0.73f));
-            GUI.Box(new Rect(20, 154, 440, 132), "");
+            GUI.Box(new Rect(20, 154, 440, 278), "");
             GUI.Label(new Rect(36, 164, 420, 28), SkillLabel(SkillRules.BasicSword), label);
-            GUI.Label(new Rect(36, 194, 420, 28), SkillLabel(SkillRules.SilverStitch), label);
+            GUI.Label(new Rect(36, 194, 420, 28), "1 " + SkillLabel(SkillRules.SilverStitch), label);
+            for (int i = 1; i < BenefactorIds.All.Length; i++)
+                GUI.Label(new Rect(36, 194 + i * 28, 420, 28), (i + 1) + " " + SkillLabel(BenefactorIds.All[i]), label);
+            GUI.Label(new Rect(36, 338, 420, 28), "선택: " + skills.Progression.Catalog.Get(player.BenefactorSkills.SelectedId).displayName, label);
             string mode = skills.Progression.Record.testData ? "검증 저장 (본 저장과 분리)" : "슬롯 " + skills.ActiveSlot + " 저장";
             if (skills.PreviewStage != 0) mode += " · 형태 " + skills.PreviewStage + "단계 미리보기 (집계 제외)";
-            GUI.Label(new Rect(36, 224, 420, 52), mode, new GUIStyle(label) { wordWrap = true });
+            GUI.Label(new Rect(36, 372, 420, 52), mode, new GUIStyle(label) { wordWrap = true });
             var defense = player.Defense.State;
             string defenseStatus = defense.Phase == DefensePhase.Dash ? "대시 중"
                 : defense.Phase == DefensePhase.ParryWindow ? "패링 판정 중"
                 : defense.Phase == DefensePhase.ParryRecovery ? "패링 실패 · 경직"
                 : defense.CounterReady(Time.time) ? "반격 가능 · 다음 검술 강화" : "방어 준비";
-            GUI.Label(new Rect(36, 292, 420, 26), defenseStatus, label);
-            GUI.Label(new Rect(36, 319, 420, 26), "대시 " + Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0")
+            GUI.Label(new Rect(36, 438, 420, 26), defenseStatus, label);
+            GUI.Label(new Rect(36, 466, 420, 26), "대시 " + Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0")
                 + "초 · 공중 " + (defense.AirDashUsed ? "소진" : "1회"), label);
             if (!string.IsNullOrEmpty(skills.Notice))
             {
@@ -236,16 +262,16 @@ namespace RewindNotary
                 GUI.Label(new Rect(486, 43, 750, 78), skills.Notice, new GUIStyle(label) { wordWrap = true });
             }
             if (!string.IsNullOrEmpty(skills.StorageError))
-                GUI.Label(new Rect(28, 424, 1200, 65), skills.StorageError, new GUIStyle(label) { wordWrap = true });
-            GUI.Label(new Rect(28, 640, 1220, 30), "이동 A/D·방향키·스틱 | 점프 Space/W/↑·A | 검술 J/Z/좌클릭·X | 은실 Q·Y | 대시 Shift/K·LB | 패링 L·RB", label);
+                GUI.Label(new Rect(470, 424, 760, 65), skills.StorageError, new GUIStyle(label) { wordWrap = true });
+            GUI.Label(new Rect(28, 640, 1220, 30), "이동 A/D·방향키·스틱 | 점프 Space/W/↑·A | 검술 J/Z/좌클릭·X | 기술 Q·Y | 대시 Shift/K·LB | 패링 L·RB", label);
             GUI.Label(new Rect(28, 673, 1220, 28), (checkpoint ? "투기장 복귀 지점 활성 · 금빛 예고를 살피세요." : "오른쪽 발판과 틈을 건너 대련장으로 향하세요.")
                 + "  R·보기: 재시작 | Esc·메뉴: 일시정지", label);
             if (Debug.isDebugBuild || Application.isEditor)
-                GUI.Label(new Rect(28, 606, 1220, 28), "검증: F1~F3 형태 미리보기 | F4 실제 단계 | F5 경계 150/29 | F6 경계 399/79 (검증 저장)", label);
+                GUI.Label(new Rect(28, 606, 1220, 28), "기술 1~5 / E·B 선택 · 화폭 벽 S | F1~F3 전체 형태 | F4 실제 단계 | F5 경계 150/29 | F6 경계 399/79 (검증 저장)", label);
             if (bossAI.Active)
             {
                 GUI.Box(new Rect(405, 510, 470, 76), "");
-                GUI.Label(new Rect(425, 519, 440, 26), "잔향 · 어제의 레아     " + boss.Health.Current + " / 12", label);
+                GUI.Label(new Rect(425, 519, 440, 26), encounter.Label + "     " + boss.Health.Current + " / 12", label);
                 Bar(new Rect(425, 554, 430, 12), boss.Health, new Color(0.47f, 0.65f, 0.92f));
             }
             if (player.Health.Dead || won)

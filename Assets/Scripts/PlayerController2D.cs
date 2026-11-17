@@ -25,12 +25,21 @@ namespace RewindNotary
         {
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead) return;
             axis = GameInput.Horizontal;
+            motor.BenefactorSkills?.SelectInput();
             if (motor.Defense != null && motor.Defense.BlocksActions)
+            { jumpPressed = float.NegativeInfinity; cutJump = false; return; }
+            if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
             { jumpPressed = float.NegativeInfinity; cutJump = false; return; }
             if (GameInput.JumpDown) jumpPressed = Time.time;
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
             if (GameInput.AttackDown) motor.Attack();
-            if (GameInput.SilverDown) Silver?.Activate();
+            if (GameInput.SilverDown)
+            {
+                if (motor.BenefactorSkills != null) motor.BenefactorSkills.Activate(); else Silver?.Activate();
+                // Skill leaps do not inherit a pending ordinary jump release/coyote reservation.
+                if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
+                { jumpPressed = lastGrounded = float.NegativeInfinity; cutJump = false; }
+            }
         }
         private void FixedUpdate()
         {
@@ -38,7 +47,8 @@ namespace RewindNotary
             motor.RefreshGround();
             if (motor.Grounded) lastGrounded = Time.time;
             if (Time.time - jumpPressed <= JumpBuffer && Time.time - lastGrounded <= CoyoteTime && !motor.Stunned
-                && (motor.Defense == null || !motor.Defense.BlocksActions))
+                && (motor.Defense == null || !motor.Defense.BlocksActions)
+                && (motor.BenefactorSkills == null || !motor.BenefactorSkills.BlocksActions))
             {
                 motor.Jump(JumpSpeed);
                 AudioManager.Play(AudioManager.Sfx.Jump);
@@ -46,6 +56,7 @@ namespace RewindNotary
             }
             // Jump first so a simultaneous jump/attack receives air control immediately.
             motor.Move(axis * MoveSpeed);
+            if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions) cutJump = false;
             if (cutJump)
             {
                 if (motor.Body.linearVelocity.y > 0f)
@@ -64,6 +75,7 @@ namespace RewindNotary
         {
             axis = 0f; cutJump = false;
             Silver?.ResetAttempt();
+            motor.BenefactorSkills?.ResetAttempt();
             jumpPressed = lastGrounded = float.NegativeInfinity;
         }
         private void OnDestroy()

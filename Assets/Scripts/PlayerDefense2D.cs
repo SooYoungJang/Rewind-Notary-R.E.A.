@@ -40,7 +40,7 @@ namespace RewindNotary
             if (dashPhysics && State.Phase != DefensePhase.Dash) RestoreDashPhysics();
         }
         private bool CanStart => GameInput.CanPlay && motor != null && !motor.Health.Dead
-            && !motor.Stunned && !motor.Attacking;
+            && !motor.Stunned && !motor.Attacking && (motor.BenefactorSkills == null || !motor.BenefactorSkills.BlocksActions);
         public bool TryDash(float direction)
         {
             if (!CanStart) return false;

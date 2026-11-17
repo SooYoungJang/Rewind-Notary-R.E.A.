@@ -28,6 +28,10 @@ namespace RewindNotary
         public static bool AttackDown => Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Z)
             || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton2);
         public static bool SilverDown => Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton3);
+        public static bool NextSkillDown => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton1);
+        public static int SkillSelection => Input.GetKeyDown(KeyCode.Alpha1) ? 0 : Input.GetKeyDown(KeyCode.Alpha2) ? 1
+            : Input.GetKeyDown(KeyCode.Alpha3) ? 2 : Input.GetKeyDown(KeyCode.Alpha4) ? 3 : Input.GetKeyDown(KeyCode.Alpha5) ? 4 : -1;
+        public static bool PaintWallHeld => Input.GetKey(KeyCode.S) || Input.GetAxisRaw("PadVertical") < -SkillGeometry.WallInputThreshold;
         public static bool DashDown => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)
             || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.JoystickButton4);
         public static bool ParryDown => Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.JoystickButton5);

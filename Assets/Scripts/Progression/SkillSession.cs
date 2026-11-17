@@ -13,6 +13,7 @@ namespace RewindNotary
         public bool LastSaveSucceeded => !dirty;
         public int ActiveSlot => store.Slot;
         public int PreviewStage { get; private set; }
+        public string EncounterId { get; set; } = EncounterRewardBridge.PrototypeEncounter;
         public int ParrySuccessCount { get; private set; }
         public event Action<string, string> PresentationRequested;
         public event Action<string> SoundRequested;
@@ -61,7 +62,7 @@ namespace RewindNotary
         {
             var row = new LogRow { utc = DateTime.UtcNow.ToString("O"), sessionId = sessionId, slotId = store.SlotId,
                 rulesVersion = SkillRules.Version, buildId = Application.version,
-                encounterId = EncounterRewardBridge.PrototypeEncounter,
+                encounterId = EncounterId,
                 gameSeconds = Time.time, realtimeSeconds = Time.unscaledTime, result = result,
                 parrySuccessCount = ParrySuccessCount };
             try
@@ -73,12 +74,24 @@ namespace RewindNotary
             string name = string.IsNullOrEmpty(result.skillId) ? "" : Progression.Catalog.Get(result.skillId).displayName;
             switch (result.kind)
             {
-                case "acquired": Show(name + " 획득 — Q / 패드 Y로 사용", "acquired", result.skillId); break;
+                case "acquired": Show(name + " 획득 — 1~5 / E·패드 B 선택, Q·Y 사용", "acquired", result.skillId); break;
                 case "stage_up": Show(name + " " + result.stage + "단계 — 동작 체화", "stage_up", result.skillId); break;
-                case "doom_transfer": Show("극의 완전 재현 · 제1종언: 심장 파열 → 레아", "doom_transfer", result.skillId); break;
-                case "doom_restored": Show("종언 원장 복구 · 제1종언: 심장 파열 → 레아", "doom_restored", result.skillId); break;
+                case "doom_transfer": Show("극의 완전 재현 · " + DoomLabel(result.skillId) + " → 레아", "doom_transfer", result.skillId); break;
+                case "doom_restored": Show("종언 원장 복구 · " + DoomLabel(result.skillId) + " → 레아", "doom_restored", result.skillId); break;
                 case "basic_mastery": Show("진명 개방: 카셀 제0식 · 원형 동작 확인 (종언 추가 없음)", "basic_mastery", result.skillId); break;
                 case "debug_seed": Show("검증 전용 저장 · 경계 " + result.reason, "debug", ""); break;
+            }
+        }
+        private string DoomLabel(string skillId)
+        {
+            switch (Progression.Catalog.Get(skillId).doomId)
+            {
+                case "heart_rupture": return "제1종언: 심장 파열";
+                case "rapid_aging": return "제2종언: 급속 노화";
+                case "leg_punishment": return "제3종언: 두 다리의 형벌";
+                case "eternal_silence": return "제4종언: 영원한 침묵";
+                case "blindness": return "제5종언: 실명";
+                default: return "";
             }
         }
         public void RecordParrySuccess()
@@ -101,6 +114,7 @@ namespace RewindNotary
         {
             if (stage < 0 || stage > 3) throw new ArgumentOutOfRangeException(nameof(stage));
             if (stage != 0) Progression.EnableDebugRecord();
+            if (stage != 0) Progression.GrantPracticeSkills();
             PreviewStage = stage;
             Progression.EmitSimple("debug_preview", "", "stage=" + stage);
         }
