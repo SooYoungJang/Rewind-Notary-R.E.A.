@@ -25,6 +25,8 @@ namespace RewindNotary
         {
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead) return;
             axis = GameInput.Horizontal;
+            if (motor.Defense != null && motor.Defense.BlocksActions)
+            { jumpPressed = float.NegativeInfinity; cutJump = false; return; }
             if (GameInput.JumpDown) jumpPressed = Time.time;
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
             if (GameInput.AttackDown) motor.Attack();
@@ -35,7 +37,8 @@ namespace RewindNotary
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead) return;
             motor.RefreshGround();
             if (motor.Grounded) lastGrounded = Time.time;
-            if (Time.time - jumpPressed <= JumpBuffer && Time.time - lastGrounded <= CoyoteTime && !motor.Stunned)
+            if (Time.time - jumpPressed <= JumpBuffer && Time.time - lastGrounded <= CoyoteTime && !motor.Stunned
+                && (motor.Defense == null || !motor.Defense.BlocksActions))
             {
                 motor.Jump(JumpSpeed);
                 AudioManager.Play(AudioManager.Sfx.Jump);

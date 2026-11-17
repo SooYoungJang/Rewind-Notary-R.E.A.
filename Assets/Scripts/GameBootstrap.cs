@@ -222,6 +222,14 @@ namespace RewindNotary
             string mode = skills.Progression.Record.testData ? "검증 저장 (본 저장과 분리)" : "슬롯 " + skills.ActiveSlot + " 저장";
             if (skills.PreviewStage != 0) mode += " · 형태 " + skills.PreviewStage + "단계 미리보기 (집계 제외)";
             GUI.Label(new Rect(36, 224, 420, 52), mode, new GUIStyle(label) { wordWrap = true });
+            var defense = player.Defense.State;
+            string defenseStatus = defense.Phase == DefensePhase.Dash ? "대시 중"
+                : defense.Phase == DefensePhase.ParryWindow ? "패링 판정 중"
+                : defense.Phase == DefensePhase.ParryRecovery ? "패링 실패 · 경직"
+                : defense.CounterReady(Time.time) ? "반격 가능 · 다음 검술 강화" : "방어 준비";
+            GUI.Label(new Rect(36, 292, 420, 26), defenseStatus, label);
+            GUI.Label(new Rect(36, 319, 420, 26), "대시 " + Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0")
+                + "초 · 공중 " + (defense.AirDashUsed ? "소진" : "1회"), label);
             if (!string.IsNullOrEmpty(skills.Notice))
             {
                 GUI.Box(new Rect(470, 30, 785, 94), "");
@@ -229,8 +237,9 @@ namespace RewindNotary
             }
             if (!string.IsNullOrEmpty(skills.StorageError))
                 GUI.Label(new Rect(28, 424, 1200, 65), skills.StorageError, new GUIStyle(label) { wordWrap = true });
-            GUI.Label(new Rect(28, 640, 1220, 30), "이동 A/D·방향키·스틱 | 점프 Space/W/↑·A | 검술 J/Z/좌클릭·X | 은실 Q·Y | 일시정지 Esc·메뉴", label);
-            GUI.Label(new Rect(28, 673, 1160, 28), checkpoint ? "투기장 복귀 지점 활성 · 금빛 예고를 살피세요. R / 보기 버튼: 재시작" : "오른쪽으로 이동해 발판과 틈을 건너 대련장으로 향하세요. R / 보기 버튼: 재시작", label);
+            GUI.Label(new Rect(28, 640, 1220, 30), "이동 A/D·방향키·스틱 | 점프 Space/W/↑·A | 검술 J/Z/좌클릭·X | 은실 Q·Y | 대시 Shift/K·LB | 패링 L·RB", label);
+            GUI.Label(new Rect(28, 673, 1220, 28), (checkpoint ? "투기장 복귀 지점 활성 · 금빛 예고를 살피세요." : "오른쪽 발판과 틈을 건너 대련장으로 향하세요.")
+                + "  R·보기: 재시작 | Esc·메뉴: 일시정지", label);
             if (Debug.isDebugBuild || Application.isEditor)
                 GUI.Label(new Rect(28, 606, 1220, 28), "검증: F1~F3 형태 미리보기 | F4 실제 단계 | F5 경계 150/29 | F6 경계 399/79 (검증 저장)", label);
             if (bossAI.Active)

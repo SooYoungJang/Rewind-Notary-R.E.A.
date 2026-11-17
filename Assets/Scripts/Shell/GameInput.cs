@@ -28,6 +28,9 @@ namespace RewindNotary
         public static bool AttackDown => Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Z)
             || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton2);
         public static bool SilverDown => Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton3);
+        public static bool DashDown => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)
+            || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.JoystickButton4);
+        public static bool ParryDown => Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.JoystickButton5);
         public static bool PauseDown => Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7);
         public static bool SubmitDown => Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)
             || Input.GetKeyDown(KeyCode.JoystickButton0);

@@ -13,6 +13,7 @@ namespace RewindNotary
         public bool LastSaveSucceeded => !dirty;
         public int ActiveSlot => store.Slot;
         public int PreviewStage { get; private set; }
+        public int ParrySuccessCount { get; private set; }
         public event Action<string, string> PresentationRequested;
         public event Action<string> SoundRequested;
         private SkillSaveStore store;
@@ -27,6 +28,7 @@ namespace RewindNotary
         {
             public string utc, sessionId, rulesVersion, buildId, encounterId, slotId;
             public float gameSeconds, realtimeSeconds;
+            public int parrySuccessCount;
             public ProgressionEvent result;
         }
         public void Initialize(SkillSaveStore selectedStore, CoreRecord record)
@@ -60,7 +62,8 @@ namespace RewindNotary
             var row = new LogRow { utc = DateTime.UtcNow.ToString("O"), sessionId = sessionId, slotId = store.SlotId,
                 rulesVersion = SkillRules.Version, buildId = Application.version,
                 encounterId = EncounterRewardBridge.PrototypeEncounter,
-                gameSeconds = Time.time, realtimeSeconds = Time.unscaledTime, result = result };
+                gameSeconds = Time.time, realtimeSeconds = Time.unscaledTime, result = result,
+                parrySuccessCount = ParrySuccessCount };
             try
             {
                 Directory.CreateDirectory(SaveDirectory);
@@ -77,6 +80,14 @@ namespace RewindNotary
                 case "basic_mastery": Show("진명 개방: 카셀 제0식 · 원형 동작 확인 (종언 추가 없음)", "basic_mastery", result.skillId); break;
                 case "debug_seed": Show("검증 전용 저장 · 경계 " + result.reason, "debug", ""); break;
             }
+        }
+        public void RecordParrySuccess()
+        {
+            if (Progression == null || closed) return;
+            ParrySuccessCount++;
+            // Session telemetry only. No BeginUse/Apply, Changed event, save schema or mastery mutation.
+            OnEvent(new ProgressionEvent { kind = "parry_success", skillId = "", useId = "",
+                reason = "defense_only;preview=" + PreviewStage, testData = Progression.Record.testData });
         }
         private void Show(string message, string cue, string skillId)
         {

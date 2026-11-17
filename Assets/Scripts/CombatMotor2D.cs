@@ -16,13 +16,14 @@ namespace RewindNotary
         public bool Stunned => Time.time < stunUntil;
         public int ComboStep => comboStep;
         public SkillSession Skills { get; set; }
+        public PlayerDefense2D Defense { get; private set; }
         public event System.Action Landed;
         public event System.Action AttackStarted;
         private float attackStartedAt, comboExpiresAt, stunUntil, landUntil;
         private bool strikeDelivered, groundSampled, queuedAttack;
         private int comboStep, attackStep;
         private Health opponent;
-        private int damage;
+        private int damage, strikeDamage;
         private UseContext chainUse, activeUse;
         private SkillStageDefinition chainProfile;
         private int ComboLimit => Health.IsPlayer && chainProfile != null ? chainProfile.comboLimit : PlayerCombo.Length;
@@ -78,6 +79,11 @@ namespace RewindNotary
             Animation = visual.AddComponent<SpriteAnimator>();
             Animation.Initialize(sheet);
             Animation.Tint(tint);
+            if (isPlayer)
+            {
+                Defense = gameObject.AddComponent<PlayerDefense2D>();
+                Defense.Initialize(this);
+            }
         }
         public void SetOpponent(Health target) { opponent = target; }
         public void Face(float direction)
@@ -95,18 +101,25 @@ namespace RewindNotary
             Grounded = Body.linearVelocity.y <= 0.1f && Physics2D.OverlapBox(
                 (Vector2)transform.position + new Vector2(0, 0.025f), new Vector2(0.48f, 0.12f),
                 0f, filter, groundHits) > 0;
+            // Proximity alone must not refund an air charge, including after a dash has ended.
+            if (Defense != null && !wasGrounded
+                && (Defense.State.Phase == DefensePhase.Dash || Defense.State.AirDashUsed))
+                Grounded &= GetComponent<Collider2D>().IsTouchingLayers(1 << LevelBuilder.GroundLayer);
             if (Grounded && !wasGrounded)
             {
+                Defense?.State.Land();
                 landUntil = Time.time + 0.09f;
                 // Finish the current swing, but never carry an aerial chain/buffer onto the floor.
                 if (groundSampled && Health.IsPlayer) ResetCombo();
                 if (groundSampled && !Health.Dead) Landed?.Invoke();
             }
+            if (!Grounded) Defense?.State.ObserveAirborne();
             groundSampled = true;
         }
         public void Move(float speed)
         {
             if (Health.Dead || Stunned) return;
+            if (Defense != null && Defense.DriveMovement()) return;
             if (Health.IsPlayer && !Grounded)
             {
                 // Attacking uses exactly the same air control as jumping/falling.
@@ -125,6 +138,7 @@ namespace RewindNotary
         public void Jump(float velocity)
         {
             if (Health.Dead || Stunned) return;
+            if (Defense != null && Defense.BlocksActions) return;
             Body.linearVelocity = new Vector2(Body.linearVelocity.x, velocity);
             Grounded = false;
             landUntil = 0f;
@@ -132,6 +146,7 @@ namespace RewindNotary
         public bool Attack()
         {
             if (Health.Dead || Stunned) return false;
+            if (Defense != null && Defense.BlocksActions) return false;
             if (Attacking)
             {
                 // The final step and a chain reset by landing cannot reserve another swing.
@@ -156,6 +171,9 @@ namespace RewindNotary
             activeUse = chainUse;
             attackStep = comboStep = step;
             activeAttack = step == 0 ? BossAttack : PlayerCombo[step - 1];
+            // Consume once at an actual swing start, including a later whiff/interruption.
+            float counter = Defense != null ? Defense.State.ConsumeCounter(Time.time) : 1f;
+            strikeDamage = Mathf.CeilToInt(damage * activeAttack.DamageMultiplier * counter);
             attackStartedAt = Time.time;
             Attacking = true;
             strikeDelivered = false;
@@ -179,6 +197,7 @@ namespace RewindNotary
             Attacking = false;
             ResetCombo();
         }
+        internal void ClearComboForDefense() { CancelAttack(); }
         private void DeliverStrike()
         {
             // Mark even a whiff/immune target as delivered: one contact query per swing.
@@ -201,7 +220,7 @@ namespace RewindNotary
                 foreach (var destructible in DestructibleTarget2D.All)
                     if (blade.Intersects(destructible.Bounds))
                         Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Destructible,
-                            destructible.TargetId, destructible.Hit(damage * activeAttack.DamageMultiplier), damage * activeAttack.DamageMultiplier));
+                            destructible.TargetId, destructible.Hit(strikeDamage), strikeDamage));
                 foreach (var surface in StitchSurface2D.All)
                     if (blade.Intersects(surface.Bounds))
                         Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.TerrainMechanism,
@@ -210,10 +229,10 @@ namespace RewindNotary
             if (opponent == null || opponent.Dead) return;
             var target = opponent.GetComponent<Collider2D>();
             if (target != null && blade.Intersects(target.bounds)
-                && opponent.Hit(damage * activeAttack.DamageMultiplier, transform.position, activeAttack.Knockback))
+                && opponent.Hit(strikeDamage, transform.position, activeAttack.Knockback))
             {
                 Skills?.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Enemy,
-                    opponent.gameObject.name, true, damage * activeAttack.DamageMultiplier));
+                    opponent.gameObject.name, true, strikeDamage));
                 AudioManager.Play(AudioManager.Sfx.Hit);
                 if (!opponent.IsPlayer)
                 {
@@ -253,6 +272,7 @@ namespace RewindNotary
         }
         private void ReceiveHit(Vector2 source)
         {
+            Defense?.Interrupt();
             Animation.FlashHit();
             CancelAttack();
             stunUntil = Time.time + 0.18f;
@@ -261,6 +281,7 @@ namespace RewindNotary
         }
         private void Die()
         {
+            Defense?.ResetDefense();
             CancelAttack();
             Body.linearVelocity = Vector2.zero;
             Animation.Play(SpriteAnimator.Pose.Land, true);
@@ -268,6 +289,7 @@ namespace RewindNotary
         }
         public void ResetAt(Vector2 feet)
         {
+            Defense?.ResetDefense();
             transform.position = feet;
             Body.position = feet;
             Body.linearVelocity = Vector2.zero;
@@ -279,7 +301,7 @@ namespace RewindNotary
             Animation.ResetVisual();
             Animation.Play(SpriteAnimator.Pose.Idle, true);
         }
-        private void OnDisable() { CancelAttack(); }
+        private void OnDisable() { Defense?.ResetDefense(); CancelAttack(); }
         private void OnDestroy()
         {
             if (Health != null) { Health.Damaged -= ReceiveHit; Health.Died -= Die; }

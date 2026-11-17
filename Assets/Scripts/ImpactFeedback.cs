@@ -38,6 +38,11 @@ namespace RewindNotary
             Instance.HitStop(FinisherStopScale, FinisherStopSeconds);
             Instance.cameraShake?.Shake(SwordShake, 0.12f);
         }
+        public static void ParrySuccess()
+        {
+            if (Instance == null || !Instance.isActiveAndEnabled) return;
+            Instance.HitStop(DefenseTuning.ParryStopScale, DefenseTuning.ParryStopSeconds);
+        }
         public static void BossDefeated()
         {
             if (Instance == null || !Instance.isActiveAndEnabled) return;
