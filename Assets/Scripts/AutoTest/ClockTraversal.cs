@@ -12,8 +12,8 @@ namespace RewindNotary
         {
             if (Time.time < jumpUntil) keys.Hold(KeyCode.Space);
             var room = Area.Room;
-            int goal = Array.FindIndex(room.terrain, s => s.id == face);
-            if (goal < 0) throw new InvalidOperationException("Missing clock face " + face);
+            int goal = room.terrain == null ? -1 : Array.FindIndex(room.terrain, s => s.id == face);
+            if (goal < 0) throw new InvalidOperationException("Missing clock face " + face + " in " + room.id);
             var feet = Player.Body.position;
             int here = Array.FindIndex(room.terrain, s => !s.Moving && s.rampRise == 0 && Area.StandingOn(s.id));
             if (here < 0)
@@ -66,12 +66,12 @@ namespace RewindNotary
             return false;
         }
 
-        internal string FaceAt(float x, float y)
+        private string FaceAt(float x, float y)
         {
             var room = Area.Room;
-            var face = Array.Find(room.terrain, s => !s.Moving && !s.wallJump && s.rampRise == 0 &&
+            var face = room.terrain == null ? null : Array.Find(room.terrain, s => !s.Moving && !s.wallJump && s.rampRise == 0 &&
                 x >= s.rect.x && x <= s.rect.x + s.rect.width && Mathf.Abs(room.SurfaceTop(s.id) - y) < .5f);
-            if (face == null) throw new InvalidOperationException("Unsupported clock position " + new Vector2(x, y));
+            if (face == null) throw new InvalidOperationException("Unsupported clock position " + new Vector2(x, y) + " in " + room.id);
             return face.id;
         }
 
@@ -120,9 +120,12 @@ namespace RewindNotary
         internal bool ClockDoor(StoryDoor door)
         {
             var box = door.approach;
-            if (box == null) return Walk(door.x, .35f) && Area.OnReturnFloor;
-            return ClockPosition(FaceAt(door.x, box.y + box.height * .5f), door.x) &&
-                Area.OnReturnFloor && door.InReach(Player.Body.position);
+            bool positioned;
+            if (box == null || !box.Defined || Area.Room.Surface("drum_floor") == null)
+                positioned = Walk(door.x, .35f);
+            else
+                positioned = ClockPosition(FaceAt(door.x, box.y + box.height * .5f), door.x);
+            return positioned && Area.OnReturnFloor && door.InReach(Player.Body.position);
         }
 
         internal void ClockBout()

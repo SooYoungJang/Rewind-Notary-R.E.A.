@@ -130,7 +130,12 @@ namespace RewindNotary
             if (target != null) { FightTarget(target); return; }
             var door = Area.ForwardDoor;
             if (door == null) return;
-            if (door.approach != null && door.approach.y > 1 && !ReachBalcony()) return;
+            if (Area.Room.stage == "clock")
+            {
+                if (ClockDoor(door)) keys.Tap(KeyCode.F);
+                return;
+            }
+            if (Area.Room.stage == "velvet" && door.approach?.Defined == true && door.approach.y > 1 && !ReachBalcony()) return;
             if (Walk(door.x, .45f) && door.InReach(Player.Body.position)) keys.Tap(KeyCode.F);
             else if (Area.Room.id == "velvet_01_entry" && Player.Grounded &&
                 door.x - Player.Body.position.x > DefenseTuning.DashDistance + 1f) keys.Tap(KeyCode.K);

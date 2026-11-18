@@ -187,6 +187,76 @@ def supported_doors(room, rooms):
     return True
 
 
+def validate_probe_doors(verify, hub, links, clock_rooms, scripts):
+    traversal = scripts['ClockTraversal']
+    method = traversal.partition('bool ClockDoor(StoryDoor door)')[2].partition('\n        }')[0]
+    # Replay the actual condition selecting Walk, including the run-9 null-only condition.
+    guard = re.search(r'if \(([^\n]+)\)\s*(?:return |positioned = )Walk\(door\.x, \.35f\)', method)
+    terms = guard[1].split(' || ') if guard else []
+
+    def route(room, door, box):
+        deck = faces(room) if room.get('terrain') else {}
+        conditions = {'box == null': box is None,
+                      '!box.Defined': None if box is None else box.get('width', 0) <= 0 or box.get('height', 0) <= 0,
+                      'Area.Room.Surface("drum_floor") == null':
+                          not any(s['id'] == 'drum_floor' for s in room.get('terrain') or [])}
+        if not terms or any(term not in conditions for term in terms):
+            return 'unrecognized walk guard'
+        for term in terms:
+            if conditions[term] is None:
+                return 'dereferenced null approach'
+            if conditions[term]:
+                return 'walk'
+        if room.get('terrain') is None:
+            return 'FaceAt on null terrain'
+        if box is None:
+            return 'missing approach'
+        center_y = box.get('y', 0) + box.get('height', 0) / 2
+        return next((face for face, (left, right, top) in deck.items()
+                     if left <= door['x'] <= right and abs(top - center_y) < .5), 'unsupported')
+
+    exits = hub['exits'] + [d for d in links if d['source'] == hub['id']]
+    entry = next(d for d in exits if d['room'] == 'clock_01_entry')
+    zero = dict(x=0, y=0, width=0, height=0)
+    verify(entry['x'] == 27 and entry['gate'] == 'depart' and 'approach' not in entry and
+           not hub.get('terrain') and route(hub, entry, zero) == 'walk',
+           'run 9 / hub_lift first clock door with a non-null default rectangle walks to x=27')
+    verify(all(route(hub, d, d.get('approach')) == route(hub, d, d.get('approach', zero)) == 'walk'
+               for d in exits), 'every merged hub_lift exit supports both absent approach representations')
+    bounded = dict(x=26, y=-.15, width=2, height=.9)
+    verify(all(route(dict(hub, terrain=t), entry, bounded) == 'walk' for t in (None, [])),
+           'a bounded door on a default floor never searches null or empty terrain')
+    tower = clock_rooms[0]
+    verify(all(route(tower, tower['exits'][0], b) == 'walk'
+               for b in (None, zero, dict(bounded, width=0), dict(bounded, height=0))),
+           'an absent or undefined rectangle skips the tier search even on authored terrain')
+    for room in clock_rooms:
+        deck = faces(room)
+        for door in room['exits']:
+            face = route(room, door, door['approach'])
+            verify(face in deck and contains(door['approach'], door['x'], deck[face][2] + .05),
+                   'clock door resolves a reachable fixed tier / ' + room['id'] + ' -> ' + door['room'])
+
+    verify('else positioned = ClockPosition(FaceAt(door.x, box.y + box.height * .5f), door.x);'
+           in ' '.join(method.split()) and method.count('return ') == 1 and
+           'return positioned && Area.OnReturnFloor && door.InReach(Player.Body.position);' in method,
+           'both approaches require position, safe fixed ground and the live door reach check')
+    verify('room.terrain == null ? null : Array.Find(room.terrain,' in traversal and
+           'room.terrain == null ? -1 : Array.FindIndex(room.terrain,' in traversal and
+           'if (face == null) throw new InvalidOperationException' in traversal and
+           'if (goal < 0) throw new InvalidOperationException' in traversal,
+           'explicit clock combat and waypoint targets fail with context when their terrain is missing')
+    probe = ' '.join(scripts['ClockDistrictProbe'].split())
+    verify('if (room == "hub_lift" && !investigated && area.ActiveRow == null) { Door(bot, keys, Entry);' in probe and
+           'var door = Array.Find(bot.Area.Room.exits, d => d.room == dest); '
+           'if (door == null || !bot.ClockDoor(door)) return false; keys.Tap(KeyCode.F);' in probe,
+           'first hub departure selects its destination and only taps F when the door is ready')
+    drive = ' '.join(scripts['FirstDepartureBot'].split())
+    verify('if (Area.Room.stage == "clock") { if (ClockDoor(door)) keys.Tap(KeyCode.F); return; }' in drive and
+           'Area.Room.stage == "velvet" && door.approach?.Defined == true && door.approach.y > 1 && !ReachBalcony()' in drive,
+           'generic door navigation confines the balcony stairs to defined high velvet doors')
+
+
 def lift(rs):
     for a,b,landing in [(0,3,'clock_lift_cage'),(3,0,'clock_lift_foot')]:
         d = next((d for d in rs[a]['exits'] if d['room']==rs[b]['id']),{})
@@ -212,6 +282,10 @@ def validate_level_step3(check, project, scripts):
     rooms = {r['id']:r for r in rs}
     skill = next(s for s in read('Skills/catalog.json')['skills'] if s['skillId']==SKILL)
     def verify(value,label):check(bool(value),'Level step 3: '+label)
+    hub = next(r for r in read('Story/representative.json')['rooms'] if r['id'] == 'hub_lift')
+    links = [door for name in ('clock', 'opera', 'bell', 'gallery', 'finale')
+             for door in read('Story/' + name + '.json')['links']]
+    validate_probe_doors(verify, hub, links, rs, scripts)
     mutants = []
     def mutant(value,label):
         mutants.append(bool(value))
