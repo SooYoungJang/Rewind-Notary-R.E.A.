@@ -7,6 +7,7 @@ import re
 
 from story_link_baseline import reverse_exact
 from validate_level_step1 import contains, digest, number
+from validate_fixed_surface_route import validate_fixed_surface_route
 
 SKILL = 'pendulum_rewind'
 # (archetype, count, finite segments, preparations per segment). P means a pendulum setup.
@@ -237,13 +238,14 @@ def validate_probe_doors(verify, hub, links, clock_rooms, scripts):
             verify(face in deck and contains(door['approach'], door['x'], deck[face][2] + .05),
                    'clock door resolves a reachable fixed tier / ' + room['id'] + ' -> ' + door['room'])
 
-    verify('else positioned = ClockPosition(FaceAt(door.x, box.y + box.height * .5f), door.x);'
-           in ' '.join(method.split()) and method.count('return ') == 1 and
+    verify(re.search(r'else\s+positioned = ClockPosition\(FaceAt\(door.x, box.y \+ box.height \* \.5f\)(?:\.id)?, door.x\);', method) and method.count('return ') == 1 and
            'return positioned && Area.OnReturnFloor && door.InReach(Player.Body.position);' in method,
            'both approaches require position, safe fixed ground and the live door reach check')
-    verify('room.terrain == null ? null : Array.Find(room.terrain,' in traversal and
-           'room.terrain == null ? -1 : Array.FindIndex(room.terrain,' in traversal and
-           'if (face == null) throw new InvalidOperationException' in traversal and
+    legacy_lookup = ('room.terrain == null ? null : Array.Find(room.terrain,' in traversal and
+                     'room.terrain == null ? -1 : Array.FindIndex(room.terrain,' in traversal)
+    observed_lookup = ('Room.terrain ?? System.Array.Empty<StorySurface>()' in scripts['PlaytestObservations'] and
+                       'terrain = Area.ProbeTerrain();' in traversal and 'Array.FindIndex(terrain, s => s.id == face)' in traversal)
+    verify((legacy_lookup or observed_lookup) and 'if (face == null) throw new InvalidOperationException' in traversal and
            'if (goal < 0) throw new InvalidOperationException' in traversal,
            'explicit clock combat and waypoint targets fail with context when their terrain is missing')
     probe = ' '.join(scripts['ClockDistrictProbe'].split())
@@ -327,7 +329,11 @@ def validate_hall_regression(verify, room, scripts, motion):
     traversal = scripts['ClockTraversal']
     fight = traversal.split('void ClockFight(')[1].split('private bool AtClockHeight')[0]
     match = re.search(r'if \(([^{}\n]+)\)\s*\{\s*ClockPosition\(face, at\.x\);\s*return;\s*\}', fight)
-    if not match or match[1] not in ('!AtClockHeight(face)', 'jumpingFrom != null || !Area.StandingOn(face)'):
+    if not match and 'if (!ReachedCombatSurface(face, at.x)) return;' in fight:
+        helper = traversal.split('bool ReachedCombatSurface(')[1].split('void ClockFight(')[0]
+        match = re.search(r'if \(([^{}\n]+)\)\s*\{\s*ClockPosition\(support\.id, targetX\);\s*return false;\s*\}', helper)
+    if not match or match[1] not in ('!AtClockHeight(face)', 'jumpingFrom != null || !Area.StandingOn(face)',
+                                      'jumpingFrom != null || !OnSurface(support)'):
         verify(False, 'run 10 / cannot replay the ClockFight handoff')
         return {}
     guard = match[1]
@@ -422,6 +428,8 @@ def validate_level_step3(check, project, scripts):
     dt = float(re.search(r'Fixed Timestep: ([.\d]+)',(project/'ProjectSettings/TimeManager.asset').read_text())[1])
     motion = number(scripts['PlayerController2D'],'JumpSpeed'), 9.81*number(scripts['CombatMotor2D'],'Body.gravityScale'), dt
     latch = validate_hall_regression(verify, rooms['clock_02_pendulum'], scripts, motion)
+    sword = next(s for s in read('Skills/catalog.json')['skills'] if s['skillId'] == 'basic_sword')
+    sentry = validate_fixed_surface_route(verify, rs, scripts, motion, sword)
     sets = {s['id']:s['layers'] for s in read('GameArt/backgrounds/room-sets.json')['sets']}
     routes,counts = {},{}
     for idx,(r,b,spec) in enumerate(zip(rs,old,FORMATIONS)):
@@ -520,4 +528,4 @@ def validate_level_step3(check, project, scripts):
         verify(all(t in code for t in tokens),src+' / clock runtime contracts')
         for t in tokens:
             mutant(t in code and not all(k in code.replace(t,'') for k in tokens),src+' / lost '+t)
-    return dict(hallLatch=latch,routes=routes,countsBeforeAfter=counts,mutations=len(mutants),detected=sum(mutants),unity_executed=False)
+    return dict(hallLatch=latch,hallSentry=sentry,routes=routes,countsBeforeAfter=counts,mutations=len(mutants),detected=sum(mutants),unity_executed=False)

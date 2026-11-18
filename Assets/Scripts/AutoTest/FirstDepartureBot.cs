@@ -127,7 +127,13 @@ namespace RewindNotary
             if (Area.Room.seamRuns != null && Area.Room.seamRuns.Length > 0 &&
                 Record.Get(SkillRules.SilverStitch).acquired && !Record.firstTransferPending && SewReturnRoute()) return;
             var target = Area.RouteTarget;
-            if (target != null) { FightTarget(target); return; }
+            if (target != null)
+            {
+                var at = target.transform.position;
+                var face = FixedFaceAt(at.x, at.y);
+                if (face == null || ReachedCombatSurface(face, at.x)) FightTarget(target);
+                return;
+            }
             var door = Area.ForwardDoor;
             if (door == null) return;
             if (Area.Room.stage == "clock")

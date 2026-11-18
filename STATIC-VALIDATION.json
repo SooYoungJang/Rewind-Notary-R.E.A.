@@ -1,5 +1,5 @@
 {
-  "passed": 7809,
+  "passed": 7837,
   "errors": [],
   "warnings": [
     "Clock step 3: fixed routes, first-visit supply and gate conditions checked statically. Third-slot contacts, timed recall and lift trips require Unity.",
@@ -268,6 +268,8 @@
     "Unique GUID: Assets/Scripts/AutoTest/FeelProbe.cs",
     "Metadata present: Assets/Scripts/AutoTest/FirstDepartureBot.cs",
     "Unique GUID: Assets/Scripts/AutoTest/FirstDepartureBot.cs",
+    "Metadata present: Assets/Scripts/AutoTest/FixedSurfaceRoute.cs",
+    "Unique GUID: Assets/Scripts/AutoTest/FixedSurfaceRoute.cs",
     "Metadata present: Assets/Scripts/AutoTest/PilotProbe.cs",
     "Unique GUID: Assets/Scripts/AutoTest/PilotProbe.cs",
     "Metadata present: Assets/Scripts/AutoTest/PlaytestObservations.cs",
@@ -7532,6 +7534,31 @@
     "Level step 3: both districts have a separate 120-second idle limit, 18-second motion check and 1500-second cap",
     "Level step 3: recorded contacts, kills and successful target changes refresh the district timer",
     "Level step 3: district heartbeat and failure include the actual clock roster target, segment count and position",
+    "Level step 3: run 11 / a held lip exit and airborne steering use the current room graph",
+    "Level step 3: run 11 / fixed collider bounds, first landing and directed search select the next input",
+    "Level step 3: run 11 / district and common combat share the actual-support handoff",
+    "Level step 3: run 11 / first sentry is three segments below the inactive upper-lip coordinate",
+    "Level step 3: run 11 / old x=23 stop zone produces no descent or sword input in twenty seconds",
+    "Level step 3: run 11 / land on cradle and cut all three active segments at test lip 23",
+    "Level step 3: run 11 / land on cradle and cut all three active segments at test lip 24.5",
+    "Level step 3: run 11 / land on cradle and cut all three active segments at test lip 26.8",
+    "Level step 3: run 11 / held ordinary walk from the authored overlap reaches the sentry without a jump",
+    "Level step 3: clock_01_entry / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_02_pendulum / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_03_counterflow / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_04_escapement / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_05_vestibule / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_06_arena / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_07_return_upper / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_08_return_lower / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_09_shortcut / directed paths between every ordered pair of fixed faces",
+    "Level step 3: clock_10_sanctuary_rail / directed paths between every ordered pair of fixed faces",
+    "Level step 3: unordered unrelated face names / two ordinary jumps with an unreachable direct rise",
+    "Level step 3: horizontal gap / accept the short air-steered jump and reject the long one",
+    "Level step 3: horizontal gap / a solid wall obstructs the otherwise reachable jump",
+    "Level step 3: descent / an intervening shelf prevents a direct edge to the lower floor",
+    "Level step 3: clock_07_return_upper / no walk-off behind solid end walls at 1.6x width",
+    "Level step 3: clock_08_return_lower / no walk-off behind solid end walls at 1.6x width",
     "Level step 3: clock_01_entry / ordinary ascent and exposed descent lips on every fixed tier",
     "Level step 3: clock_01_entry / supported marks, camera, fall line, door volumes and destinations",
     "Level step 3: clock_01_entry / every instance binds its authored segments, setup, zone and position",
@@ -7835,7 +7862,8 @@
     "C# delimiters balanced (not compile): VelvetTraversal.cs",
     "C# delimiters balanced (not compile): VelvetDistrictProbe.cs",
     "C# delimiters balanced (not compile): ClockTraversal.cs",
-    "C# delimiters balanced (not compile): ClockDistrictProbe.cs"
+    "C# delimiters balanced (not compile): ClockDistrictProbe.cs",
+    "C# delimiters balanced (not compile): FixedSurfaceRoute.cs"
   ],
   "audio_metrics": [
     {
@@ -16131,6 +16159,122 @@
         ],
         "cuts": 1,
         "remainingSegments": 0
+      }
+    },
+    "hallSentry": {
+      "before": {
+        "liveLip": 23,
+        "firstAxis": 0,
+        "landingSeconds": null,
+        "zoneSeconds": null,
+        "firstCutSeconds": null,
+        "lastCutSeconds": null,
+        "attacks": 0,
+        "cuts": 0,
+        "remaining": 3,
+        "endX": 22.954
+      },
+      "after": [
+        {
+          "liveLip": 23,
+          "firstAxis": 1,
+          "landingSeconds": 0.4,
+          "zoneSeconds": 0.32,
+          "firstCutSeconds": 0.68,
+          "lastCutSeconds": 1.88,
+          "attacks": 3,
+          "cuts": 3,
+          "remaining": 0,
+          "endX": 23.4296
+        },
+        {
+          "liveLip": 24.5,
+          "firstAxis": 1,
+          "landingSeconds": 0.64,
+          "zoneSeconds": 0.56,
+          "firstCutSeconds": 1.14,
+          "lastCutSeconds": 2.32,
+          "attacks": 3,
+          "cuts": 3,
+          "remaining": 0,
+          "endX": 23.4976
+        },
+        {
+          "liveLip": 26.8,
+          "firstAxis": 1,
+          "landingSeconds": 0.98,
+          "zoneSeconds": 1.18,
+          "firstCutSeconds": 1.84,
+          "lastCutSeconds": 3.04,
+          "attacks": 3,
+          "cuts": 3,
+          "remaining": 0,
+          "endX": 23.4772
+        }
+      ],
+      "authored": {
+        "liveLip": 22,
+        "firstAxis": 1,
+        "landingSeconds": 0.7,
+        "zoneSeconds": 0.6,
+        "firstCutSeconds": 0.86,
+        "lastCutSeconds": 2.06,
+        "attacks": 3,
+        "cuts": 3,
+        "remaining": 0,
+        "endX": 23.2556
+      },
+      "orderedPairs": {
+        "clock_01_entry": [
+          20,
+          20
+        ],
+        "clock_02_pendulum": [
+          30,
+          30
+        ],
+        "clock_03_counterflow": [
+          30,
+          30
+        ],
+        "clock_04_escapement": [
+          30,
+          30
+        ],
+        "clock_05_vestibule": [
+          30,
+          30
+        ],
+        "clock_06_arena": [
+          12,
+          12
+        ],
+        "clock_07_return_upper": [
+          156,
+          156
+        ],
+        "clock_08_return_lower": [
+          110,
+          110
+        ],
+        "clock_09_shortcut": [
+          20,
+          20
+        ],
+        "clock_10_sanctuary_rail": [
+          20,
+          20
+        ]
+      },
+      "widerBoundsPairs": {
+        "clock_07_return_upper": [
+          84,
+          156
+        ],
+        "clock_08_return_lower": [
+          60,
+          110
+        ]
       }
     },
     "routes": {

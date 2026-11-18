@@ -196,9 +196,10 @@ namespace RewindNotary
             var target = area?.DistrictWaveTarget;
             var feet = player == null ? "-" : player.Body.position.ToString("F2");
             int remaining = area == null ? 0 : area.WaveTargetCount - area.ClearedWaveTargets;
+            string support = clock != null && area != null ? " support=" + area.ClockSupportDescription() : "";
             return $"{step.id} elapsed={now - entered:F1}s idle={now - lastDistrictProgress:F1}s room={area?.Room?.id ?? "-"} " +
                 $"feet={feet} grounded={player?.Grounded} row={area?.ActiveRow?.textKey ?? "-"} action={area?.PendingAction ?? "-"} " +
-                $"remainingTargets={remaining} waveTarget={target?.TargetId ?? "-"} segments={target?.State.Remaining ?? 0} contacts={DistrictContacts}";
+                $"remainingTargets={remaining} waveTarget={target?.TargetId ?? "-"} segments={target?.State.Remaining ?? 0} contacts={DistrictContacts}" + support;
         }
 
         private void ObserveSession()
