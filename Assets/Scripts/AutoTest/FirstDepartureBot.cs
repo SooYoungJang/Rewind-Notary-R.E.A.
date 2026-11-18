@@ -114,7 +114,7 @@ namespace RewindNotary
                 if (split < 0) return;
                 var point = Area.Room.Point(action.Substring(split + 1));
                 if (point == null) return;
-                if (action.StartsWith("strike:", StringComparison.Ordinal)) Strike(point.x);
+                if (action.StartsWith("strike:", StringComparison.Ordinal)) StrikeStoryPoint(point.x);
                 else if (action.StartsWith("walk:", StringComparison.Ordinal)) Walk(point.x, .38f);
                 else if (action.StartsWith("use:", StringComparison.Ordinal) && Walk(point.x, .38f)) keys.Tap(KeyCode.F);
                 return;
@@ -175,6 +175,24 @@ namespace RewindNotary
         private void Strike(float x)
         {
             if (Aim(x) && !Player.Attacking) keys.Tap(KeyCode.J);
+        }
+        private void StrikeStoryPoint(float x)
+        {
+            if (Player.Attacking) return;
+            // OnStrike tests a single point at contact time, after the sword's forward step.
+            const float minRange = .65f, maxRange = 1.4f;
+            float dx = x - Player.Body.position.x;
+            float ahead = dx * Player.Facing;
+            if (ahead >= minRange && ahead <= maxRange)
+            {
+                if (Player.Grounded) keys.Tap(KeyCode.J);
+            }
+            else if (Mathf.Abs(dx) < maxRange)
+            {
+                // Back out far enough to turn by walking toward the point again.
+                keys.Hold(dx < 0 ? KeyCode.D : KeyCode.A);
+            }
+            else Walk(x, 0f);
         }
         private void FightTarget(WaveTarget2D target)
         {
