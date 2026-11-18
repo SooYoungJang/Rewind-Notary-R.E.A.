@@ -2511,7 +2511,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Move   F / L3 Inspect·Enter   J / X Sword   Q / Y Skill   Esc Pause"
+      "value": "← → Move   F / L3 Inspect·Enter   J·Z·Left Click Sword (Gamepad X)   Q / Y Skill   Esc Pause"
     },
     {
       "key": "investigation.clue.route_ledger.body",

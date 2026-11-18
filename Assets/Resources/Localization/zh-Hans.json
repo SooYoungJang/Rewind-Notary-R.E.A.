@@ -2511,7 +2511,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → 移动   F / L3 调查·进出   J / X 剑术   Q / Y 技能   Esc 暂停"
+      "value": "← → 移动   F / L3 调查·进出   J·Z·左键点击 剑术（手柄 X）   Q / Y 技能   Esc 暂停"
     },
     {
       "key": "investigation.clue.route_ledger.body",

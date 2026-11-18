@@ -2511,7 +2511,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → 이동   F / L3 조사·출입   J / X 검술   Q / Y 기술   Esc 일시정지"
+      "value": "← → 이동   F / L3 조사·출입   J·Z·클릭 검술 (패드 X)   Q / Y 기술   Esc 일시정지"
     },
     {
       "key": "investigation.clue.route_ledger.body",

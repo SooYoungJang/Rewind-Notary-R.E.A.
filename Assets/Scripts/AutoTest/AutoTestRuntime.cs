@@ -235,6 +235,9 @@ namespace RewindNotary
             {
                 Application.logMessageReceivedThreaded -= OnThreadLog;
                 DrainLogs();
+                if (completed && !Report.feel.Passed) Report.Error("feel", "Required input measurements are incomplete.");
+                if (completed && (Report.attackInputs.accepted < 1 || Report.attackInputs.accepted > Report.attackInputs.issued))
+                    Report.Error("feel", "Inconsistent bot attack input counts.");
                 code = completed && audit.unchanged && audit.verifiedFinalSlot && audit.tempRemoved && Report.errors.Count == 0 ? 0 : 1;
                 Report.status = code == 0 ? "pass" : "fail";
                 Report.exitCode = code;

@@ -16,17 +16,23 @@ namespace RewindNotary
             {
                 float keyboard = (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1f : 0f)
                     - (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1f : 0f);
-                return keyboard != 0 ? keyboard : Stronger(Input.GetAxisRaw("PadHorizontal"), Input.GetAxisRaw("PadDpadHorizontal"));
+                return keyboard != 0 ? keyboard : PadAxis("PadHorizontal", "PadDpadHorizontal");
             }
         }
         private static float Stronger(float a, float b) => Mathf.Abs(a) >= Mathf.Abs(b) ? a : b;
+        private const float PadDeadZone = 0.25f;
+        private static float PadAxis(string stick, string dpad)
+        {
+            float value = Stronger(Input.GetAxisRaw(stick), Input.GetAxisRaw(dpad));
+            return Mathf.Abs(value) <= PadDeadZone ? 0f : value;
+        }
         public static float Vertical
         {
             get
             {
                 float keyboard = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) ? 1f : 0f)
                     - (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? 1f : 0f);
-                return keyboard != 0 ? keyboard : Stronger(Input.GetAxisRaw("PadVertical"), Input.GetAxisRaw("PadDpadVertical"));
+                return keyboard != 0 ? keyboard : PadAxis("PadVertical", "PadDpadVertical");
             }
         }
         public static Vector2 SkillDirection => new Vector2(Horizontal, Vertical);

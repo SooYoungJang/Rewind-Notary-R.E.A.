@@ -35,6 +35,7 @@ namespace RewindNotary
         public const float AttackDuration = 0.32f;
         public const float ComboGraceSeconds = 0.18f;
         public const float AirAcceleration = 45f, AirDrag = 6f;
+        public const float AirBrake = 28f;
 
         // All times are scaled game seconds. A single key-down can reserve only the next step.
         private readonly struct AttackSpec
@@ -130,9 +131,9 @@ namespace RewindNotary
             if (BenefactorSkills != null && BenefactorSkills.DriveMovement()) return;
             if (Health.IsPlayer && !Grounded)
             {
-                // Attacking uses exactly the same air control as jumping/falling.
-                // Reversals accelerate through zero; releasing input coasts with gentle drag.
-                float acceleration = Mathf.Abs(speed) > 0.01f ? AirAcceleration : AirDrag;
+                // Steering stays responsive during a swing. Only a released stick uses drag.
+                float releaseDrag = Attacking ? AirDrag : AirBrake;
+                float acceleration = Mathf.Abs(speed) > 0.01f ? AirAcceleration : releaseDrag;
                 float horizontal = Mathf.MoveTowards(Body.linearVelocity.x, speed, acceleration * Time.fixedDeltaTime);
                 Body.linearVelocity = new Vector2(horizontal, Body.linearVelocity.y);
                 Face(speed);

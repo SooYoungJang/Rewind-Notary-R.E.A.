@@ -2511,7 +2511,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Движение   F / L3 Осмотр·Вход   J / X Меч   Q / Y Навык   Esc Пауза"
+      "value": "← → Движение   F / L3 Осмотр·Вход   J·Z·ЛКМ Меч (геймпад X)   Q / Y Навык   Esc Пауза"
     },
     {
       "key": "investigation.clue.route_ledger.body",

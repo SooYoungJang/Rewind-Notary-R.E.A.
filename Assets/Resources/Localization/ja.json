@@ -2511,7 +2511,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → 移動   F / L3 調べる・出入り   J / X 剣術   Q / Y スキル   Esc ポーズ"
+      "value": "← → 移動   F / L3 調べる・出入り   J・Z・左クリック 剣術（パッド X）   Q / Y スキル   Esc ポーズ"
     },
     {
       "key": "investigation.clue.route_ledger.body",

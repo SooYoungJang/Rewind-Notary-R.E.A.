@@ -7,12 +7,15 @@ namespace RewindNotary
     {
         public const float CoyoteTime = 0.1f;
         public const float JumpBuffer = 0.1f;
+        public const float AttackBuffer = 0.13f;
         public const float MoveSpeed = 6.5f;
         public const float JumpSpeed = 12f;
         private CombatMotor2D motor;
         public SilverStitchSkill Silver { get; set; }
         private float axis, lastGrounded = float.NegativeInfinity, jumpPressed = float.NegativeInfinity;
         private bool cutJump;
+        private float attackPressed = float.NegativeInfinity;
+        internal event System.Action AttackInputAccepted;
         private SkillCastRequest? pendingCast;
         private void Awake()
         {
@@ -25,11 +28,13 @@ namespace RewindNotary
         private void Update()
         {
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead)
-            { pendingCast = null; return; }
+            { attackPressed = float.NegativeInfinity; pendingCast = null; return; }
             axis = GameInput.Horizontal;
             var runner = motor.BenefactorSkills;
             var input = runner?.InputSnapshot;
             bool castDown = input != null && input.CastDown;
+            // A cast chord owns its attack modifier. Other taps survive action recovery.
+            if (!castDown && GameInput.AttackDown) attackPressed = Time.time;
             if (motor.Stunned) pendingCast = null;
             if (castDown)
             {
@@ -47,8 +52,11 @@ namespace RewindNotary
             { pendingCast = null; jumpPressed = float.NegativeInfinity; cutJump = false; return; }
             if (!castDown && !pendingCast.HasValue && GameInput.JumpDown) jumpPressed = Time.time;
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
-            // A simultaneous attack hold modifies canvas rather than starting an ordinary swing.
-            if (!castDown && !pendingCast.HasValue && GameInput.AttackDown) motor.Attack();
+            if (!castDown && !pendingCast.HasValue && Time.time - attackPressed <= AttackBuffer && motor.Attack())
+            {
+                attackPressed = float.NegativeInfinity;
+                AttackInputAccepted?.Invoke();
+            }
             if (pendingCast.HasValue)
             {
                 var request = pendingCast.Value; pendingCast = null;
@@ -87,17 +95,16 @@ namespace RewindNotary
         {
             pendingCast = null;
             axis = 0f; cutJump = false;
-            jumpPressed = lastGrounded = float.NegativeInfinity;
+            attackPressed = jumpPressed = lastGrounded = float.NegativeInfinity;
         }
         public void ClearInput()
         {
-            pendingCast = null;
-            axis = 0f; cutJump = false;
+            SuspendInput();
             Silver?.ResetAttempt();
             motor.BenefactorSkills?.ResetAttempt();
-            jumpPressed = lastGrounded = float.NegativeInfinity;
         }
-        private void OnDisable() { pendingCast = null; }
+        private void OnApplicationFocus(bool focused) { if (!focused) ClearInput(); }
+        private void OnDisable() { SuspendInput(); }
         private void OnDestroy()
         {
             if (motor == null) return;

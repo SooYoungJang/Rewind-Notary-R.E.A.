@@ -2511,7 +2511,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Spostamento   F / L3 Esamina·Entra   J / X Spada   Q / Y Abilità   Esc Pausa"
+      "value": "← → Spostamento   F / L3 Esamina·Entra   J·Z·Clic sinistro Spada (controller X)   Q / Y Abilità   Esc Pausa"
     },
     {
       "key": "investigation.clue.route_ledger.body",

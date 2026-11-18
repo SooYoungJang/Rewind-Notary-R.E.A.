@@ -19,6 +19,8 @@ namespace RewindNotary
         public int bossAttemptCount;
         public double bossSeconds;
         public SaveAudit isolation = new SaveAudit();
+        public FeelResults feel = new FeelResults();
+        public AttackInputCounts attackInputs = new AttackInputCounts();
 
         public static AutoTestReport NewRun(string mode)
         {
@@ -48,6 +50,7 @@ namespace RewindNotary
 
         public void Write(string directory)
         {
+            attackInputs.unaccepted = attackInputs.issued - attackInputs.accepted;
             string path = Path.Combine(directory, "report.json");
             File.WriteAllText(path + ".tmp", JsonUtility.ToJson(this, true) + "\n");
             if (File.Exists(path)) File.Replace(path + ".tmp", path, null);
@@ -60,6 +63,30 @@ namespace RewindNotary
         private static RunError LogEntry(string type, string message, string stack) =>
             new RunError { utc = DateTime.UtcNow.ToString("O"), type = type, message = message, stack = stack };
     }
+
+    [Serializable] public sealed class FeelResults
+    {
+        public StopMeasurement groundStop = new StopMeasurement(), airStop = new StopMeasurement();
+        public AttackMeasurement stationaryAttack = new AttackMeasurement();
+        public string failure;
+        internal bool Passed => groundStop.status == "pass" && airStop.status == "pass" && stationaryAttack.status == "pass";
+    }
+
+    [Serializable] public sealed class StopMeasurement
+    {
+        public string status = "skipped";
+        public float releaseSpeed, speed, seconds;
+        public int physicsTicks;
+    }
+
+    [Serializable] public sealed class AttackMeasurement
+    {
+        public string status = "skipped";
+        public int framesSinceTap = -1, attackStartedCount;
+        public bool attacking;
+    }
+
+    [Serializable] public sealed class AttackInputCounts { public int issued, accepted, unaccepted; }
 
     [Serializable] public sealed class StepResult
     {

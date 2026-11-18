@@ -2511,7 +2511,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Bewegen   F / L3 Untersuchen·Betreten   J / X Schwert   Q / Y Technik   Esc Pause"
+      "value": "← → Bewegen   F / L3 Untersuchen·Betreten   J·Z·Linksklick Schwert (Gamepad X)   Q / Y Technik   Esc Pause"
     },
     {
       "key": "investigation.clue.route_ledger.body",
