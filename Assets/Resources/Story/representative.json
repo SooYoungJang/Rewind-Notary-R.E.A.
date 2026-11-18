@@ -54,7 +54,8 @@
       "stitchAnchors": 0,
       "roster": [],
       "singleSeams": 0,
-      "releaseKnots": 0
+      "releaseKnots": 0,
+      "backgroundSet": "hub_attic"
     },
     {
       "id": "hub_workroom",
@@ -132,7 +133,8 @@
       "stitchAnchors": 0,
       "roster": [],
       "singleSeams": 0,
-      "releaseKnots": 0
+      "releaseKnots": 0,
+      "backgroundSet": "hub_workroom"
     },
     {
       "id": "hub_forge",
@@ -182,7 +184,30 @@
       "stitchAnchors": 0,
       "roster": [],
       "singleSeams": 0,
-      "releaseKnots": 0
+      "releaseKnots": 0,
+      "backgroundSet": "hub_forge",
+      "terrain": [
+        {
+          "id": "forge_practice_post",
+          "rect": {
+            "x": 25.5,
+            "y": 2.25,
+            "width": 0.8,
+            "height": 2.35
+          },
+          "wallJump": true
+        },
+        {
+          "id": "forge_practice_perch",
+          "rect": {
+            "x": 21.4,
+            "y": 3.07,
+            "width": 2.2,
+            "height": 0.28
+          },
+          "oneWay": true
+        }
+      ]
     },
     {
       "id": "hub_lift",
@@ -236,7 +261,8 @@
       "stitchAnchors": 0,
       "roster": [],
       "singleSeams": 0,
-      "releaseKnots": 0
+      "releaseKnots": 0,
+      "backgroundSet": "hub_lift"
     },
     {
       "id": "velvet_01_entry",
@@ -291,6 +317,12 @@
         {
           "id": "velvet_loom_east",
           "x": 35.0
+        },
+        {
+          "id": "loom_balcony_floor",
+          "x": 36.8,
+          "surface": "balcony",
+          "contactSave": false
         }
       ],
       "points": [],
@@ -298,17 +330,37 @@
         {
           "room": "velvet_01_entry",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": -0.25,
+            "y": -0.3,
+            "width": 2.5,
+            "height": 0.9
+          }
         },
         {
           "room": "velvet_03_gallery",
           "x": 37,
-          "gate": "loom_bridge"
+          "gate": "loom_bridge",
+          "approach": {
+            "x": 35.75,
+            "y": -0.3,
+            "width": 2.5,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_entry_balcony"
         },
         {
           "room": "velvet_06_shortcut",
-          "x": 32,
-          "gate": "investigation_complete"
+          "x": 37,
+          "gate": "investigation_complete",
+          "approach": {
+            "x": 35.75,
+            "y": 3.6,
+            "width": 2.5,
+            "height": 0.9
+          },
+          "destinationFloor": "velvet_upper_safe"
         }
       ],
       "stitchAnchors": 5,
@@ -316,21 +368,164 @@
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_1",
+            "sword_latch_2"
+          ]
         },
         {
           "id": "notary_guard",
           "count": 3,
-          "segments": 4
+          "segments": 4,
+          "placementIds": [
+            "notary_guard_1",
+            "notary_guard_2",
+            "notary_guard_3"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 2,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "shell_sentry_1",
+            "shell_sentry_2"
+          ]
         }
       ],
       "singleSeams": 3,
-      "releaseKnots": 0
+      "releaseKnots": 0,
+      "backgroundSet": "velvet_loom",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.5,
+        "width": 44,
+        "height": 7.5
+      },
+      "fallLine": -10,
+      "terrain": [
+        {
+          "id": "tread_1",
+          "rect": {
+            "x": 17.6,
+            "y": 0.98,
+            "width": 2.8,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tread_2",
+          "rect": {
+            "x": 21,
+            "y": 2.26,
+            "width": 3,
+            "height": 0.34
+          },
+          "oneWay": true
+        },
+        {
+          "id": "balcony",
+          "rect": {
+            "x": 24.3,
+            "y": 3.46,
+            "width": 15.5,
+            "height": 0.44
+          },
+          "oneWay": true
+        },
+        {
+          "id": "kick_post",
+          "rect": {
+            "x": 42.5,
+            "y": 0,
+            "width": 0.72,
+            "height": 6
+          },
+          "wallJump": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_1",
+          "x": 6.0,
+          "y": 0.05,
+          "active": {
+            "x": 2.5,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "sword_latch_2",
+          "x": 7.7,
+          "y": 0.05,
+          "active": {
+            "x": 4.2,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 9.3,
+          "y": 0.05,
+          "active": {
+            "x": 5.8,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 5,
+          "y": 0.05,
+          "active": {
+            "x": 1.5,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "notary_guard_3",
+          "x": 1,
+          "y": 0.05,
+          "active": {
+            "x": -2.5,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "shell_sentry_1",
+          "x": 1.0,
+          "y": 0.05,
+          "active": {
+            "x": -2.5,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "shell_sentry_2",
+          "x": 2.25,
+          "y": 0.05,
+          "active": {
+            "x": -1.25,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        }
+      ],
+      "hasFallLine": true
     },
     {
       "id": "velvet_03_gallery",
@@ -343,6 +538,17 @@
         {
           "id": "velvet_pre_boss_floor",
           "x": 35.0
+        },
+        {
+          "id": "gallery_balcony_floor",
+          "x": 36.8,
+          "surface": "balcony",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_entry_balcony",
+          "x": 6.5,
+          "surface": "arrival_shelf"
         }
       ],
       "points": [],
@@ -350,17 +556,38 @@
         {
           "room": "velvet_02_loom",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": -0.25,
+            "y": -0.3,
+            "width": 2.5,
+            "height": 0.9
+          },
+          "destinationFloor": "loom_balcony_floor"
         },
         {
           "room": "velvet_04_arena",
           "x": 37,
-          "gate": "gallery_bridge"
+          "gate": "gallery_bridge",
+          "approach": {
+            "x": 35.75,
+            "y": 3.95,
+            "width": 2.5,
+            "height": 0.9
+          },
+          "destinationFloor": "mikhail_arena_west"
         },
         {
           "room": "velvet_05_return",
-          "x": 32,
-          "gate": "mikhail_defeated"
+          "x": 37,
+          "gate": "mikhail_defeated",
+          "approach": {
+            "x": 35.75,
+            "y": -0.3,
+            "width": 2.5,
+            "height": 0.9
+          },
+          "destinationFloor": "velvet_return_start"
         }
       ],
       "stitchAnchors": 3,
@@ -368,21 +595,174 @@
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_1"
+          ]
         },
         {
           "id": "notary_guard",
           "count": 4,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "notary_guard_1",
+            "notary_guard_2",
+            "notary_guard_3",
+            "notary_guard_4"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 2,
-          "segments": 4
+          "segments": 4,
+          "placementIds": [
+            "reflection_statue_1",
+            "reflection_statue_2"
+          ]
         }
       ],
       "singleSeams": 3,
-      "releaseKnots": 0
+      "releaseKnots": 0,
+      "backgroundSet": "velvet_gallery",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.5,
+        "width": 44,
+        "height": 7.5
+      },
+      "fallLine": -10,
+      "terrain": [
+        {
+          "id": "tread_1",
+          "rect": {
+            "x": 19.6,
+            "y": 1.08,
+            "width": 2.8,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tread_2",
+          "rect": {
+            "x": 23,
+            "y": 2.51,
+            "width": 3,
+            "height": 0.34
+          },
+          "oneWay": true
+        },
+        {
+          "id": "balcony",
+          "rect": {
+            "x": 26.3,
+            "y": 3.81,
+            "width": 13.5,
+            "height": 0.44
+          },
+          "oneWay": true
+        },
+        {
+          "id": "kick_post",
+          "rect": {
+            "x": 42.5,
+            "y": 0,
+            "width": 0.72,
+            "height": 6
+          },
+          "wallJump": true
+        },
+        {
+          "id": "arrival_shelf",
+          "rect": {
+            "x": 5,
+            "y": 3.5,
+            "width": 3.8,
+            "height": 0.4
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_1",
+          "x": 29.6,
+          "y": 0.05,
+          "active": {
+            "x": 26.1,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 12.2,
+          "y": 0.05,
+          "active": {
+            "x": 8.7,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 8.2,
+          "y": 0.05,
+          "active": {
+            "x": 4.7,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "notary_guard_3",
+          "x": 4.2,
+          "y": 0.05,
+          "active": {
+            "x": 0.7,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "notary_guard_4",
+          "x": 0.2,
+          "y": 0.05,
+          "active": {
+            "x": -3.3,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "reflection_statue_1",
+          "x": 1.0,
+          "y": 0.05,
+          "active": {
+            "x": -2.5,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        },
+        {
+          "id": "reflection_statue_2",
+          "x": 2.25,
+          "y": 0.05,
+          "active": {
+            "x": -1.25,
+            "y": -0.4,
+            "width": 7,
+            "height": 3.4
+          }
+        }
+      ],
+      "hasFallLine": true
     },
     {
       "id": "velvet_04_arena",
@@ -509,7 +889,8 @@
         {
           "room": "velvet_02_loom",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "destinationFloor": "loom_balcony_floor"
         },
         {
           "room": "velvet_04_arena",
@@ -588,7 +969,8 @@
       "stitchAnchors": 0,
       "roster": [],
       "singleSeams": 0,
-      "releaseKnots": 0
+      "releaseKnots": 0,
+      "backgroundSet": "hub_sanctuary"
     }
   ],
   "rows": [

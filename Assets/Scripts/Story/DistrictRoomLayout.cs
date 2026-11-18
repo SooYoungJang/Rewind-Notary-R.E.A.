@@ -258,10 +258,10 @@ namespace RewindNotary
                 else
                 {
                     var door = Array.Find(Room.exits, e => e.room == ActiveRow.alternateRoom);
-                    if (door != null && Gate(door) && Distance(door.x) <= 1.25f && InspectPressed)
+                    if (door != null && Gate(door) && door.InReach(player.Body.position) && InspectPressed)
                     {
                         Put("crossed:" + ActiveRow.completionFlag);
-                        Travel(script.Room(door.room));
+                        Travel(script.Room(door.room), door.destinationFloor);
                     }
                 }
                 return true;

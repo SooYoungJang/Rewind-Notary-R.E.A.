@@ -43,6 +43,11 @@ namespace RewindNotary
             visual = picture.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 8;
             nextAttack = Time.time + definition.attackInterval;
         }
+        internal void SetPicture(Sprite art)
+        {
+            visual.sprite = art;
+            visual.transform.localScale = new Vector3(.95f / art.bounds.size.x, 1.8f / art.bounds.size.y, 1);
+        }
         public bool Setup(UseContext use)
         {
             if (!State.Setup(use)) return false;
@@ -96,6 +101,6 @@ namespace RewindNotary
             }
         }
         private void OnEnable() { WaveCombatTargets.All.Add(this); }
-        private void OnDisable() { WaveCombatTargets.All.Remove(this); }
+        private void OnDisable() { winding = false; WaveCombatTargets.All.Remove(this); }
     }
 }

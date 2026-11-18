@@ -20,6 +20,7 @@ namespace RewindNotary
         public double bossSeconds;
         public SaveAudit isolation = new SaveAudit();
         public FeelResults feel = new FeelResults();
+        public PilotResults pilot = new PilotResults();
         public AttackInputCounts attackInputs = new AttackInputCounts();
 
         public static AutoTestReport NewRun(string mode)

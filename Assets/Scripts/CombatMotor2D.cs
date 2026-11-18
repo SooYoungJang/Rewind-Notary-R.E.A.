@@ -60,6 +60,7 @@ namespace RewindNotary
         private static readonly AttackSpec BossAttack =
             new AttackSpec(AttackDuration, 0.16f, AttackDuration, 0.9f, 1.7f, 1.55f, 1, 1f);
         private AttackSpec activeAttack;
+        private CapsuleCollider2D capsule;
         private readonly Collider2D[] groundHits = new Collider2D[4];
 
         public void Initialize(string sheet, int hp, float immunity, int hitDamage, Color tint, bool isPlayer = false)
@@ -69,7 +70,7 @@ namespace RewindNotary
             Body.freezeRotation = true;
             Body.interpolation = RigidbodyInterpolation2D.Interpolate;
             Body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-            var capsule = GetComponent<CapsuleCollider2D>();
+            capsule = GetComponent<CapsuleCollider2D>();
             capsule.size = new Vector2(0.62f, 1.9f);
             capsule.offset = new Vector2(0f, 0.95f);
             capsule.sharedMaterial = new PhysicsMaterial2D("No wall friction") { friction = 0f, bounciness = 0f };
@@ -104,13 +105,23 @@ namespace RewindNotary
             filter.SetLayerMask(1 << LevelBuilder.GroundLayer);
             filter.useTriggers = false;
             bool wasGrounded = Grounded;
-            Grounded = Body.linearVelocity.y <= 0.1f && Physics2D.OverlapBox(
-                (Vector2)transform.position + new Vector2(0, 0.025f), new Vector2(0.48f, 0.12f),
-                0f, filter, groundHits) > 0;
-            // Proximity alone must not refund an air charge, including after a dash has ended.
-            if (Defense != null && !wasGrounded
-                && (Defense.State.Phase == DefensePhase.Dash || Defense.State.AirDashUsed))
-                Grounded &= GetComponent<Collider2D>().IsTouchingLayers(1 << LevelBuilder.GroundLayer);
+            bool needsLandingContact = Defense != null && !wasGrounded &&
+                (Defense.State.Phase == DefensePhase.Dash || Defense.State.AirDashUsed);
+            int hits = Physics2D.OverlapBox(
+                Body.position + new Vector2(0, 0.025f), new Vector2(0.48f, 0.12f),
+                0f, filter, groundHits);
+            Grounded = false;
+            if (Body.linearVelocity.y <= .1f)
+                for (int i = 0; i < hits; i++)
+                {
+                    var floor = groundHits[i];
+                    // Touching a wall while close to a different floor must not recharge a dash.
+                    if ((needsLandingContact || floor.TryGetComponent<AuthoredSurface>(out _)) &&
+                        (Mathf.Abs(Body.position.y - floor.bounds.max.y) > .09f ||
+                         !floor.IsTouching(capsule))) continue;
+                    Grounded = true;
+                    break;
+                }
             if (Grounded && !wasGrounded)
             {
                 Defense?.State.Land();

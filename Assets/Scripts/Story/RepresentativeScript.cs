@@ -4,11 +4,46 @@ using UnityEngine;
 
 namespace RewindNotary
 {
-    [Serializable] public sealed class StoryMark { public string id; public float x; public bool platform; }
-    [Serializable] public sealed class StoryDoor { public string source, room, gate; public float x; }
+    [Serializable] public sealed class StoryRect
+    {
+        public float x, y, width, height;
+        public bool Defined => width > 0 && height > 0;
+        public bool Contains(Vector2 feet) => feet.x >= x && feet.x <= x + width &&
+            feet.y >= y && feet.y <= y + height;
+    }
+    [Serializable] public sealed class StorySurface
+    {
+        public string id;
+        public StoryRect rect;
+        public bool wallJump, oneWay;
+        // Nonzero travel uses a kinematic body. Static marks never bind to it.
+        public float travelX, travelY, period;
+        public bool Moving => travelX != 0 || travelY != 0;
+    }
+    [Serializable] public sealed class StoryMark
+    {
+        public string id, surface;
+        public float x;
+        public bool platform, contactSave;
+    }
+    [Serializable] public sealed class StoryPlacement
+    {
+        public string id;
+        public float x, y;
+        public StoryRect active;
+    }
+    [Serializable] public sealed class StoryDoor
+    {
+        public string source, room, gate, destinationFloor;
+        public float x;
+        public StoryRect approach;
+        public bool InReach(Vector2 feet) => approach != null && approach.Defined
+            ? approach.Contains(feet) : Mathf.Abs(feet.x - x) <= 1.25f;
+    }
     [Serializable] public sealed class StoryRoster
     {
         public string id, setupSkill;
+        public string[] placementIds;
         public int count, segments, setupHits;
         public bool skillOnly;
     }
@@ -17,6 +52,16 @@ namespace RewindNotary
         public string id, stage, skill, benefactor, crossing, seamId;
         public bool projectileStations;
         public StoryMark[] floors, points;
+        public string backgroundSet;
+        public StoryRect cameraBounds;
+        public float fallLine;
+        public bool hasFallLine;
+        public float FallY => hasFallLine ? fallLine : -7f;
+        public StorySurface[] terrain;
+        public StoryPlacement[] placements;
+        public StorySurface Surface(string key) => string.IsNullOrEmpty(key) || terrain == null
+            ? null : Array.Find(terrain, s => s.id == key);
+        public StoryPlacement Placement(string key) => placements == null ? null : Array.Find(placements, p => p.id == key);
         public StoryDoor[] exits;
         public StoryRoster[] roster;
         public int stitchAnchors, singleSeams, releaseKnots, stations, boutHealth, interludeHealth;

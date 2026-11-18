@@ -67,15 +67,16 @@ namespace RewindNotary
             session.Progression.Trials.Configure(InFieldTrial ? DistrictTrial.stageId : Room.stage, InFieldTrial, resume: InFieldTrial);
             BuildRoom();
             player.ResetAt(new Vector2(floor.x, LandingY(floor.id)));
+            UpdateActivationZones();
             player.GetComponent<PlayerController2D>().ClearInput();
             session.EncounterId = InFieldTrial ? DistrictTrial.stageId : Room.id;
             AutoTestRuntime.LoadEnd("room", Room.id, loadStarted);
         }
-        private void Travel(StoryRoom destination)
+        private void Travel(StoryRoom destination, string floorId = null)
         {
             // Enter on a fixed floor. A row with a different destination supplies its own floor.
             relocate = committed = true;
-            Checkpoint(destination, destination.floors[0].id);
+            Checkpoint(destination, destination.Floor(floorId)?.id ?? destination.floors[0].id);
             session.Save();
         }
         private bool Effect()
@@ -135,8 +136,12 @@ namespace RewindNotary
         private StoryMark NearestFloor()
         {
             var nearest = Room.floors[0];
+            bool authored = Room.terrain != null && Room.terrain.Length > 0;
             foreach (var f in Room.floors)
-                if (Distance(f.x) < Distance(nearest.x)) nearest = f;
+            {
+                float score = authored ? FloorDistance(f) : Distance(f.x);
+                if (score < (authored ? FloorDistance(nearest) : Distance(nearest.x))) nearest = f;
+            }
             return nearest;
         }
         public bool ConfirmDialogue(bool skip)
@@ -187,6 +192,8 @@ namespace RewindNotary
                 RefreshFixtures();
             }
             bool safeFloor = Safe && OnFixedFloor();
+            if (!safeFloor) touchingCheckpoint = null;
+            else if (ActiveRow == null && !SaveContactFloor()) return;
             var finaleRow = ActiveRow == null ? script.NextFinale(Room, session.Investigation) : null;
             var cut = Room.stage == "janhyang" || InEnding || finaleRow != null || ActiveRow?.sceneId.StartsWith("post_", StringComparison.Ordinal) == true
                 ? null : script.Interrupt(session.Investigation, safeFloor);
@@ -245,7 +252,7 @@ namespace RewindNotary
                 else
                 {
                     var exit = NearestDoor();
-                    if (exit != null && Distance(exit.x) <= 1.25f) Travel(Departure(exit.room));
+                    if (exit != null) Travel(Departure(exit.room), exit.destinationFloor);
                 }
             }
         }
@@ -324,7 +331,9 @@ namespace RewindNotary
         {
             if (player != null) player.BasicStrikeDelivered -= OnStrike;
             if (session != null) session.Progression.Event -= OnDistrictEffect;
+            foreach (var sprite in rosterArt.Values) Destroy(sprite);
             if (square != null) Destroy(square);
+            if (weave != null) { Destroy(weave.texture); Destroy(weave); }
         }
     }
 }

@@ -90,7 +90,7 @@ namespace RewindNotary
             }
             string id = NextDoorId();
             var door = Array.Find(Room.exits, e => e.room == id && Gate(e));
-            return door == null ? null : Loc.Get("area.travel", Departure(door.room).Label) + Arrow(door.x);
+            return door == null ? null : Loc.Get("area.travel", Departure(door.room).Label) + DoorArrow(door);
         }
     }
 }

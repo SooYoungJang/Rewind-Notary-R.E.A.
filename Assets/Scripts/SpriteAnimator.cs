@@ -70,12 +70,20 @@ namespace RewindNotary
         }
 
         public void Face(int direction) { if (view != null) view.flipX = direction < 0; }
+        private int wallPoseSide;
+        public void SetWallPose(int side)
+        {
+            if (wallPoseSide == side) return;
+            wallPoseSide = side;
+            transform.localRotation = Quaternion.Euler(0f, 0f, side * 12f);
+        }
         public void Tint(Color color) { baseTint = color; ApplyVisual(); }
         public void SetCombatVisual(bool immune, bool isDead) { invulnerable = immune; dead = isDead; }
         public void SetTelegraph(bool active) { telegraph = active; }
         public void FlashHit() { flashUntil = Time.unscaledTime + HitFlashSeconds; ApplyVisual(); }
         public void ResetVisual()
         {
+            SetWallPose(0);
             flashUntil = 0f; dead = invulnerable = telegraph = false;
             ApplyVisual();
         }

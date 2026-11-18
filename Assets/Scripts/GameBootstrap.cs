@@ -180,6 +180,7 @@ namespace RewindNotary
                 Area.Initialize(skills, shell, player, boss);
             }
             cameraTarget = Child("Camera target").AddComponent<CameraTarget2D>();
+            cameraTarget.Area = Area;
             cameraTarget.Player = player.transform; cameraTarget.Snap();
             if (camera.GetComponent<CinemachineBrain>() == null) camera.gameObject.AddComponent<CinemachineBrain>();
             virtualCamera = Child("Cinemachine follow camera").AddComponent<CinemachineCamera>();
@@ -194,7 +195,7 @@ namespace RewindNotary
             var shake = virtualCamera.gameObject.AddComponent<ImpactCameraShake>();
             Child("Impact feedback").AddComponent<ImpactFeedback>().Initialize(shake);
             Child("Skill evolution").AddComponent<SkillEvolutionPresentation>().Initialize(skills, player.transform, world.transform, hudFont);
-            Child("Parallax").AddComponent<ParallaxBackground>().Initialize(camera);
+            Child("Parallax").AddComponent<ParallaxBackground>().Initialize(camera, Area);
             if (record.lastStageId == "prototype")
                 Child("Investigation points").AddComponent<InvestigationWorld>().Initialize(player, skills, shell, hudFont);
             skills.PresentRestoredState();
@@ -229,7 +230,7 @@ namespace RewindNotary
                 if (deathTimer >= 1.1f) ResetRun(false);
                 return;
             }
-            if (player.transform.position.y < -7f)
+            if (player.transform.position.y < (Area?.Room.FallY ?? -7f))
             {
                 ResetRun(false);
                 AudioManager.Play(AudioManager.Sfx.PlayerDown);

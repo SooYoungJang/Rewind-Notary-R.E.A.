@@ -1,0 +1,309 @@
+{
+  "unity/RewindNotary/Assets/Scripts/SpriteAnimator.cs": {
+    "original": "6be665af3bb8d9fd49125ab52e1fc906f227e870433ec75d50d77bcae6c9a015",
+    "updated": "fbb4c0ae4e4a5eac0db10853e7a028371231448b6fdd460aa7e07b9dc7d2bdbf",
+    "edits": [
+      [
+        72,
+        79,
+        []
+      ],
+      [
+        85,
+        86,
+        []
+      ]
+    ]
+  },
+  "unity/RewindNotary/Assets/Scripts/CombatMotor2D.cs": {
+    "original": "6d9757a09bddfa535aee4f5fc9854d4dc855b5bfa2a61680e50f932c45ad815c",
+    "updated": "bf352cba84961c6f6144464920dbc7a975c74871f471cdf0924e82a08bea04e9",
+    "edits": [
+      [
+        62,
+        63,
+        []
+      ],
+      [
+        72,
+        73,
+        [
+          "            var capsule = GetComponent<CapsuleCollider2D>();\n"
+        ]
+      ],
+      [
+        107,
+        124,
+        [
+          "            Grounded = Body.linearVelocity.y <= 0.1f && Physics2D.OverlapBox(\n",
+          "                (Vector2)transform.position + new Vector2(0, 0.025f), new Vector2(0.48f, 0.12f),\n",
+          "                0f, filter, groundHits) > 0;\n",
+          "            // Proximity alone must not refund an air charge, including after a dash has ended.\n",
+          "            if (Defense != null && !wasGrounded\n",
+          "                && (Defense.State.Phase == DefensePhase.Dash || Defense.State.AirDashUsed))\n",
+          "                Grounded &= GetComponent<Collider2D>().IsTouchingLayers(1 << LevelBuilder.GroundLayer);\n"
+        ]
+      ]
+    ]
+  },
+  "unity/RewindNotary/Assets/Scripts/PlayerController2D.cs": {
+    "original": "664f64a451d38cb28b994c38476c0f80cc246a80a381044ce42ca6957de53e5c",
+    "updated": "3eb2fa08ec765d27c90df8b916f531194687a10c5f205ec0d8c8da2c052c210a",
+    "edits": [
+      [
+        16,
+        23,
+        []
+      ],
+      [
+        29,
+        30,
+        []
+      ],
+      [
+        48,
+        49,
+        []
+      ],
+      [
+        61,
+        67,
+        [
+          "            if (!castDown && !pendingCast.HasValue && GameInput.JumpDown) jumpPressed = Time.time;\n"
+        ]
+      ],
+      [
+        82,
+        99,
+        []
+      ],
+      [
+        103,
+        108,
+        [
+          "            if (motor.Grounded) lastGrounded = Time.time;\n"
+        ]
+      ],
+      [
+        116,
+        137,
+        []
+      ],
+      [
+        138,
+        140,
+        [
+          "            motor.Move(axis * MoveSpeed);\n"
+        ]
+      ],
+      [
+        153,
+        155,
+        []
+      ]
+    ]
+  },
+  "unity/RewindNotary/Assets/Scripts/ParallaxBackground.cs": {
+    "original": "8ce0954bbfa20b9f9709b6d151da9a02cfe4d9cbc93911c0b9caeaffb1d998bc",
+    "updated": "88517a75a4050093969d811d23f176df9cd93e62a4941075a8653c5f6d6ab188",
+    "edits": [
+      [
+        10,
+        11,
+        [
+          "            public float factor, width, y;\n"
+        ]
+      ],
+      [
+        16,
+        27,
+        []
+      ],
+      [
+        28,
+        29,
+        [
+          "        public void Initialize(Camera camera)\n"
+        ]
+      ],
+      [
+        31,
+        57,
+        []
+      ],
+      [
+        59,
+        59,
+        [
+          "            LateUpdate();\n"
+        ]
+      ],
+      [
+        60,
+        61,
+        [
+          "        private void Add(string resource, float factor, float height, float bottom, int order)\n"
+        ]
+      ],
+      [
+        64,
+        75,
+        [
+          "            var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0),\n",
+          "                texture.height / height, 0, SpriteMeshType.FullRect);\n"
+        ]
+      ],
+      [
+        76,
+        78,
+        [
+          "            var layer = new Layer { factor = factor, width = sprite.bounds.size.x, y = bottom,\n"
+        ]
+      ],
+      [
+        85,
+        86,
+        []
+      ],
+      [
+        93,
+        94,
+        []
+      ],
+      [
+        96,
+        97,
+        [
+          "                float drift = target.transform.position.x * (1f - layer.factor);\n"
+        ]
+      ],
+      [
+        101,
+        102,
+        [
+          "                    layer.tiles[i].position = new Vector3(drift + tileIndex * layer.width, layer.y, 5f);\n"
+        ]
+      ]
+    ]
+  },
+  "unity/RewindNotary/Assets/Scripts/CameraTarget2D.cs": {
+    "original": "ee3eed03d711502bafaf6277d928af27f600cd9d414a18ad1793afd67d896d51",
+    "updated": "e976d3ab45f63966107481790065de88add305925f76a0086d49799e22118d44",
+    "edits": [
+      [
+        8,
+        9,
+        []
+      ],
+      [
+        11,
+        16,
+        [
+          "            if (Player != null)\n"
+        ]
+      ]
+    ]
+  },
+  "unity/RewindNotary/Assets/Scripts/GameBootstrap.cs": {
+    "original": "30e0362c526e04d9a30beb725e0d869626d097b0302006306987956f76592606",
+    "updated": "099b1edf1ebf2376b3659046b9104480d00079cc2500a1f60bf2b22d256ed47c",
+    "edits": [
+      [
+        182,
+        183,
+        []
+      ],
+      [
+        197,
+        198,
+        [
+          "            Child(\"Parallax\").AddComponent<ParallaxBackground>().Initialize(camera);\n"
+        ]
+      ],
+      [
+        232,
+        233,
+        [
+          "            if (player.transform.position.y < -7f)\n"
+        ]
+      ]
+    ]
+  },
+  "unity/RewindNotary/Assets/Scripts/Waves/WaveTarget2D.cs": {
+    "original": "0fbbdf32f7f298a3eb8950ea22d43dcfebbebb7fc52e201ebfd8aa8c8b36a160",
+    "updated": "73209eaf1a308a56ef914050fd69fa7967fe66fb040bc697f8cfb4db9a71b38d",
+    "edits": [
+      [
+        44,
+        49,
+        []
+      ],
+      [
+        103,
+        104,
+        [
+          "        private void OnDisable() { WaveCombatTargets.All.Remove(this); }\n"
+        ]
+      ]
+    ]
+  },
+  "unity/RewindNotary/Assets/Scripts/Story/RepresentativeArea.cs": {
+    "original": "fac26bd9b56bd1887549daf6a67bdd9bb0e31fba1041a05b110a1a52519c5daa",
+    "updated": "fb57a66ce92e0da7273629b1ad7a4053824720ceafbbfcdae461c1f48bddb391",
+    "edits": [
+      [
+        69,
+        70,
+        []
+      ],
+      [
+        74,
+        75,
+        [
+          "        private void Travel(StoryRoom destination)\n"
+        ]
+      ],
+      [
+        78,
+        79,
+        [
+          "            Checkpoint(destination, destination.floors[0].id);\n"
+        ]
+      ],
+      [
+        138,
+        139,
+        []
+      ],
+      [
+        140,
+        144,
+        [
+          "                if (Distance(f.x) < Distance(nearest.x)) nearest = f;\n"
+        ]
+      ],
+      [
+        194,
+        196,
+        []
+      ],
+      [
+        254,
+        255,
+        [
+          "                    if (exit != null && Distance(exit.x) <= 1.25f) Travel(Departure(exit.room));\n"
+        ]
+      ],
+      [
+        333,
+        334,
+        []
+      ],
+      [
+        335,
+        336,
+        []
+      ]
+    ]
+  }
+}

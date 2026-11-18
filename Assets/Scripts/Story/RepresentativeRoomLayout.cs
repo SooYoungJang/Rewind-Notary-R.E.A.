@@ -6,6 +6,7 @@ namespace RewindNotary
     public sealed partial class RepresentativeArea
     {
         private Sprite square;
+        private readonly Dictionary<StoryDoor, SpriteRenderer> doorViews = new Dictionary<StoryDoor, SpriteRenderer>();
         private WaveCatalog waves;
         private BenefactorTrialDefinition mikhailTrial;
         private GameObject layout;
@@ -30,11 +31,20 @@ namespace RewindNotary
             var go = Place(id, x, y);
             var visual = go.AddComponent<SpriteRenderer>();
             visual.sprite = square; visual.color = color;
-            go.transform.localScale = new Vector3(width, height, 1);
+            bool woven = HasBridge && Room.terrain != null && Room.terrain.Length > 0;
+            if (woven)
+            {
+                visual.sprite = WeaveSprite();
+                visual.drawMode = SpriteDrawMode.Tiled;
+                visual.size = new Vector2(width, height);
+            }
+            if (!woven) go.transform.localScale = new Vector3(width, height, 1);
             if (solid)
             {
                 go.layer = LevelBuilder.GroundLayer;
-                fixedFloors.Add(go.AddComponent<BoxCollider2D>());
+                var box = go.AddComponent<BoxCollider2D>();
+                if (woven) box.size = new Vector2(width, height);
+                fixedFloors.Add(box);
             }
             return go;
         }
@@ -47,6 +57,8 @@ namespace RewindNotary
         private bool OnPlank(string id) => fixtures[id].GetComponent<Collider2D>().IsTouching(player.GetComponent<Collider2D>());
         private float LandingY(string floor)
         {
+            var authored = Room.Surface(Room.Floor(floor)?.surface);
+            if (authored != null && !authored.Moving) return authored.rect.y + authored.rect.height + .05f;
             var point = Room.Point(floor);
             if (floor == "opera_reunion_lift_floor" || floor == "luka_opera_lift")
                 return LiftRaised ? 1.95f : .55f;
@@ -76,9 +88,20 @@ namespace RewindNotary
             }
             Block("west_wall",echoArena ? 32 : -4,3,.4f,10,stone,true);
             Block("east_wall",echoArena ? 62 : InFieldTrial ? 61 : 46,3,.4f,10,stone,true);
-            foreach (var f in Room.floors) Block(f.id + "_mark", f.x, .025f, 1.6f, .05f, Color.cyan);
+            BuildSurfaces();
+            foreach (var f in Room.floors)
+            {
+                float y = Room.Surface(f.surface) == null ? .025f : LandingY(f.id) - .025f;
+                Block(f.id + "_mark", f.x, y, 1.6f, .05f, f.contactSave ? new Color(1f,.77f,.32f) : Color.cyan);
+            }
+            doorViews.Clear();
             foreach (var e in Room.exits)
-                fixtures["door:" + e.room] = Block(e.room, e.x, 1.3f, .38f, 2.6f, new Color(.30f,.57f,.58f));
+            {
+                bool bounded = e.approach != null && e.approach.Defined;
+                float x = bounded ? e.approach.x + e.approach.width * .5f : e.x;
+                float y = bounded ? e.approach.y + 1.6f : 1.3f;
+                doorViews[e] = Block(e.room, x, y, .38f, 2.6f, new Color(.30f,.57f,.58f)).GetComponent<SpriteRenderer>();
+            }
             foreach (var p in Room.points)
             {
                 bool plank = p.platform || p.id == "mikhail_escape_plank" || p.id == "luka_freight_platform" || p.id == "mikhail_reunion_plank";
@@ -111,7 +134,10 @@ namespace RewindNotary
                     if (latch && HasBridge && Has(BridgeFlag)) continue;
                     float x = string.IsNullOrEmpty(Room.benefactor) ? 6f + index * 2.25f : 10f + index * 4f;
                     if (latch && Room.Point(Room.stage + "_entry_latch") is StoryMark entry) x = entry.x;
-                    var go = Place(Room.id + ":" + group.id + "_" + index, x, .05f);
+                    var point = group.placementIds == null || group.placementIds.Length == 0 ? null : Room.Placement(group.placementIds[i]);
+                    if (group.placementIds != null && group.placementIds.Length > 0 && point == null)
+                        throw new System.InvalidOperationException("Unknown roster placement in " + Room.id);
+                    var go = Place(Room.id + ":" + group.id + "_" + index, point == null ? x : point.x, point == null ? .05f : point.y);
                     var target = go.AddComponent<WaveTarget2D>();
                     var spawn = new WaveSpawn { segments = group.segments,
                         setupSkill = !string.IsNullOrEmpty(group.setupSkill) ? group.setupSkill : kind.gate == "skill" ? SkillRules.SilverStitch : null };
@@ -120,7 +146,9 @@ namespace RewindNotary
                         (!string.IsNullOrEmpty(Room.benefactor) || !Record.Get(SkillRules.SilverStitch).acquired))
                     { kind = waves.Archetype("shell_sentry"); spawn.setupSkill = null; }
                     target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly);
+                    if (point != null && HasBridge) target.SetPicture(RosterPicture(group.id));
                     roomTargets.Add(target);
+                    if (point?.active != null && point.active.Defined) activationZones.Add((go, point.active));
                     if (latch) latches.Add(target);
                 }
             if (Room.Point("mint_candy_tray") != null)
@@ -139,7 +167,7 @@ namespace RewindNotary
             if (HasBridge) fixtures["bridge"].SetActive(Has(BridgeFlag));
             string nextDoor = NextDoorId();
             foreach (var e in Room.exits)
-                fixtures["door:" + e.room].GetComponent<SpriteRenderer>().color = !Gate(e) ? Color.gray :
+                doorViews[e].color = !Gate(e) ? Color.gray :
                     e.room == nextDoor ? Color.yellow : Color.cyan;
         }
         private bool Gate(StoryDoor door)
@@ -158,12 +186,13 @@ namespace RewindNotary
         {
             StoryDoor nearest = null;
             foreach (var e in Room.exits)
-                if (Gate(e) && (nearest == null || Distance(e.x) < Distance(nearest.x))) nearest = e;
+                if (Gate(e) && e.InReach(player.Body.position) && (nearest == null || Distance(e.x) < Distance(nearest.x))) nearest = e;
             return nearest;
         }
         private void LateUpdate()
         {
             if (shell.Playing) UpdateEntryWave();
+            if (shell.Playing) UpdateActivationZones();
             UpdateDistrictFixtures();
             FlushVictory();
             if (!shell.Playing || !HasBridge || Has(BridgeFlag) || !session.LastSaveSucceeded) return;
@@ -217,7 +246,7 @@ namespace RewindNotary
                 if (ForgeReturn is StoryMark passage)
                     hint += Loc.Get("area.travel", Loc.Get("area.target.forge_to_court_lift")) + Arrow(passage.x) + "    ";
                 foreach (var e in Room.exits)
-                    if (Gate(e)) hint += Loc.Get("area.travel", Departure(e.room).Label) + Arrow(e.x) + "    ";
+                    if (Gate(e)) hint += Loc.Get("area.travel", Departure(e.room).Label) + DoorArrow(e) + "    ";
                 if (HasBridge && !Has(BridgeFlag)) hint += Loc.Get("area.latch");
                 if (Room.id == "hub_attic" && Has("sixth_bowl_stamped")) hint += Loc.Get("area.sixth");
             }
@@ -225,6 +254,14 @@ namespace RewindNotary
             GUI.Box(new Rect(20, 534, 1240, 168), "");
             GUI.Label(new Rect(35, 545, 1200, 100), hint, style);
             GUI.Label(new Rect(35, 658, 1200, 36), Loc.Get("area.help"), style);
+        }
+        private string DoorArrow(StoryDoor door)
+        {
+            var r = door.approach;
+            if (r == null || !r.Defined) return Arrow(door.x);
+            float x = r.x + r.width / 2;
+            if (player.Body.position.x < r.x || player.Body.position.x > r.x + r.width) return Arrow(x);
+            return door.InReach(player.Body.position) ? " ◆" : player.Body.position.y < r.y ? " ▲" : " ▼";
         }
         private string Arrow(float x) => Distance(x) <= 1.25f ? " ◆" :
             (x < player.transform.position.x ? " ◀ " : " ▶ ") + Mathf.CeilToInt(Distance(x));

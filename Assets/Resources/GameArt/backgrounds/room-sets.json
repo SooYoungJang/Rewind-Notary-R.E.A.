@@ -1,0 +1,375 @@
+{
+  "sets": [
+    {
+      "id": "hub_attic",
+      "layers": [
+        {
+          "resource": "attic-branch",
+          "height": 16,
+          "bottom": -6,
+          "factor": 0.12,
+          "vertical": 0.8,
+          "crop": {
+            "x": 0.01,
+            "y": 0,
+            "width": 0.83,
+            "height": 1
+          },
+          "tint": "#889da9",
+          "spacing": 1,
+          "offset": 0
+        },
+        {
+          "resource": "hub-props",
+          "height": 3.7,
+          "bottom": -0.5,
+          "factor": 0.44,
+          "vertical": 0.15,
+          "crop": {
+            "x": 0,
+            "y": 0.667,
+            "width": 0.5,
+            "height": 0.333
+          },
+          "tint": "#cabbab",
+          "spacing": 1.52,
+          "offset": 4
+        },
+        {
+          "resource": "hub-props",
+          "height": 1.9,
+          "bottom": 4.3,
+          "factor": 0.75,
+          "vertical": 0.34,
+          "crop": {
+            "x": 0.5,
+            "y": 0,
+            "width": 0.5,
+            "height": 0.332
+          },
+          "tint": "#d7bf8c",
+          "spacing": 2.4,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "hub_workroom",
+      "layers": [
+        {
+          "resource": "attic-branch",
+          "height": 16,
+          "bottom": -6,
+          "factor": 0.12,
+          "vertical": 0.8,
+          "crop": {
+            "x": 0.34,
+            "y": 0.08,
+            "width": 0.65,
+            "height": 0.88
+          },
+          "tint": "#c6a184",
+          "spacing": 1,
+          "offset": 2
+        },
+        {
+          "resource": "hub-props",
+          "height": 3.1,
+          "bottom": -0.4,
+          "factor": 0.44,
+          "vertical": 0.15,
+          "crop": {
+            "x": 0.5,
+            "y": 0.667,
+            "width": 0.5,
+            "height": 0.333
+          },
+          "tint": "#cabbab",
+          "spacing": 1.52,
+          "offset": 5
+        },
+        {
+          "resource": "hub-props",
+          "height": 2.6,
+          "bottom": 4.4,
+          "factor": 0.75,
+          "vertical": 0.34,
+          "crop": {
+            "x": 0,
+            "y": 0.667,
+            "width": 0.5,
+            "height": 0.333
+          },
+          "tint": "#877259",
+          "spacing": 2.4,
+          "offset": -3
+        }
+      ]
+    },
+    {
+      "id": "hub_forge",
+      "layers": [
+        {
+          "resource": "tailor-workshop",
+          "height": 16,
+          "bottom": -6,
+          "factor": 0.12,
+          "vertical": 0.8,
+          "crop": {
+            "x": 0,
+            "y": 0.05,
+            "width": 0.85,
+            "height": 0.91
+          },
+          "tint": "#73575b",
+          "spacing": 1,
+          "offset": 4
+        },
+        {
+          "resource": "hub-props",
+          "height": 3.5,
+          "bottom": -0.55,
+          "factor": 0.44,
+          "vertical": 0.15,
+          "crop": {
+            "x": 0,
+            "y": 0.332,
+            "width": 0.5,
+            "height": 0.335
+          },
+          "tint": "#cabbab",
+          "spacing": 1.52,
+          "offset": 6
+        },
+        {
+          "resource": "hub-props",
+          "height": 2.1,
+          "bottom": 4,
+          "factor": 0.75,
+          "vertical": 0.34,
+          "crop": {
+            "x": 0.5,
+            "y": 0,
+            "width": 0.5,
+            "height": 0.332
+          },
+          "tint": "#b5becf",
+          "spacing": 2.4,
+          "offset": -6
+        }
+      ]
+    },
+    {
+      "id": "hub_lift",
+      "layers": [
+        {
+          "resource": "lapis-plaza",
+          "height": 16,
+          "bottom": -6,
+          "factor": 0.12,
+          "vertical": 0.8,
+          "crop": {
+            "x": 0.3,
+            "y": 0.02,
+            "width": 0.7,
+            "height": 0.96
+          },
+          "tint": "#738995",
+          "spacing": 1,
+          "offset": 6
+        },
+        {
+          "resource": "hub-props",
+          "height": 4.4,
+          "bottom": -0.7,
+          "factor": 0.44,
+          "vertical": 0.15,
+          "crop": {
+            "x": 0.5,
+            "y": 0.332,
+            "width": 0.5,
+            "height": 0.335
+          },
+          "tint": "#cabbab",
+          "spacing": 1.52,
+          "offset": 7
+        },
+        {
+          "resource": "hub-props",
+          "height": 2.3,
+          "bottom": 4.5,
+          "factor": 0.75,
+          "vertical": 0.34,
+          "crop": {
+            "x": 0.5,
+            "y": 0.332,
+            "width": 0.5,
+            "height": 0.335
+          },
+          "tint": "#8a8b87",
+          "spacing": 2.4,
+          "offset": -9
+        }
+      ]
+    },
+    {
+      "id": "hub_sanctuary",
+      "layers": [
+        {
+          "resource": "lapis-plaza",
+          "height": 16,
+          "bottom": -6,
+          "factor": 0.12,
+          "vertical": 0.8,
+          "crop": {
+            "x": 0.01,
+            "y": 0.11,
+            "width": 0.63,
+            "height": 0.86
+          },
+          "tint": "#97b4a7",
+          "spacing": 1,
+          "offset": 8
+        },
+        {
+          "resource": "hub-props",
+          "height": 4.6,
+          "bottom": -0.3,
+          "factor": 0.44,
+          "vertical": 0.15,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0.5,
+            "height": 0.332
+          },
+          "tint": "#cabbab",
+          "spacing": 1.52,
+          "offset": 8
+        },
+        {
+          "resource": "hub-props",
+          "height": 1.75,
+          "bottom": 4.2,
+          "factor": 0.75,
+          "vertical": 0.34,
+          "crop": {
+            "x": 0.5,
+            "y": 0,
+            "width": 0.5,
+            "height": 0.332
+          },
+          "tint": "#b0cbb5",
+          "spacing": 2.4,
+          "offset": -12
+        }
+      ]
+    },
+    {
+      "id": "velvet_loom",
+      "layers": [
+        {
+          "resource": "dyehouse",
+          "height": 17,
+          "bottom": -6,
+          "factor": 0.11,
+          "vertical": 0.78,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#eecebe",
+          "spacing": 1,
+          "offset": 0
+        },
+        {
+          "resource": "loom-strips",
+          "height": 5,
+          "bottom": -0.35,
+          "factor": 0.4,
+          "vertical": 0.14,
+          "crop": {
+            "x": 0,
+            "y": 0.44,
+            "width": 0.62,
+            "height": 0.56
+          },
+          "tint": "#aa8a82",
+          "spacing": 1,
+          "offset": 0
+        },
+        {
+          "resource": "loom-strips",
+          "height": 2.7,
+          "bottom": 4.3,
+          "factor": 0.73,
+          "vertical": 0.32,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0.68,
+            "height": 0.39
+          },
+          "tint": "#dbab88",
+          "spacing": 1,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "velvet_gallery",
+      "layers": [
+        {
+          "resource": "tailor-workshop",
+          "height": 17,
+          "bottom": -6,
+          "factor": 0.11,
+          "vertical": 0.78,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#926477",
+          "spacing": 1,
+          "offset": 0
+        },
+        {
+          "resource": "loom-strips",
+          "height": 4.2,
+          "bottom": -0.35,
+          "factor": 0.4,
+          "vertical": 0.14,
+          "crop": {
+            "x": 0.48,
+            "y": 0.44,
+            "width": 0.52,
+            "height": 0.56
+          },
+          "tint": "#aa8a82",
+          "spacing": 1,
+          "offset": 5
+        },
+        {
+          "resource": "loom-strips",
+          "height": 3.2,
+          "bottom": 5.3,
+          "factor": 0.73,
+          "vertical": 0.32,
+          "crop": {
+            "x": 0.39,
+            "y": 0,
+            "width": 0.61,
+            "height": 0.39
+          },
+          "tint": "#dbab88",
+          "spacing": 1,
+          "offset": -3
+        }
+      ]
+    }
+  ]
+}

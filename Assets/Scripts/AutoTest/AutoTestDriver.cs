@@ -17,6 +17,7 @@ namespace RewindNotary
         private Health health;
         private PlayerController2D controller;
         private FeelProbe feel;
+        private PilotProbe pilot;
         private BoutAttempt attempt;
         private BenefactorTrialOpponent observedBout;
         private int index, lastShotFrame = -1;
@@ -31,6 +32,7 @@ namespace RewindNotary
             if (report == null) { enabled = false; return; }
             bot = new FirstDepartureBot(keyboard);
             feel = gameObject.AddComponent<FeelProbe>();
+            pilot = new PilotProbe(CapturePilot);
             GameInputDevice.Source = keyboard;
             started = AutoTestRuntime.Now;
         }
@@ -52,11 +54,14 @@ namespace RewindNotary
                 ObserveBout();
                 if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
                 if (!string.IsNullOrEmpty(report.feel.failure)) { Stop(report.feel.failure); return; }
+                if (!string.IsNullOrEmpty(report.pilot.failure)) { Stop(report.pilot.failure); return; }
                 if (now - entered > FirstDepartureBot.Limits[index]) { Stop("step deadline"); return; }
                 if (bot.Passed((PlaytestStep)index, bossWon))
                 {
                     if ((PlaytestStep)index == PlaytestStep.Attic && !feel.Passed)
                     { Stop("Attic finished before the input checks passed"); return; }
+                    if ((PlaytestStep)index == PlaytestStep.Velvet && !report.pilot.Passed)
+                    { Stop("Velvet finished before both pilot traversals passed"); return; }
                     EndStep("pass", "");
                     if (++index == report.steps.Count) { StartDrain(true); return; }
                     Begin();
@@ -67,7 +72,8 @@ namespace RewindNotary
                     Probe(now);
                     if (now - lastProgress > 18) { Stop("no position or state progress for 18 seconds"); return; }
                 }
-                if ((PlaytestStep)index != PlaytestStep.Attic || !feel.Drive(bot, keyboard, report.feel))
+                bool drivingPilot = (PlaytestStep)index == PlaytestStep.Velvet && pilot.Drive(bot, keyboard, report.pilot);
+                if (!drivingPilot && ((PlaytestStep)index != PlaytestStep.Attic || !feel.Drive(bot, keyboard, report.feel)))
                     bot.Drive((PlaytestStep)index);
                 if (keyboard.GetKeyDown(KeyCode.J)) report.attackInputs.issued++;
             }
@@ -76,7 +82,7 @@ namespace RewindNotary
                 report.Error("harness", e.Message, e.StackTrace);
                 // Cleanup and report publication must still run when observation itself failed.
                 if (finishing) { Exit(); return; }
-                Stop("exception in scenario driver");
+                Stop("exception in scenario driver: " + e.Message);
             }
         }
 
@@ -143,17 +149,22 @@ namespace RewindNotary
             observed = null;
             health = null;
         }
-        private void Damaged(Vector2 _) { step.hits++; }
+        private void Damaged(Vector2 _) { step.hits++; pilot.ObserveHit(bot.Area.Rea, report.pilot); }
         private void AttackAccepted() { report.attackInputs.accepted++; }
         private void Died() { step.deaths++; }
-        private void UseBegan(UseContext use) { step.Count(use.SkillId).activations++; }
+        private void UseBegan(UseContext use)
+        {
+            step.Count(use.SkillId).activations++;
+            pilot.ObserveUse();
+        }
         private void ProgressionEvent(ProgressionEvent e)
         {
             if (e.kind == "valid_use") step.Count(e.skillId).validUses++;
             if (e.kind == "attempt_reset")
             {
+                if ((PlaytestStep)index == PlaytestStep.Velvet) pilot.ObserveRetry(report.pilot);
                 // Falling uses the retry path directly, without a Health.Died event.
-                if (!health.Dead && bot.Area.Rea.transform.position.y < -7f) step.deaths++;
+                if (!health.Dead && bot.Area.Rea.transform.position.y < bot.Area.Room.FallY) step.deaths++;
                 EndBout("retry");
             }
         }
@@ -197,6 +208,8 @@ namespace RewindNotary
         private void Stop(string reason)
         {
             feel.Abort(reason);
+            if ((PlaytestStep)index == PlaytestStep.Velvet)
+                pilot.Abort(report.pilot, reason);
             EndBout("aborted");
             Capture("failure");
             EndStep("fail", reason);
@@ -208,6 +221,12 @@ namespace RewindNotary
             finishing = true;
             drainStarted = AutoTestRuntime.Now;
             Detach();
+            report.Write(AutoTestRuntime.DirectoryPath);
+        }
+
+        private void CapturePilot(string kind)
+        {
+            Capture(kind);
             report.Write(AutoTestRuntime.DirectoryPath);
         }
 
