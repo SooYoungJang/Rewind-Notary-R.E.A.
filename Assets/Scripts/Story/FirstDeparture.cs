@@ -27,6 +27,7 @@ namespace RewindNotary
                             8f + spawn.x + entryWave.Count * 2, .05f);
                         var target = go.AddComponent<WaveTarget2D>();
                         target.Initialize(waves.Archetype(spawn.archetypeId), spawn, player, square);
+                        target.SetPicture(RosterPicture(spawn.archetypeId));
                         go.SetActive(entryWave.Count == 0);
                         entryWave.Add(target);
                     }
@@ -46,7 +47,7 @@ namespace RewindNotary
         private bool GatheringSilver => Has("mikhail_i0_complete") && !Record.firstTransferPending;
         private string NextDoorId()
         {
-            if (Has("luka_lift_complete") || InEnding || Has("janhyang_open")) return null;
+            if ((Has("luka_lift_complete") && Room.stage != "velvet") || InEnding || Has("janhyang_open")) return null;
             switch (Room.id)
             {
                 case "hub_attic": return "hub_forge";
@@ -57,7 +58,8 @@ namespace RewindNotary
                 case "hub_sanctuary": return "hub_lift";
                 case "hub_lift": return "velvet_01_entry";
                 case "velvet_01_entry": return "velvet_02_loom";
-                case "velvet_02_loom": return "velvet_03_gallery";
+                case "velvet_02_loom": return Has("investigation_complete") ? "velvet_06_shortcut" : "velvet_03_gallery";
+                case "velvet_06_shortcut": return "velvet_04_arena";
                 case "velvet_03_gallery": return GatheringSilver ? "velvet_05_return" : "velvet_04_arena";
                 case "velvet_04_arena": return "velvet_05_return";
                 case "velvet_05_return": return "velvet_01_entry";
@@ -80,6 +82,24 @@ namespace RewindNotary
                 if (latch != null)
                     return Loc.Get("wave.progress", StageCatalog.Find("velvet").Name, Room.id == "velvet_02_loom" ? 2 : 3, 3)
                         + "\n" + Loc.Get("area.latch") + Arrow(latch.transform.position.x);
+            }
+            if (GatheringSilver && Room.seamRuns != null && Room.seamRuns.Length == 2)
+            {
+                var silver = Record.Get(SkillRules.SilverStitch);
+                var run = Room.seamRuns[0];
+                float next = run.x + Mathf.Min(silver.validUseCount, run.count - 1) * run.stepX;
+                if (silver.validUseCount < run.count)
+                    return Loc.Get("input.skill_mapping_row", Loc.Get("input.direction_neutral"),
+                        session.Progression.Catalog.Get(SkillRules.SilverStitch).DisplayName) + Arrow(next);
+                if (!roomTargets.Exists(t => !t.State.Cleared && t.State.NeedsSetup))
+                {
+                    var upper = Room.seamRuns[1];
+                    int ahead = Mathf.CeilToInt((player.Body.position.x - upper.x - .2f) / upper.stepX);
+                    float target = upper.x + Mathf.Clamp(ahead, 0, upper.count - 1) * upper.stepX;
+                    return Loc.Get("input.skill_mapping_row", Loc.Get("input.direction_neutral"),
+                        session.Progression.Catalog.Get(SkillRules.SilverStitch).DisplayName) +
+                        (player.Body.position.y < upper.y - .5f ? Arrow(Room.Surface("tread_1").rect.x) + " ▲" : Arrow(target));
+                }
             }
             if (GatheringSilver && Room.stage == "velvet")
             {

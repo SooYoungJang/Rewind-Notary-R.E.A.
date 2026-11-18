@@ -236,6 +236,7 @@ namespace RewindNotary
                 Application.logMessageReceivedThreaded -= OnThreadLog;
                 DrainLogs();
                 if (completed && !Report.pilot.Passed) Report.Error("pilot", "Incomplete pilot route or contact save");
+                if (completed && Report.velvetDistrict.run.status != "pass") Report.Error("velvetDistrict", "Incomplete district traversal");
                 if (completed && !Report.feel.Passed) Report.Error("feel", "Required input measurements are incomplete.");
                 if (completed && (Report.attackInputs.accepted < 1 || Report.attackInputs.accepted > Report.attackInputs.issued))
                     Report.Error("feel", "Inconsistent bot attack input counts.");

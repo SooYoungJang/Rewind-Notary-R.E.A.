@@ -275,6 +275,12 @@
         {
           "id": "velvet_wardrobe_floor",
           "x": 8.0
+        },
+        {
+          "id": "wardrobe_cutting_rail",
+          "x": 27.6,
+          "surface": "balcony",
+          "contactSave": true
         }
       ],
       "points": [
@@ -287,12 +293,25 @@
         {
           "room": "hub_lift",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": -0.19999999999999996,
+            "y": -0.28,
+            "width": 2.4,
+            "height": 0.88
+          }
         },
         {
           "room": "velvet_02_loom",
-          "x": 24,
-          "gate": "velvet_entry_complete"
+          "x": 28.5,
+          "gate": "velvet_entry_complete",
+          "approach": {
+            "x": 27.3,
+            "y": 3.57,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "velvet_loom_west"
         }
       ],
       "stitchAnchors": 0,
@@ -300,11 +319,79 @@
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_1"
+          ]
         }
       ],
       "singleSeams": 0,
-      "releaseKnots": 0
+      "releaseKnots": 0,
+      "backgroundSet": "velvet_wardrobe",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.5,
+        "width": 32,
+        "height": 6
+      },
+      "hasFallLine": true,
+      "fallLine": -8,
+      "terrain": [
+        {
+          "id": "tread_1",
+          "rect": {
+            "x": 18.4,
+            "y": 0.93,
+            "width": 3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tread_2",
+          "rect": {
+            "x": 21.7,
+            "y": 2.23,
+            "width": 3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "balcony",
+          "rect": {
+            "x": 25,
+            "y": 3.53,
+            "width": 6.5,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "selvedge_post",
+          "rect": {
+            "x": 34.1,
+            "y": 0,
+            "width": 0.7,
+            "height": 6
+          },
+          "wallJump": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_1",
+          "x": 6,
+          "y": 0.05,
+          "active": {
+            "x": 3.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        }
+      ],
+      "eastBoundary": 36.5
     },
     {
       "id": "velvet_02_loom",
@@ -322,7 +409,7 @@
           "id": "loom_balcony_floor",
           "x": 36.8,
           "surface": "balcony",
-          "contactSave": false
+          "contactSave": true
         }
       ],
       "points": [],
@@ -444,29 +531,39 @@
             "height": 6
           },
           "wallJump": true
+        },
+        {
+          "id": "shuttle_rack",
+          "rect": {
+            "x": 10,
+            "y": 1.03,
+            "width": 6,
+            "height": 0.32
+          },
+          "oneWay": true
         }
       ],
       "placements": [
         {
           "id": "sword_latch_1",
-          "x": 6.0,
+          "x": 6,
           "y": 0.05,
           "active": {
-            "x": 2.5,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 3.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "sword_latch_2",
-          "x": 7.7,
+          "x": 8.4,
           "y": 0.05,
           "active": {
-            "x": 4.2,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 5.5,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
@@ -474,54 +571,54 @@
           "x": 9.3,
           "y": 0.05,
           "active": {
-            "x": 5.8,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 6.4,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "notary_guard_2",
-          "x": 5,
+          "x": 1,
           "y": 0.05,
           "active": {
-            "x": 1.5,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": -1.9,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "notary_guard_3",
-          "x": 1,
+          "x": 4,
           "y": 0.05,
           "active": {
-            "x": -2.5,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 1.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "shell_sentry_1",
-          "x": 1.0,
-          "y": 0.05,
+          "x": 11.5,
+          "y": 1.4,
           "active": {
-            "x": -2.5,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 8.6,
+            "y": 1.0,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "shell_sentry_2",
-          "x": 2.25,
-          "y": 0.05,
+          "x": 14.4,
+          "y": 1.4,
           "active": {
-            "x": -1.25,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 11.5,
+            "y": 1.0,
+            "width": 5.8,
+            "height": 2.65
           }
         }
       ],
@@ -602,13 +699,12 @@
         },
         {
           "id": "notary_guard",
-          "count": 4,
-          "segments": 3,
+          "count": 3,
+          "segments": 4,
           "placementIds": [
             "notary_guard_1",
             "notary_guard_2",
-            "notary_guard_3",
-            "notary_guard_4"
+            "notary_guard_3"
           ]
         },
         {
@@ -689,76 +785,65 @@
           "x": 29.6,
           "y": 0.05,
           "active": {
-            "x": 26.1,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 26.7,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "notary_guard_1",
-          "x": 12.2,
+          "x": 10,
           "y": 0.05,
           "active": {
-            "x": 8.7,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 7.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "notary_guard_2",
-          "x": 8.2,
+          "x": 3,
           "y": 0.05,
           "active": {
-            "x": 4.7,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 0.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "notary_guard_3",
-          "x": 4.2,
+          "x": 14.5,
           "y": 0.05,
           "active": {
-            "x": 0.7,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
-          }
-        },
-        {
-          "id": "notary_guard_4",
-          "x": 0.2,
-          "y": 0.05,
-          "active": {
-            "x": -3.3,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 11.6,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "reflection_statue_1",
-          "x": 1.0,
+          "x": 12.8,
           "y": 0.05,
           "active": {
-            "x": -2.5,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 9.9,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         },
         {
           "id": "reflection_statue_2",
-          "x": 2.25,
+          "x": 5.8,
           "y": 0.05,
           "active": {
-            "x": -1.25,
-            "y": -0.4,
-            "width": 7,
-            "height": 3.4
+            "x": 2.9,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
           }
         }
       ],
@@ -770,7 +855,9 @@
       "floors": [
         {
           "id": "mikhail_arena_west",
-          "x": 4.0
+          "x": 4.0,
+          "surface": "balcony",
+          "contactSave": true
         },
         {
           "id": "mikhail_arena_center",
@@ -799,12 +886,38 @@
         {
           "room": "velvet_03_gallery",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": -0.19999999999999996,
+            "y": -0.28,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "gallery_balcony_floor"
         },
         {
           "room": "velvet_05_return",
           "x": 32,
-          "gate": "mikhail_defeated"
+          "gate": "mikhail_defeated",
+          "approach": {
+            "x": 30.8,
+            "y": -0.28,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "velvet_return_start"
+        },
+        {
+          "room": "velvet_06_shortcut",
+          "gate": "investigation_complete",
+          "x": 6,
+          "approach": {
+            "x": 4.8,
+            "y": 3.77,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "velvet_upper_safe"
         }
       ],
       "stitchAnchors": 0,
@@ -812,7 +925,59 @@
       "singleSeams": 0,
       "releaseKnots": 0,
       "boutHealth": 14,
-      "interludeHealth": 7
+      "interludeHealth": 7,
+      "backgroundSet": "velvet_duel",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.5,
+        "width": 42,
+        "height": 7
+      },
+      "hasFallLine": true,
+      "fallLine": -10,
+      "terrain": [
+        {
+          "id": "tread_1",
+          "rect": {
+            "x": 32,
+            "y": 1.03,
+            "width": 3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tread_2",
+          "rect": {
+            "x": 28.6,
+            "y": 2.38,
+            "width": 3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "balcony",
+          "rect": {
+            "x": 1.8,
+            "y": 3.73,
+            "width": 26.5,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "selvedge_post",
+          "rect": {
+            "x": -1.6,
+            "y": 0,
+            "width": 0.7,
+            "height": 6
+          },
+          "wallJump": true
+        }
+      ],
+      "eastBoundary": 44
     },
     {
       "id": "velvet_05_return",
@@ -825,6 +990,12 @@
         {
           "id": "velvet_return_mid",
           "x": 19.0
+        },
+        {
+          "id": "waterway_splice_floor",
+          "x": 174.2,
+          "surface": "balcony",
+          "contactSave": true
         }
       ],
       "points": [
@@ -841,39 +1012,772 @@
         {
           "room": "velvet_04_arena",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": -0.19999999999999996,
+            "y": -0.28,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "mikhail_arena_west"
         },
         {
           "room": "velvet_01_entry",
           "x": 38,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": 36.8,
+            "y": -0.28,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "velvet_entry_floor"
         },
         {
           "room": "hub_lift",
           "x": 41,
-          "gate": "depart"
+          "gate": "depart",
+          "approach": {
+            "x": 39.8,
+            "y": -0.28,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "lift_waiting_floor"
         },
         {
           "room": "velvet_03_gallery",
           "x": 35,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": 33.8,
+            "y": -0.28,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "velvet_pre_boss_floor"
         }
       ],
-      "stitchAnchors": 13,
+      "stitchAnchors": 66,
       "roster": [
         {
           "id": "notary_guard",
           "count": 8,
-          "segments": 1
+          "segments": 1,
+          "setupHits": 2,
+          "placementIds": [
+            "notary_guard_1",
+            "notary_guard_2",
+            "notary_guard_3",
+            "notary_guard_4",
+            "notary_guard_5",
+            "notary_guard_6",
+            "notary_guard_7",
+            "notary_guard_8"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 3,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "reflection_statue_9",
+            "reflection_statue_10",
+            "reflection_statue_11"
+          ]
         }
       ],
-      "singleSeams": 6,
-      "releaseKnots": 3
+      "singleSeams": 16,
+      "releaseKnots": 3,
+      "backgroundSet": "velvet_waterway",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.5,
+        "width": 182,
+        "height": 7.5
+      },
+      "hasFallLine": true,
+      "fallLine": -11,
+      "terrain": [
+        {
+          "id": "tread_1",
+          "rect": {
+            "x": 179,
+            "y": 1.03,
+            "width": 3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tread_2",
+          "rect": {
+            "x": 175.6,
+            "y": 2.38,
+            "width": 3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "balcony",
+          "rect": {
+            "x": 172.75,
+            "y": 3.73,
+            "width": 2.55,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_1",
+          "rect": {
+            "x": 169.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_2",
+          "rect": {
+            "x": 165.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_3",
+          "rect": {
+            "x": 162.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_4",
+          "rect": {
+            "x": 159.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_5",
+          "rect": {
+            "x": 155.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_6",
+          "rect": {
+            "x": 152.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_7",
+          "rect": {
+            "x": 148.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_8",
+          "rect": {
+            "x": 145.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_9",
+          "rect": {
+            "x": 142.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_10",
+          "rect": {
+            "x": 138.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_11",
+          "rect": {
+            "x": 135.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_12",
+          "rect": {
+            "x": 131.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_13",
+          "rect": {
+            "x": 128.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_14",
+          "rect": {
+            "x": 125.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_15",
+          "rect": {
+            "x": 121.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_16",
+          "rect": {
+            "x": 118.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_17",
+          "rect": {
+            "x": 114.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_18",
+          "rect": {
+            "x": 111.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_19",
+          "rect": {
+            "x": 108.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_20",
+          "rect": {
+            "x": 104.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_21",
+          "rect": {
+            "x": 101.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_22",
+          "rect": {
+            "x": 97.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_23",
+          "rect": {
+            "x": 94.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_24",
+          "rect": {
+            "x": 91.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_25",
+          "rect": {
+            "x": 87.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_26",
+          "rect": {
+            "x": 84.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_27",
+          "rect": {
+            "x": 80.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_28",
+          "rect": {
+            "x": 77.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_29",
+          "rect": {
+            "x": 74.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_30",
+          "rect": {
+            "x": 70.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_31",
+          "rect": {
+            "x": 67.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_32",
+          "rect": {
+            "x": 63.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_33",
+          "rect": {
+            "x": 60.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_34",
+          "rect": {
+            "x": 57.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_35",
+          "rect": {
+            "x": 53.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_36",
+          "rect": {
+            "x": 50.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_37",
+          "rect": {
+            "x": 46.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_38",
+          "rect": {
+            "x": 43.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_39",
+          "rect": {
+            "x": 40.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_40",
+          "rect": {
+            "x": 36.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_41",
+          "rect": {
+            "x": 33.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_42",
+          "rect": {
+            "x": 29.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_43",
+          "rect": {
+            "x": 26.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_44",
+          "rect": {
+            "x": 23.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_45",
+          "rect": {
+            "x": 19.75,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_46",
+          "rect": {
+            "x": 16.35,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_47",
+          "rect": {
+            "x": 12.95,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_48",
+          "rect": {
+            "x": 9.55,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_49",
+          "rect": {
+            "x": 6.15,
+            "y": 3.73,
+            "width": 1.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hem_50",
+          "rect": {
+            "x": 1,
+            "y": 3.73,
+            "width": 3.65,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "inspection_rack",
+          "rect": {
+            "x": 141.5,
+            "y": 1.03,
+            "width": 13,
+            "height": 0.32
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 185,
+      "seamRuns": [
+        {
+          "count": 16,
+          "x": 3.8,
+          "y": 0.24,
+          "stepX": 4.8
+        },
+        {
+          "count": 50,
+          "x": 172,
+          "y": 4.29,
+          "stepX": -3.4
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_1",
+          "x": 83,
+          "y": 0.05,
+          "active": {
+            "x": 80.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 90,
+          "y": 0.05,
+          "active": {
+            "x": 87.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_3",
+          "x": 97,
+          "y": 0.05,
+          "active": {
+            "x": 94.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_4",
+          "x": 104,
+          "y": 0.05,
+          "active": {
+            "x": 101.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_5",
+          "x": 111,
+          "y": 0.05,
+          "active": {
+            "x": 108.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_6",
+          "x": 118,
+          "y": 0.05,
+          "active": {
+            "x": 115.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_7",
+          "x": 125,
+          "y": 0.05,
+          "active": {
+            "x": 122.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_8",
+          "x": 132,
+          "y": 0.05,
+          "active": {
+            "x": 129.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "reflection_statue_9",
+          "x": 143,
+          "y": 1.4,
+          "active": {
+            "x": 140.1,
+            "y": 1,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "reflection_statue_10",
+          "x": 148,
+          "y": 1.4,
+          "active": {
+            "x": 145.1,
+            "y": 1,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "reflection_statue_11",
+          "x": 153,
+          "y": 1.4,
+          "active": {
+            "x": 150.1,
+            "y": 1,
+            "width": 5.8,
+            "height": 2.65
+          }
+        }
+      ]
     },
     {
       "id": "velvet_06_shortcut",
@@ -881,7 +1785,14 @@
       "floors": [
         {
           "id": "velvet_upper_safe",
-          "x": 2.0
+          "x": 2.0,
+          "surface": "balcony"
+        },
+        {
+          "id": "suspension_clasp_floor",
+          "x": 7.5,
+          "surface": "balcony",
+          "contactSave": true
         }
       ],
       "points": [],
@@ -889,13 +1800,26 @@
         {
           "room": "velvet_02_loom",
           "x": 1,
-          "gate": "",
-          "destinationFloor": "loom_balcony_floor"
+          "gate": "investigation_complete",
+          "destinationFloor": "loom_balcony_floor",
+          "approach": {
+            "x": -0.19999999999999996,
+            "y": 3.72,
+            "width": 2.4,
+            "height": 0.88
+          }
         },
         {
           "room": "velvet_04_arena",
-          "x": 37,
-          "gate": ""
+          "x": 10,
+          "gate": "investigation_complete",
+          "approach": {
+            "x": 8.8,
+            "y": 3.72,
+            "width": 2.4,
+            "height": 0.88
+          },
+          "destinationFloor": "mikhail_arena_west"
         }
       ],
       "stitchAnchors": 5,
@@ -903,28 +1827,246 @@
         {
           "id": "notary_guard",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "notary_guard_1",
+            "notary_guard_2"
+          ]
         },
         {
           "id": "notary_guard",
           "count": 4,
           "segments": 1,
           "skillOnly": true,
-          "setupSkill": "silver_stitch"
+          "setupSkill": "silver_stitch",
+          "placementIds": [
+            "notary_guard_3",
+            "notary_guard_4",
+            "notary_guard_5",
+            "notary_guard_6"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 4,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "shell_sentry_7",
+            "shell_sentry_8",
+            "shell_sentry_9",
+            "shell_sentry_10"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 3,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "reflection_statue_11",
+            "reflection_statue_12",
+            "reflection_statue_13"
+          ]
         }
       ],
       "singleSeams": 2,
-      "releaseKnots": 1
+      "releaseKnots": 1,
+      "backgroundSet": "velvet_suspension",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.5,
+        "width": 35,
+        "height": 7
+      },
+      "hasFallLine": true,
+      "fallLine": -9,
+      "terrain": [
+        {
+          "id": "tread_1",
+          "rect": {
+            "x": 23,
+            "y": 0.98,
+            "width": 3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tread_2",
+          "rect": {
+            "x": 19.6,
+            "y": 2.33,
+            "width": 3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "balcony",
+          "rect": {
+            "x": 0.4,
+            "y": 3.68,
+            "width": 18.9,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "selvedge_post",
+          "rect": {
+            "x": -2.8,
+            "y": 0,
+            "width": 0.7,
+            "height": 6
+          },
+          "wallJump": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_1",
+          "x": 13,
+          "y": 0.05,
+          "active": {
+            "x": 10.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 29,
+          "y": 0.05,
+          "active": {
+            "x": 26.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_3",
+          "x": 3,
+          "y": 0.05,
+          "active": {
+            "x": 0.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_4",
+          "x": 7,
+          "y": 0.05,
+          "active": {
+            "x": 4.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_5",
+          "x": 18,
+          "y": 0.05,
+          "active": {
+            "x": 15.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "notary_guard_6",
+          "x": 32,
+          "y": 0.05,
+          "active": {
+            "x": 29.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "shell_sentry_7",
+          "x": 5,
+          "y": 0.05,
+          "active": {
+            "x": 2.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "shell_sentry_8",
+          "x": 16,
+          "y": 0.05,
+          "active": {
+            "x": 13.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "shell_sentry_9",
+          "x": 25,
+          "y": 0.05,
+          "active": {
+            "x": 22.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "shell_sentry_10",
+          "x": 34,
+          "y": 0.05,
+          "active": {
+            "x": 31.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "reflection_statue_11",
+          "x": 8,
+          "y": 0.05,
+          "active": {
+            "x": 5.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "reflection_statue_12",
+          "x": 21,
+          "y": 0.05,
+          "active": {
+            "x": 18.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "reflection_statue_13",
+          "x": 30,
+          "y": 0.05,
+          "active": {
+            "x": 27.1,
+            "y": -0.35,
+            "width": 5.8,
+            "height": 2.65
+          }
+        }
+      ],
+      "eastBoundary": 37
     },
     {
       "id": "hub_sanctuary",

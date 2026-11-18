@@ -21,6 +21,7 @@ namespace RewindNotary
         public SaveAudit isolation = new SaveAudit();
         public FeelResults feel = new FeelResults();
         public PilotResults pilot = new PilotResults();
+        public VelvetDistrictResult velvetDistrict = new VelvetDistrictResult();
         public AttackInputCounts attackInputs = new AttackInputCounts();
 
         public static AutoTestReport NewRun(string mode)

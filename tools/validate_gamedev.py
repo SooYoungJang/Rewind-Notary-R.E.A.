@@ -400,6 +400,8 @@ feel_metrics = validate_feel_pass(check, PROJECT, scripts, body)
 
 from validate_level_step1 import validate_level_step1
 level_step1_metrics = validate_level_step1(check, PROJECT, scripts)
+from validate_level_step2 import validate_level_step2
+level_step2_metrics = validate_level_step2(check, PROJECT, scripts)
 
 # A lexical delimiter check catches accidental patch truncation, NOT C# compilation.
 for path in ASSETS.rglob("*.cs"):
@@ -415,6 +417,7 @@ for path in ASSETS.rglob("*.cs"):
     check(balanced and not stack, "C# delimiters balanced (not compile): " + path.name)
 
 warnings.extend([
+    "Velvet step 2: ordinary-jump trajectories, seam budget and shortcut gates are static checks. The six checkpoint intervals and updated playthrough require Unity.",
     "Finale scenes: authored text, source wiring, checkpoint walks and 120 return-order projections are static checks. Hybrid captions, physics, menu input and real save/resume require Unity Play Mode.",
     "Directional input: source contracts, extracted decision expressions and Python references only. Press-time facing/ground, dash buffering, canvas attack-hold, HUD fit and physical controller axes require Unity Play Mode.",
     "Localization: nine tables, placeholders, exact Korean-literal allowlist, immutable migration hashes and Python settings/fallback references only. Native speaker review, CJK/Cyrillic font assets, Unity compilation, live switching, text fit and target-OS persistence remain unverified.",
@@ -458,6 +461,7 @@ report = {"passed": len(checks), "errors": errors, "warnings": warnings, "checks
           "flow_assembly_metrics": flow_assembly_metrics,
           "autotest_metrics": autotest_metrics,
           "feel_metrics": feel_metrics, "level_step1_metrics": level_step1_metrics,
+          "level_step2_metrics": level_step2_metrics,
           "unity_executed": False, "csharp_compiled": False}
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, help='Write UTF-8 JSON atomically and print a short summary.')

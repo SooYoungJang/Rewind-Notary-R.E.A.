@@ -370,6 +370,218 @@
           "offset": -3
         }
       ]
+    },
+    {
+      "id": "velvet_wardrobe",
+      "layers": [
+        {
+          "resource": "tailor-workshop",
+          "height": 17,
+          "bottom": -6,
+          "factor": 0.11,
+          "vertical": 0.78,
+          "crop": {
+            "x": 0.02,
+            "y": 0.16,
+            "width": 0.7,
+            "height": 0.82
+          },
+          "tint": "#e4b49b",
+          "spacing": 1,
+          "offset": 2
+        },
+        {
+          "resource": "loom-strips",
+          "height": 3.8,
+          "bottom": -0.35,
+          "factor": 0.4,
+          "vertical": 0.14,
+          "crop": {
+            "x": 0.08,
+            "y": 0.48,
+            "width": 0.55,
+            "height": 0.52
+          },
+          "tint": "#97727c",
+          "spacing": 1,
+          "offset": 4
+        },
+        {
+          "resource": "loom-strips",
+          "height": 2.7,
+          "bottom": 4.5,
+          "factor": 0.73,
+          "vertical": 0.32,
+          "crop": {
+            "x": 0.03,
+            "y": 0.02,
+            "width": 0.52,
+            "height": 0.33
+          },
+          "tint": "#bb9165",
+          "spacing": 1,
+          "offset": 6
+        }
+      ]
+    },
+    {
+      "id": "velvet_duel",
+      "layers": [
+        {
+          "resource": "dyehouse",
+          "height": 17,
+          "bottom": -6,
+          "factor": 0.11,
+          "vertical": 0.78,
+          "crop": {
+            "x": 0.36,
+            "y": 0.04,
+            "width": 0.64,
+            "height": 0.88
+          },
+          "tint": "#cc8d8d",
+          "spacing": 1,
+          "offset": -4
+        },
+        {
+          "resource": "loom-strips",
+          "height": 4.6,
+          "bottom": -0.35,
+          "factor": 0.4,
+          "vertical": 0.14,
+          "crop": {
+            "x": 0.47,
+            "y": 0.46,
+            "width": 0.5,
+            "height": 0.54
+          },
+          "tint": "#a76e82",
+          "spacing": 1,
+          "offset": -8
+        },
+        {
+          "resource": "loom-strips",
+          "height": 3.2,
+          "bottom": 5.5,
+          "factor": 0.73,
+          "vertical": 0.32,
+          "crop": {
+            "x": 0.43,
+            "y": 0.03,
+            "width": 0.57,
+            "height": 0.34
+          },
+          "tint": "#d6ad71",
+          "spacing": 1,
+          "offset": -12
+        }
+      ]
+    },
+    {
+      "id": "velvet_waterway",
+      "layers": [
+        {
+          "resource": "dyehouse",
+          "height": 17,
+          "bottom": -6,
+          "factor": 0.11,
+          "vertical": 0.78,
+          "crop": {
+            "x": 0.01,
+            "y": 0.05,
+            "width": 0.68,
+            "height": 0.8
+          },
+          "tint": "#8eaaaf",
+          "spacing": 1,
+          "offset": 5
+        },
+        {
+          "resource": "loom-strips",
+          "height": 2.8,
+          "bottom": -0.35,
+          "factor": 0.4,
+          "vertical": 0.14,
+          "crop": {
+            "x": 0.44,
+            "y": 0.45,
+            "width": 0.55,
+            "height": 0.55
+          },
+          "tint": "#688992",
+          "spacing": 1,
+          "offset": 10
+        },
+        {
+          "resource": "loom-strips",
+          "height": 2.7,
+          "bottom": 5,
+          "factor": 0.73,
+          "vertical": 0.32,
+          "crop": {
+            "x": 0.14,
+            "y": 0.01,
+            "width": 0.48,
+            "height": 0.37
+          },
+          "tint": "#998296",
+          "spacing": 1,
+          "offset": 15
+        }
+      ]
+    },
+    {
+      "id": "velvet_suspension",
+      "layers": [
+        {
+          "resource": "tailor-workshop",
+          "height": 17,
+          "bottom": -6,
+          "factor": 0.11,
+          "vertical": 0.78,
+          "crop": {
+            "x": 0.2,
+            "y": 0.22,
+            "width": 0.77,
+            "height": 0.78
+          },
+          "tint": "#c0a6c4",
+          "spacing": 1,
+          "offset": -2
+        },
+        {
+          "resource": "loom-strips",
+          "height": 5.2,
+          "bottom": -0.35,
+          "factor": 0.4,
+          "vertical": 0.14,
+          "crop": {
+            "x": 0.03,
+            "y": 0.45,
+            "width": 0.55,
+            "height": 0.55
+          },
+          "tint": "#937987",
+          "spacing": 1,
+          "offset": -4
+        },
+        {
+          "resource": "loom-strips",
+          "height": 3.2,
+          "bottom": 5.9,
+          "factor": 0.73,
+          "vertical": 0.32,
+          "crop": {
+            "x": 0.47,
+            "y": 0.01,
+            "width": 0.52,
+            "height": 0.36
+          },
+          "tint": "#dfc28d",
+          "spacing": 1,
+          "offset": -6
+        }
+      ]
     }
   ]
 }

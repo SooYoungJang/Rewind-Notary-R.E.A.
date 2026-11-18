@@ -1,7 +1,8 @@
 {
-  "passed": 7385,
+  "passed": 7502,
   "errors": [],
   "warnings": [
+    "Velvet step 2: ordinary-jump trajectories, seam budget and shortcut gates are static checks. The six checkpoint intervals and updated playthrough require Unity.",
     "Finale scenes: authored text, source wiring, checkpoint walks and 120 return-order projections are static checks. Hybrid captions, physics, menu input and real save/resume require Unity Play Mode.",
     "Directional input: source contracts, extracted decision expressions and Python references only. Press-time facing/ground, dash buffering, canvas attack-hold, HUD fit and physical controller axes require Unity Play Mode.",
     "Localization: nine tables, placeholders, exact Korean-literal allowlist, immutable migration hashes and Python settings/fallback references only. Native speaker review, CJK/Cyrillic font assets, Unity compilation, live switching, text fit and target-OS persistence remain unverified.",
@@ -258,6 +259,10 @@
     "Unique GUID: Assets/Scripts/AutoTest/PilotProbe.cs",
     "Metadata present: Assets/Scripts/AutoTest/PlaytestObservations.cs",
     "Unique GUID: Assets/Scripts/AutoTest/PlaytestObservations.cs",
+    "Metadata present: Assets/Scripts/AutoTest/VelvetDistrictProbe.cs",
+    "Unique GUID: Assets/Scripts/AutoTest/VelvetDistrictProbe.cs",
+    "Metadata present: Assets/Scripts/AutoTest/VelvetTraversal.cs",
+    "Unique GUID: Assets/Scripts/AutoTest/VelvetTraversal.cs",
     "Metadata present: Assets/Scripts/CameraTarget2D.cs",
     "Unique GUID: Assets/Scripts/CameraTarget2D.cs",
     "Metadata present: Assets/Scripts/CombatMotor2D.cs",
@@ -6998,6 +7003,7 @@
     "Flow assembly: guided destinations are real doors in hub_lift",
     "Flow assembly: guided destinations are real doors in velvet_01_entry",
     "Flow assembly: guided destinations are real doors in velvet_02_loom",
+    "Flow assembly: guided destinations are real doors in velvet_06_shortcut",
     "Flow assembly: guided destinations are real doors in velvet_03_gallery",
     "Flow assembly: guided destinations are real doors in velvet_04_arena",
     "Flow assembly: guided destinations are real doors in velvet_05_return",
@@ -7307,6 +7313,116 @@
     "Level step 1: velvet_gallery / textured far plus two transparent depth strips",
     "Level step 1: mutation detected / velvet_gallery / old strip substituted",
     "Level step 1: mutation detected / velvet_gallery / black far layer",
+    "Level step 1: velvet_wardrobe / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / velvet_wardrobe / old strip substituted",
+    "Level step 1: mutation detected / velvet_wardrobe / black far layer",
+    "Level step 1: velvet_duel / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / velvet_duel / old strip substituted",
+    "Level step 1: mutation detected / velvet_duel / black far layer",
+    "Level step 1: velvet_waterway / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / velvet_waterway / old strip substituted",
+    "Level step 1: mutation detected / velvet_waterway / black far layer",
+    "Level step 1: velvet_suspension / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / velvet_suspension / old strip substituted",
+    "Level step 1: mutation detected / velvet_suspension / black far layer",
+    "Level step 2: exact step 1 predecessor, original hub, rows and all v4 floor IDs",
+    "Level step 2: six distinct parallax compositions",
+    "Level step 2: velvet_01_entry / three plain jumps on actual fixed tops",
+    "Level step 2: velvet_01_entry / camera, fall line and one supported contact floor",
+    "Level step 2: velvet_01_entry / every roster actor owns a reachable activation zone",
+    "Level step 2: velvet_01_entry / arrival floor ownership",
+    "Level step 2: mutation detected / velvet_01_entry / broken fixed ascent",
+    "Level step 2: mutation detected / velvet_01_entry / unsupported contact mark",
+    "Level step 2: mutation detected / velvet_01_entry / missing placement",
+    "Level step 2: velvet_02_loom / three plain jumps on actual fixed tops",
+    "Level step 2: velvet_02_loom / camera, fall line and one supported contact floor",
+    "Level step 2: velvet_02_loom / every roster actor owns a reachable activation zone",
+    "Level step 2: velvet_02_loom / arrival floor ownership",
+    "Level step 2: mutation detected / velvet_02_loom / broken fixed ascent",
+    "Level step 2: mutation detected / velvet_02_loom / unsupported contact mark",
+    "Level step 2: mutation detected / velvet_02_loom / missing placement",
+    "Level step 2: velvet_03_gallery / three plain jumps on actual fixed tops",
+    "Level step 2: velvet_03_gallery / camera, fall line and one supported contact floor",
+    "Level step 2: velvet_03_gallery / every roster actor owns a reachable activation zone",
+    "Level step 2: velvet_03_gallery / arrival floor ownership",
+    "Level step 2: mutation detected / velvet_03_gallery / broken fixed ascent",
+    "Level step 2: mutation detected / velvet_03_gallery / unsupported contact mark",
+    "Level step 2: mutation detected / velvet_03_gallery / missing placement",
+    "Level step 2: velvet_04_arena / three plain jumps on actual fixed tops",
+    "Level step 2: velvet_04_arena / camera, fall line and one supported contact floor",
+    "Level step 2: velvet_04_arena / every roster actor owns a reachable activation zone",
+    "Level step 2: velvet_04_arena / arrival floor ownership",
+    "Level step 2: mutation detected / velvet_04_arena / broken fixed ascent",
+    "Level step 2: mutation detected / velvet_04_arena / unsupported contact mark",
+    "Level step 2: velvet_05_return / three plain jumps on actual fixed tops",
+    "Level step 2: velvet_05_return / camera, fall line and one supported contact floor",
+    "Level step 2: velvet_05_return / every roster actor owns a reachable activation zone",
+    "Level step 2: velvet_05_return / arrival floor ownership",
+    "Level step 2: mutation detected / velvet_05_return / broken fixed ascent",
+    "Level step 2: mutation detected / velvet_05_return / unsupported contact mark",
+    "Level step 2: mutation detected / velvet_05_return / missing placement",
+    "Level step 2: velvet_06_shortcut / three plain jumps on actual fixed tops",
+    "Level step 2: velvet_06_shortcut / camera, fall line and one supported contact floor",
+    "Level step 2: velvet_06_shortcut / every roster actor owns a reachable activation zone",
+    "Level step 2: velvet_06_shortcut / arrival floor ownership",
+    "Level step 2: mutation detected / velvet_06_shortcut / broken fixed ascent",
+    "Level step 2: mutation detected / velvet_06_shortcut / unsupported contact mark",
+    "Level step 2: mutation detected / velvet_06_shortcut / missing placement",
+    "Level step 2: investigated upper doors in both directions with shorter intermediate walk",
+    "Level step 2: mutation detected / velvet_02_loom / shortcut gate",
+    "Level step 2: mutation detected / velvet_04_arena / shortcut gate",
+    "Level step 2: mutation detected / velvet_06_shortcut / shortcut destinationFloor",
+    "Level step 2: mutation detected / velvet_06_shortcut / shortcut approach",
+    "Level step 2: loom, gallery and solo bout retain three different first-visit encounters",
+    "Level step 2: optional guard and parry elite pocket below the upper return",
+    "Level step 2: mutation detected / lower ambush spills onto the upper bridge",
+    "Level step 2: all upper tears crossable without skill or wall",
+    "Level step 2: mutation detected / missing island on the unstitched route",
+    "Level step 2: distinct short seams, separated guard casts and physical upper supports reach 80 in one visit",
+    "Level step 2: mutation detected / first seam beyond reach",
+    "Level step 2: mutation detected / combined cast on two guards",
+    "Level step 2: mutation detected / inaccessible long anchors",
+    "Level step 2: mutation detected / missing second guard preparation",
+    "Level step 2: mutation detected / removed landing cloth",
+    "Level step 2: RepresentativeRoomLayout / x = run.x + inRun * run.stepX;",
+    "Level step 2: mutation detected / RepresentativeRoomLayout / x = run.x + inRun * run.stepX;",
+    "Level step 2: mutation detected / RepresentativeRoomLayout / y = run.y;",
+    "Level step 2: mutation detected / RepresentativeRoomLayout / Place(\"seam_\" + i, x, y)",
+    "Level step 2: mutation detected / RepresentativeRoomLayout / i < Room.singleSeams ? .9f : 2.2f",
+    "Level step 2: StitchSurface2D / span > profile.maxSpan",
+    "Level step 2: mutation detected / StitchSurface2D / span > profile.maxSpan",
+    "Level step 2: mutation detected / StitchSurface2D / PlayerOnFloor() && player.Grounded",
+    "Level step 2: mutation detected / StitchSurface2D / floor.IsTouching(player.GetComponent<Collider2D>())",
+    "Level step 2: mutation detected / StitchSurface2D / TargetId + \":support\"",
+    "Level step 2: AutoTestDriver / if (++index == report.steps.Count) { BeginDistrict();",
+    "Level step 2: mutation detected / AutoTestDriver / if (++index == report.steps.Count) { BeginDistrict();",
+    "Level step 2: mutation detected / AutoTestDriver / bot = new FirstDepartureBot(keyboard);",
+    "Level step 2: mutation detected / AutoTestDriver / if (now - lastProgress > 18)",
+    "Level step 2: mutation detected / AutoTestDriver / if (district.Drive(bot, keyboard, now))",
+    "Level step 2: VelvetDistrictProbe / bot.Session?.ActiveSlot == 2",
+    "Level step 2: mutation detected / VelvetDistrictProbe / bot.Session?.ActiveSlot == 2",
+    "Level step 2: mutation detected / VelvetDistrictProbe / area.StandingOn(mark.surface)",
+    "Level step 2: mutation detected / VelvetDistrictProbe / Mathf.Abs(area.Rea.Body.position.x - mark.x) > .8f",
+    "Level step 2: mutation detected / VelvetDistrictProbe / scene_floor:velvet:",
+    "Level step 2: mutation detected / VelvetDistrictProbe / now - last",
+    "Level step 2: mutation detected / VelvetDistrictProbe / inDistrict < result.targetMinSeconds",
+    "Level step 2: mutation detected / VelvetDistrictProbe / inDistrict > result.targetMaxSeconds",
+    "Level step 2: mutation detected / VelvetDistrictProbe / publish();",
+    "Level step 2: VelvetDistrictProbe / upper.InReach(area.Rea.Body.position)",
+    "Level step 2: mutation detected / VelvetDistrictProbe / upper.InReach(area.Rea.Body.position)",
+    "Level step 2: mutation detected / VelvetDistrictProbe / if (GameInput.InvestigateDown) closedInputFrame",
+    "Level step 2: mutation detected / VelvetDistrictProbe / previousRoom != Loom || !investigated",
+    "Level step 2: mutation detected / VelvetDistrictProbe / previousRoom == Bridge",
+    "Level step 2: mutation detected / VelvetDistrictProbe / result.contacts.Count != 6",
+    "Level step 2: mutation detected / VelvetDistrictProbe / result.firstSilverTarget != Waterway + \":seam_0\"",
+    "Level step 2: mutation detected / VelvetDistrictProbe / uses.Add(e.useId)",
+    "Level step 2: VelvetTraversal / keys.Cast()",
+    "Level step 2: mutation detected / VelvetTraversal / keys.Cast()",
+    "Level step 2: mutation detected / VelvetTraversal / if (seam.Installed)",
+    "Level step 2: mutation detected / VelvetTraversal / Walk(x, .15f)",
+    "Level step 2: mutation detected / VelvetTraversal / lastSewn == id + \":support\"",
+    "Level step 2: AutoTestRuntime / Report.velvetDistrict.run.status != \"pass\"",
+    "Level step 2: mutation detected / AutoTestRuntime / Report.velvetDistrict.run.status != \"pass\"",
     "C# delimiters balanced (not compile): SpriteAnimator.cs",
     "C# delimiters balanced (not compile): Health.cs",
     "C# delimiters balanced (not compile): CombatMotor2D.cs",
@@ -7409,7 +7525,9 @@
     "C# delimiters balanced (not compile): FirstDepartureBot.cs",
     "C# delimiters balanced (not compile): AutoTestDriver.cs",
     "C# delimiters balanced (not compile): FeelProbe.cs",
-    "C# delimiters balanced (not compile): PilotProbe.cs"
+    "C# delimiters balanced (not compile): PilotProbe.cs",
+    "C# delimiters balanced (not compile): VelvetTraversal.cs",
+    "C# delimiters balanced (not compile): VelvetDistrictProbe.cs"
   ],
   "audio_metrics": [
     {
@@ -14062,7 +14180,7 @@
     "extracted_data_keys": 100,
     "new_ui_keys": 547,
     "data_display_fields": 100,
-    "literal_call_sites": 406,
+    "literal_call_sites": 410,
     "empty_translations": 0,
     "unexpected_korean_literals": 0,
     "exact_allowed_literals": 14,
@@ -15395,7 +15513,7 @@
     "unity_executed": false
   },
   "flow_assembly_metrics": {
-    "checks": 25,
+    "checks": 26,
     "milestones": [
       "mint_candy_placed",
       "sixth_bowl_stamped",
@@ -15421,23 +15539,11 @@
       "velvet_02_loom",
       "velvet_03_gallery",
       "velvet_04_arena",
-      "velvet_01_entry",
-      "velvet_02_loom",
-      "velvet_03_gallery",
-      "velvet_05_return",
-      "velvet_01_entry",
-      "velvet_02_loom",
-      "velvet_03_gallery",
-      "velvet_05_return",
-      "velvet_01_entry",
-      "velvet_02_loom",
       "hub_sanctuary",
       "hub_lift"
     ],
     "uses_after_return_room": [
-      8,
-      40,
-      72
+      80
     ],
     "unity_executed": false,
     "csharp_compiled": false
@@ -15543,8 +15649,144 @@
         "movement_seconds": 3.1
       }
     },
-    "mutations": 69,
-    "detected": 69,
+    "mutations": 77,
+    "detected": 77,
+    "unity_executed": false
+  },
+  "level_step2_metrics": {
+    "fixedRoutes": {
+      "velvet_01_entry": {
+        "heights": [
+          1.25,
+          2.55,
+          3.85
+        ],
+        "flightSeconds": 2.04
+      },
+      "velvet_02_loom": {
+        "heights": [
+          1.3,
+          2.6,
+          3.9
+        ],
+        "flightSeconds": 2.04
+      },
+      "velvet_03_gallery": {
+        "heights": [
+          1.4,
+          2.85,
+          4.25
+        ],
+        "flightSeconds": 1.98
+      },
+      "velvet_04_arena": {
+        "heights": [
+          1.35,
+          2.7,
+          4.05
+        ],
+        "flightSeconds": 1.98
+      },
+      "velvet_05_return": {
+        "heights": [
+          1.35,
+          2.7,
+          4.05
+        ],
+        "flightSeconds": 1.98
+      },
+      "velvet_06_shortcut": {
+        "heights": [
+          1.3,
+          2.65,
+          4.0
+        ],
+        "flightSeconds": 2.0
+      }
+    },
+    "seamCountsBeforeAfter": {
+      "velvet_01_entry": [
+        {
+          "short": 0,
+          "long": 0,
+          "releaseKnots": 0
+        },
+        {
+          "short": 0,
+          "long": 0,
+          "releaseKnots": 0
+        }
+      ],
+      "velvet_02_loom": [
+        {
+          "short": 3,
+          "long": 2,
+          "releaseKnots": 0
+        },
+        {
+          "short": 3,
+          "long": 2,
+          "releaseKnots": 0
+        }
+      ],
+      "velvet_03_gallery": [
+        {
+          "short": 3,
+          "long": 0,
+          "releaseKnots": 0
+        },
+        {
+          "short": 3,
+          "long": 0,
+          "releaseKnots": 0
+        }
+      ],
+      "velvet_04_arena": [
+        {
+          "short": 0,
+          "long": 0,
+          "releaseKnots": 0
+        },
+        {
+          "short": 0,
+          "long": 0,
+          "releaseKnots": 0
+        }
+      ],
+      "velvet_05_return": [
+        {
+          "short": 6,
+          "long": 7,
+          "releaseKnots": 3
+        },
+        {
+          "short": 16,
+          "long": 50,
+          "releaseKnots": 3
+        }
+      ],
+      "velvet_06_shortcut": [
+        {
+          "short": 2,
+          "long": 3,
+          "releaseKnots": 1
+        },
+        {
+          "short": 2,
+          "long": 3,
+          "releaseKnots": 1
+        }
+      ]
+    },
+    "firstVisit": {
+      "short": 16,
+      "preparations": 16,
+      "stageTwoSupports": 50,
+      "distinctUses": 82,
+      "supportsToMastery": 48
+    },
+    "mutations": 60,
+    "detected": 60,
     "unity_executed": false
   },
   "unity_executed": false,

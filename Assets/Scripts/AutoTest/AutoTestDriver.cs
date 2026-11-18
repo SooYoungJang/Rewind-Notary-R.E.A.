@@ -18,6 +18,7 @@ namespace RewindNotary
         private PlayerController2D controller;
         private FeelProbe feel;
         private PilotProbe pilot;
+        private VelvetDistrictProbe district;
         private BoutAttempt attempt;
         private BenefactorTrialOpponent observedBout;
         private int index, lastShotFrame = -1;
@@ -51,6 +52,20 @@ namespace RewindNotary
                 if (now > lastFrame) frameMs.Add((now - lastFrame) * 1000);
                 lastFrame = now;
                 ObserveSession();
+                if (now >= nextProbe)
+                {
+                    Probe(now);
+                    if (now - lastProgress > 18) { Stop("no position or state progress for 18 seconds"); return; }
+                }
+                if (district != null)
+                {
+                    if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
+                    if (now - entered > 1500)
+                    { Stop("District probe exceeded progress or run deadline"); return; }
+                    if (district.Drive(bot, keyboard, now))
+                    { EndStep("pass", ""); StartDrain(true); }
+                    return;
+                }
                 ObserveBout();
                 if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
                 if (!string.IsNullOrEmpty(report.feel.failure)) { Stop(report.feel.failure); return; }
@@ -63,14 +78,9 @@ namespace RewindNotary
                     if ((PlaytestStep)index == PlaytestStep.Velvet && !report.pilot.Passed)
                     { Stop("Velvet finished before both pilot traversals passed"); return; }
                     EndStep("pass", "");
-                    if (++index == report.steps.Count) { StartDrain(true); return; }
+                    if (++index == report.steps.Count) { BeginDistrict(); return; }
                     Begin();
                     return;
-                }
-                if (now >= nextProbe)
-                {
-                    Probe(now);
-                    if (now - lastProgress > 18) { Stop("no position or state progress for 18 seconds"); return; }
                 }
                 bool drivingPilot = (PlaytestStep)index == PlaytestStep.Velvet && pilot.Drive(bot, keyboard, report.pilot);
                 if (!drivingPilot && ((PlaytestStep)index != PlaytestStep.Attic || !feel.Drive(bot, keyboard, report.feel)))
@@ -86,9 +96,22 @@ namespace RewindNotary
             }
         }
 
+        private void BeginDistrict()
+        {
+            Detach();
+            bot = new FirstDepartureBot(keyboard);
+            district = new VelvetDistrictProbe(report.velvetDistrict, () => report.Write(AutoTestRuntime.DirectoryPath));
+            step = report.velvetDistrict.run;
+            StartMeasurement();
+        }
+
         private void Begin()
         {
             step = report.steps[index];
+            StartMeasurement();
+        }
+        private void StartMeasurement()
+        {
             step.status = "running";
             step.reason = "";
             progress = null;
@@ -130,7 +153,7 @@ namespace RewindNotary
                 throw new IOException("Skill session did not use the isolated directory.");
             health = bot.Area.Rea.Health;
             controller = health.GetComponent<PlayerController2D>();
-            controller.AttackInputAccepted += AttackAccepted;
+            if (district == null) controller.AttackInputAccepted += AttackAccepted;
             health.Damaged += Damaged;
             health.Died += Died;
             observed.Progression.UseBegan += UseBegan;
@@ -159,7 +182,11 @@ namespace RewindNotary
         }
         private void ProgressionEvent(ProgressionEvent e)
         {
+            bot.ObserveSilver(e);
+            district?.ObserveUse(e, bot.Area.Room.id);
             if (e.kind == "valid_use") step.Count(e.skillId).validUses++;
+            if (district != null && e.kind == "attempt_reset")
+                report.Error("velvetDistrict", "Attempt reset during continuous checkpoint traversal");
             if (e.kind == "attempt_reset")
             {
                 if ((PlaytestStep)index == PlaytestStep.Velvet) pilot.ObserveRetry(report.pilot);

@@ -47,6 +47,11 @@ namespace RewindNotary
         public int count, segments, setupHits;
         public bool skillOnly;
     }
+    [Serializable] public sealed class StorySeamRun
+    {
+        public int count;
+        public float x, y, stepX;
+    }
     [Serializable] public sealed class StoryRoom
     {
         public string id, stage, skill, benefactor, crossing, seamId;
@@ -59,6 +64,8 @@ namespace RewindNotary
         public float FallY => hasFallLine ? fallLine : -7f;
         public StorySurface[] terrain;
         public StoryPlacement[] placements;
+        public StorySeamRun[] seamRuns;
+        public float eastBoundary;
         public StorySurface Surface(string key) => string.IsNullOrEmpty(key) || terrain == null
             ? null : Array.Find(terrain, s => s.id == key);
         public StoryPlacement Placement(string key) => placements == null ? null : Array.Find(placements, p => p.id == key);

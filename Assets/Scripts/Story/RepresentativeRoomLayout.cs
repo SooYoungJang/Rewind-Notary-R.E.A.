@@ -31,7 +31,7 @@ namespace RewindNotary
             var go = Place(id, x, y);
             var visual = go.AddComponent<SpriteRenderer>();
             visual.sprite = square; visual.color = color;
-            bool woven = HasBridge && Room.terrain != null && Room.terrain.Length > 0;
+            bool woven = Room.stage == "velvet" && Room.terrain != null && Room.terrain.Length > 0;
             if (woven)
             {
                 visual.sprite = WeaveSprite();
@@ -80,6 +80,8 @@ namespace RewindNotary
             if (echoArena) Block("arena_floor", 47, -1, 30, 2, stone, true);
             else if (!string.IsNullOrEmpty(Room.crossing)) BuildCrossing(stone);
             else if (Room.stations > 0 && Room.skill == BenefactorIds.Canvas) BuildPaintLedges(stone);
+            else if (Room.eastBoundary > 0)
+                Block("floor", (Room.eastBoundary - 4) / 2, -1, Room.eastBoundary + 4, 2, stone, true);
             else Block("floor", HasBridge ? 14 : InFieldTrial ? 29 : 21, -1, HasBridge ? 36 : InFieldTrial ? 66 : 50, 2, stone, true);
             if (HasBridge)
             {
@@ -87,7 +89,7 @@ namespace RewindNotary
                 fixtures["bridge"] = Block("latch_bridge", 33, -.14f, 2.2f, .28f, Color.gray, true);
             }
             Block("west_wall",echoArena ? 32 : -4,3,.4f,10,stone,true);
-            Block("east_wall",echoArena ? 62 : InFieldTrial ? 61 : 46,3,.4f,10,stone,true);
+            Block("east_wall",echoArena ? 62 : InFieldTrial ? 61 : Room.eastBoundary > 0 ? Room.eastBoundary : 46,3,.4f,10,stone,true);
             BuildSurfaces();
             foreach (var f in Room.floors)
             {
@@ -111,10 +113,19 @@ namespace RewindNotary
             if (Room.Point("resonant_crucible") != null)
                 for (int i = 0; i < 5; i++) Place("crucible_" + i, 10 + i, 1).AddComponent<DestructibleTarget2D>();
 
+            int runIndex = 0, inRun = 0;
             for (int i = 0; i < Room.stitchAnchors; i++)
             {
                 float x = string.IsNullOrEmpty(Room.seamId) ? 5 + 25f * i / Mathf.Max(1, Room.stitchAnchors - 1) : StationX(i) - 1.1f;
-                Place("seam_" + i, x, .24f).AddComponent<StitchSurface2D>()
+                float y = .24f;
+                if (Room.seamRuns != null && Room.seamRuns.Length > 0)
+                {
+                    var run = Room.seamRuns[runIndex];
+                    x = run.x + inRun * run.stepX;
+                    y = run.y;
+                    if (++inRun == run.count) { runIndex++; inRun = 0; }
+                }
+                Place("seam_" + i, x, y).AddComponent<StitchSurface2D>()
                     .Initialize((Room.seamId ?? Room.id + ":seam") + "_" + i, i < Room.singleSeams ? .9f : 2.2f, i >= Room.stitchAnchors - Room.releaseKnots, player, opponent);
             }
             if (Room.id == "velvet_06_shortcut")
@@ -146,7 +157,7 @@ namespace RewindNotary
                         (!string.IsNullOrEmpty(Room.benefactor) || !Record.Get(SkillRules.SilverStitch).acquired))
                     { kind = waves.Archetype("shell_sentry"); spawn.setupSkill = null; }
                     target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly);
-                    if (point != null && HasBridge) target.SetPicture(RosterPicture(group.id));
+                    if (point != null && Room.stage == "velvet") target.SetPicture(RosterPicture(group.id));
                     roomTargets.Add(target);
                     if (point?.active != null && point.active.Defined) activationZones.Add((go, point.active));
                     if (latch) latches.Add(target);

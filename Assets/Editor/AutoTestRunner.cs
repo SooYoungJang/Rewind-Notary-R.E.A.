@@ -60,6 +60,8 @@ public static class AutoTestRunner
             result.Error("editor", e.Message, e.StackTrace);
             foreach (var step in result.steps)
                 if (step.status == "running") { step.status = "fail"; step.reason = e.Message; }
+            if (result.velvetDistrict.run.status == "running")
+            { result.velvetDistrict.run.status = "fail"; result.velvetDistrict.run.reason = e.Message; }
             result.status = "fail";
             result.exitCode = 1;
             result.endedUtc = DateTime.UtcNow.ToString("O");

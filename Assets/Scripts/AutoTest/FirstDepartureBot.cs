@@ -5,7 +5,7 @@ namespace RewindNotary
 {
     internal enum PlaytestStep { NewSlot, Attic, Velvet, Mikhail, Silver, SafeReturn, Investigation, Lift, DistrictTwo }
 
-    internal sealed class FirstDepartureBot
+    internal sealed partial class FirstDepartureBot
     {
         internal static readonly string[] Expectations = {
             "Empty slot 1 starts hub_attic with 120 basic sword uses",
@@ -124,16 +124,19 @@ namespace RewindNotary
                 if (!Area.OnReturnFloor) SeekFloor();
                 return;
             }
+            if (Area.Room.seamRuns != null && Area.Room.seamRuns.Length > 0 &&
+                Record.Get(SkillRules.SilverStitch).acquired && !Record.firstTransferPending && SewReturnRoute()) return;
             var target = Area.RouteTarget;
             if (target != null) { FightTarget(target); return; }
             var door = Area.ForwardDoor;
             if (door == null) return;
-            if (Walk(door.x, .45f)) keys.Tap(KeyCode.F);
+            if (door.approach != null && door.approach.y > 1 && !ReachBalcony()) return;
+            if (Walk(door.x, .45f) && door.InReach(Player.Body.position)) keys.Tap(KeyCode.F);
             else if (Area.Room.id == "velvet_01_entry" && Player.Grounded &&
                 door.x - Player.Body.position.x > DefenseTuning.DashDistance + 1f) keys.Tap(KeyCode.K);
         }
 
-        private void Select(int index)
+        internal void Select(int index)
         {
             if (Shell.MenuIndex == index) keys.Tap(KeyCode.Return);
             else keys.Tap(Shell.MenuIndex < index ? KeyCode.DownArrow : KeyCode.UpArrow);
@@ -209,6 +212,8 @@ namespace RewindNotary
         }
         private void FightBoss()
         {
+            if (Area.Room.id == "velvet_04_arena" && Player.Body.position.y > 1)
+            { MoveTo(0); return; }
             float strikeIn = Area.Bout.StrikeIn;
             if (strikeIn <= .09f)
             {

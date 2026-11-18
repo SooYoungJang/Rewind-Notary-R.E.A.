@@ -6,6 +6,8 @@ import json
 import math
 import re
 
+from pathlib import Path
+from story_link_baseline import reverse_exact
 from PIL import Image
 
 PILOTS = ('velvet_02_loom', 'velvet_03_gallery')
@@ -137,7 +139,7 @@ def room_checks(room, rooms):
             and len(set(refs)) == len(refs) == len(placements) and set(refs) == set(placements) and
             all(contains(p['active'], p['x'], p['y']) and p['active']['height'] > 0 for p in placements.values()),
         'one marked midpoint on the balcony': [f['id'] for f in floors.values() if f.get('contactSave')] ==
-            ([] if room['id'] == PILOTS[0] else ['gallery_balcony_floor']) and
+            (['loom_balcony_floor'] if room['id'] == PILOTS[0] else ['gallery_balcony_floor']) and
             all(f.get('surface') == 'balcony' for f in floors.values() if f.get('contactSave')),
     }
 
@@ -220,7 +222,8 @@ def validate_level_step1(check, project, scripts):
            '56 rooms, 321 original authored rows including conditions and rewards')
     verify(digest(docs[1:]) == '20aaae8ffd385c67a53e7cd0a55a4b7619ef15f8a46abc5fb238402ce92367ee',
            'all four other districts and finale match the original data')
-    old = deepcopy(docs[0])
+    patch = json.loads(Path(__file__).with_name('level-step2-extensions.json').read_text())
+    old = json.loads(reverse_exact(patch, (resources/'Story/representative.json').read_text()))
     for r in old['rooms']:
         if r['id'] in HUB | set(PILOTS): r.pop('backgroundSet', None)
         if r['id'] == 'hub_forge': r.pop('terrain', None)
@@ -301,7 +304,7 @@ def validate_level_step1(check, project, scripts):
     sets = json.loads((art/'room-sets.json').read_text())['sets']
     lookup = {s['id']:s['layers'] for s in sets}
     ids = [rooms[k].get('backgroundSet') for k in sorted(HUB|set(PILOTS))]
-    verify(len(set(ids))==len(lookup)==7 and all(i in lookup for i in ids) and len({digest(s['layers']) for s in sets})==7,
+    verify(len(set(ids))==7 and all(i in lookup for i in ids) and len({digest(lookup[i]) for i in ids})==7,
            'seven distinct authored three-layer sets')
     for key,layers in lookup.items():
         verify(art_checks(layers,texture), key+' / textured far plus two transparent depth strips')
