@@ -1,0 +1,213 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.Concurrent;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace RewindNotary
+{
+    internal static class AutoTestRuntime
+    {
+        private static readonly bool requested = Array.IndexOf(Environment.GetCommandLineArgs(), "-autotest") >= 0;
+        private static string directory, sandbox;
+        private static StreamWriter log;
+        private static double sceneStart;
+        private static int mainThread;
+        private static ConcurrentQueue<(string message, string stack, LogType type)> backgroundLogs;
+        internal static AutoTestReport Report { get; private set; }
+        internal static double Now => Time.realtimeSinceStartupAsDouble;
+        internal static string DirectoryPath => directory;
+
+        // Never fall back to the real root if test setup throws before creating the sandbox.
+        internal static string SaveRoot => requested
+            ? sandbox ?? throw new InvalidOperationException("Autotest save isolation unavailable.")
+            : Application.persistentDataPath;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+        private static void Start()
+        {
+            if (!requested) return;
+            try
+            {
+                Report = AutoTestReport.NewRun(Application.isEditor ? "editor" : "standalone");
+#if UNITY_EDITOR
+                directory = Environment.GetEnvironmentVariable("REWIND_AUTOTEST_RUN");
+#endif
+                if (string.IsNullOrEmpty(directory)) directory = AutoTestReport.ReserveDirectory(ProjectDirectory());
+                log = new StreamWriter(Path.Combine(directory, "run.log"), true) { AutoFlush = true };
+                mainThread = Thread.CurrentThread.ManagedThreadId;
+                backgroundLogs = new ConcurrentQueue<(string, string, LogType)>();
+                Application.logMessageReceived += OnLog;
+                Application.logMessageReceivedThreaded += OnThreadLog;
+                string real = Path.GetFullPath(Application.persistentDataPath);
+                string temp = Path.GetFullPath(Path.Combine(Path.GetTempPath(), "RewindNotary-" + Guid.NewGuid().ToString("N")));
+                if (Inside(temp, real) || Inside(real, temp)) throw new IOException("Overlapping save roots.");
+                Report.isolation.realRoot = real;
+                Report.isolation.temporaryRoot = temp;
+                Report.isolation.beforeSha256 = Fingerprint(real);
+                if (Directory.Exists(temp)) throw new IOException("Temporary save root already exists.");
+                Directory.CreateDirectory(temp);
+                sandbox = temp;
+                Application.runInBackground = true;
+                SceneManager.sceneLoaded += SceneLoaded;
+                sceneStart = Now;
+            }
+            catch (Exception e)
+            {
+                Report?.Error("setup", e.Message, e.StackTrace);
+                Debug.LogException(e);
+                Finish(false);
+            }
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void InstallDriver()
+        {
+            if (!requested || sandbox == null) return;
+            var host = new GameObject("Autotest");
+            UnityEngine.Object.DontDestroyOnLoad(host);
+            host.AddComponent<AutoTestDriver>();
+        }
+
+        internal static string ProjectDirectory()
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            int i = Array.IndexOf(args, "-autotestProjectPath");
+            var dir = new DirectoryInfo(i >= 0 && i + 1 < args.Length ? args[i + 1] : Application.dataPath);
+            for (; dir != null; dir = dir.Parent)
+                if (File.Exists(Path.Combine(dir.FullName, "ProjectSettings", "ProjectVersion.txt"))) return dir.FullName;
+            throw new DirectoryNotFoundException("Supply -autotestProjectPath for a player outside the project.");
+        }
+
+        private static bool Inside(string path, string root) =>
+            (path.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar).StartsWith(
+                root.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
+
+        // Only the files owned by SkillSaveStore and SettingsStore. Unity writes its own Player.log.
+        private static string Fingerprint(string root)
+        {
+            string slots = Path.Combine(root, "SkillSystem");
+            var files = new List<string>();
+            if (Directory.Exists(slots)) files.AddRange(Directory.GetFiles(slots, "*", SearchOption.AllDirectories));
+            if (Directory.Exists(root)) files.AddRange(Directory.GetFiles(root, "settings.json*"));
+            files.Sort(StringComparer.Ordinal);
+            using (var sha = SHA256.Create())
+            using (var stream = new MemoryStream())
+            using (var writer = new BinaryWriter(stream, Encoding.UTF8, true))
+            {
+                writer.Write(Directory.Exists(slots));
+                foreach (string path in files)
+                {
+                    writer.Write(path.Substring(root.Length));
+                    writer.Write(File.GetLastWriteTimeUtc(path).Ticks);
+                    using (var input = File.OpenRead(path)) writer.Write(sha.ComputeHash(input));
+                }
+                writer.Flush();
+                return BitConverter.ToString(sha.ComputeHash(stream.ToArray())).Replace("-", "").ToLowerInvariant();
+            }
+        }
+
+        internal static double LoadStart() => Report == null ? 0 : Now;
+        internal static void LoadEnd(string kind, string id, double start)
+        {
+            Report?.loads.Add(new LoadSample { kind = kind, id = id, ms = (Now - start) * 1000 });
+        }
+        private static void SceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            LoadEnd("scene", scene.name, sceneStart);
+            if (scene.name != "Main") Report.Error("scene", "Expected Main, loaded " + scene.name);
+            SceneManager.sceneLoaded -= SceneLoaded;
+        }
+        private static void OnThreadLog(string message, string stack, LogType type)
+        {
+            if (Thread.CurrentThread.ManagedThreadId != mainThread)
+                backgroundLogs.Enqueue((message, stack, type));
+        }
+        internal static void DrainLogs()
+        {
+            int pending = backgroundLogs?.Count ?? 0;
+            for (int i = 0; i < pending && backgroundLogs.TryDequeue(out var entry); i++)
+                OnLog(entry.message, entry.stack, entry.type);
+        }
+        private static void OnLog(string message, string stack, LogType type)
+        {
+            log.WriteLine(DateTime.UtcNow.ToString("O") + " [" + type + "] " + message);
+            if (!string.IsNullOrEmpty(stack)) log.WriteLine(stack);
+            if (type == LogType.Error || type == LogType.Assert || type == LogType.Exception)
+                Report.Error(type.ToString(), message, stack);
+        }
+
+        private static bool SavedArrival(string path)
+        {
+            var saved = JsonUtility.FromJson<CoreRecord>(File.ReadAllText(path));
+            var silver = saved?.Get(SkillRules.SilverStitch);
+            return saved != null && saved.schemaVersion == CoreRecord.SchemaVersion && !saved.testData &&
+                saved.slotId == "slot-1" && saved.lastStageId == "clock" && silver?.acquired == true &&
+                silver.validUseCount >= 80 && saved.completedEncounters.Contains("story:mikhail_bout") &&
+                saved.storyFlags.Contains("investigation_complete") && saved.storyFlags.Contains("luka_lift_complete");
+        }
+
+        internal static void Finish(bool completed)
+        {
+            int code = 1;
+            var audit = Report.isolation;
+            try
+            {
+                if (audit.beforeSha256 != null)
+                {
+                    audit.afterSha256 = Fingerprint(audit.realRoot);
+                    audit.unchanged = audit.beforeSha256 == audit.afterSha256;
+                }
+                if (!audit.unchanged) Report.Error("isolation", "Real save fingerprint changed or unavailable.");
+                if (sandbox != null)
+                {
+                    string slot = Path.Combine(sandbox, "SkillSystem", "slot-1.json");
+                    audit.observedSlotWrite = File.Exists(slot);
+                    if (completed)
+                    {
+                        audit.verifiedFinalSlot = audit.observedSlotWrite && SavedArrival(slot);
+                        if (!audit.verifiedFinalSlot) Report.Error("save", "Missing final district checkpoint on disk.");
+                    }
+                }
+            }
+            catch (Exception e) { Report.Error("isolation", e.Message, e.StackTrace); }
+            try
+            {
+                if (sandbox != null)
+                {
+                    Directory.Delete(sandbox, true);
+                    audit.tempRemoved = true;
+                }
+            }
+            catch (Exception e) { Report.Error("cleanup", e.Message, e.StackTrace); }
+            try
+            {
+                Application.logMessageReceivedThreaded -= OnThreadLog;
+                DrainLogs();
+                code = completed && audit.unchanged && audit.verifiedFinalSlot && audit.tempRemoved && Report.errors.Count == 0 ? 0 : 1;
+                Report.status = code == 0 ? "pass" : "fail";
+                Report.exitCode = code;
+                Report.endedUtc = DateTime.UtcNow.ToString("O");
+                Debug.Log("AUTOTEST " + Report.status + " " + directory);
+                Report.Write(directory);
+            }
+            catch (Exception e) { code = 1; Debug.LogException(e); }
+            finally
+            {
+                Application.logMessageReceived -= OnLog;
+                SceneManager.sceneLoaded -= SceneLoaded;
+                sandbox = null;
+                log?.Dispose();
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.Exit(code);
+#else
+                Application.Quit(code);
+#endif
+            }
+        }
+    }
+}

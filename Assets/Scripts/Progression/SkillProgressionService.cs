@@ -36,6 +36,7 @@ namespace RewindNotary
         public BenefactorTrialProgress Trials { get; }
         public CoreRecord Record { get; private set; }
         public event Action<ProgressionEvent> Event;
+        internal event Action<UseContext> UseBegan;
         public event Action Changed;
         // The workbench suspends exactly one input path; ownership and the notary ledger stay intact.
         internal string CalibrationDormantSkill { get; set; }
@@ -51,9 +52,11 @@ namespace RewindNotary
             var progress = Record.Get(skillId);
             if (progress == null || !progress.acquired || !Catalog.Get(skillId).implemented) return null;
             if (Record.lastStageId == "cassel" && !Record.finalBattleAttempt.CanUse(skillId)) return null;
-            return new UseContext { Id = sessionId + ":" + (++nextUse), SkillId = skillId,
+            var use = new UseContext { Id = sessionId + ":" + (++nextUse), SkillId = skillId,
                 Stage = previewStage >= 1 && previewStage <= 3 ? previewStage : progress.stage,
                 Preview = previewStage != 0, Owner = this, Epoch = epoch };
+            UseBegan?.Invoke(use);
+            return use;
         }
         public bool Apply(UseContext use, CombatEffectResult result)
         {

@@ -16,6 +16,7 @@ namespace RewindNotary
         private string setupLabel => string.IsNullOrEmpty(setupNameKey) ? "" : Loc.Get(setupNameKey);
         private SpriteRenderer visual;
         private float nextAttack, strikeAt, lastDodge = float.NegativeInfinity;
+        internal float StrikeIn => winding ? strikeAt - Time.time : float.PositiveInfinity;
         private bool winding;
         private float immobilizedUntil;
         public bool CanReceiveSupport => Kind == EffectTargetKind.Enemy && !State.Cleared && Time.time >= immobilizedUntil;

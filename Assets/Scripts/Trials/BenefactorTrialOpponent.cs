@@ -11,6 +11,7 @@ namespace RewindNotary
         public BenefactorTrialDefinition Definition { get; private set; }
         private int pattern, phase, shotSerial;
         private float remaining, direction = -1, rest;
+        internal float StrikeIn => phase == 0 && remaining < Pattern.windup ? remaining : float.PositiveInfinity;
         private bool contacted;
         private int storyHalfHealth;
         private TrialPattern Pattern => Definition.patterns[pattern];

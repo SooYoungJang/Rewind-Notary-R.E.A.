@@ -34,8 +34,9 @@ namespace RewindNotary
         {
             Loc.SetLanguage(Loc.DefaultLanguage(Application.systemLanguage));
             game = bootstrap; font = uiFont; catalog = SkillCatalog.Load();
-            directory = Path.Combine(Application.persistentDataPath, "SkillSystem");
-            Settings = new SettingsStore(Application.persistentDataPath); Settings.Load(); Settings.Apply();
+            var root = AutoTestRuntime.SaveRoot;
+            directory = Path.Combine(root, "SkillSystem");
+            Settings = new SettingsStore(root); Settings.Load(); Settings.Apply();
             try { message = SkillSaveStore.MigrateLegacy(directory, catalog); }
             catch (Exception e) { legacyError = Loc.Get("save.migration_failed", e.Message); message = legacyError; }
             RefreshSlots(); Go(ShellPage.Main);

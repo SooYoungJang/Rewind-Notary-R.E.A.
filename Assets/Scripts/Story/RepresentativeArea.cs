@@ -50,6 +50,7 @@ namespace RewindNotary
 
         public void Restore()
         {
+            double loadStarted = AutoTestRuntime.LoadStart();
             string marker = Record.storyFlags.Find(f => f.StartsWith(FloorPrefix, StringComparison.Ordinal));
             string savedFloor = marker?.Substring(FloorPrefix.Length);
             Room = Array.Find(script.rooms, r => r.stage == Record.lastStageId && r.Floor(savedFloor) != null)
@@ -68,6 +69,7 @@ namespace RewindNotary
             player.ResetAt(new Vector2(floor.x, LandingY(floor.id)));
             player.GetComponent<PlayerController2D>().ClearInput();
             session.EncounterId = InFieldTrial ? DistrictTrial.stageId : Room.id;
+            AutoTestRuntime.LoadEnd("room", Room.id, loadStarted);
         }
         private void Travel(StoryRoom destination)
         {

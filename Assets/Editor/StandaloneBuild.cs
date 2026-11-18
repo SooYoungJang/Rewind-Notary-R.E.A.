@@ -41,6 +41,7 @@ namespace RewindNotary.Editor
             public int exitCode = 1;
             public string scriptingBackend = "Mono2x", macArchitecture;
             public string[] scenes = new string[0];
+            public string[] autotestArguments;
             public string notes = "";
         }
 
@@ -55,6 +56,7 @@ namespace RewindNotary.Editor
             string project = Directory.GetParent(Application.dataPath).FullName;
             string ledger = Path.Combine(project, "BUILD-LOG.md");
             var result = new Result { target = targetName, unityVersion = Application.unityVersion, startedUtc = UtcNow() };
+            result.autotestArguments = new[] { "-autotest", "-autotestProjectPath", project };
             string oldVersion = PlayerSettings.bundleVersion;
             var oldBackend = PlayerSettings.GetScriptingBackend(NamedBuildTarget.Standalone);
             bool settingsChanged = false, ownsOutput = false, canWriteResult = false;

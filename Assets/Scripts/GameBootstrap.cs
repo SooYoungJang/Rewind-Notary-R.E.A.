@@ -1,4 +1,5 @@
 using UnityEngine;
+using Input = RewindNotary.GameInputDevice;
 using Unity.Cinemachine;
 
 namespace RewindNotary
@@ -46,11 +47,13 @@ namespace RewindNotary
         public void StartStage(SkillSaveStore store, CoreRecord record)
         {
             if (world != null) throw new System.InvalidOperationException(Loc.Get("stage.already_running"));
+            double loadStarted = AutoTestRuntime.LoadStart();
             world = new GameObject("Playable stage"); world.transform.SetParent(transform, false);
             SkillStroke.WorldRoot = world.transform;
             checkpoint = won = false; deathTimer = 0;
             Build(store, record); initialized = true;
             if (GameShell.DebugAvailable && cassel == null) ApplyStageOverride(shell.Settings.Value.stageOverride);
+            AutoTestRuntime.LoadEnd("stage", record.lastStageId, loadStarted);
         }
         private void Build(SkillSaveStore store, CoreRecord record)
         {
