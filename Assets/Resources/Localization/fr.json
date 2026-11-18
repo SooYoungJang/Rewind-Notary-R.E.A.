@@ -1451,7 +1451,7 @@
     },
     {
       "key": "data.trials.catalog.trials.mikhail.support.label",
-      "value": "Couture du retour"
+      "value": "Couture de retour"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
@@ -1475,7 +1475,7 @@
     },
     {
       "key": "data.trials.catalog.trials.julius.support.label",
-      "value": "L'heure du retour"
+      "value": "Temps de retour"
     },
     {
       "key": "data.trials.catalog.trials.julius.patterns.1.label",
@@ -1499,7 +1499,7 @@
     },
     {
       "key": "data.trials.catalog.trials.valeria.support.label",
-      "value": "Valse de l'atterrissage"
+      "value": "Valse d'atterrissage"
     },
     {
       "key": "data.trials.catalog.trials.valeria.patterns.1.label",
@@ -1523,7 +1523,7 @@
     },
     {
       "key": "data.trials.catalog.trials.gabriel.support.label",
-      "value": "Cloche du retour"
+      "value": "Frappe de cloche du retour"
     },
     {
       "key": "data.trials.catalog.trials.gabriel.patterns.1.label",
@@ -1547,7 +1547,7 @@
     },
     {
       "key": "data.trials.catalog.trials.irina.support.label",
-      "value": "Couleurs du retour"
+      "value": "Trait de retour"
     },
     {
       "key": "data.trials.catalog.trials.irina.patterns.1.label",
@@ -1907,7 +1907,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Plantant ses ciseaux au sol, il pose un genou à terre. Le noyau de la lame-mémoire capte en bleu la trace du palier 1 de la Couture d'argent révélée pendant le duel)\n« Tss…… J'avais beau cacher mon dernier nœud, cette épée a lu le fil de mon point simple.\nRetiens bien ceci, Rea : si tu t'arrêtes là, ce n'est qu'une simple défense ; mais à l'instant où tu pousseras cette couture jusqu'à son terme, le supplice de mon cœur passera en toi. Je me retire à l'infirmerie…… Rengaine cette épée et rentre chez toi, je t'en supplie. »\n(Avis système : Couture d'argent acquise — Choisir : 1–5 / E·B · Utiliser : Q·Y)"
+      "value": "(Plantant ses ciseaux au sol, il pose un genou à terre. Le noyau de la lame-mémoire capte en bleu la trace du palier 1 de la Couture d'argent révélée pendant le duel)\n« Tss…… J'avais beau cacher mon dernier nœud, cette épée a lu le fil de mon point simple.\nRetiens bien ceci, Rea : si tu t'arrêtes là, ce n'est qu'une simple défense ; mais à l'instant où tu pousseras cette couture jusqu'à son terme, le supplice de mon cœur passera en toi. Je me retire à l'infirmerie…… Rengaine cette épée et rentre chez toi, je t'en supplie. »\n(Avis système : Couture d'argent acquise — Appuie sur Q (Y à la manette) sans maintenir de direction.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2615,7 +2615,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Plantant son épée-aiguille dans le sol, il souffle lourdement. Le noyau de la lame-mémoire capte en lueur de laiton la trace de la trajectoire de palier 1 de Julius montrée pendant le duel)\n« ……J'avais beau cacher ma Forme ultime, ta lame-mémoire a déchiffré la trajectoire d'aller-retour de mon premier “Pas du pendule”.\nRetiens bien ceci, Rea. Jusqu'à vingt-neuf fois, ce n'est qu'un pas d'escrime, et à trente seul le boîtier de la montre vibrera ; mais à l'instant du quatre-vingtième geste de Forme ultime, la trotteuse figée de ta demi-montre repartira et mon vieillissement s'abattra sur toi. »\n(Avis système : Retour du pendule acquis — Choisir : 1–5 / E·B · Utiliser : Q·Y)"
+      "value": "(Plantant son épée-aiguille dans le sol, il souffle lourdement. Le noyau de la lame-mémoire capte en lueur de laiton la trace de la trajectoire de palier 1 de Julius montrée pendant le duel)\n« ……J'avais beau cacher ma Forme ultime, ta lame-mémoire a déchiffré la trajectoire d'aller-retour de mon premier “Pas du pendule”.\nRetiens bien ceci, Rea. Jusqu'à vingt-neuf fois, ce n'est qu'un pas d'escrime, et à trente seul le boîtier de la montre vibrera ; mais à l'instant du quatre-vingtième geste de Forme ultime, la trotteuse figée de ta demi-montre repartira et mon vieillissement s'abattra sur toi. »\n(Avis système : Retour du pendule acquis — Maintiens la direction opposée à celle où regarde Rea et appuie sur Q (Y à la manette).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2771,7 +2771,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Appuyant la pointe de sa rapière au parquet, elle reprend souffle. Le noyau de la lame-mémoire capte en lueur bleu-vert la trace de la trajectoire de saut tournoyant de palier 1 de Valeria)\n« ……Ah, j'avais beau cacher le final, ton épée a copié l'angle de saut de ma première “Danse des lames tournoyantes”.\nJe t'en prie, Rea. Jusqu'à trente fois, tu ne prendras que mon tic de révérence, mais dès que tu achèveras le quatre-vingtième Grand final, le supplice de mes jambes ira vers toi. Je me retire à l'infirmerie…… alors ne danse pas ce pas jusqu'au bout. »\n(Avis système : Valse du rappel acquise — Choisir : 1–5 / E·B · Utiliser : Q·Y)"
+      "value": "(Appuyant la pointe de sa rapière au parquet, elle reprend souffle. Le noyau de la lame-mémoire capte en lueur bleu-vert la trace de la trajectoire de saut tournoyant de palier 1 de Valeria)\n« ……Ah, j'avais beau cacher le final, ton épée a copié l'angle de saut de ma première “Danse des lames tournoyantes”.\nJe t'en prie, Rea. Jusqu'à trente fois, tu ne prendras que mon tic de révérence, mais dès que tu achèveras le quatre-vingtième Grand final, le supplice de mes jambes ira vers toi. Je me retire à l'infirmerie…… alors ne danse pas ce pas jusqu'au bout. »\n(Avis système : Valse du rappel acquise — Maintiens la direction vers le haut et appuie sur Q (Y à la manette).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2927,7 +2927,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Appuyant le manche de son épée-marteau au sol, il pose un genou. Le noyau de la lame-mémoire capte en or la trace d'onde de la Frappe vibrante de palier 1 révélée durant le duel)\n« [Carnet : Ta lame a capté l'onde de ma première “Frappe vibrante”. Jusqu'à trente fois, tes oreilles seront seulement un peu sourdes, mais à la quatre-vingtième Forme ultime, mon silence passera en toi. Je descends à l'infirmerie — je t'en prie, arrête cette résonance.] »\n(Avis système : Forge de résonance acquise — Choisir : 1–5 / E·B · Utiliser : Q·Y)"
+      "value": "(Appuyant le manche de son épée-marteau au sol, il pose un genou. Le noyau de la lame-mémoire capte en or la trace d'onde de la Frappe vibrante de palier 1 révélée durant le duel)\n« [Carnet : Ta lame a capté l'onde de ma première “Frappe vibrante”. Jusqu'à trente fois, tes oreilles seront seulement un peu sourdes, mais à la quatre-vingtième Forme ultime, mon silence passera en toi. Je descends à l'infirmerie — je t'en prie, arrête cette résonance.] »\n(Avis système : Forge de résonance acquise — En l’air, maintiens la direction vers le bas et appuie sur Q (Y à la manette).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -3083,7 +3083,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Appuyant sa rapière-pinceau au sol, elle reprend doucement souffle. Le noyau de la lame-mémoire capte en reflets d'aquarelle la trace aérienne du Trait de pinceau de palier 1 d'Irina)\n« ……J'avais beau cacher le dernier autoportrait, ta lame-mémoire a su lire la touche de mon premier “Trait de pinceau”.\nSouviens-t'en, Rea. Jusqu'à trente fois, seule une nuance d'aquarelle effleurera le bord de ta vue ; mais dès que tu achèveras le quatre-vingtième autoportrait, mon Destin de cécité passera dans tes yeux. Je me retire à l'infirmerie…… Arrête ce pinceau et rentre chez toi, je t'en prie. »\n(Avis système : Entaille du vide acquise — Choisir : 1–5 / E·B · Utiliser : Q·Y)"
+      "value": "(Appuyant sa rapière-pinceau au sol, elle reprend doucement souffle. Le noyau de la lame-mémoire capte en reflets d'aquarelle la trace aérienne du Trait de pinceau de palier 1 d'Irina)\n« ……J'avais beau cacher le dernier autoportrait, ta lame-mémoire a su lire la touche de mon premier “Trait de pinceau”.\nSouviens-t'en, Rea. Jusqu'à trente fois, seule une nuance d'aquarelle effleurera le bord de ta vue ; mais dès que tu achèveras le quatre-vingtième autoportrait, mon Destin de cécité passera dans tes yeux. Je me retire à l'infirmerie…… Arrête ce pinceau et rentre chez toi, je t'en prie. »\n(Avis système : Entaille du vide acquise — Au sol, maintiens la direction vers le bas et appuie sur Q (Y à la manette).)"
     },
     {
       "key": "story.irina.i0.06",

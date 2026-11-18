@@ -1451,7 +1451,7 @@
     },
     {
       "key": "data.trials.catalog.trials.mikhail.support.label",
-      "value": "Homeward Seam"
+      "value": "Return Seam"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
@@ -1475,7 +1475,7 @@
     },
     {
       "key": "data.trials.catalog.trials.julius.support.label",
-      "value": "Time to Return"
+      "value": "Return Time"
     },
     {
       "key": "data.trials.catalog.trials.julius.patterns.1.label",
@@ -1523,7 +1523,7 @@
     },
     {
       "key": "data.trials.catalog.trials.gabriel.support.label",
-      "value": "Homeward Bell"
+      "value": "Return Bell Strike"
     },
     {
       "key": "data.trials.catalog.trials.gabriel.patterns.1.label",
@@ -1547,7 +1547,7 @@
     },
     {
       "key": "data.trials.catalog.trials.irina.support.label",
-      "value": "Colors of Homecoming"
+      "value": "Return Stroke"
     },
     {
       "key": "data.trials.catalog.trials.irina.patterns.1.label",
@@ -1907,7 +1907,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Planting his shear-blade into the floor, he drops to one knee. Rea's record blade core captures the blue trace of Mikhail's Stage 1 stitching swordplay revealed during the duel)\n“Tch…… Even though I kept my final knot hidden, that blade read the grain of my first stitch.\nListen well, Rea. Stop there and it's just simple self-defense, but the instant you master that stitching and take it all the way to completion, the torment in my heart passes to you. I'm falling back to the Sanctuary…… Put that sword away and go home, please.”\n(System Notice: Silver Stitch acquired — Select: 1–5 / E·B · Use: Q·Y)"
+      "value": "(Planting his shear-blade into the floor, he drops to one knee. Rea's record blade core captures the blue trace of Mikhail's Stage 1 stitching swordplay revealed during the duel)\n“Tch…… Even though I kept my final knot hidden, that blade read the grain of my first stitch.\nListen well, Rea. Stop there and it's just simple self-defense, but the instant you master that stitching and take it all the way to completion, the torment in my heart passes to you. I'm falling back to the Sanctuary…… Put that sword away and go home, please.”\n(System Notice: Silver Stitch acquired — Press Q (Y on a controller) with no direction held.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2615,7 +2615,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Planting his clock-hand broadsword into the floor, he exhales heavily. Rea's record blade core captures the brass-colored imprint of Julius's Stage 1 step trajectory shown during the duel)\n“……Even though I hid my final Ultimate, your record blade still read the round-trip path of my first ‘Pendulum Step.’\nMark my words, Rea. Up through twenty-nine times it is only footwork, and at thirty only the watch casing will resonate—yet the instant you reach the eightieth Ultimate, the frozen second hand of your half watch will start turning again, and my aging will crash down upon you.”\n(System Notice: Pendulum Rewind acquired — Select: 1–5 / E·B · Use: Q·Y)"
+      "value": "(Planting his clock-hand broadsword into the floor, he exhales heavily. Rea's record blade core captures the brass-colored imprint of Julius's Stage 1 step trajectory shown during the duel)\n“……Even though I hid my final Ultimate, your record blade still read the round-trip path of my first ‘Pendulum Step.’\nMark my words, Rea. Up through twenty-nine times it is only footwork, and at thirty only the watch casing will resonate—yet the instant you reach the eightieth Ultimate, the frozen second hand of your half watch will start turning again, and my aging will crash down upon you.”\n(System Notice: Pendulum Rewind acquired — Hold the direction opposite the way Rea is facing and press Q (Y on a controller).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2771,7 +2771,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Propping her rapier tip onto the floorboards, she catches her breath. Rea's record blade core captures the teal-colored imprint of Valeria's Stage 1 spinning leap path revealed in the duel)\n“……Haah, even though I hid the final curtain call, your blade still copied the leap angle of my first ‘Whirling Blade Dance.’\nPlease, Rea. Up to thirty times, only my bow habit will rub off—but the instant you complete the eightieth Grand Finale, the torment of my legs goes straight to you. I'll fall back to the Sanctuary…… so please don't dance those steps all the way to the end.”\n(System Notice: Curtain Call Waltz acquired — Select: 1–5 / E·B · Use: Q·Y)"
+      "value": "(Propping her rapier tip onto the floorboards, she catches her breath. Rea's record blade core captures the teal-colored imprint of Valeria's Stage 1 spinning leap path revealed in the duel)\n“……Haah, even though I hid the final curtain call, your blade still copied the leap angle of my first ‘Whirling Blade Dance.’\nPlease, Rea. Up to thirty times, only my bow habit will rub off—but the instant you complete the eightieth Grand Finale, the torment of my legs goes straight to you. I'll fall back to the Sanctuary…… so please don't dance those steps all the way to the end.”\n(System Notice: Curtain Call Waltz acquired — Hold up and press Q (Y on a controller).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2927,7 +2927,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Planting the haft of his hammer-sword into the floor, he drops to one knee. Rea's record blade core captures in golden light the Stage 1 vibrating-strike waveform Gabriel revealed during the duel)\n“[Notebook: Your blade captured the wave of my first ‘Vibrating Strike.’ Up through thirty times your ears will only ring slightly muffled—but upon reaching the eightieth Ultimate, my silence crosses into you. I will wait down at the Sanctuary, so stop that resonance, I beg you.]”\n(System Notice: Resonance Forge acquired — Select: 1–5 / E·B · Use: Q·Y)"
+      "value": "(Planting the haft of his hammer-sword into the floor, he drops to one knee. Rea's record blade core captures in golden light the Stage 1 vibrating-strike waveform Gabriel revealed during the duel)\n“[Notebook: Your blade captured the wave of my first ‘Vibrating Strike.’ Up through thirty times your ears will only ring slightly muffled—but upon reaching the eightieth Ultimate, my silence crosses into you. I will wait down at the Sanctuary, so stop that resonance, I beg you.]”\n(System Notice: Resonance Forge acquired — While airborne, hold down and press Q (Y on a controller).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -3083,7 +3083,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Setting her brush-rapier gently onto the floor, she catches her breath. Rea's record blade core captures in watercolor shimmer the Stage 1 paint-stroke trace Irina drew in midair during the duel)\n“……Even though I hid the final self-portrait, your blade still read the grain of my first ‘Brushstroke.’\nRemember, Rea. Up through thirty times only a hint of watercolor will tint the edges of your vision—yet the instant you finish the eightieth self-portrait, my Doom of blindness passes into your eyes. I'll wait down in the Sanctuary…… Please lay down that brush and go home.”\n(System Notice: Canvas Carve acquired — Select: 1–5 / E·B · Use: Q·Y)"
+      "value": "(Setting her brush-rapier gently onto the floor, she catches her breath. Rea's record blade core captures in watercolor shimmer the Stage 1 paint-stroke trace Irina drew in midair during the duel)\n“……Even though I hid the final self-portrait, your blade still read the grain of my first ‘Brushstroke.’\nRemember, Rea. Up through thirty times only a hint of watercolor will tint the edges of your vision—yet the instant you finish the eightieth self-portrait, my Doom of blindness passes into your eyes. I'll wait down in the Sanctuary…… Please lay down that brush and go home.”\n(System Notice: Canvas Carve acquired — While on the ground, hold down and press Q (Y on a controller).)"
     },
     {
       "key": "story.irina.i0.06",

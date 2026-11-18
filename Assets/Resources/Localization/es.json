@@ -1451,7 +1451,7 @@
     },
     {
       "key": "data.trials.catalog.trials.mikhail.support.label",
-      "value": "Costura de regreso"
+      "value": "Costura de retorno"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
@@ -1475,7 +1475,7 @@
     },
     {
       "key": "data.trials.catalog.trials.julius.support.label",
-      "value": "Hora de volver"
+      "value": "Tiempo de retorno"
     },
     {
       "key": "data.trials.catalog.trials.julius.patterns.1.label",
@@ -1499,7 +1499,7 @@
     },
     {
       "key": "data.trials.catalog.trials.valeria.support.label",
-      "value": "Vals del aterrizaje"
+      "value": "Vals de aterrizaje"
     },
     {
       "key": "data.trials.catalog.trials.valeria.patterns.1.label",
@@ -1523,7 +1523,7 @@
     },
     {
       "key": "data.trials.catalog.trials.gabriel.support.label",
-      "value": "Campana de regreso"
+      "value": "Toque de campana de retorno"
     },
     {
       "key": "data.trials.catalog.trials.gabriel.patterns.1.label",
@@ -1547,7 +1547,7 @@
     },
     {
       "key": "data.trials.catalog.trials.irina.support.label",
-      "value": "Colores del regreso"
+      "value": "Trazo de retorno"
     },
     {
       "key": "data.trials.catalog.trials.irina.patterns.1.label",
@@ -1907,7 +1907,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Apoyando las tijeras-espada en el suelo, hinca una rodilla. El núcleo de la espada de registros capta en azul el trazo de nivel 1 de la Puntada de plata mostrado en el duelo)\n“Tsk…… Aunque escondí mi último nudo, esa hoja leyó la hebra de mi puntada simple.\nGrábatelo bien, Rea: si paras aquí es solo defensa personal, pero en cuanto domines esa costura hasta completarla, el tormento de mi corazón pasará a ti. Me retiro a la enfermería…… Por favor, guarda esa espada y vete a casa.”\n(Aviso del sistema: Obtuviste Puntada de plata — Elegir: 1–5 / E·B · Usar: Q·Y)"
+      "value": "(Apoyando las tijeras-espada en el suelo, hinca una rodilla. El núcleo de la espada de registros capta en azul el trazo de nivel 1 de la Puntada de plata mostrado en el duelo)\n“Tsk…… Aunque escondí mi último nudo, esa hoja leyó la hebra de mi puntada simple.\nGrábatelo bien, Rea: si paras aquí es solo defensa personal, pero en cuanto domines esa costura hasta completarla, el tormento de mi corazón pasará a ti. Me retiro a la enfermería…… Por favor, guarda esa espada y vete a casa.”\n(Aviso del sistema: Obtuviste Puntada de plata — Pulsa Q (Y en el mando) sin pulsar ninguna dirección.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2615,7 +2615,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Clava su espadón con forma de manecilla en el suelo y exhala con fuerza. El núcleo de la espada de registros capta en bronce la impronta de la trayectoria de nivel 1 mostrada por Julius en el duelo)\n“……Aunque oculté mi Forma suprema final, tu espada de registros leyó el trazo de ida y vuelta de mi primer ‘Paso del péndulo’.\nEscucha bien, Rea. Hasta veintinueve veces es solo un paso, y a las treinta apenas resonará la caja del reloj; pero al instante de llegar al octogésimo uso de la Forma suprema, el segundero detenido de tu medio reloj volverá a girar y mi envejecimiento caerá sobre ti.”\n(Aviso del sistema: Obtuviste Retroceso del péndulo — Elegir: 1–5 / E·B · Usar: Q·Y)"
+      "value": "(Clava su espadón con forma de manecilla en el suelo y exhala con fuerza. El núcleo de la espada de registros capta en bronce la impronta de la trayectoria de nivel 1 mostrada por Julius en el duelo)\n“……Aunque oculté mi Forma suprema final, tu espada de registros leyó el trazo de ida y vuelta de mi primer ‘Paso del péndulo’.\nEscucha bien, Rea. Hasta veintinueve veces es solo un paso, y a las treinta apenas resonará la caja del reloj; pero al instante de llegar al octogésimo uso de la Forma suprema, el segundero detenido de tu medio reloj volverá a girar y mi envejecimiento caerá sobre ti.”\n(Aviso del sistema: Obtuviste Retroceso del péndulo — Mantén la dirección contraria a la que mira Rea y pulsa Q (Y en el mando).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2771,7 +2771,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Apoyando la punta del estoque en la tarima, recobra el aliento. El núcleo de la espada de registros capta en azul verdoso el trazo del salto giratorio de nivel 1 de Valeria)\n“……Ah, aunque oculté el gran final, tu espada copió el ángulo de salto de mi primera ‘Danza giratoria de espadas’.\nPor favor, Rea. Hasta treinta veces solo se te pegará mi saludo de cortesía, pero al instante de completar el octogésimo Gran final, el tormento de mis piernas pasará a ti. Me retiro a la enfermería…… por favor, no bailes esos pasos hasta el final.”\n(Aviso del sistema: Obtuviste Vals del último acto — Elegir: 1–5 / E·B · Usar: Q·Y)"
+      "value": "(Apoyando la punta del estoque en la tarima, recobra el aliento. El núcleo de la espada de registros capta en azul verdoso el trazo del salto giratorio de nivel 1 de Valeria)\n“……Ah, aunque oculté el gran final, tu espada copió el ángulo de salto de mi primera ‘Danza giratoria de espadas’.\nPor favor, Rea. Hasta treinta veces solo se te pegará mi saludo de cortesía, pero al instante de completar el octogésimo Gran final, el tormento de mis piernas pasará a ti. Me retiro a la enfermería…… por favor, no bailes esos pasos hasta el final.”\n(Aviso del sistema: Obtuviste Vals del último acto — Mantén la dirección hacia arriba y pulsa Q (Y en el mando).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2927,7 +2927,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Apoya el asta de su martillo-espada en el suelo e hinca la rodilla. El núcleo de la espada de registros capta en brillo dorado la onda del Golpe vibrante de nivel 1 mostrado en el duelo)\n“[Cuaderno: Tu espada captó la onda de mi primer ‘Golpe vibrante’. Hasta treinta veces solo sentirás los oídos algo sordos, pero al llegar al octogésimo uso de la Forma suprema, mi silencio pasará a ti. Bajaré a la enfermería; por favor, detén ese eco.]”\n(Aviso del sistema: Obtuviste Forja resonante — Elegir: 1–5 / E·B · Usar: Q·Y)"
+      "value": "(Apoya el asta de su martillo-espada en el suelo e hinca la rodilla. El núcleo de la espada de registros capta en brillo dorado la onda del Golpe vibrante de nivel 1 mostrado en el duelo)\n“[Cuaderno: Tu espada captó la onda de mi primer ‘Golpe vibrante’. Hasta treinta veces solo sentirás los oídos algo sordos, pero al llegar al octogésimo uso de la Forma suprema, mi silencio pasará a ti. Bajaré a la enfermería; por favor, detén ese eco.]”\n(Aviso del sistema: Obtuviste Forja resonante — En el aire, mantén la dirección hacia abajo y pulsa Q (Y en el mando).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -3083,7 +3083,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Apoyando la espada-pincel en el suelo, recobra el aliento con calma. El núcleo de la espada de registros capta en brillo de acuarela el trazo aéreo de la Pincelada de nivel 1 de Irina)\n“……Aunque escondí el último autorretrato, tu espada leyó la textura de mi primera ‘Pincelada’.\nRecuérdalo, Rea. Hasta treinta veces solo te rozará un tinte de acuarela en la vista, pero en cuanto completes el octogésimo autorretrato, mi Condena de ceguera pasará a tus ojos. Me retiraré a la enfermería…… Por favor, detén ese pincel y regresa.”\n(Aviso del sistema: Obtuviste Recorte del vacío — Elegir: 1–5 / E·B · Usar: Q·Y)"
+      "value": "(Apoyando la espada-pincel en el suelo, recobra el aliento con calma. El núcleo de la espada de registros capta en brillo de acuarela el trazo aéreo de la Pincelada de nivel 1 de Irina)\n“……Aunque escondí el último autorretrato, tu espada leyó la textura de mi primera ‘Pincelada’.\nRecuérdalo, Rea. Hasta treinta veces solo te rozará un tinte de acuarela en la vista, pero en cuanto completes el octogésimo autorretrato, mi Condena de ceguera pasará a tus ojos. Me retiraré a la enfermería…… Por favor, detén ese pincel y regresa.”\n(Aviso del sistema: Obtuviste Recorte del vacío — En el suelo, mantén la dirección hacia abajo y pulsa Q (Y en el mando).)"
     },
     {
       "key": "story.irina.i0.06",

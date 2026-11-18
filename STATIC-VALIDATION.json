@@ -1,72 +1,6 @@
 {
-  "passed": 6949,
-  "errors": [
-    "Localization: de rule numbers preserved (documented name-number spellings normalized): ['investigation.record.core_waveform.body', 'investigation.record.preservation_order.body', 'investigation.record.discarded_draft.body', 'story.cassel.p1.04', 'story.cassel.p2.08_r1_cassel', 'story.cassel.p3.01_open', 'story.cassel.p3.02_live_b3', 'story.cassel.p3.03_b3_ready', 'story.cassel.p3.05_true_hit', 'story.ending.true.11_marta_ethan', 'story.ending.true.12_blank_slate', 'story.ending.true.14_registered', 'story.resume.lift.02_echo', 'story.resume.crucible.02_theo', 'story.resume.crucible.03_ethan', 'story.epilogue.05_rea_final', 'area.target.rea_form_one_sky']",
-    "Localization: en rule numbers preserved (documented name-number spellings normalized): ['investigation.record.core_waveform.body', 'investigation.record.preservation_order.body', 'investigation.record.discarded_draft.body', 'story.cassel.p1.04', 'story.cassel.p2.08_r1_cassel', 'story.cassel.p3.01_open', 'story.cassel.p3.02_live_b3', 'story.cassel.p3.03_b3_ready', 'story.cassel.p3.05_true_hit', 'story.ending.true.11_marta_ethan', 'story.ending.true.12_blank_slate', 'story.ending.true.14_registered', 'story.resume.lift.02_echo', 'story.resume.crucible.02_theo', 'story.resume.crucible.03_ethan', 'story.epilogue.05_rea_final', 'area.target.rea_form_one_sky']",
-    "Localization: es rule numbers preserved (documented name-number spellings normalized): ['investigation.record.core_waveform.body', 'investigation.record.preservation_order.body', 'investigation.record.discarded_draft.body', 'story.cassel.p1.04', 'story.cassel.p2.08_r1_cassel', 'story.cassel.p3.01_open', 'story.cassel.p3.02_live_b3', 'story.cassel.p3.03_b3_ready', 'story.cassel.p3.05_true_hit', 'story.ending.true.11_marta_ethan', 'story.ending.true.12_blank_slate', 'story.ending.true.14_registered', 'story.resume.lift.02_echo', 'story.resume.crucible.02_theo', 'story.resume.crucible.03_ethan', 'story.epilogue.05_rea_final', 'area.target.rea_form_one_sky']",
-    "Localization: fr rule numbers preserved (documented name-number spellings normalized): ['investigation.record.core_waveform.body', 'investigation.record.preservation_order.body', 'investigation.record.discarded_draft.body', 'story.cassel.p1.04', 'story.cassel.p2.08_r1_cassel', 'story.cassel.p3.01_open', 'story.cassel.p3.02_live_b3', 'story.cassel.p3.03_b3_ready', 'story.cassel.p3.05_true_hit', 'story.ending.true.11_marta_ethan', 'story.ending.true.12_blank_slate', 'story.ending.true.14_registered', 'story.resume.lift.02_echo', 'story.resume.crucible.02_theo', 'story.resume.crucible.03_ethan', 'story.epilogue.05_rea_final', 'area.target.rea_form_one_sky']",
-    "Localization: it rule numbers preserved (documented name-number spellings normalized): ['investigation.record.core_waveform.body', 'investigation.record.preservation_order.body', 'investigation.record.discarded_draft.body', 'story.cassel.p1.04', 'story.cassel.p2.08_r1_cassel', 'story.cassel.p3.01_open', 'story.cassel.p3.02_live_b3', 'story.cassel.p3.03_b3_ready', 'story.cassel.p3.05_true_hit', 'story.ending.true.11_marta_ethan', 'story.ending.true.12_blank_slate', 'story.ending.true.14_registered', 'story.resume.lift.02_echo', 'story.resume.crucible.02_theo', 'story.resume.crucible.03_ethan', 'story.epilogue.05_rea_final', 'area.target.rea_form_one_sky']",
-    "Localization: ja rule numbers preserved (documented name-number spellings normalized): ['investigation.record.core_waveform.body', 'investigation.record.preservation_order.body', 'investigation.record.discarded_draft.body', 'story.cassel.p1.04', 'story.cassel.p2.08_r1_cassel', 'story.cassel.p3.01_open', 'story.cassel.p3.02_live_b3', 'story.cassel.p3.03_b3_ready', 'story.cassel.p3.05_true_hit', 'story.ending.true.11_marta_ethan', 'story.ending.true.12_blank_slate', 'story.ending.true.14_registered', 'story.resume.lift.02_echo', 'story.resume.crucible.02_theo', 'story.resume.crucible.03_ethan', 'story.epilogue.05_rea_final', 'area.target.rea_form_one_sky']",
-    "Localization: ru rule numbers preserved (documented name-number spellings normalized): ['investigation.record.core_waveform.body', 'investigation.record.preservation_order.body', 'investigation.record.discarded_draft.body', 'story.cassel.p1.04', 'story.cassel.p2.08_r1_cassel', 'story.cassel.p3.01_open', 'story.cassel.p3.02_live_b3', 'story.cassel.p3.03_b3_ready', 'story.cassel.p3.05_true_hit', 'story.ending.true.11_marta_ethan', 'story.ending.true.12_blank_slate', 'story.ending.true.14_registered', 'story.resume.lift.02_echo', 'story.resume.crucible.02_theo', 'story.resume.crucible.03_ethan', 'story.epilogue.05_rea_final', 'area.target.rea_form_one_sky']",
-    "Localization: zh-Hans rule numbers preserved (documented name-number spellings normalized): ['investigation.record.core_waveform.body', 'investigation.record.preservation_order.body', 'investigation.record.discarded_draft.body', 'story.cassel.p1.04', 'story.cassel.p2.08_r1_cassel', 'story.cassel.p3.01_open', 'story.cassel.p3.02_live_b3', 'story.cassel.p3.03_b3_ready', 'story.cassel.p3.05_true_hit', 'story.ending.true.11_marta_ethan', 'story.ending.true.12_blank_slate', 'story.ending.true.14_registered', 'story.resume.lift.02_echo', 'story.resume.crucible.02_theo', 'story.resume.crucible.03_ethan', 'story.epilogue.05_rea_final', 'area.target.rea_form_one_sky']",
-    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/en.json",
-    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/de.json",
-    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/fr.json",
-    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/es.json",
-    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/zh-Hans.json",
-    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/ja.json",
-    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/ru.json",
-    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/it.json",
-    "Representative area: en: every line matches the delivered full text",
-    "Representative area: en: registered handoff subset",
-    "Representative area: de: every line matches the delivered full text",
-    "Representative area: de: registered handoff subset",
-    "Representative area: fr: every line matches the delivered full text",
-    "Representative area: fr: registered handoff subset",
-    "Representative area: es: every line matches the delivered full text",
-    "Representative area: es: registered handoff subset",
-    "Representative area: zh-Hans: every line matches the delivered full text",
-    "Representative area: zh-Hans: registered handoff subset",
-    "Representative area: ja: every line matches the delivered full text",
-    "Representative area: ja: registered handoff subset",
-    "Representative area: ru: every line matches the delivered full text",
-    "Representative area: ru: registered handoff subset",
-    "Representative area: it: every line matches the delivered full text",
-    "Representative area: it: registered handoff subset",
-    "Districts: de exact full text, unique keys, room, fixture and speaker labels",
-    "Districts: en exact full text, unique keys, room, fixture and speaker labels",
-    "Districts: es exact full text, unique keys, room, fixture and speaker labels",
-    "Districts: fr exact full text, unique keys, room, fixture and speaker labels",
-    "Districts: it exact full text, unique keys, room, fixture and speaker labels",
-    "Districts: ja exact full text, unique keys, room, fixture and speaker labels",
-    "Districts: ru exact full text, unique keys, room, fixture and speaker labels",
-    "Districts: zh-Hans exact full text, unique keys, room, fixture and speaker labels",
-    "Finale scenes: en all 100 full texts including instructions and line breaks",
-    "Finale scenes: en room and target labels",
-    "Finale scenes: de all 100 full texts including instructions and line breaks",
-    "Finale scenes: de room and target labels",
-    "Finale scenes: fr all 100 full texts including instructions and line breaks",
-    "Finale scenes: fr room and target labels",
-    "Finale scenes: es all 100 full texts including instructions and line breaks",
-    "Finale scenes: es room and target labels",
-    "Finale scenes: zh-Hans all 100 full texts including instructions and line breaks",
-    "Finale scenes: zh-Hans room and target labels",
-    "Finale scenes: ja all 100 full texts including instructions and line breaks",
-    "Finale scenes: ja room and target labels",
-    "Finale scenes: ru all 100 full texts including instructions and line breaks",
-    "Finale scenes: ru room and target labels",
-    "Finale scenes: it all 100 full texts including instructions and line breaks",
-    "Finale scenes: it room and target labels",
-    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/de.json",
-    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/en.json",
-    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/es.json",
-    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/fr.json",
-    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/it.json",
-    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/ja.json",
-    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/ru.json",
-    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/zh-Hans.json",
-    "Flow assembly: standalone arena starts and retries at boss, no campaign reward or practice grant, F7 retained"
-  ],
+  "passed": 7037,
+  "errors": [],
   "warnings": [
     "Finale scenes: authored text, source wiring, checkpoint walks and 120 return-order projections are static checks. Hybrid captions, physics, menu input and real save/resume require Unity Play Mode.",
     "Directional input: source contracts, extracted decision expressions and Python references only. Press-time facing/ground, dash buffering, canvas attack-hold, HUD fit and physical controller axes require Unity Play Mode.",
@@ -4940,27 +4874,43 @@
     "Localization: exactly nine supported locale tables",
     "Localization: de resource name and language agree",
     "Localization: de has no duplicate keys",
+    "Localization: de matches the completed translation and scoped UI edits",
     "Localization: en resource name and language agree",
     "Localization: en has no duplicate keys",
+    "Localization: en matches the completed translation and scoped UI edits",
     "Localization: es resource name and language agree",
     "Localization: es has no duplicate keys",
+    "Localization: es matches the completed translation and scoped UI edits",
     "Localization: fr resource name and language agree",
     "Localization: fr has no duplicate keys",
+    "Localization: fr matches the completed translation and scoped UI edits",
     "Localization: it resource name and language agree",
     "Localization: it has no duplicate keys",
+    "Localization: it matches the completed translation and scoped UI edits",
     "Localization: ja resource name and language agree",
     "Localization: ja has no duplicate keys",
+    "Localization: ja matches the completed translation and scoped UI edits",
     "Localization: ko resource name and language agree",
     "Localization: ko has no duplicate keys",
+    "Localization: ko matches the completed translation and scoped UI edits",
     "Localization: ru resource name and language agree",
     "Localization: ru has no duplicate keys",
+    "Localization: ru matches the completed translation and scoped UI edits",
     "Localization: zh-Hans resource name and language agree",
     "Localization: zh-Hans has no duplicate keys",
-    "Localization: de key set equals Korean",
+    "Localization: zh-Hans matches the completed translation and scoped UI edits",
+    "Localization: five frozen support names per language",
+    "Localization: glossary section 3-2: data.trials.catalog.trials.mikhail.support.label",
+    "Localization: glossary section 3-2: data.trials.catalog.trials.julius.support.label",
+    "Localization: glossary section 3-2: data.trials.catalog.trials.valeria.support.label",
+    "Localization: glossary section 3-2: data.trials.catalog.trials.gabriel.support.label",
+    "Localization: glossary section 3-2: data.trials.catalog.trials.irina.support.label",
+    "Localization: de keys and order equal Korean",
     "Localization: de has no empty translations",
     "Localization: de has no extraction IDs or translation TODOs",
     "Localization: de placeholder indices, multiplicity and format specs preserved: []",
-    "Localization: de restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: de rule numbers preserved (documented name-number spellings normalized): []",
+    "Localization: de contains Hangul only in the Korean autonym",
     "Localization: de keeps native language name: ko",
     "Localization: de keeps native language name: en",
     "Localization: de keeps native language name: de",
@@ -4970,11 +4920,12 @@
     "Localization: de keeps native language name: ja",
     "Localization: de keeps native language name: ru",
     "Localization: de keeps native language name: it",
-    "Localization: en key set equals Korean",
+    "Localization: en keys and order equal Korean",
     "Localization: en has no empty translations",
     "Localization: en has no extraction IDs or translation TODOs",
     "Localization: en placeholder indices, multiplicity and format specs preserved: []",
-    "Localization: en restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: en rule numbers preserved (documented name-number spellings normalized): []",
+    "Localization: en contains Hangul only in the Korean autonym",
     "Localization: en keeps native language name: ko",
     "Localization: en keeps native language name: en",
     "Localization: en keeps native language name: de",
@@ -4984,11 +4935,12 @@
     "Localization: en keeps native language name: ja",
     "Localization: en keeps native language name: ru",
     "Localization: en keeps native language name: it",
-    "Localization: es key set equals Korean",
+    "Localization: es keys and order equal Korean",
     "Localization: es has no empty translations",
     "Localization: es has no extraction IDs or translation TODOs",
     "Localization: es placeholder indices, multiplicity and format specs preserved: []",
-    "Localization: es restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: es rule numbers preserved (documented name-number spellings normalized): []",
+    "Localization: es contains Hangul only in the Korean autonym",
     "Localization: es keeps native language name: ko",
     "Localization: es keeps native language name: en",
     "Localization: es keeps native language name: de",
@@ -4998,11 +4950,12 @@
     "Localization: es keeps native language name: ja",
     "Localization: es keeps native language name: ru",
     "Localization: es keeps native language name: it",
-    "Localization: fr key set equals Korean",
+    "Localization: fr keys and order equal Korean",
     "Localization: fr has no empty translations",
     "Localization: fr has no extraction IDs or translation TODOs",
     "Localization: fr placeholder indices, multiplicity and format specs preserved: []",
-    "Localization: fr restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: fr rule numbers preserved (documented name-number spellings normalized): []",
+    "Localization: fr contains Hangul only in the Korean autonym",
     "Localization: fr keeps native language name: ko",
     "Localization: fr keeps native language name: en",
     "Localization: fr keeps native language name: de",
@@ -5012,11 +4965,12 @@
     "Localization: fr keeps native language name: ja",
     "Localization: fr keeps native language name: ru",
     "Localization: fr keeps native language name: it",
-    "Localization: it key set equals Korean",
+    "Localization: it keys and order equal Korean",
     "Localization: it has no empty translations",
     "Localization: it has no extraction IDs or translation TODOs",
     "Localization: it placeholder indices, multiplicity and format specs preserved: []",
-    "Localization: it restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: it rule numbers preserved (documented name-number spellings normalized): []",
+    "Localization: it contains Hangul only in the Korean autonym",
     "Localization: it keeps native language name: ko",
     "Localization: it keeps native language name: en",
     "Localization: it keeps native language name: de",
@@ -5026,11 +4980,12 @@
     "Localization: it keeps native language name: ja",
     "Localization: it keeps native language name: ru",
     "Localization: it keeps native language name: it",
-    "Localization: ja key set equals Korean",
+    "Localization: ja keys and order equal Korean",
     "Localization: ja has no empty translations",
     "Localization: ja has no extraction IDs or translation TODOs",
     "Localization: ja placeholder indices, multiplicity and format specs preserved: []",
-    "Localization: ja restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: ja rule numbers preserved (documented name-number spellings normalized): []",
+    "Localization: ja contains Hangul only in the Korean autonym",
     "Localization: ja keeps native language name: ko",
     "Localization: ja keeps native language name: en",
     "Localization: ja keeps native language name: de",
@@ -5040,12 +4995,12 @@
     "Localization: ja keeps native language name: ja",
     "Localization: ja keeps native language name: ru",
     "Localization: ja keeps native language name: it",
-    "Localization: ko key set equals Korean",
+    "Localization: ko keys and order equal Korean",
     "Localization: ko has no empty translations",
     "Localization: ko has no extraction IDs or translation TODOs",
     "Localization: ko placeholder indices, multiplicity and format specs preserved: []",
     "Localization: ko rule numbers preserved (documented name-number spellings normalized): []",
-    "Localization: ko restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: ko contains Hangul only in the Korean autonym",
     "Localization: ko keeps native language name: ko",
     "Localization: ko keeps native language name: en",
     "Localization: ko keeps native language name: de",
@@ -5055,11 +5010,12 @@
     "Localization: ko keeps native language name: ja",
     "Localization: ko keeps native language name: ru",
     "Localization: ko keeps native language name: it",
-    "Localization: ru key set equals Korean",
+    "Localization: ru keys and order equal Korean",
     "Localization: ru has no empty translations",
     "Localization: ru has no extraction IDs or translation TODOs",
     "Localization: ru placeholder indices, multiplicity and format specs preserved: []",
-    "Localization: ru restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: ru rule numbers preserved (documented name-number spellings normalized): []",
+    "Localization: ru contains Hangul only in the Korean autonym",
     "Localization: ru keeps native language name: ko",
     "Localization: ru keeps native language name: en",
     "Localization: ru keeps native language name: de",
@@ -5069,11 +5025,12 @@
     "Localization: ru keeps native language name: ja",
     "Localization: ru keeps native language name: ru",
     "Localization: ru keeps native language name: it",
-    "Localization: zh-Hans key set equals Korean",
+    "Localization: zh-Hans keys and order equal Korean",
     "Localization: zh-Hans has no empty translations",
     "Localization: zh-Hans has no extraction IDs or translation TODOs",
     "Localization: zh-Hans placeholder indices, multiplicity and format specs preserved: []",
-    "Localization: zh-Hans restricts Korean placeholders to the approved story handoff and Korean autonym",
+    "Localization: zh-Hans rule numbers preserved (documented name-number spellings normalized): []",
+    "Localization: zh-Hans contains Hangul only in the Korean autonym",
     "Localization: zh-Hans keeps native language name: ko",
     "Localization: zh-Hans keeps native language name: en",
     "Localization: zh-Hans keeps native language name: de",
@@ -5593,6 +5550,20 @@
     "Localization: migration rejects unrelated edits instead of rebasing: unity/RewindNotary/Assets/Scripts/Waves/WaveStageDirector.cs",
     "Localization: migration rejects unrelated edits instead of rebasing: unity/RewindNotary/Assets/Scripts/Waves/WaveTarget2D.cs",
     "Localization: reference: number mutation detected",
+    "Localization: reference: de localized numbers retain value",
+    "Localization: reference: de changed decimal detected",
+    "Localization: reference: es localized numbers retain value",
+    "Localization: reference: es changed decimal detected",
+    "Localization: reference: it localized numbers retain value",
+    "Localization: reference: it changed decimal detected",
+    "Localization: reference: fr localized numbers retain value",
+    "Localization: reference: fr changed decimal detected",
+    "Localization: reference: ru localized numbers retain value",
+    "Localization: reference: ru changed decimal detected",
+    "Localization: reference: decimal fractions stay with their integers",
+    "Localization: reference: changed sign detected",
+    "Localization: reference: hour and minute stay in order",
+    "Localization: reference: different named form detected",
     "Localization: reference: placeholder loss/duplication detected",
     "Localization: reference: new Korean UI literal detected",
     "Localization: reference: comments do not create false positives",
@@ -5927,6 +5898,14 @@
     "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Trials/catalog.json",
     "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Investigation/catalog.json",
     "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/ko.json",
+    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/en.json",
+    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/de.json",
+    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/fr.json",
+    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/es.json",
+    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/zh-Hans.json",
+    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/ja.json",
+    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/ru.json",
+    "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/Localization/it.json",
     "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/GameArt/sprites/rea-sheet-layout.json",
     "Input scheme: pre-input bytes preserved outside audited edits: unity/RewindNotary/Assets/Resources/GameArt/sprites/janhyang-sheet-layout.json",
     "Input scheme: input migration fails closed on unrelated change: unity/RewindNotary/Assets/Resources/Localization/de.json",
@@ -5962,16 +5941,24 @@
     "Input scheme: unchanged prior regression results: save_integrity_metrics",
     "Input scheme: unchanged prior regression results: build_pipeline_metrics",
     "Representative area: 119 delivered keys by source and purpose",
-    "Representative area: ko: every line matches the delivered full text",
-    "Representative area: ko: registered handoff subset",
+    "Representative area: Korean lines match the authored scenes and current cast hints",
+    "Representative area: ko: all delivered text and labels match the reviewed locale",
     "Representative area: ko: all nine clue body aliases preserve imported text",
+    "Representative area: en: all delivered text and labels match the reviewed locale",
     "Representative area: en: all nine clue body aliases preserve imported text",
+    "Representative area: de: all delivered text and labels match the reviewed locale",
     "Representative area: de: all nine clue body aliases preserve imported text",
+    "Representative area: fr: all delivered text and labels match the reviewed locale",
     "Representative area: fr: all nine clue body aliases preserve imported text",
+    "Representative area: es: all delivered text and labels match the reviewed locale",
     "Representative area: es: all nine clue body aliases preserve imported text",
+    "Representative area: zh-Hans: all delivered text and labels match the reviewed locale",
     "Representative area: zh-Hans: all nine clue body aliases preserve imported text",
+    "Representative area: ja: all delivered text and labels match the reviewed locale",
     "Representative area: ja: all nine clue body aliases preserve imported text",
+    "Representative area: ru: all delivered text and labels match the reviewed locale",
     "Representative area: ru: all nine clue body aliases preserve imported text",
+    "Representative area: it: all delivered text and labels match the reviewed locale",
     "Representative area: it: all nine clue body aliases preserve imported text",
     "Representative area: approved forge form in the skill status UI",
     "Representative area: all six authored labels and both full Article 3 clauses in original/copy order",
@@ -6075,7 +6062,16 @@
     "Districts: combined 221 scene/step identities",
     "Districts: complete dialogue blocks for every delivered key",
     "Districts: 12 shared practice keys serve field and standalone trials",
+    "Districts: Korean lines match the four authored districts and current cast hints",
+    "Districts: de exact full text, unique keys, room, fixture and speaker labels",
+    "Districts: en exact full text, unique keys, room, fixture and speaker labels",
+    "Districts: es exact full text, unique keys, room, fixture and speaker labels",
+    "Districts: fr exact full text, unique keys, room, fixture and speaker labels",
+    "Districts: it exact full text, unique keys, room, fixture and speaker labels",
+    "Districts: ja exact full text, unique keys, room, fixture and speaker labels",
     "Districts: ko exact full text, unique keys, room, fixture and speaker labels",
+    "Districts: ru exact full text, unique keys, room, fixture and speaker labels",
+    "Districts: zh-Hans exact full text, unique keys, room, fixture and speaker labels",
     "Districts: all 40 authored room IDs in map order",
     "Districts: authored doors, safe floors and finite combat roster clock_01_entry",
     "Districts: authored doors, safe floors and finite combat roster clock_02_pendulum",
@@ -6509,17 +6505,34 @@
     "Finale scenes: 14 groups across the five authored sections (22/34/10/22/12)",
     "Finale scenes: 53 representative + 168 district + 100 finale rows retain distinct identities",
     "Finale scenes: 100 new dialogue keys, each with a complete authored quote block",
+    "Finale scenes: Korean lines match the authored finale",
     "Finale scenes: ko all 100 full texts including instructions and line breaks",
     "Finale scenes: ko glossary section 2-1 titles and every speaker reference",
-    "Finale scenes: ko room and target labels",
+    "Finale scenes: ko reviewed room and target labels",
+    "Finale scenes: en all 100 full texts including instructions and line breaks",
     "Finale scenes: en glossary section 2-1 titles and every speaker reference",
+    "Finale scenes: en reviewed room and target labels",
+    "Finale scenes: de all 100 full texts including instructions and line breaks",
     "Finale scenes: de glossary section 2-1 titles and every speaker reference",
+    "Finale scenes: de reviewed room and target labels",
+    "Finale scenes: fr all 100 full texts including instructions and line breaks",
     "Finale scenes: fr glossary section 2-1 titles and every speaker reference",
+    "Finale scenes: fr reviewed room and target labels",
+    "Finale scenes: es all 100 full texts including instructions and line breaks",
     "Finale scenes: es glossary section 2-1 titles and every speaker reference",
+    "Finale scenes: es reviewed room and target labels",
+    "Finale scenes: zh-Hans all 100 full texts including instructions and line breaks",
     "Finale scenes: zh-Hans glossary section 2-1 titles and every speaker reference",
+    "Finale scenes: zh-Hans reviewed room and target labels",
+    "Finale scenes: ja all 100 full texts including instructions and line breaks",
     "Finale scenes: ja glossary section 2-1 titles and every speaker reference",
+    "Finale scenes: ja reviewed room and target labels",
+    "Finale scenes: ru all 100 full texts including instructions and line breaks",
     "Finale scenes: ru glossary section 2-1 titles and every speaker reference",
+    "Finale scenes: ru reviewed room and target labels",
+    "Finale scenes: it all 100 full texts including instructions and line breaks",
     "Finale scenes: it glossary section 2-1 titles and every speaker reference",
+    "Finale scenes: it reviewed room and target labels",
     "Finale scenes: five rooms in section 0-2 order",
     "Finale scenes: merged room graph resolves all doors and has unique fixed-floor checkpoints",
     "Finale scenes: physical lift exits keep their original endpoints, coordinates and gates",
@@ -6800,7 +6813,15 @@
     "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Scripts/Progression/SkillSession.cs",
     "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Scripts/Shell/GameShell.cs",
     "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Scripts/Trials/BenefactorTrialProgress.cs",
+    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/de.json",
+    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/en.json",
+    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/es.json",
+    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/fr.json",
+    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/it.json",
+    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/ja.json",
     "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/ko.json",
+    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/ru.json",
+    "Story links: only the enumerated edits reverse to prior bytes: unity/RewindNotary/Assets/Resources/Localization/zh-Hans.json",
     "Story links: only the enumerated edits reverse to prior bytes: 18-release-checklist.md",
     "Story links: only the enumerated edits reverse to prior bytes: 17-story-argon-v6-1.md",
     "Story links: only the enumerated edits reverse to prior bytes: 20-po-plan-argon.md",
@@ -6947,6 +6968,7 @@
     "Flow assembly: mastery return waits for fixed ground at interruption and at call input",
     "Flow assembly: durable boarding handoff opens the current slot selector",
     "Flow assembly: optional duel cannot replace campaign, debug, or ending-bank bytes",
+    "Flow assembly: standalone arena starts and retries at boss, no campaign reward or practice grant, F7 retained",
     "Flow assembly: pre-Mikhail wave is clearable with new-game sword and defense",
     "Flow assembly: ordered new-game path on a v4 slot reloaded at every row and doorway",
     "Flow assembly: repeatable authored guard supply reaches first mastery through single effects and one story reward",
@@ -13673,7 +13695,7 @@
     "standalone_build_executed": false
   },
   "localization_metrics": {
-    "checks": 667,
+    "checks": 696,
     "languages": [
       "ko",
       "en",
@@ -13686,8 +13708,8 @@
       "it"
     ],
     "keys_per_language": 983,
-    "translated_cells": 8839,
-    "translation_handoff_cells": 8,
+    "translated_cells": 8847,
+    "translation_handoff_cells": 0,
     "extracted_code_keys": 336,
     "extracted_data_keys": 100,
     "new_ui_keys": 547,
@@ -13697,552 +13719,7 @@
     "unexpected_korean_literals": 0,
     "exact_allowed_literals": 14,
     "placeholder_errors": [],
-    "numeric_mismatches": [
-      [
-        "de",
-        "investigation.record.core_waveform.body"
-      ],
-      [
-        "de",
-        "investigation.record.preservation_order.body"
-      ],
-      [
-        "de",
-        "investigation.record.discarded_draft.body"
-      ],
-      [
-        "de",
-        "story.cassel.p1.04"
-      ],
-      [
-        "de",
-        "story.cassel.p2.08_r1_cassel"
-      ],
-      [
-        "de",
-        "story.cassel.p3.01_open"
-      ],
-      [
-        "de",
-        "story.cassel.p3.02_live_b3"
-      ],
-      [
-        "de",
-        "story.cassel.p3.03_b3_ready"
-      ],
-      [
-        "de",
-        "story.cassel.p3.05_true_hit"
-      ],
-      [
-        "de",
-        "story.ending.true.11_marta_ethan"
-      ],
-      [
-        "de",
-        "story.ending.true.12_blank_slate"
-      ],
-      [
-        "de",
-        "story.ending.true.14_registered"
-      ],
-      [
-        "de",
-        "story.resume.lift.02_echo"
-      ],
-      [
-        "de",
-        "story.resume.crucible.02_theo"
-      ],
-      [
-        "de",
-        "story.resume.crucible.03_ethan"
-      ],
-      [
-        "de",
-        "story.epilogue.05_rea_final"
-      ],
-      [
-        "de",
-        "area.target.rea_form_one_sky"
-      ],
-      [
-        "en",
-        "investigation.record.core_waveform.body"
-      ],
-      [
-        "en",
-        "investigation.record.preservation_order.body"
-      ],
-      [
-        "en",
-        "investigation.record.discarded_draft.body"
-      ],
-      [
-        "en",
-        "story.cassel.p1.04"
-      ],
-      [
-        "en",
-        "story.cassel.p2.08_r1_cassel"
-      ],
-      [
-        "en",
-        "story.cassel.p3.01_open"
-      ],
-      [
-        "en",
-        "story.cassel.p3.02_live_b3"
-      ],
-      [
-        "en",
-        "story.cassel.p3.03_b3_ready"
-      ],
-      [
-        "en",
-        "story.cassel.p3.05_true_hit"
-      ],
-      [
-        "en",
-        "story.ending.true.11_marta_ethan"
-      ],
-      [
-        "en",
-        "story.ending.true.12_blank_slate"
-      ],
-      [
-        "en",
-        "story.ending.true.14_registered"
-      ],
-      [
-        "en",
-        "story.resume.lift.02_echo"
-      ],
-      [
-        "en",
-        "story.resume.crucible.02_theo"
-      ],
-      [
-        "en",
-        "story.resume.crucible.03_ethan"
-      ],
-      [
-        "en",
-        "story.epilogue.05_rea_final"
-      ],
-      [
-        "en",
-        "area.target.rea_form_one_sky"
-      ],
-      [
-        "es",
-        "investigation.record.core_waveform.body"
-      ],
-      [
-        "es",
-        "investigation.record.preservation_order.body"
-      ],
-      [
-        "es",
-        "investigation.record.discarded_draft.body"
-      ],
-      [
-        "es",
-        "story.cassel.p1.04"
-      ],
-      [
-        "es",
-        "story.cassel.p2.08_r1_cassel"
-      ],
-      [
-        "es",
-        "story.cassel.p3.01_open"
-      ],
-      [
-        "es",
-        "story.cassel.p3.02_live_b3"
-      ],
-      [
-        "es",
-        "story.cassel.p3.03_b3_ready"
-      ],
-      [
-        "es",
-        "story.cassel.p3.05_true_hit"
-      ],
-      [
-        "es",
-        "story.ending.true.11_marta_ethan"
-      ],
-      [
-        "es",
-        "story.ending.true.12_blank_slate"
-      ],
-      [
-        "es",
-        "story.ending.true.14_registered"
-      ],
-      [
-        "es",
-        "story.resume.lift.02_echo"
-      ],
-      [
-        "es",
-        "story.resume.crucible.02_theo"
-      ],
-      [
-        "es",
-        "story.resume.crucible.03_ethan"
-      ],
-      [
-        "es",
-        "story.epilogue.05_rea_final"
-      ],
-      [
-        "es",
-        "area.target.rea_form_one_sky"
-      ],
-      [
-        "fr",
-        "investigation.record.core_waveform.body"
-      ],
-      [
-        "fr",
-        "investigation.record.preservation_order.body"
-      ],
-      [
-        "fr",
-        "investigation.record.discarded_draft.body"
-      ],
-      [
-        "fr",
-        "story.cassel.p1.04"
-      ],
-      [
-        "fr",
-        "story.cassel.p2.08_r1_cassel"
-      ],
-      [
-        "fr",
-        "story.cassel.p3.01_open"
-      ],
-      [
-        "fr",
-        "story.cassel.p3.02_live_b3"
-      ],
-      [
-        "fr",
-        "story.cassel.p3.03_b3_ready"
-      ],
-      [
-        "fr",
-        "story.cassel.p3.05_true_hit"
-      ],
-      [
-        "fr",
-        "story.ending.true.11_marta_ethan"
-      ],
-      [
-        "fr",
-        "story.ending.true.12_blank_slate"
-      ],
-      [
-        "fr",
-        "story.ending.true.14_registered"
-      ],
-      [
-        "fr",
-        "story.resume.lift.02_echo"
-      ],
-      [
-        "fr",
-        "story.resume.crucible.02_theo"
-      ],
-      [
-        "fr",
-        "story.resume.crucible.03_ethan"
-      ],
-      [
-        "fr",
-        "story.epilogue.05_rea_final"
-      ],
-      [
-        "fr",
-        "area.target.rea_form_one_sky"
-      ],
-      [
-        "it",
-        "investigation.record.core_waveform.body"
-      ],
-      [
-        "it",
-        "investigation.record.preservation_order.body"
-      ],
-      [
-        "it",
-        "investigation.record.discarded_draft.body"
-      ],
-      [
-        "it",
-        "story.cassel.p1.04"
-      ],
-      [
-        "it",
-        "story.cassel.p2.08_r1_cassel"
-      ],
-      [
-        "it",
-        "story.cassel.p3.01_open"
-      ],
-      [
-        "it",
-        "story.cassel.p3.02_live_b3"
-      ],
-      [
-        "it",
-        "story.cassel.p3.03_b3_ready"
-      ],
-      [
-        "it",
-        "story.cassel.p3.05_true_hit"
-      ],
-      [
-        "it",
-        "story.ending.true.11_marta_ethan"
-      ],
-      [
-        "it",
-        "story.ending.true.12_blank_slate"
-      ],
-      [
-        "it",
-        "story.ending.true.14_registered"
-      ],
-      [
-        "it",
-        "story.resume.lift.02_echo"
-      ],
-      [
-        "it",
-        "story.resume.crucible.02_theo"
-      ],
-      [
-        "it",
-        "story.resume.crucible.03_ethan"
-      ],
-      [
-        "it",
-        "story.epilogue.05_rea_final"
-      ],
-      [
-        "it",
-        "area.target.rea_form_one_sky"
-      ],
-      [
-        "ja",
-        "investigation.record.core_waveform.body"
-      ],
-      [
-        "ja",
-        "investigation.record.preservation_order.body"
-      ],
-      [
-        "ja",
-        "investigation.record.discarded_draft.body"
-      ],
-      [
-        "ja",
-        "story.cassel.p1.04"
-      ],
-      [
-        "ja",
-        "story.cassel.p2.08_r1_cassel"
-      ],
-      [
-        "ja",
-        "story.cassel.p3.01_open"
-      ],
-      [
-        "ja",
-        "story.cassel.p3.02_live_b3"
-      ],
-      [
-        "ja",
-        "story.cassel.p3.03_b3_ready"
-      ],
-      [
-        "ja",
-        "story.cassel.p3.05_true_hit"
-      ],
-      [
-        "ja",
-        "story.ending.true.11_marta_ethan"
-      ],
-      [
-        "ja",
-        "story.ending.true.12_blank_slate"
-      ],
-      [
-        "ja",
-        "story.ending.true.14_registered"
-      ],
-      [
-        "ja",
-        "story.resume.lift.02_echo"
-      ],
-      [
-        "ja",
-        "story.resume.crucible.02_theo"
-      ],
-      [
-        "ja",
-        "story.resume.crucible.03_ethan"
-      ],
-      [
-        "ja",
-        "story.epilogue.05_rea_final"
-      ],
-      [
-        "ja",
-        "area.target.rea_form_one_sky"
-      ],
-      [
-        "ru",
-        "investigation.record.core_waveform.body"
-      ],
-      [
-        "ru",
-        "investigation.record.preservation_order.body"
-      ],
-      [
-        "ru",
-        "investigation.record.discarded_draft.body"
-      ],
-      [
-        "ru",
-        "story.cassel.p1.04"
-      ],
-      [
-        "ru",
-        "story.cassel.p2.08_r1_cassel"
-      ],
-      [
-        "ru",
-        "story.cassel.p3.01_open"
-      ],
-      [
-        "ru",
-        "story.cassel.p3.02_live_b3"
-      ],
-      [
-        "ru",
-        "story.cassel.p3.03_b3_ready"
-      ],
-      [
-        "ru",
-        "story.cassel.p3.05_true_hit"
-      ],
-      [
-        "ru",
-        "story.ending.true.11_marta_ethan"
-      ],
-      [
-        "ru",
-        "story.ending.true.12_blank_slate"
-      ],
-      [
-        "ru",
-        "story.ending.true.14_registered"
-      ],
-      [
-        "ru",
-        "story.resume.lift.02_echo"
-      ],
-      [
-        "ru",
-        "story.resume.crucible.02_theo"
-      ],
-      [
-        "ru",
-        "story.resume.crucible.03_ethan"
-      ],
-      [
-        "ru",
-        "story.epilogue.05_rea_final"
-      ],
-      [
-        "ru",
-        "area.target.rea_form_one_sky"
-      ],
-      [
-        "zh-Hans",
-        "investigation.record.core_waveform.body"
-      ],
-      [
-        "zh-Hans",
-        "investigation.record.preservation_order.body"
-      ],
-      [
-        "zh-Hans",
-        "investigation.record.discarded_draft.body"
-      ],
-      [
-        "zh-Hans",
-        "story.cassel.p1.04"
-      ],
-      [
-        "zh-Hans",
-        "story.cassel.p2.08_r1_cassel"
-      ],
-      [
-        "zh-Hans",
-        "story.cassel.p3.01_open"
-      ],
-      [
-        "zh-Hans",
-        "story.cassel.p3.02_live_b3"
-      ],
-      [
-        "zh-Hans",
-        "story.cassel.p3.03_b3_ready"
-      ],
-      [
-        "zh-Hans",
-        "story.cassel.p3.05_true_hit"
-      ],
-      [
-        "zh-Hans",
-        "story.ending.true.11_marta_ethan"
-      ],
-      [
-        "zh-Hans",
-        "story.ending.true.12_blank_slate"
-      ],
-      [
-        "zh-Hans",
-        "story.ending.true.14_registered"
-      ],
-      [
-        "zh-Hans",
-        "story.resume.lift.02_echo"
-      ],
-      [
-        "zh-Hans",
-        "story.resume.crucible.02_theo"
-      ],
-      [
-        "zh-Hans",
-        "story.resume.crucible.03_ethan"
-      ],
-      [
-        "zh-Hans",
-        "story.epilogue.05_rea_final"
-      ],
-      [
-        "zh-Hans",
-        "area.target.rea_form_one_sky"
-      ]
-    ],
+    "numeric_mismatches": [],
     "settings_disk_scenarios": 56,
     "reference_scenarios": [
       "ko formatted runtime example",
@@ -14377,6 +13854,20 @@
       "future primary does not roll back to an older valid language backup",
       "backup-only startup restores chosen language",
       "number mutation detected",
+      "de localized numbers retain value",
+      "de changed decimal detected",
+      "es localized numbers retain value",
+      "es changed decimal detected",
+      "it localized numbers retain value",
+      "it changed decimal detected",
+      "fr localized numbers retain value",
+      "fr changed decimal detected",
+      "ru localized numbers retain value",
+      "ru changed decimal detected",
+      "decimal fractions stay with their integers",
+      "changed sign detected",
+      "hour and minute stay in order",
+      "different named form detected",
       "placeholder loss/duplication detected",
       "new Korean UI literal detected",
       "comments do not create false positives"
@@ -15441,7 +14932,7 @@
     "unity_executed": false
   },
   "scene_link_metrics": {
-    "checks": 125,
+    "checks": 117,
     "rows": 53,
     "rooms": 11,
     "delivered_keys": 119,
@@ -15451,7 +14942,7 @@
     "stills": 6
   },
   "area_link_metrics": {
-    "checks": 443,
+    "checks": 444,
     "rooms": 40,
     "rows": 168,
     "covered_rows": 168,
@@ -15536,7 +15027,7 @@
     }
   },
   "finale_link_metrics": {
-    "checks": 302,
+    "checks": 303,
     "rows_by_section": [
       22,
       34,

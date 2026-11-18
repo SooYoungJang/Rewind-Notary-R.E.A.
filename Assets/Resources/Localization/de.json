@@ -1451,7 +1451,7 @@
     },
     {
       "key": "data.trials.catalog.trials.mikhail.support.label",
-      "value": "Heimkehrnaht"
+      "value": "Rückkehrnaht"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
@@ -1475,7 +1475,7 @@
     },
     {
       "key": "data.trials.catalog.trials.julius.support.label",
-      "value": "Zeit zur Heimkehr"
+      "value": "Rückkehrzeit"
     },
     {
       "key": "data.trials.catalog.trials.julius.patterns.1.label",
@@ -1523,7 +1523,7 @@
     },
     {
       "key": "data.trials.catalog.trials.gabriel.support.label",
-      "value": "Heimkehrglocke"
+      "value": "Rückkehrglockenschlag"
     },
     {
       "key": "data.trials.catalog.trials.gabriel.patterns.1.label",
@@ -1547,7 +1547,7 @@
     },
     {
       "key": "data.trials.catalog.trials.irina.support.label",
-      "value": "Farben der Heimkehr"
+      "value": "Rückkehrfarbe"
     },
     {
       "key": "data.trials.catalog.trials.irina.patterns.1.label",
@@ -1907,7 +1907,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Er stützt die Scherenklinge auf den Boden und sinkt auf ein Knie. Reas Klingen-Kern zeichnet die blaue Spur von Mikhails Silbernaht auf Stufe 1 aus dem Duell auf)\n„Tch…… Meinen letzten Knoten habe ich verborgen, und doch hat dieses Schwert den Fadenlauf meines ersten Stichs gelesen.\nMerk dir eines, Rea: Hörst du hier auf, bleibt es bloße Selbstverteidigung. Doch in dem Moment, in dem du diese Naht bis ans Ende meisterst, geht die Qual meines Herzens auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte steck diese Klinge weg und geh heim.“\n(Systemhinweis: Silbernaht erhalten — Wählen: 1–5 / E·B · Nutzen: Q·Y)"
+      "value": "(Er stützt die Scherenklinge auf den Boden und sinkt auf ein Knie. Reas Klingen-Kern zeichnet die blaue Spur von Mikhails Silbernaht auf Stufe 1 aus dem Duell auf)\n„Tch…… Meinen letzten Knoten habe ich verborgen, und doch hat dieses Schwert den Fadenlauf meines ersten Stichs gelesen.\nMerk dir eines, Rea: Hörst du hier auf, bleibt es bloße Selbstverteidigung. Doch in dem Moment, in dem du diese Naht bis ans Ende meisterst, geht die Qual meines Herzens auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte steck diese Klinge weg und geh heim.“\n(Systemhinweis: Silbernaht erhalten — Drück Q (Y auf dem Controller), ohne eine Richtung zu halten.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2615,7 +2615,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Er stößt das Uhrzeiger-Langschwert in den Boden und stößt schwer den Atem aus. Reas Klingen-Kern zeichnet die messingfarbene Prägung von Julius’ Schrittbahn auf Stufe 1 aus dem Duell auf)\n„……Obwohl ich meine letzte Meisterform verborgen hielt, hat deine Aufzeichnungsklinge dennoch die Hin-und-Rück-Bahn meines ersten ‚Pendelschritts‘ gelesen.\nMerk dir eines, Rea: Bis neunundzwanzig Mal bleibt es bloße Schrittkunst, und beim dreißigsten Mal schwingt nur das Gehäuse mit. Doch sobald du die achtzigste Meisterform erreichst, springt der stille Sekundenzeiger deiner halben Uhr wieder an, und mein Verfall bricht über dich herein.“\n(Systemhinweis: Pendelrücklauf erhalten — Wählen: 1–5 / E·B · Nutzen: Q·Y)"
+      "value": "(Er stößt das Uhrzeiger-Langschwert in den Boden und stößt schwer den Atem aus. Reas Klingen-Kern zeichnet die messingfarbene Prägung von Julius’ Schrittbahn auf Stufe 1 aus dem Duell auf)\n„……Obwohl ich meine letzte Meisterform verborgen hielt, hat deine Aufzeichnungsklinge dennoch die Hin-und-Rück-Bahn meines ersten ‚Pendelschritts‘ gelesen.\nMerk dir eines, Rea: Bis neunundzwanzig Mal bleibt es bloße Schrittkunst, und beim dreißigsten Mal schwingt nur das Gehäuse mit. Doch sobald du die achtzigste Meisterform erreichst, springt der stille Sekundenzeiger deiner halben Uhr wieder an, und mein Verfall bricht über dich herein.“\n(Systemhinweis: Pendelrücklauf erhalten — Halte die Richtung entgegen Reas Blickrichtung und drück Q (Y auf dem Controller).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2771,7 +2771,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Sie stützt die Degenspitze auf den Dielenboden und schöpft Atem. Reas Klingen-Kern zeichnet die blaugrüne Prägung von Valerias Sprungbahn auf Stufe 1 aus dem Duell auf)\n„……Hah, selbst als ich das letzte Finale verbarg, hat dein Schwert den Sprungwinkel meines ersten ‚Wirbelnden Klingentanzes‘ abgelesen.\nBitte, Rea. Bis dreißig Mal übernimmt deine Landung nur meine Verbeugung, doch in dem Augenblick, in dem du das achtzigste Große Finale vollendest, geht die Qual meiner Beine auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte tanz diesen Schritt niemals bis ans Ende.“\n(Systemhinweis: Vorhangwalzer erhalten — Wählen: 1–5 / E·B · Nutzen: Q·Y)"
+      "value": "(Sie stützt die Degenspitze auf den Dielenboden und schöpft Atem. Reas Klingen-Kern zeichnet die blaugrüne Prägung von Valerias Sprungbahn auf Stufe 1 aus dem Duell auf)\n„……Hah, selbst als ich das letzte Finale verbarg, hat dein Schwert den Sprungwinkel meines ersten ‚Wirbelnden Klingentanzes‘ abgelesen.\nBitte, Rea. Bis dreißig Mal übernimmt deine Landung nur meine Verbeugung, doch in dem Augenblick, in dem du das achtzigste Große Finale vollendest, geht die Qual meiner Beine auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte tanz diesen Schritt niemals bis ans Ende.“\n(Systemhinweis: Vorhangwalzer erhalten — Halte die Richtung nach oben und drück Q (Y auf dem Controller).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2927,7 +2927,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Er stützt den Schaft des Hammerschwerts auf den Boden und beugt ein Knie. Reas Klingen-Kern zeichnet die Schwingungswelle von Gabriels ‚Schwingungsschlag‘ auf Stufe 1 golden leuchtend auf)\n„[Notizbuch: Deine Klinge hat die Welle meines ersten ‚Schwingungsschlags‘ aufgezeichnet. Bis dreißig Mal werden deine Ohren nur dumpf klingen, doch bei der achtzigsten Meisterform geht mein Schweigen auf dich über. Ich gehe hinab in die Pflegestätte — bitte bring diesen Klang zum Schweigen.]“\n(Systemhinweis: Resonanzschmiede erhalten — Wählen: 1–5 / E·B · Nutzen: Q·Y)"
+      "value": "(Er stützt den Schaft des Hammerschwerts auf den Boden und beugt ein Knie. Reas Klingen-Kern zeichnet die Schwingungswelle von Gabriels ‚Schwingungsschlag‘ auf Stufe 1 golden leuchtend auf)\n„[Notizbuch: Deine Klinge hat die Welle meines ersten ‚Schwingungsschlags‘ aufgezeichnet. Bis dreißig Mal werden deine Ohren nur dumpf klingen, doch bei der achtzigsten Meisterform geht mein Schweigen auf dich über. Ich gehe hinab in die Pflegestätte — bitte bring diesen Klang zum Schweigen.]“\n(Systemhinweis: Resonanzschmiede erhalten — Halte in der Luft die Richtung nach unten und drück Q (Y auf dem Controller).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -3083,7 +3083,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Sie setzt den Pinsel-Degen auf den Boden und schöpft ruhig Atem. Reas Klingen-Kern zeichnet die aquarellfarbene Spur von Irinas ‚Pinselstrich‘ auf Stufe 1 in der Luft auf)\n„……Obwohl ich das letzte Selbstporträt verbarg, hat deine Klinge den Verlauf meines ersten ‚Pinselstrichs‘ abgelesen.\nMerk dir das, Rea. Bis dreißig Mal schimmert nur ein Hauch Aquarell am Rand deines Blicks, doch sobald du das achtzigste Selbstporträt vollendest, geht mein Verhängnis der Erblindung auf deine Augen über. Ich ziehe mich in die Pflegestätte zurück…… Bitte leg diesen Pinselstrich nieder und geh heim.“\n(Systemhinweis: Leinwandschnitt erhalten — Wählen: 1–5 / E·B · Nutzen: Q·Y)"
+      "value": "(Sie setzt den Pinsel-Degen auf den Boden und schöpft ruhig Atem. Reas Klingen-Kern zeichnet die aquarellfarbene Spur von Irinas ‚Pinselstrich‘ auf Stufe 1 in der Luft auf)\n„……Obwohl ich das letzte Selbstporträt verbarg, hat deine Klinge den Verlauf meines ersten ‚Pinselstrichs‘ abgelesen.\nMerk dir das, Rea. Bis dreißig Mal schimmert nur ein Hauch Aquarell am Rand deines Blicks, doch sobald du das achtzigste Selbstporträt vollendest, geht mein Verhängnis der Erblindung auf deine Augen über. Ich ziehe mich in die Pflegestätte zurück…… Bitte leg diesen Pinselstrich nieder und geh heim.“\n(Systemhinweis: Leinwandschnitt erhalten — Halte am Boden die Richtung nach unten und drück Q (Y auf dem Controller).)"
     },
     {
       "key": "story.irina.i0.06",

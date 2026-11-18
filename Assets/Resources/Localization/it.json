@@ -1451,7 +1451,7 @@
     },
     {
       "key": "data.trials.catalog.trials.mikhail.support.label",
-      "value": "Cucitura del ritorno"
+      "value": "Cucitura di ritorno"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
@@ -1475,7 +1475,7 @@
     },
     {
       "key": "data.trials.catalog.trials.julius.support.label",
-      "value": "Tempo di tornare"
+      "value": "Tempo di ritorno"
     },
     {
       "key": "data.trials.catalog.trials.julius.patterns.1.label",
@@ -1499,7 +1499,7 @@
     },
     {
       "key": "data.trials.catalog.trials.valeria.support.label",
-      "value": "Valzer dell'atterraggio"
+      "value": "Valzer d'atterraggio"
     },
     {
       "key": "data.trials.catalog.trials.valeria.patterns.1.label",
@@ -1523,7 +1523,7 @@
     },
     {
       "key": "data.trials.catalog.trials.gabriel.support.label",
-      "value": "Campana del ritorno"
+      "value": "Rintocco di ritorno"
     },
     {
       "key": "data.trials.catalog.trials.gabriel.patterns.1.label",
@@ -1547,7 +1547,7 @@
     },
     {
       "key": "data.trials.catalog.trials.irina.support.label",
-      "value": "Colori del ritorno"
+      "value": "Tratto di ritorno"
     },
     {
       "key": "data.trials.catalog.trials.irina.patterns.1.label",
@@ -1907,7 +1907,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Pianta la forbice nel pavimento e cade su un ginocchio. Il nucleo della spada dei ricordi cattura in luce azzurra la traiettoria di Livello 1 della scherma di cucitura mostrata da Mikhail nello scontro)\n«Tsk…… Avevo nascosto l'ultimo nodo, e quella spada è comunque riuscita a leggere la trama del primo punto.\nTientelo bene in mente, Rea: se ti fermi lì resta solo difesa personale, ma nell'istante in cui padroneggerai quella cucitura fino alla fine, il tormento del mio cuore passerà a te. Io mi ritiro in Infermeria…… ti prego, non usare più quella spada e torna indietro.»\n(Avviso di sistema: Cucitura d'argento acquisita — Seleziona con 1–5 / E · B del gamepad, usa con Q · Y)"
+      "value": "(Pianta la forbice nel pavimento e cade su un ginocchio. Il nucleo della spada dei ricordi cattura in luce azzurra la traiettoria di Livello 1 della scherma di cucitura mostrata da Mikhail nello scontro)\n«Tsk…… Avevo nascosto l'ultimo nodo, e quella spada è comunque riuscita a leggere la trama del primo punto.\nTientelo bene in mente, Rea: se ti fermi lì resta solo difesa personale, ma nell'istante in cui padroneggerai quella cucitura fino alla fine, il tormento del mio cuore passerà a te. Io mi ritiro in Infermeria…… ti prego, non usare più quella spada e torna indietro.»\n(Avviso di sistema: Cucitura d'argento acquisita — Premi Q (Y sul controller) senza tenere premuta alcuna direzione.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2615,7 +2615,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Piantando lo spadone a lancetta nel pavimento, espira pesantemente. Il nucleo della spada cattura in bagliore d'ottone la traiettoria di Livello 1 del passo di Julius rivelata nel duello)\n«……Avevo nascosto l'ultima Forma suprema, eppure la tua spada ha letto la traiettoria di andata e ritorno del mio primo „Passo del pendolo“.\nAscoltami bene, Rea. Fino a ventinove volte è solo un gioco di gambe, e alla trentesima risuonerà appena la cassa; ma nell'attimo dell'ottantesima Forma suprema, la lancetta immobile del tuo mezzo orologio riprenderà a girare e la mia vecchiaia si abbatterà su di te.»\n(Avviso di sistema: Ritorno del pendolo acquisito — Seleziona con 1–5 / E · B del gamepad, usa con Q · Y)"
+      "value": "(Piantando lo spadone a lancetta nel pavimento, espira pesantemente. Il nucleo della spada cattura in bagliore d'ottone la traiettoria di Livello 1 del passo di Julius rivelata nel duello)\n«……Avevo nascosto l'ultima Forma suprema, eppure la tua spada ha letto la traiettoria di andata e ritorno del mio primo „Passo del pendolo“.\nAscoltami bene, Rea. Fino a ventinove volte è solo un gioco di gambe, e alla trentesima risuonerà appena la cassa; ma nell'attimo dell'ottantesima Forma suprema, la lancetta immobile del tuo mezzo orologio riprenderà a girare e la mia vecchiaia si abbatterà su di te.»\n(Avviso di sistema: Ritorno del pendolo acquisito — Tieni premuta la direzione opposta a quella in cui guarda Rea e premi Q (Y sul controller).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2771,7 +2771,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Appoggiando la punta della spada sul parquet, riprende fiato. Il nucleo della spada cattura in bagliore turchese la traiettoria di salto rotante di Livello 1 mostrata da Valeria)\n«……Ah, avevo nascosto il gran finale, eppure la tua spada ha copiato l'angolo di balzo della mia prima „Danza delle lame rotanti“.\nTi prego, Rea. Fino a trenta volte ti resterà solo il mio inchino di congedo, ma nell'istante in cui completi l'ottantesimo Gran finale il supplizio delle mie gambe passerà a te. Io mi ritiro in Infermeria…… ti scongiuro, non danzare quei passi fino in fondo.»\n(Avviso di sistema: Valzer del sipario acquisito — Seleziona con 1–5 / E · B del gamepad, usa con Q · Y)"
+      "value": "(Appoggiando la punta della spada sul parquet, riprende fiato. Il nucleo della spada cattura in bagliore turchese la traiettoria di salto rotante di Livello 1 mostrata da Valeria)\n«……Ah, avevo nascosto il gran finale, eppure la tua spada ha copiato l'angolo di balzo della mia prima „Danza delle lame rotanti“.\nTi prego, Rea. Fino a trenta volte ti resterà solo il mio inchino di congedo, ma nell'istante in cui completi l'ottantesimo Gran finale il supplizio delle mie gambe passerà a te. Io mi ritiro in Infermeria…… ti scongiuro, non danzare quei passi fino in fondo.»\n(Avviso di sistema: Valzer del sipario acquisito — Tieni premuta la direzione verso l’alto e premi Q (Y sul controller).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2927,7 +2927,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Pianta l'impugnatura dello spadone-martello sul pavimento e piega un ginocchio. Il nucleo della spada cattura in luce dorata l'onda di Livello 1 del Colpo vibrante di Gabriel)\n«[Taccuino: La tua spada ha catturato l'onda del mio primo „Colpo vibrante“. Fino a trenta volte sentirai solo le orecchie ovattate, ma all'ottantesima Forma suprema il mio silenzio passerà in te. Scendo in Infermeria: ti prego, ferma quella risonanza.]»\n(Avviso di sistema: Forgia risonante acquisita — Seleziona con 1–5 / E · B del gamepad, usa con Q · Y)"
+      "value": "(Pianta l'impugnatura dello spadone-martello sul pavimento e piega un ginocchio. Il nucleo della spada cattura in luce dorata l'onda di Livello 1 del Colpo vibrante di Gabriel)\n«[Taccuino: La tua spada ha catturato l'onda del mio primo „Colpo vibrante“. Fino a trenta volte sentirai solo le orecchie ovattate, ma all'ottantesima Forma suprema il mio silenzio passerà in te. Scendo in Infermeria: ti prego, ferma quella risonanza.]»\n(Avviso di sistema: Forgia risonante acquisita — In aria, tieni premuta la direzione verso il basso e premi Q (Y sul controller).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -3083,7 +3083,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Posando la spada-pennello sul pavimento, riprende fiato con calma. Il nucleo della spada cattura con riflessi d'acquerello la traccia aerea di Livello 1 della Pennellata di Irina)\n«……Avevo nascosto l'ultimo autoritratto, eppure la tua spada ha letto la trama della mia prima „Pennellata“.\nTienilo a mente, Rea. Fino a trenta volte ti sfioreranno gli occhi solo sfumature d'acquerello, ma nell'attimo in cui compi l'ottantesimo autoritratto la mia Condanna della cecità passerà ai tuoi occhi. Scendo in Infermeria…… ti prego, ferma quella pennellata e torna indietro.»\n(Avviso di sistema: Intaglio del vuoto acquisito — Seleziona con 1–5 / E · B del gamepad, usa con Q · Y)"
+      "value": "(Posando la spada-pennello sul pavimento, riprende fiato con calma. Il nucleo della spada cattura con riflessi d'acquerello la traccia aerea di Livello 1 della Pennellata di Irina)\n«……Avevo nascosto l'ultimo autoritratto, eppure la tua spada ha letto la trama della mia prima „Pennellata“.\nTienilo a mente, Rea. Fino a trenta volte ti sfioreranno gli occhi solo sfumature d'acquerello, ma nell'attimo in cui compi l'ottantesimo autoritratto la mia Condanna della cecità passerà ai tuoi occhi. Scendo in Infermeria…… ti prego, ferma quella pennellata e torna indietro.»\n(Avviso di sistema: Intaglio del vuoto acquisito — A terra, tieni premuta la direzione verso il basso e premi Q (Y sul controller).)"
     },
     {
       "key": "story.irina.i0.06",
