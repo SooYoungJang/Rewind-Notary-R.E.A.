@@ -1,0 +1,512 @@
+{
+  "version": 1,
+  "finalStageId": "stored_records",
+  "topics": [
+    {
+      "id": "transfer_route",
+      "label": "data.investigation.catalog.topics.transfer_route.label"
+    },
+    {
+      "id": "benefactor_imprints",
+      "label": "data.investigation.catalog.topics.benefactor_imprints.label"
+    },
+    {
+      "id": "cassel_contract",
+      "label": "data.investigation.catalog.topics.cassel_contract.label"
+    }
+  ],
+  "clues": [
+    {
+      "clueId": "route_ledger",
+      "topicId": "transfer_route",
+      "label": "data.investigation.catalog.clues.route_ledger.label",
+      "textKey": "investigation.clue.route_ledger.text",
+      "summaryKey": "investigation.clue.route_ledger.summary"
+    },
+    {
+      "clueId": "route_waveform",
+      "topicId": "transfer_route",
+      "label": "data.investigation.catalog.clues.route_waveform.label",
+      "textKey": "investigation.clue.route_waveform.text",
+      "summaryKey": "investigation.clue.route_waveform.summary"
+    },
+    {
+      "clueId": "imprint_mikhail",
+      "topicId": "benefactor_imprints",
+      "label": "data.investigation.catalog.clues.imprint_mikhail.label",
+      "textKey": "investigation.clue.imprint_mikhail.text",
+      "summaryKey": "investigation.clue.imprint_mikhail.summary"
+    },
+    {
+      "clueId": "imprint_julius",
+      "topicId": "benefactor_imprints",
+      "label": "data.investigation.catalog.clues.imprint_julius.label",
+      "textKey": "investigation.clue.imprint_julius.text",
+      "summaryKey": "investigation.clue.imprint_julius.summary"
+    },
+    {
+      "clueId": "imprint_valeria",
+      "topicId": "benefactor_imprints",
+      "label": "data.investigation.catalog.clues.imprint_valeria.label",
+      "textKey": "investigation.clue.imprint_valeria.text",
+      "summaryKey": "investigation.clue.imprint_valeria.summary"
+    },
+    {
+      "clueId": "imprint_gabriel",
+      "topicId": "benefactor_imprints",
+      "label": "data.investigation.catalog.clues.imprint_gabriel.label",
+      "textKey": "investigation.clue.imprint_gabriel.text",
+      "summaryKey": "investigation.clue.imprint_gabriel.summary"
+    },
+    {
+      "clueId": "imprint_irina",
+      "topicId": "benefactor_imprints",
+      "label": "data.investigation.catalog.clues.imprint_irina.label",
+      "textKey": "investigation.clue.imprint_irina.text",
+      "summaryKey": "investigation.clue.imprint_irina.summary"
+    },
+    {
+      "clueId": "contract_original",
+      "topicId": "cassel_contract",
+      "label": "data.investigation.catalog.clues.contract_original.label",
+      "textKey": "investigation.clue.contract_original.text",
+      "summaryKey": "investigation.clue.contract_original.summary"
+    },
+    {
+      "clueId": "contract_copy",
+      "topicId": "cassel_contract",
+      "label": "data.investigation.catalog.clues.contract_copy.label",
+      "textKey": "investigation.clue.contract_copy.text",
+      "summaryKey": "investigation.clue.contract_copy.summary"
+    }
+  ],
+  "points": [
+    {
+      "id": "core_terminal",
+      "stageId": "prototype",
+      "kind": "core",
+      "label": "data.investigation.catalog.points.core_terminal.label",
+      "clueId": "",
+      "x": -6,
+      "y": 0.8,
+      "radius": 1.6
+    },
+    {
+      "id": "point_route_ledger",
+      "stageId": "prototype",
+      "kind": "terminal",
+      "label": "data.investigation.catalog.points.point_route_ledger.label",
+      "clueId": "route_ledger",
+      "x": -3,
+      "y": 0.8,
+      "radius": 1.5
+    },
+    {
+      "id": "point_route_waveform",
+      "stageId": "prototype",
+      "kind": "imprint",
+      "label": "data.investigation.catalog.points.point_route_waveform.label",
+      "clueId": "route_waveform",
+      "x": 2,
+      "y": 0.8,
+      "radius": 1.5
+    },
+    {
+      "id": "point_imprint_mikhail",
+      "stageId": "prototype",
+      "kind": "imprint",
+      "label": "data.investigation.catalog.points.point_imprint_mikhail.label",
+      "clueId": "imprint_mikhail",
+      "x": 4,
+      "y": 0.8,
+      "radius": 1.5
+    },
+    {
+      "id": "point_imprint_julius",
+      "stageId": "prototype",
+      "kind": "imprint",
+      "label": "data.investigation.catalog.points.point_imprint_julius.label",
+      "clueId": "imprint_julius",
+      "x": 9,
+      "y": 0.8,
+      "radius": 1.5
+    },
+    {
+      "id": "point_imprint_valeria",
+      "stageId": "prototype",
+      "kind": "imprint",
+      "label": "data.investigation.catalog.points.point_imprint_valeria.label",
+      "clueId": "imprint_valeria",
+      "x": 14,
+      "y": 0.8,
+      "radius": 1.5
+    },
+    {
+      "id": "point_imprint_gabriel",
+      "stageId": "prototype",
+      "kind": "imprint",
+      "label": "data.investigation.catalog.points.point_imprint_gabriel.label",
+      "clueId": "imprint_gabriel",
+      "x": 22,
+      "y": 0.8,
+      "radius": 1.5
+    },
+    {
+      "id": "point_imprint_irina",
+      "stageId": "prototype",
+      "kind": "imprint",
+      "label": "data.investigation.catalog.points.point_imprint_irina.label",
+      "clueId": "imprint_irina",
+      "x": 25,
+      "y": 0.8,
+      "radius": 1.5
+    },
+    {
+      "id": "point_contract_original",
+      "stageId": "prototype",
+      "kind": "document",
+      "label": "data.investigation.catalog.points.point_contract_original.label",
+      "clueId": "contract_original",
+      "x": 31,
+      "y": 0.8,
+      "radius": 1.5
+    },
+    {
+      "id": "point_contract_copy",
+      "stageId": "prototype",
+      "kind": "document",
+      "label": "data.investigation.catalog.points.point_contract_copy.label",
+      "clueId": "contract_copy",
+      "x": 33,
+      "y": 0.8,
+      "radius": 1.5
+    }
+  ],
+  "stages": [
+    {
+      "id": "transfer_index",
+      "label": "data.investigation.catalog.stages.transfer_index.label",
+      "gate": {
+        "all": [
+          {
+            "kind": "clue_percent",
+            "subject": "transfer_route",
+            "amount": 100
+          },
+          {
+            "kind": "transfers",
+            "subject": "",
+            "amount": 1
+          }
+        ],
+        "any": [
+          {
+            "kind": "skill_stage",
+            "subject": "silver_stitch",
+            "amount": 3
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "pendulum_rewind",
+            "amount": 3
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "curtain_call_waltz",
+            "amount": 3
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "resonance_forge",
+            "amount": 3
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "canvas_carve",
+            "amount": 3
+          }
+        ]
+      },
+      "entries": [
+        {
+          "id": "transfer_ledger",
+          "titleKey": "investigation.record.transfer_ledger.title",
+          "summaryKey": "investigation.record.transfer_ledger.summary",
+          "relatedClues": [
+            "route_ledger"
+          ]
+        },
+        {
+          "id": "core_waveform",
+          "titleKey": "investigation.record.core_waveform.title",
+          "summaryKey": "investigation.record.core_waveform.summary",
+          "relatedClues": [
+            "route_waveform"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imprint_mikhail",
+      "label": "data.investigation.catalog.stages.imprint_mikhail.label",
+      "gate": {
+        "all": [
+          {
+            "kind": "clue",
+            "subject": "imprint_mikhail",
+            "amount": 0
+          },
+          {
+            "kind": "trial_complete",
+            "subject": "mikhail",
+            "amount": 0
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "silver_stitch",
+            "amount": 3
+          }
+        ],
+        "any": []
+      },
+      "entries": [
+        {
+          "id": "imprint_mikhail",
+          "titleKey": "investigation.record.imprint_mikhail.title",
+          "summaryKey": "investigation.record.imprint_mikhail.summary",
+          "relatedClues": [
+            "imprint_mikhail"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imprint_julius",
+      "label": "data.investigation.catalog.stages.imprint_julius.label",
+      "gate": {
+        "all": [
+          {
+            "kind": "clue",
+            "subject": "imprint_julius",
+            "amount": 0
+          },
+          {
+            "kind": "trial_complete",
+            "subject": "julius",
+            "amount": 0
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "pendulum_rewind",
+            "amount": 3
+          }
+        ],
+        "any": []
+      },
+      "entries": [
+        {
+          "id": "imprint_julius",
+          "titleKey": "investigation.record.imprint_julius.title",
+          "summaryKey": "investigation.record.imprint_julius.summary",
+          "relatedClues": [
+            "imprint_julius"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imprint_valeria",
+      "label": "data.investigation.catalog.stages.imprint_valeria.label",
+      "gate": {
+        "all": [
+          {
+            "kind": "clue",
+            "subject": "imprint_valeria",
+            "amount": 0
+          },
+          {
+            "kind": "trial_complete",
+            "subject": "valeria",
+            "amount": 0
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "curtain_call_waltz",
+            "amount": 3
+          }
+        ],
+        "any": []
+      },
+      "entries": [
+        {
+          "id": "imprint_valeria",
+          "titleKey": "investigation.record.imprint_valeria.title",
+          "summaryKey": "investigation.record.imprint_valeria.summary",
+          "relatedClues": [
+            "imprint_valeria"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imprint_gabriel",
+      "label": "data.investigation.catalog.stages.imprint_gabriel.label",
+      "gate": {
+        "all": [
+          {
+            "kind": "clue",
+            "subject": "imprint_gabriel",
+            "amount": 0
+          },
+          {
+            "kind": "trial_complete",
+            "subject": "gabriel",
+            "amount": 0
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "resonance_forge",
+            "amount": 3
+          }
+        ],
+        "any": []
+      },
+      "entries": [
+        {
+          "id": "imprint_gabriel",
+          "titleKey": "investigation.record.imprint_gabriel.title",
+          "summaryKey": "investigation.record.imprint_gabriel.summary",
+          "relatedClues": [
+            "imprint_gabriel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imprint_irina",
+      "label": "data.investigation.catalog.stages.imprint_irina.label",
+      "gate": {
+        "all": [
+          {
+            "kind": "clue",
+            "subject": "imprint_irina",
+            "amount": 0
+          },
+          {
+            "kind": "trial_complete",
+            "subject": "irina",
+            "amount": 0
+          },
+          {
+            "kind": "skill_stage",
+            "subject": "canvas_carve",
+            "amount": 3
+          }
+        ],
+        "any": []
+      },
+      "entries": [
+        {
+          "id": "imprint_irina",
+          "titleKey": "investigation.record.imprint_irina.title",
+          "summaryKey": "investigation.record.imprint_irina.summary",
+          "relatedClues": [
+            "imprint_irina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contract_comparison",
+      "label": "data.investigation.catalog.stages.contract_comparison.label",
+      "gate": {
+        "all": [
+          {
+            "kind": "stage_read",
+            "subject": "transfer_index",
+            "amount": 0
+          },
+          {
+            "kind": "transfers",
+            "subject": "",
+            "amount": 5
+          },
+          {
+            "kind": "story_flag",
+            "subject": "investigation_complete",
+            "amount": 0
+          },
+          {
+            "kind": "clue_percent",
+            "subject": "cassel_contract",
+            "amount": 100
+          }
+        ],
+        "any": []
+      },
+      "entries": [
+        {
+          "id": "original_and_copy",
+          "titleKey": "investigation.record.original_and_copy.title",
+          "summaryKey": "investigation.record.original_and_copy.summary",
+          "relatedClues": [
+            "contract_original",
+            "contract_copy"
+          ]
+        },
+        {
+          "id": "preservation_order",
+          "titleKey": "investigation.record.preservation_order.title",
+          "summaryKey": "investigation.record.preservation_order.summary",
+          "relatedClues": [
+            "contract_original"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stored_records",
+      "label": "data.investigation.catalog.stages.stored_records.label",
+      "gate": {
+        "all": [
+          {
+            "kind": "stage_read",
+            "subject": "contract_comparison",
+            "amount": 0
+          },
+          {
+            "kind": "transfers",
+            "subject": "",
+            "amount": 5
+          },
+          {
+            "kind": "story_flag",
+            "subject": "investigation_complete",
+            "amount": 0
+          }
+        ],
+        "any": []
+      },
+      "entries": [
+        {
+          "id": "record_01_failure",
+          "titleKey": "investigation.record.record_01_failure.title",
+          "summaryKey": "investigation.record.record_01_failure.summary",
+          "relatedClues": [
+            "route_ledger",
+            "route_waveform"
+          ]
+        },
+        {
+          "id": "discarded_draft",
+          "titleKey": "investigation.record.discarded_draft.title",
+          "summaryKey": "investigation.record.discarded_draft.summary",
+          "relatedClues": [
+            "contract_original",
+            "contract_copy"
+          ]
+        }
+      ]
+    }
+  ]
+}

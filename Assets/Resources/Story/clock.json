@@ -1,0 +1,1251 @@
+{
+  "rooms": [
+    {
+      "id": "clock_01_entry",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_entry_floor",
+          "x": 3
+        },
+        {
+          "id": "clock_workbench_floor",
+          "x": 19
+        },
+        {
+          "id": "clock_entry_east",
+          "x": 41
+        }
+      ],
+      "points": [
+        {
+          "id": "julius_workbench",
+          "x": 12,
+          "platform": false
+        },
+        {
+          "id": "clock_entry_latch",
+          "x": 24,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_lift",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "clock_02_pendulum",
+          "x": 42,
+          "gate": "clock_entry_complete"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        }
+      ]
+    },
+    {
+      "id": "clock_02_pendulum",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_pendulum_west",
+          "x": 3
+        },
+        {
+          "id": "clock_pendulum_mid",
+          "x": 19
+        },
+        {
+          "id": "clock_pendulum_east",
+          "x": 39
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "clock_01_entry",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "clock_03_counterflow",
+          "x": 42,
+          "gate": "clock_02_cleared"
+        },
+        {
+          "room": "clock_09_shortcut",
+          "x": 37,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "crossing": "swing"
+    },
+    {
+      "id": "clock_03_counterflow",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_counter_west",
+          "x": 3
+        },
+        {
+          "id": "clock_counter_east",
+          "x": 39
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "clock_02_pendulum",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "clock_04_escapement",
+          "x": 42,
+          "gate": "clock_03_cleared"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        },
+        {
+          "id": "notary_guard",
+          "count": 1,
+          "segments": 2
+        }
+      ],
+      "crossing": "cycle"
+    },
+    {
+      "id": "clock_04_escapement",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_escapement_center",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "clock_03_counterflow",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "clock_05_vestibule",
+          "x": 42,
+          "gate": "clock_04_cleared"
+        },
+        {
+          "room": "clock_08_return_lower",
+          "x": 37,
+          "gate": "julius_defeated"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 1,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "crossing": "steps"
+    },
+    {
+      "id": "clock_05_vestibule",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_pre_boss_floor",
+          "x": 3
+        }
+      ],
+      "points": [
+        {
+          "id": "clock_arena_gate",
+          "x": 34,
+          "platform": false
+        },
+        {
+          "id": "julius_trial_bell",
+          "x": 16,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "clock_04_escapement",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "clock_06_arena",
+          "x": 42,
+          "gate": "clock_route_complete"
+        },
+        {
+          "room": "clock_07_return_upper",
+          "x": 37,
+          "gate": "julius_defeated"
+        }
+      ],
+      "roster": []
+    },
+    {
+      "id": "clock_06_arena",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "julius_arena_west",
+          "x": 3
+        },
+        {
+          "id": "julius_arena_center",
+          "x": 19
+        },
+        {
+          "id": "julius_return_platform",
+          "x": 31
+        }
+      ],
+      "points": [
+        {
+          "id": "julius_return_platform",
+          "x": 31,
+          "platform": true
+        }
+      ],
+      "exits": [
+        {
+          "room": "clock_05_vestibule",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "clock_07_return_upper",
+          "x": 42,
+          "gate": "julius_defeated"
+        }
+      ],
+      "roster": [],
+      "boutHealth": 14,
+      "interludeHealth": 7
+    },
+    {
+      "id": "clock_07_return_upper",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_return_upper_safe",
+          "x": 3
+        },
+        {
+          "id": "clock_return_upper_mid",
+          "x": 19
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "clock_06_arena",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "clock_08_return_lower",
+          "x": 42,
+          "gate": "julius_defeated"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "pendulum_rewind"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "pendulum_rewind"
+        }
+      ],
+      "stations": 4
+    },
+    {
+      "id": "clock_08_return_lower",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_return_lower_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "clock_07_return_upper",
+          "x": 1,
+          "gate": "julius_defeated"
+        },
+        {
+          "room": "clock_04_escapement",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "clock_01_entry",
+          "x": 37,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 32,
+          "gate": ""
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "pendulum_rewind"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "pendulum_rewind"
+        }
+      ],
+      "stations": 4,
+      "projectileStations": false
+    },
+    {
+      "id": "clock_09_shortcut",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_shortcut_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "clock_02_pendulum",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "clock_05_vestibule",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "clock_10_sanctuary_rail",
+          "x": 32,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "pendulum_rewind"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "stations": 3,
+      "stitchAnchors": 3,
+      "singleSeams": 3,
+      "seamId": "clock_synergy_seam"
+    },
+    {
+      "id": "clock_10_sanctuary_rail",
+      "stage": "clock",
+      "benefactor": "julius",
+      "skill": "pendulum_rewind",
+      "floors": [
+        {
+          "id": "clock_reunion_safe_floor",
+          "x": 3
+        }
+      ],
+      "points": [
+        {
+          "id": "julius_reunion_platform",
+          "x": 18,
+          "platform": true
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_sanctuary",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "clock_01_entry",
+          "x": 37,
+          "gate": "depart"
+        },
+        {
+          "room": "clock_09_shortcut",
+          "x": 28,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 3,
+          "segments": 1,
+          "setupSkill": "pendulum_rewind",
+          "setupHits": 3
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "sceneId": "clock_entry",
+      "stepId": "01_arrive",
+      "room": "clock_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!clue_imprint_julius_collected"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.clock.entry.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "clock_entry_01_read",
+      "resumePoint": "clock_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_entry",
+      "stepId": "02_pocketwatch",
+      "room": "clock_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_entry_01_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.entry.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "clock_entry_02_read",
+      "resumePoint": "clock_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_entry",
+      "stepId": "03_workbench",
+      "room": "clock_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_entry_02_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.clock.entry.03",
+      "requiredPlayerAction": [
+        "use:julius_workbench"
+      ],
+      "completionFlag": "clue_imprint_julius_collected",
+      "resumePoint": "clock_workbench_floor",
+      "effect": "keepsake"
+    },
+    {
+      "sceneId": "clock_entry",
+      "stepId": "04_other_half",
+      "room": "clock_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clue_imprint_julius_collected"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.entry.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "clock_entry_04_read",
+      "resumePoint": "clock_workbench_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_entry",
+      "stepId": "05_depart",
+      "room": "clock_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_entry_04_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.clock.entry.05",
+      "requiredPlayerAction": [
+        "latch:clock_entry_latch"
+      ],
+      "completionFlag": "clock_entry_complete",
+      "resumePoint": "clock_entry_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_route",
+      "stepId": "01_pendulum_hall",
+      "room": "clock_02_pendulum",
+      "alternateRoom": "",
+      "entryCondition": [],
+      "speakerId": "rea",
+      "textKey": "story.clock.route.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "clock_route_01_read",
+      "resumePoint": "clock_pendulum_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_route",
+      "stepId": "02_pendulum_clear",
+      "room": "clock_02_pendulum",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_route_01_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.clock.route.02",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "clock_02_cleared",
+      "resumePoint": "clock_pendulum_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_route",
+      "stepId": "03_counter_bridge",
+      "room": "clock_03_counterflow",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_02_cleared"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.route.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "clock_route_03_read",
+      "resumePoint": "clock_counter_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_route",
+      "stepId": "04_counter_clear",
+      "room": "clock_03_counterflow",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_route_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.route.04",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "clock_03_cleared",
+      "resumePoint": "clock_counter_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_route",
+      "stepId": "05_escapement",
+      "room": "clock_04_escapement",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_03_cleared"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.clock.route.05",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "clock_04_cleared",
+      "resumePoint": "clock_escapement_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_route",
+      "stepId": "06_vestibule",
+      "room": "clock_05_vestibule",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_04_cleared"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.route.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "clock_route_06_read",
+      "resumePoint": "clock_pre_boss_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_route",
+      "stepId": "07_ready_door",
+      "room": "clock_05_vestibule",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_route_06_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.clock.route.07",
+      "requiredPlayerAction": [
+        "use:clock_arena_gate"
+      ],
+      "completionFlag": "clock_route_complete",
+      "resumePoint": "clock_pre_boss_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i0",
+      "stepId": "01_listen_watch",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!investigation_complete",
+        "!julius_defeated"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i0.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i0_01_read",
+      "resumePoint": "julius_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i0",
+      "stepId": "02_rea_pardon",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i0_01_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.julius.i0.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i0_02_read",
+      "resumePoint": "julius_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i0",
+      "stepId": "03_julius_refuse",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i0_02_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i0.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i0_03_read",
+      "resumePoint": "julius_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i0",
+      "stepId": "04_start_bout",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i0_03_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i0.04",
+      "requiredPlayerAction": [
+        "win:julius"
+      ],
+      "completionFlag": "julius_defeated",
+      "resumePoint": "julius_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "julius_bout_i0",
+      "stepId": "05_acquire_pendulum",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_defeated",
+        "!investigation_complete"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i0.05",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i0_05_read",
+      "resumePoint": "julius_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i0",
+      "stepId": "06_retire_sanctuary",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i0_05_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.julius.i0.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i0_complete",
+      "resumePoint": "clock_return_upper_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i1",
+      "stepId": "01_meet_after_invest",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "!julius_defeated"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i1.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i1_01_read",
+      "resumePoint": "julius_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i1",
+      "stepId": "02_rea_hypothesis",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i1_01_read",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.julius.i1.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i1_02_read",
+      "resumePoint": "julius_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i1",
+      "stepId": "03_julius_test_rule",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i1_02_read",
+        "investigation_complete"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i1.03",
+      "requiredPlayerAction": [
+        "interlude:julius"
+      ],
+      "completionFlag": "julius_i1_mid_reached",
+      "resumePoint": "julius_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i1",
+      "stepId": "04_shutter_warning",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i1_mid_reached",
+        "investigation_complete"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i1.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i1_shutter_warned",
+      "resumePoint": "julius_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i1",
+      "stepId": "05_return_on_time",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i1_shutter_warned",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.julius.i1.05",
+      "requiredPlayerAction": [
+        "timed:julius_return_platform"
+      ],
+      "completionFlag": "julius_returned_on_time",
+      "resumePoint": "julius_return_platform",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i1",
+      "stepId": "06_share_watch",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_returned_on_time",
+        "investigation_complete"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i1.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_i1_watch_shared",
+      "resumePoint": "julius_return_platform",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_bout_i1",
+      "stepId": "07_finish_bout",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_i1_watch_shared",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.julius.i1.07",
+      "requiredPlayerAction": [
+        "win:julius"
+      ],
+      "completionFlag": "julius_defeated",
+      "resumePoint": "julius_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "julius_bout_i1",
+      "stepId": "08_grant_support",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_defeated",
+        "investigation_complete",
+        "julius_returned_on_time"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.i1.08",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_support_first_granted",
+      "resumePoint": "clock_return_upper_safe",
+      "effect": "duelHelp"
+    },
+    {
+      "sceneId": "julius_reunion_i1",
+      "stepId": "01_rail_meet",
+      "room": "clock_10_sanctuary_rail",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "julius_defeated",
+        "!julius_support_first_granted",
+        "!julius_i1_01_read"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.reunion.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_reunion_01_read",
+      "resumePoint": "clock_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_reunion_i1",
+      "stepId": "02_stop_drill_return",
+      "room": "clock_10_sanctuary_rail",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_reunion_01_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.julius.reunion.02",
+      "requiredPlayerAction": [
+        "timed:julius_reunion_platform"
+      ],
+      "completionFlag": "julius_reunion_returned",
+      "resumePoint": "clock_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_reunion_i1",
+      "stepId": "03_open_half_watch",
+      "room": "clock_10_sanctuary_rail",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_reunion_returned"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.julius.reunion.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_reunion_03_read",
+      "resumePoint": "clock_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_reunion_i1",
+      "stepId": "04_grant_support",
+      "room": "clock_10_sanctuary_rail",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_reunion_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.julius.reunion.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_support_first_granted",
+      "resumePoint": "clock_reunion_safe_floor",
+      "effect": "shelterHelp"
+    },
+    {
+      "sceneId": "clock_return",
+      "stepId": "01_upper_gate",
+      "room": "clock_07_return_upper",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_defeated"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.return.01",
+      "requiredPlayerAction": [
+        "station:pendulum_rewind",
+        "cross:floor"
+      ],
+      "completionFlag": "clock_return_01_done",
+      "resumePoint": "clock_return_upper_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_return",
+      "stepId": "02_cross_loop",
+      "room": "clock_07_return_upper",
+      "alternateRoom": "clock_08_return_lower",
+      "entryCondition": [
+        "clock_return_01_done"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.clock.return.02",
+      "requiredPlayerAction": [
+        "advance:clock_08_return_lower",
+        "clear:wave"
+      ],
+      "completionFlag": "clock_return_02_done",
+      "resumePoint": "clock_return_lower_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_return",
+      "stepId": "03_exit_hub",
+      "room": "clock_08_return_lower",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clock_return_02_done"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.return.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "clock_return_complete",
+      "resumePoint": "clock_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_synergy",
+      "stepId": "01_stopped_gear",
+      "room": "clock_09_shortcut",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "owned:silver_stitch",
+        "owned:pendulum_rewind"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.synergy.01",
+      "requiredPlayerAction": [
+        "station:pendulum_rewind",
+        "sew:seam",
+        "cross:floor"
+      ],
+      "completionFlag": "clock_synergy_platform_sewn",
+      "resumePoint": "clock_shortcut_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_synergy",
+      "stepId": "02_elite_clear",
+      "room": "clock_09_shortcut",
+      "alternateRoom": "clock_10_sanctuary_rail",
+      "entryCondition": [
+        "clock_synergy_platform_sewn"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.clock.synergy.02",
+      "requiredPlayerAction": [
+        "advance:clock_10_sanctuary_rail",
+        "clear:wave"
+      ],
+      "completionFlag": "clock_synergy_complete",
+      "resumePoint": "clock_shortcut_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_mastery",
+      "stepId": "01_stage2_30",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "stage2:pendulum_rewind",
+        "safe"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.mastery.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "pendulum_stage2_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_mastery",
+      "stepId": "02_stage3_80_tick",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "pendulum_stage2_seen",
+        "stage3:pendulum_rewind",
+        "safe"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.mastery.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "pendulum_stage3_transferred",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "clock_mastery",
+      "stepId": "03_julius_healed",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "pendulum_stage3_transferred"
+      ],
+      "speakerId": "julius",
+      "textKey": "story.clock.mastery.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_healed_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": "healed:pendulum_rewind"
+    },
+    {
+      "sceneId": "clock_mastery",
+      "stepId": "04_watch_promise",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_healed_seen",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.clock.mastery.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "clock_mastery_complete",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_trial",
+      "stepId": "01_enter",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "trial_active:julius"
+      ],
+      "speakerId": "julius",
+      "textKey": "trial.julius.enter",
+      "requiredPlayerAction": [
+        "verify:julius"
+      ],
+      "completionFlag": "julius_trial_objective_met",
+      "resumePoint": "julius_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "julius_trial",
+      "stepId": "02_verified",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_trial_objective_met",
+        "trial_active:julius"
+      ],
+      "speakerId": "julius",
+      "textKey": "trial.julius.verified",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_trial_recharged",
+      "resumePoint": "julius_arena_center",
+      "effect": "recharge"
+    },
+    {
+      "sceneId": "julius_trial",
+      "stepId": "03_return",
+      "room": "clock_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "julius_trial_recharged",
+        "trial_active:julius"
+      ],
+      "speakerId": "julius",
+      "textKey": "trial.julius.return",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "julius_trial_complete",
+      "resumePoint": "clock_pre_boss_floor",
+      "effect": "endTrial"
+    }
+  ],
+  "links": [
+    {
+      "source": "hub_lift",
+      "room": "clock_01_entry",
+      "x": 27,
+      "gate": "depart"
+    },
+    {
+      "source": "hub_sanctuary",
+      "room": "clock_10_sanctuary_rail",
+      "x": 25,
+      "gate": "investigation_complete"
+    }
+  ]
+}

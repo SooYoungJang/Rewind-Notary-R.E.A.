@@ -8,14 +8,21 @@ namespace RewindNotary
         private CombatMotor2D player, boss;
         private PlayerController2D controller;
         private JanhyangBoss bossAI;
+        private CasselBoss cassel;
+        public CasselBoss ActiveCassel => initialized ? cassel : null;
         private CameraTarget2D cameraTarget;
         private CinemachineCamera virtualCamera;
         private SkillSession skills;
+        public SkillSession ActiveSkills => initialized ? skills : null;
+        internal RepresentativeArea Area { get; private set; }
         private GameShell shell;
         private GameObject world;
         private EncounterRewardBridge reward;
         private BenefactorEncounter encounter;
         private SkillPracticeArena2D practice;
+        private WaveStageDirector waves;
+        private BenefactorTrialOpponent trial;
+        private BenefactorSupportController support;
         private StitchBinding bossBinding;
         private Font hudFont;
         private bool checkpoint, won, initialized;
@@ -38,19 +45,26 @@ namespace RewindNotary
         }
         public void StartStage(SkillSaveStore store, CoreRecord record)
         {
-            if (world != null) throw new System.InvalidOperationException("이미 스테이지가 실행 중입니다.");
+            if (world != null) throw new System.InvalidOperationException(Loc.Get("stage.already_running"));
             world = new GameObject("Playable stage"); world.transform.SetParent(transform, false);
             SkillStroke.WorldRoot = world.transform;
             checkpoint = won = false; deathTimer = 0;
             Build(store, record); initialized = true;
-            if (GameShell.DebugAvailable) ApplyStageOverride(shell.Settings.Value.stageOverride);
+            if (GameShell.DebugAvailable && cassel == null) ApplyStageOverride(shell.Settings.Value.stageOverride);
         }
         private void Build(SkillSaveStore store, CoreRecord record)
         {
+            bool finale = record.lastStageId == "cassel";
+            if (finale && !record.testData && !StageCatalog.Find("cassel").Unlocked(record))
+                throw new System.InvalidOperationException(Loc.Get("finale.entry_locked"));
             skills = Child("Skill session").AddComponent<SkillSession>();
             encounter = BenefactorEncounter.ForStage(record.lastStageId);
-            skills.EncounterId = record.lastStageId == "skill_lab" ? "practice_skill_lab" : encounter.EncounterId;
+            var trialDefinition = BenefactorTrialCatalog.Load().ForStage(record.lastStageId);
+            skills.EncounterId = trialDefinition != null ? trialDefinition.stageId
+                : record.lastStageId == "skill_lab" ? "practice_skill_lab" : encounter.EncounterId;
+            if (finale) skills.EncounterId = "cassel_finale";
             skills.Initialize(store, record);
+            skills.Progression.Trials.Configure(record.lastStageId);
             skills.PresentationRequested += PresentSkill;
             Camera camera = Camera.main;
             if (camera == null)
@@ -63,7 +77,15 @@ namespace RewindNotary
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.backgroundColor = new Color(0.53f, 0.70f, 0.85f);
             camera.transform.SetPositionAndRotation(new Vector3(0, 2.7f, -10), Quaternion.identity);
-            Child("Level").AddComponent<LevelBuilder>().Build();
+            bool story = RepresentativeScript.Handles(record.lastStageId);
+            bool waveTest = record.lastStageId == "wave_test";
+            if (waveTest)
+            {
+                waves = Child("Zone waves").AddComponent<WaveStageDirector>();
+                waves.BuildWorld();
+            }
+            else if (finale) Child("심판석").AddComponent<CasselArena>().Build(skills);
+            else if (!story) Child("Level").AddComponent<LevelBuilder>().Build();
             player = CreateActor("Rea", LevelBuilder.StartPoint, "rea-sheet", 6, 0.75f, true);
             player.Skills = skills;
             controller = player.gameObject.AddComponent<PlayerController2D>();
@@ -74,16 +96,52 @@ namespace RewindNotary
             player.SetOpponent(boss.Health); boss.SetOpponent(player.Health);
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), boss.GetComponent<Collider2D>());
             bossBinding = boss.gameObject.AddComponent<StitchBinding>();
-            bossAI = boss.gameObject.AddComponent<JanhyangBoss>(); bossAI.Initialize(player);
             reward = boss.gameObject.AddComponent<EncounterRewardBridge>();
-            reward.EncounterId = encounter.EncounterId; reward.RewardSkillId = encounter.SkillId;
-            reward.Initialize(boss.Health, skills.Progression);
+            if (finale)
+            {
+                boss.name = "Cassel";
+                boss.Animation.Tint(new Color(0.65f, 0.8f, 1f));
+            }
+            else if (story) boss.name = "Mikhail";
+            else if (trialDefinition == null)
+            {
+                bossAI = boss.gameObject.AddComponent<JanhyangBoss>(); bossAI.Initialize(player);
+                reward.EncounterId = encounter.EncounterId; reward.RewardSkillId = encounter.SkillId;
+                reward.Initialize(boss.Health, skills.Progression);
+            }
+            else
+            {
+                boss.name = trialDefinition.opponentId;
+                trial = boss.gameObject.AddComponent<BenefactorTrialOpponent>();
+                trial.Initialize(player, skills, trialDefinition);
+                player.ResetAt(new Vector2(trialDefinition.playerX, 0.15f));
+                if (trialDefinition.condition == "stitch")
+                {
+                    var anchor = Child("trial_anchor:" + trialDefinition.id);
+                    anchor.transform.position = new Vector3(trialDefinition.playerX + 1, 0.18f, 0);
+                    anchor.AddComponent<StitchSurface2D>().Initialize(anchor.name, 0.9f, true, player, boss);
+                }
+            }
             controller.Silver = player.gameObject.AddComponent<SilverStitchSkill>();
             controller.Silver.Initialize(skills, boss);
             player.BenefactorSkills = player.gameObject.AddComponent<BenefactorSkillRunner>();
             player.BenefactorSkills.Initialize(skills, boss, controller.Silver);
-            SkillPracticeWorld.Build(Child("Skill practice").transform, player, boss);
-            if (record.lastStageId != "prototype")
+            if (!finale)
+            {
+                support = player.gameObject.AddComponent<BenefactorSupportController>();
+                support.Initialize(player, boss, skills);
+            }
+            else
+            {
+                cassel = boss.gameObject.AddComponent<CasselBoss>(); cassel.Initialize(player, skills);
+                for (int i = 0; i < 3; i++)
+                {
+                    var anchor = Child("cassel_anchor:" + i); anchor.transform.position = new Vector3(42 + i * 5, .18f);
+                    anchor.AddComponent<StitchSurface2D>().Initialize(anchor.name, 2.5f, false, player, boss);
+                }
+            }
+            if (!story && !finale && !waveTest && trialDefinition == null) SkillPracticeWorld.Build(Child("Skill practice").transform, player, boss);
+            if (!story && !finale && !waveTest && trialDefinition == null && record.lastStageId != "prototype")
             {
                 practice = Child("Remaining skill practice").AddComponent<SkillPracticeArena2D>();
                 practice.Initialize(player, boss);
@@ -93,7 +151,20 @@ namespace RewindNotary
                 skills.Progression.GrantPracticeSkills();
                 player.ResetAt(new Vector2(SkillGeometry.PracticeStart, 0));
             }
+            if (waveTest)
+            {
+                skills.Progression.GrantPracticeSkills();
+                // Keep executor references valid, but the dormant duel cannot receive hidden hits/rewards.
+                boss.Health.Initialize(0, 0f);
+                boss.gameObject.SetActive(false);
+                waves.Initialize(player, skills, hudFont);
+            }
 
+            if (story)
+            {
+                Area = Child("Representative area").AddComponent<RepresentativeArea>();
+                Area.Initialize(skills, shell, player, boss);
+            }
             cameraTarget = Child("Camera target").AddComponent<CameraTarget2D>();
             cameraTarget.Player = player.transform; cameraTarget.Snap();
             if (camera.GetComponent<CinemachineBrain>() == null) camera.gameObject.AddComponent<CinemachineBrain>();
@@ -108,7 +179,10 @@ namespace RewindNotary
             composer.Damping = new Vector3(0.18f, 0.35f, 0f);
             var shake = virtualCamera.gameObject.AddComponent<ImpactCameraShake>();
             Child("Impact feedback").AddComponent<ImpactFeedback>().Initialize(shake);
+            Child("Skill evolution").AddComponent<SkillEvolutionPresentation>().Initialize(skills, player.transform, world.transform, hudFont);
             Child("Parallax").AddComponent<ParallaxBackground>().Initialize(camera);
+            if (record.lastStageId == "prototype")
+                Child("Investigation points").AddComponent<InvestigationWorld>().Initialize(player, skills, shell, hudFont);
             skills.PresentRestoredState();
         }
         private GameObject Child(string label)
@@ -125,6 +199,12 @@ namespace RewindNotary
         private void Update()
         {
             if (!initialized || !shell.Playing || !GameInput.CanPlay) return;
+            if (skills.Progression.Record.lastStageId == EndingCheckpoint.Lift) return;
+            if (cassel != null && skills.Progression.Record.lastStageId != "cassel") return;
+            if (Area != null && skills.Progression.Record.lastStageId == "cassel") return;
+            if ((Area != null || cassel != null) && !skills.LastSaveSucceeded) return;
+            if ((Debug.isDebugBuild || Application.isEditor) && Input.GetKeyDown(KeyCode.F8))
+            { shell.EnterCasselPractice(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)); return; }
             if (Debug.isDebugBuild || Application.isEditor) UpdateSkillDebug();
             if (GameInput.RetryDown) { ResetRun(true); return; }
             if (player.Health.Dead)
@@ -139,16 +219,19 @@ namespace RewindNotary
                 AudioManager.Play(AudioManager.Sfx.PlayerDown);
                 return;
             }
+            if (Area != null || cassel != null || waves != null || trial != null) return;
             if (!checkpoint && player.transform.position.x >= 35f)
             { checkpoint = true; bossAI.Activate(); }
             if (!boss.Health.Dead && boss.transform.position.y < -7f)
-            { bossBinding.Break(); boss.ResetAt(LevelBuilder.BossStart); }
+            { bossBinding.Break(); boss.ResetAt(LevelBuilder.BossStart); bossAI.ResetPattern(); bossAI.Activate(); }
             if (boss.Health.Dead && !won) won = true;
         }
         private void ResetRun(bool fromStart)
         {
             // A retry in the lethal-hit frame must deliver the queued reward before invalidating uses.
+            Area?.FlushVictory();
             reward.Flush();
+            if (cassel != null) skills.Finale.Defeat();
             skills.Progression.ResetAttempt();
             skills.Save();
             SkillPracticeWorld.ResetAttempt();
@@ -157,19 +240,27 @@ namespace RewindNotary
             foreach (var lamp in PracticeLamp2D.All) lamp.ResetAttempt();
             foreach (var hazard in PracticeTemporalHazard2D.All) hazard.ResetAttempt();
             bossBinding.Break();
+            if (Area != null) { Area.Restore(); deathTimer = 0; cameraTarget.Snap(); return; }
             if (fromStart) checkpoint = false;
+            waves?.ResetAttempt(fromStart);
             ImpactFeedback.ResetEffects();
             AudioManager.ResetPlayback(checkpoint);
             won = false; deathTimer = 0;
             player.ResetAt(checkpoint ? LevelBuilder.ArenaStart : LevelBuilder.StartPoint);
+            if (waves != null) player.ResetAt(waves.Respawn);
             controller.ClearInput();
             boss.ResetAt(LevelBuilder.BossStart); boss.Face(-1);
-            bossAI.ResetPattern(); if (checkpoint) bossAI.Activate();
+            if (trial != null)
+            { trial.ResetAttempt(); player.ResetAt(new Vector2(trial.Definition.playerX, 0.15f)); }
+            else if (cassel != null) cassel.ResetBattle();
+            else { bossAI.ResetPattern(); if (checkpoint) bossAI.Activate(); }
             cameraTarget.Snap();
             virtualCamera.PreviousStateIsValid = false;
         }
         private void UpdateSkillDebug()
         {
+            if (Area != null || cassel != null) return;
+            if (Input.GetKeyDown(KeyCode.F7)) EnterJanhyangPractice();
             int preview = Input.GetKeyDown(KeyCode.F1) ? 1 : Input.GetKeyDown(KeyCode.F2) ? 2
                 : Input.GetKeyDown(KeyCode.F3) ? 3 : Input.GetKeyDown(KeyCode.F4) ? 0 : -1;
             if (preview >= 0)
@@ -183,9 +274,17 @@ namespace RewindNotary
                 skills.Progression.SeedBoundary(Input.GetKeyDown(KeyCode.F6));
             }
         }
+        public void EnterJanhyangPractice()
+        {
+            if (!initialized || Area != null || !GameShell.DebugAvailable || cassel != null || waves != null || trial != null) return;
+            // Existing prototype / skill-lab route; never unlock a story flag or overwrite the main slot.
+            skills.Progression.GrantPracticeSkills();
+            checkpoint = true;
+            ResetRun(false);
+        }
         public void ApplyStageOverride(int stage)
         {
-            if (!initialized || !GameShell.DebugAvailable || skills.PreviewStage == stage) return;
+            if (!initialized || Area != null || cassel != null || !GameShell.DebugAvailable || skills.PreviewStage == stage) return;
             ResetRun(false);
             skills.SetPreview(stage);
         }
@@ -193,11 +292,16 @@ namespace RewindNotary
         public void StopStage()
         {
             // Caller has saved successfully; close the session before deferred destruction.
-            if (skills != null) { skills.PresentationRequested -= PresentSkill; skills.Close(false); }
+            if (skills != null)
+            {
+                if (trial != null) skills.Progression.Trials.RequestText(trial.Definition.dialogue.returnKey);
+                skills.PresentationRequested -= PresentSkill; skills.Close(false);
+            }
             initialized = false; SkillStroke.WorldRoot = null;
             ImpactFeedback.ResetEffects(); AudioManager.ResetPlayback(false);
             if (world != null) { world.SetActive(false); Destroy(world); world = null; }
             player = boss = null; controller = null; skills = null; reward = null; practice = null;
+            Area = null; waves = null; trial = null; support = null; bossAI = null; cassel = null;
         }
         public void AbortStage()
         {
@@ -206,17 +310,29 @@ namespace RewindNotary
         }
         private void PresentSkill(string cue, string skillId)
         {
+            // Boundary feedback is owned by SkillEvolutionPresentation; keep narrative notices separate.
+            if (cue == "stage_up" || cue == "basic_mastery" || cue == "doom_transfer") return;
             if (player == null) return;
             Color color = cue == "doom_transfer" || cue == "doom_restored" ? new Color(1f, 0.3f, 0.4f) : Color.cyan;
             SkillStroke.Show(player.transform.position + Vector3.up * 0.3f,
                 player.transform.position + Vector3.up * 2.5f, color, 0.8f);
         }
+        private static string SkillInputLabel(string id)
+        {
+            switch (id)
+            {
+                case BenefactorIds.Waltz: return Loc.Get("input.direction_up");
+                case BenefactorIds.Forge: return Loc.Get("input.direction_down_air");
+                case BenefactorIds.Canvas: return Loc.Get("input.direction_down_ground");
+                case BenefactorIds.Pendulum: return Loc.Get("input.direction_back");
+                default: return Loc.Get("input.direction_neutral");
+            }
+        }
         private string SkillLabel(string id)
         {
             var progress = skills.Progression.Record.Get(id);
-            string name = skills.Progression.Catalog.Get(id).displayName;
-            return name + " · " + progress.validUseCount + "회 · " + progress.stage + "단계"
-                + (progress.acquired ? "" : " (미보유)");
+            string name = skills.Progression.Catalog.Get(id).DisplayName;
+            return Loc.Get("hud.skill_progress", name, progress.validUseCount, progress.stage, (progress.acquired ? "" : Loc.Get("skill.unowned_suffix")), (cassel != null && !skills.Finale.State.CanUse(id) ? Loc.Get("skill.return_suffix") : ""));
         }
         private void OnGUI()
         {
@@ -230,55 +346,85 @@ namespace RewindNotary
             if (failure != null)
             {
                 GUI.Box(new Rect(220, 210, 840, 220), "");
-                GUI.Label(new Rect(245, 235, 800, 40), "시작할 수 없습니다. 콘솔을 확인해 주세요.", title);
+                GUI.Label(new Rect(245, 235, 800, 40), Loc.Get("boot.failure"), title);
                 GUI.Label(new Rect(245, 285, 780, 130), failure, new GUIStyle(label) { wordWrap = true });
                 GUI.matrix = previous; return;
             }
             if (!initialized || !shell.Playing) { GUI.matrix = previous; return; }
+            if (Area != null) { Area.DrawHUD(title, label); GUI.matrix = previous; return; }
             GUI.Box(new Rect(20, 18, 400, 128), "");
-            GUI.Label(new Rect(36, 28, 380, 34), "리와인드 공증록: 레아", title);
-            GUI.Label(new Rect(36, 64, 370, 25), "레아    " + player.Health.Current + " / " + player.Health.Maximum, label);
+            GUI.Label(new Rect(36, 28, 380, 34), Loc.Get("game.title"), title);
+            GUI.Label(new Rect(36, 64, 370, 25), Loc.Get("hud.rea_health", player.Health.Current, player.Health.Maximum), label);
             Bar(new Rect(36, 99, 366, 15), player.Health, new Color(0.18f, 0.82f, 0.73f));
-            GUI.Box(new Rect(20, 154, 440, 278), "");
+            GUI.Box(new Rect(20, 154, 440, 366), "");
             GUI.Label(new Rect(36, 164, 420, 28), SkillLabel(SkillRules.BasicSword), label);
-            GUI.Label(new Rect(36, 194, 420, 28), "1 " + SkillLabel(SkillRules.SilverStitch), label);
-            for (int i = 1; i < BenefactorIds.All.Length; i++)
-                GUI.Label(new Rect(36, 194 + i * 28, 420, 28), (i + 1) + " " + SkillLabel(BenefactorIds.All[i]), label);
-            GUI.Label(new Rect(36, 338, 420, 28), "선택: " + skills.Progression.Catalog.Get(player.BenefactorSkills.SelectedId).displayName, label);
-            string mode = skills.Progression.Record.testData ? "검증 저장 (본 저장과 분리)" : "슬롯 " + skills.ActiveSlot + " 저장";
-            if (skills.PreviewStage != 0) mode += " · 형태 " + skills.PreviewStage + "단계 미리보기 (집계 제외)";
-            GUI.Label(new Rect(36, 372, 420, 52), mode, new GUIStyle(label) { wordWrap = true });
+            var mapping = new GUIStyle(label) { fontSize = 14, wordWrap = true };
+            for (int i = 0; i < BenefactorIds.All.Length; i++)
+                GUI.Label(new Rect(36, 194 + i * 44, 408, 44),
+                    Loc.Get("input.skill_mapping_row", SkillInputLabel(BenefactorIds.All[i]), SkillLabel(BenefactorIds.All[i])), mapping);
+            GUI.Label(new Rect(36, 416, 408, 54), Loc.Get("input.cast_hint"), mapping);
+            string mode = skills.Progression.Record.testData ? Loc.Get("hud.test_save") : Loc.Get("hud.save_slot", skills.ActiveSlot);
+            if (skills.PreviewStage != 0) mode += Loc.Get("hud.preview_suffix", skills.PreviewStage);
+            GUI.Label(new Rect(36, 474, 408, 44), mode, mapping);
             var defense = player.Defense.State;
-            string defenseStatus = defense.Phase == DefensePhase.Dash ? "대시 중"
-                : defense.Phase == DefensePhase.ParryWindow ? "패링 판정 중"
-                : defense.Phase == DefensePhase.ParryRecovery ? "패링 실패 · 경직"
-                : defense.CounterReady(Time.time) ? "반격 가능 · 다음 검술 강화" : "방어 준비";
-            GUI.Label(new Rect(36, 438, 420, 26), defenseStatus, label);
-            GUI.Label(new Rect(36, 466, 420, 26), "대시 " + Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0")
-                + "초 · 공중 " + (defense.AirDashUsed ? "소진" : "1회"), label);
-            if (!string.IsNullOrEmpty(skills.Notice))
+            string defenseStatus = defense.Phase == DefensePhase.Dash ? Loc.Get("defense.dashing")
+                : defense.Phase == DefensePhase.ParryWindow ? Loc.Get("defense.parry_window")
+                : defense.Phase == DefensePhase.ParryRecovery ? Loc.Get("defense.parry_recovery")
+                : defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
+            GUI.Label(new Rect(36, 524, 370, 26), defenseStatus, mapping);
+            GUI.Label(new Rect(36, 552, 370, 44), Loc.Get("hud.dash_cooldown", Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0", Loc.Culture), (defense.AirDashUsed ? Loc.Get("defense.air_spent") : Loc.Get("defense.air_available"))), mapping);
+            string line = skills.Notice;
+            if (!string.IsNullOrEmpty(line))
             {
-                GUI.Box(new Rect(470, 30, 785, 94), "");
-                GUI.Label(new Rect(486, 43, 750, 78), skills.Notice, new GUIStyle(label) { wordWrap = true });
+                var subtitle = new GUIStyle(label) { wordWrap = true };
+                float height = Mathf.Max(78f, subtitle.CalcHeight(new GUIContent(line), 750));
+                GUI.Box(new Rect(470, 30, 785, height + 26), "");
+                GUI.Label(new Rect(486, 43, 750, height), line, subtitle);
             }
             if (!string.IsNullOrEmpty(skills.StorageError))
                 GUI.Label(new Rect(470, 424, 760, 65), skills.StorageError, new GUIStyle(label) { wordWrap = true });
-            GUI.Label(new Rect(28, 640, 1220, 30), "이동 A/D·방향키·스틱 | 점프 Space/W/↑·A | 검술 J/Z/좌클릭·X | 기술 Q·Y | 대시 Shift/K·LB | 패링 L·RB", label);
-            GUI.Label(new Rect(28, 673, 1220, 28), (checkpoint ? "투기장 복귀 지점 활성 · 금빛 예고를 살피세요." : "오른쪽 발판과 틈을 건너 대련장으로 향하세요.")
-                + "  R·보기: 재시작 | Esc·메뉴: 일시정지", label);
+            GUI.Label(new Rect(28, 640, 1220, 30), Loc.Get("input.gameplay"), mapping);
+            GUI.Label(new Rect(28, 673, 1220, 28), Loc.Get("input.retry_pause", (trial != null ? Loc.Get("hud.trial_hint") : waves != null ? Loc.Get("hud.wave_hint") : checkpoint ? Loc.Get("hud.checkpoint_hint") : Loc.Get("hud.reach_arena"))), label);
             if (Debug.isDebugBuild || Application.isEditor)
-                GUI.Label(new Rect(28, 606, 1220, 28), "기술 1~5 / E·B 선택 · 화폭 벽 S | F1~F3 전체 형태 | F4 실제 단계 | F5 경계 150/29 | F6 경계 399/79 (검증 저장)", label);
-            if (bossAI.Active)
+                GUI.Label(new Rect(28, 606, 1220, 28), Loc.Get("input.debug"), mapping);
+            if (trial != null)
             {
-                GUI.Box(new Rect(405, 510, 470, 76), "");
-                GUI.Label(new Rect(425, 519, 440, 26), encounter.Label + "     " + boss.Health.Current + " / 12", label);
-                Bar(new Rect(425, 554, 430, 12), boss.Health, new Color(0.47f, 0.65f, 0.92f));
+                string key = skills.Progression.Trials.LastTextKey;
+                if (!string.IsNullOrEmpty(key))
+                {
+                    GUI.Box(new Rect(475, 150, 780, 118), "");
+                    GUI.Label(new Rect(490, 159, 748, 102), Loc.Get(key), new GUIStyle(label) { wordWrap = true });
+                }
+                GUI.Box(new Rect(475, 436, 780, 166), "");
+                GUI.Label(new Rect(490, 446, 750, 30), trial.Definition.DisplayName + " · " + trial.PatternLabel, label);
+                GUI.Label(new Rect(490, 480, 750, 32), trial.Definition.ObjectiveLabel, label);
+                GUI.Label(new Rect(490, 516, 750, 40), skills.Progression.Trials.SessionStatus, new GUIStyle(label) { wordWrap = true });
+                GUI.Label(new Rect(490, 562, 750, 30), Loc.Get("trial.health", boss.Health.Current, boss.Health.Maximum), label);
+            }
+            if (support != null && waves == null)
+            {
+                var directedTrial = BenefactorTrialCatalog.Load().ForSkill(player.BenefactorSkills.InputSnapshot.SupportSkillId);
+                GUI.Label(new Rect(475, 326, 780, 56), Loc.Get("input.benefactor_support", BenefactorTrialProgress.Status(skills.Progression.Record, directedTrial)), mapping);
+                GUI.Label(new Rect(475, 386, 780, 32), support.Notice ?? "", label);
+            }
+            if (cassel != null)
+            {
+                GUI.Box(new Rect(470, 448, 785, 150), "");
+                GUI.Label(new Rect(486, 460, 750, 130), cassel.Status, new GUIStyle(label) { wordWrap = true });
+            }
+            if (bossAI != null && bossAI.Active)
+            {
+                GUI.Box(new Rect(475, 510, 470, 76), "");
+                GUI.Label(new Rect(495, 519, 440, 26), encounter.Label + "     " + boss.Health.Current + " / 12", label);
+                Bar(new Rect(495, 554, 430, 12), boss.Health, new Color(0.47f, 0.65f, 0.92f));
+                GUI.Label(new Rect(480, 454, 775, 50), Loc.Get("hud.echo_phase", bossAI.Phase, bossAI.PatternLabel),
+                    new GUIStyle(label) { wordWrap = true });
             }
             if (player.Health.Dead || won)
             {
                 GUI.Box(new Rect(485, 270, 500, 130), "");
-                GUI.Label(new Rect(515, 290, 460, 42), won ? "테스트 대련 완료" : "다시 도전합니다…", title);
-                GUI.Label(new Rect(515, 342, 460, 35), won ? "R / 패드 보기 버튼으로 다시 도전하세요." : "복귀 지점으로 돌아갑니다.", label);
+                GUI.Label(new Rect(515, 290, 460, 42), won ? Loc.Get("hud.practice_complete") : Loc.Get("hud.retrying"), title);
+                GUI.Label(new Rect(515, 342, 460, 35), won ? Loc.Get("input.retry_button") : Loc.Get("hud.returning_checkpoint"), label);
             }
             GUI.matrix = previous;
         }
@@ -292,6 +438,7 @@ namespace RewindNotary
         public bool FlushProgress()
         {
             if (!initialized) return true;
+            Area?.FlushVictory();
             reward.Flush();
             skills.Save();
             return skills.LastSaveSucceeded;

@@ -1,0 +1,1265 @@
+{
+  "rooms": [
+    {
+      "id": "opera_01_entry",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_entry_floor",
+          "x": 3
+        },
+        {
+          "id": "opera_practice_floor",
+          "x": 19
+        },
+        {
+          "id": "opera_entry_east",
+          "x": 41
+        }
+      ],
+      "points": [
+        {
+          "id": "valeria_shoes_rack",
+          "x": 12,
+          "platform": false
+        },
+        {
+          "id": "opera_entry_latch",
+          "x": 24,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_lift",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "opera_02_auditorium",
+          "x": 42,
+          "gate": "opera_entry_complete"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        }
+      ]
+    },
+    {
+      "id": "opera_02_auditorium",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_audit_west",
+          "x": 3
+        },
+        {
+          "id": "opera_audit_east",
+          "x": 39
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "opera_01_entry",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "opera_03_chandelier",
+          "x": 42,
+          "gate": "opera_02_cleared"
+        },
+        {
+          "room": "opera_09_shortcut",
+          "x": 37,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "crossing": "steps"
+    },
+    {
+      "id": "opera_03_chandelier",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_chand_west",
+          "x": 3
+        },
+        {
+          "id": "opera_chand_mid",
+          "x": 19
+        },
+        {
+          "id": "opera_chand_east",
+          "x": 39
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "opera_02_auditorium",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "opera_04_rooftop_west",
+          "x": 42,
+          "gate": "opera_03_cleared"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        },
+        {
+          "id": "notary_guard",
+          "count": 1,
+          "segments": 2
+        }
+      ],
+      "crossing": "chandelier"
+    },
+    {
+      "id": "opera_04_rooftop_west",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_roof_west_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "opera_03_chandelier",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "opera_05_wings",
+          "x": 42,
+          "gate": "opera_04_cleared"
+        },
+        {
+          "room": "opera_08_return_foyer",
+          "x": 37,
+          "gate": "valeria_defeated"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 1,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "crossing": "arch"
+    },
+    {
+      "id": "opera_05_wings",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_pre_boss_floor",
+          "x": 3
+        }
+      ],
+      "points": [
+        {
+          "id": "opera_arena_gate",
+          "x": 34,
+          "platform": false
+        },
+        {
+          "id": "valeria_trial_bell",
+          "x": 16,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "opera_04_rooftop_west",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "opera_06_arena",
+          "x": 42,
+          "gate": "opera_route_complete"
+        },
+        {
+          "room": "opera_07_return_roof",
+          "x": 37,
+          "gate": "valeria_defeated"
+        }
+      ],
+      "roster": []
+    },
+    {
+      "id": "opera_06_arena",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "valeria_arena_west",
+          "x": 3
+        },
+        {
+          "id": "valeria_arena_center",
+          "x": 19
+        },
+        {
+          "id": "valeria_safe_stage_ledge",
+          "x": 31
+        },
+        {
+          "id": "luka_opera_lift",
+          "x": 37
+        }
+      ],
+      "points": [
+        {
+          "id": "valeria_safe_stage_ledge",
+          "x": 31,
+          "platform": true
+        },
+        {
+          "id": "luka_opera_lift",
+          "x": 37,
+          "platform": true
+        }
+      ],
+      "exits": [
+        {
+          "room": "opera_05_wings",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "opera_07_return_roof",
+          "x": 42,
+          "gate": "valeria_defeated"
+        }
+      ],
+      "roster": [],
+      "boutHealth": 14,
+      "interludeHealth": 3
+    },
+    {
+      "id": "opera_07_return_roof",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_return_roof_safe",
+          "x": 3
+        },
+        {
+          "id": "opera_return_roof_mid",
+          "x": 19
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "opera_06_arena",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "opera_08_return_foyer",
+          "x": 42,
+          "gate": "valeria_defeated"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "curtain_call_waltz"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "curtain_call_waltz"
+        }
+      ],
+      "stations": 4
+    },
+    {
+      "id": "opera_08_return_foyer",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_return_foyer_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "opera_07_return_roof",
+          "x": 1,
+          "gate": "valeria_defeated"
+        },
+        {
+          "room": "opera_04_rooftop_west",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "opera_01_entry",
+          "x": 37,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 32,
+          "gate": ""
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "curtain_call_waltz"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "curtain_call_waltz"
+        }
+      ],
+      "stations": 3,
+      "projectileStations": true
+    },
+    {
+      "id": "opera_09_shortcut",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_shortcut_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "opera_02_auditorium",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "opera_05_wings",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "opera_10_sanctuary_stairs",
+          "x": 32,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "curtain_call_waltz"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "stations": 3,
+      "stitchAnchors": 3,
+      "singleSeams": 3,
+      "seamId": "opera_synergy_seam"
+    },
+    {
+      "id": "opera_10_sanctuary_stairs",
+      "stage": "opera",
+      "benefactor": "valeria",
+      "skill": "curtain_call_waltz",
+      "floors": [
+        {
+          "id": "opera_reunion_safe_floor",
+          "x": 3
+        },
+        {
+          "id": "opera_reunion_lift_floor",
+          "x": 19
+        }
+      ],
+      "points": [
+        {
+          "id": "valeria_reunion_lift",
+          "x": 18,
+          "platform": true
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_sanctuary",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "opera_01_entry",
+          "x": 37,
+          "gate": "depart"
+        },
+        {
+          "room": "opera_09_shortcut",
+          "x": 28,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 3,
+          "segments": 1,
+          "setupSkill": "curtain_call_waltz",
+          "setupHits": 3
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "sceneId": "opera_entry",
+      "stepId": "01_arrive",
+      "room": "opera_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!clue_imprint_valeria_collected"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.opera.entry.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "opera_entry_01_read",
+      "resumePoint": "opera_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_entry",
+      "stepId": "02_practice_room",
+      "room": "opera_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_entry_01_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.entry.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "opera_entry_02_read",
+      "resumePoint": "opera_practice_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_entry",
+      "stepId": "03_shoes_and_lines",
+      "room": "opera_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_entry_02_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.opera.entry.03",
+      "requiredPlayerAction": [
+        "use:valeria_shoes_rack"
+      ],
+      "completionFlag": "clue_imprint_valeria_collected",
+      "resumePoint": "opera_practice_floor",
+      "effect": "keepsake"
+    },
+    {
+      "sceneId": "opera_entry",
+      "stepId": "04_rea_landing",
+      "room": "opera_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clue_imprint_valeria_collected"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.entry.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "opera_entry_04_read",
+      "resumePoint": "opera_practice_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_entry",
+      "stepId": "05_depart",
+      "room": "opera_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_entry_04_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.opera.entry.05",
+      "requiredPlayerAction": [
+        "latch:opera_entry_latch"
+      ],
+      "completionFlag": "opera_entry_complete",
+      "resumePoint": "opera_entry_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_route",
+      "stepId": "01_auditorium",
+      "room": "opera_02_auditorium",
+      "alternateRoom": "",
+      "entryCondition": [],
+      "speakerId": "rea",
+      "textKey": "story.opera.route.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "opera_route_01_read",
+      "resumePoint": "opera_audit_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_route",
+      "stepId": "02_auditorium_clear",
+      "room": "opera_02_auditorium",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_route_01_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.opera.route.02",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "opera_02_cleared",
+      "resumePoint": "opera_audit_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_route",
+      "stepId": "03_chandelier",
+      "room": "opera_03_chandelier",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_02_cleared"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.route.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "opera_route_03_read",
+      "resumePoint": "opera_chand_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_route",
+      "stepId": "04_chandelier_clear",
+      "room": "opera_03_chandelier",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_route_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.route.04",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "opera_03_cleared",
+      "resumePoint": "opera_chand_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_route",
+      "stepId": "05_rooftop_west",
+      "room": "opera_04_rooftop_west",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_03_cleared"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.opera.route.05",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "opera_04_cleared",
+      "resumePoint": "opera_roof_west_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_route",
+      "stepId": "06_wings",
+      "room": "opera_05_wings",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_04_cleared"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.route.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "opera_route_06_read",
+      "resumePoint": "opera_pre_boss_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_route",
+      "stepId": "07_ready_curtain",
+      "room": "opera_05_wings",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_route_06_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.opera.route.07",
+      "requiredPlayerAction": [
+        "use:opera_arena_gate"
+      ],
+      "completionFlag": "opera_route_complete",
+      "resumePoint": "opera_pre_boss_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i0",
+      "stepId": "01_meet_stage",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!investigation_complete",
+        "!valeria_defeated"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i0.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i0_01_read",
+      "resumePoint": "valeria_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i0",
+      "stepId": "02_rea_pardon",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i0_01_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.valeria.i0.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i0_02_read",
+      "resumePoint": "valeria_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i0",
+      "stepId": "03_valeria_refuse",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i0_02_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i0.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i0_03_read",
+      "resumePoint": "valeria_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i0",
+      "stepId": "04_start_bout",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i0_03_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i0.04",
+      "requiredPlayerAction": [
+        "win:valeria"
+      ],
+      "completionFlag": "valeria_defeated",
+      "resumePoint": "valeria_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "valeria_bout_i0",
+      "stepId": "05_acquire_waltz",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_defeated",
+        "!investigation_complete"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i0.05",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i0_05_read",
+      "resumePoint": "valeria_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i0",
+      "stepId": "06_retire_sanctuary",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i0_05_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.valeria.i0.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i0_complete",
+      "resumePoint": "opera_return_roof_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i1",
+      "stepId": "01_meet_after_invest",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "!valeria_defeated"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i1.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i1_01_read",
+      "resumePoint": "valeria_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i1",
+      "stepId": "02_rea_hypothesis",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i1_01_read",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.valeria.i1.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i1_02_read",
+      "resumePoint": "valeria_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i1",
+      "stepId": "03_valeria_challenge",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i1_02_read",
+        "investigation_complete"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i1.03",
+      "requiredPlayerAction": [
+        "interlude:valeria"
+      ],
+      "completionFlag": "valeria_i1_climax_reached",
+      "resumePoint": "valeria_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i1",
+      "stepId": "04_aerial_temptation",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i1_climax_reached",
+        "investigation_complete"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i1.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i1_tempted",
+      "resumePoint": "valeria_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i1",
+      "stepId": "05_safe_landing_lift",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i1_tempted",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.valeria.i1.05",
+      "requiredPlayerAction": [
+        "walk:valeria_safe_stage_ledge",
+        "ride:luka_opera_lift"
+      ],
+      "completionFlag": "valeria_safe_landed",
+      "resumePoint": "luka_opera_lift",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i1",
+      "stepId": "06_check_ankles",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_safe_landed",
+        "investigation_complete"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i1.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_i1_acknowledged",
+      "resumePoint": "luka_opera_lift",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_bout_i1",
+      "stepId": "07_finish_bout",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_i1_acknowledged",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.valeria.i1.07",
+      "requiredPlayerAction": [
+        "win:valeria"
+      ],
+      "completionFlag": "valeria_defeated",
+      "resumePoint": "valeria_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "valeria_bout_i1",
+      "stepId": "08_grant_support",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_defeated",
+        "investigation_complete",
+        "valeria_safe_landed"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.i1.08",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_support_first_granted",
+      "resumePoint": "opera_return_roof_safe",
+      "effect": "duelHelp"
+    },
+    {
+      "sceneId": "valeria_reunion_i1",
+      "stepId": "01_stairs_meet",
+      "room": "opera_10_sanctuary_stairs",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "valeria_defeated",
+        "!valeria_support_first_granted",
+        "!valeria_i1_01_read"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.reunion.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_reunion_01_read",
+      "resumePoint": "opera_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_reunion_i1",
+      "stepId": "02_take_safe_lift",
+      "room": "opera_10_sanctuary_stairs",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_reunion_01_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.valeria.reunion.02",
+      "requiredPlayerAction": [
+        "ride:valeria_reunion_lift"
+      ],
+      "completionFlag": "valeria_reunion_landed",
+      "resumePoint": "opera_reunion_lift_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_reunion_i1",
+      "stepId": "03_tie_boots",
+      "room": "opera_10_sanctuary_stairs",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_reunion_landed"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.valeria.reunion.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_reunion_03_read",
+      "resumePoint": "opera_reunion_lift_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_reunion_i1",
+      "stepId": "04_grant_support",
+      "room": "opera_10_sanctuary_stairs",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_reunion_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.valeria.reunion.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_support_first_granted",
+      "resumePoint": "opera_reunion_lift_floor",
+      "effect": "shelterHelp"
+    },
+    {
+      "sceneId": "opera_return",
+      "stepId": "01_roof_step",
+      "room": "opera_07_return_roof",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_defeated"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.return.01",
+      "requiredPlayerAction": [
+        "station:curtain_call_waltz",
+        "cross:floor"
+      ],
+      "completionFlag": "opera_return_01_done",
+      "resumePoint": "opera_return_roof_mid",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_return",
+      "stepId": "02_cross_loop",
+      "room": "opera_07_return_roof",
+      "alternateRoom": "opera_08_return_foyer",
+      "entryCondition": [
+        "opera_return_01_done"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.opera.return.02",
+      "requiredPlayerAction": [
+        "advance:opera_08_return_foyer",
+        "clear:wave"
+      ],
+      "completionFlag": "opera_return_02_done",
+      "resumePoint": "opera_return_foyer_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_return",
+      "stepId": "03_exit_hub",
+      "room": "opera_08_return_foyer",
+      "alternateRoom": "",
+      "entryCondition": [
+        "opera_return_02_done"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.return.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "opera_return_complete",
+      "resumePoint": "opera_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_synergy",
+      "stepId": "01_sew_and_leap",
+      "room": "opera_09_shortcut",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "owned:silver_stitch",
+        "owned:curtain_call_waltz"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.synergy.01",
+      "requiredPlayerAction": [
+        "sew:seam",
+        "station:curtain_call_waltz",
+        "cross:floor"
+      ],
+      "completionFlag": "opera_synergy_stage_leaped",
+      "resumePoint": "opera_shortcut_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_synergy",
+      "stepId": "02_elite_clear",
+      "room": "opera_09_shortcut",
+      "alternateRoom": "opera_10_sanctuary_stairs",
+      "entryCondition": [
+        "opera_synergy_stage_leaped"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.opera.synergy.02",
+      "requiredPlayerAction": [
+        "advance:opera_10_sanctuary_stairs",
+        "clear:wave"
+      ],
+      "completionFlag": "opera_synergy_complete",
+      "resumePoint": "opera_shortcut_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_mastery",
+      "stepId": "01_stage2_30",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "stage2:curtain_call_waltz",
+        "safe"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.mastery.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "waltz_stage2_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_mastery",
+      "stepId": "02_stage3_80_transfer",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "waltz_stage2_seen",
+        "stage3:curtain_call_waltz",
+        "safe"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.mastery.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "waltz_stage3_transferred",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "opera_mastery",
+      "stepId": "03_valeria_stands",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "waltz_stage3_transferred"
+      ],
+      "speakerId": "valeria",
+      "textKey": "story.opera.mastery.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_healed_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": "healed:curtain_call_waltz"
+    },
+    {
+      "sceneId": "opera_mastery",
+      "stepId": "04_step_promise",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_healed_seen",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.opera.mastery.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "opera_mastery_complete",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_trial",
+      "stepId": "01_enter",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "trial_active:valeria"
+      ],
+      "speakerId": "valeria",
+      "textKey": "trial.valeria.enter",
+      "requiredPlayerAction": [
+        "verify:valeria"
+      ],
+      "completionFlag": "valeria_trial_objective_met",
+      "resumePoint": "valeria_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "valeria_trial",
+      "stepId": "02_verified",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_trial_objective_met",
+        "trial_active:valeria"
+      ],
+      "speakerId": "valeria",
+      "textKey": "trial.valeria.verified",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_trial_recharged",
+      "resumePoint": "valeria_arena_center",
+      "effect": "recharge"
+    },
+    {
+      "sceneId": "valeria_trial",
+      "stepId": "03_return",
+      "room": "opera_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "valeria_trial_recharged",
+        "trial_active:valeria"
+      ],
+      "speakerId": "valeria",
+      "textKey": "trial.valeria.return",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "valeria_trial_complete",
+      "resumePoint": "opera_pre_boss_floor",
+      "effect": "endTrial"
+    }
+  ],
+  "links": [
+    {
+      "source": "hub_lift",
+      "room": "opera_01_entry",
+      "x": 31,
+      "gate": "depart"
+    },
+    {
+      "source": "hub_sanctuary",
+      "room": "opera_10_sanctuary_stairs",
+      "x": 29,
+      "gate": "investigation_complete"
+    }
+  ]
+}

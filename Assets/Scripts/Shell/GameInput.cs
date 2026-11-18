@@ -19,19 +19,34 @@ namespace RewindNotary
             }
         }
         private static float Stronger(float a, float b) => Mathf.Abs(a) >= Mathf.Abs(b) ? a : b;
-        public static bool JumpDown => Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)
-            || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.JoystickButton0);
-        public static bool JumpHeld => Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)
-            || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.JoystickButton0);
-        public static bool JumpUp => Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W)
-            || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.JoystickButton0);
+        public static float Vertical
+        {
+            get
+            {
+                float keyboard = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) ? 1f : 0f)
+                    - (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? 1f : 0f);
+                return keyboard != 0 ? keyboard : Stronger(Input.GetAxisRaw("PadVertical"), Input.GetAxisRaw("PadDpadVertical"));
+            }
+        }
+        public static Vector2 SkillDirection => new Vector2(Horizontal, Vertical);
+        public const float SkillDirectionThreshold = 0.5f;
+        // Vertical wins diagonals. Forward-only input uses silver so running casts remain useful.
+        public static string ResolveSkill(Vector2 direction, int facing, bool grounded)
+        {
+            if (direction.y > SkillDirectionThreshold) return BenefactorIds.Waltz;
+            if (direction.y < -SkillDirectionThreshold) return grounded ? BenefactorIds.Canvas : BenefactorIds.Forge;
+            if (direction.x * facing < -SkillDirectionThreshold) return BenefactorIds.Pendulum;
+            return SkillRules.SilverStitch;
+        }
+        public static bool JumpDown => Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0);
+        public static bool JumpHeld => Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0);
+        public static bool JumpUp => Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0);
         public static bool AttackDown => Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Z)
             || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton2);
-        public static bool SilverDown => Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton3);
-        public static bool NextSkillDown => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton1);
-        public static int SkillSelection => Input.GetKeyDown(KeyCode.Alpha1) ? 0 : Input.GetKeyDown(KeyCode.Alpha2) ? 1
-            : Input.GetKeyDown(KeyCode.Alpha3) ? 2 : Input.GetKeyDown(KeyCode.Alpha4) ? 3 : Input.GetKeyDown(KeyCode.Alpha5) ? 4 : -1;
-        public static bool PaintWallHeld => Input.GetKey(KeyCode.S) || Input.GetAxisRaw("PadVertical") < -SkillGeometry.WallInputThreshold;
+        public static bool CastDown => Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton3);
+        // Down already chooses canvas. Holding the attack button chooses its first wall instead.
+        public static bool PaintWallHeld => Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.Z)
+            || Input.GetMouseButton(0) || Input.GetKey(KeyCode.JoystickButton2);
         public static bool DashDown => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)
             || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.JoystickButton4);
         public static bool ParryDown => Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.JoystickButton5);
@@ -40,6 +55,8 @@ namespace RewindNotary
             || Input.GetKeyDown(KeyCode.JoystickButton0);
         public static bool CancelDown => Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton1);
         public static bool DeleteDown => Input.GetKeyDown(KeyCode.Delete) || Input.GetKeyDown(KeyCode.JoystickButton2);
+        public static bool InvestigateDown => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton8);
+        public static bool SupportDown => Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.JoystickButton9);
         public static bool RetryDown => Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.JoystickButton6);
         public static Vector2 MenuAxis => new Vector2(
             Stronger((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) ? 1 : 0)

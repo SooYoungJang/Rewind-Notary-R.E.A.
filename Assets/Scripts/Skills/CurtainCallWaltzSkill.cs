@@ -43,9 +43,10 @@ namespace RewindNotary
             if (spinning)
             {
                 Bounds area = SkillGeometry.Area(transform.position + Vector3.up, profile.reach);
+                WaveCombatTargets.Skill(session, use, area);
                 if (!contacts.Contains(enemy.name) && !enemy.Health.Dead && area.Intersects(enemy.GetComponent<Collider2D>().bounds))
                 {
-                    bool hit = enemy.Health.Hit(profile.damage, transform.position);
+                    bool hit = enemy.Health.Hit(FinaleCombat.Scale(session, profile.damage), transform.position);
                     Contact(enemy.name, hit, EffectTargetKind.Enemy);
                     if (hit) contacts.Add(enemy.name);
                 }
@@ -56,7 +57,7 @@ namespace RewindNotary
                 foreach (var target in DestructibleTarget2D.All)
                     if (!contacts.Contains(target.TargetId) && area.Intersects(target.Bounds))
                     {
-                        bool hit = target.Hit(profile.damage); Credit(target.TargetId, hit, EffectTargetKind.Destructible);
+                        bool hit = target.Hit(FinaleCombat.Scale(session, profile.damage)); Credit(target.TargetId, hit, EffectTargetKind.Destructible);
                         if (hit) contacts.Add(target.TargetId);
                     }
                 if (Time.time >= spinEnd)

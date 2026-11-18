@@ -5,7 +5,7 @@ namespace RewindNotary
     // Scene-owned: rebuilding Main also releases every source and static reference.
     public sealed class AudioManager : MonoBehaviour
     {
-        public enum Sfx { Swing, Hit, Hurt, Jump, Land, BossWarning, BossAttack, BossDefeat, PlayerDown, Parry }
+        public enum Sfx { Swing, Hit, Hurt, Jump, Land, BossWarning, BossAttack, BossDefeat, PlayerDown, Parry, Evolution }
         public enum Music { Field, Boss }
         public struct VoiceHandle { internal int Index, Generation; }
         public const int PoolSize = 12;
@@ -15,7 +15,7 @@ namespace RewindNotary
         [Range(0f, 1f)] public float SfxVolume = 0.7f;
         [Range(0f, 1f)] public float MusicVolume = 0.4f;
         private static readonly string[] Names = { "swing", "hit", "hurt", "jump", "land-thud",
-            "boss-warning", "boss-attack", "boss-defeat", "player-down", "parry" };
+            "boss-warning", "boss-attack", "boss-defeat", "player-down", "parry", "evolution" };
         private readonly AudioClip[] clips = new AudioClip[Names.Length];
         private readonly AudioSource[] voices = new AudioSource[PoolSize];
         private readonly int[] generations = new int[PoolSize];
@@ -71,7 +71,7 @@ namespace RewindNotary
             var source = voices[slot]; source.Stop();
             paused[slot] = false;
             gameTimed[slot] = sound == Sfx.BossWarning;
-            protectedVoice[slot] = gameTimed[slot] || sound == Sfx.BossDefeat || sound == Sfx.PlayerDown;
+            protectedVoice[slot] = gameTimed[slot] || sound == Sfx.BossDefeat || sound == Sfx.PlayerDown || sound == Sfx.Evolution;
             source.clip = clip;
             source.volume = MasterVolume * SfxVolume;
             source.pitch = gameTimed[slot] ? Mathf.Clamp(Time.timeScale, 0.01f, 3f) : 1f;

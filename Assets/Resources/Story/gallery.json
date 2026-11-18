@@ -1,0 +1,1254 @@
+{
+  "rooms": [
+    {
+      "id": "gallery_01_entry",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_entry_floor",
+          "x": 3
+        },
+        {
+          "id": "gallery_easel_floor",
+          "x": 19
+        },
+        {
+          "id": "gallery_entry_east",
+          "x": 41
+        }
+      ],
+      "points": [
+        {
+          "id": "irina_sketchbook_stand",
+          "x": 12,
+          "platform": false
+        },
+        {
+          "id": "gallery_entry_latch",
+          "x": 24,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_lift",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "gallery_02_white_hall",
+          "x": 42,
+          "gate": "gallery_entry_complete"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        }
+      ]
+    },
+    {
+      "id": "gallery_02_white_hall",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_hall_west",
+          "x": 3
+        },
+        {
+          "id": "gallery_hall_east",
+          "x": 39
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "gallery_01_entry",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "gallery_03_easel_bridge",
+          "x": 42,
+          "gate": "gallery_02_cleared"
+        },
+        {
+          "room": "gallery_09_shortcut",
+          "x": 37,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "crossing": "steps"
+    },
+    {
+      "id": "gallery_03_easel_bridge",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_easel_west",
+          "x": 3
+        },
+        {
+          "id": "gallery_easel_east",
+          "x": 39
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "gallery_02_white_hall",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "gallery_04_greenhouse_path",
+          "x": 42,
+          "gate": "gallery_03_cleared"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        },
+        {
+          "id": "notary_guard",
+          "count": 1,
+          "segments": 2
+        }
+      ],
+      "crossing": "latches"
+    },
+    {
+      "id": "gallery_04_greenhouse_path",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_green_center",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "gallery_03_easel_bridge",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "gallery_05_frame_foyer",
+          "x": 42,
+          "gate": "gallery_04_cleared"
+        },
+        {
+          "room": "gallery_08_return_gallery",
+          "x": 37,
+          "gate": "irina_defeated"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 1,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "crossing": "arch"
+    },
+    {
+      "id": "gallery_05_frame_foyer",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_pre_boss_floor",
+          "x": 3
+        }
+      ],
+      "points": [
+        {
+          "id": "gallery_arena_gate",
+          "x": 34,
+          "platform": false
+        },
+        {
+          "id": "irina_trial_bell",
+          "x": 16,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "gallery_04_greenhouse_path",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "gallery_06_arena",
+          "x": 42,
+          "gate": "gallery_route_complete"
+        },
+        {
+          "room": "gallery_07_return_atelier",
+          "x": 37,
+          "gate": "irina_defeated"
+        }
+      ],
+      "roster": []
+    },
+    {
+      "id": "gallery_06_arena",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "irina_arena_west",
+          "x": 3
+        },
+        {
+          "id": "irina_arena_center",
+          "x": 19
+        },
+        {
+          "id": "irina_sunlight_floor",
+          "x": 31
+        }
+      ],
+      "points": [
+        {
+          "id": "irina_confess_fear",
+          "x": 31,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "gallery_05_frame_foyer",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "gallery_07_return_atelier",
+          "x": 42,
+          "gate": "irina_defeated"
+        }
+      ],
+      "roster": [],
+      "boutHealth": 14,
+      "interludeHealth": 7
+    },
+    {
+      "id": "gallery_07_return_atelier",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_return_atelier_safe",
+          "x": 3
+        },
+        {
+          "id": "gallery_return_atelier_mid",
+          "x": 19
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "gallery_06_arena",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "gallery_08_return_gallery",
+          "x": 42,
+          "gate": "irina_defeated"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "canvas_carve"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "canvas_carve"
+        }
+      ],
+      "stations": 5
+    },
+    {
+      "id": "gallery_08_return_gallery",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_return_lower_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "gallery_07_return_atelier",
+          "x": 1,
+          "gate": "irina_defeated"
+        },
+        {
+          "room": "gallery_04_greenhouse_path",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "gallery_01_entry",
+          "x": 37,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 32,
+          "gate": ""
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "canvas_carve"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "canvas_carve"
+        }
+      ],
+      "stations": 4,
+      "projectileStations": false
+    },
+    {
+      "id": "gallery_09_shortcut",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_shortcut_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "gallery_02_white_hall",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "gallery_05_frame_foyer",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "gallery_10_sanctuary_window",
+          "x": 32,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "canvas_carve"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "stations": 4,
+      "stitchAnchors": 4,
+      "singleSeams": 4,
+      "seamId": "gallery_synergy_seam"
+    },
+    {
+      "id": "gallery_10_sanctuary_window",
+      "stage": "gallery",
+      "benefactor": "irina",
+      "skill": "canvas_carve",
+      "floors": [
+        {
+          "id": "gallery_reunion_safe_floor",
+          "x": 3
+        }
+      ],
+      "points": [
+        {
+          "id": "irina_reunion_window",
+          "x": 18,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_sanctuary",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "gallery_01_entry",
+          "x": 37,
+          "gate": "depart"
+        },
+        {
+          "room": "gallery_09_shortcut",
+          "x": 28,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "canvas_carve",
+          "setupHits": 3
+        },
+        {
+          "id": "notary_guard",
+          "count": 1,
+          "segments": 3,
+          "setupSkill": "canvas_carve",
+          "skillOnly": true
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "sceneId": "gallery_entry",
+      "stepId": "01_arrive",
+      "room": "gallery_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!clue_imprint_irina_collected"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.gallery.entry.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gallery_entry_01_read",
+      "resumePoint": "gallery_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_entry",
+      "stepId": "02_blind_studio",
+      "room": "gallery_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_entry_01_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.entry.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gallery_entry_02_read",
+      "resumePoint": "gallery_easel_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_entry",
+      "stepId": "03_sketchbook",
+      "room": "gallery_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_entry_02_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.gallery.entry.03",
+      "requiredPlayerAction": [
+        "use:irina_sketchbook_stand"
+      ],
+      "completionFlag": "clue_imprint_irina_collected",
+      "resumePoint": "gallery_easel_floor",
+      "effect": "keepsake"
+    },
+    {
+      "sceneId": "gallery_entry",
+      "stepId": "04_sixteen_portraits",
+      "room": "gallery_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clue_imprint_irina_collected"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.entry.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gallery_entry_04_read",
+      "resumePoint": "gallery_easel_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_entry",
+      "stepId": "05_depart",
+      "room": "gallery_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_entry_04_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.gallery.entry.05",
+      "requiredPlayerAction": [
+        "latch:gallery_entry_latch"
+      ],
+      "completionFlag": "gallery_entry_complete",
+      "resumePoint": "gallery_entry_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_route",
+      "stepId": "01_white_hall",
+      "room": "gallery_02_white_hall",
+      "alternateRoom": "",
+      "entryCondition": [],
+      "speakerId": "rea",
+      "textKey": "story.gallery.route.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gallery_route_01_read",
+      "resumePoint": "gallery_hall_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_route",
+      "stepId": "02_white_clear",
+      "room": "gallery_02_white_hall",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_route_01_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.gallery.route.02",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "gallery_02_cleared",
+      "resumePoint": "gallery_hall_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_route",
+      "stepId": "03_easel_bridge",
+      "room": "gallery_03_easel_bridge",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_02_cleared"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.route.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gallery_route_03_read",
+      "resumePoint": "gallery_easel_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_route",
+      "stepId": "04_easel_clear",
+      "room": "gallery_03_easel_bridge",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_route_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.route.04",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "gallery_03_cleared",
+      "resumePoint": "gallery_easel_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_route",
+      "stepId": "05_greenhouse",
+      "room": "gallery_04_greenhouse_path",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_03_cleared"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.gallery.route.05",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "gallery_04_cleared",
+      "resumePoint": "gallery_green_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_route",
+      "stepId": "06_frame_foyer",
+      "room": "gallery_05_frame_foyer",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_04_cleared"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.route.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gallery_route_06_read",
+      "resumePoint": "gallery_pre_boss_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_route",
+      "stepId": "07_ready_atelier",
+      "room": "gallery_05_frame_foyer",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_route_06_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.gallery.route.07",
+      "requiredPlayerAction": [
+        "use:gallery_arena_gate"
+      ],
+      "completionFlag": "gallery_route_complete",
+      "resumePoint": "gallery_pre_boss_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i0",
+      "stepId": "01_scent_of_sun",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!investigation_complete",
+        "!irina_defeated"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i0.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i0_01_read",
+      "resumePoint": "irina_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i0",
+      "stepId": "02_rea_pardon",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i0_01_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.irina.i0.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i0_02_read",
+      "resumePoint": "irina_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i0",
+      "stepId": "03_irina_refuse",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i0_02_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i0.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i0_03_read",
+      "resumePoint": "irina_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i0",
+      "stepId": "04_start_bout",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i0_03_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i0.04",
+      "requiredPlayerAction": [
+        "win:irina"
+      ],
+      "completionFlag": "irina_defeated",
+      "resumePoint": "irina_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "irina_bout_i0",
+      "stepId": "05_acquire_canvas",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_defeated",
+        "!investigation_complete"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i0.05",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i0_05_read",
+      "resumePoint": "irina_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i0",
+      "stepId": "06_retire_sanctuary",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i0_05_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.irina.i0.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i0_complete",
+      "resumePoint": "gallery_return_atelier_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i1",
+      "stepId": "01_meet_after_invest",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "!irina_defeated"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i1.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i1_01_read",
+      "resumePoint": "irina_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i1",
+      "stepId": "02_rea_hypothesis",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i1_01_read",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.irina.i1.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i1_02_read",
+      "resumePoint": "irina_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i1",
+      "stepId": "03_irina_start",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i1_02_read",
+        "investigation_complete"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i1.03",
+      "requiredPlayerAction": [
+        "interlude:irina"
+      ],
+      "completionFlag": "irina_i1_mid_reached",
+      "resumePoint": "irina_sunlight_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i1",
+      "stepId": "04_touch_lips",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i1_mid_reached",
+        "investigation_complete"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i1.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i1_lips_touched",
+      "resumePoint": "irina_sunlight_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i1",
+      "stepId": "05_dont_smile_confess",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i1_lips_touched",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.irina.i1.05",
+      "requiredPlayerAction": [
+        "use:irina_confess_fear"
+      ],
+      "completionFlag": "irina_fear_confessed",
+      "resumePoint": "irina_sunlight_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i1",
+      "stepId": "06_that_face_is_fine",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_fear_confessed",
+        "investigation_complete"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i1.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_i1_accepted",
+      "resumePoint": "irina_sunlight_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_bout_i1",
+      "stepId": "07_finish_bout",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_i1_accepted",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.irina.i1.07",
+      "requiredPlayerAction": [
+        "win:irina"
+      ],
+      "completionFlag": "irina_defeated",
+      "resumePoint": "irina_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "irina_bout_i1",
+      "stepId": "08_grant_support",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_defeated",
+        "investigation_complete",
+        "irina_fear_confessed"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.i1.08",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_support_first_granted",
+      "resumePoint": "gallery_return_atelier_safe",
+      "effect": "duelHelp"
+    },
+    {
+      "sceneId": "irina_reunion_i1",
+      "stepId": "01_window_meet",
+      "room": "gallery_10_sanctuary_window",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "irina_defeated",
+        "!irina_support_first_granted",
+        "!irina_i1_01_read"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.reunion.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_reunion_01_read",
+      "resumePoint": "gallery_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_reunion_i1",
+      "stepId": "02_honest_face",
+      "room": "gallery_10_sanctuary_window",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_reunion_01_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.irina.reunion.02",
+      "requiredPlayerAction": [
+        "use:irina_reunion_window"
+      ],
+      "completionFlag": "irina_reunion_confessed",
+      "resumePoint": "gallery_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_reunion_i1",
+      "stepId": "03_irina_answer",
+      "room": "gallery_10_sanctuary_window",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_reunion_confessed"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.irina.reunion.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_reunion_03_read",
+      "resumePoint": "gallery_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_reunion_i1",
+      "stepId": "04_grant_support",
+      "room": "gallery_10_sanctuary_window",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_reunion_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.irina.reunion.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_support_first_granted",
+      "resumePoint": "gallery_reunion_safe_floor",
+      "effect": "shelterHelp"
+    },
+    {
+      "sceneId": "gallery_return",
+      "stepId": "01_paint_platform",
+      "room": "gallery_07_return_atelier",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_defeated"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.return.01",
+      "requiredPlayerAction": [
+        "station:canvas_carve",
+        "cross:floor"
+      ],
+      "completionFlag": "gallery_return_01_done",
+      "resumePoint": "gallery_return_atelier_mid",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_return",
+      "stepId": "02_cross_loop",
+      "room": "gallery_07_return_atelier",
+      "alternateRoom": "gallery_08_return_gallery",
+      "entryCondition": [
+        "gallery_return_01_done"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.gallery.return.02",
+      "requiredPlayerAction": [
+        "advance:gallery_08_return_gallery",
+        "clear:wave"
+      ],
+      "completionFlag": "gallery_return_02_done",
+      "resumePoint": "gallery_return_lower_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_return",
+      "stepId": "03_exit_hub",
+      "room": "gallery_08_return_gallery",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gallery_return_02_done"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.return.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gallery_return_complete",
+      "resumePoint": "gallery_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_synergy",
+      "stepId": "01_stitch_then_paint",
+      "room": "gallery_09_shortcut",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "owned:silver_stitch",
+        "owned:canvas_carve"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.synergy.01",
+      "requiredPlayerAction": [
+        "sew:seam",
+        "station:canvas_carve",
+        "cross:floor"
+      ],
+      "completionFlag": "gallery_synergy_crossed",
+      "resumePoint": "gallery_shortcut_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_synergy",
+      "stepId": "02_elite_clear",
+      "room": "gallery_09_shortcut",
+      "alternateRoom": "gallery_10_sanctuary_window",
+      "entryCondition": [
+        "gallery_synergy_crossed"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.gallery.synergy.02",
+      "requiredPlayerAction": [
+        "advance:gallery_10_sanctuary_window",
+        "clear:wave"
+      ],
+      "completionFlag": "gallery_synergy_complete",
+      "resumePoint": "gallery_shortcut_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_mastery",
+      "stepId": "01_stage2_30",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "stage2:canvas_carve",
+        "safe"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.mastery.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "canvas_stage2_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_mastery",
+      "stepId": "02_stage3_80_blindness",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "canvas_stage2_seen",
+        "stage3:canvas_carve",
+        "safe"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.mastery.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "canvas_stage3_transferred",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gallery_mastery",
+      "stepId": "03_irina_sees_rea",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "canvas_stage3_transferred"
+      ],
+      "speakerId": "irina",
+      "textKey": "story.gallery.mastery.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_healed_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": "healed:canvas_carve"
+    },
+    {
+      "sceneId": "gallery_mastery",
+      "stepId": "04_portrait_promise",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_healed_seen",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gallery.mastery.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gallery_mastery_complete",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_trial",
+      "stepId": "01_enter",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "trial_active:irina"
+      ],
+      "speakerId": "irina",
+      "textKey": "trial.irina.enter",
+      "requiredPlayerAction": [
+        "verify:irina"
+      ],
+      "completionFlag": "irina_trial_objective_met",
+      "resumePoint": "irina_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "irina_trial",
+      "stepId": "02_verified",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_trial_objective_met",
+        "trial_active:irina"
+      ],
+      "speakerId": "irina",
+      "textKey": "trial.irina.verified",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_trial_recharged",
+      "resumePoint": "irina_arena_center",
+      "effect": "recharge"
+    },
+    {
+      "sceneId": "irina_trial",
+      "stepId": "03_return",
+      "room": "gallery_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "irina_trial_recharged",
+        "trial_active:irina"
+      ],
+      "speakerId": "irina",
+      "textKey": "trial.irina.return",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "irina_trial_complete",
+      "resumePoint": "gallery_pre_boss_floor",
+      "effect": "endTrial"
+    }
+  ],
+  "links": [
+    {
+      "source": "hub_lift",
+      "room": "gallery_01_entry",
+      "x": 39,
+      "gate": "depart"
+    },
+    {
+      "source": "hub_sanctuary",
+      "room": "gallery_10_sanctuary_window",
+      "x": 37,
+      "gate": "investigation_complete"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "memoryUses": 8,
+  "memorySeconds": 30.0,
+  "counterRecovery": 1.6,
+  "transitionRecovery": 1.0,
+  "aimLockSeconds": 0.2,
+  "arenaMin": 35.5,
+  "arenaMax": 58.0,
+  "moveSpeed": 3.4,
+  "initialCooldown": 0.7,
+  "initialJump": 1.8,
+  "jumpSpeed": 12.2,
+  "jumpInterval": 2.4,
+  "tint": { "r": 0.72, "g": 0.36, "b": 0.94, "a": 0.85 },
+  "phases": [
+    { "name": "data.bosses.janhyang.phases.1.name", "enterHealthRatio": 1.0, "targets": 1, "stageCap": 1, "accuracy": 0.35, "windup": 0.7, "recovery": 1.15, "linkGap": 0.35, "pattern": [0] },
+    { "name": "data.bosses.janhyang.phases.2.name", "enterHealthRatio": 0.67, "targets": 2, "stageCap": 2, "accuracy": 0.7, "windup": 0.55, "recovery": 0.95, "linkGap": 0.25, "pattern": [0, 1] },
+    { "name": "data.bosses.janhyang.phases.3.name", "enterHealthRatio": 0.34, "targets": 2, "stageCap": 3, "accuracy": 1.0, "windup": 0.45, "recovery": 0.8, "linkGap": 0.2, "pattern": [0, 1, 0] }
+  ],
+  "techniques": [
+    { "skillId": "basic_sword", "damage": 1, "finisherDamage": 2, "knockback": 0.8 },
+    { "skillId": "silver_stitch", "damage": 1, "finisherDamage": 1, "knockback": 0.4 },
+    { "skillId": "pendulum_rewind", "damage": 1, "finisherDamage": 2, "knockback": 0.7 },
+    { "skillId": "curtain_call_waltz", "damage": 1, "finisherDamage": 2, "knockback": 0.8 },
+    { "skillId": "resonance_forge", "damage": 1, "finisherDamage": 2, "knockback": 1.0 },
+    { "skillId": "canvas_carve", "damage": 1, "finisherDamage": 1, "knockback": 0.5 }
+  ],
+  "sword": [
+    { "duration": 0.4, "strikeTime": 0.16, "reach": 0.9, "width": 1.7, "height": 1.55 },
+    { "duration": 0.36, "strikeTime": 0.14, "reach": 1.0, "width": 1.9, "height": 1.45 },
+    { "duration": 0.44, "strikeTime": 0.22, "reach": 1.1, "width": 2.1, "height": 1.75 },
+    { "duration": 0.56, "strikeTime": 0.28, "reach": 1.2, "width": 2.4, "height": 1.9 }
+  ]
+}

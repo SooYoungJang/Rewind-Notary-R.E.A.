@@ -10,8 +10,9 @@ namespace RewindNotary
         public string TargetId { get; private set; }
         public Bounds Bounds => new Bounds(transform.position + Vector3.up * 0.65f, new Vector3(span, 1.6f, 2));
         public bool Installed { get; private set; }
-        public bool Available => !Installed && !releasedBridge && !retiring;
+        public bool Available => !Installed && !releasedBridge && !retiring && returnFadeUntil == 0;
         private float span, until, bindSeconds;
+        private float returnFadeUntil;
         private bool support, releasedBridge, retiring, supportReported;
         private int stage;
         private BoxCollider2D floor;
@@ -63,6 +64,14 @@ namespace RewindNotary
         private void Update()
         {
             if (!GameInput.GameplayEnabled) return;
+            if (returnFadeUntil > 0)
+            {
+                float left = returnFadeUntil - Time.time;
+                visual.color = new Color(0.2f, 0.8f, 1f, Mathf.Clamp01(left / 3f));
+                if (left <= 0) { returnFadeUntil = 0; floor.enabled = false; RestoreVisual(); }
+                return;
+            }
+
             if (retiring && !PlayerOnFloor()) { retiring = false; floor.enabled = false; RestoreVisual(); }
             if (!Installed) return;
             if (Time.time >= until) { Retire(); return; }
@@ -97,9 +106,16 @@ namespace RewindNotary
             floor.enabled = releasedBridge || retiring;
             RestoreVisual();
         }
+        public void BeginReturnFade()
+        {
+            if (!floor.enabled) return;
+            progression?.EndUse(use); use = null;
+            Installed = releasedBridge = retiring = false; returnFadeUntil = Time.time + 3f;
+        }
         public void CancelCredit() { progression?.EndUse(use); }
         public void ResetAttempt()
         {
+            returnFadeUntil = 0;
             Installed = releasedBridge = retiring = false; floor.enabled = false;
             progression?.EndUse(use); use = null; RestoreVisual();
         }

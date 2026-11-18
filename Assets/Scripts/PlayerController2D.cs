@@ -13,6 +13,7 @@ namespace RewindNotary
         public SilverStitchSkill Silver { get; set; }
         private float axis, lastGrounded = float.NegativeInfinity, jumpPressed = float.NegativeInfinity;
         private bool cutJump;
+        private SkillCastRequest? pendingCast;
         private void Awake()
         {
             motor = GetComponent<CombatMotor2D>();
@@ -23,19 +24,35 @@ namespace RewindNotary
         private void OnAttackStarted() { AudioManager.Play(AudioManager.Sfx.Swing); }
         private void Update()
         {
-            if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead) return;
+            if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead)
+            { pendingCast = null; return; }
             axis = GameInput.Horizontal;
-            motor.BenefactorSkills?.SelectInput();
-            if (motor.Defense != null && motor.Defense.BlocksActions)
-            { jumpPressed = float.NegativeInfinity; cutJump = false; return; }
-            if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
-            { jumpPressed = float.NegativeInfinity; cutJump = false; return; }
-            if (GameInput.JumpDown) jumpPressed = Time.time;
-            if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
-            if (GameInput.AttackDown) motor.Attack();
-            if (GameInput.SilverDown)
+            var runner = motor.BenefactorSkills;
+            var input = runner?.InputSnapshot;
+            bool castDown = input != null && input.CastDown;
+            if (motor.Stunned) pendingCast = null;
+            if (castDown)
             {
-                if (motor.BenefactorSkills != null) motor.BenefactorSkills.Activate(); else Silver?.Activate();
+                // One request only: a later press replaces it, even if the requested skill is unlearned.
+                pendingCast = null;
+                if (runner.CanRequest(input.Request) && !motor.Stunned) pendingCast = input.Request;
+            }
+            if (motor.Defense != null && motor.Defense.BlocksActions)
+            {
+                // Dash keeps the press-time ID/modifier until recovery; parry never reserves a cast.
+                if (motor.Defense.State.Phase != DefensePhase.Dash) pendingCast = null;
+                jumpPressed = float.NegativeInfinity; cutJump = false; return;
+            }
+            if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
+            { pendingCast = null; jumpPressed = float.NegativeInfinity; cutJump = false; return; }
+            if (!castDown && !pendingCast.HasValue && GameInput.JumpDown) jumpPressed = Time.time;
+            if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
+            // A simultaneous attack hold modifies canvas rather than starting an ordinary swing.
+            if (!castDown && !pendingCast.HasValue && GameInput.AttackDown) motor.Attack();
+            if (pendingCast.HasValue)
+            {
+                var request = pendingCast.Value; pendingCast = null;
+                runner.Activate(request);
                 // Skill leaps do not inherit a pending ordinary jump release/coyote reservation.
                 if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
                 { jumpPressed = lastGrounded = float.NegativeInfinity; cutJump = false; }
@@ -68,16 +85,19 @@ namespace RewindNotary
         }
         public void SuspendInput()
         {
+            pendingCast = null;
             axis = 0f; cutJump = false;
             jumpPressed = lastGrounded = float.NegativeInfinity;
         }
         public void ClearInput()
         {
+            pendingCast = null;
             axis = 0f; cutJump = false;
             Silver?.ResetAttempt();
             motor.BenefactorSkills?.ResetAttempt();
             jumpPressed = lastGrounded = float.NegativeInfinity;
         }
+        private void OnDisable() { pendingCast = null; }
         private void OnDestroy()
         {
             if (motor == null) return;

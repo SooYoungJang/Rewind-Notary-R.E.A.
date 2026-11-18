@@ -13,6 +13,7 @@ namespace RewindNotary
         public int Facing { get; private set; } = 1;
         public bool Grounded { get; private set; }
         public bool Attacking { get; private set; }
+        public float LastLandedAt { get; private set; } = float.NegativeInfinity;
         public bool Stunned => Time.time < stunUntil;
         public int ComboStep => comboStep;
         public SkillSession Skills { get; set; }
@@ -20,6 +21,7 @@ namespace RewindNotary
         public BenefactorSkillRunner BenefactorSkills { get; set; }
         public TemporalActor2D Temporal { get; set; }
         public event System.Action<Bounds, int> BasicStrikeDelivered;
+        public event System.Action<UseContext, int, bool, int> SwordContact;
         public event System.Action Landed;
         public event System.Action AttackStarted;
         private float attackStartedAt, comboExpiresAt, stunUntil, landUntil, lastHitAt;
@@ -112,6 +114,7 @@ namespace RewindNotary
             {
                 Defense?.State.Land();
                 landUntil = Time.time + 0.09f;
+                LastLandedAt = Time.time;
                 // Finish the current swing, but never carry an aerial chain/buffer onto the floor.
                 if (groundSampled && Health.IsPlayer) ResetCombo();
                 if (groundSampled && !Health.Dead) Landed?.Invoke();
@@ -180,6 +183,7 @@ namespace RewindNotary
             // Consume once at an actual swing start, including a later whiff/interruption.
             float counter = Defense != null ? Defense.State.ConsumeCounter(Time.time) : 1f;
             strikeDamage = Mathf.CeilToInt(damage * activeAttack.DamageMultiplier * counter);
+            strikeDamage = FinaleCombat.Scale(Skills, strikeDamage);
             attackStartedAt = Time.time;
             Attacking = true;
             strikeDelivered = false;
@@ -219,10 +223,17 @@ namespace RewindNotary
                     transform.position + new Vector3(Facing * (activeAttack.Reach + activeAttack.Width * 0.5f + chainProfile.waveReach), 1, 0),
                     new Color(0.2f, 0.85f, 1f), 0.16f);
             }
+            if (Health.IsPlayer && attackStep == ComboLimit && Skills?.Finale.State.active == true)
+            {
+                float reach = CasselDefinition.Load().Profile(Skills.Finale.State.returnCount).waveReach;
+                blade.center += new Vector3(Facing * reach * 0.5f, 0, 0);
+                blade.size += new Vector3(reach, 0, 0);
+            }
             if (Health.IsPlayer && chainProfile != null && chainProfile.afterimageSeconds > 0f)
                 SkillStroke.Afterimage(Animation.GetComponent<SpriteRenderer>(), chainProfile.afterimageSeconds);
             if (Skills != null)
             {
+                WaveCombatTargets.Sword(Skills, activeUse, blade, attackStep == PlayerCombo.Length);
                 foreach (var destructible in DestructibleTarget2D.All)
                     if (blade.Intersects(destructible.Bounds))
                         Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Destructible,
@@ -240,6 +251,7 @@ namespace RewindNotary
             {
                 Skills?.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Enemy,
                     opponent.gameObject.name, true, strikeDamage));
+                if (Health.IsPlayer) SwordContact?.Invoke(activeUse, attackStep, attackStep == ComboLimit, strikeDamage);
                 AudioManager.Play(AudioManager.Sfx.Hit);
                 if (!opponent.IsPlayer)
                 {
@@ -314,7 +326,7 @@ namespace RewindNotary
             Body.position = feet;
             Body.linearVelocity = Vector2.zero;
             CancelAttack();
-            stunUntil = landUntil = 0f;
+            stunUntil = landUntil = 0f; LastLandedAt = float.NegativeInfinity;
             Grounded = false;
             groundSampled = false;
             Health.Refill();

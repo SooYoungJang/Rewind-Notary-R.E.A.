@@ -21,6 +21,7 @@ namespace RewindNotary
         internal SkillProgressionService Owner;
         internal int Epoch;
         internal bool Counted, Closed;
+        internal bool TrialQualified;
     }
     [Serializable]
     public sealed class ProgressionEvent
@@ -32,18 +33,24 @@ namespace RewindNotary
     public sealed class SkillProgressionService
     {
         public SkillCatalog Catalog { get; }
+        public BenefactorTrialProgress Trials { get; }
         public CoreRecord Record { get; private set; }
         public event Action<ProgressionEvent> Event;
         public event Action Changed;
+        // The workbench suspends exactly one input path; ownership and the notary ledger stay intact.
+        internal string CalibrationDormantSkill { get; set; }
         private int epoch;
         private long nextUse;
         private readonly string sessionId = Guid.NewGuid().ToString("N");
         public SkillProgressionService(SkillCatalog catalog, CoreRecord record)
-        { Catalog = catalog; record.Validate(catalog); Record = record; }
+        { Catalog = catalog; record.Validate(catalog); Record = record; Trials = new BenefactorTrialProgress(this); }
+        internal void NotifyTrialChanged() { Changed?.Invoke(); }
         public UseContext BeginUse(string skillId, int previewStage = 0)
         {
+            if (skillId == CalibrationDormantSkill) return null;
             var progress = Record.Get(skillId);
             if (progress == null || !progress.acquired || !Catalog.Get(skillId).implemented) return null;
+            if (Record.lastStageId == "cassel" && !Record.finalBattleAttempt.CanUse(skillId)) return null;
             return new UseContext { Id = sessionId + ":" + (++nextUse), SkillId = skillId,
                 Stage = previewStage >= 1 && previewStage <= 3 ? previewStage : progress.stage,
                 Preview = previewStage != 0, Owner = this, Epoch = epoch };
@@ -52,6 +59,8 @@ namespace RewindNotary
         {
             if (use == null) return false;
             if (use.Owner != this) return false;
+            if (use.Epoch == epoch && !use.Closed && !use.Preview && result.Applied && !string.IsNullOrEmpty(result.TargetId))
+                Trials.ObserveEffective(use, result);
             string reason = use.Owner != this || use.Epoch != epoch || use.Closed ? "stale_or_cancelled"
                 : !result.Applied || string.IsNullOrEmpty(result.TargetId) ? "no_state_change"
                 : use.Counted ? "same_activation" : use.Preview ? "stage_preview" : "accepted";
@@ -59,6 +68,8 @@ namespace RewindNotary
             int before = progress.validUseCount;
             if (reason != "accepted") { Emit("use_rejected", use, result, reason, before, before); return false; }
             if (before >= int.MaxValue - 1) return false;
+            if (!Trials.PermitGrowth(use, result))
+            { Emit("use_rejected", use, result, "trial_session_cap", before, before); return false; }
             use.Counted = true;
             int previousStage = progress.stage;
             progress.validUseCount++;
@@ -73,6 +84,7 @@ namespace RewindNotary
                     var entry = Record.ledger.Find(e => e.skillId == use.SkillId);
                     entry.ownerId = "rea"; entry.transferredToRea = true;
                     entry.transferEventId = "mastery:" + use.SkillId;
+                    if (!Record.firstTransferPending) Record.storyFlags.Add("first_mastery:" + use.SkillId);
                     Record.firstTransferPending = true;
                 }
             }

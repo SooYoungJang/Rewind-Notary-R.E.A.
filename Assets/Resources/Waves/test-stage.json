@@ -1,0 +1,1033 @@
+{
+  "schemaVersion": 1,
+  "initialSwordUses": 120,
+  "supplyRatio": 1.35,
+  "handoffSeconds": 1.8,
+  "crossLoopSpeed": 1.8,
+  "archetypes": [
+    {
+      "id": "notary_guard",
+      "label": "data.waves.test-stage.archetypes.notary_guard.label",
+      "gate": "skill",
+      "mechanism": false,
+      "openingSeconds": 1.5,
+      "telegraphSeconds": 0.65,
+      "attackInterval": 1.6,
+      "attackReach": 2.4,
+      "attackDamage": 1
+    },
+    {
+      "id": "shell_sentry",
+      "label": "data.waves.test-stage.archetypes.shell_sentry.label",
+      "gate": "armor",
+      "mechanism": false,
+      "openingSeconds": 1.5,
+      "telegraphSeconds": 0.65,
+      "attackInterval": 1.6,
+      "attackReach": 2.4,
+      "attackDamage": 1
+    },
+    {
+      "id": "reflection_statue",
+      "label": "data.waves.test-stage.archetypes.reflection_statue.label",
+      "gate": "defense",
+      "mechanism": false,
+      "openingSeconds": 1.5,
+      "telegraphSeconds": 0.65,
+      "attackInterval": 1.6,
+      "attackReach": 2.4,
+      "attackDamage": 1
+    },
+    {
+      "id": "sword_latch",
+      "label": "data.waves.test-stage.archetypes.sword_latch.label",
+      "gate": "device",
+      "mechanism": true,
+      "openingSeconds": 1.5,
+      "telegraphSeconds": 0.65,
+      "attackInterval": 1.6,
+      "attackReach": 2.4,
+      "attackDamage": 1
+    }
+  ],
+  "zones": [
+    {
+      "id": "zone_1",
+      "label": "data.waves.test-stage.zones.zone_1.label",
+      "left": -6,
+      "right": 16,
+      "entryX": 0,
+      "gate": 151,
+      "waves": [
+        {
+          "id": "z1_w01",
+          "spawns": [
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 7,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 8,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 6,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z1_w02",
+          "spawns": [
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 7,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 8,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 6,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z1_w03",
+          "spawns": [
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 7,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 8,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 6,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z1_w04",
+          "spawns": [
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 7,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 8,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 6,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z1_w05",
+          "spawns": [
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 7,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 8,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 6,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z1_w06",
+          "spawns": [
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 7,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 8,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 6,
+              "setupSkill": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zone_2",
+      "label": "data.waves.test-stage.zones.zone_2.label",
+      "left": 16,
+      "right": 36,
+      "entryX": 20,
+      "gate": 151,
+      "waves": [
+        {
+          "id": "z2_w01",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 27,
+              "setupSkill": "silver_stitch"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z2_w02",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 2,
+              "x": 27,
+              "setupSkill": "pendulum_rewind"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 2,
+              "segments": 3,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": "pendulum_rewind"
+            }
+          ]
+        },
+        {
+          "id": "z2_w03",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 27,
+              "setupSkill": "curtain_call_waltz"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z2_w04",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 2,
+              "x": 27,
+              "setupSkill": "resonance_forge"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 2,
+              "segments": 3,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": "resonance_forge"
+            }
+          ]
+        },
+        {
+          "id": "z2_w05",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 27,
+              "setupSkill": "canvas_carve"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z2_w06",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 2,
+              "x": 27,
+              "setupSkill": "silver_stitch"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 2,
+              "segments": 3,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": "silver_stitch"
+            }
+          ]
+        },
+        {
+          "id": "z2_w07",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 27,
+              "setupSkill": "pendulum_rewind"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z2_w08",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 2,
+              "x": 27,
+              "setupSkill": "curtain_call_waltz"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 2,
+              "segments": 3,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": "curtain_call_waltz"
+            }
+          ]
+        },
+        {
+          "id": "z2_w09",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 27,
+              "setupSkill": "resonance_forge"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z2_w10",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 2,
+              "x": 27,
+              "setupSkill": "canvas_carve"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 2,
+              "segments": 3,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": "canvas_carve"
+            }
+          ]
+        },
+        {
+          "id": "z2_w11",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 27,
+              "setupSkill": "silver_stitch"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z2_w12",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 2,
+              "x": 27,
+              "setupSkill": "pendulum_rewind"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 3,
+              "x": 28,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 2,
+              "segments": 3,
+              "x": 26,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 27,
+              "setupSkill": "pendulum_rewind"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zone_3",
+      "label": "data.waves.test-stage.zones.zone_3.label",
+      "left": 36,
+      "right": 61,
+      "entryX": 40,
+      "gate": 400,
+      "waves": [
+        {
+          "id": "z3_w01",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 3,
+              "x": 48,
+              "setupSkill": "curtain_call_waltz"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 4,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z3_w02",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 48,
+              "setupSkill": "resonance_forge"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": "resonance_forge"
+            }
+          ]
+        },
+        {
+          "id": "z3_w03",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 3,
+              "x": 48,
+              "setupSkill": "canvas_carve"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 4,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z3_w04",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 48,
+              "setupSkill": "silver_stitch"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": "silver_stitch"
+            }
+          ]
+        },
+        {
+          "id": "z3_w05",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 3,
+              "x": 48,
+              "setupSkill": "pendulum_rewind"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 4,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z3_w06",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 48,
+              "setupSkill": "curtain_call_waltz"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": "curtain_call_waltz"
+            }
+          ]
+        },
+        {
+          "id": "z3_w07",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 3,
+              "x": 48,
+              "setupSkill": "resonance_forge"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 4,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z3_w08",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 48,
+              "setupSkill": "canvas_carve"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": "canvas_carve"
+            }
+          ]
+        },
+        {
+          "id": "z3_w09",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 3,
+              "x": 48,
+              "setupSkill": "silver_stitch"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 4,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z3_w10",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 48,
+              "setupSkill": "pendulum_rewind"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": "pendulum_rewind"
+            }
+          ]
+        },
+        {
+          "id": "z3_w11",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 2,
+              "segments": 3,
+              "x": 48,
+              "setupSkill": "curtain_call_waltz"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 4,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": ""
+            }
+          ]
+        },
+        {
+          "id": "z3_w12",
+          "spawns": [
+            {
+              "archetypeId": "notary_guard",
+              "count": 1,
+              "segments": 4,
+              "x": 48,
+              "setupSkill": "resonance_forge"
+            },
+            {
+              "archetypeId": "shell_sentry",
+              "count": 1,
+              "segments": 6,
+              "x": 47,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "reflection_statue",
+              "count": 1,
+              "segments": 3,
+              "x": 49,
+              "setupSkill": ""
+            },
+            {
+              "archetypeId": "sword_latch",
+              "count": 1,
+              "segments": 1,
+              "x": 48,
+              "setupSkill": "resonance_forge"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

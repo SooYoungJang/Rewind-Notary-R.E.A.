@@ -1,0 +1,1254 @@
+{
+  "rooms": [
+    {
+      "id": "bell_01_entry",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_entry_floor",
+          "x": 3
+        },
+        {
+          "id": "bell_desk_floor",
+          "x": 19
+        },
+        {
+          "id": "bell_entry_east",
+          "x": 41
+        }
+      ],
+      "points": [
+        {
+          "id": "gabriel_score_desk",
+          "x": 12,
+          "platform": false
+        },
+        {
+          "id": "bell_entry_latch",
+          "x": 24,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_lift",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "bell_02_tunnels",
+          "x": 42,
+          "gate": "bell_entry_complete"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        }
+      ]
+    },
+    {
+      "id": "bell_02_tunnels",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_tunnel_west",
+          "x": 3
+        },
+        {
+          "id": "bell_tunnel_east",
+          "x": 39
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "bell_01_entry",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "bell_03_acoustic_hall",
+          "x": 42,
+          "gate": "bell_02_cleared"
+        },
+        {
+          "room": "bell_09_shortcut",
+          "x": 37,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "crossing": "latches"
+    },
+    {
+      "id": "bell_03_acoustic_hall",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_acoustic_west",
+          "x": 3
+        },
+        {
+          "id": "bell_acoustic_east",
+          "x": 39
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "bell_02_tunnels",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "bell_04_belfry_shaft",
+          "x": 42,
+          "gate": "bell_03_cleared"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        },
+        {
+          "id": "notary_guard",
+          "count": 1,
+          "segments": 2
+        }
+      ],
+      "crossing": "cycle"
+    },
+    {
+      "id": "bell_04_belfry_shaft",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_shaft_center",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "bell_03_acoustic_hall",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "bell_05_silence_landing",
+          "x": 42,
+          "gate": "bell_04_cleared"
+        },
+        {
+          "room": "bell_08_return_undercroft",
+          "x": 37,
+          "gate": "gabriel_defeated"
+        }
+      ],
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        },
+        {
+          "id": "shell_sentry",
+          "count": 1,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "crossing": "steps"
+    },
+    {
+      "id": "bell_05_silence_landing",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_pre_boss_floor",
+          "x": 3
+        }
+      ],
+      "points": [
+        {
+          "id": "bell_arena_gate",
+          "x": 34,
+          "platform": false
+        },
+        {
+          "id": "gabriel_trial_bell",
+          "x": 16,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "bell_04_belfry_shaft",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "bell_06_arena",
+          "x": 42,
+          "gate": "bell_route_complete"
+        },
+        {
+          "room": "bell_07_return_chime",
+          "x": 37,
+          "gate": "gabriel_defeated"
+        }
+      ],
+      "roster": []
+    },
+    {
+      "id": "bell_06_arena",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "gabriel_arena_west",
+          "x": 3
+        },
+        {
+          "id": "gabriel_arena_center",
+          "x": 19
+        },
+        {
+          "id": "gabriel_signal_floor",
+          "x": 31
+        }
+      ],
+      "points": [
+        {
+          "id": "gabriel_request_stop",
+          "x": 31,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "bell_05_silence_landing",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "bell_07_return_chime",
+          "x": 42,
+          "gate": "gabriel_defeated"
+        }
+      ],
+      "roster": [],
+      "boutHealth": 14,
+      "interludeHealth": 7
+    },
+    {
+      "id": "bell_07_return_chime",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_return_chime_safe",
+          "x": 3
+        },
+        {
+          "id": "bell_return_chime_mid",
+          "x": 19
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "bell_06_arena",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "bell_08_return_undercroft",
+          "x": 42,
+          "gate": "gabriel_defeated"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "resonance_forge"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "resonance_forge"
+        }
+      ],
+      "stations": 4
+    },
+    {
+      "id": "bell_08_return_undercroft",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_return_under_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "bell_07_return_chime",
+          "x": 1,
+          "gate": "gabriel_defeated"
+        },
+        {
+          "room": "bell_04_belfry_shaft",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "bell_01_entry",
+          "x": 37,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 32,
+          "gate": ""
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "resonance_forge"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "resonance_forge"
+        }
+      ],
+      "stations": 4,
+      "projectileStations": false
+    },
+    {
+      "id": "bell_09_shortcut",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_shortcut_safe",
+          "x": 3
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "bell_02_tunnels",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "bell_05_silence_landing",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "bell_10_sanctuary_table",
+          "x": 32,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 3,
+          "setupSkill": "resonance_forge"
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 3
+        }
+      ],
+      "stations": 4,
+      "stitchAnchors": 4,
+      "singleSeams": 4,
+      "seamId": "bell_synergy_seam"
+    },
+    {
+      "id": "bell_10_sanctuary_table",
+      "stage": "bell",
+      "benefactor": "gabriel",
+      "skill": "resonance_forge",
+      "floors": [
+        {
+          "id": "bell_reunion_safe_floor",
+          "x": 3
+        }
+      ],
+      "points": [
+        {
+          "id": "gabriel_reunion_table",
+          "x": 18,
+          "platform": false
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_sanctuary",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 42,
+          "gate": ""
+        },
+        {
+          "room": "bell_01_entry",
+          "x": 37,
+          "gate": "depart"
+        },
+        {
+          "room": "bell_09_shortcut",
+          "x": 28,
+          "gate": "synergy"
+        }
+      ],
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "resonance_forge",
+          "setupHits": 3
+        },
+        {
+          "id": "notary_guard",
+          "count": 1,
+          "segments": 3,
+          "setupSkill": "resonance_forge",
+          "skillOnly": true
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "sceneId": "bell_entry",
+      "stepId": "01_arrive",
+      "room": "bell_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!clue_imprint_gabriel_collected"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.bell.entry.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "bell_entry_01_read",
+      "resumePoint": "bell_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_entry",
+      "stepId": "02_keeper_room",
+      "room": "bell_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_entry_01_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.entry.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "bell_entry_02_read",
+      "resumePoint": "bell_desk_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_entry",
+      "stepId": "03_score_desk",
+      "room": "bell_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_entry_02_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.bell.entry.03",
+      "requiredPlayerAction": [
+        "use:gabriel_score_desk"
+      ],
+      "completionFlag": "clue_imprint_gabriel_collected",
+      "resumePoint": "bell_desk_floor",
+      "effect": "keepsake"
+    },
+    {
+      "sceneId": "bell_entry",
+      "stepId": "04_morning_chime",
+      "room": "bell_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clue_imprint_gabriel_collected"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.entry.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "bell_entry_04_read",
+      "resumePoint": "bell_desk_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_entry",
+      "stepId": "05_depart",
+      "room": "bell_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_entry_04_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.bell.entry.05",
+      "requiredPlayerAction": [
+        "latch:bell_entry_latch"
+      ],
+      "completionFlag": "bell_entry_complete",
+      "resumePoint": "bell_entry_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_route",
+      "stepId": "01_tuning_tunnels",
+      "room": "bell_02_tunnels",
+      "alternateRoom": "",
+      "entryCondition": [],
+      "speakerId": "rea",
+      "textKey": "story.bell.route.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "bell_route_01_read",
+      "resumePoint": "bell_tunnel_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_route",
+      "stepId": "02_tunnels_clear",
+      "room": "bell_02_tunnels",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_route_01_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.bell.route.02",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "bell_02_cleared",
+      "resumePoint": "bell_tunnel_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_route",
+      "stepId": "03_acoustic_hall",
+      "room": "bell_03_acoustic_hall",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_02_cleared"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.route.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "bell_route_03_read",
+      "resumePoint": "bell_acoustic_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_route",
+      "stepId": "04_acoustic_clear",
+      "room": "bell_03_acoustic_hall",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_route_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.route.04",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "bell_03_cleared",
+      "resumePoint": "bell_acoustic_east",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_route",
+      "stepId": "05_belfry_shaft",
+      "room": "bell_04_belfry_shaft",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_03_cleared"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.bell.route.05",
+      "requiredPlayerAction": [
+        "clear:wave"
+      ],
+      "completionFlag": "bell_04_cleared",
+      "resumePoint": "bell_shaft_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_route",
+      "stepId": "06_warm_milk",
+      "room": "bell_05_silence_landing",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_04_cleared"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.route.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "bell_route_06_read",
+      "resumePoint": "bell_pre_boss_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_route",
+      "stepId": "07_ready_belfry",
+      "room": "bell_05_silence_landing",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_route_06_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.bell.route.07",
+      "requiredPlayerAction": [
+        "use:bell_arena_gate"
+      ],
+      "completionFlag": "bell_route_complete",
+      "resumePoint": "bell_pre_boss_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i0",
+      "stepId": "01_meet_silent",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!investigation_complete",
+        "!gabriel_defeated"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.i0.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_i0_01_read",
+      "resumePoint": "gabriel_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i0",
+      "stepId": "02_rea_pardon",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_i0_01_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gabriel.i0.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_i0_02_read",
+      "resumePoint": "gabriel_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i0",
+      "stepId": "03_gabriel_notebook",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_i0_02_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.i0.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_i0_03_read",
+      "resumePoint": "gabriel_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i0",
+      "stepId": "04_start_bout",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_i0_03_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.i0.04",
+      "requiredPlayerAction": [
+        "win:gabriel"
+      ],
+      "completionFlag": "gabriel_defeated",
+      "resumePoint": "gabriel_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "gabriel_bout_i0",
+      "stepId": "05_acquire_forge",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_defeated",
+        "!investigation_complete"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.i0.05",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_i0_05_read",
+      "resumePoint": "gabriel_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i0",
+      "stepId": "06_retire_sanctuary",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_i0_05_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gabriel.i0.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_i0_complete",
+      "resumePoint": "bell_return_chime_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i1",
+      "stepId": "01_meet_after_invest",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "!gabriel_defeated"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.i1.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_i1_01_read",
+      "resumePoint": "gabriel_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i1",
+      "stepId": "02_rea_hypothesis",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_i1_01_read",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gabriel.i1.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_i1_02_read",
+      "resumePoint": "gabriel_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i1",
+      "stepId": "03_deafening_clash",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_i1_02_read",
+        "investigation_complete"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.i1.03",
+      "requiredPlayerAction": [
+        "interlude:gabriel"
+      ],
+      "completionFlag": "gabriel_i1_muted_zone",
+      "resumePoint": "gabriel_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i1",
+      "stepId": "04_cant_hear",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_i1_muted_zone",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gabriel.i1.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_i1_deafened_warn",
+      "resumePoint": "gabriel_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i1",
+      "stepId": "05_request_stop_signal",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_i1_deafened_warn",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gabriel.i1.05",
+      "requiredPlayerAction": [
+        "use:gabriel_request_stop"
+      ],
+      "completionFlag": "gabriel_stop_requested",
+      "resumePoint": "gabriel_signal_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i1",
+      "stepId": "06_agree_three_signals",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_stop_requested",
+        "investigation_complete"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.i1.06",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_signals_agreed",
+      "resumePoint": "gabriel_signal_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_bout_i1",
+      "stepId": "07_finish_with_signals",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_signals_agreed",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gabriel.i1.07",
+      "requiredPlayerAction": [
+        "win:gabriel"
+      ],
+      "completionFlag": "gabriel_defeated",
+      "resumePoint": "gabriel_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "gabriel_bout_i1",
+      "stepId": "08_grant_support",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_defeated",
+        "investigation_complete",
+        "gabriel_stop_requested"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.i1.08",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_support_first_granted",
+      "resumePoint": "bell_return_chime_safe",
+      "effect": "duelHelp"
+    },
+    {
+      "sceneId": "gabriel_reunion_i1",
+      "stepId": "01_table_milk",
+      "room": "bell_10_sanctuary_table",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "gabriel_defeated",
+        "!gabriel_support_first_granted",
+        "!gabriel_i1_01_read"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.reunion.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_reunion_01_read",
+      "resumePoint": "bell_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_reunion_i1",
+      "stepId": "02_confirm_three_signals",
+      "room": "bell_10_sanctuary_table",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_reunion_01_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gabriel.reunion.02",
+      "requiredPlayerAction": [
+        "use:gabriel_reunion_table"
+      ],
+      "completionFlag": "gabriel_reunion_signalled",
+      "resumePoint": "bell_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_reunion_i1",
+      "stepId": "03_gabriel_nod",
+      "room": "bell_10_sanctuary_table",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_reunion_signalled"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.gabriel.reunion.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_reunion_03_read",
+      "resumePoint": "bell_reunion_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_reunion_i1",
+      "stepId": "04_grant_support",
+      "room": "bell_10_sanctuary_table",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_reunion_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.gabriel.reunion.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_support_first_granted",
+      "resumePoint": "bell_reunion_safe_floor",
+      "effect": "shelterHelp"
+    },
+    {
+      "sceneId": "bell_return",
+      "stepId": "01_shatter_floor",
+      "room": "bell_07_return_chime",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_defeated"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.return.01",
+      "requiredPlayerAction": [
+        "station:resonance_forge",
+        "cross:floor"
+      ],
+      "completionFlag": "bell_return_01_done",
+      "resumePoint": "bell_return_chime_mid",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_return",
+      "stepId": "02_cross_loop",
+      "room": "bell_07_return_chime",
+      "alternateRoom": "bell_08_return_undercroft",
+      "entryCondition": [
+        "bell_return_01_done"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.bell.return.02",
+      "requiredPlayerAction": [
+        "advance:bell_08_return_undercroft",
+        "clear:wave"
+      ],
+      "completionFlag": "bell_return_02_done",
+      "resumePoint": "bell_return_under_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_return",
+      "stepId": "03_exit_hub",
+      "room": "bell_08_return_undercroft",
+      "alternateRoom": "",
+      "entryCondition": [
+        "bell_return_02_done"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.return.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "bell_return_complete",
+      "resumePoint": "bell_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_synergy",
+      "stepId": "01_sew_cracked_bell",
+      "room": "bell_09_shortcut",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "owned:silver_stitch",
+        "owned:resonance_forge"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.synergy.01",
+      "requiredPlayerAction": [
+        "sew:seam",
+        "station:resonance_forge",
+        "cross:floor"
+      ],
+      "completionFlag": "bell_synergy_rung",
+      "resumePoint": "bell_shortcut_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_synergy",
+      "stepId": "02_elite_clear",
+      "room": "bell_09_shortcut",
+      "alternateRoom": "bell_10_sanctuary_table",
+      "entryCondition": [
+        "bell_synergy_rung"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.bell.synergy.02",
+      "requiredPlayerAction": [
+        "advance:bell_10_sanctuary_table",
+        "clear:wave"
+      ],
+      "completionFlag": "bell_synergy_complete",
+      "resumePoint": "bell_shortcut_safe",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_mastery",
+      "stepId": "01_stage2_30",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "stage2:resonance_forge",
+        "safe"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.mastery.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "forge_stage2_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_mastery",
+      "stepId": "02_stage3_80_silence",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "forge_stage2_seen",
+        "stage3:resonance_forge",
+        "safe"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.mastery.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "forge_stage3_transferred",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "bell_mastery",
+      "stepId": "03_gabriel_voice_and_signal",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "forge_stage3_transferred"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "story.bell.mastery.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_healed_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": "healed:resonance_forge"
+    },
+    {
+      "sceneId": "bell_mastery",
+      "stepId": "04_signal_promise",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_healed_seen",
+        "investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.bell.mastery.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "bell_mastery_complete",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_trial",
+      "stepId": "01_enter",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "trial_active:gabriel"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "trial.gabriel.enter",
+      "requiredPlayerAction": [
+        "verify:gabriel"
+      ],
+      "completionFlag": "gabriel_trial_objective_met",
+      "resumePoint": "gabriel_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "gabriel_trial",
+      "stepId": "02_verified",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_trial_objective_met",
+        "trial_active:gabriel"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "trial.gabriel.verified",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_trial_recharged",
+      "resumePoint": "gabriel_arena_center",
+      "effect": "recharge"
+    },
+    {
+      "sceneId": "gabriel_trial",
+      "stepId": "03_return",
+      "room": "bell_06_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "gabriel_trial_recharged",
+        "trial_active:gabriel"
+      ],
+      "speakerId": "gabriel",
+      "textKey": "trial.gabriel.return",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "gabriel_trial_complete",
+      "resumePoint": "bell_pre_boss_floor",
+      "effect": "endTrial"
+    }
+  ],
+  "links": [
+    {
+      "source": "hub_lift",
+      "room": "bell_01_entry",
+      "x": 35,
+      "gate": "depart"
+    },
+    {
+      "source": "hub_sanctuary",
+      "room": "bell_10_sanctuary_table",
+      "x": 33,
+      "gate": "investigation_complete"
+    }
+  ]
+}

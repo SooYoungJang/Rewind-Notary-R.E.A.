@@ -18,6 +18,7 @@ namespace RewindNotary
     [Serializable]
     public sealed class SkillStageDefinition
     {
+        public string Name => Loc.Get(name);
         public int stage, comboLimit, cutDamage, installationLimit;
         public string name, effectId;
         public float stepSpeed, stepSeconds, waveReach, afterimageSeconds;
@@ -30,6 +31,7 @@ namespace RewindNotary
     [Serializable]
     public sealed class SkillDefinition
     {
+        public string DisplayName => Loc.Get(displayName);
         public string skillId, displayName, sourceId, doomId;
         public bool implemented;
         public int stage2At, stage3At;

@@ -1,0 +1,1526 @@
+{
+  "rooms": [
+    {
+      "id": "hub_attic",
+      "stage": "hub",
+      "floors": [
+        {
+          "id": "attic_safe_floor",
+          "x": 3.0
+        },
+        {
+          "id": "attic_table_floor",
+          "x": 10.0
+        },
+        {
+          "id": "attic_board_floor",
+          "x": 16.0
+        },
+        {
+          "id": "attic_exit_floor",
+          "x": 20.0
+        }
+      ],
+      "points": [
+        {
+          "id": "mint_candy_pickup",
+          "x": 5.0
+        },
+        {
+          "id": "mint_candy_tray",
+          "x": 10.0
+        },
+        {
+          "id": "contract_copy_envelope",
+          "x": 10.0
+        },
+        {
+          "id": "breakfast_board",
+          "x": 16.0
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_workroom",
+          "x": 2,
+          "gate": ""
+        },
+        {
+          "room": "hub_forge",
+          "x": 20,
+          "gate": "sixth_bowl_stamped"
+        }
+      ],
+      "stitchAnchors": 0,
+      "roster": [],
+      "singleSeams": 0,
+      "releaseKnots": 0
+    },
+    {
+      "id": "hub_workroom",
+      "stage": "hub",
+      "floors": [
+        {
+          "id": "workroom_safe_floor",
+          "x": 3.0
+        },
+        {
+          "id": "workroom_terminal_floor",
+          "x": 7.0
+        },
+        {
+          "id": "workroom_mount_floor",
+          "x": 12.0
+        },
+        {
+          "id": "workroom_target_floor",
+          "x": 16.0
+        },
+        {
+          "id": "workroom_exit_floor",
+          "x": 22.0
+        }
+      ],
+      "points": [
+        {
+          "id": "core_terminal",
+          "x": 5.0
+        },
+        {
+          "id": "point_route_ledger",
+          "x": 7.0
+        },
+        {
+          "id": "marta_ledger",
+          "x": 9.0
+        },
+        {
+          "id": "calibration_mount",
+          "x": 12.0
+        },
+        {
+          "id": "calibration_target",
+          "x": 16.0
+        },
+        {
+          "id": "reflection_plate",
+          "x": 19.0
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_attic",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "hub_forge",
+          "x": 24,
+          "gate": "sixth_bowl_stamped"
+        },
+        {
+          "room": "hub_sanctuary",
+          "x": 21,
+          "gate": "investigation_complete"
+        },
+        {
+          "room": "hub_lift",
+          "x": 27,
+          "gate": "intro_complete"
+        }
+      ],
+      "stitchAnchors": 0,
+      "roster": [],
+      "singleSeams": 0,
+      "releaseKnots": 0
+    },
+    {
+      "id": "hub_forge",
+      "stage": "hub",
+      "floors": [
+        {
+          "id": "forge_anvil_floor",
+          "x": 8.0
+        },
+        {
+          "id": "forge_exit_floor",
+          "x": 19.0
+        }
+      ],
+      "points": [
+        {
+          "id": "ethan_grindstone",
+          "x": 8.0
+        },
+        {
+          "id": "resonant_crucible",
+          "x": 14.0
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_attic",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "hub_workroom",
+          "x": 4,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 20,
+          "gate": "intro_complete"
+        },
+        {
+          "room": "hub_sanctuary",
+          "x": 23,
+          "gate": "investigation_complete"
+        }
+      ],
+      "stitchAnchors": 0,
+      "roster": [],
+      "singleSeams": 0,
+      "releaseKnots": 0
+    },
+    {
+      "id": "hub_lift",
+      "stage": "hub",
+      "floors": [
+        {
+          "id": "lift_waiting_floor",
+          "x": 4.0
+        },
+        {
+          "id": "lift_platform_floor",
+          "x": 12.0
+        },
+        {
+          "id": "lift_arrival_exit",
+          "x": 18.0
+        }
+      ],
+      "points": [
+        {
+          "id": "luka_signal_post",
+          "x": 7.0
+        },
+        {
+          "id": "luka_freight_platform",
+          "x": 12.0
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_forge",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "hub_workroom",
+          "x": 3,
+          "gate": ""
+        },
+        {
+          "room": "hub_sanctuary",
+          "x": 20,
+          "gate": "investigation_complete"
+        },
+        {
+          "room": "velvet_01_entry",
+          "x": 23,
+          "gate": "depart"
+        }
+      ],
+      "stitchAnchors": 0,
+      "roster": [],
+      "singleSeams": 0,
+      "releaseKnots": 0
+    },
+    {
+      "id": "velvet_01_entry",
+      "stage": "velvet",
+      "floors": [
+        {
+          "id": "velvet_entry_floor",
+          "x": 2.0
+        },
+        {
+          "id": "velvet_wardrobe_floor",
+          "x": 8.0
+        }
+      ],
+      "points": [
+        {
+          "id": "mikhail_wardrobe",
+          "x": 8.0
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_lift",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "velvet_02_loom",
+          "x": 24,
+          "gate": "velvet_entry_complete"
+        }
+      ],
+      "stitchAnchors": 0,
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        }
+      ],
+      "singleSeams": 0,
+      "releaseKnots": 0
+    },
+    {
+      "id": "velvet_02_loom",
+      "stage": "velvet",
+      "floors": [
+        {
+          "id": "velvet_loom_west",
+          "x": 2.0
+        },
+        {
+          "id": "velvet_loom_east",
+          "x": 35.0
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "velvet_01_entry",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "velvet_03_gallery",
+          "x": 37,
+          "gate": "loom_bridge"
+        },
+        {
+          "room": "velvet_06_shortcut",
+          "x": 32,
+          "gate": "investigation_complete"
+        }
+      ],
+      "stitchAnchors": 5,
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "notary_guard",
+          "count": 3,
+          "segments": 4
+        },
+        {
+          "id": "shell_sentry",
+          "count": 2,
+          "segments": 3
+        }
+      ],
+      "singleSeams": 3,
+      "releaseKnots": 0
+    },
+    {
+      "id": "velvet_03_gallery",
+      "stage": "velvet",
+      "floors": [
+        {
+          "id": "velvet_gallery_center",
+          "x": 16.0
+        },
+        {
+          "id": "velvet_pre_boss_floor",
+          "x": 35.0
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "velvet_02_loom",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "velvet_04_arena",
+          "x": 37,
+          "gate": "gallery_bridge"
+        },
+        {
+          "room": "velvet_05_return",
+          "x": 32,
+          "gate": "mikhail_defeated"
+        }
+      ],
+      "stitchAnchors": 3,
+      "roster": [
+        {
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 1
+        },
+        {
+          "id": "notary_guard",
+          "count": 4,
+          "segments": 3
+        },
+        {
+          "id": "reflection_statue",
+          "count": 2,
+          "segments": 4
+        }
+      ],
+      "singleSeams": 3,
+      "releaseKnots": 0
+    },
+    {
+      "id": "velvet_04_arena",
+      "stage": "velvet",
+      "floors": [
+        {
+          "id": "mikhail_arena_west",
+          "x": 4.0
+        },
+        {
+          "id": "mikhail_arena_center",
+          "x": 16.0
+        },
+        {
+          "id": "mikhail_latch_floor",
+          "x": 23.0
+        },
+        {
+          "id": "mikhail_escape_plank",
+          "x": 27.0
+        }
+      ],
+      "points": [
+        {
+          "id": "mikhail_retreat_latch",
+          "x": 24.0
+        },
+        {
+          "id": "mikhail_escape_plank",
+          "x": 27.0
+        }
+      ],
+      "exits": [
+        {
+          "room": "velvet_03_gallery",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "velvet_05_return",
+          "x": 32,
+          "gate": "mikhail_defeated"
+        }
+      ],
+      "stitchAnchors": 0,
+      "roster": [],
+      "singleSeams": 0,
+      "releaseKnots": 0,
+      "boutHealth": 14,
+      "interludeHealth": 7
+    },
+    {
+      "id": "velvet_05_return",
+      "stage": "velvet",
+      "floors": [
+        {
+          "id": "velvet_return_start",
+          "x": 2.0
+        },
+        {
+          "id": "velvet_return_mid",
+          "x": 19.0
+        }
+      ],
+      "points": [
+        {
+          "id": "mikhail_reunion_plank",
+          "x": 19.0
+        },
+        {
+          "id": "reunion_latch",
+          "x": 22.0
+        }
+      ],
+      "exits": [
+        {
+          "room": "velvet_04_arena",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "velvet_01_entry",
+          "x": 38,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 41,
+          "gate": "depart"
+        },
+        {
+          "room": "velvet_03_gallery",
+          "x": 35,
+          "gate": ""
+        }
+      ],
+      "stitchAnchors": 13,
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 8,
+          "segments": 1
+        },
+        {
+          "id": "reflection_statue",
+          "count": 3,
+          "segments": 1
+        }
+      ],
+      "singleSeams": 6,
+      "releaseKnots": 3
+    },
+    {
+      "id": "velvet_06_shortcut",
+      "stage": "velvet",
+      "floors": [
+        {
+          "id": "velvet_upper_safe",
+          "x": 2.0
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "velvet_02_loom",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "velvet_04_arena",
+          "x": 37,
+          "gate": ""
+        }
+      ],
+      "stitchAnchors": 5,
+      "roster": [
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 1
+        },
+        {
+          "id": "notary_guard",
+          "count": 4,
+          "segments": 1,
+          "skillOnly": true,
+          "setupSkill": "silver_stitch"
+        },
+        {
+          "id": "shell_sentry",
+          "count": 4,
+          "segments": 1
+        },
+        {
+          "id": "reflection_statue",
+          "count": 3,
+          "segments": 1
+        }
+      ],
+      "singleSeams": 2,
+      "releaseKnots": 1
+    },
+    {
+      "id": "hub_sanctuary",
+      "stage": "hub",
+      "floors": [
+        {
+          "id": "sanctuary_safe_floor",
+          "x": 3.0
+        },
+        {
+          "id": "sanctuary_bridge_floor",
+          "x": 11.0
+        }
+      ],
+      "points": [
+        {
+          "id": "mikhail_reunion_plank",
+          "x": 11.0
+        },
+        {
+          "id": "reunion_latch",
+          "x": 14.0
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_workroom",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "hub_forge",
+          "x": 3,
+          "gate": ""
+        },
+        {
+          "room": "hub_lift",
+          "x": 20,
+          "gate": ""
+        }
+      ],
+      "stitchAnchors": 0,
+      "roster": [],
+      "singleSeams": 0,
+      "releaseKnots": 0
+    }
+  ],
+  "rows": [
+    {
+      "sceneId": "intro_attic",
+      "stepId": "01_wake",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "entryCondition": [
+        "!mint_candy_placed"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.intro.attic.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "intro_attic_01_read",
+      "resumePoint": "attic_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_attic",
+      "stepId": "02_candy_pickup",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "entryCondition": [
+        "intro_attic_01_read"
+      ],
+      "speakerId": "marta",
+      "textKey": "story.intro.attic.02",
+      "requiredPlayerAction": [
+        "use:mint_candy_pickup",
+        "use:mint_candy_tray"
+      ],
+      "completionFlag": "mint_candy_placed",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_attic",
+      "stepId": "03_ledger_note",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mint_candy_placed"
+      ],
+      "speakerId": "marta",
+      "textKey": "story.intro.attic.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "intro_ledger_note_read",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_attic",
+      "stepId": "04_receive_copy",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "entryCondition": [
+        "intro_ledger_note_read"
+      ],
+      "speakerId": "marta",
+      "textKey": "story.intro.attic.04",
+      "requiredPlayerAction": [
+        "use:contract_copy_envelope"
+      ],
+      "completionFlag": "contract_copy_received",
+      "resumePoint": "attic_table_floor",
+      "effect": "copy"
+    },
+    {
+      "sceneId": "intro_attic",
+      "stepId": "05_read_copy",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "entryCondition": [
+        "contract_copy_received"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.intro.attic.05",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "intro_copy_read",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_board",
+      "stepId": "01_approach",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "entryCondition": [
+        "intro_copy_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.intro.board.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "intro_board_01_read",
+      "resumePoint": "attic_board_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_board",
+      "stepId": "02_marta_six",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "entryCondition": [
+        "intro_board_01_read"
+      ],
+      "speakerId": "marta",
+      "textKey": "story.intro.board.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "intro_board_02_read",
+      "resumePoint": "attic_board_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_board",
+      "stepId": "03_stamp_sixth",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "entryCondition": [
+        "intro_board_02_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.intro.board.03",
+      "requiredPlayerAction": [
+        "use:breakfast_board"
+      ],
+      "completionFlag": "sixth_bowl_stamped",
+      "resumePoint": "attic_exit_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_forge",
+      "stepId": "01_enter",
+      "room": "hub_forge",
+      "alternateRoom": "",
+      "entryCondition": [
+        "sixth_bowl_stamped",
+        "!blade_notch_checked"
+      ],
+      "speakerId": "ethan",
+      "textKey": "story.intro.forge.01",
+      "requiredPlayerAction": [
+        "use:ethan_grindstone"
+      ],
+      "completionFlag": "blade_placed_on_stone",
+      "resumePoint": "forge_anvil_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_forge",
+      "stepId": "02_three_notches",
+      "room": "hub_forge",
+      "alternateRoom": "",
+      "entryCondition": [
+        "blade_placed_on_stone"
+      ],
+      "speakerId": "ethan",
+      "textKey": "story.intro.forge.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "blade_notch_checked",
+      "resumePoint": "forge_anvil_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_forge",
+      "stepId": "03_rea_question",
+      "room": "hub_forge",
+      "alternateRoom": "",
+      "entryCondition": [
+        "blade_notch_checked"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.intro.forge.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "intro_forge_03_read",
+      "resumePoint": "forge_anvil_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "intro_forge",
+      "stepId": "04_ethan_truth",
+      "room": "hub_forge",
+      "alternateRoom": "",
+      "entryCondition": [
+        "intro_forge_03_read"
+      ],
+      "speakerId": "ethan",
+      "textKey": "story.intro.forge.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "intro_complete",
+      "resumePoint": "forge_exit_floor",
+      "effect": "openDistricts"
+    },
+    {
+      "sceneId": "velvet_entry",
+      "stepId": "01_arrive",
+      "room": "velvet_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "intro_complete"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.velvet.entry.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "velvet_entry_01_read",
+      "resumePoint": "velvet_entry_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "velvet_entry",
+      "stepId": "02_wardrobe",
+      "room": "velvet_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "velvet_entry_01_read"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.velvet.entry.02",
+      "requiredPlayerAction": [
+        "use:mikhail_wardrobe"
+      ],
+      "completionFlag": "clue_imprint_mikhail_collected",
+      "resumePoint": "velvet_wardrobe_floor",
+      "effect": "keepsake"
+    },
+    {
+      "sceneId": "velvet_entry",
+      "stepId": "03_rea_ribbon",
+      "room": "velvet_01_entry",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clue_imprint_mikhail_collected"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.velvet.entry.03",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "velvet_entry_complete",
+      "resumePoint": "velvet_wardrobe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mikhail_bout_i0",
+      "stepId": "01_meet",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "velvet_entry_complete",
+        "!investigation_complete",
+        "!mikhail_defeated"
+      ],
+      "speakerId": "mikhail",
+      "textKey": "story.mikhail.i0.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mikhail_i0_01_read",
+      "resumePoint": "mikhail_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "mikhail_bout_i0",
+      "stepId": "02_rea_plea",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mikhail_i0_01_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.mikhail.i0.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mikhail_i0_02_read",
+      "resumePoint": "mikhail_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "mikhail_bout_i0",
+      "stepId": "03_mikhail_warn",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mikhail_i0_02_read",
+        "!investigation_complete"
+      ],
+      "speakerId": "mikhail",
+      "textKey": "story.mikhail.i0.03",
+      "requiredPlayerAction": [
+        "win:mikhail"
+      ],
+      "completionFlag": "mikhail_defeated",
+      "resumePoint": "mikhail_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "mikhail_bout_i0",
+      "stepId": "04_acquire_stitch",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mikhail_defeated",
+        "!investigation_complete"
+      ],
+      "speakerId": "mikhail",
+      "textKey": "story.mikhail.i0.04",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mikhail_i0_complete",
+      "resumePoint": "velvet_return_start",
+      "effect": ""
+    },
+    {
+      "sceneId": "mikhail_bout_i1",
+      "stepId": "01_meet",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "velvet_entry_complete",
+        "investigation_complete",
+        "!mikhail_defeated"
+      ],
+      "speakerId": "mikhail",
+      "textKey": "story.mikhail.i1.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mikhail_i1_01_read",
+      "resumePoint": "mikhail_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "mikhail_bout_i1",
+      "stepId": "02_clash_halt",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mikhail_i1_01_read",
+        "half"
+      ],
+      "speakerId": "mikhail",
+      "textKey": "story.mikhail.i1.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mikhail_i1_clash_halted",
+      "resumePoint": "mikhail_latch_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mikhail_bout_i1",
+      "stepId": "03_cut_latch",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mikhail_i1_clash_halted"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.mikhail.i1.03",
+      "requiredPlayerAction": [
+        "strike:mikhail_retreat_latch"
+      ],
+      "completionFlag": "mikhail_retreat_plank_down",
+      "resumePoint": "mikhail_escape_plank",
+      "effect": ""
+    },
+    {
+      "sceneId": "mikhail_bout_i1",
+      "stepId": "04_acknowledge",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mikhail_retreat_plank_down"
+      ],
+      "speakerId": "mikhail",
+      "textKey": "story.mikhail.i1.04",
+      "requiredPlayerAction": [
+        "win:mikhail"
+      ],
+      "completionFlag": "mikhail_defeated",
+      "resumePoint": "mikhail_arena_center",
+      "effect": "defeat"
+    },
+    {
+      "sceneId": "mikhail_bout_i1",
+      "stepId": "05_grant_support",
+      "room": "velvet_04_arena",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mikhail_defeated",
+        "mikhail_retreat_plank_down"
+      ],
+      "speakerId": "mikhail",
+      "textKey": "story.mikhail.i1.05",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mikhail_support_first_granted",
+      "resumePoint": "velvet_return_start",
+      "effect": "duelHelp"
+    },
+    {
+      "sceneId": "mikhail_reunion_i1",
+      "stepId": "01_plank",
+      "room": "hub_sanctuary",
+      "alternateRoom": "velvet_05_return",
+      "entryCondition": [
+        "mikhail_defeated",
+        "investigation_complete",
+        "!mikhail_retreat_plank_down",
+        "!mikhail_support_first_granted"
+      ],
+      "speakerId": "mikhail",
+      "textKey": "story.mikhail.reunion.01",
+      "requiredPlayerAction": [
+        "walk:mikhail_reunion_plank",
+        "strike:reunion_latch"
+      ],
+      "completionFlag": "mikhail_reunion_plank_tested",
+      "resumePoint": "sanctuary_bridge_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mikhail_reunion_i1",
+      "stepId": "02_grant_support",
+      "room": "hub_sanctuary",
+      "alternateRoom": "velvet_05_return",
+      "entryCondition": [
+        "mikhail_reunion_plank_tested"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.mikhail.reunion.02",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mikhail_support_first_granted",
+      "resumePoint": "sanctuary_bridge_floor",
+      "effect": "shelterHelp"
+    },
+    {
+      "sceneId": "first_transfer",
+      "stepId": "01_trigger",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "intro_complete",
+        "transferred",
+        "!investigation_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.transfer.first.01",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "first_transfer_seen",
+      "resumePoint": "current_room_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "first_transfer",
+      "stepId": "02_luka_call",
+      "room": "*",
+      "alternateRoom": "",
+      "entryCondition": [
+        "first_transfer_seen",
+        "!investigation_complete"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.transfer.first.02",
+      "requiredPlayerAction": [
+        "use:return_call"
+      ],
+      "completionFlag": "returned_for_mid_invest",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "01_sanctuary_check",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "returned_for_mid_invest",
+        "!investigation_complete"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.invest.01_sanctuary",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_01_read",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "02a_symptom_stitch",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_01_read",
+        "first:silver_stitch"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.invest.02a_stitch",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_02_read",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "02b_symptom_pendulum",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_01_read",
+        "first:pendulum_rewind"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.invest.02b_pendulum",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_02_read",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "02c_symptom_waltz",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_01_read",
+        "first:curtain_call_waltz"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.invest.02c_waltz",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_02_read",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "02d_symptom_forge",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_01_read",
+        "first:resonance_forge"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.invest.02d_forge",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_02_read",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "02e_symptom_canvas",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_01_read",
+        "first:canvas_carve"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.invest.02e_canvas",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_02_read",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "03_theo_waveform",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_02_read"
+      ],
+      "speakerId": "theo",
+      "textKey": "story.invest.03_theo",
+      "requiredPlayerAction": [
+        "use:point_route_ledger"
+      ],
+      "completionFlag": "clue_route_ledger_collected",
+      "resumePoint": "workroom_terminal_floor",
+      "effect": "ledger"
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "04_six_years_truth",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "clue_route_ledger_collected"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.invest.04_luka",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_04_read",
+      "resumePoint": "workroom_terminal_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "05_ledger_forgery",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_04_read",
+        "clue:contract_copy"
+      ],
+      "speakerId": "marta",
+      "textKey": "story.invest.05_marta",
+      "requiredPlayerAction": [
+        "use:marta_ledger"
+      ],
+      "completionFlag": "mid_invest_forgery_confirmed",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "06_who_forged",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_forgery_confirmed"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.invest.06_rea",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_06_read",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "07_exp_step1_pin",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_06_read"
+      ],
+      "speakerId": "ethan",
+      "textKey": "story.invest.07_exp1_ethan",
+      "requiredPlayerAction": [
+        "use:calibration_mount"
+      ],
+      "completionFlag": "exp_step1_complete",
+      "resumePoint": "workroom_mount_floor",
+      "effect": "waveform"
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "08_exp_step1_line",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "exp_step1_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.invest.08_exp1_rea",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_08_read",
+      "resumePoint": "workroom_mount_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "09_exp_step2_dormant",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_08_read"
+      ],
+      "speakerId": "theo",
+      "textKey": "story.invest.09_exp2_theo",
+      "requiredPlayerAction": [
+        "use:calibration_mount",
+        "strike:calibration_target"
+      ],
+      "completionFlag": "exp_step2_complete",
+      "resumePoint": "workroom_target_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "10_exp_step2_limit",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "exp_step2_complete"
+      ],
+      "speakerId": "ethan",
+      "textKey": "story.invest.10_exp2_ethan",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "mid_invest_10_read",
+      "resumePoint": "workroom_target_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "11_exp_step3_mirror",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "mid_invest_10_read"
+      ],
+      "speakerId": "theo",
+      "textKey": "story.invest.11_exp3_theo",
+      "requiredPlayerAction": [
+        "use:reflection_plate",
+        "strike:reflection_plate",
+        "use:reflection_plate"
+      ],
+      "completionFlag": "exp_step3_complete",
+      "resumePoint": "workroom_mount_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "12_exp_step4_notes",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "exp_step3_complete"
+      ],
+      "speakerId": "theo",
+      "textKey": "story.invest.12_exp4_theo",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "exp_step4_complete",
+      "resumePoint": "workroom_safe_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "mid_invest",
+      "stepId": "13_rea_decision",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "exp_step4_complete"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.invest.13_decision",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "investigation_complete",
+      "resumePoint": "workroom_exit_floor",
+      "effect": "middle"
+    },
+    {
+      "sceneId": "luka_lift",
+      "stepId": "approach",
+      "room": "hub_lift",
+      "alternateRoom": "",
+      "entryCondition": [
+        "investigation_complete",
+        "!luka_signalled"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.luka.approach",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "luka_lift_approached",
+      "resumePoint": "lift_waiting_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "luka_lift",
+      "stepId": "signal",
+      "room": "hub_lift",
+      "alternateRoom": "",
+      "entryCondition": [
+        "luka_lift_approached"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.luka.signal",
+      "requiredPlayerAction": [
+        "use:luka_signal_post"
+      ],
+      "completionFlag": "luka_signalled",
+      "resumePoint": "lift_waiting_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "luka_lift",
+      "stepId": "board",
+      "room": "hub_lift",
+      "alternateRoom": "",
+      "entryCondition": [
+        "luka_signalled"
+      ],
+      "speakerId": "luka",
+      "textKey": "story.luka.board",
+      "requiredPlayerAction": [
+        "walk:luka_freight_platform"
+      ],
+      "completionFlag": "luka_boarded",
+      "resumePoint": "lift_arrival_exit",
+      "effect": ""
+    },
+    {
+      "sceneId": "luka_lift",
+      "stepId": "arrive",
+      "room": "hub_lift",
+      "alternateRoom": "",
+      "entryCondition": [
+        "luka_boarded"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.luka.arrive",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "luka_lift_complete",
+      "resumePoint": "lift_arrival_exit",
+      "effect": ""
+    },
+    {
+      "sceneId": "late_discovery",
+      "stepId": "01_no_answer",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "finalReading"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.late.01_rea",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "late_01_read",
+      "resumePoint": "workroom_terminal_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "late_discovery",
+      "stepId": "02_theo_diff",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "late_01_read"
+      ],
+      "speakerId": "theo",
+      "textKey": "story.late.02_theo",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "late_02_read",
+      "resumePoint": "workroom_terminal_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "late_discovery",
+      "stepId": "03_ethan_memory",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "late_02_read"
+      ],
+      "speakerId": "ethan",
+      "textKey": "story.late.03_ethan",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "late_03_read",
+      "resumePoint": "workroom_terminal_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "late_discovery",
+      "stepId": "04_depart_court",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "entryCondition": [
+        "late_03_read"
+      ],
+      "speakerId": "rea",
+      "textKey": "story.late.04_depart",
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "court_departure_ready",
+      "resumePoint": "workroom_exit_floor",
+      "effect": "departCourt"
+    }
+  ]
+}

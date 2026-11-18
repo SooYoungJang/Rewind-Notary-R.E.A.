@@ -13,6 +13,7 @@ namespace RewindNotary
         public event Action Died;
         public float InvulnerableUntil { get; private set; }
         public float KnockbackMultiplier { get; private set; } = 1f;
+        public int MinimumHealth { get; set; }
         private float immunity;
         public void Initialize(int maximum, float hitImmunity, bool isPlayer = false)
         { Maximum = maximum; Current = maximum; immunity = hitImmunity; IsPlayer = isPlayer; }
@@ -22,7 +23,7 @@ namespace RewindNotary
             // Avoidance/parry changes neither HP nor hit immunity and emits no damage/skill event.
             if (IsPlayer && TryGetComponent<PlayerDefense2D>(out var defense) && defense.TryDefend(source)) return false;
             if (IsPlayer && TryGetComponent<ResonanceForgeSkill>(out var forge) && forge.TryCounter(source)) return false;
-            Current = Mathf.Max(0, Current - amount);
+            Current = Mathf.Max(MinimumHealth, Current - amount);
             InvulnerableUntil = Time.time + immunity;
             KnockbackMultiplier = knockbackMultiplier;
             Damaged?.Invoke(source);
@@ -33,6 +34,11 @@ namespace RewindNotary
             }
             if (Dead) Died?.Invoke();
             return true;
+        }
+        public bool Heal(int amount)
+        {
+            if (Dead || amount <= 0 || Current >= Maximum) return false;
+            Current = Mathf.Min(Maximum, Current + amount); return true;
         }
         public void Refill() { Current = Maximum; InvulnerableUntil = Time.time + 0.8f; }
     }

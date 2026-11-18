@@ -5,16 +5,22 @@ using UnityEngine;
 
 namespace RewindNotary
 {
+    public enum SaveLoadStatus { NotLoaded, Empty, Loaded, RecoveredBackup, RecoveryFailed, UnsupportedVersion }
     // One instance owns one normal slot and its isolated debug file. Never load debug automatically.
     public sealed class SkillSaveStore
     {
-        [Serializable] private sealed class SaveHeader { public int schemaVersion; public string rulesVersion; }
+        [Serializable] private sealed class SaveHeader { public int schemaVersion; public string rulesVersion; public InvestigationState investigation; public FinalBattleAttempt finalBattleAttempt; }
         private readonly string directory;
         private readonly SkillCatalog catalog;
+        internal string DirectoryPath => directory;
         public int Slot { get; }
         public string SlotId => "slot-" + Slot;
         public string LastError { get; private set; }
         public bool WriteBlocked { get; private set; }
+        public SaveLoadStatus LoadStatus { get; private set; }
+        public string RecoveryNotice { get; private set; }
+        public bool RequiresUserAttention => LoadStatus == SaveLoadStatus.RecoveredBackup
+            || LoadStatus == SaveLoadStatus.RecoveryFailed || LoadStatus == SaveLoadStatus.UnsupportedVersion;
         private string Tombstone => Path.Combine(directory, SlotId + ".deleted");
         private string MigrationMarker => Path.Combine(directory, "legacy-imported");
         public SkillSaveStore(string directory, SkillCatalog catalog, int slot = 1)
@@ -27,7 +33,10 @@ namespace RewindNotary
         public CoreRecord Load()
         {
             LastError = null; WriteBlocked = false;
-            return Exists ? LoadFrom(PathFor(false), false) : null;
+            if (!Exists) { LoadStatus = SaveLoadStatus.Empty; RecoveryNotice = null; return null; }
+            var record = LoadFrom(PathFor(false), false);
+            if (LoadStatus != SaveLoadStatus.RecoveredBackup) { LoadStatus = SaveLoadStatus.Loaded; RecoveryNotice = null; }
+            return record;
         }
         private CoreRecord LoadFrom(string path, bool legacy)
         {
@@ -35,75 +44,185 @@ namespace RewindNotary
             {
                 try
                 {
-                    var header = JsonUtility.FromJson<SaveHeader>(File.ReadAllText(path));
-                    // Future rules/schema must not be silently replaced by an older backup.
-                    if (header != null && (header.schemaVersion > CoreRecord.SchemaVersion
-                        || (!string.IsNullOrEmpty(header.rulesVersion) && header.rulesVersion != SkillRules.Version)))
-                    { WriteBlocked = true; throw new InvalidDataException("지원하지 않는 저장 버전입니다. 원본을 보존했습니다."); }
                     return Read(path, legacy);
                 }
-                catch (Exception e) { LastError = e.Message; if (WriteBlocked) throw; }
+                catch (UnsupportedSaveVersionException e)
+                {
+                    // Probe the backup, but never roll a newer save back automatically.
+                    string backup;
+                    try { Read(path + ".bak", legacy); backup = Loc.Get("save.backup_readable"); }
+                    catch (Exception) { backup = Loc.Get("save.backup_unreadable"); }
+                    WriteBlocked = true; LoadStatus = SaveLoadStatus.UnsupportedVersion;
+                    RecoveryNotice = LastError = Loc.Get("save.use_compatible_version", e.Message, backup);
+                    throw new InvalidDataException(LastError, e);
+                }
+                catch (Exception e) { LastError = e.Message; }
             }
             try
             {
                 var recovered = Read(path + ".bak", legacy);
                 if (!legacy)
                 {
-                    if (File.Exists(path)) File.Copy(path, path + ".corrupt-" + DateTime.UtcNow.Ticks, false);
-                    File.Copy(path + ".bak", path, true);
+                    string temp = path + ".tmp";
+                    WriteDurable(temp, ReadText(path + ".bak"));
+                    Read(temp);
+                    // Atomic recovery preserves the damaged primary; .bak remains the last good save.
+                    if (File.Exists(path)) File.Replace(temp, path, path + ".corrupt-" + Guid.NewGuid().ToString("N"));
+                    else File.Move(temp, path);
                 }
-                LastError = "이전 정상 백업을 복구했습니다. 기존 원본은 보존했습니다.";
+                LoadStatus = SaveLoadStatus.RecoveredBackup;
+                RecoveryNotice = LastError = Loc.Get("save.backup_restored");
                 return recovered;
             }
             catch (Exception e)
             {
                 WriteBlocked = true;
-                throw new InvalidDataException("저장을 복구할 수 없습니다. 원본 보존: " + LastError + " / " + e.Message);
+                LoadStatus = SaveLoadStatus.RecoveryFailed;
+                RecoveryNotice = LastError = Loc.Get("save.recovery_failed", LastError, e.Message);
+                throw new InvalidDataException(LastError, e);
             }
         }
         private CoreRecord Read(string path, bool legacy = false)
         {
-            string json = File.ReadAllText(path);
+            string json = ReadText(path);
+            var fields = SaveJsonIntegrity.Validate(json);
             var header = JsonUtility.FromJson<SaveHeader>(json);
             if (header == null || header.schemaVersion < 1 || header.schemaVersion > CoreRecord.SchemaVersion
                 || header.rulesVersion != SkillRules.Version)
-                throw new InvalidDataException("저장 버전 또는 규칙 버전이 올바르지 않습니다.");
+                throw new InvalidDataException(Loc.Get("save.invalid_version"));
             var record = JsonUtility.FromJson<CoreRecord>(json);
-            if (record == null) throw new InvalidDataException("빈 저장 파일입니다.");
+            if (record == null) throw new InvalidDataException(Loc.Get("save.empty_file"));
+            if (header.schemaVersion >= 3 && header.investigation == null)
+                throw new InvalidDataException(Loc.Get("save.missing_investigation"));
+            if (header.schemaVersion < 3)
+            {
+                record.schemaVersion = CoreRecord.SchemaVersion;
+                if (header.investigation == null || record.investigation == null) record.investigation = new InvestigationState();
+            }
+            if (header.schemaVersion >= 4 && header.finalBattleAttempt == null)
+                throw new InvalidDataException(Loc.Get("save.missing_finale"));
+            if (header.schemaVersion < 4)
+            {
+                if (header.finalBattleAttempt == null) record.finalBattleAttempt = new FinalBattleAttempt();
+                record.schemaVersion = CoreRecord.SchemaVersion;
+            }
             bool debug = !legacy && Path.GetFileName(path).StartsWith(SlotId + "-debug.json", StringComparison.Ordinal);
             if (header.schemaVersion == 1)
             {
                 if (record.testData != debug || record.slotId != (debug ? "debug" : "main"))
-                    throw new InvalidDataException("이전 저장 슬롯이 일치하지 않습니다.");
+                    throw new InvalidDataException(Loc.Get("save.legacy_slot_mismatch"));
                 record.schemaVersion = CoreRecord.SchemaVersion;
                 record.slotId = debug ? "debug" : SlotId;
-                record.storyFlags = new System.Collections.Generic.List<string> { "hub_open" };
-                record.lastStageId = "prototype";
+                if (!fields.ContainsKey("storyFlags")) record.storyFlags = new System.Collections.Generic.List<string> { "hub_open" };
+                if (!fields.ContainsKey("lastStageId")) record.lastStageId = "prototype";
             }
             if (record.testData != debug || record.slotId != (debug ? "debug" : SlotId))
-                throw new InvalidDataException("저장 슬롯이 일치하지 않습니다.");
+                throw new InvalidDataException(Loc.Get("save.slot_mismatch"));
             record.Validate(catalog);
             return record;
         }
-        public CoreRecord Create()
+        public CoreRecord Create() => Create("prototype");
+        public CoreRecord Create(string stage)
         {
-            if (Exists) throw new InvalidOperationException("사용 중인 슬롯입니다. 먼저 삭제해 주세요.");
+            if (Exists) throw new InvalidOperationException(Loc.Get("save.slot_in_use"));
             if (File.Exists(Tombstone)) { RemoveSlotFiles(); File.Delete(Tombstone); }
-            WriteBlocked = false;
-            var record = CoreRecord.NewGame(catalog); record.slotId = SlotId;
+            WriteBlocked = false; LoadStatus = SaveLoadStatus.NotLoaded; RecoveryNotice = null;
+            var record = CoreRecord.NewGame(catalog); record.slotId = SlotId; record.lastStageId = stage;
             if (!Save(record)) throw new IOException(LastError);
             return record;
         }
         public bool Save(CoreRecord record) => Write(record, true);
-        private bool Write(CoreRecord record, bool stamp)
+        // Publish an inactive bank first. The primary selects it only in the subsequent atomic save.
+        // A failed write leaves the previously published bank reachable, including on process restart.
+        internal bool Save(CoreRecord record, CoreRecord previous)
         {
-            if (WriteBlocked || File.Exists(Tombstone)) return false;
-            string path = PathFor(record.testData), temp = path + ".tmp";
+            if (previous == null) return Save(record);
             try
             {
+                if (WriteBlocked || File.Exists(Tombstone)) throw new IOException(RecoveryNotice ?? Loc.Get("save.slot_blocked"));
+                if (record.testData || record.slotId != SlotId || previous.slotId != SlotId
+                    || previous.testData || previous.lastStageId != EndingCheckpoint.Lift)
+                    throw new InvalidDataException(Loc.Get("save.slot_mismatch"));
+                string marker = EndingCheckpoint.Marker(record);
+                if (marker == null || EndingCheckpoint.Marker(previous) != marker)
+                    throw new InvalidDataException(Loc.Get("save.missing_finale"));
+                // Check the current primary (including newer-version blocking) before touching any bank.
+                var current = LoadFrom(PathFor(false), false);
+                string published = EndingCheckpoint.Marker(current);
+                if (published != null && EndingCheckpoint.IsBankA(published) == EndingCheckpoint.IsBankA(marker))
+                    throw new InvalidDataException(Loc.Get("save.slot_blocked"));
+                string path = PreviousPath(marker), temp = path + ".tmp";
+                if (File.Exists(path))
+                {
+                    try { Read(path); }
+                    catch (UnsupportedSaveVersionException) { throw; }
+                    catch (InvalidDataException) { } // A damaged inactive bank can be replaced.
+                    catch (InvalidOperationException) { }
+                }
+                WriteDurable(temp, JsonUtility.ToJson(previous, true));
+                ReadPrevious(temp, marker);
+                if (File.Exists(path)) File.Replace(temp, path, null);
+                else File.Move(temp, path);
+                return Save(record);
+            }
+            catch (Exception e) { LastError = Loc.Get("save.failed_preserved", e.Message); return false; }
+        }
+        private string PreviousPath(string marker) => PathFor(false) +
+            (EndingCheckpoint.IsBankA(marker) ? ".previous-a" : ".previous-b");
+        private CoreRecord ReadPrevious(string path, string marker)
+        {
+            var previous = Read(path);
+            if (previous.lastStageId != EndingCheckpoint.Lift || previous.finalBattleAttempt.outcome != "ready"
+                || EndingCheckpoint.Marker(previous) != marker
+                || FinaleEndingEvaluator.Evaluate(previous.lastFinalBattleAttempt) != FinaleEnding.Basic
+                || !marker.EndsWith(":" + previous.lastFinalBattleAttempt.attemptId, StringComparison.Ordinal)
+                || !StageCatalog.Find("cassel").Unlocked(previous))
+                throw new InvalidDataException(Loc.Get("save.missing_finale"));
+            return previous;
+        }
+        public CoreRecord RestorePrevious()
+        {
+            var current = Load();
+            string marker = current == null ? null : EndingCheckpoint.Marker(current);
+            if (marker == null || !current.storyFlags.Contains(EndingCheckpoint.Basic))
+                throw new InvalidDataException(Loc.Get("save.missing_finale"));
+            var previous = ReadPrevious(PreviousPath(marker), marker);
+            EndingCheckpoint.Resume(current, previous);
+            if (!Save(current)) throw new IOException(LastError);
+            return current;
+        }
+        // Old v4 settlements have no entry snapshot. Recover their available progress on first use.
+        internal void ImportEnding(CoreRecord record)
+        {
+            int flagsBefore = record.storyFlags.Count;
+            EndingCheckpoint.Remember(record, record.lastFinalBattleAttempt);
+            EndingCheckpoint.Remember(record, record.finalBattleAttempt);
+            if (record.lastStageId != "cassel" || EndingCheckpoint.Marker(record) != null
+                || FinaleEndingEvaluator.Evaluate(record.finalBattleAttempt) != FinaleEnding.Basic
+                || !StageCatalog.Find("cassel").Unlocked(record))
+            {
+                if (record.storyFlags.Count != flagsBefore && !Save(record)) throw new IOException(LastError);
+                return;
+            }
+            var previous = EndingCheckpoint.BeforeBattle(record);
+            EndingCheckpoint.Publish(record, previous);
+            if (!Save(record, previous)) throw new IOException(LastError);
+        }
+        private bool Write(CoreRecord record, bool stamp)
+        {
+            if (WriteBlocked || File.Exists(Tombstone))
+            { LastError = RecoveryNotice ?? Loc.Get("save.slot_blocked"); return false; }
+            long revision = record?.revision ?? 0;
+            string savedUtc = record?.savedUtc;
+            try
+            {
+                if (record == null) throw new InvalidDataException(Loc.Get("save.no_record"));
+                string path = PathFor(record.testData), temp = path + ".tmp";
                 record.Validate(catalog);
-                if (!record.testData && record.slotId != SlotId) throw new InvalidDataException("다른 슬롯의 기록입니다.");
-                if (stamp) { record.revision++; record.savedUtc = DateTime.UtcNow.ToString("O"); }
+                if (!record.testData && record.slotId != SlotId) throw new InvalidDataException(Loc.Get("save.wrong_slot"));
+                // Never rotate a damaged/unsupported primary over the only good backup.
+                if (File.Exists(path) || File.Exists(path + ".bak")) LoadFrom(path, false);
+                if (stamp) { record.revision = checked(record.revision + 1); record.savedUtc = DateTime.UtcNow.ToString("O"); }
                 Directory.CreateDirectory(directory);
                 WriteDurable(temp, JsonUtility.ToJson(record, true));
                 Read(temp);
@@ -111,8 +230,13 @@ namespace RewindNotary
                 else File.Move(temp, path);
                 LastError = null; return true;
             }
-            catch (Exception e) { LastError = "저장 실패 (정상본 보존): " + e.Message; Debug.LogWarning(LastError); return false; }
+            catch (Exception e)
+            {
+                if (record != null) { record.revision = revision; record.savedUtc = savedUtc; }
+                LastError = Loc.Get("save.failed_preserved", e.Message); Debug.LogWarning(LastError); return false;
+            }
         }
+        private static string ReadText(string path) => File.ReadAllText(path, new UTF8Encoding(false, true));
         private static void WriteDurable(string path, string value)
         {
             using (var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
@@ -127,7 +251,7 @@ namespace RewindNotary
             // Commit deletion before cleanup: a crash/partial cleanup cannot resurrect a backup or legacy save.
             if (Slot == 1) WriteDurable(MigrationMarker, "slot-1 retired");
             WriteDurable(Tombstone, "deleted");
-            RemoveSlotFiles(); WriteBlocked = false; LastError = null;
+            RemoveSlotFiles(); WriteBlocked = false; LastError = null; RecoveryNotice = null; LoadStatus = SaveLoadStatus.Empty;
         }
         private void RemoveSlotFiles()
         {
@@ -149,7 +273,7 @@ namespace RewindNotary
             // Preserve every v1 field, including timestamp/revision, except the required version and slot identity.
             if (!target.Write(record, false)) throw new IOException(target.LastError);
             WriteDurable(target.MigrationMarker, "migrated v1 to slot-1");
-            return "기존 기록을 슬롯 1로 이전했습니다. 기존 파일은 보존했습니다." + (recovery == null ? "" : " " + recovery);
+            return Loc.Get("save.legacy_migrated", (recovery == null ? "" : " " + recovery));
         }
     }
 }

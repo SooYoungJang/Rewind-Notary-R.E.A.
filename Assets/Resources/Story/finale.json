@@ -1,0 +1,2007 @@
+{
+  "rooms": [
+    {
+      "id": "court_01_hall",
+      "stage": "janhyang",
+      "floors": [
+        {
+          "id": "court_hall_west",
+          "x": 3
+        },
+        {
+          "id": "court_pillar_floor",
+          "x": 12
+        }
+      ],
+      "points": [
+        {
+          "id": "court_control_pillar",
+          "x": 12
+        }
+      ],
+      "exits": [
+        {
+          "room": "hub_lift",
+          "x": 1,
+          "gate": ""
+        },
+        {
+          "room": "court_02_echo_arena",
+          "x": 43,
+          "gate": "court_pillar_checked"
+        }
+      ],
+      "roster": [
+        {
+          "id": "reflection_statue",
+          "count": 2,
+          "segments": 2
+        },
+        {
+          "id": "notary_guard",
+          "count": 2,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "court_02_echo_arena",
+      "stage": "janhyang",
+      "floors": [
+        {
+          "id": "echo_arena_west",
+          "x": 36
+        },
+        {
+          "id": "echo_arena_center",
+          "x": 47
+        },
+        {
+          "id": "echo_lift_front",
+          "x": 56
+        }
+      ],
+      "points": [
+        {
+          "id": "echo_notes",
+          "x": 38
+        },
+        {
+          "id": "echo_side_knot",
+          "x": 43
+        },
+        {
+          "id": "echo_escape_step",
+          "x": 48,
+          "platform": true
+        },
+        {
+          "id": "echo_seal_barrier",
+          "x": 56
+        },
+        {
+          "id": "echo_hand_clasp",
+          "x": 54
+        }
+      ],
+      "exits": [
+        {
+          "room": "court_01_hall",
+          "x": 35,
+          "gate": ""
+        },
+        {
+          "room": "court_03_lift",
+          "x": 57,
+          "gate": "echo_accompanied_core"
+        }
+      ],
+      "roster": []
+    },
+    {
+      "id": "court_03_lift",
+      "stage": "janhyang",
+      "floors": [
+        {
+          "id": "court_lift_floor",
+          "x": 7
+        }
+      ],
+      "points": [
+        {
+          "id": "cassel_lift_console",
+          "x": 12
+        }
+      ],
+      "exits": [
+        {
+          "room": "court_02_echo_arena",
+          "x": 2,
+          "gate": ""
+        },
+        {
+          "room": "court_04_tribunal",
+          "x": 12,
+          "gate": "court_lift_ready"
+        }
+      ],
+      "roster": []
+    },
+    {
+      "id": "court_04_tribunal",
+      "stage": "cassel",
+      "floors": [
+        {
+          "id": "cassel_arena_floor",
+          "x": 40
+        }
+      ],
+      "points": [],
+      "exits": [
+        {
+          "room": "court_03_lift",
+          "x": 36,
+          "gate": ""
+        },
+        {
+          "room": "court_05_rooftop",
+          "x": 57,
+          "gate": "settled"
+        }
+      ],
+      "roster": []
+    },
+    {
+      "id": "court_05_rooftop",
+      "stage": "janhyang",
+      "floors": [
+        {
+          "id": "court_rooftop_floor",
+          "x": 8
+        }
+      ],
+      "points": [
+        {
+          "id": "rooftop_echo_embrace",
+          "x": 12
+        },
+        {
+          "id": "basic_ending_ledger",
+          "x": 17
+        },
+        {
+          "id": "rea_form_one_sky",
+          "x": 30
+        },
+        {
+          "id": "rooftop_to_attic_exit",
+          "x": 41
+        }
+      ],
+      "exits": [
+        {
+          "room": "court_04_tribunal",
+          "x": 2,
+          "gate": "finale_epilogue_complete"
+        }
+      ],
+      "roster": []
+    }
+  ],
+  "rows": [
+    {
+      "sceneId": "court_entry",
+      "stepId": "01_arrive",
+      "room": "court_01_hall",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.entry.01",
+      "entryCondition": [
+        "courtEntry"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "court_entry_01_read",
+      "resumePoint": "court_hall_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "court_entry",
+      "stepId": "02_control_pillar",
+      "room": "court_01_hall",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.entry.02",
+      "entryCondition": [
+        "court_entry_01_read"
+      ],
+      "requiredPlayerAction": [
+        "use:court_control_pillar"
+      ],
+      "completionFlag": "court_pillar_checked",
+      "resumePoint": "court_pillar_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "court_entry",
+      "stepId": "03_warm_up_wave",
+      "room": "court_01_hall",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.entry.03",
+      "entryCondition": [
+        "court_pillar_checked"
+      ],
+      "requiredPlayerAction": [
+        "clearDoor:court_02_echo_arena"
+      ],
+      "completionFlag": "court_hall_cleared",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_pre",
+      "stepId": "01_barrier_sight",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.pre.01",
+      "entryCondition": [
+        "court_hall_cleared"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_pre_01_read",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_pre",
+      "stepId": "02_why_blocked",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.pre.02",
+      "entryCondition": [
+        "echo_pre_01_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_pre_02_read",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_pre",
+      "stepId": "03_no_proof",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.pre.03",
+      "entryCondition": [
+        "echo_pre_02_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_pre_03_read",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_pre",
+      "stepId": "04_erased_answer",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.pre.04",
+      "entryCondition": [
+        "echo_pre_03_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_pre_04_read",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_pre",
+      "stepId": "05_echo_fear",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.pre.05",
+      "entryCondition": [
+        "echo_pre_04_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_pre_05_read",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_pre",
+      "stepId": "06_show_notes",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.pre.06",
+      "entryCondition": [
+        "echo_pre_05_read"
+      ],
+      "requiredPlayerAction": [
+        "use:echo_notes"
+      ],
+      "completionFlag": "echo_notes_shown",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_battle",
+      "stepId": "01_phase1_start",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.battle.01_p1",
+      "entryCondition": [
+        "echo_notes_shown"
+      ],
+      "requiredPlayerAction": [
+        "echoHP:8"
+      ],
+      "completionFlag": "echo_phase1_cleared",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_battle",
+      "stepId": "02_phase2_shift",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.battle.02_p2",
+      "entryCondition": [
+        "echo_phase1_cleared"
+      ],
+      "requiredPlayerAction": [
+        "strike:echo_side_knot",
+        "walk:echo_escape_step"
+      ],
+      "completionFlag": "echo_phase2_shifted",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_battle",
+      "stepId": "03_phase2_counter",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.battle.03_p2_rea",
+      "entryCondition": [
+        "echo_phase2_shifted"
+      ],
+      "requiredPlayerAction": [
+        "echoHP:4"
+      ],
+      "completionFlag": "echo_phase2_cleared",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_battle",
+      "stepId": "04_phase3_shift",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.battle.04_p3",
+      "entryCondition": [
+        "echo_phase2_cleared"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_phase3_shifted",
+      "resumePoint": "echo_arena_west",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_battle",
+      "stepId": "05_phase3_defeat",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.battle.05_p3_rea",
+      "entryCondition": [
+        "echo_phase3_shifted"
+      ],
+      "requiredPlayerAction": [
+        "echoHP:0"
+      ],
+      "completionFlag": "janhyang_defeated",
+      "resumePoint": "echo_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_after",
+      "stepId": "01_stop_blade",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.after.01",
+      "entryCondition": [
+        "janhyang_defeated"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_blade_stopped",
+      "resumePoint": "echo_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_after",
+      "stepId": "02_echo_tremble",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.after.02",
+      "entryCondition": [
+        "echo_blade_stopped"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_after_02_read",
+      "resumePoint": "echo_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_after",
+      "stepId": "03_hear_my_answer",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.after.03",
+      "entryCondition": [
+        "echo_after_02_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_after_03_read",
+      "resumePoint": "echo_arena_center",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_after",
+      "stepId": "04_withdraw_barrier",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.after.04",
+      "entryCondition": [
+        "echo_after_03_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "janhyang_order_withdrawn",
+      "resumePoint": "echo_lift_front",
+      "effect": "openCassel"
+    },
+    {
+      "sceneId": "echo_after",
+      "stepId": "05_wanted_to_go_up",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.after.05",
+      "entryCondition": [
+        "janhyang_order_withdrawn"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "echo_after_05_read",
+      "resumePoint": "echo_lift_front",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_after",
+      "stepId": "06_clasp_hands",
+      "room": "court_02_echo_arena",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.after.06",
+      "entryCondition": [
+        "echo_after_05_read"
+      ],
+      "requiredPlayerAction": [
+        "use:echo_hand_clasp"
+      ],
+      "completionFlag": "echo_accompanied_core",
+      "resumePoint": "court_lift_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "echo_after",
+      "stepId": "07_lift_checkpoint",
+      "room": "court_03_lift",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.echo.after.07",
+      "entryCondition": [
+        "echo_accompanied_core"
+      ],
+      "requiredPlayerAction": [
+        "use:cassel_lift_console"
+      ],
+      "completionFlag": "court_lift_ready",
+      "resumePoint": "court_lift_floor",
+      "effect": "liftMenu"
+    },
+    {
+      "sceneId": "echo_after",
+      "stepId": "08_board_cassel_lift",
+      "room": "court_03_lift",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.echo.after.08",
+      "entryCondition": [
+        "court_lift_ready",
+        "!resume_at_lift"
+      ],
+      "requiredPlayerAction": [
+        "use:cassel_lift_console"
+      ],
+      "completionFlag": "entered_cassel_tribunal",
+      "resumePoint": "cassel_arena_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "cassel_p1",
+      "stepId": "01_enter_tribunal",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "cassel",
+      "textKey": "story.cassel.p1.01",
+      "entryCondition": [
+        "attempt"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "cassel_p1_01_read",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "modal"
+    },
+    {
+      "sceneId": "cassel_p1",
+      "stepId": "02_rea_confront",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p1.02",
+      "entryCondition": [
+        "attempt"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "cassel_p1_02_read",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "modal"
+    },
+    {
+      "sceneId": "cassel_p1",
+      "stepId": "03_cassel_vessel",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "cassel",
+      "textKey": "story.cassel.p1.03",
+      "entryCondition": [
+        "attempt"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "cassel_p1_03_read",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "modal"
+    },
+    {
+      "sceneId": "cassel_p1",
+      "stepId": "04_start_phase1",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p1.04",
+      "entryCondition": [
+        "opening"
+      ],
+      "requiredPlayerAction": [
+        "hp150"
+      ],
+      "completionFlag": "cassel_p1_clash_felt",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p1",
+      "stepId": "05_same_sword_form",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p1.05",
+      "entryCondition": [
+        "hp150"
+      ],
+      "requiredPlayerAction": [
+        "hp150"
+      ],
+      "completionFlag": "cassel_p1_05_read",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p1",
+      "stepId": "06_tabula_difference",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.cassel.p1.06",
+      "entryCondition": [
+        "hp150"
+      ],
+      "requiredPlayerAction": [
+        "mirror"
+      ],
+      "completionFlag": "cassel_phase1_cleared",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p1",
+      "stepId": "07_mirror_awaken",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "cassel",
+      "textKey": "story.cassel.p1.07_mirror",
+      "entryCondition": [
+        "mirror"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "cassel_p2_mirror_opened",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "modal"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "01_prompt_open",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p2.01_prompt",
+      "entryCondition": [
+        "mirror"
+      ],
+      "requiredPlayerAction": [
+        "menuOpen"
+      ],
+      "completionFlag": "cassel_return_menu_opened",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "02_arm_confirm",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.cassel.p2.02_confirm",
+      "entryCondition": [
+        "confirmMenu"
+      ],
+      "requiredPlayerAction": [
+        "armed"
+      ],
+      "completionFlag": "cassel_skill_armed",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "menu"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "03a_stitch_early",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.stitch_early",
+      "entryCondition": [
+        "return:silver_stitch:early"
+      ],
+      "requiredPlayerAction": [
+        "return:silver_stitch:early"
+      ],
+      "completionFlag": "returned_silver_stitch",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "03b_stitch_late",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.stitch_late",
+      "entryCondition": [
+        "return:silver_stitch:late"
+      ],
+      "requiredPlayerAction": [
+        "return:silver_stitch:late"
+      ],
+      "completionFlag": "returned_silver_stitch",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "04a_pendulum_early",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.pendulum_early",
+      "entryCondition": [
+        "return:pendulum_rewind:early"
+      ],
+      "requiredPlayerAction": [
+        "return:pendulum_rewind:early"
+      ],
+      "completionFlag": "returned_pendulum_rewind",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "04b_pendulum_late",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.pendulum_late",
+      "entryCondition": [
+        "return:pendulum_rewind:late"
+      ],
+      "requiredPlayerAction": [
+        "return:pendulum_rewind:late"
+      ],
+      "completionFlag": "returned_pendulum_rewind",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "05a_waltz_early",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.waltz_early",
+      "entryCondition": [
+        "return:curtain_call_waltz:early"
+      ],
+      "requiredPlayerAction": [
+        "return:curtain_call_waltz:early"
+      ],
+      "completionFlag": "returned_curtain_call_waltz",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "05b_waltz_late",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.waltz_late",
+      "entryCondition": [
+        "return:curtain_call_waltz:late"
+      ],
+      "requiredPlayerAction": [
+        "return:curtain_call_waltz:late"
+      ],
+      "completionFlag": "returned_curtain_call_waltz",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "06a_forge_early",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.forge_early",
+      "entryCondition": [
+        "return:resonance_forge:early"
+      ],
+      "requiredPlayerAction": [
+        "return:resonance_forge:early"
+      ],
+      "completionFlag": "returned_resonance_forge",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "06b_forge_late",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.forge_late",
+      "entryCondition": [
+        "return:resonance_forge:late"
+      ],
+      "requiredPlayerAction": [
+        "return:resonance_forge:late"
+      ],
+      "completionFlag": "returned_resonance_forge",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "07a_canvas_early",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.canvas_early",
+      "entryCondition": [
+        "return:canvas_carve:early"
+      ],
+      "requiredPlayerAction": [
+        "return:canvas_carve:early"
+      ],
+      "completionFlag": "returned_canvas_carve",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "07b_canvas_late",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.return.canvas_late",
+      "entryCondition": [
+        "return:canvas_carve:late"
+      ],
+      "requiredPlayerAction": [
+        "return:canvas_carve:late"
+      ],
+      "completionFlag": "returned_canvas_carve",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "08_r1_close_mirror",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "cassel",
+      "textKey": "story.cassel.p2.08_r1_cassel",
+      "entryCondition": [
+        "r1"
+      ],
+      "requiredPlayerAction": [
+        "parry1"
+      ],
+      "completionFlag": "cassel_r1_parried",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "modal"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "09_r1_reopen_guard",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p2.09_r1_rea",
+      "entryCondition": [
+        "parry1"
+      ],
+      "requiredPlayerAction": [
+        "guard1"
+      ],
+      "completionFlag": "cassel_r1_reopened",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "modal"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "10_r2_wave_reach",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p2.10_r2",
+      "entryCondition": [
+        "r2"
+      ],
+      "requiredPlayerAction": [
+        "guard2"
+      ],
+      "completionFlag": "cassel_r2_reopened",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "11_r3_stagger_lead",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "cassel",
+      "textKey": "story.cassel.p2.11_r3",
+      "entryCondition": [
+        "r3"
+      ],
+      "requiredPlayerAction": [
+        "guard3"
+      ],
+      "completionFlag": "cassel_r3_reopened",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "12_r4_double_echo",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.cassel.p2.12_r4",
+      "entryCondition": [
+        "r4"
+      ],
+      "requiredPlayerAction": [
+        "guard4"
+      ],
+      "completionFlag": "cassel_r4_reopened",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p2_return",
+      "stepId": "13_r5_all_pledged",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p2.13_r5",
+      "entryCondition": [
+        "r5"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "cassel_phase3_entered",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "modal"
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "01_phase3_open",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "cassel",
+      "textKey": "story.cassel.p3.01_open",
+      "entryCondition": [
+        "phase3"
+      ],
+      "requiredPlayerAction": [
+        "phase3"
+      ],
+      "completionFlag": "cassel_p3_started",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "02_mid_battle_b3_awaken",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p3.02_live_b3",
+      "entryCondition": [
+        "awaken"
+      ],
+      "requiredPlayerAction": [
+        "awaken"
+      ],
+      "completionFlag": "cassel_live_b3_awakened",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "03_b3_clash_ready",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.cassel.p3.03_b3_ready",
+      "entryCondition": [
+        "clashReady"
+      ],
+      "requiredPlayerAction": [
+        "clashReady"
+      ],
+      "completionFlag": "cassel_b3_parry_prompted",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "04_b3_retry_notice",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.cassel.p3.04_b3_retry",
+      "entryCondition": [
+        "clashMiss"
+      ],
+      "requiredPlayerAction": [
+        "clashMiss"
+      ],
+      "completionFlag": "cassel_b3_retry_guided",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "05_true_settlement",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p3.05_true_hit",
+      "entryCondition": [
+        "settlement:True",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "finale_settled_true",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "06_true_cassel_fall",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "cassel",
+      "textKey": "story.cassel.p3.06_true_fall",
+      "entryCondition": [
+        "finale_settled_true",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "cassel_true_defeated_seen",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "07_basic_core_break",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.cassel.p3.07_basic_break",
+      "entryCondition": [
+        "settlement:Basic",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "finale_settled_basic",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "08_basic_cassel_fall",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "cassel",
+      "textKey": "story.cassel.p3.08_basic_fall",
+      "entryCondition": [
+        "finale_settled_basic",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "cassel_basic_defeated_seen",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "cassel_p3_branch",
+      "stepId": "09_defeat_rewind",
+      "room": "court_04_tribunal",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.cassel.p3.09_defeat",
+      "entryCondition": [
+        "defeat"
+      ],
+      "requiredPlayerAction": [
+        "defeat"
+      ],
+      "completionFlag": "cassel_attempt_reset",
+      "resumePoint": "cassel_arena_floor",
+      "effect": "",
+      "presentation": "notice"
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "01_rooftop_dawn",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.basic.01",
+      "entryCondition": [
+        "cassel_basic_defeated_seen",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "basic_01_read",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "02_echo_appears",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.ending.basic.02",
+      "entryCondition": [
+        "basic_01_read",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "basic_02_read",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "03_embrace_first",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.basic.03",
+      "entryCondition": [
+        "basic_02_read",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "use:rooftop_echo_embrace"
+      ],
+      "completionFlag": "basic_echo_embraced",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "04_not_wrong",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.basic.04",
+      "entryCondition": [
+        "basic_echo_embraced",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "basic_04_read",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "05_never_cross_out",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.ending.basic.05",
+      "entryCondition": [
+        "basic_04_read",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "basic_05_read",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "06_write_answer",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.ending.basic.06",
+      "entryCondition": [
+        "basic_05_read",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "use:basic_ending_ledger"
+      ],
+      "completionFlag": "basic_ledger_inscribed",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "07_companions_arrive",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "mikhail",
+      "textKey": "story.ending.basic.07",
+      "entryCondition": [
+        "basic_ledger_inscribed",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "basic_07_read",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "08_warm_hands",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.basic.08",
+      "entryCondition": [
+        "basic_07_read",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "basic_08_read",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "09_close_ledger",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "theo",
+      "textKey": "story.ending.basic.09",
+      "entryCondition": [
+        "basic_08_read",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "ending_basic",
+      "resumePoint": "court_lift_floor",
+      "effect": "",
+      "receipt": "basic_ledger_closed"
+    },
+    {
+      "sceneId": "ending_basic",
+      "stepId": "10_resume_guide",
+      "room": "court_03_lift",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.ending.basic.10",
+      "entryCondition": [
+        "basic_ledger_closed",
+        "endingScene:Basic"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "basic_ending_complete",
+      "resumePoint": "court_lift_floor",
+      "effect": "liftMenu"
+    },
+    {
+      "sceneId": "true_roof",
+      "stepId": "01_sunrise_brooch",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.01_brooch",
+      "entryCondition": [
+        "cassel_true_defeated_seen",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_01_read",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_roof",
+      "stepId": "02_still_beating",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.ending.true.02_beating",
+      "entryCondition": [
+        "true_01_read",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_02_read",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_roof",
+      "stepId": "03_our_seat_remains",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.03_seat",
+      "entryCondition": [
+        "true_02_read",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "use:rooftop_echo_embrace"
+      ],
+      "completionFlag": "true_echo_embraced",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_roof",
+      "stepId": "04_two_reas_one_step",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.ending.true.04_echo",
+      "entryCondition": [
+        "true_echo_embraced",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_roof_complete",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "01_mikhail_coat",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "mikhail",
+      "textKey": "story.ending.true.05_mikhail",
+      "entryCondition": [
+        "true_roof_complete",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_reunion_mikhail",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "02_julius_watches",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "julius",
+      "textKey": "story.ending.true.06_julius",
+      "entryCondition": [
+        "true_reunion_mikhail",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_reunion_julius",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "03_valeria_shoes",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "valeria",
+      "textKey": "story.ending.true.07_valeria",
+      "entryCondition": [
+        "true_reunion_julius",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_reunion_valeria",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "04_gabriel_voice",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "gabriel",
+      "textKey": "story.ending.true.08_gabriel",
+      "entryCondition": [
+        "true_reunion_valeria",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_reunion_gabriel",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "05_irina_eyes",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "irina",
+      "textKey": "story.ending.true.09_irina",
+      "entryCondition": [
+        "true_reunion_gabriel",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_reunion_irina",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "06_theo_luka",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "theo",
+      "textKey": "story.ending.true.10_theo_luka",
+      "entryCondition": [
+        "true_reunion_irina",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_reunion_theo_luka",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "07_marta_ethan",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "ethan",
+      "textKey": "story.ending.true.11_marta_ethan",
+      "entryCondition": [
+        "true_reunion_theo_luka",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_reunion_marta_ethan",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "08_blank_skill_window",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.12_blank_slate",
+      "entryCondition": [
+        "true_reunion_marta_ethan",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_blank_window_seen",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "09_swing_form_one",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.13_swing_prompt",
+      "entryCondition": [
+        "true_blank_window_seen",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "strike:rea_form_one_sky"
+      ],
+      "completionFlag": "rea_form_one_swung",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "10_register_form_one",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.14_registered",
+      "entryCondition": [
+        "rea_form_one_swung",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "rea_form_one_registered",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "11_luka_train_call",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "luka",
+      "textKey": "story.ending.true.15_luka_call",
+      "entryCondition": [
+        "rea_form_one_registered",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_train_called",
+      "resumePoint": "court_rooftop_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_reunion",
+      "stepId": "12_depart_to_attic",
+      "room": "court_05_rooftop",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.16_to_attic",
+      "entryCondition": [
+        "true_train_called",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "use:rooftop_to_attic_exit"
+      ],
+      "completionFlag": "true_returned_to_attic",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_breakfast",
+      "stepId": "01_six_bowls_table",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "marta",
+      "textKey": "story.ending.true.17_marta_table",
+      "entryCondition": [
+        "true_returned_to_attic",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_breakfast_01_read",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_breakfast",
+      "stepId": "02_sixth_board_check",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.18_board",
+      "entryCondition": [
+        "true_breakfast_01_read",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_breakfast_02_read",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_breakfast",
+      "stepId": "03_sit_sixth_seat",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "mikhail",
+      "textKey": "story.ending.true.19_sit",
+      "entryCondition": [
+        "true_breakfast_02_read",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "use:sixth_breakfast_seat"
+      ],
+      "completionFlag": "true_sixth_seat_taken",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_breakfast",
+      "stepId": "04_sixth_beat_waltz",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.ending.true.20_sixth_beat",
+      "entryCondition": [
+        "true_sixth_seat_taken",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_waltz_completed",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_breakfast",
+      "stepId": "05_first_spoon",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.21_spoon",
+      "entryCondition": [
+        "true_waltz_completed",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "true_first_spoon_taken",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "true_breakfast",
+      "stepId": "06_notarized_today",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.ending.true.22_complete",
+      "entryCondition": [
+        "true_first_spoon_taken",
+        "endingScene:True"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "ending_true",
+      "resumePoint": "court_lift_floor",
+      "effect": "liftMenu",
+      "receipt": "true_ending_complete"
+    },
+    {
+      "sceneId": "post_resume_lift",
+      "stepId": "01_arrive_from_basic",
+      "room": "court_03_lift",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.resume.lift.01",
+      "entryCondition": [
+        "resume_at_lift"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "resume_lift_01_read",
+      "resumePoint": "court_lift_floor",
+      "effect": "",
+      "presentation": "lift"
+    },
+    {
+      "sceneId": "post_resume_lift",
+      "stepId": "02_echo_sword_guide",
+      "room": "court_03_lift",
+      "alternateRoom": "",
+      "speakerId": "rea_echo",
+      "textKey": "story.resume.lift.02_echo",
+      "entryCondition": [
+        "resume_lift_01_read",
+        "lowSword"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "resume_lift_02_read",
+      "resumePoint": "court_lift_floor",
+      "effect": "",
+      "presentation": "lift"
+    },
+    {
+      "sceneId": "post_resume_lift",
+      "stepId": "03_choose_route",
+      "room": "court_03_lift",
+      "alternateRoom": "",
+      "speakerId": "theo",
+      "textKey": "story.resume.lift.03_theo",
+      "entryCondition": [
+        "resume_lift_02_read"
+      ],
+      "requiredPlayerAction": [
+        "select:route"
+      ],
+      "completionFlag": "resume_route_chosen",
+      "resumePoint": "court_lift_floor",
+      "effect": "",
+      "presentation": "lift"
+    },
+    {
+      "sceneId": "post_crucible_train",
+      "stepId": "01_ethan_welcome",
+      "room": "hub_forge",
+      "alternateRoom": "",
+      "speakerId": "ethan",
+      "textKey": "story.resume.crucible.01_ethan",
+      "entryCondition": [
+        "trainingAvailable",
+        "lowSword"
+      ],
+      "requiredPlayerAction": [
+        "use:resonant_crucible"
+      ],
+      "completionFlag": "crucible_activated",
+      "resumePoint": "forge_crucible_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "post_crucible_train",
+      "stepId": "02_crucible_waves",
+      "room": "hub_forge",
+      "alternateRoom": "",
+      "speakerId": "theo",
+      "textKey": "story.resume.crucible.02_theo",
+      "entryCondition": [
+        "crucible_activated"
+      ],
+      "requiredPlayerAction": [
+        "train:resonant_crucible"
+      ],
+      "completionFlag": "crucible_b3_mastered",
+      "resumePoint": "forge_crucible_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "post_crucible_train",
+      "stepId": "03_ethan_ready",
+      "room": "hub_forge",
+      "alternateRoom": "",
+      "speakerId": "ethan",
+      "textKey": "story.resume.crucible.03_ethan",
+      "entryCondition": [
+        "crucible_b3_mastered"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "crucible_03_read",
+      "resumePoint": "forge_crucible_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "post_crucible_train",
+      "stepId": "04_return_to_lift",
+      "room": "hub_forge",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.resume.crucible.04_rea",
+      "entryCondition": [
+        "crucible_03_read"
+      ],
+      "requiredPlayerAction": [
+        "use:forge_to_court_lift"
+      ],
+      "completionFlag": "ready_for_true_rematch",
+      "resumePoint": "court_lift_floor",
+      "effect": "liftMenu"
+    },
+    {
+      "sceneId": "post_true_epilogue",
+      "stepId": "01_attic_peace",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "marta",
+      "textKey": "story.epilogue.01_marta",
+      "entryCondition": [
+        "true_ending_complete"
+      ],
+      "requiredPlayerAction": [
+        "use:attic_mint_tea"
+      ],
+      "completionFlag": "epilogue_01_done",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "post_true_epilogue",
+      "stepId": "02_sanctuary_five",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "mikhail",
+      "textKey": "story.epilogue.02_benefactors",
+      "entryCondition": [
+        "epilogue_01_done"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "epilogue_02_read",
+      "resumePoint": "attic_table_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "post_true_epilogue",
+      "stepId": "03_theo_archive",
+      "room": "hub_attic",
+      "alternateRoom": "",
+      "speakerId": "theo",
+      "textKey": "story.epilogue.03_theo",
+      "entryCondition": [
+        "epilogue_02_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "epilogue_03_read",
+      "resumePoint": "workroom_terminal_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "post_true_epilogue",
+      "stepId": "04_ethan_ng_plus",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "speakerId": "ethan",
+      "textKey": "story.epilogue.04_ethan_replay",
+      "entryCondition": [
+        "epilogue_03_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "epilogue_04_read",
+      "resumePoint": "workroom_terminal_floor",
+      "effect": ""
+    },
+    {
+      "sceneId": "post_true_epilogue",
+      "stepId": "05_rea_closing",
+      "room": "hub_workroom",
+      "alternateRoom": "",
+      "speakerId": "rea",
+      "textKey": "story.epilogue.05_rea_final",
+      "entryCondition": [
+        "epilogue_04_read"
+      ],
+      "requiredPlayerAction": [
+        "confirm"
+      ],
+      "completionFlag": "finale_epilogue_complete",
+      "resumePoint": "attic_safe_floor",
+      "effect": ""
+    }
+  ],
+  "links": [
+    {
+      "source": "hub_lift",
+      "room": "court_01_hall",
+      "x": 43,
+      "gate": "courtEntry"
+    }
+  ],
+  "roomAdditions": [
+    {
+      "id": "hub_attic",
+      "points": [
+        {
+          "id": "sixth_breakfast_seat",
+          "x": 12
+        },
+        {
+          "id": "attic_mint_tea",
+          "x": 10
+        }
+      ],
+      "floors": []
+    },
+    {
+      "id": "hub_forge",
+      "points": [
+        {
+          "id": "forge_to_court_lift",
+          "x": 28
+        }
+      ],
+      "floors": [
+        {
+          "id": "forge_crucible_floor",
+          "x": 14
+        }
+      ]
+    }
+  ]
+}

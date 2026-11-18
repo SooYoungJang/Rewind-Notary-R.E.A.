@@ -19,13 +19,14 @@ namespace RewindNotary
         }
         private void Strike(Bounds area, bool bell)
         {
+            WaveCombatTargets.Skill(session, use, area);
             foreach (var target in ResonanceTarget2D.All)
                 if (target.Guarded && area.Intersects(target.Bounds)) Credit(target.name + ":guard_break", target.BreakGuard());
             var marks = enemy.GetComponent<ResonanceTarget2D>();
             if (!enemy.Health.Dead && area.Intersects(enemy.GetComponent<Collider2D>().bounds))
             {
                 bool chord = use.Stage >= 2 && marks.LiveMarks == profile.markLimit - 1;
-                int damage = bell || chord ? profile.burstDamage : profile.damage;
+                int damage = FinaleCombat.Scale(session, bell || chord ? profile.burstDamage : profile.damage);
                 bool hit = enemy.Health.Hit(damage, transform.position);
                 Credit(enemy.name, hit, EffectTargetKind.Enemy, hit ? damage : 0);
                 bool exploded = hit && use.Stage >= 2 && marks.AddMark(profile.markLimit, profile.markSeconds);
@@ -43,7 +44,7 @@ namespace RewindNotary
                 }
             }
             foreach (var target in DestructibleTarget2D.All)
-                if (area.Intersects(target.Bounds)) Credit(target.TargetId, target.Hit(bell ? profile.burstDamage : profile.damage), EffectTargetKind.Destructible);
+                if (area.Intersects(target.Bounds)) Credit(target.TargetId, target.Hit(FinaleCombat.Scale(session, bell ? profile.burstDamage : profile.damage)), EffectTargetKind.Destructible);
         }
         // Health calls this AFTER the unchanged basic dash/parry path. It never records a basic parry.
         public bool TryCounter(Vector2 source)

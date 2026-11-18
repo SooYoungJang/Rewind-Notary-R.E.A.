@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "health": 180,
+  "mirrorHealth": 120,
+  "coreIntegrity": 48,
+  "arenaMin": 35,
+  "arenaMax": 59,
+  "playerX": 40,
+  "bossX": 48,
+  "graceSeconds": 3.0,
+  "exposureSeconds": 12.0,
+  "matchDistance": 8.0,
+  "guardThreshold": 6.0,
+  "parryOpening": 2.5,
+  "returns": [
+    {
+      "r": 0,
+      "releasedPercent": 0,
+      "directBeats": 3,
+      "guardPower": 1,
+      "parryBonus": 0,
+      "waveReach": 0,
+      "staggerSeconds": 0,
+      "echoDelay": 0,
+      "reaTheme": 0.0
+    },
+    {
+      "r": 1,
+      "releasedPercent": 20,
+      "directBeats": 3,
+      "guardPower": 1.25,
+      "parryBonus": 0.25,
+      "waveReach": 0,
+      "staggerSeconds": 0,
+      "echoDelay": 0,
+      "reaTheme": 0.2
+    },
+    {
+      "r": 2,
+      "releasedPercent": 40,
+      "directBeats": 3,
+      "guardPower": 1.25,
+      "parryBonus": 0.25,
+      "waveReach": 1.8,
+      "staggerSeconds": 0,
+      "echoDelay": 0,
+      "reaTheme": 0.4
+    },
+    {
+      "r": 3,
+      "releasedPercent": 60,
+      "directBeats": 4,
+      "guardPower": 1.25,
+      "parryBonus": 0.25,
+      "waveReach": 1.8,
+      "staggerSeconds": 0.35,
+      "echoDelay": 0,
+      "reaTheme": 0.6
+    },
+    {
+      "r": 4,
+      "releasedPercent": 80,
+      "directBeats": 4,
+      "guardPower": 1.25,
+      "parryBonus": 0.25,
+      "waveReach": 1.8,
+      "staggerSeconds": 0.35,
+      "echoDelay": 0.12,
+      "reaTheme": 0.8
+    },
+    {
+      "r": 5,
+      "releasedPercent": 100,
+      "directBeats": 4,
+      "guardPower": 1.25,
+      "parryBonus": 0.25,
+      "waveReach": 1.8,
+      "staggerSeconds": 0.35,
+      "echoDelay": 0.12,
+      "reaTheme": 1.0
+    }
+  ],
+  "patterns": [
+    {
+      "id": "zero",
+      "label": "data.bosses.cassel.patterns.zero.label",
+      "skillId": "basic_sword",
+      "shape": "sword",
+      "beats": 4,
+      "windup": 0.7,
+      "interval": 0.48,
+      "recovery": 0.9,
+      "reach": 2.7,
+      "height": 2.2,
+      "dashSpeed": 7,
+      "damage": 1
+    },
+    {
+      "id": "thread",
+      "label": "data.bosses.cassel.patterns.thread.label",
+      "skillId": "silver_stitch",
+      "shape": "thread",
+      "beats": 2,
+      "windup": 0.85,
+      "interval": 0.8,
+      "recovery": 1.1,
+      "reach": 6,
+      "height": 2,
+      "dashSpeed": 0,
+      "damage": 1
+    },
+    {
+      "id": "pendulum",
+      "label": "data.bosses.cassel.patterns.pendulum.label",
+      "skillId": "pendulum_rewind",
+      "shape": "pendulum",
+      "beats": 2,
+      "windup": 1,
+      "interval": 0.55,
+      "recovery": 1.2,
+      "reach": 3.4,
+      "height": 2.4,
+      "dashSpeed": 10,
+      "damage": 1
+    },
+    {
+      "id": "petals",
+      "label": "data.bosses.cassel.patterns.petals.label",
+      "skillId": "curtain_call_waltz",
+      "shape": "petals",
+      "beats": 3,
+      "windup": 0.8,
+      "interval": 0.5,
+      "recovery": 1.2,
+      "reach": 7,
+      "height": 4,
+      "dashSpeed": 0,
+      "damage": 1
+    },
+    {
+      "id": "bell",
+      "label": "data.bosses.cassel.patterns.bell.label",
+      "skillId": "resonance_forge",
+      "shape": "bell",
+      "beats": 1,
+      "windup": 1.1,
+      "interval": 0.6,
+      "recovery": 1.3,
+      "reach": 30,
+      "height": 0.65,
+      "dashSpeed": 0,
+      "damage": 1
+    },
+    {
+      "id": "portrait",
+      "label": "data.bosses.cassel.patterns.portrait.label",
+      "skillId": "canvas_carve",
+      "shape": "portrait",
+      "beats": 2,
+      "windup": 0.8,
+      "interval": 0.3,
+      "recovery": 1.1,
+      "reach": 3,
+      "height": 2.2,
+      "dashSpeed": 5,
+      "damage": 1
+    }
+  ],
+  "openingSequence": [
+    "zero",
+    "thread",
+    "zero",
+    "pendulum",
+    "petals",
+    "bell",
+    "portrait"
+  ],
+  "mirrorSequence": [
+    "zero",
+    "thread",
+    "zero",
+    "pendulum",
+    "zero",
+    "petals",
+    "zero",
+    "bell",
+    "zero",
+    "portrait"
+  ],
+  "finaleSequence": [
+    "zero"
+  ]
+}

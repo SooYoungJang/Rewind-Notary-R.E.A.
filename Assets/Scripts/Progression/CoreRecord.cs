@@ -19,7 +19,7 @@ namespace RewindNotary
     [Serializable]
     public sealed class CoreRecord
     {
-        public const int SchemaVersion = 2;
+        public const int SchemaVersion = 4;
         public int schemaVersion = SchemaVersion;
         public string rulesVersion = SkillRules.Version;
         public string slotId = "slot-1", savedUtc;
@@ -29,6 +29,9 @@ namespace RewindNotary
         public List<NotaryEntry> ledger = new List<NotaryEntry>();
         public List<string> completedEncounters = new List<string>();
         public List<string> storyFlags = new List<string> { "hub_open" };
+        public InvestigationState investigation = new InvestigationState();
+        public FinalBattleAttempt finalBattleAttempt = new FinalBattleAttempt();
+        public FinalBattleAttempt lastFinalBattleAttempt;
         public string lastStageId = "prototype";
         public SkillProgress Get(string id) => skills.Find(s => s.skillId == id);
         public static CoreRecord NewGame(SkillCatalog catalog)
@@ -55,6 +58,11 @@ namespace RewindNotary
                 throw new InvalidOperationException("Invalid save slot");
             if (storyFlags == null || string.IsNullOrEmpty(lastStageId))
                 throw new InvalidOperationException("Incomplete story state");
+            if (investigation == null) throw new InvalidOperationException("Missing investigation state");
+            if (finalBattleAttempt == null) throw new InvalidOperationException("Missing final battle state");
+            finalBattleAttempt.Validate(); lastFinalBattleAttempt?.Validate();
+            investigation.Validate();
+            investigation.ValidateProgress(InvestigationCatalog.Load());
             var flags = new HashSet<string>();
             foreach (string flag in storyFlags)
                 if (string.IsNullOrWhiteSpace(flag) || !flags.Add(flag))

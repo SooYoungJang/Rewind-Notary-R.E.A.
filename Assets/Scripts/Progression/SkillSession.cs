@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -8,9 +9,43 @@ namespace RewindNotary
     public sealed class SkillSession : MonoBehaviour
     {
         public SkillProgressionService Progression { get; private set; }
-        public string Notice { get; private set; }
+        public FinalBattleService Finale { get; private set; }
+        public event Action<UseContext> TechniqueCompleted;
+        public event Action BasicParried;
+        public void ReportTechniqueCompleted(UseContext use)
+        { if (use != null && use.Counted && !use.Closed && !use.Preview && use.Stage == 3) TechniqueCompleted?.Invoke(use); }
+        public InvestigationService Investigation { get; private set; }
+        public StorySceneLinks Story { get; private set; }
+        private Func<string> notice;
+        private readonly Queue<StoryRow> storyNotices = new Queue<StoryRow>();
+        private List<StoryRow> returnNotice;
+        private float storyNoticeLeft, returnNoticeLeft;
+        public string Notice => returnNotice != null ? string.Join("\n\n", returnNotice.ConvertAll(StoryText))
+            : storyNotices.Count > 0 ? StoryText(storyNotices.Peek()) : notice?.Invoke();
+        internal static string StoryText(StoryRow row) => Loc.Get("area.speaker." + row.speakerId) + " · " + Loc.Get(row.textKey);
+        internal void EnqueueStoryNotice(StoryRow row)
+        {
+            storyNotices.Enqueue(row);
+            if (storyNotices.Count == 1) StartStoryNotice();
+        }
+        internal void ShowReturnNotice(List<StoryRow> lines)
+        {
+            if (lines.Count == 0) return;
+            returnNotice = lines;
+            returnNoticeLeft = Mathf.Clamp(Notice.Length / 25f, 3.5f, 22f);
+        }
+        internal void ClearStoryNotices()
+        {
+            storyNotices.Clear();
+            returnNotice = null;
+        }
+        private void StartStoryNotice()
+        {
+            storyNoticeLeft = Mathf.Clamp(StoryText(storyNotices.Peek()).Length / 25f, 3.5f, 14f);
+        }
         public string StorageError => string.Join("\n", new[] { store?.LastError, logError }).Trim();
         public bool LastSaveSucceeded => !dirty;
+        internal bool AcceptsStoryActions => !closed && Progression != null;
         public int ActiveSlot => store.Slot;
         public int PreviewStage { get; private set; }
         public string EncounterId { get; set; } = EncounterRewardBridge.PrototypeEncounter;
@@ -35,27 +70,57 @@ namespace RewindNotary
         public void Initialize(SkillSaveStore selectedStore, CoreRecord record)
         {
             var catalog = SkillCatalog.Load();
-            SaveDirectory = Path.Combine(Application.persistentDataPath, "SkillSystem");
+            SaveDirectory = selectedStore.DirectoryPath;
             store = selectedStore;
-            string recoveryNotice = store.LastError;
+            string recoveryNotice = store.RecoveryNotice ?? store.LastError;
             logPath = Path.Combine(SaveDirectory, "uses-" + sessionId + ".jsonl");
             Progression = new SkillProgressionService(catalog, record);
+            if (record.lastStageId != "cassel") record.finalBattleAttempt.Stop("interrupted");
+            Finale = new FinalBattleService(Progression, Save, storesPrevious: true);
+            Investigation = new InvestigationService(Progression, InvestigationCatalog.Load(), Save);
+            Story = new StorySceneLinks(this);
             Progression.Changed += Save;
             Progression.Event += OnEvent;
             Progression.EmitSimple("session_start", "", "loaded_or_new_120");
             Save();
             Debug.Log("[Skill] 저장: " + SaveDirectory + " / 슬롯: " + store.Slot + " / 사용 로그: " + logPath);
-            if (!string.IsNullOrEmpty(recoveryNotice)) Show(recoveryNotice, "save_recovered", "");
+            if (!string.IsNullOrEmpty(recoveryNotice)) Show(() => recoveryNotice, "save_recovered", "");
+        }
+        private bool sceneTransaction;
+        // Existing clue/skill/support callbacks request saves. Flush once after the row and floor join them.
+        internal bool CommitScene(Func<bool> effect, Action checkpoint)
+        {
+            if (!LastSaveSucceeded || !AcceptsStoryActions) return false;
+            sceneTransaction = true;
+            try
+            {
+                if (!effect()) return false;
+                checkpoint();
+            }
+            finally { sceneTransaction = false; }
+            Save();
+            return true; // In-memory transaction accepted. The world waits for LastSaveSucceeded.
         }
         public void Save()
         {
-            if (Progression == null || closed) return;
-            dirty = !store.Save(Progression.Record);
+            if (Progression == null || closed || sceneTransaction) return;
+            dirty = !store.Save(Progression.Record, Finale.PendingPrevious);
+            if (!dirty) Finale.Saved();
             retryAt = Time.unscaledTime + 5f;
         }
         private void Update()
         {
-            if (Time.unscaledTime > noticeUntil) Notice = null;
+            if (returnNotice != null)
+            {
+                returnNoticeLeft -= Time.deltaTime;
+                if (returnNoticeLeft <= 0) returnNotice = null;
+            }
+            else if (storyNotices.Count > 0 && (storyNoticeLeft -= Time.deltaTime) <= 0)
+            {
+                storyNotices.Dequeue();
+                if (storyNotices.Count > 0) StartStoryNotice();
+            }
+            if (Time.unscaledTime > noticeUntil) notice = null;
             if (dirty && Time.unscaledTime >= retryAt) Save();
         }
         private void OnEvent(ProgressionEvent result)
@@ -70,27 +135,29 @@ namespace RewindNotary
                 Directory.CreateDirectory(SaveDirectory);
                 File.AppendAllText(logPath, JsonUtility.ToJson(row) + Environment.NewLine); logError = null;
             }
-            catch (Exception e) { logError = "사용 로그 기록 실패: " + e.Message; Debug.LogWarning(logError); }
-            string name = string.IsNullOrEmpty(result.skillId) ? "" : Progression.Catalog.Get(result.skillId).displayName;
+            catch (Exception e) { logError = Loc.Get("save.usage_log_failed", e.Message); Debug.LogWarning(logError); }
+            Func<string> name = () => string.IsNullOrEmpty(result.skillId) ? "" : Progression.Catalog.Get(result.skillId).DisplayName;
             switch (result.kind)
             {
-                case "acquired": Show(name + " 획득 — 1~5 / E·패드 B 선택, Q·Y 사용", "acquired", result.skillId); break;
-                case "stage_up": Show(name + " " + result.stage + "단계 — 동작 체화", "stage_up", result.skillId); break;
-                case "doom_transfer": Show("극의 완전 재현 · " + DoomLabel(result.skillId) + " → 레아", "doom_transfer", result.skillId); break;
-                case "doom_restored": Show("종언 원장 복구 · " + DoomLabel(result.skillId) + " → 레아", "doom_restored", result.skillId); break;
-                case "basic_mastery": Show("진명 개방: 카셀 제0식 · 원형 동작 확인 (종언 추가 없음)", "basic_mastery", result.skillId); break;
-                case "debug_seed": Show("검증 전용 저장 · 경계 " + result.reason, "debug", ""); break;
+                case "acquired": Show(() => Loc.Get("skill.acquired_notice", name()), "acquired", result.skillId); break;
+                case "stage_up": Show(() => Loc.Get("skill.stage_up_notice", name(), result.stage), "stage_up", result.skillId); break;
+                case "doom_transfer":
+                    if (RepresentativeScript.Handles(Progression.Record.lastStageId) && result.skillId != SkillRules.SilverStitch) break;
+                    Show(() => Loc.Get("skill.doom_transfer_notice", DoomLabel(result.skillId)), "doom_transfer", result.skillId); break;
+                case "doom_restored": Show(() => Loc.Get("skill.doom_restored_notice", DoomLabel(result.skillId)), "doom_restored", result.skillId); break;
+                case "basic_mastery": Show(() => Loc.Get("skill.true_name_notice"), "basic_mastery", result.skillId); break;
+                case "debug_seed": Show(() => Loc.Get("skill.debug_boundary_notice", result.reason), "debug", ""); break;
             }
         }
         private string DoomLabel(string skillId)
         {
             switch (Progression.Catalog.Get(skillId).doomId)
             {
-                case "heart_rupture": return "제1종언: 심장 파열";
-                case "rapid_aging": return "제2종언: 급속 노화";
-                case "leg_punishment": return "제3종언: 두 다리의 형벌";
-                case "eternal_silence": return "제4종언: 영원한 침묵";
-                case "blindness": return "제5종언: 실명";
+                case "heart_rupture": return Loc.Get("doom.heart_rupture");
+                case "rapid_aging": return Loc.Get("doom.rapid_aging");
+                case "leg_punishment": return Loc.Get("doom.leg_punishment");
+                case "eternal_silence": return Loc.Get("doom.eternal_silence");
+                case "blindness": return Loc.Get("doom.blindness");
                 default: return "";
             }
         }
@@ -98,14 +165,21 @@ namespace RewindNotary
         {
             if (Progression == null || closed) return;
             ParrySuccessCount++;
+            BasicParried?.Invoke();
             // Session telemetry only. No BeginUse/Apply, Changed event, save schema or mastery mutation.
             OnEvent(new ProgressionEvent { kind = "parry_success", skillId = "", useId = "",
                 reason = "defense_only;preview=" + PreviewStage, testData = Progression.Record.testData });
         }
-        private void Show(string message, string cue, string skillId)
+        public void ShowUnlearnedSkill(string skillId)
         {
-            Notice = message; noticeUntil = Time.unscaledTime + 3.5f;
-            Debug.Log("[Skill] " + message);
+            // Presentation only: no use, telemetry, progression/save mutation or evolution cue.
+            notice = () => Loc.Get("input.skill_unlearned", Progression.Catalog.Get(skillId).DisplayName);
+            noticeUntil = Time.unscaledTime + 1.5f;
+        }
+        private void Show(Func<string> message, string cue, string skillId)
+        {
+            notice = message; noticeUntil = Time.unscaledTime + 3.5f;
+            Debug.Log("[Skill] " + message());
             // Full narrative/audio assets can subscribe here; never take ownership of Time.timeScale.
             PresentationRequested?.Invoke(cue, skillId);
             SoundRequested?.Invoke(cue);
@@ -123,7 +197,8 @@ namespace RewindNotary
             // The durable flag is a narrative hand-off latch; restoration does not transfer twice.
             if (Progression.Record.firstTransferPending)
                 foreach (var entry in Progression.Record.ledger)
-                    if (entry.transferredToRea) Progression.EmitSimple("doom_restored", entry.skillId, entry.transferEventId);
+                    if (entry.transferredToRea && (!RepresentativeScript.Handles(Progression.Record.lastStageId) || entry.skillId == SkillRules.SilverStitch))
+                        Progression.EmitSimple("doom_restored", entry.skillId, entry.transferEventId);
         }
         private void OnApplicationPause(bool paused) { if (paused) Save(); }
         private void OnApplicationQuit() { Save(); }

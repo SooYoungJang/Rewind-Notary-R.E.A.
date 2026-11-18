@@ -1,0 +1,3937 @@
+{
+  "language": "ja",
+  "entries": [
+    {
+      "key": "finale.ending.true",
+      "value": "真エンディング条件達成"
+    },
+    {
+      "key": "finale.ending.basic",
+      "value": "通常エンディング条件達成"
+    },
+    {
+      "key": "finale.ending.defeat",
+      "value": "敗北 · 再挑戦の準備中"
+    },
+    {
+      "key": "finale.result",
+      "value": "決着：{0}"
+    },
+    {
+      "key": "finale.approaching",
+      "value": "接近中"
+    },
+    {
+      "key": "finale.original_sword",
+      "value": "原型剣術 · {0}"
+    },
+    {
+      "key": "finale.mirror_open",
+      "value": "鏡面露出 · F / 左スティック：返還する技を選択"
+    },
+    {
+      "key": "finale.mirror_closed",
+      "value": "鏡面閉鎖 · 通常パリィ後、剣術でガードを崩す"
+    },
+    {
+      "key": "finale.selected_finisher",
+      "value": "\n選択中の技の終撃：{0}"
+    },
+    {
+      "key": "finale.core_hint",
+      "value": "コア {0}/{1} · 通常パリィ後に全連撃 / B<3ではコア破壊"
+    },
+    {
+      "key": "finale.boss_status",
+      "value": "カセル 第{0}フェーズ · 返還予約 {1}/5 · 刻印 +{2}%（×{3}）\n{4}"
+    },
+    {
+      "key": "finale.already_pledged",
+      "value": "この技はすでに返還予約済みです。"
+    },
+    {
+      "key": "finale.return_requirements",
+      "value": "鏡面の露出と技の3段階到達を確認してください。"
+    },
+    {
+      "key": "finale.return_instructions",
+      "value": "返還予約 {0}/5 · 刻印出力 +{1}%\n選択を確定した後、鏡面露出中にカセルの近くでその技を最後まで使ってください。"
+    },
+    {
+      "key": "finale.available_suffix",
+      "value": " · 選択可能"
+    },
+    {
+      "key": "finale.pledged_suffix",
+      "value": " · 返還予約済み"
+    },
+    {
+      "key": "finale.back_to_battle",
+      "value": "戦闘に戻る"
+    },
+    {
+      "key": "finale.confirm_return_body",
+      "value": "{0}の返還を選択します。\n\n斬り合わせが完了すると、この戦闘中はこの技を使えなくなります。\n刻印出力 +{1}% · 基本剣術と残りの技が強化されます。\n移動・ジャンプ・ダッシュ・パリィ・剣術は引き続き使用できます。足場は3秒後に消えます。\n終焉の返還は、最後の原型による斬り合わせに成功した時点で一括確定します。"
+    },
+    {
+      "key": "finale.cancel_return",
+      "value": "キャンセル · 技を選び直す"
+    },
+    {
+      "key": "finale.arm_return",
+      "value": "決定 · 選んだ技で斬り合わせに備える"
+    },
+    {
+      "key": "finale.debug_save_failed",
+      "value": "保存失敗 · 検証モードへの移行を中止"
+    },
+    {
+      "key": "finale.requires_five_skills",
+      "value": "カセル戦には5つすべての技が3段階に達している必要があります。"
+    },
+    {
+      "key": "stage.already_running",
+      "value": "すでにステージを開始しています。"
+    },
+    {
+      "key": "finale.entry_locked",
+      "value": "カセル戦の開始条件を満たしていません。"
+    },
+    {
+      "key": "skill.unowned_suffix",
+      "value": "（未習得）"
+    },
+    {
+      "key": "skill.return_suffix",
+      "value": " [返還予約]"
+    },
+    {
+      "key": "hud.skill_progress",
+      "value": "{0} · {1}回 · {2}段階{3}{4}"
+    },
+    {
+      "key": "boot.failure",
+      "value": "起動できません。コンソールを確認してください。"
+    },
+    {
+      "key": "game.title",
+      "value": "リワインド公証録：レア"
+    },
+    {
+      "key": "hud.rea_health",
+      "value": "レア    {0} / {1}"
+    },
+    {
+      "key": "hud.test_save",
+      "value": "検証用セーブ（本編とは別）"
+    },
+    {
+      "key": "hud.save_slot",
+      "value": "スロット{0}に保存"
+    },
+    {
+      "key": "hud.preview_suffix",
+      "value": " · {0}段階の形態プレビュー（集計対象外）"
+    },
+    {
+      "key": "defense.dashing",
+      "value": "ダッシュ中"
+    },
+    {
+      "key": "defense.parry_window",
+      "value": "パリィ受付中"
+    },
+    {
+      "key": "defense.parry_recovery",
+      "value": "パリィ失敗 · 硬直中"
+    },
+    {
+      "key": "defense.counter_ready",
+      "value": "反撃可能 · 次の剣術を強化"
+    },
+    {
+      "key": "defense.ready",
+      "value": "防御可能"
+    },
+    {
+      "key": "defense.air_spent",
+      "value": "使用済み"
+    },
+    {
+      "key": "defense.air_available",
+      "value": "残り1回"
+    },
+    {
+      "key": "hud.dash_cooldown",
+      "value": "ダッシュ {0}秒 · 空中：{1}"
+    },
+    {
+      "key": "input.gameplay",
+      "value": "移動 A/D・方向キー・スティック | ジャンプ Space・A | 剣術 J/Z/左クリック・X | 技 Q・Y | ダッシュ Shift/K・LB | パリィ L・RB"
+    },
+    {
+      "key": "hud.trial_hint",
+      "value": "恩人と技の有効使用を確認 · 支援を補充 / 再開しても集計上限は継続"
+    },
+    {
+      "key": "hud.wave_hint",
+      "value": "青金の核：基本剣術 · 金色の予兆：パリィ/ダッシュ · 赤いガード：指定の技"
+    },
+    {
+      "key": "hud.checkpoint_hint",
+      "value": "闘技場の復帰地点が有効 · 金色の予兆に注意。"
+    },
+    {
+      "key": "hud.reach_arena",
+      "value": "右の足場と隙間を越えて、稽古場へ向かってください。"
+    },
+    {
+      "key": "input.retry_pause",
+      "value": "{0}  R・ビュー：再開 | Esc・メニュー：ポーズ"
+    },
+    {
+      "key": "input.debug",
+      "value": "F1～F3形態 · F4実際 · F5/F6境界 | F7残響 / F8カセル399 / Shift+F8カセル120（検証）"
+    },
+    {
+      "key": "trial.health",
+      "value": "練習体力 {0}/{1} · 尽きると練習再開 · Rで配置リセット"
+    },
+    {
+      "key": "input.benefactor_support",
+      "value": "方向 + H / 右スティック押し込み：恩人の支援\n{0}"
+    },
+    {
+      "key": "hud.echo_phase",
+      "value": "残響 第{0}フェーズ · {1}"
+    },
+    {
+      "key": "hud.practice_complete",
+      "value": "テスト稽古完了"
+    },
+    {
+      "key": "hud.retrying",
+      "value": "もう一度挑戦…"
+    },
+    {
+      "key": "input.retry_button",
+      "value": "R / ビューボタンで再挑戦。"
+    },
+    {
+      "key": "hud.returning_checkpoint",
+      "value": "復帰地点に戻ります。"
+    },
+    {
+      "key": "investigation.progress",
+      "value": "調査の手がかり {0}/{1} · 閲覧 {2}/{3}"
+    },
+    {
+      "key": "investigation.collect_condition",
+      "value": "{0}を収集"
+    },
+    {
+      "key": "investigation.transfers_condition",
+      "value": "終焉の移転 {0}/5"
+    },
+    {
+      "key": "investigation.skill_condition",
+      "value": "{0} {1}段階"
+    },
+    {
+      "key": "investigation.trial_condition",
+      "value": "{0}との稽古検証を完了"
+    },
+    {
+      "key": "investigation.read_condition",
+      "value": "{0}を閲覧済み"
+    },
+    {
+      "key": "investigation.mid_condition",
+      "value": "中間調査・剣の実験を完了"
+    },
+    {
+      "key": "investigation.unknown_condition",
+      "value": "不明な条件"
+    },
+    {
+      "key": "investigation.done_prefix",
+      "value": "[達成] "
+    },
+    {
+      "key": "investigation.pending_prefix",
+      "value": "[未達成] "
+    },
+    {
+      "key": "investigation.any_conditions",
+      "value": "\nさらに以下のいずれか：\n{0}"
+    },
+    {
+      "key": "investigation.all_conditions",
+      "value": "すべての条件を満たす必要があります\n{0}{1}"
+    },
+    {
+      "key": "investigation.scroll_hint",
+      "value": "{0} · 左右：スクロール"
+    },
+    {
+      "key": "ui.selected_prefix",
+      "value": "[選択中] "
+    },
+    {
+      "key": "investigation.collected_prefix",
+      "value": "[収集済み] "
+    },
+    {
+      "key": "investigation.uncollected_prefix",
+      "value": "[未収集] "
+    },
+    {
+      "key": "investigation.summary_pending",
+      "value": "要約は準備中です"
+    },
+    {
+      "key": "investigation.body_pending",
+      "value": "本文は準備中です"
+    },
+    {
+      "key": "investigation.read_again",
+      "value": "閲覧済み · もう一度見る"
+    },
+    {
+      "key": "investigation.read_available",
+      "value": "閲覧可能"
+    },
+    {
+      "key": "investigation.core_required",
+      "value": "解放済み · コア端末で閲覧"
+    },
+    {
+      "key": "investigation.locked_requirements",
+      "value": "ロック中 · 条件を見る"
+    },
+    {
+      "key": "ui.back_to_game",
+      "value": "ゲームに戻る"
+    },
+    {
+      "key": "ui.back_to_skills",
+      "value": "スキル状況に戻る"
+    },
+    {
+      "key": "investigation.entry_suffix",
+      "value": " · 項目 {0}/{1}"
+    },
+    {
+      "key": "ui.locked_suffix",
+      "value": " · ロック中"
+    },
+    {
+      "key": "investigation.new_record_hint",
+      "value": "\n\n新しい記録は、テストステージ開始地点の左にあるコア端末で閲覧してください。"
+    },
+    {
+      "key": "investigation.title_pending",
+      "value": "記録のタイトルは準備中です"
+    },
+    {
+      "key": "investigation.record_summary_pending",
+      "value": "記録の要約は準備中です"
+    },
+    {
+      "key": "investigation.related_clues",
+      "value": "関連する手がかり\n{0}"
+    },
+    {
+      "key": "ui.back_to_investigation",
+      "value": "調査ログに戻る"
+    },
+    {
+      "key": "investigation.previous_entry",
+      "value": "前の項目"
+    },
+    {
+      "key": "investigation.next_review",
+      "value": "次へ / 再閲覧を終える"
+    },
+    {
+      "key": "investigation.confirm_entry",
+      "value": "項目を確認 · 次へ"
+    },
+    {
+      "key": "investigation.close_keep_progress",
+      "value": "閉じる · 進行状況を保持"
+    },
+    {
+      "key": "input.investigation",
+      "value": "調査地点：F / 左スティック押し込み\nEsc → スキル状況 → 調査ログ"
+    },
+    {
+      "key": "investigation.read_core",
+      "value": "コア記録を読む"
+    },
+    {
+      "key": "investigation.reread",
+      "value": "再閲覧"
+    },
+    {
+      "key": "investigation.inspect",
+      "value": "調べる"
+    },
+    {
+      "key": "input.inspect_action",
+      "value": "F / 左スティック押し込み：{0}"
+    },
+    {
+      "key": "investigation.wait_for_action",
+      "value": "着地して動作を終えると調べられます。"
+    },
+    {
+      "key": "echo.observing",
+      "value": "記録を観察中"
+    },
+    {
+      "key": "echo.mimicking",
+      "value": "{0}を模倣"
+    },
+    {
+      "key": "echo.opening_suffix",
+      "value": " · 技の切り替えで隙が生まれた！"
+    },
+    {
+      "key": "echo.switch_hint_suffix",
+      "value": " · 別の技で隙を作る"
+    },
+    {
+      "key": "save.unsupported_version",
+      "value": "未対応のセーブバージョンです。元のファイルは保護されています。"
+    },
+    {
+      "key": "save.unknown_field",
+      "value": "不明なフィールド：{0}"
+    },
+    {
+      "key": "save.missing_field",
+      "value": "フィールドがありません：{0}"
+    },
+    {
+      "key": "save.invalid_object",
+      "value": "オブジェクト型が不正"
+    },
+    {
+      "key": "save.invalid_array",
+      "value": "配列型が不正"
+    },
+    {
+      "key": "save.invalid_string",
+      "value": "文字列型が不正"
+    },
+    {
+      "key": "save.invalid_boolean",
+      "value": "真偽値の型が不正"
+    },
+    {
+      "key": "save.invalid_integer",
+      "value": "整数の型・範囲が不正"
+    },
+    {
+      "key": "save.corrupt_json",
+      "value": "セーブJSONが破損しています：{0}"
+    },
+    {
+      "key": "save.trailing_data",
+      "value": "末尾に余分なデータ"
+    },
+    {
+      "key": "save.syntax_truncated",
+      "value": "構文エラー・データ途切れ"
+    },
+    {
+      "key": "save.nesting_depth",
+      "value": "入れ子の深さが上限超過"
+    },
+    {
+      "key": "save.truncated",
+      "value": "データが途切れている"
+    },
+    {
+      "key": "save.duplicate_field",
+      "value": "フィールドが重複：{0}"
+    },
+    {
+      "key": "save.invalid_literal",
+      "value": "リテラルが不正・途切れている"
+    },
+    {
+      "key": "save.number_syntax",
+      "value": "数値の構文が不正"
+    },
+    {
+      "key": "save.truncated_number",
+      "value": "数値が途切れている"
+    },
+    {
+      "key": "save.unicode_pair",
+      "value": "Unicodeペアが不正"
+    },
+    {
+      "key": "save.control_character",
+      "value": "文字列に不正な制御文字"
+    },
+    {
+      "key": "save.truncated_escape",
+      "value": "エスケープが途切れている"
+    },
+    {
+      "key": "save.unicode_escape",
+      "value": "Unicodeエスケープが不正"
+    },
+    {
+      "key": "save.escape_syntax",
+      "value": "エスケープの構文が不正"
+    },
+    {
+      "key": "save.truncated_string",
+      "value": "文字列が途切れている"
+    },
+    {
+      "key": "save.backup_readable",
+      "value": "読み込める以前のバックアップがあります。元のファイルとバックアップを保護しました。"
+    },
+    {
+      "key": "save.backup_unreadable",
+      "value": "読み込めるバックアップがありません。ファイルは保護されています。"
+    },
+    {
+      "key": "save.use_compatible_version",
+      "value": "{0} {1} 対応するゲームバージョンで開いてください。"
+    },
+    {
+      "key": "save.backup_restored",
+      "value": "前回の正常なバックアップを復元しました。最後の保存以降の進行が失われている場合があります。元のファイルは保護されています。"
+    },
+    {
+      "key": "save.recovery_failed",
+      "value": "セーブを復元できません。元のファイルとバックアップを保護し、保存を停止しました：{0} / {1}"
+    },
+    {
+      "key": "save.invalid_version",
+      "value": "セーブまたはルールのバージョンが不正です。"
+    },
+    {
+      "key": "save.empty_file",
+      "value": "セーブファイルが空です。"
+    },
+    {
+      "key": "save.missing_investigation",
+      "value": "調査記録がありません。元のセーブは保護されています。"
+    },
+    {
+      "key": "save.missing_finale",
+      "value": "最終戦の記録がありません。"
+    },
+    {
+      "key": "save.legacy_slot_mismatch",
+      "value": "旧セーブのスロットが一致しません。"
+    },
+    {
+      "key": "save.slot_mismatch",
+      "value": "セーブスロットが一致しません。"
+    },
+    {
+      "key": "save.slot_in_use",
+      "value": "使用中のスロットです。先に削除してください。"
+    },
+    {
+      "key": "save.slot_blocked",
+      "value": "削除済み、または復元が必要なスロットには保存できません。"
+    },
+    {
+      "key": "save.no_record",
+      "value": "保存する記録がありません。"
+    },
+    {
+      "key": "save.wrong_slot",
+      "value": "別のスロットの記録です。"
+    },
+    {
+      "key": "save.failed_preserved",
+      "value": "保存失敗（正常なファイルは保護済み）：{0}"
+    },
+    {
+      "key": "save.legacy_migrated",
+      "value": "旧記録をスロット1へ移行しました。元のファイルは保護されています。{0}"
+    },
+    {
+      "key": "save.usage_log_failed",
+      "value": "使用ログの記録に失敗：{0}"
+    },
+    {
+      "key": "skill.acquired_notice",
+      "value": "{0}を習得 — 1～5 / E・Bで選択、Q・Yで使用"
+    },
+    {
+      "key": "skill.stage_up_notice",
+      "value": "{0} {1}段階 — 動きを体得"
+    },
+    {
+      "key": "skill.doom_transfer_notice",
+      "value": "極意を完全再現 · {0} → レア"
+    },
+    {
+      "key": "skill.doom_restored_notice",
+      "value": "終焉台帳を復元 · {0} → レア"
+    },
+    {
+      "key": "skill.true_name_notice",
+      "value": "真名解放：カセル零式 · 原型動作を確認（終焉の追加なし）"
+    },
+    {
+      "key": "skill.debug_boundary_notice",
+      "value": "検証専用セーブ · 境界{0}"
+    },
+    {
+      "key": "doom.heart_rupture",
+      "value": "第1の終焉：心臓破裂"
+    },
+    {
+      "key": "doom.rapid_aging",
+      "value": "第2の終焉：急速な老化"
+    },
+    {
+      "key": "doom.leg_punishment",
+      "value": "第3の終焉：両脚の刑罰"
+    },
+    {
+      "key": "doom.eternal_silence",
+      "value": "第4の終焉：永遠の沈黙"
+    },
+    {
+      "key": "doom.blindness",
+      "value": "第5の終焉：失明"
+    },
+    {
+      "key": "settings.invalid_values",
+      "value": "設定値またはバージョンが不正です。"
+    },
+    {
+      "key": "settings.unsupported_version",
+      "value": "未対応の設定バージョンです。"
+    },
+    {
+      "key": "settings.empty_file",
+      "value": "設定ファイルが空です。"
+    },
+    {
+      "key": "settings.defaults_preserved",
+      "value": "{0} 元のファイルを保護し、初期設定を使用します。"
+    },
+    {
+      "key": "settings.backup_restored",
+      "value": "設定のバックアップを復元しました。"
+    },
+    {
+      "key": "settings.recovery_failed",
+      "value": "設定を復元できません。元のファイルを保護し、初期設定を使用します。"
+    },
+    {
+      "key": "settings.save_failed",
+      "value": "設定の保存に失敗：{0}"
+    },
+    {
+      "key": "save.migration_failed",
+      "value": "旧記録の移行に失敗：{0}"
+    },
+    {
+      "key": "slot.occupied_hint",
+      "value": "記録のあるスロットです。空きスロットを選ぶか、削除ボタンを使ってください。"
+    },
+    {
+      "key": "slot.empty_hint",
+      "value": "空のスロットです。「ニューゲーム」で記録を作ってください。"
+    },
+    {
+      "key": "slot.open_failed",
+      "value": "スロットを開けません：{0}"
+    },
+    {
+      "key": "stage.saved_unavailable",
+      "value": "保存されたステージは準備中です。テストステージを選んでください。"
+    },
+    {
+      "key": "stage.unavailable_suffix",
+      "value": "：準備中です。"
+    },
+    {
+      "key": "stage.skill_required_suffix",
+      "value": "：先に対応する恩人の技を習得してください。"
+    },
+    {
+      "key": "stage.story_locked_suffix",
+      "value": "：物語の進行で解放されます。現在は準備中です。"
+    },
+    {
+      "key": "stage.start_failed",
+      "value": "ステージの開始に失敗：{0}"
+    },
+    {
+      "key": "slot.deleted",
+      "value": "スロット{0}の記録を削除しました。"
+    },
+    {
+      "key": "slot.delete_check",
+      "value": "削除結果の確認が必要です：{0}"
+    },
+    {
+      "key": "save.retry_hint",
+      "value": "保存に失敗しました。設定と保存先を確認して再試行してください。"
+    },
+    {
+      "key": "save.quit_blocked",
+      "value": "保存に失敗したため終了を中止しました。キャンセルして再試行してください。"
+    },
+    {
+      "key": "slot.prefix",
+      "value": "スロット{0} · "
+    },
+    {
+      "key": "slot.empty",
+      "value": "記録なし"
+    },
+    {
+      "key": "slot.unreadable",
+      "value": "読込不可 · 元のファイルは保護済み"
+    },
+    {
+      "key": "save.date_format",
+      "value": "yyyy年MM月dd日 HH:mm:ss"
+    },
+    {
+      "key": "save.unknown_time",
+      "value": "保存日時不明"
+    },
+    {
+      "key": "slot.summary",
+      "value": "{0}{1}\n習得スキル {2}個 · {3}\n基本剣術 {4}回 · {5}段階"
+    },
+    {
+      "key": "game.menu_title",
+      "value": "《リワインド公証録：レア》"
+    },
+    {
+      "key": "ui.delete",
+      "value": "削除"
+    },
+    {
+      "key": "ui.back",
+      "value": "戻る"
+    },
+    {
+      "key": "ui.investigation_progress",
+      "value": "調査ログ · {0}"
+    },
+    {
+      "key": "ui.back_to_pause",
+      "value": "ポーズメニューに戻る"
+    },
+    {
+      "key": "settings.adjust_hint",
+      "value": "左右で調整 · 段階プレビューでは検証用セーブに全技を付与し、成長は集計しません。\n実際の段階に戻しても、このプレイ中は検証用セーブの分離を維持します。"
+    },
+    {
+      "key": "save.log_path_hint",
+      "value": "使用ログの記録エラー · ポーズメニューで保存先を確認してください。"
+    },
+    {
+      "key": "save.retrying_memory",
+      "value": "保存失敗 · 確認済みの記録をメモリに保持して再試行します。"
+    },
+    {
+      "key": "input.reading_menu",
+      "value": "上下 / スティック：選択   左右：スクロール   Enter / A：決定   Esc / B：戻る"
+    },
+    {
+      "key": "input.shell_menu",
+      "value": "方向キー / 左スティック / 十字キー：選択   Enter / A：決定   Esc / B：戻る   Delete / X：スロット削除"
+    },
+    {
+      "key": "skills.no_active_record",
+      "value": "進行中のスキル記録がありません。"
+    },
+    {
+      "key": "ui.locked_tag",
+      "value": " [ロック中]"
+    },
+    {
+      "key": "heading.return_selection",
+      "value": "逆公証 · 返還する恩人の技を選択"
+    },
+    {
+      "key": "heading.return_confirm",
+      "value": "逆公証 · 返還前の確認"
+    },
+    {
+      "key": "heading.main",
+      "value": "記録をつなぐ場所を選んでください"
+    },
+    {
+      "key": "heading.new_game",
+      "value": "ニューゲーム · 空きスロットを選択"
+    },
+    {
+      "key": "heading.continue",
+      "value": "続きから · 記録を選択"
+    },
+    {
+      "key": "heading.stage_slot",
+      "value": "ステージ選択 · 使用する記録を選択"
+    },
+    {
+      "key": "heading.three_slots",
+      "value": "{0}（3スロット）"
+    },
+    {
+      "key": "heading.stages",
+      "value": "ステージ選択 · スロット{0} · 解放済みのステージを選んでください"
+    },
+    {
+      "key": "heading.pause",
+      "value": "ポーズ"
+    },
+    {
+      "key": "heading.skills",
+      "value": "スキル状況 · 累計有効使用と現在の形態"
+    },
+    {
+      "key": "heading.core",
+      "value": "コア記録閲覧 · 確認した項目は記録剣に保存されます"
+    },
+    {
+      "key": "heading.settings",
+      "value": "設定 · 変更は即時反映・保存されます"
+    },
+    {
+      "key": "slot.delete_confirm",
+      "value": "スロット{0}を削除しますか？進行・検証記録・バックアップが削除されます。"
+    },
+    {
+      "key": "ui.quit_confirm",
+      "value": "保存してゲームを終了しますか？"
+    },
+    {
+      "key": "ui.continue",
+      "value": "続きから"
+    },
+    {
+      "key": "ui.new_game",
+      "value": "ニューゲーム"
+    },
+    {
+      "key": "ui.stage_select",
+      "value": "ステージ選択"
+    },
+    {
+      "key": "ui.settings",
+      "value": "設定"
+    },
+    {
+      "key": "ui.quit",
+      "value": "終了"
+    },
+    {
+      "key": "ui.skills",
+      "value": "スキル状況"
+    },
+    {
+      "key": "ui.main_menu",
+      "value": "メインメニューへ"
+    },
+    {
+      "key": "ui.cancel",
+      "value": "キャンセル"
+    },
+    {
+      "key": "ui.delete_record",
+      "value": "記録を削除"
+    },
+    {
+      "key": "ui.save_quit",
+      "value": "保存して終了"
+    },
+    {
+      "key": "settings.music_volume",
+      "value": "BGM音量    ◀ {0}% ▶"
+    },
+    {
+      "key": "settings.effects_volume",
+      "value": "効果音音量    ◀ {0}% ▶"
+    },
+    {
+      "key": "ui.on",
+      "value": "オン"
+    },
+    {
+      "key": "ui.off",
+      "value": "オフ"
+    },
+    {
+      "key": "settings.screen_shake",
+      "value": "画面揺れ    {0}"
+    },
+    {
+      "key": "settings.development_only",
+      "value": "開発ビルドで使用可能"
+    },
+    {
+      "key": "settings.actual_stage",
+      "value": "実際の段階"
+    },
+    {
+      "key": "settings.preview_stage",
+      "value": "{0}段階プレビュー"
+    },
+    {
+      "key": "settings.stage_override",
+      "value": "段階オーバーライド（テスト用）    {0}"
+    },
+    {
+      "key": "stage.finale_survival_locked",
+      "value": "5つの返還準備完了 / 原型動作が未完成：生存返還は未確保"
+    },
+    {
+      "key": "stage.locked_unavailable",
+      "value": "ロック中 · 準備中"
+    },
+    {
+      "key": "stage.playable",
+      "value": "プレイ可能"
+    },
+    {
+      "key": "stage.coming_soon",
+      "value": "準備中"
+    },
+    {
+      "key": "stage.hub.name",
+      "value": "拠点 · 忘却の屋根裏"
+    },
+    {
+      "key": "stage.velvet.name",
+      "value": "第1区画 · ベルベット仕立て街 / 巨大織物工房"
+    },
+    {
+      "key": "stage.clock.name",
+      "value": "第2区画 · 黄昏のぜんまい時計塔 / 逆流回廊"
+    },
+    {
+      "key": "stage.opera.name",
+      "value": "第3区画 · ガラスのオペラ劇場 / スポットライトの屋根"
+    },
+    {
+      "key": "stage.bell.name",
+      "value": "第4区画 · 青銅の大鐘楼 / 共鳴音叉の地下道"
+    },
+    {
+      "key": "stage.gallery.name",
+      "value": "第5区画 · 白いキャンバス画廊 / 色彩の温室"
+    },
+    {
+      "key": "stage.echo.name",
+      "value": "残響戦"
+    },
+    {
+      "key": "stage.cassel.name",
+      "value": "カセル戦"
+    },
+    {
+      "key": "stage.prototype.name",
+      "value": "既存テストステージ · 移動 / 剣術 / 残響との稽古"
+    },
+    {
+      "key": "stage.practice_julius.name",
+      "value": "技の稽古 · ユリウスの残響（振り子を獲得）"
+    },
+    {
+      "key": "stage.practice_valeria.name",
+      "value": "技の稽古 · ヴァレリアの残響（円舞を獲得）"
+    },
+    {
+      "key": "stage.practice_gabriel.name",
+      "value": "技の稽古 · ガブリエルの残響（鍛造を獲得）"
+    },
+    {
+      "key": "stage.practice_irina.name",
+      "value": "技の稽古 · イリーナの残響（画布を獲得）"
+    },
+    {
+      "key": "stage.skill_lab.name",
+      "value": "全技練習場 · 即時付与 / 検証用セーブ"
+    },
+    {
+      "key": "stage.wave_test.name",
+      "value": "区画ウェーブテスト · 151 / 400 / 検証用セーブ"
+    },
+    {
+      "key": "stage.trial_mikhail.name",
+      "value": "恩人との稽古 · ミハイル"
+    },
+    {
+      "key": "stage.trial_julius.name",
+      "value": "恩人との稽古 · ユリウス"
+    },
+    {
+      "key": "stage.trial_valeria.name",
+      "value": "恩人との稽古 · ヴァレリア"
+    },
+    {
+      "key": "stage.trial_gabriel.name",
+      "value": "恩人との稽古 · ガブリエル"
+    },
+    {
+      "key": "stage.trial_irina.name",
+      "value": "恩人との稽古 · イリーナ"
+    },
+    {
+      "key": "encounter.rea_echo",
+      "value": "残響 · 昨日のレア"
+    },
+    {
+      "key": "encounter.julius_echo",
+      "value": "ユリウスの技の残響 · テスト稽古"
+    },
+    {
+      "key": "encounter.valeria_echo",
+      "value": "ヴァレリアの技の残響 · テスト稽古"
+    },
+    {
+      "key": "encounter.gabriel_echo",
+      "value": "ガブリエルの技の残響 · テスト稽古"
+    },
+    {
+      "key": "encounter.irina_echo",
+      "value": "イリーナの技の残響 · テスト稽古"
+    },
+    {
+      "key": "evolution.preview_off",
+      "value": "テスト · 実際の段階に復帰"
+    },
+    {
+      "key": "evolution.preview_title",
+      "value": "テスト形態 · {0}にオーバーライド"
+    },
+    {
+      "key": "evolution.preview_off_detail",
+      "value": "各技が実際の成長形態に戻ります · 検証用セーブの分離は継続します。"
+    },
+    {
+      "key": "evolution.preview_detail",
+      "value": "習得済みの全技をプレビュー · 有効使用は集計しません · 実際の進化ではありません。"
+    },
+    {
+      "key": "evolution.test_prefix",
+      "value": "[検証用セーブ] "
+    },
+    {
+      "key": "evolution.title",
+      "value": "{0}{1}が進化 · {2}"
+    },
+    {
+      "key": "skills.locked_unowned",
+      "value": "ロック中 · 未習得"
+    },
+    {
+      "key": "skills.unowned_progress",
+      "value": "累計有効使用 {0}回 · 習得後に次の段階へ進行"
+    },
+    {
+      "key": "skills.acquire_hint",
+      "value": "対応する恩人の技を習得すると、形態と熟練度を確認できます。"
+    },
+    {
+      "key": "skills.override_suffix",
+      "value": " [オーバーライド] · 実際は{0}"
+    },
+    {
+      "key": "skills.current_stage",
+      "value": "現在 {0}{1}"
+    },
+    {
+      "key": "skills.growth_complete",
+      "value": "実際の成長完了 · 残り0回"
+    },
+    {
+      "key": "skills.remaining_uses",
+      "value": "実際の{0}まであと{1}回"
+    },
+    {
+      "key": "skills.effective_uses",
+      "value": "累計有効使用 {0}回 · {1}"
+    },
+    {
+      "key": "skills.test_save_mode",
+      "value": "検証用セーブに分離（本編とは別）"
+    },
+    {
+      "key": "slot.name",
+      "value": "スロット{0}"
+    },
+    {
+      "key": "skills.actual_mode_suffix",
+      "value": " · オーバーライドなし · 実際の成長を表示"
+    },
+    {
+      "key": "skills.override_mode_suffix",
+      "value": " · オーバーライド：{0} · 使用集計なし / 残り回数は実際の成長が基準"
+    },
+    {
+      "key": "skills.ultimate_stage",
+      "value": "3段階 · 極意"
+    },
+    {
+      "key": "skills.stage",
+      "value": "{0}段階"
+    },
+    {
+      "key": "skills.sword.form1",
+      "value": "2連撃の剣術"
+    },
+    {
+      "key": "skills.sword.form2",
+      "value": "3連撃 · 踏み込み · 最後の一撃に短い剣気"
+    },
+    {
+      "key": "skills.sword.form3",
+      "value": "4連撃 · 踏み込み · 剣気 · 残像"
+    },
+    {
+      "key": "skills.stitch.form1",
+      "value": "関節を拘束 · 亀裂を支える"
+    },
+    {
+      "key": "skills.stitch.form2",
+      "value": "糸の床を設置 · 範囲拘束"
+    },
+    {
+      "key": "skills.stitch.form3",
+      "value": "接続部を切断 · 接続範囲にダメージ"
+    },
+    {
+      "key": "skills.pendulum.form1",
+      "value": "突進突き · 再入力で安全に帰還"
+    },
+    {
+      "key": "skills.pendulum.form2",
+      "value": "帰還経路の交差ダメージ · 残像"
+    },
+    {
+      "key": "skills.pendulum.form3",
+      "value": "周囲の時間を局所停止 · 解除後に経路が爆発"
+    },
+    {
+      "key": "skills.waltz.form1",
+      "value": "上昇回転斬り · 飛び道具を打ち払う"
+    },
+    {
+      "key": "skills.waltz.form2",
+      "value": "有効接触後、空中で再入力するとステップ"
+    },
+    {
+      "key": "skills.waltz.form3",
+      "value": "飛び道具を反射 · 落下衝撃波"
+    },
+    {
+      "key": "skills.forge.form1",
+      "value": "振動打撃 · ひび割れた盾を破壊"
+    },
+    {
+      "key": "skills.forge.form2",
+      "value": "対象ごとに共鳴印を蓄積 · 爆発"
+    },
+    {
+      "key": "skills.forge.form3",
+      "value": "基本パリィ + 空中下方向鐘撃 · 広範囲反撃衝撃波"
+    },
+    {
+      "key": "skills.canvas.form1",
+      "value": "絵の具の一筆で攻撃 · 一時的な床で支える"
+    },
+    {
+      "key": "skills.canvas.form2",
+      "value": "床と壁の交差爆発 · 設置物2個"
+    },
+    {
+      "key": "skills.canvas.form3",
+      "value": "床と壁の交差 · 自画像が剣術の打撃を再現"
+    },
+    {
+      "key": "skills.no_form_info",
+      "value": "形態情報なし"
+    },
+    {
+      "key": "support.ordinary_only",
+      "value": "支援は通常戦闘で使用できます。"
+    },
+    {
+      "key": "support.no_charge",
+      "value": "支援がありません。恩人との稽古条件を確認してください。"
+    },
+    {
+      "key": "support.no_target",
+      "value": "支援対象がいません。使用回数は消費しません。"
+    },
+    {
+      "key": "support.save_failed",
+      "value": "保存失敗 · 支援の使用を保留"
+    },
+    {
+      "key": "support.invalid_effect",
+      "value": "支援が成立しませんでした。使用回数は消費しません。"
+    },
+    {
+      "key": "support.used_notice",
+      "value": "{0} · {1}を使用 · 残り0/1"
+    },
+    {
+      "key": "trial.missing_data",
+      "value": "恩人の稽古データがありません。"
+    },
+    {
+      "key": "trial.resting",
+      "value": "息を整える · 練習を続行"
+    },
+    {
+      "key": "trial.windup_suffix",
+      "value": " · 準備の合図"
+    },
+    {
+      "key": "trial.action_suffix",
+      "value": " · 動作中"
+    },
+    {
+      "key": "trial.opening_suffix",
+      "value": " · 練習の好機"
+    },
+    {
+      "key": "trial.acquire_first",
+      "value": "この技を習得すると稽古に挑めます。"
+    },
+    {
+      "key": "support.charged",
+      "value": "支援1/1所持"
+    },
+    {
+      "key": "support.recharge_progress",
+      "value": "支援0/1 · 通常戦闘 {0}/{1}"
+    },
+    {
+      "key": "support.locked",
+      "value": "支援未解放"
+    },
+    {
+      "key": "trial.unlocked",
+      "value": "稽古解放済み"
+    },
+    {
+      "key": "trial.locked_skill",
+      "value": "稽古ロック中 · 技の習得が必要"
+    },
+    {
+      "key": "trial.session_status",
+      "value": "成長 {0}/{1} · 条件 {2}/{3} · 次の稽古：通常戦闘 {4}/{5}"
+    },
+    {
+      "key": "wave.missing_data",
+      "value": "ウェーブデータがありません。"
+    },
+    {
+      "key": "wave.invalid_header",
+      "value": "ウェーブのバージョン・初期記録・小区画数"
+    },
+    {
+      "key": "wave.invalid_supply",
+      "value": "供給・交差ループの設定"
+    },
+    {
+      "key": "wave.invalid_archetype_count",
+      "value": "敵3種と装置1種が必要"
+    },
+    {
+      "key": "wave.invalid_archetype_id",
+      "value": "アーキタイプID"
+    },
+    {
+      "key": "wave.invalid_gate",
+      "value": "判定の種類"
+    },
+    {
+      "key": "wave.invalid_combat_values",
+      "value": "戦闘数値"
+    },
+    {
+      "key": "wave.invalid_zone",
+      "value": "区画定義"
+    },
+    {
+      "key": "wave.invalid_connection",
+      "value": "区画の接続"
+    },
+    {
+      "key": "wave.invalid_definition",
+      "value": "ウェーブ定義"
+    },
+    {
+      "key": "wave.invalid_spawn",
+      "value": "配置定義"
+    },
+    {
+      "key": "wave.invalid_spawn_range",
+      "value": "配置範囲"
+    },
+    {
+      "key": "wave.setup_required",
+      "value": "体勢を崩す技が必要"
+    },
+    {
+      "key": "wave.invalid_setup_skill",
+      "value": "仕込みの技"
+    },
+    {
+      "key": "wave.invalid_zone1_supply",
+      "value": "第1区画の供給"
+    },
+    {
+      "key": "wave.invalid_gate_supply",
+      "value": "区画ゲートの供給"
+    },
+    {
+      "key": "wave.invalid_mastery_supply",
+      "value": "極意到達の供給"
+    },
+    {
+      "key": "wave.data_error",
+      "value": "ウェーブデータエラー：{0}"
+    },
+    {
+      "key": "wave.progress",
+      "value": "{0} · ウェーブ {1}/{2}"
+    },
+    {
+      "key": "wave.all_complete",
+      "value": "3区画完了 · 基本剣術151 / 400回の到達ログを確認してください。R：最初から"
+    },
+    {
+      "key": "wave.zone_complete",
+      "value": "区画完了 · 右の青金の印へ進んでください。"
+    },
+    {
+      "key": "wave.next_enemy",
+      "value": "次の敵が接近中。連撃を終えて備えてください。"
+    },
+    {
+      "key": "wave.cut_with_sword",
+      "value": "基本剣術で切断"
+    },
+    {
+      "key": "wave.skill_then_sword",
+      "value": "{0} → 基本剣術"
+    },
+    {
+      "key": "wave.defense_then_sword",
+      "value": "金色の攻撃をパリィ / ダッシュ → 基本剣術"
+    },
+    {
+      "key": "wave.target_hint",
+      "value": "{0} · 残り{1} · {2}"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.displayName",
+      "value": "基本剣術"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.1.name",
+      "value": "ひよっこ斬り"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.2.name",
+      "value": "青金の軌跡"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.3.name",
+      "value": "原罪公証剣 — カセル零式"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.displayName",
+      "value": "銀糸の縫合"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.1.name",
+      "value": "ひと針縫い"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.2.name",
+      "value": "交差裁断"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.3.name",
+      "value": "運命の縫合・切断"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.displayName",
+      "value": "振り子の巻き戻し"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.1.name",
+      "value": "振り子の歩法"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.2.name",
+      "value": "二重の時間軸"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.3.name",
+      "value": "ゼロアワー"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.displayName",
+      "value": "カーテンコールの円舞"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.1.name",
+      "value": "回転剣舞"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.2.name",
+      "value": "スポットライトステップ"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.3.name",
+      "value": "グランドフィナーレ"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.displayName",
+      "value": "共鳴鍛造"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.1.name",
+      "value": "振動打撃"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.2.name",
+      "value": "和音の蓄積爆発"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.3.name",
+      "value": "六時の種まき"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.displayName",
+      "value": "余白の切り抜き"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.1.name",
+      "value": "絵の具の一筆"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.2.name",
+      "value": "風景の重ね塗り"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.3.name",
+      "value": "自画像の完成"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.displayName",
+      "value": "ミハイル"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.role",
+      "value": "鋏の手を持つ仕立て屋"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.objectiveLabel",
+      "value": "銀糸で関節拘束、または帰還用の支柱を安定させる：3回"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.support.label",
+      "value": "帰還の縫い目"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
+      "value": "銀糸の横裁ち"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
+      "value": "交差裁断"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.displayName",
+      "value": "ユリウス"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.role",
+      "value": "秒針を止めた時計職人"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.objectiveLabel",
+      "value": "振り子で相手に実ダメージ、または局所停止：3回"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.support.label",
+      "value": "帰還の時間"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.patterns.1.label",
+      "value": "振り子の進入"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.patterns.2.label",
+      "value": "振り子の帰還"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.displayName",
+      "value": "ヴァレリア"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.role",
+      "value": "壊れた靴の踊り子"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.objectiveLabel",
+      "value": "円舞で練習弾幕を除去、または反射：3回"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.support.label",
+      "value": "着地の円舞"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.patterns.1.label",
+      "value": "上昇円舞"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.patterns.2.label",
+      "value": "着地前の弾幕"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.displayName",
+      "value": "ガブリエル"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.role",
+      "value": "沈黙の鐘守"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.objectiveLabel",
+      "value": "鍛造による実打撃、または鍛造専用の反撃：3回"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.support.label",
+      "value": "帰還の鐘撃"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.patterns.1.label",
+      "value": "開いた手のひら：停止 / 二本指：準備"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.patterns.2.label",
+      "value": "下向きの手：着地・帰還"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.displayName",
+      "value": "イリーナ"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.role",
+      "value": "盲目の肖像画家"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.objectiveLabel",
+      "value": "絵の具の足場で実際に支える、または弾幕を防ぐ：3回"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.support.label",
+      "value": "帰還の彩色"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.patterns.1.label",
+      "value": "水平の絵の具の一筆"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.patterns.2.label",
+      "value": "画布の破片弾幕"
+    },
+    {
+      "key": "data.investigation.catalog.topics.transfer_route.label",
+      "value": "終焉の移転経路"
+    },
+    {
+      "key": "data.investigation.catalog.topics.benefactor_imprints.label",
+      "value": "恩人ごとの刻印"
+    },
+    {
+      "key": "data.investigation.catalog.topics.cassel_contract.label",
+      "value": "カセルの契約"
+    },
+    {
+      "key": "data.investigation.catalog.clues.route_ledger.label",
+      "value": "移転経路 · 記録端末"
+    },
+    {
+      "key": "data.investigation.catalog.clues.route_waveform.label",
+      "value": "移転経路 · コア投影刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_mikhail.label",
+      "value": "ミハイル · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_julius.label",
+      "value": "ユリウス · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_valeria.label",
+      "value": "ヴァレリア · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_gabriel.label",
+      "value": "ガブリエル · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_irina.label",
+      "value": "イリーナ · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.contract_original.label",
+      "value": "契約文書 · 原本の封印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.contract_copy.label",
+      "value": "契約文書 · 写しの封印"
+    },
+    {
+      "key": "data.investigation.catalog.points.core_terminal.label",
+      "value": "コア記録閲覧端末"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_route_ledger.label",
+      "value": "移転経路 · 記録端末"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_route_waveform.label",
+      "value": "移転経路 · コア投影刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_mikhail.label",
+      "value": "ミハイル · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_julius.label",
+      "value": "ユリウス · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_valeria.label",
+      "value": "ヴァレリア · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_gabriel.label",
+      "value": "ガブリエル · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_irina.label",
+      "value": "イリーナ · コア刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_contract_original.label",
+      "value": "契約文書 · 原本の封印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_contract_copy.label",
+      "value": "契約文書 · 写しの封印"
+    },
+    {
+      "key": "data.investigation.catalog.stages.transfer_index.label",
+      "value": "第1段階 · 終焉の移転経路"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_mikhail.label",
+      "value": "任意閲覧 · ミハイル"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_julius.label",
+      "value": "任意閲覧 · ユリウス"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_valeria.label",
+      "value": "任意閲覧 · ヴァレリア"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_gabriel.label",
+      "value": "任意閲覧 · ガブリエル"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_irina.label",
+      "value": "任意閲覧 · イリーナ"
+    },
+    {
+      "key": "data.investigation.catalog.stages.contract_comparison.label",
+      "value": "第2段階 · コア文書の照合"
+    },
+    {
+      "key": "data.investigation.catalog.stages.stored_records.label",
+      "value": "第3段階 · コア保管記録"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.zero.label",
+      "value": "カセル零式"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.thread.label",
+      "value": "反射銀糸の包囲網"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.pendulum.label",
+      "value": "反射振り子の交差"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.petals.label",
+      "value": "反射円舞の花びら"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.bell.label",
+      "value": "反射大鐘の衝撃波"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.portrait.label",
+      "value": "反射色彩の二重剣撃"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.1.name",
+      "value": "霞む昨日"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.2.name",
+      "value": "重なり合う記録"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.3.name",
+      "value": "鮮明な残響"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.notary_guard.label",
+      "value": "公証縫合の重装兵"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.shell_sentry.label",
+      "value": "ぜんまい仕掛けの装甲番兵"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.reflection_statue.label",
+      "value": "反射する公証石像"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.sword_latch.label",
+      "value": "青金の留め金"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_1.label",
+      "value": "小区画1 · 基本の回廊"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_2.label",
+      "value": "小区画2 · 交差の工房"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_3.label",
+      "value": "小区画3 · 極意の検証路"
+    },
+    {
+      "key": "settings.language",
+      "value": "言語    ◀ {0} ▶"
+    },
+    {
+      "key": "language.ko",
+      "value": "한국어"
+    },
+    {
+      "key": "language.en",
+      "value": "English"
+    },
+    {
+      "key": "language.de",
+      "value": "Deutsch"
+    },
+    {
+      "key": "language.fr",
+      "value": "Français"
+    },
+    {
+      "key": "language.es",
+      "value": "Español"
+    },
+    {
+      "key": "language.zh-Hans",
+      "value": "简体中文"
+    },
+    {
+      "key": "language.ja",
+      "value": "日本語"
+    },
+    {
+      "key": "language.ru",
+      "value": "Русский"
+    },
+    {
+      "key": "language.it",
+      "value": "Italiano"
+    },
+    {
+      "key": "ui.confirm",
+      "value": "決定"
+    },
+    {
+      "key": "ui.save",
+      "value": "保存"
+    },
+    {
+      "key": "ui.resume",
+      "value": "再開"
+    },
+    {
+      "key": "input.direction_neutral",
+      "value": "方向なし/前"
+    },
+    {
+      "key": "input.direction_up",
+      "value": "↑"
+    },
+    {
+      "key": "input.direction_down_air",
+      "value": "↓ 空中"
+    },
+    {
+      "key": "input.direction_down_ground",
+      "value": "↓ 地上"
+    },
+    {
+      "key": "input.direction_back",
+      "value": "後ろ"
+    },
+    {
+      "key": "input.cast_hint",
+      "value": "方向 + Q・Y | 壁：攻撃を押しながら↓で発動"
+    },
+    {
+      "key": "input.skill_unlearned",
+      "value": "{0}：まだ習得していません。"
+    },
+    {
+      "key": "input.skill_mapping_row",
+      "value": "{0} · {1}"
+    },
+    {
+      "key": "story.court_lift",
+      "value": "大法廷の昇降機前"
+    },
+    {
+      "key": "story.resume_previous",
+      "value": "最終戦直前の記録を再開"
+    },
+    {
+      "key": "story.intro.attic.01",
+      "value": "［公証記録 #02 — D日 06:30 / 執行予定：翌日 06:00（残り 23時間 30分）］\n……頭が少しだけ響く。昨日の夜から何か長い夢を見ていたようなのに、手のひらに馴染んだ記録剣の感触だけははっきりしてるな。\nあ、マルタおばあちゃんが用意してくれたミントキャンディが床に転がり落ちてる。踏まれる前に拾って、テーブルの封筒の横に置いておこう。"
+    },
+    {
+      "key": "story.intro.attic.02",
+      "value": "「もう起きたのかい、レア？ ミント共鳴茶を煎れるついでに、お前のポーチに入れとこうと出しておいた飴なんだが、転がり落ちたみたいだね。こっちへ持ってきて封筒の横の小皿に置いておくれ。」\n(操作案内：床のミントキャンディの前で F / 左スティック押し込みで拾い、卓上の封筒の横の小皿に置いてください。)"
+    },
+    {
+      "key": "story.intro.attic.03",
+      "value": "(ミントキャンディが置かれると、テーブルの上の青金石公証インクの台帳を覗き込んで首をかしげる)\n「おや、まったく不思議だねえ……私の手書き文字の横に、お前が使う青金石の公証インクで［記録 #01 / 逆流前 06:25 — 委託物：赦免任務書封筒および青金石オルゴール］と押されているんだよ。私がいつこんなものを書き留めたんだろうかねえ……？\nおやまあ、備考欄に小さくもう一行書き添えてあるよ。『朝起きた私に笑顔で渡してください。下書きは剣の中に。』 ……ほほ、この年寄りも物忘れがひどくなったのかねえ。」"
+    },
+    {
+      "key": "story.intro.attic.04",
+      "value": "(身なりを整え、表情を改めてぱっと明るく笑いながら封筒を差し出す)\n「ほら、ここにあるよ、うちのレア！ 中央公証院から下りてきた特例回収任務書さ。さあ、受け取っておくれ。」\n(操作案内：卓上の任務書封筒を F / 左スティック押し込みで受け取ってください。手がかり［契約文書 · 写しの封印］が記録されます。)"
+    },
+    {
+      "key": "story.intro.attic.05",
+      "value": "(封筒を開け、『第5号秘伝動作公証回収命令書（写し）』の下段条項を声に出して読む)\n「『第3条（特例付則）：スキルの3段階公証登録が完了し次第、受刑者の終焉は大法廷母体コアへと吸収・消滅され、五人の受刑者全員に特別赦免状を発布する。』\n……よかった！ 噂でしか聞いたことがなかった公証院の消滅特例が本当に発布されたんだ。今日また陽が昇る前に、五人の技を私の記録剣に3段階まで採録して持って帰れば、誰も処刑されずに赦免を受けられる！」"
+    },
+    {
+      "key": "story.intro.board.01",
+      "value": "「マルタおばあちゃん、ここの朝食予約ボードにもう明日の朝の五人分の名前が書かれてるんですね？\n明日の朝、五人を必ずお連れしますから。」"
+    },
+    {
+      "key": "story.intro.board.02",
+      "value": "「それなら六杯だね。」"
+    },
+    {
+      "key": "story.intro.board.03",
+      "value": "「私は戻ってから食べれば……あ、そうか。戻ってから、ですもんね。\n(五人の名前の隣の六番目の空欄に手を添えて) はい、私の席も空けておきません。明日の朝の六杯目は、必ず私が空にします！」\n(操作案内：朝食予約ボードの前で F / 左スティック押し込みで六番目の席に直接押印してください。)"
+    },
+    {
+      "key": "story.intro.forge.01",
+      "value": "「出陣する前に刃先から見に来たか、レア。こっちへ出しな。砥石に一度当てて、コアの溝がぐらついていないか見てやろう。」\n(操作案内：イーサンの砥石作業台で F / 左スティック押し込みで記録剣を載せてください。)"
+    },
+    {
+      "key": "story.intro.forge.02",
+      "value": "(回転する砥石に刀身を当てようとして、刃の三節目でぴたりと手を止める。左の青金石の義眼がかすかに青い光を帯びる)\n「……待て。ここは研ぎ落としちゃいけねえ。\n欠けたんじゃねえよ。同じ深さで三度刻まれている。誰かが計測架台のピンをまったく同じ位置に噛み合わせるために、刃の三節目に直接彫り込んだ基準印だ。」"
+    },
+    {
+      "key": "story.intro.forge.03",
+      "value": "「基準印ですか？ イーサンおじさん、私、今朝起きてからまだ一度も剣を振っていないのに……もう基本剣術が百二十回もコアに刻まれていて、刀身にこんな印までついてるんです。いったい私、昨日なにをしたんでしょうか？」"
+    },
+    {
+      "key": "story.intro.forge.04",
+      "value": "(剣を引いてレアに返し、重々しく口を開く)\n「俺がこの白紙刻印剣を鍛えたんだ、嘘はつかねえよ、レア。さっき俺の青金石の義眼がお前の剣のコア記録と噛み合った。\nお前がこの剣で時間を巻き戻してくれと頼んだんだ。明け方の六時十分に刃の割れた剣を持って訪ねてきて、俺が大逆流の封印を開いてやった。どんな結末を変えようとしているのかは俺に話さなかったがな。\n……ただ、その三節目の印は俺が彫ったもんじゃねえ。お前が一人で何かを測ろうとして残した目盛りだ。気をつけて行ってこい。」"
+    },
+    {
+      "key": "story.velvet.entry.01",
+      "value": "「ここが第1区画・ベルベット裁縫通りです、レアお姉さん。中央公証院の護送隊が明日の早朝六時の執行前まで区画の外側を封鎖していますけど、この先の裁縫室のタンスは、ミハイルおじさんが昨日まで手を入れていたんです。」"
+    },
+    {
+      "key": "story.velvet.entry.02",
+      "value": "「この開いたタンスの中を見てみてください。十一歳サイズから十六歳サイズまで、この六年間に毎年新しく仕立てた冬用のコートが六着も並んで掛かっています。一度も持ち主に着せられないままの服なのに、どの縫い目にもアイロンの跡がまっすぐ通ってるんです。」\n(操作案内：ミハイルのタンスを F / 左スティック押し込みで調べてください。手がかり［ミハイル · コア刻印］が記録されます。)"
+    },
+    {
+      "key": "story.velvet.entry.03",
+      "value": "(六着目のコートの袖口に結ばれた青い絹リボンの端切れに触れてみながら、自分の頭につけた青いリボンに手を添える)\n「私の頭に結んであるこの青いリボンとまったく同じ織りの結び目だわ……十歳より前の記憶は真っ白に消えているのに、指先がこの布の目を覚えているの。ミハイルおじさんは、私を知らない方なんかじゃなかった。急いで工房の奥へ行こう、ルカ！」"
+    },
+    {
+      "key": "story.mikhail.i0.01",
+      "value": "(巨大な裁縫用の鋏剣で織機の糸束を断ち切り、レアの前に立ちはだかる。左胸を押さえながら荒い息を飲み込む)\n「……その青いリボン、まだほどけないように結んで持ち歩いているのだな、レア。\nそれでもここから先は一歩たりとも通さん。お前が握っているその青金石の記録剣が何物かも知らずに来たのか。」"
+    },
+    {
+      "key": "story.mikhail.i0.02",
+      "value": "「ミハイルおじさん！ 私のこと、ご存じなんですよね？ 私の手にあるこの回収命令書の写しを見てください。第3条の特例付則に書いてあるんです！ 私が記録剣におじさんの技を3段階まで登録すれば、終焉は大法廷母体コアに吸収・消滅されて特別赦免を受けられるんですよ！」"
+    },
+    {
+      "key": "story.mikhail.i0.03",
+      "value": "「公証院の甘い宣伝文句なんぞを真に受けたのか！ 他人の固有動作を最後まで模倣すれば、その者の傷も死までも模倣した者の体へ移るのがこの都市の法だ！\nお前のケープの縫い目がほつれないようにと針を取った手だぞ。俺の極意だけは、断じてその剣に渡さん。無理にでも通るつもりなら、まず俺の鋏剣からへし折ってみろ！」\n(戦闘開始：鋏の手を持つ仕立て屋ミハイルとの保護対錬)"
+    },
+    {
+      "key": "story.mikhail.i0.04",
+      "value": "(鋏剣を床に突いて片膝をつく。レアの記録剣コアが対錬中に見せたミハイルの1段階・縫合剣術の軌跡を青い光で採録する)\n「ぐっ……俺の最後の結び目は隠したというのに、その剣め、最初の一針の目を読み取りやがったか。\n肝に銘じておけ、レア。そこで止めておけばただの護身術だが、その縫合を己の体に馴染ませ最後まで完成させた瞬間、俺の心臓の刑罰がお前へ行く。俺は救護所へ下がっているから……どうかその剣をこれ以上使わずに帰れ。」\n(システム通知：銀糸の縫合 獲得 — 1~5 / E・コントローラーB 選択、Q・Y 使用)"
+    },
+    {
+      "key": "story.mikhail.i1.01",
+      "value": "(左胸の痛みを堪えながら鋏剣を構え、レアの前に立ち塞がる)\n「すでに別の場所で最初の終焉を己の身に抱え込んできたな、レア！ ブローチにひびが入っているのを見れば消滅特例が嘘だと今や分かったはずなのに、どうして逃げ出さずに俺の工房まで訪ねてきた！」"
+    },
+    {
+      "key": "story.mikhail.i1.02",
+      "value": "(ミハイルの重い鋏剣の強打をレアが後ろへ避けずに体で耐え止めようとすると、ミハイルが刃を急いで逸らして床を突き、一喝する)\n「やめろ！ 今なんの真似をしている！\nカセルへ終焉を返す仮説を見つけたと言っておきながら、肝心の目の前の刃一つをお前の生身で塞ぐつもりか！ 穴の空いた計画を自分の体で埋めるなどという戯言は、俺の前で二度と口にするな！」"
+    },
+    {
+      "key": "story.mikhail.i1.03",
+      "value": "(息を整えて剣を下ろし、闘技場右側の壁面に折り畳まれている緊急脱出用の木板と青金石の掛け金を見つめる)\n「……そのとおりです、ミハイルおじさん。がむしゃらに体で耐えると言い張っていたら、おじさんは絶対に私を信じてくれませんよね。\n体で受け止める代わりに、私が生きて抜け出せる退路から先に開きます！」\n(操作案内：闘技場右側の緊急退路の青金石掛け金(mikhail_retreat_latch)へ移動し、基本剣術で斬り離してください。折り畳まれた木板が降りて安全な帰還足場ができます。)"
+    },
+    {
+      "key": "story.mikhail.i1.04",
+      "value": "(青金石の掛け金が切れ、幅広の木板の橋がどんと音を立てて安全な床へと降りると、ミハイルは一瞬目を見開いてから低く息を吐く)\n「……そうだ。『死んでも耐えてみせる』などという言葉より、戻ってくる足場から先に下ろすほうが百倍ましだ。\nいいだろう、レア。お前が退路を開いておいた以上、俺も退きはせん。最後までぶつかってこい！」"
+    },
+    {
+      "key": "story.mikhail.i1.05",
+      "value": "(対錬が終わるとレアに歩み寄り、乱れたクリーム色のショールケープの縫い目を指先できちんと整え、先ほど下ろした木板橋の蝶番のねじを鋏の柄でしっかり締め直す)\n「賛成したわけじゃない。戻ってくる床を直しただけだ。\n行く先で敵の関節を縛ったり、崩れる支柱を繋ぎ止めたりする必要があるときは俺を呼べ。お前が抜け出すための縫い目の一つくらい、俺が後ろから縫い合わせてやる。」\n(システム通知：銀糸の縫合 獲得 + ミハイル支援解放 · 帰還の縫い目 1/1 保有)"
+    },
+    {
+      "key": "story.mikhail.reunion.01",
+      "value": "(救護所と帰還通路を結ぶ橋のそばに片膝をつき、ぐらついていた木製板の蝶番を銀糸とくさびでしっかり補強していたところからレアを振り返る)\n「作業台でテオとイーサンと何の実験をしていたかは聞いたぞ。自分なりの退路を探すと言い出した奴が、肝心の救護所前の橋の板ががたついているのを見もせずに走り回っていやがって。\n賛成したわけじゃない。戻ってくる床を直しただけだ。直接踏み乗って、脇の掛け金がちゃんと噛んでいるかお前の剣で一度叩いてみろ。」\n(操作案内：ミハイルが補強した帰還木板(mikhail_reunion_plank)の上に立ち、脇の点検用掛け金を基本剣術で1回攻撃してください。)"
+    },
+    {
+      "key": "story.mikhail.reunion.02",
+      "value": "「ミハイルおじさん……ありがとうございます。もう足場が少しもぐらつきません。\nおじさんが直してくださったこの床を踏んで、五人の皆さんと一緒に必ず戻ってきますから！」\n(システム通知：ミハイル支援解放 · 帰還の縫い目 1/1 保有 — 通常戦闘で方向 + H / 右スティック押し込みで呼び出せます。)"
+    },
+    {
+      "key": "story.transfer.first.01",
+      "value": "(八十回目の極意動作が完成した瞬間、鉄の職印が押される重い音とともにレアの胸元の青金石ブローチ五枚の花びらのうち一枚に赤い亀裂が刻まれる)\n「……っ！ ブローチにひびが……！\nなにこれ、公証原簿から終焉が消えたわけじゃないの？ ［被告人 R.E.A.］……私の名前で死刑宣告がそのまま移し刻まれた！」"
+    },
+    {
+      "key": "story.transfer.first.02",
+      "value": "(伝声ラッパの向こうからルカの切羽詰まった声が響く)\n「レアお姉さん！ 今さっき、救護所にいらっしゃった方の終焉の印章が消えたんですけど、分所の計測器の警報がレアお姉さんの記録剣から鳴ってるんです！ テオ兄ちゃんとイーサンおじさんがすぐ分所の作業室に戻るようにって言ってます。今すぐ軌道車の連結路を上げます！」"
+    },
+    {
+      "key": "story.invest.01_sanctuary",
+      "value": "「お姉さん、大丈夫ですか？！ 救護所のほうは今確認してきました。六年のあいだ大人たちを苦しめていた刑罰の症状が、嘘みたいにきれいに消えていました。でも、お姉さんの顔色が……！」"
+    },
+    {
+      "key": "story.invest.02a_stitch",
+      "value": "(無意識のうちに左胸のクリーム色ケープの襟元を強く握りしめ、息を荒げる)\n「ミハイルおじさんの心臓の痛みが私に来た……『運命の縫合・切断』の最後の結び目を切った瞬間、心臓を針で貫かれたようにすとんと重くなって、ブローチの一枚目の花びらにひびが入ったの。\nテオ、赦免付則にははっきり母体コアへ吸収・消滅されるって書いてあったじゃない。どうして第1の終焉・心臓破裂が私の体に刺さったの？」"
+    },
+    {
+      "key": "story.invest.02b_pendulum",
+      "value": "(腰のポーチからチクタクと音を立てて動き始めた片割れの懐中時計を取り出しながら、白く変色した左の三つ編みのひと房に触れる)\n「六年のあいだずっと止まっていた片割れの時計の秒針が……『ゼロアワー』を完成させた途端にまた噛み合って動き始めた。それに、私の髪がひと房その場で真っ白になったの。\nテオ、ユリウスおじさんの第2の終焉・急速な老化が消滅したんじゃなくて、私の時間に移りついたっていうの？」"
+    },
+    {
+      "key": "story.invest.02c_waltz",
+      "value": "(着地の構えを取った両足首が痛み、作業台の縁を手で支えてブーツの紐を見下ろす)\n「ヴァレリアお姉さんは六年ぶりに添え木なしで二本の足で立たれたのに……『グランドフィナーレ』を終えて降りた瞬間、私の両脚に鉛の塊を括りつけたみたいに刑罰の重みが移ってきたの。\nテオ、消滅特例なんて……最初からなかったの？」"
+    },
+    {
+      "key": "story.invest.02d_forge",
+      "value": "(少しかすれて嗄れた声で喉元を押さえ、苦しげに息を整える)\n「ガブリエルおじさんの声と聴力が戻った代わりに……『六時の種まき』を鳴らした瞬間、私の喉から掛け声が半分消えたの。耳の奥で冷たい鐘の音の耳鳴りが消えない。\nテオ、第4の終焉・永遠の沈黙がコアへ消滅せず、どうして私の記録剣に入ってきたの？」"
+    },
+    {
+      "key": "story.invest.02e_canvas",
+      "value": "(視界の端に滲む水彩絵の具のような白い靄を払うように目元を擦り、作業台に手を突く)\n「イリーナお姉さんが六年ぶりに両目で私の顔をはっきり見てくださった。なのに『自画像の完成』の最後の一筆を終えた途端、目の前の端っこが白い絵の具に沈むみたいに霞んだの。\nテオ、第5の終焉・失明が消えずに私の目へ移ってきたんだよね？」"
+    },
+    {
+      "key": "story.invest.03_theo",
+      "value": "(びっこを引く足で計測端末の前を手早く行き来し、波形グラフを映し出す)\n「ここ、分所の記録端末の原簿ログを見て、レア。中央公証院が宣伝していた『母体コア吸収・消滅特例』なんてものは、記録剣の設計のどこにも存在しない。\n世界の因果率は3段階極意を完全に再現したお前を元の持ち主と『同一人物』だと判定して、予定されていた終焉をお前の肉体へまっすぐ移転させたんだ。」\n(操作案内：分所の記録端末(point_route_ledger)を F / 左スティック押し込みで調べ、手がかり［移転経路 · 記録端末］を確認してください。)"
+    },
+    {
+      "key": "story.invest.04_luka",
+      "value": "「それだけじゃないんです、お姉さん。ぼく、叔父さんの作業台と五つの区画の記録を全部照らし合わせてみました。\nミハイルおじさん、うちの叔父さんのユリウス、ヴァレリアお姉さん、ガブリエルおじさん、イリーナお姉さん……五人の受刑者の方々は罪なんか犯してなかったんです！ 六年前、地下代役室でカセルが十歳の子一人に5大終焉をまとめて押し付けたとき、その子を救うために苦痛に満ちた身振りを一つずつ3段階の技として引き受けてくださった恩人たちだったんです。\nその十歳の子が……ほかならぬレアお姉さんだったんですよ。」"
+    },
+    {
+      "key": "story.invest.05_marta",
+      "value": "(マルタが震える手で屋根裏の委託台帳とレアの写し命令書を作業台の明かりの下に並べて広げる)\n「レアや、この婆さんは本当に何も知らずに渡したんだよ。でも明かりに透かしてみたら……お前が持っている写しの下端の［第3条（特例付則）］の場所は、もともと印刷されていた紙の繊維が刃先で薄く削り取られているんだねえ。\nその上にうちの時計塔分所の倉庫にあった古い鉛活字と、お前の青金石公証インクで『吸収・消滅および特別赦免』の文句を新しく刷り重ねてあるよ。それにほら、ここの台帳の［記録 #01 / 逆流前 06:25］の委託者署名を見てごらん。」\n(操作案内：作業台の上の委託台帳と写しの封印を F / 左スティック押し込みで照合してください。)"
+    },
+    {
+      "key": "story.invest.06_rea",
+      "value": "(台帳の署名と備考欄の『下書きは剣の中に』という文字を静かに見つめる)\n「……私の字だわ。小さいころから文字の最後を少し丸く結ぶ私の筆跡そのままだ。\nマルタおばあちゃんや五人の恩人の皆さんが私を騙したんじゃなかった。今朝06時30分に記憶を焼いて時間を巻き戻す直前の『昨日の私（記録 #01）』が……もともと書かれていた第3条の処分文面を刃先で削り取り、偽の赦免条項を刷って今日の私へ送ったんだ。\nでもどうして？ 昨日の私は、どうして私にまで嘘をつかなければならなかったの？ ここに書かれた『下書きは剣の中に』っていうのはどういう意味？」"
+    },
+    {
+      "key": "story.invest.07_exp1_ethan",
+      "value": "「口先だけで推測していても始まらねえ。剣の中に何が残っているかは、直接計測架台に掛けてみればわかる。\nレア、さっき俺の鍛冶場で見た刀身三節目のあの三本の基準刻みを覚えているな？ 元の印が傷まないよう剣を架台に載せて、その三節目の目盛りに作業台の計測ピンをぴったり合わせてみろ。」\n(操作案内：作業台の計測架台(calibration_mount)で F / 左スティック押し込みで刀身三節目の基準刻みに計測ピンを合わせてください。手がかり［移転経路 · コア投影刻印］が記録されます。)"
+    },
+    {
+      "key": "story.invest.08_exp1_rea",
+      "value": "(計測ピンが三節目の溝に噛み合った瞬間、記録剣コアの内部から蒼い青金石の光の基準線と途中でぷつりと途切れた波形記録が計測板の上に鮮明に投影される)\n「……この蒼い基準線を見て！ コアの中に公証インクの波形で測定目盛りがすでに保存されていたの。\n誰かが先に測ってみたんだわ。昨日の私も……この作業台で同じようにこの剣の出力を測ろうとしていたんだ！」"
+    },
+    {
+      "key": "story.invest.09_exp2_theo",
+      "value": "「昨日の記録は基準線だけ浮かび上がらせて、波形が開始点で途切れてる。一人じゃ剣を押さえながら向こう側の計測器まで操作できなかったからね！\nでも今は僕が計測器を持って、イーサンおじさんが架台を固定している。レア、お前がさっき完成させた最初の3段階スキルの発動経路を一つ、この作業台の計測器で少し休ませて（休眠させて）みるよ。この状態で前の基準標的を、お前の基本剣術で一回同じように斬ってみて！」\n(操作案内：作業台の基準標的(calibration_target)を基本剣術で1回攻撃してください。)"
+    },
+    {
+      "key": "story.invest.10_exp2_ethan",
+      "value": "(重厚な青金色の衝撃波とともに標的が大きく揺れ、計測針が20%上へと跳ね上がる)\n「見たか。ボススキルの一つの枝を維持するために分散していたお前の剣の『時間刻印出力』ひと区画分（20%）が、基本剣術の方へそのまま乗った。\nただし勘違いするなよ。この仮の休眠は終焉の除去じゃあねえから、お前のブローチの終焉の印章はそのままだし、この作業台の計測装置の外では勝手に経路を永久解放はできねえ。実戦で出力を開くなら、正式な逆公証返還の手続きを踏まなきゃならん。」"
+    },
+    {
+      "key": "story.invest.11_exp3_theo",
+      "value": "「さあ、三番目の実験だ！ 向こう側の公証院規格の反射計測板をつけて、お前の剣撃をそのまま複製してみるよ。反射板がお前の動作の軌跡と時間刻印出力をどこまで真似できるのか、そして装置を切ったあとでも記録が残るのかを確かめるんだ！」\n(操作案内：反射計測板(reflection_plate)の前で F / 左スティック押し込みで反射照合および計測器の切り離しを行ってください。)"
+    },
+    {
+      "key": "story.invest.12_exp4_theo",
+      "value": "(反射計測板の波形と公証インク原盤を照らし合わせながら実験ノートに素早くまとめる)\n「できた、三つのことが立証されたよ！\n一つ目、反射装置はお前の動作の軌跡（形式）はそっくりそのまま複製するけれど、お前が時間を燃やして積み上げた時間刻印出力は1秒たりとも複製できない。\n二つ目、反射装置を途中で切っても、原盤に押された公証記録は消えない。それに計測器を外せばお前のボススキル使用権も正常に戻る！\n(実験ノートに二つの欄を分けて書き込む)\n［観測済み：出力分散（経路ごと20%） · 刻印複製不可 · 公証記録残存］\n［未検証：五つの経路の同時予約 · カセルの万象共鳴鏡の完全複製 · 原型剣術の最終確定］\n一つの枝を休ませたことで剣側の出力は増えた。五つの枝を母体動作に束ねて回せるかはまだわからない。でもカセルの鏡が僕たちの技を真似る瞬間に斬り合わせで返還予約を掛けて、解放された時間刻印出力で原型剣術まで迎え撃てれば……五つの終焉を元の持ち主であるカセルへ返す道が開けるかもしれない！」"
+    },
+    {
+      "key": "story.invest.13_decision",
+      "value": "「昨日の私は……一人でこの計測器を押さえようとして波形が途切れたんだ。だから方法を証明しきれないまま、せめて五人だけでも生かそうと自分の名前を消す道を選んだのね。\nでも私は一人じゃない。まだ空欄が残っていることは分かってる。それでも今ここで剣を置けば、残る恩人の皆さんは明日の朝六時に処刑されてしまう。\nテオ、イーサンおじさん、マルタおばあちゃん、ルカ。自分の分を先に取り消したりしません。五人分の終焉を私の体にすべて集めたあと、みんなで一緒に検証したこの返還経路でカセルへ返して……私も必ず生きて朝の食卓へ帰ってきます！」\n(システム処理：SkillSession.Investigation.CompleteMiddleInvestigation() 呼び出し ➔ I=1 (investigation_complete) 確定および保存)"
+    },
+    {
+      "key": "story.luka.approach",
+      "value": "(軌道の上をいま出発しようとしているぜんまい貨物車を見て、癖のように爪先に力を込め無理やり飛び乗ろうとしてから、ブローチの亀裂とさきほど作業台で交わした約束を思い出し、自ら足を止めて剣を収める)\n「……だめ。前みたいに無茶して一人で飛び降りて怪我したらなんにもならない。すぐそこの信号所にルカがいるじゃない。」"
+    },
+    {
+      "key": "story.luka.signal",
+      "value": "「ルカ！ ちょっと、乗せて。」\n(操作案内：昇降場の信号所(luka_signal_post)で F / 左スティック押し込みでルカに直接信号を送ってください。)"
+    },
+    {
+      "key": "story.luka.board",
+      "value": "(信号の鐘が鳴ると、ルカが制動レバーを引いて貨物車を止め、鉄製の昇降板を安全な床の高さまでがたんと下ろしてくれる)\n「信号見ましたよ、レアお姉さん！ 一人で飛び乗らずに呼んでくれてありがとうございます。さあ、昇降板が下りきりました。こちらへお乗りください！」\n(操作案内：下りてきた貨物車の昇降板(luka_freight_platform)の上へ直接移動して乗り込んでください。)"
+    },
+    {
+      "key": "story.luka.arrive",
+      "value": "(昇降板が滑らかに動き、区画連結の出口へ到着する)\n「ありがとう、ルカ。一人で無理やり渡るときよりずっと早いし、足首も痛くない。帰るときも信号を送るね！」"
+    },
+    {
+      "key": "investigation.clue.route_ledger.summary",
+      "value": "公証原簿と委託台帳の照合記録。3段階極意を再現しても終焉は消滅せず、スキルの完成者（被告人R.E.A.）へ移転する。マルタの台帳には「記録 #01 / 逆流前 06:25」の押印とともに、レア自身の筆跡で「下書きは剣の中」というメモが残っていた。"
+    },
+    {
+      "key": "investigation.clue.route_ledger.text",
+      "value": "時計塔分所の公証原簿端末とマルタの青金石公証インク委託台帳を並べて照合した記録である。\n第一に、中央公証院が対外的に宣伝してきた「3段階登録時に母体コアへ終焉が吸収・消滅する」という特例は記録剣の回路のどこにも存在しない。世界の因果率は3段階極意を完全に再現した剣士を元の持ち主と同一人物と判定し、予定された処刑因果（終焉）を剣士の肉体（被告人R.E.A.）へと即座に移転させる。\n第二に、マルタの委託台帳にはコアと同期した青金石の公証インクで［記録 #01 / 逆流前 06:25 — 委託物：赦免任務書の封筒および青金石のオルゴール］と刻まれている。委託者の署名は「レ」の払いを丸く結ぶレア自身の筆跡であり、備考欄には「朝起きた私に笑顔で渡してください。下書きは剣の中に。」というメモが記されている。"
+    },
+    {
+      "key": "investigation.clue.route_waveform.summary",
+      "value": "刀身の三節目にある三本の基準刻みに計測ピンを合わせたところ、記録剣コアから投影された先行計測基準線と4段階剣実験の波形。スキル経路を休眠させると刻印出力が20%ずつ基本剣術に乗り、反射装置は刻印出力を複製できない。"
+    },
+    {
+      "key": "investigation.clue.route_waveform.text",
+      "value": "イーサンが鍛え上げた『青金石の記録剣（白紙刻印剣）』の刀身三節目には、同じ深さで三度刻まれた計測基準の印が残っている。作業台の計測架台ピンをこの三節目の目盛りに正確に噛み合わせたところ、唯一の回帰保存装置である記録剣コアの内部から公証インク波形で記録されていた昨日（#01）の先行計測基準線が計測板の上に投影された。昨日の波形は、一人で剣と反射板を同時に操作できなかったため開始点で途切れていた。\n今日、テオ・イーサン・レアが協力してやり遂げた4段階の剣実験によって、三つの事実が実測された：①完成させたボススキルの発動経路を一つ計測器で少し休ませると、分散していた時間刻印出力の一区画（20%）が基本剣術に上乗せされる（ただし作業台の外では任意に永久解放できない）。②反射装置は動作の軌跡（形式）だけを複製し、刀身に蓄積された時間刻印出力は1秒たりとも複製できない。③反射装置を切っても、原盤に刻まれた公証記録は消えない。"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.summary",
+      "value": "ベルベット裁縫通りの入口のタンスに掛けられた、十一歳から十六歳までの冬用コート六着と青いリボンの裁断痕。6年前、寒さに震えていた十歳のレアから『第1の終焉：心臓破裂』を代わりに引き受けた仕立て屋ミハイルの記録だ。"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.text",
+      "value": "第1区画・ベルベット裁縫通りの入口、鋏の手を持つ仕立て屋ミハイル（46歳）の裁縫室にあるタンスの中から見つかった記録と品々である。\nタンスの中には、まだ袖を通されたことのない冬用コート六着が十一歳サイズから十六歳サイズまで毎年一伸びずつ大きくなりながら並んで掛かっており、六着目のコートのポケットにはレアが今も左の側頭部に結んでいる青い絹リボンとまったく同じ織りの端切れが入っている。\n6年前、地下代役室で十歳のレアがカセルから5大終焉を無理やり注ぎ込まれ、心臓が張り裂けそうな苦痛の中で服の裾を握りしめたとき、ミハイルはその震える手の動きを銀糸の縫合3段階極意（『運命の縫合・切断』）として完成させ、レアの体にあった［第1の終焉：心臓破裂］を丸ごと自分の心臓へと移し受けた。"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.summary",
+      "value": "黄昏のぜんまい時計塔の入口の作業台に置かれた片割れの懐中時計と調律日誌。6年前、十歳のレアに片方の時計を贈り、『第2の終焉：急速な老化』を代わりに背負って一夜で白髪となった時計職人ユリウスの記録だ。"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.text",
+      "value": "第2区画・黄昏のぜんまい時計塔の入口、秒針を止めた時計職人ユリウス（52歳）の作業台で甥のルカが案内してくれた遺品とコア共鳴記録である。\n作業台のビロードの上には、レアが腰のポーチに大切にしまっている「針の止まった片割れの懐中時計」と切断面がぴったり噛み合うもう片方の真鍮製懐中時計が、塵ひとつなく磨き上げられて置かれている。\n6年前、地下代役室で十歳のレアが助けてほしいとぜんまいを巻く仕草を繰り返したとき、ユリウスはその手癖を振り子の巻き戻し3段階極意（『ゼロアワー』）として完成させ、［第2の終焉：急速な老化］を代わりに引き受けた。一夜にして白髪の老人のように衰えたあとも、彼はレアとすれ違うたびにポーチの中の時計の止まった秒針が再び噛み合って動き出していないか（終焉がその子に戻っていないか）、耳を澄ませて確かめていた。"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.summary",
+      "value": "ガラスのオペラ劇場の入口の練習室に残された、すり減ったトウシューズと床の小さな子ども用歩幅の目印線。6年前、地下の鉄格子の向こうで背伸びをしていたレアのために舞い、『第3の終焉：両脚の刑罰』を代わりに引き受けた踊り子ヴァレリアの記録だ。"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.text",
+      "value": "第3区画・ガラスのオペラ劇場の入口、壊れた靴の踊り子ヴァレリア（29歳）が過ごしていた舞台裏の練習室で確認した品々とコア刻印である。\nコルク製の添え木の横には、爪先がすり切れてほつれたプリマ時代のトウシューズが一足置かれており、練習室の板張りの床には十歳の子どもの短い歩幅に合わせて転ばずに着地する方法を教えようと引かれたチョークの目盛りがコーティングされて残っている。\n6年前、地下代役室の鉄格子の下で爪先立ちになって踏ん張っていた十歳のレアの姿を見て、ヴァレリアはその爪先立ちの動きをカーテンコールの円舞3段階極意（『グランドフィナーレ』）として完成させ、［第3の終焉：両脚の刑罰］を自身の両脚へと引き受けた。両脚が砕けて舞台に立てなくなったあとも、彼女は華麗な空中跳躍より、レアが両足で安全に着地することだけを案じていた。"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.summary",
+      "value": "青銅の大鐘楼の入口に保管された朝の鐘の楽譜と三種類の手信号手帳。6年前、光のない地下室のレアに朝を知らせようと鐘を鳴らし、『第4の終焉：永遠の沈黙』を代わりに引き受けた鐘守ガブリエルの記録だ。"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.text",
+      "value": "第4区画・青銅の大鐘楼の入口、沈黙の鐘守ガブリエル（41歳）の鐘楼管理室で確認した楽譜と筆談手帳の記録である。\n楽譜の一ページ目には『窓のない地下室の子に朝が来たとわかるよう、六時ごとに最も温かく低い響きで鳴らすこと』というメモが記されている。\n6年前、地下代役室で共鳴の暴走音に両耳を塞いで悲鳴を押し殺していた十歳のレアを救うため、ガブリエルはその身振りを共鳴鍛造3段階極意（『六時の種まき』）として完成させ、［第4の終焉：永遠の沈黙］を代わりに背負って聴力と声のすべてを捧げた。音を失ったあとも、彼は手帳の筆談と目で見える三つの手信号（開いた手のひら：停止／二本指：準備確認／下向きの手：着地・復帰）を作ってレアの足取りを守り続けた。"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.summary",
+      "value": "白いキャンバスの画廊の入口に置かれた絵の具の盛り上げスケッチブック。6年前、窓のない部屋のレアに海や花畑を描いてやり、『第5の終焉：失明』を代わりに引き受けたのち、指先だけで「十六歳になったレア」を描き続けてきた画家イリーナの記録だ。"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.text",
+      "value": "第5区画・白いキャンバスの画廊の入口、盲目の肖像画家イリーナ（34歳）の温室アトリエでルカが見せてくれたスケッチブックとコア刻印である。\n分厚い画用紙の上には、絵の具の質感と凹凸だけで輪郭を触って確かめられる点字式の肖像画が何十枚も綴じられている。題名はすべて『生きて十六歳になったレア』であり、笑う顔だけでなく眉をひそめたり涙ぐんだりする顔まで温かい筆致で描かれている。\n6年前、窓のない地下代役室で宙に指で光を描いていた十歳のレアを生かすため、イリーナはその手の動きを余白の切り抜き3段階極意（『自画像の完成』）として完成させ、［第5の終焉：失明］を自身の両目へと引き受けた。"
+    },
+    {
+      "key": "investigation.clue.contract_original.summary",
+      "value": "昨日のレア（記録 #01）がコア深層に封印していた大公証官カセルの『第5号秘伝動作公証回収命令書（原本）』。第3条には特別赦免ではなく、五つの終焉が集まり次第、被告人R.E.A.を大法廷地下『永久剥製棺』へ永久凍結隔離せよという処分が記されている。"
+    },
+    {
+      "key": "investigation.clue.contract_original.text",
+      "value": "五人の恩人の終焉がすべてレアに集まったあと（C=5）、記録剣コアの深層保管庫から出力された大公証官カセルの職印押印本『第5号秘伝動作公証回収命令書（原本）』である。\n昨日のレア（#01）が写しから刃先で削り取って隠していた原本［第3条（処分）］の実際の文面は次のとおりである：\n「第3条（処分）：5大秘伝動作の3段階回収が完了し、終焉が代役被告人（R.E.A.）の肉体へ帰属し次第、被告人は大法廷地下『永久剥製棺』へ入棺させ、永久凍結隔離に処する。」\nカセルの真の目的は赦免ではなく、6年前に散らばった5大終焉の公証痕跡をレア一人の体に再び集めて地下の永久剥製棺へ生きたまま封印し、自身へ返ってくる逆公証返還の可能性を永遠に断つことだった。"
+    },
+    {
+      "key": "investigation.clue.contract_copy.summary",
+      "value": "今朝、屋根裏でマルタおばあちゃんから受け取った『第5号秘伝動作公証回収命令書（写し）』。下段の第3条には「母体コアへの終焉の吸収・消滅および5人全員への特別赦免」と記されているが、実際には昨日のレア（#01）が原本の処分条項を削り取り、分所の旧活字と青金石の公証インクで刷り直した偽造文書だ。"
+    },
+    {
+      "key": "investigation.clue.contract_copy.text",
+      "value": "#02 / D日 06:30 忘却の屋根裏にて、マルタが台帳の指示（「笑顔で手渡してください」）に従って手渡した『第5号秘伝動作公証回収命令書（写し）』である。\n文書下部の［第3条（特例付則）］欄には次のように印刷されている：\n「第3条（特例付則）：スキルの3段階公証登録が完了し次第、受刑者の終焉は大法廷母体コアへと吸収・消滅され、五人の受刑者全員に特別赦免状を発布する。」\nしかし最初の終焉移転の直後、分所作業台の明かりの下で精密鑑定した結果、この条項欄は本来印刷されていた紙の繊維が刃先で薄く削り取られており、その上に時計塔分所の倉庫にあった旧型鉛活字とレア自身の青金石の公証インク（コア同期媒質）で赦免文言を刷り重ね、逆流の先まで保存させた偽造文書であることが判明した。"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.title",
+      "value": "終焉原簿の移転記録および #01 委託台帳鑑定書"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.summary",
+      "value": "3段階極意の再現時、受刑者の終焉はコアに消滅せず技の完成者（被告人R.E.A.）の肉体へ強制移転される。マルタの台帳（記録 #01 / 逆流前 06:25）と写し第3条の旧活字の痕跡から、時間を巻き戻す直前の「昨日のレア」が自ら赦免付則を偽造して今日のレアを送り出したことが立証された。"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.body",
+      "value": "［コア原簿索引 #101 — 終焉移転および委託記録の照合］\n1. 虚偽の消滅特例の正体：中央公証院が流布していた「記録剣3段階登録時に母体コアへ終焉を吸収・消滅」は、代役剣士に疑念を抱かせず極意を完成させるための制度的欺瞞である。終焉原簿（CoreRecord.ledger）は3段階極意が再現され次第、元の持ち主（恩人）の終焉所有権を被告人R.E.A.（レア）へと移転登録する。\n2. 6年前の救済経路：五人の恩人は犯罪者ではなく、6年前に大公証官カセルが十歳の無刻印の宿主の子（レア）へ強制注入した5大終焉を、一つずつ3段階の技として分け持って引き取った保護者たちである。\n3. 偽造当事者の確定：屋根裏の委託台帳にある［記録 #01 / 逆流前 06:25］の項目は、コアに同期された青金石の公証インクで記されており、24時間大逆流の先まで保存された。署名の筆跡はレア本人であり、昨日のレアは今朝の自分が赦免特例を信じて恩人たちの技を採録するよう原本第3条を削り取って特別赦免付則を刷り重ねたのち、「下書きは剣の中に」という手がかりを残した。"
+    },
+    {
+      "key": "investigation.record.core_waveform.title",
+      "value": "コア先行計測基準線および4段階剣実験の結果報告"
+    },
+    {
+      "key": "investigation.record.core_waveform.summary",
+      "value": "刀身三節目の基準刻みから、昨日（#01）が途中で止まった先行計測基準線が投影された。今日テオ・イーサンと行った4段階剣実験を通じて「発動経路1つ休眠で時間刻印出力+20%解放」「反射装置は時間刻印を複製不可」「装置終了後も公証記録が残存」が立証され、これをもとにカセルへ5大終焉を一括で返す逆公証返還の仮説が立てられた。"
+    },
+    {
+      "key": "investigation.record.core_waveform.body",
+      "value": "［コア波形索引 #102 — 白紙刻印剣の出力分散および逆公証仮説］\n1. 先行計測基準線（伏線 ①・②）：記録剣の刀身三節目に同じ深さで三つ刻まれた印に作業台の計測ピンを合わせたところ、コア内部に保存されていた昨日の青金石波形基準線が計測板へ投影された。昨日は協力者なしで一人計測器を押さえようとして開始点で波形が途切れたが、今日はテオとイーサンの協力によって全4段階の計測を完遂した。\n2. 立証された三つの物理法則（観測済み）：\n- 出力分散（1経路あたり 20%）：完成した3段階恩人スキルの発動経路を一つ空けるごとに、そのスキルを維持するために分散していた追加の時間刻印出力が 20% → 40% → 60% → 80% → 100% へと解放され基本剣術に宿る（作業台の外では正式な返還予約手順でのみ解放可能）。\n- 時間刻印の複製不可：公証院の反射装置は剣術の外形軌跡こそ100%複製するものの、使用者が時間を燃やして自ら剣を振るい積み上げた物理的な『時間刻印出力』は、ただの一秒も複製できない。\n- 公証記録の残存：反射装置を途中で閉じたり切ったりしても、すでに原盤と噛み合って押された公証記録は削除されない。\n3. 残る未検証課題（未検証）：五つの経路の同時返還予約（R=1~5）、カセルの母体兵器『万象共鳴鏡』を相手にした実戦での斬り合わせ、そして最後の六番目の原型動作（カセル零式）による一括確定が成立するかは、大法廷最上層での実戦で証明しなければならない。"
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.title",
+      "value": "第1刻印・完全共鳴 — 鋏の手を持つ仕立て屋ミハイルと戻るための床"
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.summary",
+      "value": "6年前、十歳のレアの震える衣の裾を縫合の剣術で包み込み、『第1の終焉：心臓破裂』を代わりに引き受けたミハイル。体で刃を受けるのではなく、基本の斬撃で先に掛け金を断って脱出用の木板を下ろした今日のレアを見て、彼は救護所と帰還通路の床板を自ら補強し、戦闘支援『帰還の縫い目』を託した。"
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.body",
+      "value": "［恩人刻印記録 #01 — ミハイル（46歳 / 銀糸の縫合 · 第1の終焉：心臓破裂）］\n- 6年前の記憶の断片：氷のように冷たい地下代役室で十歳のレアが張り裂けそうな胸を押さえて襟元を合わせようとしたとき、仕立て屋のミハイルは子どもに青いリボンとマントを掛けてやり、その手振りを『銀糸の縫合』3段階極意として完成させて心臓破裂の死刑宣告を代わりに背負った。その後6年間、彼は一度も会えない子どもの背丈を目見当で測り、毎年新しいコートを仕立ててタンスに掛けていた。\n- 今日の変化と『帰還の縫い目』：ミハイルにとって何より耐えがたかったのは、穴だらけの計画をレアが自分の体で埋めようとする態度だった。今日のレアが無理をして攻撃を受け止める代わりに、まず脇の掛け金を断ち切って降りるための足場（退路）を確保すると、ミハイルは「賛成したわけじゃない。戻ってくる床を直しただけだ」と告げ、帰還通路のがたついた板をその手で締め直しておいた。"
+    },
+    {
+      "key": "investigation.record.imprint_julius.title",
+      "value": "第2刻印・完全共鳴 — 秒針を止めた時計職人ユリウスと往復の時間"
+    },
+    {
+      "key": "investigation.record.imprint_julius.summary",
+      "value": "6年前、十歳のレアのぜんまいを巻く手つきを振り子の歩法として完成させ、『第2の終焉：急速な老化』を代わりに背負ったユリウス。目の前の追撃の好機を手放し、約束した復帰時刻に正確に足場へ戻ってきた今日のレアに、彼は初めて自分の片割れの懐中時計を開いて見せ、帰る時刻をともに合わせる戦闘支援『帰還の刻』を託した。"
+    },
+    {
+      "key": "investigation.record.imprint_julius.body",
+      "value": "［恩人刻印記録 #02 — ユリウス（52歳 / 振り子の巻き戻し · 第2の終焉：急速な老化）］\n- 6年前の記憶の断片：時計職人のユリウスは地下代役室の十歳のレアに片割れの懐中時計を手渡し、助かりたいとぜんまいを巻いていた子どもの手癖を『振り子の巻き戻し』3段階極意として完成させて急速な老化の終焉を代わりに引き受けた。30回体得の段階では時計ケースだけが共鳴して止まったままだった秒針が、80回極意完成の瞬間にようやく再び噛み合って動き出し、終焉がレアへと移った。\n- 今日の変化と『帰還の刻』：時間が足りなければレアが自分の命を最後の順へ後回しにするのではと案じていたユリウスは、今日のレアが攻撃への欲を捨て、定めた復帰時刻に足場へ戻ってきたことで、ついに自分の分の片割れの時計を開いて見せた。今や二つの半割れ時計は、踏み込む時間だけでなく、生きて戻ってくる往復の時間をともに刻んでいる。"
+    },
+    {
+      "key": "investigation.record.imprint_valeria.title",
+      "value": "第3刻印・完全共鳴 — 壊れた靴の踊り子ヴァレリアと安全な着地"
+    },
+    {
+      "key": "investigation.record.imprint_valeria.summary",
+      "value": "6年前、鉄格子の向こうで爪先立ちになっていた十歳のレアの仕草を回転剣舞として完成させ、『第3の終焉：両脚の刑罰』を代わりに引き受けたヴァレリア。無謀な空中追撃をやめ、安全足場とルカの昇降板による救助を受け入れたレアの両足首を確かめながら、彼女はレアの着地を守る戦闘支援『着地の円舞』を約束した。"
+    },
+    {
+      "key": "investigation.record.imprint_valeria.body",
+      "value": "［恩人刻印記録 #03 — ヴァレリア（29歳 / カーテンコールの円舞 · 第3の終焉：両脚の刑罰）］\n- 6年前の記憶の断片：オペラ劇場のプリマだったヴァレリアは、地下代役室の鉄格子の下で爪先立ちになって耐えていた十歳のレアのために舞い、その動きを『カーテンコールの円舞』3段階極意として完成させて両脚が砕ける刑罰を代わりに引き受けた。\n- 今日の変化と『着地の円舞』：痛む脚でも人の助けを借りず一人完璧に着地しようと無理をするレアの後ろ姿は、ヴァレリアにとって一番の痛みだった。今日のレアが華やかな空中での締めを諦め、安全な床へ降り立ってルカの昇降板での救助を素直に受け入れると、ヴァレリアはレアのブーツの紐をしっかりと結び直し、生きて帰るための選択を温かく認めた。"
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.title",
+      "value": "第4刻印・完全共鳴 — 沈黙の鐘守ガブリエルと三つの手信号"
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.summary",
+      "value": "6年前、共鳴の暴走音の中で両耳を覆っていた十歳のレアを救って『第4の終焉：永遠の沈黙』を代わりに背負ったガブリエル。聞こえるふりをして無理に戦うのをやめ、先に停止を願い出たレアとともに、彼は音が消えた戦場でも互いを守れる三つの視覚手信号と戦闘支援『帰還の鐘撃』を完成させた。"
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.body",
+      "value": "［恩人刻印記録 #04 — ガブリエル（41歳 / 共鳴鍛造 · 第4の終焉：永遠の沈黙）］\n- 6年前の記憶の断片：光のない地下室の十歳のレアへ毎朝六時の鐘の音を鳴らしてくれていたガブリエルは、両耳を塞いで震えていた子どもの仕草を『共鳴鍛造』3段階極意として完成させ、自らの聴力と声を捧げた。\n- 今日の変化と『帰還の鐘撃』：鐘楼のくぐもった共鳴の中で、レアが聞こえないのに聞こえるふりをして戦い続けるのをやめ、身振りで停止を求めると、ガブリエルは手帳を開いて［開いた手のひら：停止 / 二本指：準備確認 / 下向きの手：着地・復帰］という三つの視覚信号をともに定めた。80回の極意完成によってガブリエルの声が戻り、沈黙の終焉がレアへと移ったあとも、二人はレアがいつでも目で確かめて戻れるようにと取り決めた手信号を使い続けている。"
+    },
+    {
+      "key": "investigation.record.imprint_irina.title",
+      "value": "第5刻印・完全共鳴 — 盲目の肖像画家イリーナと笑わなくてよい顔"
+    },
+    {
+      "key": "investigation.record.imprint_irina.summary",
+      "value": "6年前、宙に光を描いていた十歳のレアの手振りを筆遣いの剣術として完成させ、『第5の終焉：失明』を代わりに引き受けたイリーナ。口元を探る指先の前で作り笑いをせず「今日は怖いです」と打ち明けたレアに、彼女は「その顔で帰ってきてもいいのよ」と答え、戦闘支援『帰還の彩色』を手渡した。"
+    },
+    {
+      "key": "investigation.record.imprint_irina.body",
+      "value": "［恩人刻印記録 #05 — イリーナ（34歳 / 余白の切り抜き · 第5の終焉：失明）］\n- 6年前の記憶の断片：窓のない部屋の十歳のレアに海や花畑を描いて見せてくれた肖像画家イリーナは、子どもが宙に絵を描いていた動きを『余白の切り抜き』3段階極意として完成させ、両目の視力を捧げた。それから6年間、彼女は絵の具の厚みだけで「生きて十六歳になったレア」の顔をキャンバスに刻み続けてきた。\n- 今日の変化と『帰還の彩色』：大人たちを安心させようと、いつも口角を上げて笑ったふりをしていたレアが、今日はイリーナの指先の前で笑うことなく「今日は怖いです」と本音を打ち明けた。イリーナは少し黙ったあと手を下ろし、「その顔で帰ってきてもいいのよ」と答えた。80回の完成で6年ぶりに視力を取り戻したイリーナが両目で最初に目にしたのは、作り笑いを脱ぎ捨てても凛と立っている今日のレアだった。"
+    },
+    {
+      "key": "investigation.record.original_and_copy.title",
+      "value": "第5号秘伝動作公証回収命令書 — 原本（剥製処分） vs 写し（特別赦免） 全文照合"
+    },
+    {
+      "key": "investigation.record.original_and_copy.summary",
+      "value": "コア深層に保管されたカセルの原本命令書と、今朝屋根裏で受け取った偽造の写しの第3条実物照合。原本第3条には五つの終焉の回収直後に被告人（R.E.A.）を大法廷地下『永久剥製棺』へ入棺・永久凍結隔離するよう明記されており、昨日のレア（#01）がこの一文を刃先で削り取り「母体コアへの吸収・消滅および五人の受刑者への特別赦免」付則を刷り重ねたことが確認される。"
+    },
+    {
+      "key": "investigation.record.original_and_copy.body",
+      "value": "条項区分\tコア深層保管本（原本）\n『第5号秘伝動作公証回収命令書（原本 · 中央公証院極秘封印）』\t屋根裏交付本（偽造された写し）\n『第5号秘伝動作公証回収命令書（写し · 時計塔分所交付本）』\f文書番号および発令者\t• 文書番号：中央公証院極秘執行第5-00号（原本）\n• 発令および職印：大公証官カセル（Archon Cassel）直筆署名 · 青金局長押印\n• 受命者：時計塔分所所属 代役公証剣士 被告人 R.E.A.（レア）\t• 文書番号：中央公証院特例執行第5-00号（写し）\n• 発令および職印：大公証官カセル職印影（下端余白に時計塔分所の旧活字による再押印痕）\n• 受命者：時計塔分所所属 公証剣士 レア（Rea）\f第1条（目的）\n（原本・写し同一）\t本命令書は、6年前に大法廷地下代役室より分散流出した5大死刑因果（第1の終焉：心臓破裂、第2の終焉：急速な老化、第3の終焉：両脚の刑罰、第4の終焉：永遠の沈黙、第5の終焉：失明）を保有する5名の時限受刑者（ミハイル・ユリウス・ヴァレリア・ガブリエル・イリーナ）から、各固有の秘伝動作を『青金石の記録剣』に3段階極意まで採録・回収することを目的とする。\t本命令書は、6年前に大法廷地下代役室より分散流出した5大死刑因果（第1の終焉：心臓破裂、第2の終焉：急速な老化、第3の終焉：両脚の刑罰、第4の終焉：永遠の沈黙、第5の終焉：失明）を保有する5名の時限受刑者（ミハイル・ユリウス・ヴァレリア・ガブリエル・イリーナ）から、各固有の秘伝動作を『青金石の記録剣』に3段階極意まで採録・回収することを目的とする。\f第2条（執行期限）\n（原本・写し同一）\t回収期限は翌日（D+1日）早朝 06時 00分定刻の大鐘楼打鐘までとする。期限内に3段階極意の採録が完了しない受刑者は、ただちに区画隔離ののち現場にて刑を執行する。\t回収期限は翌日（D+1日）早朝 06時 00分定刻の大鐘楼打鐘までとする。期限内に3段階極意の採録が完了しない受刑者は、ただちに区画隔離ののち現場にて刑を執行する。\f第3条（核心的相違）\n［改変箇所を強調］\t【原本第3条（処分） — 刃先で削り取られた原文】\n「第3条（処分）：【5大秘伝動作の3段階回収が完了し、終焉が代役被告人（R.E.A.）の肉体へ帰属し次第、被告人は大法廷地下『永久剥製棺』へ入棺させ、永久凍結隔離に処する。】」\t【偽造された写し第3条（特例付則） — 分所の旧活字・公証インクで刷り重ねられた文面】\n「第3条（特例付則）：【スキルの3段階公証登録が完了し次第、受刑者の終焉は大法廷母体コアへと吸収・消滅され、五人の受刑者全員に特別赦免状を発布する。】」\f物理鑑定の注釈\t• コア深層原本の保存状態：損傷なし（#01 / D日 06:30直後、昨日のレアが屋根裏で最初に読んだ実際の命令書）。\t• 写し下端の繊維鑑定：原本の［処分：被告人（R.E.A.）の肉体へ帰属し次第 … 大法廷地下『永久剥製棺』へ入棺させ、永久凍結隔離に処する］という箇所を刃先で削り取り、昨日のレアが記録 #01 / D+1日 06:15~06:25に、分所の旧活字と青金石の公証インクで［特例付則：大法廷母体コアへと吸収・消滅され、五人の受刑者全員に特別赦免状を発布する］を刷り重ねている。"
+    },
+    {
+      "key": "investigation.record.preservation_order.title",
+      "value": "大法廷地下『永久剥製棺』入棺命令および記録 #01 残響執行指示"
+    },
+    {
+      "key": "investigation.record.preservation_order.summary",
+      "value": "カセルの回収の目的は赦免ではなく、散らばった5大終焉をレア一人の体に集めて地下『永久剥製棺』へ永久隔離し、自分へ返る逆公証返還の可能性を根絶やしにすることだった。さらにはコア内部に、昨日のレア（#01）が今日のレアを最上層のカセルのもとへ行かせず地下剥製棺へ強制収容させるために仕込んだ「残響執行命令」も併せて登録されている。"
+    },
+    {
+      "key": "investigation.record.preservation_order.body",
+      "value": "［コア深層極秘命令 #202 — 永久剥製棺の隔離構造および残響強制執行コード］\n1. 大公証官カセルの永久剥製設計：\n- 終焉の所有権は通常の死や単なる敗北では消滅せず、元の持ち主へ自動逆流することもない。ただ「3段階の完全動作による移転」または「原型剣術（カセル零式）まで結合された最終逆公証確定」によってのみ変わる。\n- カセルは、6年前に五人の市民が分け持っていった自らの5大終焉がいつか原型動作と結びつき、自分の肉体へ逆公証返還される可能性を恐れていた。そこで執行日（D+1日 06:00）をもって白紙の宿主であるレア（R.E.A.）に五つのスキルをすべて採録・回収させたのち、最上層の審判席ではなく大法廷地下『永久剥製棺』へ生きたまま凍結入棺させ、因果回路を永久に停止させようとした。\n2. 昨日のレア（#01）がコアに仕込んだ「残響執行命令」：\n- 原本命令書の下部にはカセルの命令だけでなく、昨日のレアがD+1日 06:20にコア防衛機構へ直接刻み込んだ［自律執行命令：記録 #01の残響］が付記されている：\n- 「今日（#02）の私が五つの終焉をすべて回収（C=5）し大法廷の中央ホールへ進入した場合、コアの記憶投影体（残響）を昇降機前に実体化させて最上層審判席への通行を封鎖遮断し、地下『永久剥製棺』の階段へと強制連行すること。」\n- 昨日のレアはなぜカセルに立ち向かう代わりに、今日の自分を剥製棺へ閉じ込めようとしたのか？ その理由は次の第3段階の保管記録（#01 失敗記録および破棄された下書き）に残されている。"
+    },
+    {
+      "key": "investigation.record.record_01_failure.title",
+      "value": "コア刻印映像［記録 #01］ — 閉ざされた隔離扉と有効剣撃120回、一人では終えられなかった計測"
+    },
+    {
+      "key": "investigation.record.record_01_failure.summary",
+      "value": "昨日のレア（#01）は原本命令書の剥製の真実を隠さず恩人たちに正直に助けを求めたが、レアが生きたまま剥製棺に埋められるという真実を聞いたミハイルと恩人たちは採録を拒み、自ら区画隔離扉を内側から閉ざして鍵を掛けた。閉まった扉の前で一人振り下ろした無名の基本剣撃120回と、夜明けの作業台で開始点だけを残して途切れた単独計測波形、そして六時の処刑の鐘の音がコアにそのまま記録されている。"
+    },
+    {
+      "key": "investigation.record.record_01_failure.body",
+      "value": "スチル #0\n#01 / D+1日 06:25\n（オルゴール開封）\n暗い作業台の上で、マルタおばあちゃんが保管してきた小さな八角形の『青金石のオルゴール』の蓋が開き、温かい青い共鳴の波紋がひと筋立ちのぼる。\n［青金石オルゴール音声記録 — 記録 #01 / 逆流5分前］\n昨日のレア：「明日の私は、温かいものを食べられたらいいな。」\fスチル #1\n#01 / D日 昼〜夜\n（真実を携えて求めた助け）\nベルベット裁縫通りの織物工房の前。昨日のレア（#01）が、赦免条項のない原本命令書（第3条・永久剥製棺への入棺）と急いで描いた逆公証の下書きを両手に握り、ミハイルと恩人たちの前へ差し出している。\n［コア刻印記録 #01 / D日 昼 — 偽造していない原本を持って訪れた昨日］\n昨日のレア：「命令書の第3条には、私の体に終焉を集めて地下の剥製棺に閉じ込めると書いてあります。でも私がこの剣でカセルに返す道を探してみせます。だから逃げないで、どうか技を見せてください！ 私と一緒に方法を探してください！」\fスチル #2\n#01 / D日 夜\n（自ら鍵を掛けた隔離扉）\n「レアが自分たちの代わりに永久剥製棺へ生き埋めにされる」という原本の真実を聞いたミハイルは剣を抜かないまま、鋏で区画隔離扉の内側の掛け金紐を一太刀で断ち切る。分厚い鉄の隔離扉が落ち、昨日のレアと恩人たちの間を隔てる。\n［コア刻印記録 #01 / D日 夜 — 採録を拒んで自ら扉を閉ざした恩人たち］\nミハイル（隔離扉の向こうから）：「お前があの棺に入ると知っていながら、技を譲り渡す大人はここには誰一人いない、レア。どうか背を向けて逃げろ。」\n（五人の恩人は、記録剣に自分たちの動きを一節たりとも採録させないよう対錬そのものを拒んだまま、処刑場行きの護送車に乗り込んだ。）\fスチル #3\n#01 / D日 深夜\n（有効剣撃120回の由来）\n固く閉ざされた鉄の隔離扉の外側。一人取り残された昨日のレアが涙を飲み込み、鍵の掛かったドアノブと鉄扉へ向けて無名の基本剣術（ひよっこ斬り）ばかり何百回も繰り返し振り下ろしている。刃先が割れ、コアのカウンターに［基本剣術 有効記録：120回 / 習得した恩人スキル：0個］と刻まれる。\n［コア刻印記録 #01 / D日 深夜 — 閉ざされた隔離扉と有効剣撃120回］\n昨日のレア：「開けてください！ 一人じゃ検証すらできないんです！ お願いです、ミハイルおじさん！ ユリウスおじさん……！」\n（閉ざされた隔離扉の前で一人振り下ろした何百回もの斬撃のうち、有効打撃120回だけがコアに刻まれた。ついぞどの恩人の技も1段階すら採録できなかった。）\fスチル #4\n#01 / D+1日 05:50~06:00\n（一人では終えられなかった計測）\n夜明けのがらんとした時計塔分所の作業台。昨日のレアが割れた剣の三節目に基準の刻みを三つ彫って架台に掛け、コア投影の基準線を浮かび上がらせたものの、片手で揺れる刀身を押さえながら腕の届かない向こう側の反射計測板レバーへ向かって虚しく手を伸ばしている。出力分散波形が開始点だけ打たれたまま宙でぷつりと途切れ、窓の外から早朝06時の処刑を告げる大鐘楼の鐘の音が鳴り響く。\n［コア刻印記録 #01 / D+1日 06:00 — 一人では終えられなかった計測と処刑の打鐘］\n（片手で揺れる刀身を押さえながら同時に向かい側の反射計測板を操作することはできなかった。完成したボススキルのスロットすら一つもなかったため、出力分散波形は開始点だけ刻んで宙で途切れた。）\n［外部音響記録：D+1日 06:00 — 中央公証院 5名受刑者 処刑の打鐘］\fスチル #5\n#01 / D+1日 06:05\n（自分の生存は消すという一般化）\n処刑の鐘が止んだ作業台。昨日のレアが途切れたコア投影波形と下書きの最後の欄を見下ろし、青金石のペンを持ち直す。\n［コア刻印記録 #01 / D+1日 06:05 — 記憶焼却直前の結論］\n昨日のレア（独白）：「私がこの剥製命令を知っているかぎり、次の私も大人たちの前で嘘はつけない。本当のことを話して助けてと縋りついて……またあの人たちを扉に鍵掛けさせるだけだ。証明もできていない自分の生存まで欲張ったら、また五人を殺すことになる。」"
+    },
+    {
+      "key": "investigation.record.discarded_draft.title",
+      "value": "原本裏面の注記［破棄された生存下書き］ — 二重線で消された［レア生存］"
+    },
+    {
+      "key": "investigation.record.discarded_draft.summary",
+      "value": "マルタおばあちゃんの台帳にあった「下書きは剣の中」が指していた正体。原本保管本の裏面には今日テオと描いたのとまったく同じ逆公証返還の矢印が描かれているものの、最終結果欄の［レア生存］には二重線が引かれて消されており、「返還の可能性あり / 実戦確認不可 / 不採用」と記されている。真実を打ち明けて助けを求めたところ恩人たちが扉に鍵を掛けて処刑に向かったため、昨日のレアは「次の試みでも自分の生存は消す」と一般化してしまったのだ。"
+    },
+    {
+      "key": "investigation.record.discarded_draft.body",
+      "value": "================================================================================\n ［コア深層保管文書の裏面注記 — マルタ委託台帳備考：「下書きは剣の中に」］\n 作成時刻：記録 #01 / D+1日 06:08（24時間大逆流の実行 22分前）\n 作成者：時計塔分所 公証剣士レア（R.E.A.）\n================================================================================\n\n ■ 1. 因果移転および逆公証返還の仮説図式（今日テオ・レアが描いた経路と同一）\n\n   ［大公証官カセル（元所有者 · 母体剣術零式）］\n        │  （6年前に強制注入）\n        ▼\n   ［十歳のレア（白紙の器）］ ──（3段階の技で1つずつ分割引き受け）──▶ ［五人の恩人（受刑者5人）］\n        ▲                                                                   │\n        └──────────（今日の3段階極意の採録 · 5大終焉を回収）────────────────┘\n        │\n        ▼  ［仮説段階：万象共鳴鏡との斬り合わせ予約（R=1~5）+ 時間刻印解放 + 原型動作確定］\n   ［大公証官カセルへ5大終焉を一括逆公証返還］\n        │\n        ▼\n   ┌────────────────────────────────────────────────────────────┐\n   │  最終目標結果：  ［五人の恩人全員救出］  および  ~~［レア生存］~~ │\n   │                                                  ^^^^^^^^^^^^^^ │\n   │                                     （青金石インクで二重線削除） │\n   └────────────────────────────────────────────────────────────┘\n\n ■ 2. 記録 #01 作成者の判定注記（06:08 記入）\n   • 判定：［返還の可能性あり / 実戦確認不可 / 不採用］\n   • 理由：\n     1) 単独計測の中断 — 架台の固定と反射板の同時操作が不能。出力分散の実測失敗。\n     2) 真実告知の逆効果 — 原本第3条（永久剥製棺への入棺）を知らせると、恩人たちは\n        対錬を拒み、自ら隔離扉を施錠してしまう。\n     3) 修正実行案（#02 適用）—\n        - 原本第3条を削り取り、「母体コア吸収・消滅および特別赦免」の偽造付則を刷り重ねて\n          明日の私（#02）へ交付する。\n        - 明日の私が赦免特例を信じて五つの終焉をすべて回収（C=5）すれば、\n          コアに残した私の残響が昇降機を塞ぎ、明日の私を地下『永久剥製棺』へ入棺させる。\n        - 自分の生存欄は消す。それだけが五人を確実に生かす唯一の道だ。\n================================================================================"
+    },
+    {
+      "key": "story.late.01_rea",
+      "value": "(コア端末の画面の中、二重線で消された ~~［レア生存］~~ の欄をしばらくじっと見つめてから低く口を開く)\n「……私の返事はどこにもないね。\n昨日の私も、最初から死にたかったわけじゃなかった。真実を打ち明けて助けてと叫んだら扉に鍵を掛けられてしまって……次の私には聞きもせず、一人で私の席を二重線で引いて消したんだ。」"
+    },
+    {
+      "key": "story.late.02_theo",
+      "value": "「でも、今日の僕たちは違うじゃないか、レア。昨日が一人で押さえようとして途切れたあの計測波形を、今日は僕たちが最後まで測りきったし、救護所にいる五人の恩人たちも扉を閉ざす代わりに、お前が戻ってくる床と時間と信号を先に作ってくれたんだよ！」"
+    },
+    {
+      "key": "story.late.03_ethan",
+      "value": "(黙ってレアの記録剣に流れる澄んだ青金石の色合いを見下ろし、短く付け加える)\n「……明け方の六時十分に、あの子が壊れた剣を俺の金床の上に載せたとき、たった一言だけ残した。\n明日の私に綺麗な剣気の色を残してほしいと言ったんだ。自分の生存欄を二重線で引いて消した奴が、肝心のお前が振るう剣気の色だけは綺麗に鍛えてくれと頼みやがった。」"
+    },
+    {
+      "key": "story.late.04_depart",
+      "value": "(胸元の五枚の花びらすべてに赤いひびが入った青金石のブローチを一度包み込み、テオの剣の実験ノートと仲間たちが記してくれた帰還経路をポーチにしまう)\n「うん、イーサンおじさん。大法廷の昇降機の前に立っている昨日の私に、直接会いに行って見せてあげる。\n一人では終えられなかった実験の記録も、五人が開いてくださった帰り道も、そして消されていない私の返事も、全部持って行くから。大法廷へ行こう！」"
+    },
+    {
+      "key": "trial.mikhail.enter",
+      "value": "「退路を開いておくやり方は忘れていないだろうな。お前の銀糸で俺の関節を縛るか支柱を三度固定してみろ。」"
+    },
+    {
+      "key": "trial.mikhail.verified",
+      "value": "「結び目が堅いな。次の出陣で使う帰還の縫い目を再び満たしておいたぞ。」"
+    },
+    {
+      "key": "trial.mikhail.return",
+      "value": "「襟元を整えて行け。戻ってくる床はいつでも持ちこたえてやる。」"
+    },
+    {
+      "key": "trial.julius.enter",
+      "value": "「踏み込んで斬る時刻と同じくらい、戻ってくる時刻も正確でなければならない。振り子の巻き戻しで私の動きを三度捉えてごらん。」"
+    },
+    {
+      "key": "trial.julius.verified",
+      "value": "「正確な復帰だ。君の片割れの時計に、帰還の刻をもう一度巻き直しておいたよ。」"
+    },
+    {
+      "key": "trial.julius.return",
+      "value": "「急がなくていい。君が戻ってくる時刻まで私たちが一緒に数えているのだから。」"
+    },
+    {
+      "key": "trial.valeria.enter",
+      "value": "「華やかな跳躍より大切なのは両足で無事に降り立つことよ。円舞で私の弾幕を三度弾き返してごらん。」"
+    },
+    {
+      "key": "trial.valeria.verified",
+      "value": "「見事なステップだわ、レア。あなたの着地を助ける円舞を一曲用意しておいたわよ。」"
+    },
+    {
+      "key": "trial.valeria.return",
+      "value": "「ブーツの紐はしっかり結んだ？ 怪我をせずに舞台の外へ歩いて出るのよ。」"
+    },
+    {
+      "key": "trial.gabriel.enter",
+      "value": "「[手記：私の手信号を見て共鳴鍛造で三度受け返してみろ。開いた手のひらは停止、二本指は準備だ。]」"
+    },
+    {
+      "key": "trial.gabriel.verified",
+      "value": "「[手記：正確な響きだ。お前の帰り道を開く鐘撃を一回分込めておいた。]」"
+    },
+    {
+      "key": "trial.gabriel.return",
+      "value": "「[ガブリエルが下向きの手信号（着地・復帰）を示しながら、温かいミルクの杯を指さす。]」"
+    },
+    {
+      "key": "trial.irina.enter",
+      "value": "「宙を渡るときは足元の絵の具の一筆からしっかり踏みしめるのよ。足場を踏むか障壁で弾幕を三度防いでごらんなさい。」"
+    },
+    {
+      "key": "trial.irina.verified",
+      "value": "「足取りがずいぶん落ち着いたわね。一息つける温かい色彩を一回分、パレットに残しておくわ。」"
+    },
+    {
+      "key": "trial.irina.return",
+      "value": "「怖くなったら怖い顔のまま帰ってきていいのよ、レア。待っているわ。」"
+    },
+    {
+      "key": "area.room.hub_attic",
+      "value": "拠点 · 忘却の屋根裏"
+    },
+    {
+      "key": "area.room.hub_workroom",
+      "value": "拠点 · 時計塔分所 計測作業室"
+    },
+    {
+      "key": "area.room.hub_forge",
+      "value": "拠点 · 水路の鍛冶場 / 高密度共鳴錬成炉"
+    },
+    {
+      "key": "area.room.hub_lift",
+      "value": "拠点 · 共用貨物昇降場"
+    },
+    {
+      "key": "area.room.velvet_01_entry",
+      "value": "ベルベット1号室 · 裁縫通りの入口と六着のコートのタンス"
+    },
+    {
+      "key": "area.room.velvet_02_loom",
+      "value": "ベルベット2号室 · 断ち切られた織機の回廊"
+    },
+    {
+      "key": "area.room.velvet_03_gallery",
+      "value": "ベルベット3号室 · 糸巻きの中層作業室"
+    },
+    {
+      "key": "area.room.velvet_04_arena",
+      "value": "ベルベット4号室 · 巨大織機工房最深部"
+    },
+    {
+      "key": "area.room.velvet_05_return",
+      "value": "ベルベット5号室 · 下部裁縫水路の帰還ルート"
+    },
+    {
+      "key": "area.room.velvet_06_shortcut",
+      "value": "ベルベット6号室 · 上部ベルベット天井シナジー回廊＆精鋭裁縫室"
+    },
+    {
+      "key": "area.room.hub_sanctuary",
+      "value": "拠点 · 救護所"
+    },
+    {
+      "key": "area.target.mint_candy_pickup",
+      "value": "床のミントキャンディ"
+    },
+    {
+      "key": "area.target.mint_candy_tray",
+      "value": "卓上の小皿"
+    },
+    {
+      "key": "area.target.contract_copy_envelope",
+      "value": "委託任務書の封筒"
+    },
+    {
+      "key": "area.target.breakfast_board",
+      "value": "六番目の席に押印"
+    },
+    {
+      "key": "area.target.core_terminal",
+      "value": "コア記録閲覧端末"
+    },
+    {
+      "key": "area.target.point_route_ledger",
+      "value": "記録端末"
+    },
+    {
+      "key": "area.target.marta_ledger",
+      "value": "委託台帳と写しの照合"
+    },
+    {
+      "key": "area.target.calibration_mount",
+      "value": "三節目・計測ピン"
+    },
+    {
+      "key": "area.target.calibration_target",
+      "value": "基準標的"
+    },
+    {
+      "key": "area.target.reflection_plate",
+      "value": "反射計測板"
+    },
+    {
+      "key": "area.target.ethan_grindstone",
+      "value": "イーサンの砥石作業台"
+    },
+    {
+      "key": "area.target.resonant_crucible",
+      "value": "共鳴錬成炉"
+    },
+    {
+      "key": "area.target.luka_signal_post",
+      "value": "ルカの信号所"
+    },
+    {
+      "key": "area.target.luka_freight_platform",
+      "value": "貨物昇降板"
+    },
+    {
+      "key": "area.target.mikhail_wardrobe",
+      "value": "裁縫工房のタンス"
+    },
+    {
+      "key": "area.target.mikhail_retreat_latch",
+      "value": "緊急退路の掛け金"
+    },
+    {
+      "key": "area.target.mikhail_escape_plank",
+      "value": "緊急退路の木板"
+    },
+    {
+      "key": "area.target.mikhail_reunion_plank",
+      "value": "補強木板"
+    },
+    {
+      "key": "area.target.reunion_latch",
+      "value": "点検用の掛け金"
+    },
+    {
+      "key": "area.target.mikhail",
+      "value": "ミハイル"
+    },
+    {
+      "key": "area.target.return_call",
+      "value": "分所への帰還信号"
+    },
+    {
+      "key": "area.speaker.marta",
+      "value": "マルタ"
+    },
+    {
+      "key": "area.speaker.rea",
+      "value": "レア"
+    },
+    {
+      "key": "area.speaker.mikhail",
+      "value": "ミハイル"
+    },
+    {
+      "key": "area.speaker.ethan",
+      "value": "イーサン"
+    },
+    {
+      "key": "area.speaker.theo",
+      "value": "テオ"
+    },
+    {
+      "key": "area.speaker.luka",
+      "value": "ルカ"
+    },
+    {
+      "key": "area.skip",
+      "value": "既読セリフをスキップ"
+    },
+    {
+      "key": "area.travel",
+      "value": "F / L3 · {0}"
+    },
+    {
+      "key": "area.walk",
+      "value": "足場へ移動 · {0}"
+    },
+    {
+      "key": "area.strike",
+      "value": "基本剣術 · {0}"
+    },
+    {
+      "key": "area.bout",
+      "value": "保護対錬 · {0}"
+    },
+    {
+      "key": "area.continue",
+      "value": "確認 · Enter / A"
+    },
+    {
+      "key": "area.core_next",
+      "value": "次のスチル"
+    },
+    {
+      "key": "area.core_prev",
+      "value": "前のスチル"
+    },
+    {
+      "key": "area.latch",
+      "value": "青金石の掛け金 · 基本剣術"
+    },
+    {
+      "key": "area.uses",
+      "value": "銀糸の縫合 {0}/80"
+    },
+    {
+      "key": "area.sixth",
+      "value": "朝食予約ボード 6/6"
+    },
+    {
+      "key": "area.signal",
+      "value": "昇降板降下"
+    },
+    {
+      "key": "area.help",
+      "value": "← → 移動   F / L3 調べる・出入り   J / X 剣術   Q / Y スキル   Esc ポーズ"
+    },
+    {
+      "key": "investigation.clue.route_ledger.body",
+      "value": "時計塔分所の公証原簿端末とマルタの青金石公証インク委託台帳を並べて照合した記録である。\n第一に、中央公証院が対外的に宣伝してきた「3段階登録時に母体コアへ終焉が吸収・消滅する」という特例は記録剣の回路のどこにも存在しない。世界の因果率は3段階極意を完全に再現した剣士を元の持ち主と同一人物と判定し、予定された処刑因果（終焉）を剣士の肉体（被告人R.E.A.）へと即座に移転させる。\n第二に、マルタの委託台帳にはコアと同期した青金石の公証インクで［記録 #01 / 逆流前 06:25 — 委託物：赦免任務書の封筒および青金石のオルゴール］と刻まれている。委託者の署名は「レ」の払いを丸く結ぶレア自身の筆跡であり、備考欄には「朝起きた私に笑顔で渡してください。下書きは剣の中に。」というメモが記されている。"
+    },
+    {
+      "key": "investigation.clue.route_waveform.body",
+      "value": "イーサンが鍛え上げた『青金石の記録剣（白紙刻印剣）』の刀身三節目には、同じ深さで三度刻まれた計測基準の印が残っている。作業台の計測架台ピンをこの三節目の目盛りに正確に噛み合わせたところ、唯一の回帰保存装置である記録剣コアの内部から公証インク波形で記録されていた昨日（#01）の先行計測基準線が計測板の上に投影された。昨日の波形は、一人で剣と反射板を同時に操作できなかったため開始点で途切れていた。\n今日、テオ・イーサン・レアが協力してやり遂げた4段階の剣実験によって、三つの事実が実測された：①完成させたボススキルの発動経路を一つ計測器で少し休ませると、分散していた時間刻印出力の一区画（20%）が基本剣術に上乗せされる（ただし作業台の外では任意に永久解放できない）。②反射装置は動作の軌跡（形式）だけを複製し、刀身に蓄積された時間刻印出力は1秒たりとも複製できない。③反射装置を切っても、原盤に刻まれた公証記録は消えない。"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.body",
+      "value": "第1区画・ベルベット裁縫通りの入口、鋏の手を持つ仕立て屋ミハイル（46歳）の裁縫室にあるタンスの中から見つかった記録と品々である。\nタンスの中には、まだ袖を通されたことのない冬用コート六着が十一歳サイズから十六歳サイズまで毎年一伸びずつ大きくなりながら並んで掛かっており、六着目のコートのポケットにはレアが今も左の側頭部に結んでいる青い絹リボンとまったく同じ織りの端切れが入っている。\n6年前、地下代役室で十歳のレアがカセルから5大終焉を無理やり注ぎ込まれ、心臓が張り裂けそうな苦痛の中で服の裾を握りしめたとき、ミハイルはその震える手の動きを銀糸の縫合3段階極意（『運命の縫合・切断』）として完成させ、レアの体にあった［第1の終焉：心臓破裂］を丸ごと自分の心臓へと移し受けた。"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.body",
+      "value": "第2区画・黄昏のぜんまい時計塔の入口、秒針を止めた時計職人ユリウス（52歳）の作業台で甥のルカが案内してくれた遺品とコア共鳴記録である。\n作業台のビロードの上には、レアが腰のポーチに大切にしまっている「針の止まった片割れの懐中時計」と切断面がぴったり噛み合うもう片方の真鍮製懐中時計が、塵ひとつなく磨き上げられて置かれている。\n6年前、地下代役室で十歳のレアが助けてほしいとぜんまいを巻く仕草を繰り返したとき、ユリウスはその手癖を振り子の巻き戻し3段階極意（『ゼロアワー』）として完成させ、［第2の終焉：急速な老化］を代わりに引き受けた。一夜にして白髪の老人のように衰えたあとも、彼はレアとすれ違うたびにポーチの中の時計の止まった秒針が再び噛み合って動き出していないか（終焉がその子に戻っていないか）、耳を澄ませて確かめていた。"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.body",
+      "value": "第3区画・ガラスのオペラ劇場の入口、壊れた靴の踊り子ヴァレリア（29歳）が過ごしていた舞台裏の練習室で確認した品々とコア刻印である。\nコルク製の添え木の横には、爪先がすり切れてほつれたプリマ時代のトウシューズが一足置かれており、練習室の板張りの床には十歳の子どもの短い歩幅に合わせて転ばずに着地する方法を教えようと引かれたチョークの目盛りがコーティングされて残っている。\n6年前、地下代役室の鉄格子の下で爪先立ちになって踏ん張っていた十歳のレアの姿を見て、ヴァレリアはその爪先立ちの動きをカーテンコールの円舞3段階極意（『グランドフィナーレ』）として完成させ、［第3の終焉：両脚の刑罰］を自身の両脚へと引き受けた。両脚が砕けて舞台に立てなくなったあとも、彼女は華麗な空中跳躍より、レアが両足で安全に着地することだけを案じていた。"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.body",
+      "value": "第4区画・青銅の大鐘楼の入口、沈黙の鐘守ガブリエル（41歳）の鐘楼管理室で確認した楽譜と筆談手帳の記録である。\n楽譜の一ページ目には『窓のない地下室の子に朝が来たとわかるよう、六時ごとに最も温かく低い響きで鳴らすこと』というメモが記されている。\n6年前、地下代役室で共鳴の暴走音に両耳を塞いで悲鳴を押し殺していた十歳のレアを救うため、ガブリエルはその身振りを共鳴鍛造3段階極意（『六時の種まき』）として完成させ、［第4の終焉：永遠の沈黙］を代わりに背負って聴力と声のすべてを捧げた。音を失ったあとも、彼は手帳の筆談と目で見える三つの手信号（開いた手のひら：停止／二本指：準備確認／下向きの手：着地・復帰）を作ってレアの足取りを守り続けた。"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.body",
+      "value": "第5区画・白いキャンバスの画廊の入口、盲目の肖像画家イリーナ（34歳）の温室アトリエでルカが見せてくれたスケッチブックとコア刻印である。\n分厚い画用紙の上には、絵の具の質感と凹凸だけで輪郭を触って確かめられる点字式の肖像画が何十枚も綴じられている。題名はすべて『生きて十六歳になったレア』であり、笑う顔だけでなく眉をひそめたり涙ぐんだりする顔まで温かい筆致で描かれている。\n6年前、窓のない地下代役室で宙に指で光を描いていた十歳のレアを生かすため、イリーナはその手の動きを余白の切り抜き3段階極意（『自画像の完成』）として完成させ、［第5の終焉：失明］を自身の両目へと引き受けた。"
+    },
+    {
+      "key": "investigation.clue.contract_original.body",
+      "value": "五人の恩人の終焉がすべてレアに集まったあと（C=5）、記録剣コアの深層保管庫から出力された大公証官カセルの職印押印本『第5号秘伝動作公証回収命令書（原本）』である。\n昨日のレア（#01）が写しから刃先で削り取って隠していた原本［第3条（処分）］の実際の文面は次のとおりである：\n「第3条（処分）：5大秘伝動作の3段階回収が完了し、終焉が代役被告人（R.E.A.）の肉体へ帰属し次第、被告人は大法廷地下『永久剥製棺』へ入棺させ、永久凍結隔離に処する。」\nカセルの真の目的は赦免ではなく、6年前に散らばった5大終焉の公証痕跡をレア一人の体に再び集めて地下の永久剥製棺へ生きたまま封印し、自身へ返ってくる逆公証返還の可能性を永遠に断つことだった。"
+    },
+    {
+      "key": "investigation.clue.contract_copy.body",
+      "value": "#02 / D日 06:30 忘却の屋根裏にて、マルタが台帳の指示（「笑顔で手渡してください」）に従って手渡した『第5号秘伝動作公証回収命令書（写し）』である。\n文書下部の［第3条（特例付則）］欄には次のように印刷されている：\n「第3条（特例付則）：スキルの3段階公証登録が完了し次第、受刑者の終焉は大法廷母体コアへと吸収・消滅され、五人の受刑者全員に特別赦免状を発布する。」\nしかし最初の終焉移転の直後、分所作業台の明かりの下で精密鑑定した結果、この条項欄は本来印刷されていた紙の繊維が刃先で薄く削り取られており、その上に時計塔分所の倉庫にあった旧型鉛活字とレア自身の青金石の公証インク（コア同期媒質）で赦免文言を刷り重ね、逆流の先まで保存させた偽造文書であることが判明した。"
+    },
+    {
+      "key": "story.clock.entry.01",
+      "value": "「ここが第2区画・黄昏のぜんまい時計塔です、レアお姉さん。私の叔父のユリウスが一生をかけて街の標準時と公証時計塔を調律してきた作業室が、すぐこの入口にあります。」"
+    },
+    {
+      "key": "story.clock.entry.02",
+      "value": "(腰ベルトの革ポーチから針の止まった片割れの真鍮製懐中時計を取り出し、じっと見つめる)\n「私が十歳より前の記憶をなくしたときからポーチに入っていたこの片割れの懐中時計……ルカ、もしかしてこの時計がもともと誰のものだったか知ってる？」"
+    },
+    {
+      "key": "story.clock.entry.03",
+      "value": "「もちろんです！ この作業台のビロードの上を見てみてください、お姉さん。叔父が六年前、一晩のうちに白髪のおじいさんのように衰えて帰ってきた日から、一日も欠かさず乾いた布で拭いて置いていたものがあるんです。」\n(操作案内：ユリウスの時計調律の作業台(julius_workbench)を F / 左スティック押し込みで調べてください。手がかり［ユリウス · コア刻印］が記録されます。)"
+    },
+    {
+      "key": "story.clock.entry.04",
+      "value": "(作業台の上に置かれたもう片方の懐中時計に、自分のポーチの片割れ時計の切断面をそっと合わせてみる)\n「歯車の跡まで一ミリの狂いもなくぴったり噛み合う……！\n六年前、地下代役室で私が助けてとぜんまいを巻く仕草を繰り返していたとき、ユリウスおじさんが私の手癖を振り子の歩法の極意として完成させて、代わりに『第2の終焉：急速な老化』を引き受けてくださったんだ。秒針はまだ止まっているわ。」"
+    },
+    {
+      "key": "story.clock.entry.05",
+      "value": "「叔父はお姉さんに会うたびに、その片割れ時計の秒針がまた動き出していないか、もしや老化の刑罰がお姉さんに戻っていないか、いつも耳を澄ませて確かめていたんです。\nさあ、前の振り子回廊の扉は、あの点検用の青金の留め金を記録剣で断ち切れば開きます！」\n(操作案内：正門脇の青金の留め金を基本剣術で1回攻撃して扉を開けてください。)"
+    },
+    {
+      "key": "story.clock.route.01",
+      "value": "「天井から吊り下がった真鍮の振り子が、巨大な足場みたいに一定の拍子で往復しているわ。振り子が近づいたときに基本のジャンプとダッシュで飛び乗れば、別のスキルがなくても十分渡れそう。」"
+    },
+    {
+      "key": "story.clock.route.02",
+      "value": "「そのとおりです、お姉さん！ 時計塔の基本点検通路は、通常の跳躍と基本剣術だけで渡れるように設計されています。行く手を塞ぐぜんまい仕掛けの装甲番兵は一回の連撃ごとに装甲が一層ずつ剥がれますから、落ち着いて斬り伏せてください！」\n(操作案内：大振り子の足場を渡りつつ青金の留め金2基を断ち切り、番兵と石像のウェーブを突破してください。)"
+    },
+    {
+      "key": "story.clock.route.03",
+      "value": "「ここが『逆流回廊』なのね……！ 崩れ落ちた石橋と壊れた歯車が、四拍ごとに時間を逆戻りさせるみたいに元の位置へ巻き戻って組み上がっている。」"
+    },
+    {
+      "key": "story.clock.route.04",
+      "value": "「橋が巻き戻って噛み合う拍子を読んで渡り、脇の逆流制動の掛け金を基本剣術で断ち切って固定すれば、安全な道が開く！」\n(操作案内：逆流周期に合わせて橋を渡り、青金の留め金2基を断ち切って番兵・石像・重装兵を撃破してください。)"
+    },
+    {
+      "key": "story.clock.route.05",
+      "value": "「この垂直脱進機の歯車室を登り切れば、叔父のいる最深部の文字盤前室です。反射する公証石像の金色の予告攻撃は基本パリィかダッシュで受け流してから、隙が開いたところに基本剣術を叩き込んでください！」\n(操作案内：脱進機の段差を登り、青金の留め金1基と番兵・石像を突破してください。)"
+    },
+    {
+      "key": "story.clock.route.06",
+      "value": "(最深部の対練場の扉の前で息を整え、刀身を見下ろす)\n「扉の向こうから大きくて規則正しい振り子の音が聞こえてくる。ユリウスおじさんが中で待っているわ。」"
+    },
+    {
+      "key": "story.clock.route.07",
+      "value": "「お姉さん、ここ文字盤前室の床に復帰地点を合わせておきました。準備ができたら正門を開けてお入りください！」\n(操作案内：対練場の正門(clock_arena_gate)で F / 左スティック押し込みで中に入ってください。)"
+    },
+    {
+      "key": "story.julius.i0.01",
+      "value": "(巨大な時計針のような長剣を突いて立っていた白髪のユリウスが歩みを止め、レアの腰ポーチの方へ首を傾けて静かに耳を澄ます)\n「……よかった、レア。君のポーチの片割れ時計からは、まだ何の音もしないな。止まった秒針がそのままということだ。\nそれなのに、どうしてその青金石の記録剣を手にしてこの時計塔のてっぺんまで上ってきたんだい。」"
+    },
+    {
+      "key": "story.julius.i0.02",
+      "value": "「ユリウスおじさん！ 今朝分所で受け取った回収命令書の写しを持ってきました。第3条の特例付則に書いてあるんです！ 私がおじさんの技を記録剣に3段階まで登録すれば、おじさんの終焉は大法廷母体コアへ吸収・消滅されて特別赦免を受けられるんです！」"
+    },
+    {
+      "key": "story.julius.i0.03",
+      "value": "(深く刻まれた目尻に皺を寄せ、きっぱりと首を横に振る)\n「レア、時計職人は歯車がどこへ噛み合って回るかを見誤りはしない。他人の3段階極意を完全に再現した瞬間、世界の因果は二人を同一人物と判定し、元の持ち主の終焉を技の完成者へと移してしまうんだ。\n私が六年前にお前から引き受けたこの急速な老化のぜんまいを……再び十六歳になった君の体へ巻き戻すわけにはいかない。」"
+    },
+    {
+      "key": "story.julius.i0.04",
+      "value": "「明日の朝六時の処刑の鐘が鳴るまで、私の時間は私自身が背負う。その剣で私の動きを写し取るというなら、最後の3段階の振り子だけは決して見せずにお前を帰してやる！」\n(戦闘開始：秒針を止めた時計職人ユリウスとの保護対錬)"
+    },
+    {
+      "key": "story.julius.i0.05",
+      "value": "(時計針の長剣を床に突き立て、荒く息を吐き出す。レアの記録剣コアが対錬中に見せたユリウスの1段階・歩法の軌跡を真鍮色の刻印として採録する)\n「……最後の極意は隠したのに、君の記録剣は私の最初の『振り子の歩法』の往復軌道まで読み取ったんだね。\n聞いておくれ、レア。二十九回目までは単なる歩法で、三十回目でも時計ケースが鳴るだけだ。だが八十回目の極意に触れた瞬間、止まっていた君の片割れ時計の秒針が再び動き出し、私の老化が君へ押し寄せる。」\n(システム通知：振り子の巻き戻し 獲得 — 1～5 / E・コントローラーB 選択、Q・Y 使用)"
+    },
+    {
+      "key": "story.julius.i0.06",
+      "value": "「ユリウスおじさんは救護所へ下がられた……でも、明日の朝六時までに五人を救うにはこのスキルを使わないわけにはいかない。下の逆流回廊の帰還ルートを通って戻ろう！」"
+    },
+    {
+      "key": "story.julius.i1.01",
+      "value": "(レアの首元のブローチに走った赤い亀裂をひと目で見抜き、ポーチの方へ耳を澄ませてから重い声で口を開く)\n「……ブローチにもうひびが入っているな、レア。記録剣の消滅特例が嘘で、終焉が君の体へ移ってくることを身をもって知りながら、どうして私の時計塔へ足を踏み入れたんだい。」"
+    },
+    {
+      "key": "story.julius.i1.02",
+      "value": "「ユリウスおじさん、分所の作業台でテオとイーサンおじさんと一緒に剣の実験をしてきたんです！ スキル経路を空けるたびに私の記録剣に溜まった時間刻印出力が解放されて、カセルの反射装置はその時間刻印を複製できないんです。五人分の終焉を私の体に集めたあと、カセルの原型剣術に斬り合わせで返還する仮説を立てました！」"
+    },
+    {
+      "key": "story.julius.i1.03",
+      "value": "「仮説だけでは足りないぞ、レア！ 時間が足りなくなれば、自分の命をいちばん最後の順番に回して一人残るつもりなんじゃないか！\n君が本当に生きて戻ってくる計画を立てたのかどうか、私の時計塔の動く隔壁と往復足場の上で直接証明して見せてごらん！」\n(戦闘開始：ユリウスとの往復時間検証対錬)"
+    },
+    {
+      "key": "story.julius.i1.04",
+      "value": "(対錬の中盤、ユリウスがわざと大きな隙を見せて奥へ退くと同時に、対練場中央の真鍮の隔壁扉が下り始め、右側の往復ぜんまい足場から復帰予告の鐘が鳴り響く)\n「今この隙を突いて奥へ踏み込めば、もう一太刀入れられるだろう！ だが隔壁が閉じる前にあの右の復帰足場へ戻れなければ、退路は断たれるぞ。\n選びたまえ、レア！ 目の前の一撃か、それとも君が生きて戻るための復帰時刻か！」"
+    },
+    {
+      "key": "story.julius.i1.05",
+      "value": "(ユリウスの隙へ踏み出していた足を止め、降りてくる真鍮の隔壁と右側の往復ぜんまい足場を見返す)\n「……無理にもう一太刀入れて閉じ込められたら何の意味もありません。私が決めた復帰時刻に合わせて先に帰ります！」\n(操作案内：目の前の追撃機会を見送り、隔壁が閉まる前に右側の往復ぜんまい足場(julius_return_platform)の上へ移動して復帰してください。)"
+    },
+    {
+      "key": "story.julius.i1.06",
+      "value": "(レアが攻撃への欲を捨て、正確な拍子で復帰足場の上へ戻ってくると、ユリウスは剣を収め、懐から自分自身の片割れの懐中時計を初めて取り出して開いて見せる)\n「……きっかり三秒残して戻ってきたね。目の前の一撃より、帰ってくる時刻のほうを先に守った。\nおいで、見てごらん、レア。私の片割れ時計と君の片割れ時計を並べて置いて、残りの時間を一緒に数えよう。踏み込む時間だけを測るのは特攻だが、戻ってくる時間まで一緒に測るのが私たちの共同計画だ。」"
+    },
+    {
+      "key": "story.julius.i1.07",
+      "value": "「はい、ユリウスおじさん！ 私だけが残る時間割なんて絶対に使いません。最後の合まで、私の往復の歩幅を見ていてください！」\n(戦闘再開：残りの対錬をやり遂げて勝利してください。)"
+    },
+    {
+      "key": "story.julius.i1.08",
+      "value": "(対錬が終わると、ユリウスはレアのポーチにある片割れ時計のぜんまいねじを丁寧に調律し、上部帰還路の逆流歯車周期を緩めてくれる)\n「もう一人で耐えろとは言わないよ。行く手で敵の包囲が速すぎるときは私を呼びなさい。君が抜け出して息を整えられるよう、二秒間の『帰還の刻』を私の振り子で引き留めてあげよう。」\n(システム通知：振り子の巻き戻し 獲得 + ユリウス支援解放 · 帰還の刻 1/1 保有)"
+    },
+    {
+      "key": "story.julius.reunion.01",
+      "value": "(救護所横の軌道昇降場連絡路で杖を突いて立っていたユリウスが、出発の鐘が鳴り始めた帰還軌道車と稽古用の標的を交互に見つめる)\n「分所の作業台でテオとイーサンと一緒に、逆公証の返還仮説を立てたそうじゃないか、レア。\nだが言葉ではなく行動で示しておくれ。今あの稽古用の標的をもう一度叩こうとすれば、この帰還列車の復帰時刻に遅れる。どうするつもりだい？」"
+    },
+    {
+      "key": "story.julius.reunion.02",
+      "value": "(稽古用標的に向けて上げていた剣をすぐさま収め、出発の鐘が鳴る昇降場の復帰足場へ体を向ける)\n「欲張ってもう一打ちしたりしません、ユリウスおじさん。お約束した復帰時刻に合わせて今すぐ戻ります！」\n(操作案内：標的への攻撃をやめ、救護所横の帰還列車の復帰足場(julius_reunion_platform)の上へ時間どおりに乗ってください。)"
+    },
+    {
+      "key": "story.julius.reunion.03",
+      "value": "(レアが時間どおりに復帰足場へ上がると、ユリウスはようやく懐から自分の片割れの懐中時計を取り出し、レアの片割れ時計の横に並べて開いて見せる)\n「……よし、それで十分だ。時間が足りなくなれば君自身を最後の順へ後回しにするのではないか、それが何より怖かったんだよ。\nさあ、私の片割れ時計もここに広げておこう。これからは私たちが一緒に、残りの往復時間を数えるんだ。」"
+    },
+    {
+      "key": "story.julius.reunion.04",
+      "value": "「ありがとうございます、ユリウスおじさん！ おじさんと合わせたこの往復時刻表どおりに、一秒も遅れずみんなで朝の食卓へ戻ってきます！」\n(システム通知：ユリウス支援解放 · 帰還の刻 1/1 保有 — 通常戦闘で方向 + H / 右スティック押し込みで呼び出せます。)"
+    },
+    {
+      "key": "story.clock.return.01",
+      "value": "「上部帰還路の真鍮隔壁がすごい速さで閉まっていく。さっき採録した『振り子の巻き戻し』1段階『振り子の歩法』で残像を残して突進してスイッチを叩き、1.5秒以内に再入力すれば安全な床へ巻き戻って帰れる！」\n(操作案内：振り子の巻き戻し(Q / コントローラーY)で隔壁の先のスイッチを攻撃したあと再入力し、残像位置へ安全に戻ってください。)"
+    },
+    {
+      "key": "story.clock.return.02",
+      "value": "「いい調子です、お姉さん！ 帰還路の前を守る公証縫合の重装兵たちは、振り子突進か復帰軌道ですれ違ってこそ体勢が崩れて青金石の核が開きます。核が開いたら基本剣術の連撃で分節を断ち切ってください！」\n(操作案内：clock_07~08 の帰還動線で、振り子セット ➔ 基本剣術フィニッシュの交差ループで重装兵と歯車の掛け金を突破してください。)"
+    },
+    {
+      "key": "story.clock.return.03",
+      "value": "「下部帰還水路を抜けると、そのまま時計塔の入口駅に繋がっていたのね。これでいつでもルカの昇降場へ素早く行き来できるわ！」"
+    },
+    {
+      "key": "story.clock.synergy.01",
+      "value": "「上部歯車室の近道ね！ あの巨大な歯車は速すぎてそのままじゃ渡れないけれど、『振り子の巻き戻し』で歯車が止まった短い隙にすっと近づいて、ミハイルおじさんの『銀糸の縫合』で蓋と固定枠を縫い合わせれば、安全な足場として固定できるわ！」\n(操作案内：振り子の巻き戻しで止まった歯車の隙間に近づいたあと、銀糸の縫合で蓋と固定枠(clock_synergy_seam)を縫い合わせてください。)"
+    },
+    {
+      "key": "story.clock.synergy.02",
+      "value": "「わあ、時計塔の止まった隙間を銀糸で縫って固定足場にしちゃいました！ この上部シナジー回廊の精鋭部隊さえ突破すれば、最深部前室と救護所の昇降場へ直通ですよ！」"
+    },
+    {
+      "key": "story.clock.mastery.01",
+      "value": "(三十回目の振り子復帰とともに1.5秒前の残像が残って双方向の交差斬りが炸裂し、ポーチの中の片割れ時計の金属ケースが剣の波動に反応して短く「チィン——」と共鳴音を響かせる)\n「あっ、ポーチの中の片割れ時計のケースが共鳴した……！\n(慌てて片割れ時計を取り出して覗き込み、ほっと安堵の息を漏らす)\n……ふう、秒針はまだ止まったまま。三十回の『二重の時間軸』はおじさんの歩法が私の体に馴染んだ段階なだけで、まだ急速な老化の終焉が移ってきたわけじゃないんだ。」"
+    },
+    {
+      "key": "story.clock.mastery.02",
+      "value": "(八十回目の極意『ゼロアワー』が完成して周囲の時間が二秒間止まったのち爆発した瞬間、法廷の鉄製職印の音とともにブローチの二枚目の花びらに赤いひびが走り、ポーチの中からくっきりとした「チク、タク」という音が鳴り始める！)\n「……六年間止まっていた片割れ時計の秒針が、今噛み合ってまた動き始めた……！\n(白く変色した左側の三つ編みのひと房を指先で触れながら息を呑む)\n『第2の終焉：急速な老化』が『被告人 R.E.A.』、私の時間へと確定移転したんだ。」"
+    },
+    {
+      "key": "story.clock.mastery.03",
+      "value": "(救護所に座っていたユリウスの白髪に黒々とした艶が戻り、皺の寄った手の甲にも若々しい精気が蘇る。ユリウスは震える手の甲を見つめながら低く息を漏らす)\n「……私の時計の音が止まり、君の時計が代わりに動き出したのか、レア。どうか……私たちが一緒に合わせた復帰時刻を忘れないでおくれ。」"
+    },
+    {
+      "key": "story.clock.mastery.04",
+      "value": "「髪のひと房は白くなったけれど、手首の力は少しも落ちていない。ユリウスおじさん、この蘇った秒針の音まで残らずカセルへ返してきます！」"
+    },
+    {
+      "key": "story.opera.entry.01",
+      "value": "「ここが第3区画・ガラスのオペラ劇場です、レアお姉さん。昔は毎晩ガラスドームの屋根の下で公演が開かれていたんですが、ヴァレリアお姉さんが脚を痛めてからはこの舞台裏の練習室だけ明かりが点いていたんです。」"
+    },
+    {
+      "key": "story.opera.entry.02",
+      "value": "「練習室の鏡の前にコルクの添え木が立てかけてある……ヴァレリアお姉さんはこの舞台のプリマだったんだよね？」"
+    },
+    {
+      "key": "story.opera.entry.03",
+      "value": "「ええ。それに、棚の上のトウシューズとこの板張りの床を見下ろしてみてください、お姉さん。ヴァレリアお姉さんは舞台に立てなくなったあとも、毎日ここを掃いて磨いていた場所なんです。」\n(操作案内：ヴァレリアのトウシューズ棚と練習室の床(valeria_shoes_rack)を F / 左スティック押し込みで調べてください。手がかり［ヴァレリア · コア刻印］が記録されます。)"
+    },
+    {
+      "key": "story.opera.entry.04",
+      "value": "(爪先がすり切れてほつれたトウシューズの下、床に小さな子どもの歩幅に合わせて引かれた白いチョークの着地目盛りに自分のブーツの爪先を合わせてみる)\n「この歩幅の目盛り……十歳の子どもの短い足取りにぴったり合わせてある。\n六年前、地下の鉄格子の向こうで爪先立ちになって踏ん張っていた私のために踊ってくださって、私の動きを回転剣舞の極意として完成させ、代わりに『第3の終焉：両脚の刑罰』を引き受けてくださったんだ。私が転ばずに両足で着地する方法を忘れないように……！」"
+    },
+    {
+      "key": "story.opera.entry.05",
+      "value": "「ヴァレリアお姉さんは最近も、レアお姉さんが高い場所から飛び降りるときに足首を挫かないかそればかり心配していたんです。\nさあ、客席回廊へ入るカーテン滑車の留め金を基本剣術で断ち切って中へ入りましょう！」\n(操作案内：カーテン滑車脇の青金の留め金を基本剣術で1回攻撃して扉を開けてください。)"
+    },
+    {
+      "key": "story.opera.route.01",
+      "value": "「赤いベルベットの客席の上に、ボックス席の足場が階段みたいに連なっている。派手な空中スキルがなくても、基本のジャンプとダッシュで一段ずつ踏んで登れば安全に渡れそう。」"
+    },
+    {
+      "key": "story.opera.route.02",
+      "value": "「ええ！ 無理して遠い隙間を一度に跳ぼうとせず、折り畳み式舞台橋の青金の留め金を基本剣術で断ち切って足場を下ろしながら登ってください！」\n(操作案内：ボックス席の足場を登りつつ青金の留め金2基を断ち切り、番兵と石像のウェーブを突破してください。)"
+    },
+    {
+      "key": "story.opera.route.03",
+      "value": "「天井近くに吊り下がった巨大なガラスのシャンデリアが橋みたいに並んでいる。ガラス細工がきらきらして綺麗だけど、反射する公証石像たちが通り道を見張っているわね。」"
+    },
+    {
+      "key": "story.opera.route.04",
+      "value": "「石像の攻撃を基本パリィで弾き返して隙に基本剣術を叩き込み、固定ワイヤーの掛け金を断って足場を安定させよう！」\n(操作案内：シャンデリア平板を渡りつつ青金の留め金2基を断ち切り、番兵・石像・重装兵を撃破してください。)"
+    },
+    {
+      "key": "story.opera.route.05",
+      "value": "「ようやくスポットライトのガラス屋根の上に出ましたね、お姉さん！ 夜空の下のガラスドームの向こうがヴァレリアお姉さんのいらっしゃる大舞台です。屋根の上の番兵隊だけ片付けて降りましょう！」\n(操作案内：西側ガラス屋根で青金の留め金1基と番兵・石像を突破してください。)"
+    },
+    {
+      "key": "story.opera.route.06",
+      "value": "(主舞台側面の待機席から、照明が照らす舞台中央を見つめる)\n「舞台の床の上から添え木を突いた軽やかな足音が響いている。ヴァレリアお姉さんだわ。」"
+    },
+    {
+      "key": "story.opera.route.07",
+      "value": "「待機席の床に復帰地点を開けておきましたよ、お姉さん。私は舞台下の昇降板レバーの横で待機していますから！」\n(操作案内：主舞台のベルベットカーテン(opera_arena_gate)で F / 左スティック押し込みで中に入ってください。)"
+    },
+    {
+      "key": "story.valeria.i0.01",
+      "value": "(スポットライトの下でコルクの添え木を突いて立っていたヴァレリアが細剣を手にして歩み寄り、戦う前にまずレアの茶色い革ブーツの紐と足首の構えを念入りに見下ろす)\n「……右のブーツの紐、結び目が半分ほど緩んでるわよ、レア。そんな結び方で跳び回ったら着地のときに足首から痛めるわ。\nそれにその手に握った青金石の記録剣……大人の言うことも聞かずに、本当にこの舞台まで来てしまったのね？」"
+    },
+    {
+      "key": "story.valeria.i0.02",
+      "value": "「ヴァレリアお姉さん！ 舞台裏の練習室でお姉さんのトウシューズと床に引いてあった歩幅の目盛り線を見ました。\nこの赦免任務書の写しの第3条を見てください！ 私がお姉さんの剣舞を記録剣に3段階まで登録すれば、お姉さんの両脚を押し潰している終焉が大法廷コアへ吸収・消滅されて特別赦免を受けられるんです！」"
+    },
+    {
+      "key": "story.valeria.i0.03",
+      "value": "(添え木を当てた脚に力を込め、きっぱりと微笑む)\n「馬鹿なことを言わないで、レア。踊り子は自分のステップがどんな舞台の上を踏んでいるか誰よりよく知っているのよ。\nあなたが私の回転剣舞を3段階の極意までそっくり踊り切った瞬間、私の両脚を砕いた刑罰があなたの小さな足首へとそのまま移ってしまうわ。私がどうして六年前のあの日この添え木を突いたと思っているの、もう一度あなたの脚を折らせるわけがないでしょう！」"
+    },
+    {
+      "key": "story.valeria.i0.04",
+      "value": "「添え木を突いていても、あなた一人くらい舞台の外へ送り返すステップは残っているわ。最後のカーテンコールの動きだけは、絶対にその剣に見せないから！」\n(戦闘開始：壊れた靴の踊り子ヴァレリアとの保護対錬)"
+    },
+    {
+      "key": "story.valeria.i0.05",
+      "value": "(細剣の先を床板に突き、息を整える。レアの記録剣コアが対錬中に見せたヴァレリアの1段階・回転跳躍の軌跡を青緑色の刻印として採録する)\n「……はぁ、最後のフィナーレは隠したのに、最初の『回転剣舞』の跳躍角度をその剣が盗み取ったのね。\nお願いよ、レア。三十回目までは私のお辞儀の癖が移るだけだけれど、八十回目のグランドフィナーレを完成させた瞬間、私の両脚の刑罰があなたに行くの。私は救護所へ下がっているから……どうかそのステップを最後まで踊り切らないで。」\n(システム通知：カーテンコールの円舞 獲得 — 1～5 / E・コントローラーB 選択、Q・Y 使用)"
+    },
+    {
+      "key": "story.valeria.i0.06",
+      "value": "「ヴァレリアお姉さんまで救護所へ下がられた……でも、お姉さんの両脚を取り戻して明日の夜明けの処刑を止めるには、ここで立ち止まるわけにいかない。東側屋根の帰還ルートへ出よう！」"
+    },
+    {
+      "key": "story.valeria.i1.01",
+      "value": "(レアのブローチに走った赤いひびとわずかに重くなった足取りを瞬時に見抜き、ヴァレリアの目つきが鋭くなる)\n「……レア！ あなた、もうほかの人の終焉を自分の体に移し受けたのね！ 消滅特例が真っ赤な嘘だと知りながら、私の両脚の刑罰まで持っていくために来たの？！」"
+    },
+    {
+      "key": "story.valeria.i1.02",
+      "value": "「ヴァレリアお姉さん、ただ自分の体で抱え込んで終わりにするわけじゃないんです！ 分所でテオとイーサンおじさんと剣の実験を終えてきました。五人分の技をカセルの鏡に斬り合わせで予約して時間刻印出力を解放し、元の持ち主であるカセルへ五つの終焉を一気に返還するんです！」"
+    },
+    {
+      "key": "story.valeria.i1.03",
+      "value": "「言葉だけならどんな約束だってできるわ！ あなたは昔から足首が痛くても誰にも頼らず、一人で完璧に着地しようと無茶ばかりする子だったじゃない！\n本当に人の助けを受け入れて生きて帰れる子になったのか、私の舞台の上で直接確かめてあげるわ！」\n(戦闘開始：ヴァレリアとの着地・救助受け入れ検証対錬)"
+    },
+    {
+      "key": "story.valeria.i1.04",
+      "value": "(フィニッシュ直前、ヴァレリアがわざと体勢を崩したかのように空中の不安定なシャンデリア段差へと高く跳躍する。同時に右下段の安全着地足場の横へ、ルカが補助昇降板を下ろしてよこす)\n「さあ、今ここで無茶をして宙まで追ってくれば華やかな最後の一撃を叩き込めるかもしれないわよ？ けれど足場が崩れてあなたの足首から折れることになるわ。\nどうするの、レア！ 一人で無理な空中追撃を押し通すの、それとも攻撃の好機を捨てて安全に降り立つの？！」"
+    },
+    {
+      "key": "story.valeria.i1.05",
+      "value": "(宙へ跳躍しようとしていた膝の力を抜いて剣を収め、右下段の安全な舞台足場とルカの昇降板を見下ろす)\n「……格好いい動きで勝とうとして怪我をして戻れなくなったら、何の意味もありません！ 空中追撃はやめて安全な床へ降ります。ルカ、昇降板をお願い！」\n(操作案内：無茶な空中追撃を止め、右下段の安全着地足場(valeria_safe_stage_ledge)へ降り立ったあと、ルカが下ろした補助昇降板(luka_opera_lift)に乗って上がってください。)"
+    },
+    {
+      "key": "story.valeria.i1.06",
+      "value": "(レアが攻撃の好機を未練なく捨てて安全足場に着地し、ルカの昇降板に乗って上がってくると、ヴァレリアは細剣を下げて歩み寄り、片膝をついてレアの着地した両足首とブーツの紐から手で確かめる)\n「……怪我はないわね。目の前の最後の一撃を捨てて、ルカの下ろした昇降板に乗って両足で無事に降り立ったわ。\nそうね、レア。生きて帰るために見栄えのいい動きを諦められるようになったのなら……今ならあなたの脚を信じてみられるわ。」"
+    },
+    {
+      "key": "story.valeria.i1.07",
+      "value": "「ありがとうございます、ヴァレリアお姉さん！ 怪我をせずに舞台の外へ歩いて出る最後の合までお見せします！」\n(戦闘再開：最後の合をやり遂げて対錬を締めくくってください。)"
+    },
+    {
+      "key": "story.valeria.i1.08",
+      "value": "(対錬が終わると、ヴァレリアは腰を下ろしてレアの両側のブーツの紐を絶対にほどけない踊り子の結び方でしっかり結び直してくれる)\n「空中で敵に囲まれて降り立つ場所が塞がったら私を呼んで、レア。あなたの足元を綺麗に空けてあげる『着地の円舞』一曲なら、いつでも私が踊ってあげるから。」\n(システム通知：カーテンコールの円舞 獲得 + ヴァレリア支援解放 · 着地の円舞 1/1 保有)"
+    },
+    {
+      "key": "story.valeria.reunion.01",
+      "value": "(救護所と昇降場を結ぶ高い舞台階段の段差の上で、ヴァレリアが添え木を突いて立ちながら見下ろす)\n「作業台で戻ってくる方法を見つけたんですってね、レア。\nまさかあの高い段差をまた昔みたいに誰の手も借りず一人で無理やり飛び上がろうとしてるんじゃないでしょうね？ 私がちゃんと見ているから、どうやって降りて上がってくるのか見せてごらんなさい。」"
+    },
+    {
+      "key": "story.valeria.reunion.02",
+      "value": "(段差へ向けて無理やり跳び上がろうとしていた構えを解き、安全足場へ降りてから脇で待機しているルカへ手招きする)\n「一人で無理やり跳んだりしません、ヴァレリアお姉さん。安全な床を踏んでルカの昇降板に乗って上がります！」\n(操作案内：安全着地足場を経て、ルカが下ろしてくれた救護所連結の昇降板(valeria_reunion_lift)の上へ乗ってください。)"
+    },
+    {
+      "key": "story.valeria.reunion.03",
+      "value": "(昇降板が上がって止まると、ヴァレリアは優しく微笑みながら身をかがめてレアの着地した両足を確かめ、緩んでいたブーツの紐をしっかりと結び直してくれる)\n「……よくやったわね、レア。痛む脚でも人の助けを借りず一人で完璧に着地しようと必死になるあなたの姿が、私にはいちばん怖かったのよ。\n生きて帰るために見事な跳躍を諦められる今のあなたなら、私の円舞を預けてもいいわね。」"
+    },
+    {
+      "key": "story.valeria.reunion.04",
+      "value": "「お姉さんが結んでくださったこのブーツの紐がほどける前に、五人の皆さんと一緒に自分の両足で歩いて帰ってきます！」\n(システム通知：ヴァレリア支援解放 · 着地の円舞 1/1 保有 — 通常戦闘で方向 + H / 右スティック押し込みで呼び出せます。)"
+    },
+    {
+      "key": "story.opera.return.01",
+      "value": "「東側スポットライト屋根の帰還路だわ！ 空中に吊り下がった灯籠へ向けて『カーテンコールの円舞』1段階『回転剣舞』で舞い上がれば、弾幕を払いながら高く跳躍できる！」\n(操作案内：カーテンコールの円舞(Q / コントローラーY)で空中灯籠を叩いて上昇跳躍し、向こう側の安全鉄骨へ渡ってください。)"
+    },
+    {
+      "key": "story.opera.return.02",
+      "value": "「帰還路を守る公証縫合の重装兵たちは、回転円舞の範囲でかすめないとガードが開きません！ ガードが開いたら着地と同時に基本剣術の連撃で核を斬り伏せてください！」\n(操作案内：opera_07~08 の帰還動線で、円舞セット ➔ 基本剣術フィニッシュの交差ループで重装兵と滑車の掛け金を突破してください。)"
+    },
+    {
+      "key": "story.opera.return.03",
+      "value": "「下部ガラス回廊を抜けて劇場ロビーの入口まで無事に降りてこられた。足首もなんともない！」"
+    },
+    {
+      "key": "story.opera.synergy.01",
+      "value": "「上部舞台の床が途切れていて踏み切る場所がない……でもミハイルおじさんの『銀糸の縫合』で途切れた舞台床を先に縫い合わせて安定した離着陸地点を作り、その上でヴァレリアお姉さんの『カーテンコールの円舞』で跳躍すれば、あの高いキャットウォークまで一気に登れるわ！」\n(操作案内：銀糸の縫合で途切れた舞台床(opera_synergy_seam)を縫い合わせたあと、その上でカーテンコールの円舞を使って上部キャットウォークへ跳躍してください。)"
+    },
+    {
+      "key": "story.opera.synergy.02",
+      "value": "「銀糸で踏み床を縫ってから円舞で舞い上がると、揺らぎ一つありませんね！ この上の精鋭練習室の隊員たちさえ突破すれば近道完走です！」"
+    },
+    {
+      "key": "story.opera.mastery.01",
+      "value": "(三十回目の回転跳躍とともに照明の光の柱がレアを照らして空中再入力ステップが開き、着地したレアは無意識のうちに爪先で軽くカーテンコールのお辞儀をしてから足首をわずかに振る)\n「空中で敵や灯籠をかすめるたびにもう一度跳躍できる『スポットライトステップ』が体に馴染んだ。着地するとき勝手にヴァレリアお姉さんの爪先お辞儀の癖が出ちゃう……まだ終焉が移ってきたわけじゃないんだね。」"
+    },
+    {
+      "key": "story.opera.mastery.02",
+      "value": "(八十回目の極意『グランドフィナーレ』が完成して青い刃の花びらが舞い散り、垂直の照明衝撃波が地面を叩いた直後、着地したレアの両膝が一度ぐらりと揺らぎ、ブローチの三枚目の花びらに赤いひびが刻まれる！)\n「……っ！ 着地した瞬間、両脚に鉛の塊みたいな激痛が走った……！\n『第3の終焉：両脚の刑罰』が『被告人 R.E.A.』、私のところへ移転したんだ。」"
+    },
+    {
+      "key": "story.opera.mastery.03",
+      "value": "(救護所の椅子の横に立てかけてあったコルクの添え木が床へ倒れ、六年ぶりに添え木なしで二本の足でしっかり立ち上がったヴァレリアが、震える手でカーテンの端を掴みながらその場に崩れ落ちる)\n「……私の両脚が軽くなったわ。レア、あの子……とうとう私の舞台の最後のフィナーレまで全部踊り切ってしまったのね……！」"
+    },
+    {
+      "key": "story.opera.mastery.04",
+      "value": "(剣先を床に突いて再びまっすぐ立ち上がり、しっかり結ばれたブーツの紐を見下ろす)\n「大丈夫、歩けるわ。お姉さんが結んでくださったブーツの紐が足首を支えてくれているから……この刑罰も必ずカセルに返してきます！」"
+    },
+    {
+      "key": "story.bell.entry.01",
+      "value": "「ここが第4区画・青銅の大鐘楼と共鳴音叉の地下道です、レアお姉さん。沈黙の鐘守ガブリエルおじさんが街の朝の鐘と地下共鳴水路を管理されていた場所です。」"
+    },
+    {
+      "key": "story.bell.entry.02",
+      "value": "「管理室の机の上に音叉と手垢のついた楽譜、それに分厚い筆談手帳が置いてある。ガブリエルおじさんは六年前から言葉も話せず、音も聞こえないんだよね？」"
+    },
+    {
+      "key": "story.bell.entry.03",
+      "value": "「ええ。おじさんが音を失う直前まで、毎朝夜明けに見て鳴らしていたあの朝の鐘の楽譜の最初のページを読んでみてください、お姉さん。」\n(操作案内：ガブリエルの朝の鐘の楽譜台と筆談手帳(gabriel_score_desk)を F / 左スティック押し込みで調べてください。手がかり［ガブリエル · コア刻印］が記録されます。)"
+    },
+    {
+      "key": "story.bell.entry.04",
+      "value": "(楽譜の最初のページの余白にぐっと力を込めて記されたメモを指先でなぞって読む)\n「『窓のない地下室の子に朝が来たとわかるよう、六時ごとに最も温かく低い響きで鳴らすこと。』\n……思い出した。光ひとつ入らない地下代役室で、耳が張り裂けそうな共鳴暴走音に両耳を塞いで震えていたとき、あの低くて温かい鐘の音だけが唯一の朝だった。ガブリエルおじさんが私の仕草を大鐘打撃の極意として完成させて、代わりに『第4の終焉：永遠の沈黙』を引き受けてくださったんだ。」"
+    },
+    {
+      "key": "story.bell.entry.05",
+      "value": "「音を失われたあとも、おじさんはいつも手帳と手振りで私たちの面倒を見てくださっていました。\nさあ、音叉地下道の入口の青金の留め金を基本剣術で断ち切って中へ入りましょう！」\n(操作案内：地下道入口脇の青金の留め金を基本剣術で1回攻撃して扉を開けてください。)"
+    },
+    {
+      "key": "story.bell.route.01",
+      "value": "「巨大な音叉の柱が地下道の両脇に並んでいる。柱の横の青金の留め金を基本剣術で叩いて響かせると、音波の輪が広がって隠れていた飛び石足場が目覚めるんだ！」"
+    },
+    {
+      "key": "story.bell.route.02",
+      "value": "「そのとおりです！ 特別な共鳴スキルがなくても、基本剣術で留め金を響かせれば地下道の足場が全部開きます。前を塞ぐ番兵と石像を片付けながら渡りましょう！」\n(操作案内：音叉脇の青金の留め金2基を基本剣術で攻撃して足場を目覚めさせ、番兵と石像のウェーブを突破してください。)"
+    },
+    {
+      "key": "story.bell.route.03",
+      "value": "「この音波リングの水路は、天井の小さな青銅鐘が鳴るたびに足場がくっきり浮かび上がっている。音じゃなく、床に広がる同心円の光を目で見るだけでも拍子を合わせられるわ。」"
+    },
+    {
+      "key": "story.bell.route.04",
+      "value": "「音波リングの拍子に合わせて跳躍し、水路の終わりの制動掛け金を基本剣術で断ち切って橋を固定しよう！」\n(操作案内：音波リング足場を渡りつつ青金の留め金2基を断ち切り、番兵・石像・重装兵を撃破してください。)"
+    },
+    {
+      "key": "story.bell.route.05",
+      "value": "「ここからは垂直鐘楼の螺旋階段ですよ、お姉さん！ この階段を登り切ればガブリエルおじさんがいらっしゃる最上層の打鐘室です！」\n(操作案内：垂直鐘楼の階段を登り、青金の留め金1基と番兵・石像を突破してください。)"
+    },
+    {
+      "key": "story.bell.route.06",
+      "value": "(打鐘室前の待合室の小さな木卓の上に、湯気の立つ温かいミルクが一杯置かれ、その横に指で卓を二度叩いた痕があるのを見つける)\n「温かいミルクだ……ここまで登ってきて疲れていないか心配して、ガブリエルおじさんがさっき置いてくれたんだわ。」"
+    },
+    {
+      "key": "story.bell.route.07",
+      "value": "「おじさんはお姉さんが無理をするのを一番心配なさっています。待合室に復帰地点を合わせておきましたから、準備ができたら打鐘室の扉を開けてください！」\n(操作案内：最上層打鐘室の正門(bell_arena_gate)で F / 左スティック押し込みで中に入ってください。)"
+    },
+    {
+      "key": "story.gabriel.i0.01",
+      "value": "(巨大な音叉の槌剣を手にしたガブリエルがレアを見て静かに歩み寄り、脇の卓を指で「コツ、コツ」と二度叩いて落ち着かせてから、懐の筆談手帳を開いて見せる)\n「[手記：息は整えてきたか、レア。その手に握られた青金石の記録剣を見れば、なぜこの鐘楼まで登ってきたのかわかるぞ。]」"
+    },
+    {
+      "key": "story.gabriel.i0.02",
+      "value": "(ガブリエルに見えるよう赦免任務書の写しの第3条を両手で大きく広げて見せ、はっきりと口の形と手帳で伝える)\n「ガブリエルおじさん！ この回収命令書の写しの第3条を見てください！ 私がおじさんの技を記録剣に3段階まで登録すれば、おじさんの沈黙の終焉は大法廷母体コアへ吸収・消滅されて特別赦免を受けられるって書いてあるんです！」"
+    },
+    {
+      "key": "story.gabriel.i0.03",
+      "value": "(ガブリエルが悲しげな瞳で首を横に振り、手帳の次のページをめくって見せながら、左手のひらを正面へ大きく開いて『停止』を意味する手振りを示す)\n「[手記：その鐘の音は偽りだ、レア。私の3段階の打鐘をお前の剣がそのまま鳴らし返した瞬間、私の永遠の沈黙がお前の声と両耳を呑み込む。]」"
+    },
+    {
+      "key": "story.gabriel.i0.04",
+      "value": "(手帳を閉じてしまいながら、音叉の槌剣を掲げる)\n「[手記：お前が朝の挨拶を交わす声まで失わせるわけにはいかん。最後の六時の打鐘は見せずにお前を帰してやる。]」\n(戦闘開始：沈黙の鐘守ガブリエルとの保護対錬)"
+    },
+    {
+      "key": "story.gabriel.i0.05",
+      "value": "(槌剣の柄を床に突き、片膝をつく。レアの記録剣コアが対錬中に見せたガブリエルの1段階・振動打撃の波形を黄金色の刻印として採録する)\n「[手記：最初の『振動打撃』の波動を、お前の剣が採録したか。三十回目までは少し耳がこもる程度だが、八十回目の極意に達すれば私の沈黙がお前へと移る。私は救護所へ下がっているから、どうかその響きを止めてくれ。]」\n(システム通知：共鳴鍛造 獲得 — 1～5 / E・コントローラーB 選択、Q・Y 使用)"
+    },
+    {
+      "key": "story.gabriel.i0.06",
+      "value": "「ガブリエルおじさんが残した手帳の文字が気にかかるけど……明日の早朝六時の執行を止めるには、この共鳴鍛造を身につけないわけにはいかない。下り共鳴回廊へ降りよう！」"
+    },
+    {
+      "key": "story.gabriel.i1.01",
+      "value": "(レアのブローチに走った赤い亀裂を見たガブリエルの瞳が大きく揺れる。彼は急いで手帳に文字を書きつけて差し出す)\n「[手記：ブローチにひびが入っているのか、レア！ 消滅特例が嘘だと知りながら、なぜ私の沈黙の鐘楼までやって来たんだ。]」"
+    },
+    {
+      "key": "story.gabriel.i1.02",
+      "value": "(自分の公証手帳にテオと一緒にまとめた4段階の剣実験ノートと返還の矢印を大きく広げてガブリエルの前に差し出す)\n「ガブリエルおじさん、私の手帳を見てください！ 一人で抱え込んで終わらせるつもりじゃないんです。スキル経路を空けるたびに解放される時間刻印出力で、カセルの鏡と原型剣術に斬り合わせを仕掛けて五つの終焉をカセルへ返還する道を見つけました！」"
+    },
+    {
+      "key": "story.gabriel.i1.03",
+      "value": "(ガブリエルはレアの手帳の図式をじっくり読み終えると、槌剣で床を一度響かせてから手帳を掲げる)\n「[手記：音が消えた戦場であっても、お前が無茶をせず私の信号を見られるかどうか、この打鐘室でまず確かめよう。]」\n(戦闘開始：ガブリエルとの視覚信号検証対錬)"
+    },
+    {
+      "key": "story.gabriel.i1.04",
+      "value": "(大鐘が重なり響いて打鐘室全体の共鳴圧力が跳ね上がると、周囲のすべての音が水中に沈んだようにくぐもって遮断される)\n「……っ！ 大鐘の共鳴で耳が塞がって、なんの予告音も聞こえない！\nどうしよう、聞こえない素振りを隠してこのまま勘で戦い続けるべき……？」"
+    },
+    {
+      "key": "story.gabriel.i1.05",
+      "value": "(ガブリエルの表情を見て無理に振り回していた剣を止め、首を横に振る)\n「……だめ！ 聞こえないのに聞こえるふりをして戦ったら、ガブリエルおじさんは絶対に私を信じてくれない。先に止まってほしいって手で合図を送ろう！」\n(操作案内：右側の視覚信号石板(gabriel_signal_floor)へ移動し、F / 左スティック押し込みでガブリエルにまず停止の手振り（開いた手のひら）を送ってください。)"
+    },
+    {
+      "key": "story.gabriel.i1.06",
+      "value": "(レアが剣を下ろし開いた手のひらを掲げると、ガブリエルは振り下ろそうとしていた槌剣をその場で即座に止め、安堵した表情で歩み寄り、手帳に三つの手の形を大きく描いて見せる)\n「[手記合意信号 — 音がなくても互いを守る三つの手信号]\n1. [開いた手のひら · 停止] : 共鳴過負荷および危険時、直ちに攻撃・移動を停止\n2. [二本指 · 準備確認] : 正面鐘撃の準備 — 基本パリィまたは空中下方向鐘撃に備える\n3. [下向きの手 · 着地・帰還] : 広域の響きの前に安全な床へ着地および距離復帰」"
+    },
+    {
+      "key": "story.gabriel.i1.07",
+      "value": "(ガブリエルへ向けて人差し指と中指の二本指をまっすぐ立てて『準備確認』の合図を送りながら微笑む)\n「長い言葉で説得しなくても、今はおじさんの手信号がはっきり見えます！ 約束した三つの合図で最後まで合わせましょう！」\n(戦闘再開：ガブリエルの頭上に表示される［開いた手のひら · 停止］/［二本指 · 準備確認］/［下向きの手 · 着地・帰還］の輪郭バッジを見て、残りの対錬をやり遂げてください。)"
+    },
+    {
+      "key": "story.gabriel.i1.08",
+      "value": "(対錬が終わると、ガブリエルはレアの肩を優しく叩いたあと、頭上で『下向きの手：着地・帰還』の信号を示して手帳を差し出す)\n「[手記：私の『止まれ』とお前の『止まれ』がぴったり噛み合ったな、レア。行く手で敵の盾に道を塞がれたら合図しろ。お前の帰り道を開く『帰還の鐘撃』をいつでも鳴らしてやる。]」\n(システム通知：共鳴鍛造 獲得 + ガブリエル支援解放 · 帰還の鐘撃 1/1 保有)"
+    },
+    {
+      "key": "story.gabriel.reunion.01",
+      "value": "(救護所鐘楼の休憩室で、ガブリエルがレアの前に湯気の立つ温かいミルクの杯を置き、指で卓を「コツ、コツ」と叩いて落ち着かせてから手帳を開く)\n「[手記：作業台で帰る道を見つけたと聞いたぞ。だが鐘楼や大法廷の深い共鳴の中では音が途切れることがある。聞こえないのに聞こえるふりをして無理をしないよう、今ここで私と三つの手信号を取り決めよう。]」"
+    },
+    {
+      "key": "story.gabriel.reunion.02",
+      "value": "(温かいミルクの杯を両手で包み込んでひと口飲み、ガブリエルの手帳に記された三つの手信号を読んでから手のひらを広げて見せる)\n「開いた手のひらは停止、二本指は準備確認、下向きの手は着地・帰還……はい、ガブリエルおじさん！ 音が聞こえないときは絶対に我慢せず、この手信号で先にお伝えします！」\n(操作案内：救護所の卓上のガブリエルの手信号手帳(gabriel_reunion_table)で F / 左スティック押し込みで三つの手信号を確認して応答してください。)"
+    },
+    {
+      "key": "story.gabriel.reunion.03",
+      "value": "(レアが送った『開いた手のひら · 停止』の信号に、ガブリエルが即座に鐘撞木を下ろし、続いて『下向きの手 · 着地・帰還』の手信号を温かく差し出す)\n「[手記：よし。音が消えてしまっても、この三つの信号さえあれば私たちはいつでも互いを止め、連れ戻すことができる。]」"
+    },
+    {
+      "key": "story.gabriel.reunion.04",
+      "value": "「ありがとうございます、ガブリエルおじさん！ おじさんと合わせたこの手信号を見て、みんなで明日の朝六時の鐘の音を聴きに帰ってきます！」\n(システム通知：ガブリエル支援解放 · 帰還の鐘撃 1/1 保有 — 通常戦闘で方向 + H / 右スティック押し込みで呼び出せます。)"
+    },
+    {
+      "key": "story.bell.return.01",
+      "value": "「下り回廊の床にひびが入っている。さっき採録した『共鳴鍛造』1段階『振動打撃』で地面や亀裂の盾を打ち下ろせば、一気に打ち砕けるわ！」\n(操作案内：共鳴鍛造(↓ 空中 + Q / コントローラーY または地上鍛造)でひび割れた床と重装兵の盾を攻撃してください。)"
+    },
+    {
+      "key": "story.bell.return.02",
+      "value": "「鍛造の振動で重装兵の盾が開いたら、すかさず基本剣術の連撃で青金石の核を斬り伏せてください、お姉さん！ 音叉の留め金も振動セットのあと基本剣術で断てますよ！」\n(操作案内：bell_07~08 の帰還動線で、鍛造セット ➔ 基本剣術フィニッシュの交差ループで重装兵と音叉の掛け金を突破してください。)"
+    },
+    {
+      "key": "story.bell.return.03",
+      "value": "「地下音叉の帰還水路を抜けて鐘楼入口の管理室に戻ってきた。これで鐘楼の上層と拠点の間をそのまま行き来できるわ！」"
+    },
+    {
+      "key": "story.bell.synergy.01",
+      "value": "「あの巨大な青銅の鐘はひびが大きく開きすぎて、普通に叩いても振動が広がらない……でもミハイルおじさんの『銀糸の縫合』で開いた隙間を先にしっかり縫い合わせておいて、ガブリエルおじさんの『共鳴鍛造』で叩けば、最後まで振動が伝わって隠れた音波の橋を呼び覚ませる！」\n(操作案内：銀糸の縫合で亀裂大鐘の隙間(bell_synergy_seam)を縫合したあと、共鳴鍛造で打撃して通路を開いてください。打撃後に銀糸が切れて扉が開きます。)"
+    },
+    {
+      "key": "story.bell.synergy.02",
+      "value": "「銀糸が振動を最後まで繋ぎ止めてくれたおかげで大鐘の共鳴が弾け、糸が切れて近道が開きました！ 前の精鋭部隊さえ突破しましょう！」"
+    },
+    {
+      "key": "story.bell.mastery.01",
+      "value": "(三十回目の振動打撃とともに敵に刻まれた共鳴音符が和音となって爆発し、瞬間周囲の高音域が0.25秒ほどわずかにくぐもると、レアは無意識のうちに指先で耳たぶをこんこんと叩く)\n「共鳴印を積み上げて爆発させる『和音の蓄積爆発』が体に馴染んだ。今の瞬間ちょっと耳がこもって思わず耳先を叩いちゃった……まだ終焉が移転したわけじゃないよね。」"
+    },
+    {
+      "key": "story.bell.mastery.02",
+      "value": "(八十回目の極意『六時の種まき』が基本パリィと空中下方向鐘撃で放たれて黄金の大鐘の反撃波動が響き渡った直後、周囲の環境音が深い静寂に沈み、ブローチの四枚目の花びらに赤いひびが刻まれる！)\n「……あ、ああ……喉から出る掛け声が半分かすれて小さくなってる。\n『第4の終焉：永遠の沈黙』が『被告人 R.E.A.』、私のところへ移転したんだ。」"
+    },
+    {
+      "key": "story.bell.mastery.03",
+      "value": "(救護所にいたガブリエルの耳に六年ぶりに世界の音が押し寄せ、ひび割れた声帯からついに低く重厚な本当の声がほとばしる。それでも遠くにいるレアが聞き逃さぬよう、声とともに頭上へ『下向きの手：着地・帰還』の手信号をくっきり掲げて見せる)\n「……レア。私の声が戻ったということは、お前があの重い沈黙を持っていったということだな。\n心配するな。お前の耳がくぐもっても道を見失わないよう、声が戻った今も私が約束したこの三つの手信号を最後まで一緒に使い続けるぞ。」"
+    },
+    {
+      "key": "story.bell.mastery.04",
+      "value": "(少しかすれて落ち着いた声で喉元を押さえながら、ガブリエルの示した手信号へ向けて二本指を掲げて応える)\n「ガブリエルおじさんの本当の声を初めて聞いた……私の声は少し小さくなったけれど、おじさんの手信号はくっきり見えます。この沈黙の終焉も必ずカセルに返してきます！」"
+    },
+    {
+      "key": "story.gallery.entry.01",
+      "value": "「ここが第5区画・白いキャンバス画廊と色彩の温室です、レアお姉さん。盲目の肖像画家イリーナお姉さんが過ごしていたアトリエが、すぐこの入口にあります。」"
+    },
+    {
+      "key": "story.gallery.entry.02",
+      "value": "「画廊全体が何も描かれていない真っ白な画用紙みたい。なのに、イーゼルの周りからだけ温かい油絵の具の匂いが濃く漂っているわ。」"
+    },
+    {
+      "key": "story.gallery.entry.03",
+      "value": "「イリーナお姉さんは六年前、両目の視力を失ったあとも筆を手放さなかったんです。ここ、台に載っている分厚い点字スケッチブックに触れてみてください、お姉さん。」\n(操作案内：イリーナの盛り上げ点字スケッチブック(irina_sketchbook_stand)を F / 左スティック押し込みで調べてください。手がかり［イリーナ · コア刻印］が記録されます。)"
+    },
+    {
+      "key": "story.gallery.entry.04",
+      "value": "(絵の具の厚みと凹凸だけで輪郭を触って確かめられる数十枚の肖像画と、題名『生きて十六歳になったレア』を指先でそっとなぞる)\n「……全部、私の顔。笑っている顔だけじゃなくて、眉をひそめたり怖くて唇を噛んだりする顔まで、優しい絵の具のタッチで描かれている。\n六年前、窓のない部屋で宙に指で光を描いていた私の仕草を筆遣いの剣術の極意として完成させて、イリーナお姉さんが代わりに『第5の終焉：失明』を引き受けてくださったんだ。」"
+    },
+    {
+      "key": "story.gallery.entry.05",
+      "value": "「イリーナお姉さんは、レアお姉さんの足音と日差しの匂いだけでどんな表情をしているか全部わかっていたんですよ。\nさあ、第1展示室へ入る額縁扉の青金の留め金を基本剣術で断ち切って中へ入りましょう！」\n(操作案内：額縁扉脇の青金の留め金を基本剣術で1回攻撃して扉を開けてください。)"
+    },
+    {
+      "key": "story.gallery.route.01",
+      "value": "「第1展示室は壁も床も一面の真っ白な余白ばかりだけど、石膏の台座足場が基本のジャンプとダッシュが届く間隔で並んでいる。絵の具スキルがなくても基本移動だけで十分渡れそう。」"
+    },
+    {
+      "key": "story.gallery.route.02",
+      "value": "「ええ！ 折り畳み式額縁橋の青金の留め金を基本剣術で断ち切って道を繋ぎ、展示室を守る番兵と石像を片付けながら進みましょう！」\n(操作案内：石膏台座の足場を渡りつつ青金の留め金2基を断ち切り、番兵と石像のウェーブを突破してください。)"
+    },
+    {
+      "key": "story.gallery.route.03",
+      "value": "「巨大な木製イーゼルが橋脚みたいに並んでいる。固定ワイヤーの掛け金を基本剣術で斬れば、大型キャンバスが水平に降りて丈夫な仮橋になるはず。」"
+    },
+    {
+      "key": "story.gallery.route.04",
+      "value": "「石像の反射攻撃を基本パリィで弾き返して隙に基本剣術を差し込み、キャンバス架橋を下ろして温室の方へ渡ろう！」\n(操作案内：青金の留め金2基を断ち切って架橋を下ろし、番兵・石像・重装兵を撃破してください。)"
+    },
+    {
+      "key": "story.gallery.route.05",
+      "value": "「ここが色彩のガラス温室散策路ですよ、お姉さん！ ガラスの天井越しに温かい日差しが降り注いでいます。温室花壇の上の番兵隊さえ突破すれば、イリーナお姉さんのアトリエです！」\n(操作案内：温室散策路を登り、青金の留め金1基と番兵・石像を突破してください。)"
+    },
+    {
+      "key": "story.gallery.route.06",
+      "value": "(アトリエ正門の前で、風に運ばれてくる温かい日差しと蒼い青金石絵の具の香りを吸い込む)\n「この絵の具の匂い……小さいころ私のそばで海や花畑を描いてくれたイリーナお姉さんの匂いだ。」"
+    },
+    {
+      "key": "story.gallery.route.07",
+      "value": "「前室のパレット石板に復帰地点を合わせておきましたよ、お姉さん。準備ができたらアトリエの扉を開けてください！」\n(操作案内：アトリエ正門(gallery_arena_gate)で F / 左スティック押し込みで中に入ってください。)"
+    },
+    {
+      "key": "story.irina.i0.01",
+      "value": "(焦点のない澄んだ瞳をしたイリーナが巨大な画板の前から振り向き、日差しの匂いと足音だけで正確にレアのもとへ歩み寄って、絵の具のついた指先でレアの頬と眉をそっと撫でる)\n「……ミントキャンディと温かい朝の陽だまりの匂いがするわ。私たちのレアが本当に十六歳まで育って、私のアトリエまで歩いてきてくれたのね。\nでもねレア、右手に握っているその冷たい青金石の記録剣はどうして持ってきたのかしら？」"
+    },
+    {
+      "key": "story.irina.i0.02",
+      "value": "「イリーナお姉さん！ 入口のアトリエでお姉さんが指先で描いてくださった私の肖像画を見ました。\n今朝受け取ったこの回収命令書の写しの第3条に書いてあるんです！ 私がお姉さんの筆遣いの剣術を記録剣に3段階まで登録すれば、お姉さんの両目を覆う終焉は大法廷母体コアへ吸収・消滅されて特別赦免を受けられるんです！」"
+    },
+    {
+      "key": "story.irina.i0.03",
+      "value": "(レアの頬から手を離して一歩引き、悲しげだがきっぱりと首を横に振る)\n「レア、目は見えなくてもね、絵の具がどこへ滲んでいくかは指先で全部感じ取れるのよ。\nあなたが私の筆遣いを3段階の自画像までそっくり描き上げた瞬間、私の両目の失明は消えるのではなく、あなたの琥珀色の瞳へそのまま移ってしまう。あなたがこれから見るべき海や花畑の光を、私がもう一度奪うわけにはいかないわ。」"
+    },
+    {
+      "key": "story.irina.i0.04",
+      "value": "(長い筆の柄の形をした細剣に蒼い青金石の絵の具を含ませて掲げる)\n「私の目はもう六年前にあなたの未来のために捧げたものよ。最後の自画像の筆遣いだけはあなたの剣に渡さずに、あなたを画廊の外へ帰してあげる！」\n(戦闘開始：盲目の肖像画家イリーナとの保護対錬)"
+    },
+    {
+      "key": "story.irina.i0.05",
+      "value": "(筆剣を床に突き、静かに息を整える。レアの記録剣コアが対錬中に宙へ描かれたイリーナの1段階・絵の具の軌跡を水彩色の刻印として採録する)\n「……最後の自画像は隠したはずなのに、あなたの記録剣は私の最初の『絵の具の一筆』の目まで読み取ってしまったのね。\nよく覚えておいて、レア。三十回目までは目元に水彩の色合いがちらつく程度だけど、八十枚目の自画像を完成させた瞬間、私の失明の終焉があなたの目へ移るの。私は救護所へ下がっているから……どうかその筆遣いを止めて帰ってちょうだい。」\n(システム通知：余白の切り抜き 獲得 — 1～5 / E・コントローラーB 選択、Q・Y 使用)"
+    },
+    {
+      "key": "story.irina.i0.06",
+      "value": "「イリーナお姉さんまで救護所へ下がられた……でも明日の朝六時の執行を止めてお姉さんの両目を取り戻すには、この絵の具の一筆を完成させなきゃいけない。温室色彩回廊の帰還ルートへ降りよう！」"
+    },
+    {
+      "key": "story.irina.i1.01",
+      "value": "(アトリエへ入ってきたレアの足音を聞き、イリーナが歩み寄ってレアの首元のブローチに走った赤い亀裂を指先でそっと撫でて息を止める)\n「……ブローチの花びらがもう割れているわね、レア。消滅特例が嘘で、終焉があなたの体に移ってくることを全部知りながら……どうして逃げずに私のアトリエまで来たの？」"
+    },
+    {
+      "key": "story.irina.i1.02",
+      "value": "「イリーナお姉さん、自分の名前を消して一人で犠牲になるつもりじゃないんです！ 分所の作業台でテオとイーサンおじさんと剣の実験を終えてきました。五人分のスキルをカセルの鏡に斬り合わせで予約して時間刻印出力を解放し、元の持ち主であるカセルへ五つの終焉を残らず返す仮説を立てたんです！」"
+    },
+    {
+      "key": "story.irina.i1.03",
+      "value": "「あなたは小さいころから大人たちを安心させようと、怖いときほどわざと明るい声で笑ったふりをする子だったわね。\n今のその言葉も私たちを安心させるための無理な作り笑いかどうか、私の筆剣で直接確かめさせてもらうわ！」\n(戦闘開始：イリーナとの本心確認対錬)"
+    },
+    {
+      "key": "story.irina.i1.04",
+      "value": "(対錬の中盤、日差しの差し込む右側の窓辺でイリーナが筆剣を止め、一歩歩み寄る。彼女はいつも確かめていた癖どおりに絵の具のついた指先を伸ばしてレアの頬を包み込み、眉と口元をそっと探る)\n「……指先に触れるあなたの脈拍がこんなに速く打っているわ、レア。\n私の指先があなたの口元にあるの。教えてちょうだい、あなたは今も私を安心させようと笑っているの？」"
+    },
+    {
+      "key": "story.irina.i1.05",
+      "value": "(イリーナの指先の前で癖のように上げかけていた口角の力を抜き、笑わない顔のままイリーナの手の甲をそっと握り返す)\n「……いいえ、イリーナお姉さん。笑っていません。\n今日は怖いです。仮説にまだ空欄が残っているのも怖いし、五人を失うのも、私が帰ってこられなくなるのも本当に怖いんです。」\n(操作案内：右側の日差しの窓辺(irina_sunlight_floor)で F / 左スティック押し込みで、作り笑いをせず素直な恐れを伝えてください。)"
+    },
+    {
+      "key": "story.irina.i1.06",
+      "value": "(レアが笑わないまま恐怖を打ち明けると、イリーナは少し黙ってからレアの口元からゆっくりと手を下ろし、とても温かく口を開く)\n「……ありがとう、レア。私が描いた『笑うレア』っていう絵の中に、あなたを閉じ込めてしまっていたのね。\n誰かを安心させようとして明るく振る舞わなくていいのよ。その顔で帰ってきてもいいのよ。」"
+    },
+    {
+      "key": "story.irina.i1.07",
+      "value": "「はい、イリーナお姉さん！ 怖いものは怖いと言いながら、仲間たちの手を握ってこの顔のまま生きて帰ってきます！」\n(戦闘再開：残りの対錬をやり遂げて勝利してください。)"
+    },
+    {
+      "key": "story.irina.i1.08",
+      "value": "(対錬が終わると、イリーナはレアの頬についた埃をハンカチで拭ってやり、パレットで最も温かい青金・金色の絵の具をレアの記録剣の先に添えてくれる)\n「戦っていて息が詰まりそうだったり怖くなったりしたら、我慢せずに私を呼んでね、レア。少し息を整えられるよう、私の『帰還の彩色』であなたの心を包み込んであげるから。」\n(システム通知：余白の切り抜き 獲得 + イリーナ支援解放 · 帰還の彩色 1/1 保有)"
+    },
+    {
+      "key": "story.irina.reunion.01",
+      "value": "(救護所の日差しの窓辺で、イリーナが足音を聞いて立ち上がりレアのもとへ歩み寄る。いつもしていたように絵の具のついた指先でレアの頬を包み、眉と口元を探る)\n「作業台でテオとイーサンと一緒に、カセルに立ち向かう返還計画を立てたんですってね、レア。\nでも私の指先に触れるあなたの口元……また大人たちを安心させようとして無理に笑おうとしていない？」"
+    },
+    {
+      "key": "story.irina.reunion.02",
+      "value": "(上げかけていた口角を下ろし、笑わない顔のままイリーナの指先に頬を預ける)\n「無理に笑ったりしません、イリーナお姉さん。今日は怖いです。だから一人で抱え込まずにみんなで方法を探しているんです。」\n(操作案内：救護所の日差しの窓辺(irina_reunion_window)で F / 左スティック押し込みで、作り笑いなしの本心を伝えてください。)"
+    },
+    {
+      "key": "story.irina.reunion.03",
+      "value": "(少し黙っていたイリーナがレアの口元からそっと手を下ろし、最も穏やかな声で答える)\n「……そう。その顔で帰ってきてもいいのよ。\nあなたが怖いと言ってくれたから、今やっと本当に生きて私のそばへ帰ろうとしているんだって信じられるわ。」"
+    },
+    {
+      "key": "story.irina.reunion.04",
+      "value": "「ありがとうございます、イリーナお姉さん！ 明日の朝は演技なんてしない私の本当の顔で、お姉さんの前に向かい合って座ります！」\n(システム通知：イリーナ支援解放 · 帰還の彩色 1/1 保有 — 通常戦闘で方向 + H / 右スティック押し込みで呼び出せます。)"
+    },
+    {
+      "key": "story.gallery.return.01",
+      "value": "「温室帰還路の段差の先は床がぽっかり空いている。地上で『余白の切り抜き』1段階『絵の具の一筆』を描けば、私の前方の宙に3秒間だけ青金石の絵の具足場が残る！ その一筆を踏んで向こう側へ跳び渡ろう！」\n(操作案内：段差の端の地上で ↓ + Q / コントローラーY で前方空中に絵の具の一筆足場を設置し、踏んで渡ってください。)"
+    },
+    {
+      "key": "story.gallery.return.02",
+      "value": "「いい調子です、お姉さん！ 帰還路の公証縫合の重装兵たちは、足元に絵の具の一筆か交差領域が触れないと体勢が開きません。体勢が開いたら基本剣術の連撃で核を斬り伏せてください！」\n(操作案内：gallery_07~08 の帰還動線で、画幅セット ➔ 基本剣術フィニッシュの交差ループで重装兵とキャンバス掛け金を突破してください。)"
+    },
+    {
+      "key": "story.gallery.return.03",
+      "value": "「下部画廊の収蔵庫を抜けて入口のアトリエに戻ってきた。これで画廊と拠点の昇降場が完全に繋がったわ！」"
+    },
+    {
+      "key": "story.gallery.synergy.01",
+      "value": "「ここは二つの固定面がある割れた床の先に、まるで支点のない虚空がそのまま続いている！\nまずミハイルおじさんの『銀糸の縫合』で実際の床の割れ目を縫って渡ったあと、その銀糸の床の端からイリーナお姉さんの『余白の切り抜き』で宙に絵の具足場を描いて跳べば、二つの技の長所を合わせて渡れるわ！」\n(操作案内：銀糸の縫合で割れた床(gallery_synergy_seam)を塞いで乗ったあと、その端から余白の切り抜き(↓ + Q / コントローラーY)で前方の絵の具足場を描いてテラスへ渡ってください。)"
+    },
+    {
+      "key": "story.gallery.synergy.02",
+      "value": "「固定面のある隙間は銀糸で縫って、支点のない虚空は絵の具の一筆で渡れば、どんな断崖も行き止まりになりませんね！ 目の前の精鋭アトリエ部隊さえ突破すれば完璧です！」"
+    },
+    {
+      "key": "story.gallery.mastery.01",
+      "value": "(三十回目の絵の具の一筆とともに床と壁の二つの色彩の筆が交差して爆発し、視界の端に淡く美しい水彩のにじみがよぎると、レアは無意識のうちに手の甲で目元を軽く擦る)\n「二つの筆を交差させて弾けさせる『風景の重ね塗り』が体に馴染んだ。今の瞬間、目元に水彩絵の具の色合いがよぎって思わず目を擦っちゃった……まだ失明の終焉が移ってきたわけじゃないんだよね。」"
+    },
+    {
+      "key": "story.gallery.mastery.02",
+      "value": "(八十回目の極意『自画像の完成』が繰り広げられ、色彩の幻影分身が0.3秒の時差でレアの剣撃をそのまま追いかけて描いた直後、画面の縁に白いキャンバスの目が一度浮かび、ブローチの五枚目の花びらに赤いひびが刻まれる！)\n「……っ！ 視界の端が白い画用紙に沈むみたいに霞んだ……！\n『第5の終焉：失明』が『被告人 R.E.A.』、私のところへ確定移転したんだ。」"
+    },
+    {
+      "key": "story.gallery.mastery.03",
+      "value": "(救護所の窓辺に立っていたイリーナの瞳に、六年ぶりに澄んだ焦点と光が戻る。イリーナが震えるまつ毛を瞬かせながら窓の外の向こう、作り笑いをしなくても凛と立っている十六歳のレアの姿を両目ではっきりと見つめる)\n「……見えるわ。私の両目がまた見えるようになった……！\nレア、私が指先だけで描き続けていた十六歳のあなたが……無理に笑わないその凛とした顔で、私の目の前に立っているのね。」"
+    },
+    {
+      "key": "story.gallery.mastery.04",
+      "value": "(目元を一度拭い、記録剣の先に宿った澄んだ青金石の光をまっすぐ見つめる)\n「イリーナお姉さんが六年ぶりに両目で私を見てくださった。前を見て剣を振るうのに何の問題もない……この失明の終焉まで残らずカセルへ返してきます！」"
+    },
+    {
+      "key": "area.room.clock_01_entry",
+      "value": "時計塔1号室 · 黄昏の時計塔の入口と調律作業室"
+    },
+    {
+      "key": "area.room.clock_02_pendulum",
+      "value": "時計塔2号室 · 大振り子昇降回廊"
+    },
+    {
+      "key": "area.room.clock_03_counterflow",
+      "value": "時計塔3号室 · 逆流の歯車橋"
+    },
+    {
+      "key": "area.room.clock_04_escapement",
+      "value": "時計塔4号室 · 脱進機の中層駅"
+    },
+    {
+      "key": "area.room.clock_05_vestibule",
+      "value": "時計塔5号室 · ぜんまい文字盤の前室"
+    },
+    {
+      "key": "area.room.clock_06_arena",
+      "value": "時計塔6号室 · 黄昏のぜんまい時計塔最深部"
+    },
+    {
+      "key": "area.room.clock_07_return_upper",
+      "value": "時計塔7号室 · 逆流回廊の上部帰還路"
+    },
+    {
+      "key": "area.room.clock_08_return_lower",
+      "value": "時計塔8号室 · 逆流回廊の下部帰還水路"
+    },
+    {
+      "key": "area.room.clock_09_shortcut",
+      "value": "時計塔9号室 · 止まった歯車室の上部シナジー回廊"
+    },
+    {
+      "key": "area.room.clock_10_sanctuary_rail",
+      "value": "時計塔10号室 · 救護所横の軌道昇降場連絡路＆精鋭検証室"
+    },
+    {
+      "key": "area.target.julius_workbench",
+      "value": "時計調律の作業台"
+    },
+    {
+      "key": "area.target.clock_entry_latch",
+      "value": "青金の留め金"
+    },
+    {
+      "key": "area.target.clock_arena_gate",
+      "value": "対練場の正門"
+    },
+    {
+      "key": "area.target.julius_trial_bell",
+      "value": "練習対錬の呼び出し鐘"
+    },
+    {
+      "key": "area.target.julius_return_platform",
+      "value": "往復ぜんまい足場"
+    },
+    {
+      "key": "area.target.julius_reunion_platform",
+      "value": "帰還列車の復帰足場"
+    },
+    {
+      "key": "area.speaker.julius",
+      "value": "ユリウス"
+    },
+    {
+      "key": "area.room.opera_01_entry",
+      "value": "オペラ1号室 · 劇場ロビーと舞台裏の練習室"
+    },
+    {
+      "key": "area.room.opera_02_auditorium",
+      "value": "オペラ2号室 · 赤いベルベット客席の回廊"
+    },
+    {
+      "key": "area.room.opera_03_chandelier",
+      "value": "オペラ3号室 · シャンデリアの中層ブリッジ"
+    },
+    {
+      "key": "area.room.opera_04_rooftop_west",
+      "value": "オペラ4号室 · 西側スポットライトのガラス屋根"
+    },
+    {
+      "key": "area.room.opera_05_wings",
+      "value": "オペラ5号室 · 主舞台側面の待機席"
+    },
+    {
+      "key": "area.room.opera_06_arena",
+      "value": "オペラ6号室 · ガラスのオペラ大舞台＆ドーム屋根対練場"
+    },
+    {
+      "key": "area.room.opera_07_return_roof",
+      "value": "オペラ7号室 · 東側スポットライト屋根の帰還路"
+    },
+    {
+      "key": "area.room.opera_08_return_foyer",
+      "value": "オペラ8号室 · ガラス回廊の下部帰還通路"
+    },
+    {
+      "key": "area.room.opera_09_shortcut",
+      "value": "オペラ9号室 · 途切れた上部舞台のシナジーブリッジ"
+    },
+    {
+      "key": "area.room.opera_10_sanctuary_stairs",
+      "value": "オペラ10号室 · 救護所舞台階段の連絡路＆精鋭練習室"
+    },
+    {
+      "key": "area.target.valeria_shoes_rack",
+      "value": "トウシューズ棚と歩幅の床"
+    },
+    {
+      "key": "area.target.opera_entry_latch",
+      "value": "青金の留め金"
+    },
+    {
+      "key": "area.target.opera_arena_gate",
+      "value": "対練場の正門"
+    },
+    {
+      "key": "area.target.valeria_trial_bell",
+      "value": "練習対錬の呼び出し鐘"
+    },
+    {
+      "key": "area.target.valeria_safe_stage_ledge",
+      "value": "安全着地足場"
+    },
+    {
+      "key": "area.target.luka_opera_lift",
+      "value": "ルカの補助昇降板"
+    },
+    {
+      "key": "area.target.valeria_reunion_lift",
+      "value": "救護所連結の昇降板"
+    },
+    {
+      "key": "area.speaker.valeria",
+      "value": "ヴァレリア"
+    },
+    {
+      "key": "area.room.bell_01_entry",
+      "value": "大鐘楼1号室 · 鐘楼入口の管理室と朝の鐘の楽譜台"
+    },
+    {
+      "key": "area.room.bell_02_tunnels",
+      "value": "大鐘楼2号室 · 共鳴音叉地下道の入口"
+    },
+    {
+      "key": "area.room.bell_03_acoustic_hall",
+      "value": "大鐘楼3号室 · 音波リングの地下水路"
+    },
+    {
+      "key": "area.room.bell_04_belfry_shaft",
+      "value": "大鐘楼4号室 · 垂直鐘楼の上昇階段"
+    },
+    {
+      "key": "area.room.bell_05_silence_landing",
+      "value": "大鐘楼5号室 · 沈黙の鐘閣の待合室"
+    },
+    {
+      "key": "area.room.bell_06_arena",
+      "value": "大鐘楼6号室 · 青銅の大鐘楼最上層の打鐘室"
+    },
+    {
+      "key": "area.room.bell_07_return_chime",
+      "value": "大鐘楼7号室 · 打鐘室の下り共鳴帰還回廊"
+    },
+    {
+      "key": "area.room.bell_08_return_undercroft",
+      "value": "大鐘楼8号室 · 地下音叉の帰還水路"
+    },
+    {
+      "key": "area.room.bell_09_shortcut",
+      "value": "大鐘楼9号室 · 亀裂大鐘のシナジー共鳴室"
+    },
+    {
+      "key": "area.room.bell_10_sanctuary_table",
+      "value": "大鐘楼10号室 · 救護所鐘楼の休憩室＆精鋭打鐘場"
+    },
+    {
+      "key": "area.target.gabriel_score_desk",
+      "value": "朝の鐘の楽譜台"
+    },
+    {
+      "key": "area.target.bell_entry_latch",
+      "value": "青金の留め金"
+    },
+    {
+      "key": "area.target.bell_arena_gate",
+      "value": "対練場の正門"
+    },
+    {
+      "key": "area.target.gabriel_trial_bell",
+      "value": "練習対錬の呼び出し鐘"
+    },
+    {
+      "key": "area.target.gabriel_request_stop",
+      "value": "停止の手信号"
+    },
+    {
+      "key": "area.target.gabriel_reunion_table",
+      "value": "手帳の三つの手信号"
+    },
+    {
+      "key": "area.speaker.gabriel",
+      "value": "ガブリエル"
+    },
+    {
+      "key": "area.room.gallery_01_entry",
+      "value": "画廊1号室 · 白いキャンバス画廊の入口と温室アトリエ"
+    },
+    {
+      "key": "area.room.gallery_02_white_hall",
+      "value": "画廊2号室 · 余白の第1展示室"
+    },
+    {
+      "key": "area.room.gallery_03_easel_bridge",
+      "value": "画廊3号室 · キャンバスのイーゼル架橋"
+    },
+    {
+      "key": "area.room.gallery_04_greenhouse_path",
+      "value": "画廊4号室 · 色彩のガラス温室の散策路"
+    },
+    {
+      "key": "area.room.gallery_05_frame_foyer",
+      "value": "画廊5号室 · 未完の額縁の前室"
+    },
+    {
+      "key": "area.room.gallery_06_arena",
+      "value": "画廊6号室 · 色彩の温室最深部のアトリエ"
+    },
+    {
+      "key": "area.room.gallery_07_return_atelier",
+      "value": "画廊7号室 · 温室色彩回廊の帰還路"
+    },
+    {
+      "key": "area.room.gallery_08_return_gallery",
+      "value": "画廊8号室 · 下部画廊収蔵庫の帰還通路"
+    },
+    {
+      "key": "area.room.gallery_09_shortcut",
+      "value": "画廊9号室 · 余白断崖の銀糸・画幅シナジー回廊"
+    },
+    {
+      "key": "area.room.gallery_10_sanctuary_window",
+      "value": "画廊10号室 · 救護所日差し窓辺の連絡路＆精鋭アトリエ"
+    },
+    {
+      "key": "area.target.irina_sketchbook_stand",
+      "value": "点字スケッチブック"
+    },
+    {
+      "key": "area.target.gallery_entry_latch",
+      "value": "青金の留め金"
+    },
+    {
+      "key": "area.target.gallery_arena_gate",
+      "value": "対練場の正門"
+    },
+    {
+      "key": "area.target.irina_trial_bell",
+      "value": "練習対錬の呼び出し鐘"
+    },
+    {
+      "key": "area.target.irina_confess_fear",
+      "value": "今日は怖いです。"
+    },
+    {
+      "key": "area.target.irina_reunion_window",
+      "value": "日差しの窓辺"
+    },
+    {
+      "key": "area.speaker.irina",
+      "value": "イリーナ"
+    },
+    {
+      "key": "story.echo.entry.01",
+      "value": "［公証記録 #02 — D+1日 05:30 / 執行予定時刻まで残り 30分］\n大法廷の中央ホールに入った。正面の上は、大公証官カセルがいる最上層審判席の昇降機で、右下へ落ち込む暗い階段は……原本命令書の第3条に書かれていた地下『永久剥製棺』の入口だわ。"
+    },
+    {
+      "key": "story.echo.entry.02",
+      "value": "(ホールの真ん中に露出した巨大な青金石の制御柱の回路の目に沿って視線を上げる)\n「この青金石の制御連結部を見て。最上層の母体兵器『万象共鳴鏡』と地下『永久剥製棺』の凍結隔離装置が、一つの制御核で結びつけられている。\nテオが分析したとおりだわ。最上層で鏡母体のコアを砕けば、地下剥製棺の収容システムも一緒に崩れ落ちる構造なんだ！」\n(操作案内：ホール中央の青金石の制御連結柱(court_control_pillar)を F / 左スティック押し込みで調べ、連結構造を確認してください。)"
+    },
+    {
+      "key": "story.echo.entry.03",
+      "value": "「あの先の分岐ホール昇降機の前から、私の記録剣コアとまったく同じ波動が響いてる。昨日の私が残した残響だわ……！ 行く手を塞ぐ石像と重装兵を突破して昇降機の前へ行こう！」\n(操作案内：中央ホールの敵を撃破して右側の分岐ホール(court_02_echo_arena)へ進んでください。)"
+    },
+    {
+      "key": "story.echo.pre.01",
+      "value": "(最上層へ向かう中央昇降機の扉の前を張り詰めた紫色の銀糸封合障壁で幾重にも縫い塞ぎながら、刃の割れた記録剣を構えた『残響 · 昨日のレア』が冷ややかに立っている)\n「……五人の終焉を無事にその身にすべて集めたのね、今日の私。\nそこまでで十分よ。上の昇降機は私が縫い閉じておいたわ。カセルのもとへ上がらず、右側の階段を通って地下『永久剥製棺』へ降りなさい。」"
+    },
+    {
+      "key": "story.echo.pre.02",
+      "value": "(昨日のレアの前に立ち止まり、コア端末で読んだ破棄された下書きの記憶をまっすぐに見据える)\n「知らなくてこの道を塞いだんじゃなかったんでしょ？\nあなただって作業台で刀身の三節目に印を刻んで、カセルに終焉を返す逆公証の経路を描いてみたんじゃない！」"
+    },
+    {
+      "key": "story.echo.pre.03",
+      "value": "(紫色の残影が微かに揺らぐが、剣先は少しも下げない)\n「可能性があるとは言えた。うまくいくという証拠はなかったわ。」"
+    },
+    {
+      "key": "story.echo.pre.04",
+      "value": "「だから私の返事まで消したの？\n私には聞きもせずに、下書き最後の欄の『レア生存』に二重線を引いて、偽の赦免状を刷って私をこの剥製棺の前まで連れてきたの？」"
+    },
+    {
+      "key": "story.echo.pre.05",
+      "value": "「私が本当のことを話したら五人が自ら隔離扉に鍵を掛けて処刑されるのを、この目で見たんだから！\n一人では計測器の波形ひとつ最後まで測れなかった。証明もできていない生存返還にしがみついて最上層へ上がり、六時の鐘が鳴る前に剣が折れたら……そのときは五人も、あんたも永遠に終わりよ。あんたがこの地下剥製棺に入ってあげることだけが、五人を確実に生かす唯一の道なの！」"
+    },
+    {
+      "key": "story.echo.pre.06",
+      "value": "(ポーチから、テオの文字でぎっしり埋まった4段階剣実験ノートと五人の恩人が記してくれた帰還経路の地図を取り出し、昨日のレアの前に広げて見せる)\n「私だって怖いよ。だから今度は他の人たちにも見せたの。自分の分を消す前に。\n見て、あなたが一人で押さえようとして途切れたあの計測波形を、今日はテオとイーサンおじさんが一緒に支えてくれて最後まで実測したの！ 五人の皆さんも、扉に鍵を掛ける代わりに私が生きて帰ってくる床と時間と信号を先に作ってくださった！ 私は剥製棺になんか降りない！」\n(操作案内：F / 左スティック押し込みで昨日のレアに剣の実験記録と帰還経路を差し出してください。)"
+    },
+    {
+      "key": "story.echo.battle.01_p1",
+      "value": "(残響が割れた剣を掲げると、今日のレアが直前まで最もよく使っていた主力スキルと踏み込みの歩幅が紫色の予告線としてそのまま再現される)\n「言葉なんかで私を通り抜けさせない！ あんたが今日どんな歩幅で踏み込み、どの主力スキルから繰り出してくるのか、同じコアを共有する私の目には全部見えているわ！\nあんたの剣が折れる前に、この手で地下階段まで押し込んであげる！」\n(戦闘案内：残響 第1フェーズ · 霞んだ昨日 — 残響は直近の有効使用1位のスキルを模倣します。予告されたスキルとは別のスキルで有効打撃を与えれば模倣が解除され、+1.6秒のローテーションの隙が生まれます！)"
+    },
+    {
+      "key": "story.echo.battle.02_p2",
+      "value": "(体力が減ると、残響は上方の昇降機通路の銀糸障壁をいっそうきつく締め上げ、脇道支柱の連結部を一斉に切断して地下剥製棺の階段側へと足場を崩していく)\n「上の道は絶対に開けない！ あんたが一つ目のスキルを変えるなら、あんたの手に染みついた二つ目の締めの癖まで重ねて道を断ち切ってあげる！」\n(戦闘案内：残響 第2フェーズ · 重なる記録 — 残響が1位始動(A) → 2位締め(B)の連続模倣と地形切断で剥製棺階段側への圧迫を加えてきます。縫合線を基本剣術で断ち切るか、別スキルへの切り替えカウンターで対処してください！)"
+    },
+    {
+      "key": "story.echo.battle.03_p2_rea",
+      "value": "「私の体を糸で引っ掛けて無理やり引きずってなんか行けないよ！ あなたが脇道の支柱を断ち切っても、私はミハイルおじさんに教わったとおりにまず自分の足場から確かめて、あなたの予告を別のスキルで受け返してみせる！」"
+    },
+    {
+      "key": "story.echo.battle.04_p3",
+      "value": "(紫色の残影が最も鮮やかに燃え上がり、昨日が閉ざされた隔離扉の前で百二十回剣を振り下ろしていた絶叫と、今日の3段階極意の軌跡がひとつに重なる)\n「六時の鐘が鳴り響く音を……私は二度と聞くわけにはいかないの！\nあんたが五人から教わった3段階極意が本当にカセルの鏡に勝てるのか、私の三連続模倣の前で最後まで証明してみせなさい！」\n(戦闘案内：残響 第3フェーズ · 鮮明な残響 — 残響が3段階極意の上限で A → B → A の3連続模倣を繰り出します。最後の0.2秒の照準固定とローテーションカウンターの隙を突いて決着をつけてください！)"
+    },
+    {
+      "key": "story.echo.battle.05_p3_rea",
+      "value": "(最後のカウンターの一撃が残響の割れた剣のガードを弾き返し、残響が片膝をついて床に剣先を突く。だが上の昇降機の扉を塞ぐ銀糸封合障壁はまだ解けないまま残っている)\n「……はぁ、はぁ。勝った。自分の癖をそのまま真似する昨日の私を乗り越えたんだ！」"
+    },
+    {
+      "key": "story.echo.after.01",
+      "value": "(膝をついた残響の喉元まで伸びていた記録剣を自ら止め、一歩下がって剣を下ろす)\n「私を騙したことは、まだ胸が痛い。私が嫌だと言っても連れて行こうとしたのは、もっと怖かった。」\n(操作案内：膝をついた残響の前で F / 左スティック押し込みで剣を収め、対話を続けてください。)"
+    },
+    {
+      "key": "story.echo.after.02",
+      "value": "(床に突いた指先を震わせながら、上方の昇降機障壁を振り返る)\n「離せば……あんたが死ぬかもしれないのに。」"
+    },
+    {
+      "key": "story.echo.after.03",
+      "value": "「それでも、私の返事を聞いて。」"
+    },
+    {
+      "key": "story.echo.after.04",
+      "value": "(長い沈黙の末、昨日のレアのほうから先に割れた剣を掲げ、上方の昇降機通路を塞いでいた紫色の銀糸封合障壁を一息に解き放ち収める。コアに登録されていた地下『永久剥製棺』への強制執行命令が解除され、中央昇降機の扉が大きく開く)\n(システム処理：janhyang_order_withdrawn および cassel_open フラグ確定 — 昇降機の通行開放)"
+    },
+    {
+      "key": "story.echo.after.05",
+      "value": "(通行遮断をすべて解いたあとになってようやく、昨日のレアは俯いたまま小さく震える声で本心を打ち明ける)\n「……私だって、上がりたかった。\n私だって剥製棺なんかに埋められたくなかった。五人を救って……明日の朝の六杯目の前で、私だって一緒に座りたかったの。」"
+    },
+    {
+      "key": "story.echo.after.06",
+      "value": "(今日のレアが歩み寄って膝をついた昨日のレアの前に手を差し出し、握り合って立ち上がらせる。昨日の残響は消滅せず、今日の記録剣コアの中の蒼い光の筋となって寄り添い溶け込み、ともに歩む)\n「一人に置いて行ったりしないよ、昨日の私。あなたが閉まった扉の前で振り下ろした百二十回の基本剣術も、明日の私に綺麗な剣気の色を残してほしいってイーサンおじさんにお願いした想いも、全部この剣の中にあるじゃない。\n私たち二人で一緒に最上層へ上がろう。そして一緒に生きて降りてこよう！」\n(操作案内：昨日のレア(echo_hand_clasp)の前で F / 左スティック押し込みで手を取り合い、コアへ同行させてください。)"
+    },
+    {
+      "key": "story.echo.after.07",
+      "value": "(大きく開かれた大法廷中央昇降機の前の安全床に立つ。記録剣コアの内で昨日の残響と今日の波動が静かに共鳴している)\n「ここが最上層審判席へ上がる大法廷の昇降機前だね。五人の恩人のスキルの3段階返還準備はすべて終わった。\nもしカセルの原型動作を最後まで迎え撃つ基本剣術の極意（400回）がまだ足りないなら、ここから水路の鍛冶場『高密度共鳴錬成炉』へ少し戻ってイーサンおじさんと仕上げの鍛錬をすることもできるし、今すぐ昇降機に乗って決戦を始めることもできる。」\n(システム案内：大法廷の昇降機前(court_lift) セーブポイント有効化 — B<3 の状態では出陣画面に「五つの返還準備完了 / 原型動作未完成：生存返還未確保」と表示されます。)"
+    },
+    {
+      "key": "story.echo.after.08",
+      "value": "(昇降機の足場が動き出し、夜明けの光が差し込む大法廷最上層審判席へ向かって駆け上がる。コアの中から昨日のレアが静かに囁く)\n「あの上が、大公証官カセルと母体兵器『万象共鳴鏡』がある審判席よ。私の百二十回の剣撃も、あんたの手先に重ねて加勢するわ。行きましょう、今日の私！」\n(操作案内：昇降機の制御盤(cassel_lift_console)で F / 左スティック押し込みで最上層審判席(cassel)へ突入してください。)"
+    },
+    {
+      "key": "story.cassel.p1.01",
+      "value": "(夜明けの薄明かりが差す大法廷最上層審判席。五層の巨大な反射鏡からなる母体兵器『万象共鳴鏡』の前で、三十五歳ほどの若き姿のまま保たれた大公証官カセルが冷ややかな金色の礼服の裾を整えながら見下ろす)\n「第5号回収命令書・第3条の処分場所は、この最上層ではなく大法廷地下『永久剥製棺』であったはずだがな。\n五人の罪人の終焉を一身に集めた代役被告人 R.E.A. が、なぜ自ら棺へ歩み入らず、私の審判席まで這い上がってきたというのだ。」"
+    },
+    {
+      "key": "story.cassel.p1.02",
+      "value": "(胸元の五枚の花びらすべてにひびが入ったブローチを着け、コアの中に昨日の残響を同行させたまま記録剣を構える)\n「あの五人は罪人なんかじゃありません、カセル！ 六年前にあなたが自分の死から逃げるために十歳だった私の体に無理やり押し込んだ5大終焉を、私を生かすために一つずつ分け合って背負ってくださった私の恩人たちです！\n昨日の私も、今日の私も、あなたが作った剥製棺なんかに絶対に入りません。あなたが押し付けた五つの終焉を、元の持ち主であるあなたにすべて返しに来ました！」"
+    },
+    {
+      "key": "story.cassel.p1.03",
+      "value": "(嘲笑さえ浮かべず、冷厳かつ傲慢な法官の声色で長剣を抜き放つ)\n「白紙の器の分際で逆公証などよくもほざいたものだ。終焉の所有権は単なる斬り合いや敗北ごときで移り変わらん。ただ完全なる原型動作の公証判定のみが因果を動かすのだ。\nお前の手に馴染んだその拙い基礎剣術が元は誰のものだったか、原所有者の刃をもって直接思い知らせてやろう！」"
+    },
+    {
+      "key": "story.cassel.p1.04",
+      "value": "「来た……！ カセルの構えが私の基本剣術とまったく同じ！」\n(戦闘開始：カセル 第1フェーズ · 原型剣術 — カセルの母体剣術（カセル零式）と五つの原型パターンを基本パリィ・ダッシュ・スキルで攻略し、体力を120まで削ってください。)"
+    },
+    {
+      "key": "story.cassel.p1.05",
+      "value": "(カセルの4連続突進斬りとレアの基本剣術が火花を散らして同じ角度で激突する)\n「……手首の角度から踏み込む歩幅まで一寸の狂いもなく、私の基本剣術と瓜二つ！\n十歳以前の記憶が消されたあとも私の手が無意識に覚えていた『ひよっこ斬り』は……六年前、カセルが私の体に5大終焉を押し付けるために無理やり刻み込んだカセル本人の母体剣術だったんだ！」"
+    },
+    {
+      "key": "story.cassel.p1.06",
+      "value": "(記録剣コアの中から昨日のレアが澄んだ青金石の波動で応える)\n「そのとおり、今日の私。剣術の動きの型はカセルが植え付けたものよ。\nけれど、イーサンおじさんが深海の青金石で鍛え上げ、私たちが記憶を燃やしながら何百回も自ら振るって積み上げたこの『白紙刻印剣』の時間刻印だけは、絶対にカセルのものなんかじゃない！ 押し切りましょう！」"
+    },
+    {
+      "key": "story.cassel.p1.07_mirror",
+      "value": "(体力が120に達するとカセルが後ろへ退き、手を掲げる。背後の母体兵器『万象共鳴鏡』の五つの反射層が一斉に蒼い光を放って開き、レアの五つの恩人スキルを複製する準備を整える)\n「なかなかやるではないか、被告人 R.E.A.。だが私の母体兵器『万象共鳴鏡』の前では、お前が学んだ五つの極意すら、すべて我が審判の道具として跳ね返されるにすぎん！」\n(戦闘案内：カセル 第2フェーズ · 万象共鳴鏡 — 鏡の露出中に F / 左スティック押し込みで返還する恩人スキルを選択してください！)"
+    },
+    {
+      "key": "story.cassel.p2.01_prompt",
+      "value": "「万象共鳴鏡が開いた！ テオと実験したとおりだわ。鏡が私の3段階スキルを複製して反射する瞬間に、私が選んだ順番で同じ3段階のフィニッシュ動作まで斬り合わせを叩き込めば、カセルに返還予約を掛けられる！」\n(操作案内：鏡の露出中に F / 左スティック押し込みを押して、逆公証 · 返還する恩人スキルの選択画面を開いてください。)"
+    },
+    {
+      "key": "story.cassel.p2.02_confirm",
+      "value": "「このスキルの公証使用権を返還予約に結びつけたら、この戦いではもう使えなくなるわ。その代わり、そのスキルを維持するために散っていた私たちの剣の『時間刻印出力』が20%ずつ解放されて基本剣術に乗るのよ。準備はいい？」\n(操作案内：確認 · 選択スキルの斬り合わせ準備を押したあと、カセルの近く（8m以内）で選んだ3段階スキルを最後まで発動させ、鏡の反射パターンとの斬り合わせを成立させてください。)"
+    },
+    {
+      "key": "story.cassel.return.stitch_early",
+      "value": "(張り詰めた銀糸の一斉切断が鏡の反射銀糸と正面から噛み合って断ち切れ、一つ目の反射層が暗転する。既存の銀糸表面は3秒間青い光を放って点滅し、安全な着地を支える)\n「ミハイルおじさんの『銀糸の縫合』、返還予約完了！\n補助の糸足場と減速領域を早く手放した代わりに、鏡が闘技場の両端を締め上げていた『反射銀糸の包囲網』を先に封印できた。これからは広い審判席の床を存分に使える！」\n(オーディオキュー：鏡の銀糸弦楽反射ループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.stitch_late",
+      "value": "(終盤までカセルの猛烈な突進を鈍らせ、足場を支えてくれた銀糸が最後の切断斬り合わせとともに鏡へ予約押印される)\n「ミハイルおじさん、今まで私の足元と退路をずっとしっかり縫い支えてくださってありがとうございました！\n今からおじさんの『銀糸の縫合』と心臓破裂の終焉を、カセルの鏡に返還予約で結びつけます！」\n(オーディオキュー：鏡の銀糸弦楽反射ループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.pendulum_early",
+      "value": "(『ゼロアワー』の時計針の爆発が鏡の振り子軌跡とぴったり重なり、二つ目の反射層の光が消える)\n「ユリウスおじさんの『振り子の巻き戻し』、返還予約完了！\n残像復帰を早く手放した代わりに、鏡で一番厄介だった『長い予告のあとの二回の交差突進』を先に封じた。これでカセルの素直になった剣の拍子を目で見極めて正面からパリィできる！」\n(オーディオキュー：鏡の歪んだ振り子反射ループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.pendulum_late",
+      "value": "(危険な終盤の攻防まで安全に往復時間を守り抜いてくれた振り子の軌跡が、鏡の反射振り子と噛み合って砕け散る)\n「ユリウスおじさん、おじさんが合わせてくださった往復時間のおかげでここまで一度も遅れずに戦えました！\nさあ、『振り子の巻き戻し』と急速な老化の終焉をカセルへお返しする時間です！」\n(オーディオキュー：鏡の歪んだ振り子反射ループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.waltz_early",
+      "value": "(『グランドフィナーレ』の回転照明の剣気が鏡の放った青い花びらの弾幕を正面から切り裂き、反射層の一つを沈黙させる)\n「ヴァレリアお姉さんの『カーテンコールの円舞』、返還予約完了！\n華やかな空中多段跳躍を先に空けた代わりに、上から降り注いでいた鏡の『反射円舞の花びら』弾幕をきれいに消せた。両足で審判席の床をしっかり踏みしめて戦うよ！」\n(オーディオキュー：鏡の反射バイオリンワルツループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.waltz_late",
+      "value": "(終盤の激しい地上連撃を軽やかに跳び越させてくれた最後の円舞が、鏡の反射の花びらとともに舞い散って予約刻印を打ち込む)\n「ヴァレリアお姉さん、お姉さんの円舞のおかげでカセルの刃の上でも足首ひとつ傷めずに舞い上がれました！\nこれから『カーテンコールの円舞』と両脚の刑罰を、カセルの鏡へお返しします！」\n(オーディオキュー：鏡の反射バイオリンワルツループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.forge_early",
+      "value": "(基本パリィ直後の空中下方向鐘撃で叩き落とした『六時の種まき』の黄金の大鐘波動が鏡の地面衝撃波と正面衝突し、反射層を打ち砕く)\n「ガブリエルおじさんの『共鳴鍛造』、返還予約完了！\n広範囲反撃鐘撃を早く空けた代わりに、床一面に迫っていた鏡の『反射大鐘の衝撃波』を先に止められた。もう無理に跳び上がらず、地上のパリィに集中できる！」\n(オーディオキュー：鏡の冷たい反射大鐘ループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.forge_late",
+      "value": "(終盤までカセルの直接攻撃のガードを基本パリィ＋空中下方向鐘撃で痛快に打ち砕いてきた大鐘波動が、鏡の奥深くへ突き刺さる)\n「ガブリエルおじさん、おじさんが教えてくださった手信号と鐘撃が、カセルの固く閉じた鏡を何度でもこじ開けてくれました！\n今から『共鳴鍛造』と永遠の沈黙の終焉をカセルへ返還予約します！」\n(オーディオキュー：鏡の冷たい反射大鐘ループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.canvas_early",
+      "value": "(0.3秒の時差で追いかけて描いた『自画像の完成』の筆遣い剣撃が鏡の色彩二重剣撃と寸分違わず重なり合い、反射層の絵の具を拭い去る。既存の絵の具足場は3秒間点滅して着地を保証する)\n「イリーナお姉さんの『余白の切り抜き』、返還予約完了！\n即席の絵の具足場と分身を先に手放した代わりに、鏡の厄介な『0.3秒時差の反射色彩二重剣撃』を早めに消せた。これからはカセルの単発剣撃だけをまっすぐ見て弾き返せばいい！」\n(オーディオキュー：鏡の反射ピアノアルペジオループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.return.canvas_late",
+      "value": "(終盤までレアの傍らで二人分の剣撃をともに描き添えてくれた色彩の自画像が、鏡の二重剣撃と噛み合ってきらびやかに散る)\n「イリーナお姉さん、お姉さんが描いてくれた自画像が最後まで私の隣で一緒に剣を振ってくれました！\n今から『余白の切り抜き』と失明の終焉を、カセルの鏡へ返してあげます！」\n(オーディオキュー：鏡の反射ピアノアルペジオループを永久消去 + 時間刻印共鳴レイヤー +1段階上昇)"
+    },
+    {
+      "key": "story.cassel.p2.08_r1_cassel",
+      "value": "(最初の返還予約 1/5 が公証原簿に刻まれ、レアの記録剣から追加の時間刻印出力 +20% が蒼い炎のように噴き出すと、カセルの眉が初めてぴくりと動く。カセルは残る四つのスキルを大人しく受け止めまいと『万象共鳴鏡』を背後に折り畳んで閉じ、素早くバックステップで距離を取る)\n「……万象共鳴鏡の反射判定を逆手に取り、私の原簿に返還予約を刻み込んだというのか！\nだが鏡の反射窓を閉じてしまえば、お前の残る技も斬り合わせの対象を失う。この私の直接剣術でお前の本体から先に両断してくれる！」\n(戦術案内：カセルが鏡を閉じて カセル零式 3連続突進斬りで直接攻撃してきます。ボススキルを浪費せず、基本パリィ(L / RB)で弾き返してください！)"
+    },
+    {
+      "key": "story.cassel.p2.09_r1_rea",
+      "value": "(カセルの3打目の直接剣撃を基本パリィで正面から弾き返した直後、レアが解放された時間刻印出力 +20% の乗った重厚な基本剣術連撃でカセルの剣のガードを叩き伏せる。自らの時間をただ1秒も燃やしたことのないカセルはその重い時間の質量を手首で支えきれず大きく体勢を崩し、本体への致命傷を塞ごうと畳んでいた『万象共鳴鏡』を前面に慌てて展開し直す)\n「鏡を閉じても、一度押された予約は消えませんよ！ それに反射障壁を畳んだあなたの手首では、昨日と今日の私が直接振って積み上げたこの『時間刻印出力』の重さを支えきれないはず！\n見て、助かりたくて鏡をまた開いた！ 反射回路が強引に開いた今のうちに、次のスキルを叩き込もう！」"
+    },
+    {
+      "key": "story.cassel.p2.10_r2",
+      "value": "(二度目の返還予約 2/5 成立！ 時間刻印出力が +40% まで跳ね上がり、レアの基本連撃の最終段の刃先から 1.8m の長さを持つ青金石の衝撃波が伸び放たれる)\n「返還予約、二つ目！ スキル経路を二つ空けたことで基本連撃の最後の一撃に青金色の衝撃波が乗って、カセルがバックステップで下がっても端まで届く！」"
+    },
+    {
+      "key": "story.cassel.p2.11_r3",
+      "value": "(三度目の返還予約 3/5 成立！ 鏡の五つの反射層のうち三つが消灯し、BGMでもカセルのパイプオルガンを押し退けてレアの時間刻印による弦楽・ピアノドライブが審判席を支配する。カセルが荒い息を吐きながら4打の直接剣術へと切り替える)\n「くっ……！ 私の母体鏡が、なぜあの小娘の刀身に積もった時間の圧力を写し取れんのだ！\nダッシュや着地の直後に伸びてくるあの初撃だけで、こちらの攻撃の始動が潰されている……！」"
+    },
+    {
+      "key": "story.cassel.p2.12_r4",
+      "value": "(四度目の返還予約 4/5 成立！ 今や今日のレアが基本剣術を振るうたび、0.12秒遅れてあとを追う昨日のレア（#01）の紫と青金の残像がまったく同じ軌跡でもう一度カセルのガードを強打する)\n「さあ、五つのうち四つまで来たわよ、今日の私！\nあんたが一度斬るたびに、0.12秒後ろから私の剣撃がカセルのガードをもう一度叩いてやるわ。私たち二人の重みで、最後の一重になった鏡をこじ開けましょう！」"
+    },
+    {
+      "key": "story.cassel.p2.13_r5",
+      "value": "(五度目の斬り合わせが炸裂して『万象共鳴鏡』の反射層五つがすべて暗転し、歪んだ反射音響が完全に消え去る！ レアのスキルスロット五枠はすべて［返還予約］となって空になり、刀身中央のルーン溝から 100% (×2.0) に解放された時間刻印出力がまばゆい青金色の光の柱となって立ち昇る)\n「［返還予約 5/5 完了 — 追加時間刻印出力 100% 開放］\n五人の恩人の皆さんのスキル使用権はすべて返還記録に預けた。今、私の手に残った攻撃技は基本剣術ひとつだけ。でも私の脚とダッシュとパリィ、そして昨日と今日で私たちが自ら振ってきたすべての時間刻印がこの刃一本に集まってる！」"
+    },
+    {
+      "key": "story.cassel.p3.01_open",
+      "value": "(反射機能をすべて失いひび割れた鏡母体の前で、カセルが初めて礼服を乱したまま両手で長剣を構え直し、レアの名をまっすぐ呼ぶ)\n「……五つの枝の予約をすべて掛け終えたとしても、最後の六番目の原型動作であるこの『カセル零式』を最後まで迎え撃てねば、終焉の一括返還は決して確定せぬぞ、レア！\nボススキルひとつ残っていないその空の手で、私の原型剣術を超えられると思っているのか！」\n(戦闘案内：カセル 第3フェーズ · 基本技の決戦 — B=3（400回以上）のときは基本パリィのあと3段階基本剣術 1~4打 完全連撃で真エンディングの斬り合わせを確定させてください！ B<3のときは基本剣術でコア耐久度48を削って緊急破壊を行います。)"
+    },
+    {
+      "key": "story.cassel.p3.02_live_b3",
+      "value": "(カセルと刃を合わせたまさにその一撃で基本剣術の有効使用が四百回目に到達した瞬間！ 金色の拡散リングとともに刀身最後のルーンが開かれ、［真名開放：原罪公証剣 — カセル零式］が点灯する！)\n「……今のこの一撃で四百回目の刻印が満たされた！\nあなたが私の体に植え付けた原型動作の終点が、今この手の中で完全に開きましたよ、カセル！ 次のパリィからの四回の極意連撃で、五つの終焉を残らず確定返還してあげます！」"
+    },
+    {
+      "key": "story.cassel.p3.03_b3_ready",
+      "value": "「原型動作3段階の準備完了よ、今日の私！\nカセルが『カセル零式』で踏み込んできたら基本パリィで弾き返して、隙ができたあいだに私たちの3段階基本剣術 1打目から4打目までを最後まで叩き込みなさい！ 私が初打から最後の四打目まで、あんたの真後ろで同じように一緒に斬ってあげる！」"
+    },
+    {
+      "key": "story.cassel.p3.04_b3_retry",
+      "value": "「大丈夫、慌てないで！ 私たちの原型動作はもう3段階極意に届いているわ。コアをただ壊さず、息を整えてもう一度基本パリィから繋がる 1~4打 完全連撃で斬り合わせを最後まで決めましょう！」"
+    },
+    {
+      "key": "story.cassel.p3.05_true_hit",
+      "value": "(カセルの剣撃を基本パリィで弾き返した瞬間、今日のレア（#02）とコアから実体化した昨日のレア（#01）、さらにこれまで振るってきた何百回もの時間刻印のシルエットがひとつに重なる『刻印重畳』4連続極意剣舞が、カセルの『カセル零式』を正面から完璧に斬り伏せる！\nすべての音が1.0秒間の完全な無音に沈んだのち、万象共鳴鏡が粉々に砕け散る轟音とともに、公証原簿へ［原型動作 確認 / 5大終焉一括返還確定：被告人 R.E.A. ➔ 原所有者 大公証官カセル］が黄金の職印として刻まれる！)\n「これが昨日の私と今日の私が、九人の仲間と一緒に証明してみせた私たちの答えです！\nあなたが押し付けた五つの終焉、今ここで元の持ち主であるあなたへ全量返還確定します！」"
+    },
+    {
+      "key": "story.cassel.p3.06_true_fall",
+      "value": "(鏡母体が塵のように砕け落ち、レアのブローチに走っていた五筋の赤い亀裂が一斉に抜け出して、カセルの胸と目、両脚と喉元、そして白髪へと褪せていく髪の上へ一度に襲いかかる！)\n「ぐああああっ……！ こんなはずが……！ 百年以上も代役の器どもに分割して先送りしてきた五つの終焉が、たった一度の原型での斬り合わせで我が肉体にすべて返ってくるなど……！\n私の時間が……百四十二年の時間が一息に崩れ落ちていく……！」"
+    },
+    {
+      "key": "story.cassel.p3.07_basic_break",
+      "value": "(基本剣術がまだ3段階原型極意に達しておらず、五つの予約の最終返還確定が成立しない。レアはためらわず両手で記録剣を持ち直し、刀身コアに残ったすべての時間刻印を一度に燃やし尽くす緊急破壊の一撃で、鏡母体と地下『永久剥製棺』の同一制御連結核を正面から貫き砕く！)\n「［原型動作未完成 — 緊急コア破壊実行：万象共鳴鏡および地下永久剥製棺 制御核崩壊］\n原型動作の最後の確定には届かなかった……でもこの記録剣コアを全部燃やし尽くしてでも、この鏡母体と地下剥製棺を繋ぐ核だけはここで完全に断ち切ってみせる！\n五人の恩人たちを再び閉じ込めて処刑しようとするあなたの法廷は、今この一撃で終わりです！」"
+    },
+    {
+      "key": "story.cassel.p3.08_basic_fall",
+      "value": "(制御核が粉々に砕け散り、万象共鳴鏡と地下剥製棺の凍結回路が連鎖爆発を起こす。兵器の生命維持保護を失ったカセルが崩れ落ちる審判席の壇下へと転落する)\n「狂気の沙汰を……！ 原型の斬り合わせを確定させることすらできぬまま、記録剣コアを自爆させて母体制御核を砕くとは！\n私の鏡と剥製棺が崩れれば私も終わりだが……お前の体に集まった五つの終焉も決して消えはせぬぞ、R.E.A.……！」"
+    },
+    {
+      "key": "story.cassel.p3.09_defeat",
+      "value": "(審判席の床に倒れたレアの手を、コアの中の昨日のレアが掴んでチェックポイントへと巻き戻す)\n「まだ終わっていないわ、今日の私！ 私たちが積み上げた熟練度と記録はコアにそのまま残っている。五つのスキルスロットもすべて元に戻ったから、息を整えてもう一度上がりましょう！」"
+    },
+    {
+      "key": "story.ending.basic.01",
+      "value": "(万象共鳴鏡と地下剥製棺の制御核が崩れ落ちたのち、六時の青白い夜明けの光が差し込む大法廷の屋上展望台。コアの光をすべて燃やし尽くしてひび割れた記録剣を杖代わりに立ったレアが、静かに荒い息を整える。胸元のブローチの五つの亀裂はいまだ残っているものの、都市の下の救護所のほうからは処刑の鐘の音は響いてこない)\n「……六時を過ぎたのに、処刑の鐘は鳴らなかった。\n地下の剥製棺も、カセルの鏡もみんな崩れた。五人の皆さんも……もう誰にも追われず、無事に生きていらっしゃる。」"
+    },
+    {
+      "key": "story.ending.basic.02",
+      "value": "(蒼い光を使い果たした記録剣コアから昨日のレアが半透明の姿で歩み出て、屋上の手すりにもたれた今日のレアの前に向き合う。トラック12の静かなフェルトピアノとオルゴールの旋律が流れる)\n「記録剣コアが燃え尽きてしまって……もうデスリワインドは働かないわ、今日の私。\n原型動作の最後の確定に届かなかったから、五つの終焉があんたの体にそのまま残ってしまった。ごめんなさい……私が最初から怖がって道を塞いだりなんかしなければ。」"
+    },
+    {
+      "key": "story.ending.basic.03",
+      "value": "(今日のレアが首を横に振り、一歩歩み出て震えている昨日の自分から先に両腕で温かく抱きしめる)\n「謝らないで、昨日の私。私たちが少し足りなかったわけでも、資格がなかったわけでもないよ。\nあなたが昨日、閉まった扉の前で最後まで諦めずに時間を巻き戻してくれたから、今日私たちが五人の皆さんを全員救い出せたんだから。」\n(操作案内：昨日のレア(rooftop_echo_embrace)へ近づき F / 左スティック押し込みで先に抱きしめてください。)"
+    },
+    {
+      "key": "story.ending.basic.04",
+      "value": "(昨日の肩を抱き寄せたまま、夜明けの光に照らされた公証台帳を見下ろして穏やかに、はっきりと告げる)\n「私たちまで生きて帰ろうとしたことは間違いじゃなかった。この台帳の終わりには、私の返事もそのまま書いておいて。」"
+    },
+    {
+      "key": "story.ending.basic.05",
+      "value": "(昨日のレアが今日のレアを抱きしめ返し、静かに頷く)\n「うん。あんたが最後まで生きて帰ろうとしたっていう記録は、二重線で消したりしない。」"
+    },
+    {
+      "key": "story.ending.basic.06",
+      "value": "(二人のレアが並んで手を重ねて握り、公証台帳の最後の行に青金石のペンで消えない一文をひと文字ずつ丁寧に書き入れる：\n［公証記録 #02 最終登録 — 五人の恩人全員の救出完了。そして今日のレアは、最後まで一緒に生きて帰ろうとした。］)\n(操作案内：最後の公証台帳(basic_ending_ledger)で F / 左スティック押し込みで今日の返事を消さずに押印してください。)"
+    },
+    {
+      "key": "story.ending.basic.07",
+      "value": "(屋上階段の扉が開き、ミハイルとユリウス、ヴァレリア、ガブリエル、イリーナ、そしてテオ・マルタ・イーサン・ルカが息を切らして駆け上がってくる。ミハイルが崩れ落ちるレアの肩を慌てて抱き留める)\n「レア！ しっかりしろ、レア！ 俺たちが来たぞ……戻ってくる床を全部直しておいたんだろう、目を開けてみろ！」"
+    },
+    {
+      "key": "story.ending.basic.08",
+      "value": "(レアは自分を包み込む九人の温かい手のひらを感じながら、少しも怖がっていない表情でほのかに息を吐く)\n「……皆さん、ご無事でいらしたんですね。イリーナお姉さんの言うとおり……無理に笑わず、自分の顔のまま皆さんにお会いできました。\nテオ、マルタおばあちゃん……私の返事は、台帳の終わりにそのまま書いておきましたから……」"
+    },
+    {
+      "key": "story.ending.basic.09",
+      "value": "(夜明けの風の中でレアが静かに息を引き取り、テオが震える手で二重線に消されていないレアの最後の言葉が記された公証台帳を大切に閉じる。オルゴールの六番目の拍子はついぞ鳴らぬまま、静かな夜明けの空気の中へ消えていく)\n「……うん、レア。二重線で消されなかったお前の返事、僕たちが最後まで覚えているから。」\n(システム通知：基本エンディング — 「この台帳の終わりには、私の返事もそのまま書いて」 完了)"
+    },
+    {
+      "key": "story.ending.basic.10",
+      "value": "［記録再開案内］\n基本エンディングの記録がスロットに保存されました。最終戦直前の記録再開を選択すると、同じプレイ記録の『大法廷の昇降機前』へ即座に復帰し、水路の鍛冶場『高密度共鳴錬成炉』で基本剣術を3段階極意（400回）まで鍛え直したうえでカセル戦の真エンディングへ再挑戦できます。"
+    },
+    {
+      "key": "story.ending.true.01_brooch",
+      "value": "［公証記録 #02 — D+1日 06:05］\n(六時の朝の陽射しが雲を突き破り、大法廷の屋上展望台の上に眩しいほど降り注ぐ。レアが震える手で首元の五枚花びらの青金石ブローチに触れてみる。五筋の赤い亀裂は跡形もなく消え去って澄んだ青い輝きを放っており、針に刺されたような心臓も、霞んでいた視界も、嗄れていた声と重かった両足首も、すべてが軽やかになっていた)\n「……ブローチのひびが全部消えた。\n五つの終焉がカセルのもとへ完全に返ったんだ……！ 息ができる。朝の光が端までくっきり見える！」"
+    },
+    {
+      "key": "story.ending.true.02_beating",
+      "value": "(ほかの皆が屋上へ上がってくる前、記録剣から歩み出た昨日のレアがそっと歩み寄り、今日のレアの左胸に静かに耳を当てる。穏やかな心臓の鼓動が、温かいフェルトピアノとオルゴールの最初の旋律へと変わっていく)\n「……まだ、打ってる。」"
+    },
+    {
+      "key": "story.ending.true.03_seat",
+      "value": "(今日のレアが目頭を熱くしながら、先に両腕を伸ばして昨日の自分を力の限り抱きしめる)\n「うん。私たちの席も残ってる。」\n(操作案内：昨日のレア(rooftop_echo_embrace)へ近づき F / 左スティック押し込みで力強く抱きしめてください。)"
+    },
+    {
+      "key": "story.ending.true.04_echo",
+      "value": "(昨日のレアが今日の胸の中で初めて緊張を解き、ぱっと晴れやかに笑いながら温かい朝の光となって今日のレアの心と刀身の中へと静かに溶け込んでいく。十歳より前の記憶や昨日燃やした二十四時間の記憶が奇跡のように戻ったわけではなかったが、自分を犠牲にしようとした昨日の私までも余さず抱きしめ、今日の私も生かしきったという事実だけは手のひらの温もりのように確かだった)\n「ありがとう、今日の私。私の分まで消さずに……私たち二人とも、朝へ連れてきてくれて。」"
+    },
+    {
+      "key": "story.ending.true.05_mikhail",
+      "value": "(屋上の扉が開き、九人が一斉に駆け出てくる。先頭を切って駆け寄ったミハイルが胸の痛みの完全に消えた手でレアのクリーム色ショールケープの縫い目を整え、左の側頭部の青いリボンをきちんと結び直してくれる)\n「……お前が下ろした退路の足場が、最後まで持ちこたえたな、レア。\n俺のタンスに掛けてあった六着目のコート、今年の冬にはようやく持ち主に着せてやれそうだ。生きて戻ってきてくれてありがとうな。」"
+    },
+    {
+      "key": "story.ending.true.06_julius",
+      "value": "(黒い髪と若々しい精気を取り戻したユリウスが歩み寄り、自分の片割れの懐中時計とレアの片割れの懐中時計を並べて噛み合わせて見せる。二つの時計の秒針は今やいかなる刑罰もなく、軽やかで健やかな朝の時刻をともに刻んでいる)\n「私たちが一緒に合わせた往復時刻表から、ただの一秒も遅れずに戻ってきてくれたんだな、レア。今や私の時計は、君が無事に戻ってきたという時間だけを指しているよ。」"
+    },
+    {
+      "key": "story.ending.true.07_valeria",
+      "value": "(六年ものあいだ突いて歩いていたコルクの添え木を放り投げ、自分の二本の足で軽やかに駆け寄ってきたヴァレリアが、朝の光の中で優雅にひと回りターンステップを踏んでからレアを抱きしめ、両足首を確かめる)\n「見て、レア！ 添え木がなくても自分の両脚でまた踊れるわ！\n見栄えのいい動きじゃなく、安全に両足で降り立つ道を選んでくれて……本当にありがとう、大事なレア。」"
+    },
+    {
+      "key": "story.ending.true.08_gabriel",
+      "value": "(ガブリエルが微笑みながら右手で取り決めてあった［下向きの手：着地・復帰］の信号を先に見せてから、六年ぶりに取り戻した深く温かい本当の声でゆっくりと口を開く)\n「……おかえり、レア。\n今朝六時の鐘の音は処刑を告げる鐘じゃない。お前が生きて戻ってきた朝を告げる鐘の音だ。」"
+    },
+    {
+      "key": "story.ending.true.09_irina",
+      "value": "(澄んだ焦点の戻った両目でレアをしばらくじっと見つめていたイリーナが歩み寄り、絵の具のついた指先でレアの頬と眉を撫でながら涙を浮かべる)\n「昨日までは怖いと打ち明けてくれてありがとう……そして今、私のこの両目で初めて見る十六歳のあなたの顔がこんなに明るく笑っていてくれて、もっとありがとう、レア。私が指先だけで描いてきたどの自画像より、今日のあなたが一番綺麗よ。」"
+    },
+    {
+      "key": "story.ending.true.10_theo_luka",
+      "value": "(テオがびっこを引く足で明るく笑いながら実験ノートを開いて見せ、ルカが隣で昇降場の信号機を振る)\n「見てくれよ、レア！ 昨日が二重線で消していた ~~［レア生存］~~ の欄の横に、僕がでっかく［実戦検証完了 — 六人全員生存帰還！］って書いておいたんだ！」\nルカ：「そうですよ、レアお姉さん！ お姉さんが昇降場で『ちょっと、乗せて』って呼んでくださったおかげで、今朝の帰還列車は満席なんですから！」"
+    },
+    {
+      "key": "story.ending.true.11_marta_ethan",
+      "value": "(マルタがエプロンで目元を拭いながら優しく手招きし、イーサンがレアの右手に握られた記録剣の澄んだ青金石の刀身を指し示す)\nマルタ：「屋根裏のかまどで朝のスープがすっかり煮えているんだよ、みんな。冷めないうちに早く戻ろうねえ。」\nイーサン：「行く前に、お前の剣を一度見てみろ、レア。カセルに終焉がすべて戻ったことで、お前の体を縛っていた代役公証の接続と『カセル零式』という公証登録が完全に解かれた。今、その白紙刻印剣の最初の枠は正真正銘の白紙だ。お前が自分で最初の名前をつけてやれ。」"
+    },
+    {
+      "key": "story.ending.true.12_blank_slate",
+      "value": "(レアが自分のスキル画面と刀身を見下ろす。五人の恩人の代役スキルと『原罪公証剣 — カセル零式』という赤い公証名称がきれいに消え去り、真っ白な最初の枠が空いている。けれど剣を握る感触も、九人の仲間とともに歩んできた足取りも、少しも消えてはいなかった)\n「カセルが植え付けた母体剣術という名前は消えたけれど、私の手が剣を握る感覚も、五人の皆さんやテオ・イーサンおじさん・マルタおばあちゃん・ルカから教わった心も、全部私の中に残ってる。」"
+    },
+    {
+      "key": "story.ending.true.13_swing_prompt",
+      "value": "「誰かの死を代わりに背負うための代役剣術じゃなくて、今日を生きていく私が自分の名前で綴る最初の動作をここに刻みます！」\n(操作案内：朝の陽射しが差し込む屋上展望台の前(rea_form_one_sky)で剣術ボタン(J / Z / 左クリック / コントローラーX)を押し、レアだけの最初の一太刀を自ら振るってください！)"
+    },
+    {
+      "key": "story.ending.true.14_registered",
+      "value": "(レアが朝の空へ向かって澄み渡る軽やかな青金色と金色の斜め斬りを振るった瞬間、白紙のスキル画面の最初の枠に温かい金色の文字で新たな固有スキルが刻印される：\n［新規固有スキル登録：レア流第一式 — 昨日の私と明日の朝を迎えに行く］)\n「できた……！ 昨日の私と今日の私が一緒に作り上げた私たちの最初の剣術、『レア流第一式』だよ！」"
+    },
+    {
+      "key": "story.ending.true.15_luka_call",
+      "value": "「さあ、皆さん昇降板へどうぞ！ 忘却の屋根裏行き、朝の始発軌道車がただいま発車します！」"
+    },
+    {
+      "key": "story.ending.true.16_to_attic",
+      "value": "「うん！ お腹ペコペコ、みんなで朝ごはんを食べに行こう！」\n(操作案内：屋上昇降場の出口(rooftop_to_attic_exit)で F / 左スティック押し込みで忘却の屋根裏の朝食の食卓へ移動してください。)"
+    },
+    {
+      "key": "story.ending.true.17_marta_table",
+      "value": "［公証記録 #02 — D+1日 06:30 / 拠点 · 忘却の屋根裏］\n(温かい陽射しが満ちた屋根裏の長い木の食卓の上。マルタが昨日の朝の予約ボードに押されていたとおり、ミハイル・ユリウス・ヴァレリア・ガブリエル・イリーナ、そしてレアの分である六番目の器まで湯気の立ち昇る朝のスープ六杯を並べて置き、テオ・イーサン・ルカ・自分自身の湯呑みとパン籠を一緒に並べる)\n「さあ、昨日の朝にお前が五人をお連れすると約束してくれた六杯分、一杯も欠かさず全部用意できたよ！」"
+    },
+    {
+      "key": "story.ending.true.18_board",
+      "value": "(出入口の脇の朝食予約ボードにまっすぐ押されている六つの印章と、テーブルの上の開かれた『青金石のオルゴール』とミントキャンディの小皿を見つめる)\n「昨日の私がオルゴールに残したひと言……『明日の私は、温かいものを食べられたらいいな』だったね。\nマルタおばあちゃん、私が昨日の朝に自分で押しておいた六番目の席、空けたままにせず本当に帰ってきました！」"
+    },
+    {
+      "key": "story.ending.true.19_sit",
+      "value": "(ミハイルが食卓の真ん中の六番目の椅子をすっと引いてやり、ぶっきらぼうだがこの上なく温かい声で言う)\n「突っ立って眺めているつもりか、レア。お前が自分で印を押しておいた六番目の席だ。スープが冷めないうちに早く来て座れ。」\n(操作案内：食卓の六番目の席(sixth_breakfast_seat)へ移動し、F / 左スティック押し込みで座ってください。)"
+    },
+    {
+      "key": "story.ending.true.20_sixth_beat",
+      "value": "(レアが五人の恩人と四人の協力者のあいだの六番目の椅子に腰を下ろした瞬間！\nタイトルテーマから拠点と五つの区画、残響戦とカセル戦に至るまでずっと六番目の拍子が休符（沈黙）として空けられていた『六番目の拍子が空いているワルツ』の最後の六番目の拍子が、サウンドトラック全体の中でただこの瞬間初めて温かいオルゴール・ピアノ・フルチェンバー弦楽の和音によってくっきりと満たされ、完全な6拍子のワルツとして完成する！\n未完の礼法も、二重線で消された空席でもない、十人がともに息づく朝の音楽が屋根裏いっぱいに満ちあふれる)\n「……聞こえる、今日の私？ ずっと空いていた六番目の拍子が、ついに満たされたわ。」"
+    },
+    {
+      "key": "story.ending.true.21_spoon",
+      "value": "(レアが温かいスープの器を両手で包み込み、立ちのぼる湯気の中で最初の一匙を大きくすくって口へ運ぶ。頬を伝って温かい涙が一粒こぼれ落ちるが、口元にはこの上なく穏やかで晴れやかな笑みが広がる)\n「……温かい。本当に美味しいです、マルタおばあちゃん！」\n(操作案内：F / 左スティック押し込み または Enter / A で六杯目の温かい朝食をご一緒ください。)"
+    },
+    {
+      "key": "story.ending.true.22_complete",
+      "value": "(窓の外の時計塔の秒針が巻き戻されることなく前へ、明日へ向かって力強く進んでいく。屋根裏の食卓を囲む十人の笑い声の上に、最後の公証記録が金色に刻まれる)\n「ありがとう、昨日の私。そして私を助けてくれたすべての人たち。\n私たちの今日は、これから始まるんだね！」\n(システム最終印章：［公証完了：レアの今日 / 時間進行中］ — 真エンディング「白紙の上に綴る私たちの最初の動作、そして六杯の朝」 完結)"
+    },
+    {
+      "key": "story.resume.lift.01",
+      "value": "［最終戦直前記録の再開 — 場所：大法廷の昇降機前］\n(カセルとの決戦に臨む直前、昨日の私が銀糸封合障壁を解いてコアに同行した大法廷の昇降機前の記録へ戻ってきた。\n五人の恩人スキルの3段階使用権もすべて元に戻っており、最後の台帳に記した私たちの返事もスロットにそのまま残っている。)"
+    },
+    {
+      "key": "story.resume.lift.02_echo",
+      "value": "(記録剣コアの中から昨日のレアが力強い声で語りかける)\n「さっきの決戦で、私たちは五つの枝の返還予約（R=5）までは完璧に成功させたわ、今日の私。\nあとはカセルの最後の『カセル零式』を正面から迎え撃てるように、私たちの基本剣術を3段階極意（400回）まで仕上げさえすればいいの。そうすれば今度はコアを燃やさずに五つの終焉をカセルへ一括確定返還して、私たち二人とも生き残れるわ！」"
+    },
+    {
+      "key": "story.resume.lift.03_theo",
+      "value": "(伝声ラッパの向こうからテオの案内する声が聞こえてくる)\n「レア！ 基本剣術の回数を稼ぐのにわざわざ区画を長く歩き回る必要はないよ。すぐ隣の帰還通路かステージ選択からイーサンおじさんの水路の鍛冶場『高密度共鳴錬成炉』へ来れば、精鋭パリィ・連撃訓練で足りない回数をあっという間に400回まで満たして、またその昇降機前へ戻ってこられるからね！」\n(操作案内：水路の鍛冶場 / 高密度共鳴錬成炉へ移動して基本剣術を3段階（400回）まで鍛えるか、昇降機の制御盤からただちにカセル戦へ再挑戦してください。)"
+    },
+    {
+      "key": "story.resume.crucible.01_ethan",
+      "value": "(水路の鍛冶場の奥にある巨大な青金石の炉『高密度共鳴錬成炉』の焚き口を開け放ち、イーサンが頷く)\n「来たな、レア。カセルの母体剣術を最後の四打目まで迎え撃つには、お前の手に馴染んだ基本剣術が四百回目の極意に届かねばならん。\nこの錬成炉の中には、お前の基本パリィと基本剣術連撃を滞りなく受け止めてくれる高密度共鳴標的と番兵たちが用意されている。二分あれば十分だから、思う存分剣を振るってみろ！」\n(操作案内：高密度共鳴錬成炉(resonant_crucible)を F / 左スティック押し込みで稼働させてください。)"
+    },
+    {
+      "key": "story.resume.crucible.02_theo",
+      "value": "「錬成炉の計測器をつけたよ、レア！ 金色の攻撃をパリィするか、そのまま基本剣術の連撃を最後まで叩き込めば有効回数がどんどん上がる。400回『原罪公証剣 — カセル零式』が開くまで一気に攻め立てよう！」\n(操作案内：錬成炉ウェーブで基本剣術を有効命中させ、累計400回（3段階極意 B=3）を達成してください。)"
+    },
+    {
+      "key": "story.resume.crucible.03_ethan",
+      "value": "(四百回目の有効打撃とともに刀身三節目まで黄金色と青金色の刻印が満ち溢れ、［真名開放：カセル零式 · 原型動作確定］が鳴り響く！ イーサンが満足げな眼差しで刀身を見つめる)\n「……できたな。今やお前の白紙刻印剣は、カセルの原型動作4連撃を一打目から最後の一打まで一分の狂いもなく迎え撃てる。緊急破壊で剣を燃やす必要はない。正面から斬り伏せて、生きて戻ってこい！」"
+    },
+    {
+      "key": "story.resume.crucible.04_rea",
+      "value": "「ありがとうございます、イーサンおじさん、テオ！ これで出陣画面からも『生存返還未確保』の警告が消えて、原型動作が完全に整ったよ。\n大法廷の昇降機前に戻って、今度こそ必ず生きて朝の食卓へ降りてきます！」\n(操作案内：鍛冶場直通通路(forge_to_court_lift)で F / 左スティック押し込みで大法廷の昇降機前に復帰し、カセル戦の真エンディングへ挑戦してください。)"
+    },
+    {
+      "key": "story.epilogue.01_marta",
+      "value": "(朝の陽射しが差し込む忘却の屋根裏。今や画面上部には処刑期限のカウントダウンの代わりに［公証完了：レアの今日 / 時間進行中］が穏やかに浮かんでいる。マルタが温かいミント共鳴茶を一杯、レアの前に置いてくれる)\n「朝のスープ六杯をすっかり平らげてなお、ミント茶の入るお腹は残っているだろう、うちのレア？ もう誰にも追われず、ゆっくりお飲み。」\n(操作案内：卓上の温かいミント共鳴茶(attic_mint_tea)を F / 左スティック押し込みで味わい、穏やかな朝を満喫してください。)"
+    },
+    {
+      "key": "story.epilogue.02_benefactors",
+      "value": "(屋根裏の窓辺や階段の踊り場から、五人の恩人がそれぞれ健やかな姿でレアに声を掛ける)\nミハイル：「新しい冬用コートの袖丈がぴったりだな。縫い目がほつれたらいつでも裁縫室へ持ってこい。」\nユリウス・ヴァレリア・ガブリエル・イリーナ：「時計塔も、オペラの舞台も、朝の鐘楼も、温室アトリエも、今やどれもあなたがいつでも遊びに来られる私たちの家よ、レア。」"
+    },
+    {
+      "key": "story.epilogue.03_theo",
+      "value": "「レア、分所の作業室のコア記録閲覧端末には、僕たちが集めたすべての手がかりと五人の恩人の皆さんの刻印記録がそのまま保存されているよ。まだ確認していない選択閲覧記録があれば、いつでも端末や調査ログから読み返せるからね！」"
+    },
+    {
+      "key": "story.epilogue.04_ethan_replay",
+      "value": "「それにもし、この剣に刻まれた旅路を最初から辿り直したくなったときは、メニューの『記録リプレイ』を使えばいい。\nお前が再び記憶を焼いたり新しい周回をやり直したりするわけじゃあない。完結したこの記録の上に俺たちの時間刻印の鍛錬と刻印重畳の輝きを宿したまま、あの朝のはじまりの構成をもう一度開き直してみる機能だ。」"
+    },
+    {
+      "key": "story.epilogue.05_rea_final",
+      "value": "(白紙のスキル画面の最初の枠に輝く『レア流第一式 — 昨日の私と明日の朝を迎えに行く』を確かめ、左の側頭部の青いリボンとポーチの中の片割れの時計をそっと撫でながら微笑む)\n「はい！ 昨日の私と今日の私が一緒に守り抜いたこの朝を、いつまでも大切に歩いていきます！」"
+    },
+    {
+      "key": "area.speaker.rea_echo",
+      "value": "残響 · 昨日のレア"
+    },
+    {
+      "key": "area.speaker.cassel",
+      "value": "大公証官カセル"
+    },
+    {
+      "key": "area.room.court_01_hall",
+      "value": "大法廷 · 中央ホールと剥製棺の分岐階段"
+    },
+    {
+      "key": "area.room.court_02_echo_arena",
+      "value": "大法廷 · 残響の対練場"
+    },
+    {
+      "key": "area.room.court_03_lift",
+      "value": "大法廷の昇降機前"
+    },
+    {
+      "key": "area.room.court_04_tribunal",
+      "value": "大法廷 · 最上層の審判席"
+    },
+    {
+      "key": "area.room.court_05_rooftop",
+      "value": "大法廷 · 夜明けの屋上展望台"
+    },
+    {
+      "key": "area.target.court_control_pillar",
+      "value": "青金石の制御連結柱"
+    },
+    {
+      "key": "area.target.echo_notes",
+      "value": "剣の実験記録と帰還経路"
+    },
+    {
+      "key": "area.target.echo_side_knot",
+      "value": "脇道支柱の結び目"
+    },
+    {
+      "key": "area.target.echo_escape_step",
+      "value": "階段脇の安全足場"
+    },
+    {
+      "key": "area.target.echo_seal_barrier",
+      "value": "昇降機の銀糸封合障壁"
+    },
+    {
+      "key": "area.target.echo_hand_clasp",
+      "value": "昨日のレアの手"
+    },
+    {
+      "key": "area.target.cassel_lift_console",
+      "value": "最上層昇降機の制御盤"
+    },
+    {
+      "key": "area.target.rooftop_echo_embrace",
+      "value": "昨日のレア"
+    },
+    {
+      "key": "area.target.basic_ending_ledger",
+      "value": "最後の公証台帳"
+    },
+    {
+      "key": "area.target.rea_form_one_sky",
+      "value": "レア流第一式・虚空の標的"
+    },
+    {
+      "key": "area.target.rooftop_to_attic_exit",
+      "value": "屋根裏行き昇降場"
+    },
+    {
+      "key": "area.target.sixth_breakfast_seat",
+      "value": "六番目の食卓の席"
+    },
+    {
+      "key": "area.target.attic_mint_tea",
+      "value": "ミント共鳴茶"
+    },
+    {
+      "key": "area.target.forge_to_court_lift",
+      "value": "大法廷昇降機への帰還通路"
+    }
+  ]
+}

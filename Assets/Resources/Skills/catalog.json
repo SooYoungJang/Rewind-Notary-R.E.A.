@@ -3,7 +3,7 @@
   "skills": [
     {
       "skillId": "basic_sword",
-      "displayName": "기본 검술",
+      "displayName": "data.skills.catalog.skills.basic_sword.displayName",
       "sourceId": "cassel",
       "doomId": "",
       "implemented": true,
@@ -12,7 +12,7 @@
       "stages": [
         {
           "stage": 1,
-          "name": "햇병아리 베기",
+          "name": "data.skills.catalog.skills.basic_sword.stages.1.name",
           "effectId": "basic_sword",
           "comboLimit": 2,
           "stepSpeed": 0,
@@ -22,7 +22,7 @@
         },
         {
           "stage": 2,
-          "name": "청금의 궤적",
+          "name": "data.skills.catalog.skills.basic_sword.stages.2.name",
           "effectId": "basic_sword",
           "comboLimit": 3,
           "stepSpeed": 2.5,
@@ -32,7 +32,7 @@
         },
         {
           "stage": 3,
-          "name": "원죄공증검 — 카셀 제0식",
+          "name": "data.skills.catalog.skills.basic_sword.stages.3.name",
           "effectId": "basic_sword",
           "comboLimit": 4,
           "stepSpeed": 2.5,
@@ -44,7 +44,7 @@
     },
     {
       "skillId": "silver_stitch",
-      "displayName": "은실 박음질",
+      "displayName": "data.skills.catalog.skills.silver_stitch.displayName",
       "sourceId": "mikhail",
       "doomId": "heart_rupture",
       "implemented": true,
@@ -53,7 +53,7 @@
       "stages": [
         {
           "stage": 1,
-          "name": "홑박음질",
+          "name": "data.skills.catalog.skills.silver_stitch.stages.1.name",
           "effectId": "stitch_bind",
           "reach": 2.6,
           "cooldown": 0.65,
@@ -65,7 +65,7 @@
         },
         {
           "stage": 2,
-          "name": "교차 재단",
+          "name": "data.skills.catalog.skills.silver_stitch.stages.2.name",
           "effectId": "stitch_cross_floor",
           "reach": 2.6,
           "cooldown": 0.65,
@@ -77,7 +77,7 @@
         },
         {
           "stage": 3,
-          "name": "운명 봉합·절단",
+          "name": "data.skills.catalog.skills.silver_stitch.stages.3.name",
           "effectId": "stitch_cut",
           "reach": 2.6,
           "cooldown": 0.65,
@@ -91,7 +91,7 @@
     },
     {
       "skillId": "pendulum_rewind",
-      "displayName": "진자 되감기",
+      "displayName": "data.skills.catalog.skills.pendulum_rewind.displayName",
       "sourceId": "julius",
       "doomId": "rapid_aging",
       "implemented": true,
@@ -100,7 +100,7 @@
       "stages": [
         {
           "stage": 1,
-          "name": "진자 보법",
+          "name": "data.skills.catalog.skills.pendulum_rewind.stages.1.name",
           "effectId": "pendulum_thrust",
           "reach": 3.2,
           "cooldown": 2.2,
@@ -113,7 +113,7 @@
         },
         {
           "stage": 2,
-          "name": "이중 시간선",
+          "name": "data.skills.catalog.skills.pendulum_rewind.stages.2.name",
           "effectId": "pendulum_cross",
           "reach": 3.2,
           "cooldown": 2.2,
@@ -126,7 +126,7 @@
         },
         {
           "stage": 3,
-          "name": "제로 아워",
+          "name": "data.skills.catalog.skills.pendulum_rewind.stages.3.name",
           "effectId": "pendulum_zero",
           "reach": 3.2,
           "cooldown": 2.6,
@@ -141,7 +141,7 @@
     },
     {
       "skillId": "curtain_call_waltz",
-      "displayName": "커튼콜 원무",
+      "displayName": "data.skills.catalog.skills.curtain_call_waltz.displayName",
       "sourceId": "valeria",
       "doomId": "leg_punishment",
       "implemented": true,
@@ -150,7 +150,7 @@
       "stages": [
         {
           "stage": 1,
-          "name": "회전 검무",
+          "name": "data.skills.catalog.skills.curtain_call_waltz.stages.1.name",
           "effectId": "waltz_rise",
           "reach": 1.6,
           "cooldown": 0.7,
@@ -164,7 +164,7 @@
         },
         {
           "stage": 2,
-          "name": "스포트라이트 스텝",
+          "name": "data.skills.catalog.skills.curtain_call_waltz.stages.2.name",
           "effectId": "waltz_step",
           "reach": 1.6,
           "cooldown": 0.7,
@@ -178,7 +178,7 @@
         },
         {
           "stage": 3,
-          "name": "그랑 피날레",
+          "name": "data.skills.catalog.skills.curtain_call_waltz.stages.3.name",
           "effectId": "waltz_finale",
           "reach": 1.6,
           "cooldown": 0.7,
@@ -194,7 +194,7 @@
     },
     {
       "skillId": "resonance_forge",
-      "displayName": "공명 단조",
+      "displayName": "data.skills.catalog.skills.resonance_forge.displayName",
       "sourceId": "gabriel",
       "doomId": "eternal_silence",
       "implemented": true,
@@ -203,7 +203,7 @@
       "stages": [
         {
           "stage": 1,
-          "name": "진동 타격",
+          "name": "data.skills.catalog.skills.resonance_forge.stages.1.name",
           "effectId": "forge_break",
           "reach": 2.4,
           "cooldown": 0.7,
@@ -219,7 +219,7 @@
         },
         {
           "stage": 2,
-          "name": "화음 축적 폭발",
+          "name": "data.skills.catalog.skills.resonance_forge.stages.2.name",
           "effectId": "forge_chord",
           "reach": 2.4,
           "cooldown": 0.7,
@@ -235,7 +235,7 @@
         },
         {
           "stage": 3,
-          "name": "여섯 시의 파종",
+          "name": "data.skills.catalog.skills.resonance_forge.stages.3.name",
           "effectId": "forge_bell",
           "reach": 2.4,
           "cooldown": 0.9,
@@ -253,7 +253,7 @@
     },
     {
       "skillId": "canvas_carve",
-      "displayName": "여백 도려내기",
+      "displayName": "data.skills.catalog.skills.canvas_carve.displayName",
       "sourceId": "irina",
       "doomId": "blindness",
       "implemented": true,
@@ -262,7 +262,7 @@
       "stages": [
         {
           "stage": 1,
-          "name": "물감 획",
+          "name": "data.skills.catalog.skills.canvas_carve.stages.1.name",
           "effectId": "canvas_stroke",
           "reach": 2.4,
           "cooldown": 0.45,
@@ -276,7 +276,7 @@
         },
         {
           "stage": 2,
-          "name": "풍경 덧칠",
+          "name": "data.skills.catalog.skills.canvas_carve.stages.2.name",
           "effectId": "canvas_cross",
           "reach": 2.4,
           "cooldown": 0.45,
@@ -290,7 +290,7 @@
         },
         {
           "stage": 3,
-          "name": "자화상 완성",
+          "name": "data.skills.catalog.skills.canvas_carve.stages.3.name",
           "effectId": "canvas_portrait",
           "reach": 2.4,
           "cooldown": 0.45,

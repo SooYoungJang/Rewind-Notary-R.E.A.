@@ -57,9 +57,11 @@ namespace RewindNotary
         }
         protected void Credit(string target, bool changed, EffectTargetKind kind = EffectTargetKind.TerrainMechanism, int damage = 0)
         { session.Progression.Apply(use, new CombatEffectResult(kind, target, changed, damage)); }
-        protected bool Damage(Bounds area, int amount)
+        protected bool Damage(Bounds area, int amount, bool scaleOutput = true)
         {
             if (!Active || amount <= 0) return false;
+            if (scaleOutput) amount = FinaleCombat.Scale(session, amount);
+            WaveCombatTargets.Skill(session, use, area);
             bool changed = false;
             if (!enemy.Health.Dead && area.Intersects(enemy.GetComponent<Collider2D>().bounds))
             {
@@ -77,10 +79,10 @@ namespace RewindNotary
         }
         protected void Stroke(Vector2 from, Vector2 to, Color color)
         { SkillStroke.Show(from, to, color, SkillGeometry.EffectSeconds); }
-        protected virtual void Finish() { session?.Progression.EndUse(use); use = null; }
+        protected virtual void Finish() { session?.ReportTechniqueCompleted(use); session?.Progression.EndUse(use); use = null; }
         public abstract bool Activate();
         public virtual bool DriveMovement() => false;
-        public virtual void Interrupt() { Finish(); }
+        public virtual void Interrupt() { session?.Progression.EndUse(use); use = null; }
         public virtual void ResetAttempt() { Interrupt(); readyAt = 0; }
         protected virtual void OnDisable() { Interrupt(); }
     }

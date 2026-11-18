@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace RewindNotary
 {
-    public enum ShellPage { Main, Slots, Stages, Playing, Pause, Settings, DeleteConfirm, QuitConfirm }
+    public enum ShellPage { Main, Slots, Stages, Playing, Pause, Settings, DeleteConfirm, QuitConfirm, Skills, Investigation, CoreReading, ReturnSelection, ReturnConfirm, CourtLift, StoryDialogue, StorySaving }
     public enum SlotPurpose { Continue, NewGame, StageSelect }
 
     // Runs before hit-stop and combat so pause/input transitions have a single owner.
     [DefaultExecutionOrder(-200)]
-    public sealed class GameShell : MonoBehaviour
+    public sealed partial class GameShell : MonoBehaviour
     {
         public ShellPage Page { get; private set; } = ShellPage.Main;
         public SettingsStore Settings { get; private set; }
@@ -20,6 +20,7 @@ namespace RewindNotary
         private string directory, message, legacyError;
         private readonly CoreRecord[] records = new CoreRecord[3];
         private readonly string[] slotErrors = new string[3];
+        private readonly SkillSaveStore[] stores = new SkillSaveStore[3];
         private CoreRecord selectedRecord;
         private SkillSaveStore selectedStore;
         private SlotPurpose purpose;
@@ -31,20 +32,21 @@ namespace RewindNotary
         private GUIStyle titleStyle, textStyle, buttonStyle, selectedStyle;
         public void Initialize(GameBootstrap bootstrap, Font uiFont)
         {
+            Loc.SetLanguage(Loc.DefaultLanguage(Application.systemLanguage));
             game = bootstrap; font = uiFont; catalog = SkillCatalog.Load();
             directory = Path.Combine(Application.persistentDataPath, "SkillSystem");
             Settings = new SettingsStore(Application.persistentDataPath); Settings.Load(); Settings.Apply();
             try { message = SkillSaveStore.MigrateLegacy(directory, catalog); }
-            catch (Exception e) { legacyError = "기존 기록 이전 실패: " + e.Message; message = legacyError; }
+            catch (Exception e) { legacyError = Loc.Get("save.migration_failed", e.Message); message = legacyError; }
             RefreshSlots(); Go(ShellPage.Main);
         }
-        private SkillSaveStore Store(int slot) => new SkillSaveStore(directory, catalog, slot);
+        private SkillSaveStore Store(int slot) => stores[slot - 1] ?? (stores[slot - 1] = new SkillSaveStore(directory, catalog, slot));
         private void RefreshSlots()
         {
             for (int i = 0; i < 3; i++)
             {
                 records[i] = null; slotErrors[i] = null;
-                try { var store = Store(i + 1); records[i] = store.Load(); slotErrors[i] = store.LastError; }
+                try { var store = Store(i + 1); records[i] = store.Load(); slotErrors[i] = store.LastError ?? store.RecoveryNotice; }
                 catch (Exception e) { slotErrors[i] = e.Message; }
             }
             if (legacyError != null) slotErrors[0] = legacyError;
@@ -57,8 +59,57 @@ namespace RewindNotary
         private void Update()
         {
             if (game == null || Settings == null) return;
-            if (Playing) { if (GameInput.PauseDown) Pause(); return; }
-            if (GameInput.CancelDown || (Page == ShellPage.Pause && GameInput.PauseDown)) { Back(); return; }
+            if (Playing && game.ActiveSkills != null)
+            {
+                string stage = game.ActiveSkills.Progression.Record.lastStageId;
+                if ((game.Area != null && stage == "cassel") || (game.ActiveCassel != null && stage == "janhyang"))
+                {
+                    if (game.ActiveSkills.LastSaveSucceeded)
+                    {
+                        selectedRecord = game.ActiveSkills.Progression.Record;
+                        game.StopStage();
+                        SelectStage(StageCatalog.Find(stage));
+                        return;
+                    }
+                }
+                else if (game.ActiveCassel?.Scenes?.Modal != null && game.ActiveSkills.LastSaveSucceeded)
+                {
+                    OpenStoryDialogue();
+                    return;
+                }
+            }
+            if (Playing && game.ActiveSkills?.Progression.Record.lastStageId == EndingCheckpoint.Lift)
+            {
+                selectedRecord = game.ActiveSkills.Progression.Record;
+                game.SuspendInput(); Time.timeScale = 0f; Go(ShellPage.CourtLift);
+            }
+            if (Page == ShellPage.CourtLift && game.ActiveSkills != null)
+            {
+                if (!game.ActiveSkills.LastSaveSucceeded) { message = game.ActiveSkills.StorageError; return; }
+                game.StopStage(); Time.timeScale = 1f; message = null;
+                return; // The finishing input cannot also select a lift action.
+            }
+            if (Playing && (game.Area != null || game.ActiveCassel != null) && !game.ActiveSkills.LastSaveSucceeded)
+            {
+                game.SuspendInput(); ImpactFeedback.ResetEffects(); Time.timeScale = 0f;
+                Go(ShellPage.StorySaving); return;
+            }
+            if (Page == ShellPage.StorySaving)
+            {
+                if (game.ActiveSkills.LastSaveSucceeded) Resume();
+                else if (GameInput.PauseDown || GameInput.CancelDown) Go(ShellPage.Pause);
+                else if (GameInput.SubmitDown) game.ActiveSkills.Save();
+                return;
+            }
+            if (Page == ShellPage.StoryDialogue && (GameInput.PauseDown || GameInput.CancelDown))
+            { Go(ShellPage.Pause); return; }
+            if (Playing)
+            {
+                if (GameInput.PauseDown) Pause();
+                else if (GameInput.InvestigateDown && game.ActiveCassel?.CanChooseReturn == true) OpenReturnSelection();
+                return;
+            }
+            if (GameInput.CancelDown || ((Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.Investigation || Page == ShellPage.CoreReading) && GameInput.PauseDown)) { Back(); return; }
             Vector2 raw = GameInput.MenuAxis;
             var axis = new Vector2(Mathf.Abs(raw.x) >= 0.5f ? Mathf.Sign(raw.x) : 0,
                 Mathf.Abs(raw.y) >= 0.5f ? Mathf.Sign(raw.y) : 0);
@@ -66,15 +117,20 @@ namespace RewindNotary
             {
                 if (axis.y != 0) selected = (selected - (int)axis.y + RowCount) % RowCount;
                 else if (Page == ShellPage.Settings) AdjustSetting(selected, (int)axis.x);
+                else if (Page == ShellPage.Investigation) clueScroll.y = Mathf.Max(0, clueScroll.y + axis.x * 85);
+                else if (Page == ShellPage.StoryDialogue || Page == ShellPage.CourtLift) dialogueScroll.y = Mathf.Max(0, dialogueScroll.y + axis.x * 85);
+                else if (Page == ShellPage.CoreReading) readingScroll.y = Mathf.Max(0, readingScroll.y + axis.x * 85);
                 repeatAt = Time.unscaledTime + (axis != previousAxis ? 0.35f : 0.12f);
             }
             previousAxis = axis;
             if (Page == ShellPage.Slots && selected < 3 && GameInput.DeleteDown) { RequestDelete(selected + 1); return; }
             if (GameInput.SubmitDown) Activate(selected);
         }
-        private int RowCount => Page == ShellPage.Main ? 5 : Page == ShellPage.Slots ? 4
-            : Page == ShellPage.Stages ? StageCatalog.All.Length + 1 : Page == ShellPage.Pause ? 4
-            : Page == ShellPage.Settings ? 5 : 2;
+        private int RowCount => Page == ShellPage.StoryDialogue ? (CanSkipLine ? 2 : 1) : Page == ShellPage.CourtLift ? LiftLabels().Length : Page == ShellPage.Main ? 5 : Page == ShellPage.Slots ? 4
+            : Page == ShellPage.Stages ? StageCatalog.All.Length + (EndingCheckpoint.Marker(selectedRecord) == null ? 1 : 2) : Page == ShellPage.Pause ? 5
+            : Page == ShellPage.Investigation || Page == ShellPage.CoreReading ? InvestigationRows
+            : Page == ShellPage.ReturnSelection ? BenefactorIds.All.Length + 1
+            : Page == ShellPage.Skills ? 2 : Page == ShellPage.Settings ? 6 : 2;
         public void Pause()
         {
             if (!Playing) return;
@@ -84,13 +140,21 @@ namespace RewindNotary
         }
         private void Resume()
         {
+            if ((game.Area != null && game.Area.DialogueOpen) || game.ActiveCassel?.Scenes?.Modal != null)
+            { dialogueScroll = Vector2.zero; Go(ShellPage.StoryDialogue); return; }
             game.SuspendInput(); Time.timeScale = 1f; Go(ShellPage.Playing);
         }
         private void Back()
         {
             switch (Page)
             {
+                case ShellPage.CourtLift: RefreshSlots(); Go(ShellPage.Slots); break;
+                case ShellPage.ReturnSelection: Resume(); break;
+                case ShellPage.ReturnConfirm: Go(ShellPage.ReturnSelection); break;
                 case ShellPage.Pause: Resume(); break;
+                case ShellPage.Skills: Go(ShellPage.Pause); break;
+                case ShellPage.Investigation:
+                case ShellPage.CoreReading: CloseInvestigation(); break;
                 case ShellPage.Settings: Settings.Save(); Go(settingsReturn); break;
                 case ShellPage.Stages: RefreshSlots(); Go(ShellPage.Slots); break;
                 case ShellPage.DeleteConfirm: RefreshSlots(); Go(ShellPage.Slots); break;
@@ -103,6 +167,14 @@ namespace RewindNotary
             message = null;
             switch (Page)
             {
+                case ShellPage.ReturnSelection:
+                case ShellPage.ReturnConfirm: ActivateReturn(index); break;
+                case ShellPage.StorySaving: game.ActiveSkills.Save(); break;
+                case ShellPage.StoryDialogue:
+                    if (game.Area != null ? game.Area.ConfirmDialogue(index == 1) :
+                        game.ActiveCassel.Scenes.Confirm()) Resume();
+                    break;
+                case ShellPage.CourtLift: ActivateLift(index); break;
                 case ShellPage.Main:
                     if (index < 3)
                     {
@@ -115,15 +187,25 @@ namespace RewindNotary
                     if (index == 3) Back(); else SelectSlot(index + 1);
                     break;
                 case ShellPage.Stages:
-                    if (index == StageCatalog.All.Length) Back(); else SelectStage(StageCatalog.All[index]);
+                    if (index == StageCatalog.All.Length) Back();
+                    else if (index > StageCatalog.All.Length) ResumePreviousRecord();
+                    else SelectStage(StageCatalog.All[index]);
                     break;
                 case ShellPage.Pause:
                     if (index == 0) Resume();
-                    else if (index == 1) OpenSettings();
-                    else if (index == 2) ReturnMain(); else RequestQuit();
+                    else if (index == 1) Go(ShellPage.Skills);
+                    else if (index == 2) OpenSettings();
+                    else if (index == 3) ReturnMain(); else RequestQuit();
+                    break;
+                case ShellPage.Skills:
+                    if (index == 0) OpenInvestigation(); else Back();
+                    break;
+                case ShellPage.Investigation:
+                case ShellPage.CoreReading:
+                    ActivateInvestigation(index);
                     break;
                 case ShellPage.Settings:
-                    if (index == 4) Back(); else AdjustSetting(index, 1);
+                    if (index == 5) Back(); else AdjustSetting(index, 1);
                     break;
                 case ShellPage.DeleteConfirm:
                     if (index == 0) Back(); else DeleteSelected();
@@ -141,34 +223,53 @@ namespace RewindNotary
                 selectedStore = Store(slot); selectedRecord = selectedStore.Load();
                 string recovery = selectedStore.LastError;
                 if (purpose == SlotPurpose.NewGame && selectedRecord != null)
-                { message = "이미 기록이 있는 슬롯입니다. 빈 슬롯을 고르거나 삭제 버튼을 사용해 주세요."; return; }
+                { message = Loc.Get("slot.occupied_hint"); return; }
                 if (selectedRecord == null)
                 {
-                    if (purpose == SlotPurpose.Continue) { message = "비어 있는 슬롯입니다. 새 게임으로 기록을 만들어 주세요."; return; }
-                    selectedRecord = selectedStore.Create();
+                    if (purpose == SlotPurpose.Continue) { message = Loc.Get("slot.empty_hint"); return; }
+                    selectedRecord = purpose == SlotPurpose.NewGame ? selectedStore.Create("hub") : selectedStore.Create();
                 }
+                selectedStore.ImportEnding(selectedRecord);
+                if (purpose == SlotPurpose.Continue && (selectedRecord.lastStageId == EndingCheckpoint.Lift || selectedRecord.lastStageId == "cassel"))
+                {
+                    var ending = FinaleEndingEvaluator.Evaluate(selectedRecord.finalBattleAttempt);
+                    if (!selectedRecord.testData && ending != FinaleEnding.None &&
+                        !selectedRecord.storyFlags.Contains(ending == FinaleEnding.True ? "true_ending_complete" : "basic_ending_complete"))
+                        EndingCheckpoint.StartScenes(selectedRecord);
+                }
+                if (purpose == SlotPurpose.Continue && selectedRecord.lastStageId == EndingCheckpoint.Lift)
+                { Go(ShellPage.CourtLift); message = recovery; return; }
                 if (purpose == SlotPurpose.StageSelect) { Go(ShellPage.Stages); message = recovery; }
                 else SelectStage(StageCatalog.Find(selectedRecord.lastStageId));
             }
-            catch (Exception e) { message = "슬롯을 열지 못했습니다: " + e.Message; RefreshSlots(); }
+            catch (Exception e) { message = Loc.Get("slot.open_failed", e.Message); RefreshSlots(); }
         }
         private void SelectStage(StageEntry stage)
         {
+            // Stage selection also passes through the first departure. Continue inside a district keeps its checkpoint.
+            if (Page == ShellPage.Stages && RepresentativeScript.IsDistrict(stage?.Id) && selectedRecord.lastStageId != stage.Id
+                && selectedRecord.storyFlags.Contains(InvestigationService.MiddleInvestigationFlag)
+                && !selectedRecord.storyFlags.Contains("luka_lift_complete"))
+                stage = StageCatalog.Find("hub");
             if (stage == null || !stage.Unlocked(selectedRecord) || !stage.Implemented)
             {
                 if (Page != ShellPage.Stages) Go(ShellPage.Stages);
-                message = stage == null ? "저장된 스테이지는 아직 준비 중입니다. 테스트 스테이지를 선택해 주세요."
-                    : stage.Name + (stage.Unlocked(selectedRecord) ? ": 준비 중입니다." : ": 스토리 진행으로 해제되는 잠금 항목입니다. 현재 준비 중입니다.");
+                message = stage == null ? Loc.Get("stage.saved_unavailable")
+                    : stage.Name + (stage.Unlocked(selectedRecord) ? Loc.Get("stage.unavailable_suffix") : stage.Id.StartsWith("trial_") ? Loc.Get("stage.skill_required_suffix") : Loc.Get("stage.story_locked_suffix"));
                 return;
             }
             try
             {
+                string priorStage = selectedRecord.lastStageId;
                 selectedRecord.lastStageId = stage.Id;
-                if (!selectedStore.Save(selectedRecord)) { message = selectedStore.LastError; return; }
+                // Room completion and lift choices already saved this destination before releasing the previous world.
+                bool checkpointSaved = priorStage == stage.Id && (Playing || Page == ShellPage.CourtLift);
+                if (!checkpointSaved && !selectedStore.Save(selectedRecord))
+                { selectedRecord.lastStageId = priorStage; message = selectedStore.LastError; return; }
                 game.StartStage(selectedStore, selectedRecord);
                 Time.timeScale = 1f; Go(ShellPage.Playing);
             }
-            catch (Exception e) { game.AbortStage(); Time.timeScale = 1f; Go(ShellPage.Slots); message = "스테이지 시작 실패: " + e.Message; }
+            catch (Exception e) { game.AbortStage(); Time.timeScale = 1f; Go(ShellPage.Slots); message = Loc.Get("stage.start_failed", e.Message); }
         }
         private void RequestDelete(int slot)
         {
@@ -181,9 +282,9 @@ namespace RewindNotary
                 Store(deleteSlot).Delete();
                 if (deleteSlot == 1) legacyError = null;
                 selectedRecord = null; selectedStore = null;
-                RefreshSlots(); Go(ShellPage.Slots); message = "슬롯 " + deleteSlot + " 기록을 삭제했습니다.";
+                RefreshSlots(); Go(ShellPage.Slots); message = Loc.Get("slot.deleted", deleteSlot);
             }
-            catch (Exception e) { message = "삭제 처리 확인이 필요합니다: " + e.Message; RefreshSlots(); }
+            catch (Exception e) { message = Loc.Get("slot.delete_check", e.Message); RefreshSlots(); }
         }
         private void OpenSettings() { settingsReturn = Page; Go(ShellPage.Settings); }
         private void AdjustSetting(int index, int direction)
@@ -195,6 +296,11 @@ namespace RewindNotary
             else if (index == 3 && DebugAvailable)
             {
                 SetStageOverride((value.stageOverride + direction + 4) % 4); return;
+            }
+            else if (index == 4)
+            {
+                value.language = Loc.NextLanguage(value.language, direction);
+                message = null;
             }
             else return;
             Settings.Apply(); Settings.Save();
@@ -208,13 +314,15 @@ namespace RewindNotary
         }
         private void ReturnMain()
         {
-            if (!game.FlushProgress()) { message = "저장에 실패했습니다. 설정·저장 경로를 확인한 뒤 다시 시도해 주세요."; return; }
+            if (!game.FlushProgress()) { message = Loc.Get("save.retry_hint"); return; }
+            var farewell = game.Area == null ? game.ActiveSkills?.Progression.Trials.Active?.dialogue.returnKey : null;
             game.StopStage(); Time.timeScale = 1f; RefreshSlots(); Go(ShellPage.Main);
+            if (farewell != null) message = Loc.Get(farewell);
         }
         private void RequestQuit() { quitReturn = Page; Go(ShellPage.QuitConfirm); }
         private void Quit()
         {
-            if (!game.FlushProgress()) { message = "저장에 실패하여 종료를 보류했습니다. 취소 후 다시 시도해 주세요."; return; }
+            if (!game.FlushProgress()) { message = Loc.Get("save.quit_blocked"); return; }
             Settings.Save();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -229,14 +337,16 @@ namespace RewindNotary
         private string SlotLabel(int index)
         {
             var record = records[index];
-            string prefix = "슬롯 " + (index + 1) + " · ";
-            if (record == null) return prefix + (slotErrors[index] == null ? "빈 기록" : "불러오기 불가 · 원본 보존");
+            string prefix = Loc.Get("slot.prefix", (index + 1));
+            if (record == null) return prefix + (slotErrors[index] == null ? Loc.Get("slot.empty") : Loc.Get("slot.unreadable"));
             var sword = record.Get(SkillRules.BasicSword);
             string when = DateTime.TryParse(record.savedUtc, null, System.Globalization.DateTimeStyles.RoundtripKind, out var utc)
-                ? utc.ToLocalTime().ToString("yyyy년 MM월 dd일 HH:mm:ss") : "저장 시각 미상";
-            string owned = string.Join(", ", record.skills.FindAll(s => s.acquired).ConvertAll(s => catalog.Get(s.skillId).displayName));
-            return prefix + when + "\n보유 스킬 " + record.skills.FindAll(s => s.acquired).Count + "개 · " + owned
-                + "\n기본 검술 " + sword.validUseCount + "회 · " + sword.stage + "단계";
+                ? utc.ToLocalTime().ToString(Loc.Get("save.date_format"), Loc.Culture) : Loc.Get("save.unknown_time");
+            string owned = string.Join(", ", record.skills.FindAll(s => s.acquired).ConvertAll(s => catalog.Get(s.skillId).DisplayName));
+            string summary = Loc.Get("slot.summary", prefix, when, record.skills.FindAll(s => s.acquired).Count, owned, sword.validUseCount, sword.stage);
+            if (record.storyFlags.Contains(EndingCheckpoint.Basic)) summary += " · " + Loc.Get("finale.ending.basic");
+            if (record.storyFlags.Contains(EndingCheckpoint.True)) summary += " · " + Loc.Get("finale.ending.true");
+            return summary;
         }
         private void OnGUI()
         {
@@ -254,7 +364,7 @@ namespace RewindNotary
             }
             GUI.color = new Color(0.045f, 0.065f, 0.1f, 0.97f);
             GUI.DrawTexture(new Rect(-2000, -2000, 6000, 5000), Texture2D.whiteTexture); GUI.color = Color.white;
-            GUI.Label(new Rect(90, 24, 1100, 62), "《리와인드 공증록: 레아》", titleStyle);
+            GUI.Label(new Rect(90, 24, 1100, 62), Loc.Get("game.menu_title"), titleStyle);
             GUI.Label(new Rect(200, 95, 900, 36), Heading(), textStyle);
             ShellPage renderedPage = Page;
             if (Page == ShellPage.Slots)
@@ -263,19 +373,41 @@ namespace RewindNotary
                 {
                     Row(i, SlotLabel(i), new Rect(200, 148 + i * 122, 760, 110));
                     if (Page != renderedPage) break;
-                    if (GUI.Button(new Rect(978, 175 + i * 122, 100, 52), "삭제", buttonStyle)) RequestDelete(i + 1);
+                    if (GUI.Button(new Rect(978, 175 + i * 122, 100, 52), Loc.Get("ui.delete"), buttonStyle)) RequestDelete(i + 1);
                 }
-                if (Page == renderedPage) Row(3, "뒤로", new Rect(200, 520, 880, 46));
+                if (Page == renderedPage) Row(3, Loc.Get("ui.back"), new Rect(200, 520, 880, 46));
             }
+            else if (Page == ShellPage.StorySaving)
+            {
+                GUI.Label(new Rect(170, 195, 940, 150), Loc.Get("save.retrying_memory") + "\n" + game.ActiveSkills.StorageError, textStyle);
+                Row(0, Loc.Get("ui.save"), new Rect(240, 470, 800, 50));
+            }
+            else if (Page == ShellPage.StoryDialogue) DrawStoryDialogue();
+            else if (Page == ShellPage.CourtLift) DrawCourtLift();
+            else if (Page == ShellPage.Skills)
+            {
+                DrawSkills();
+                Row(0, Loc.Get("ui.investigation_progress", Investigation.ProgressLabel), new Rect(60, 620, 760, 46));
+                if (Page == renderedPage) Row(1, Loc.Get("ui.back_to_pause"), new Rect(840, 620, 380, 46));
+            }
+            else if (Page == ShellPage.Investigation || Page == ShellPage.CoreReading) DrawInvestigation();
+            else if (Page == ShellPage.ReturnSelection || Page == ShellPage.ReturnConfirm) DrawReturn();
             else if (Page == ShellPage.Stages)
             {
+                int rows = Mathf.CeilToInt(StageCatalog.All.Length / 2f);
                 for (int i = 0; i < StageCatalog.All.Length; i++)
                 {
                     var stage = StageCatalog.All[i];
-                    Row(i, stage.Name + "  [" + stage.Status(selectedRecord) + "]", new Rect(80 + (i / 7) * 570, 141 + (i % 7) * 56, 550, 50));
+                    Row(i, stage.Name + "\n[" + stage.Status(selectedRecord) + "]", new Rect(50 + (i / rows) * 600, 136 + (i % rows) * 45, 580, 43));
                     if (Page != renderedPage) break;
                 }
-                if (Page == renderedPage) Row(StageCatalog.All.Length, "뒤로", new Rect(160, 542, 960, 40));
+                if (Page == renderedPage)
+                {
+                    bool hasPrevious = EndingCheckpoint.Marker(selectedRecord) != null;
+                    Row(StageCatalog.All.Length, Loc.Get("ui.back"), new Rect(160, 590, hasPrevious ? 350 : 960, 40));
+                    if (Page == renderedPage && hasPrevious)
+                        Row(StageCatalog.All.Length + 1, Loc.Get("story.resume_previous"), new Rect(530, 590, 590, 40));
+                }
             }
             else
             {
@@ -287,24 +419,84 @@ namespace RewindNotary
                 }
                 if (Page == ShellPage.Settings)
                 {
-                    GUI.Label(new Rect(210, 525, 880, 52), "좌우로 조절 · 단계 미리보기는 전체 기술을 검증 저장에 지급하며 성장 집계에서 제외됩니다.\n실제 단계로 돌아가도 이번 플레이의 검증 저장 격리는 유지됩니다.", textStyle);
+                    GUI.Label(new Rect(210, 565, 880, 64), Loc.Get("settings.adjust_hint"), new GUIStyle(textStyle) { fontSize = 16 });
                 }
             }
-            string status = message ?? (Page == ShellPage.Settings ? Settings.Error
+            string status = (Page == ShellPage.Investigation || Page == ShellPage.CoreReading)
+                ? game.ActiveSkills.StorageError : message ?? (Page == ShellPage.Settings ? Settings.Error
                 : Page == ShellPage.Slots && selected < 3 ? slotErrors[selected] : null);
-            if (!string.IsNullOrEmpty(status)) GUI.Label(new Rect(160, 599, 960, 67), status, textStyle);
-            GUI.Label(new Rect(160, 675, 1060, 32), "방향키 / 왼쪽 스틱 / 십자키: 선택   Enter / A: 확인   Esc / B: 뒤로   슬롯 삭제: Delete / X", textStyle);
+            if (!string.IsNullOrEmpty(status))
+            {
+                bool investigating = Page == ShellPage.Investigation || Page == ShellPage.CoreReading;
+                GUI.Label(new Rect(160, investigating ? 590 : Page == ShellPage.Stages ? 634 : Page == ShellPage.Settings ? 632 : 599, 960, investigating ? 28 : Page == ShellPage.Stages || Page == ShellPage.Settings ? 38 : 67),
+                    investigating ? (game.ActiveSkills.LastSaveSucceeded ? Loc.Get("save.log_path_hint") : Loc.Get("save.retrying_memory")) : status, textStyle);
+            }
+            GUI.Label(new Rect(160, 675, 1060, 32), Page == ShellPage.Investigation || Page == ShellPage.CoreReading
+                ? Loc.Get("input.reading_menu")
+                : Loc.Get("input.shell_menu"), textStyle);
             GUI.matrix = previous;
+        }
+        private Vector2 dialogueScroll;
+        internal void OpenStoryDialogue()
+        {
+            game.SuspendInput();
+            Time.timeScale = 0f;
+            dialogueScroll = Vector2.zero;
+            Go(ShellPage.StoryDialogue);
+        }
+        private StoryRow DialogueRow => game.Area != null ? game.Area.ActiveRow : game.ActiveCassel.Scenes.Modal;
+        private bool CanSkipLine => game.Area != null ? game.Area.CanSkip : game.ActiveSkills.Progression.Record.storyFlags.Contains(DialogueRow.ReadFlag);
+        private void DrawStoryDialogue()
+        {
+            var row = DialogueRow;
+            GUI.Label(new Rect(150, 150, 980, 44), Loc.Get("area.speaker." + row.speakerId), titleStyle);
+            string line = Loc.Get(row.textKey);
+            float height = textStyle.CalcHeight(new GUIContent(line), 940) + 16;
+            dialogueScroll = GUI.BeginScrollView(new Rect(150, 218, 980, 310), dialogueScroll, new Rect(0, 0, 950, height));
+            GUI.Label(new Rect(4, 0, 940, height), line, textStyle);
+            GUI.EndScrollView();
+            Row(0, Loc.Get("area.continue"), new Rect(180, 555, 480, 48));
+            if (Page == ShellPage.StoryDialogue && CanSkipLine)
+                Row(1, Loc.Get("area.skip"), new Rect(680, 555, 420, 48));
+            if (!game.ActiveSkills.LastSaveSucceeded)
+                GUI.Label(new Rect(180, 613, 920, 50), game.ActiveSkills.StorageError, textStyle);
+        }
+        private void DrawSkills()
+        {
+            var session = game.ActiveSkills;
+            if (session == null) { GUI.Label(new Rect(80, 150, 1120, 50), Loc.Get("skills.no_active_record"), textStyle); return; }
+            GUI.Label(new Rect(60, 128, 1160, 30), SkillStatusView.Mode(session), textStyle);
+            var rows = SkillStatusView.Read(session);
+            for (int i = 0; i < rows.Length; i++)
+            {
+                var row = rows[i]; float x = 60 + i % 2 * 590, y = 166 + i / 2 * 148;
+                GUI.color = row.Owned ? new Color(0.1f, 0.19f, 0.23f) : new Color(0.12f, 0.13f, 0.16f);
+                GUI.DrawTexture(new Rect(x, y, 570, 144), Texture2D.whiteTexture);
+                GUI.color = row.Owned ? new Color(0.65f, 1f, 0.91f) : new Color(0.7f, 0.73f, 0.76f);
+                GUI.Label(new Rect(x + 12, y + 6, 546, 26), row.Name + (row.Owned ? "" : Loc.Get("ui.locked_tag")), textStyle);
+                GUI.color = Color.white;
+                GUI.Label(new Rect(x + 12, y + 32, 546, 26), row.StageText, textStyle);
+                GUI.Label(new Rect(x + 12, y + 58, 546, 26), row.ProgressText, textStyle);
+                GUI.Label(new Rect(x + 12, y + 84, 546, 30), row.FormText, new GUIStyle(textStyle) { fontSize = 15 });
+                var trialInfo = BenefactorTrialCatalog.Load().ForSkill(row.SkillId);
+                if (trialInfo != null) GUI.Label(new Rect(x + 12, y + 116, 546, 26),
+                    BenefactorTrialProgress.Status(session.Progression.Record, trialInfo), new GUIStyle(textStyle) { fontSize = 15 });
+            }
         }
         private void Row(int index, string label, Rect rect)
         {
             // GUI controls are mouse-only; all keyboard/gamepad dispatch happens once in Update.
             // Clearing focus avoids IMGUI also submitting Space on an old focused button.
             GUI.FocusControl(null);
-            if (GUI.Button(rect, (selected == index ? "▶ " : "   ") + label, selected == index ? selectedStyle : buttonStyle))
+            var style = selected == index ? selectedStyle : buttonStyle;
+            if (Page == ShellPage.Stages) style = new GUIStyle(style) { fontSize = 15, padding = new RectOffset(10, 6, 1, 1) };
+            style = new GUIStyle(style);
+            while (style.fontSize > 12 && style.CalcHeight(new GUIContent(label), rect.width - 40) > rect.height - 10)
+                style.fontSize--;
+            if (GUI.Button(rect, (selected == index ? "▶ " : "   ") + label, style))
             {
                 selected = index;
-                if (Page == ShellPage.Settings && index < 4) AdjustSetting(index, Event.current.mousePosition.x < rect.center.x ? -1 : 1);
+                if (Page == ShellPage.Settings && index < 5) AdjustSetting(index, Event.current.mousePosition.x < rect.center.x ? -1 : 1);
                 else Activate(index);
             }
         }
@@ -312,27 +504,37 @@ namespace RewindNotary
         {
             switch (Page)
             {
-                case ShellPage.Main: return "기록을 이어갈 곳을 선택하세요";
-                case ShellPage.Slots: return (purpose == SlotPurpose.NewGame ? "새 게임 · 빈 슬롯 선택" : purpose == SlotPurpose.Continue ? "계속하기 · 기록 선택" : "스테이지 선택 · 사용할 기록 선택") + " (3개 슬롯)";
-                case ShellPage.Stages: return "스테이지 선택 · 슬롯 " + selectedStore.Slot + " · 현재 테스트 스테이지만 플레이할 수 있습니다";
-                case ShellPage.Pause: return "일시정지";
-                case ShellPage.Settings: return "설정 · 변경 즉시 적용 및 저장";
-                case ShellPage.DeleteConfirm: return "슬롯 " + deleteSlot + "을 삭제할까요? 진행과 검증 기록·백업이 삭제됩니다.";
-                default: return "저장 후 게임을 종료할까요?";
+                case ShellPage.ReturnSelection: return Loc.Get("heading.return_selection");
+                case ShellPage.ReturnConfirm: return Loc.Get("heading.return_confirm");
+                case ShellPage.CourtLift: return AtBasicSettlement ? Loc.Get("finale.ending.basic") + " · " + Loc.Get("story.court_lift") : Loc.Get("story.court_lift");
+                case ShellPage.StorySaving:
+                case ShellPage.StoryDialogue: return game.Area != null ? game.Area.Room.Label : Loc.Get("area.room.court_04_tribunal");
+                case ShellPage.Main: return Loc.Get("heading.main");
+                case ShellPage.Slots: return Loc.Get("heading.three_slots", (purpose == SlotPurpose.NewGame ? Loc.Get("heading.new_game") : purpose == SlotPurpose.Continue ? Loc.Get("heading.continue") : Loc.Get("heading.stage_slot")));
+                case ShellPage.Stages: return Loc.Get("heading.stages", selectedStore.Slot);
+                case ShellPage.Pause: return Loc.Get("heading.pause");
+                case ShellPage.Skills: return Loc.Get("heading.skills");
+                case ShellPage.Investigation: return "";
+                case ShellPage.CoreReading: return Loc.Get("heading.core");
+                case ShellPage.Settings: return Loc.Get("heading.settings");
+                case ShellPage.DeleteConfirm: return Loc.Get("slot.delete_confirm", deleteSlot);
+                default: return Loc.Get("ui.quit_confirm");
             }
         }
         private string[] Labels()
         {
-            if (Page == ShellPage.Main) return new[] { "계속하기", "새 게임", "스테이지 선택", "설정", "종료" };
-            if (Page == ShellPage.Pause) return new[] { "계속하기", "설정", "메인 메뉴로", "종료" };
-            if (Page == ShellPage.DeleteConfirm) return new[] { "취소", "기록 삭제" };
-            if (Page == ShellPage.QuitConfirm) return new[] { "취소", "저장 후 종료" };
+            if (Page == ShellPage.CourtLift) return LiftLabels();
+            if (Page == ShellPage.Main) return new[] { Loc.Get("ui.continue"), Loc.Get("ui.new_game"), Loc.Get("ui.stage_select"), Loc.Get("ui.settings"), Loc.Get("ui.quit") };
+            if (Page == ShellPage.Pause) return new[] { Loc.Get("ui.resume"), Loc.Get("ui.skills"), Loc.Get("ui.settings"), Loc.Get("ui.main_menu"), Loc.Get("ui.quit") };
+            if (Page == ShellPage.DeleteConfirm) return new[] { Loc.Get("ui.cancel"), Loc.Get("ui.delete_record") };
+            if (Page == ShellPage.QuitConfirm) return new[] { Loc.Get("ui.cancel"), Loc.Get("ui.save_quit") };
             var value = Settings.Value;
-            return new[] { "배경음악 볼륨    ◀ " + Mathf.RoundToInt(value.bgmVolume * 100) + "% ▶",
-                "효과음 볼륨    ◀ " + Mathf.RoundToInt(value.sfxVolume * 100) + "% ▶",
-                "화면 흔들림    " + (value.screenShake ? "켜짐" : "꺼짐"),
-                "단계 오버라이드 (테스트용)    " + (!DebugAvailable ? "개발 빌드에서 사용 가능" : value.stageOverride == 0 ? "실제 단계" : value.stageOverride + "단계 미리보기"),
-                "뒤로" };
+            return new[] { Loc.Get("settings.music_volume", Mathf.RoundToInt(value.bgmVolume * 100)),
+                Loc.Get("settings.effects_volume", Mathf.RoundToInt(value.sfxVolume * 100)),
+                Loc.Get("settings.screen_shake", (value.screenShake ? Loc.Get("ui.on") : Loc.Get("ui.off"))),
+                Loc.Get("settings.stage_override", (!DebugAvailable ? Loc.Get("settings.development_only") : value.stageOverride == 0 ? Loc.Get("settings.actual_stage") : Loc.Get("settings.preview_stage", value.stageOverride))),
+                Loc.Get("settings.language", Loc.Get("language." + value.language)),
+                Loc.Get("ui.back") };
         }
     }
 }

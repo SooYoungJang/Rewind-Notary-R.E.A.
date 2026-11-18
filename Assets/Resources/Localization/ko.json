@@ -1,0 +1,3937 @@
+{
+  "language": "ko",
+  "entries": [
+    {
+      "key": "finale.ending.true",
+      "value": "진 엔딩 조건 충족"
+    },
+    {
+      "key": "finale.ending.basic",
+      "value": "기본 엔딩 조건 충족"
+    },
+    {
+      "key": "finale.ending.defeat",
+      "value": "패배 · 재도전 준비"
+    },
+    {
+      "key": "finale.result",
+      "value": "결착: {0}"
+    },
+    {
+      "key": "finale.approaching",
+      "value": "접근"
+    },
+    {
+      "key": "finale.original_sword",
+      "value": "원형 검술 · {0}"
+    },
+    {
+      "key": "finale.mirror_open",
+      "value": "거울 노출 · F / 왼쪽 스틱: 반환 선택"
+    },
+    {
+      "key": "finale.mirror_closed",
+      "value": "거울 닫힘 · 기본 패링 후 검술로 가드 파쇄"
+    },
+    {
+      "key": "finale.selected_finisher",
+      "value": "\n선택 기술 종결 동작: {0}"
+    },
+    {
+      "key": "finale.core_hint",
+      "value": "코어 {0}/{1} · 기본 패링 후 완전 연격 / B<3은 코어 파괴"
+    },
+    {
+      "key": "finale.boss_status",
+      "value": "카셀 {0}페이즈 · 반환 예약 {1}/5 · 각인 +{2}% (×{3})\n{4}"
+    },
+    {
+      "key": "finale.already_pledged",
+      "value": "이미 반환 예약한 기술입니다."
+    },
+    {
+      "key": "finale.return_requirements",
+      "value": "거울 노출과 3단계 기술을 확인하세요."
+    },
+    {
+      "key": "finale.return_instructions",
+      "value": "반환 예약 {0}/5 · 각인 출력 +{1}%\n선택·확인 후 거울 노출 중 해당 기술을 카셀 근처에서 끝까지 사용하세요."
+    },
+    {
+      "key": "finale.available_suffix",
+      "value": " · 선택 가능"
+    },
+    {
+      "key": "finale.pledged_suffix",
+      "value": " · 반환 예약됨"
+    },
+    {
+      "key": "finale.back_to_battle",
+      "value": "전투로 돌아가기"
+    },
+    {
+      "key": "finale.confirm_return_body",
+      "value": "{0} 반환을 선택합니다.\n\n맞베기 완료 시 이번 전투에서 이 기술을 사용할 수 없습니다.\n각인 출력 +{1}% · 기본 검술과 남은 기술이 강화됩니다.\n기본 이동·점프·대시·패링·검술은 유지됩니다. 발판은 3초 뒤 사라집니다.\n종언의 실제 반환은 마지막 원형 맞베기 성공 때 일괄 확정됩니다."
+    },
+    {
+      "key": "finale.cancel_return",
+      "value": "취소 · 기술 다시 선택"
+    },
+    {
+      "key": "finale.arm_return",
+      "value": "확인 · 선택 기술 맞베기 준비"
+    },
+    {
+      "key": "finale.debug_save_failed",
+      "value": "저장 실패 · 검증 진입을 보류합니다."
+    },
+    {
+      "key": "finale.requires_five_skills",
+      "value": "카셀전은 다섯 3단계 기술이 필요합니다."
+    },
+    {
+      "key": "stage.already_running",
+      "value": "이미 스테이지가 실행 중입니다."
+    },
+    {
+      "key": "finale.entry_locked",
+      "value": "카셀 진입 조건이 충족되지 않았습니다."
+    },
+    {
+      "key": "skill.unowned_suffix",
+      "value": " (미보유)"
+    },
+    {
+      "key": "skill.return_suffix",
+      "value": " [반환 예약]"
+    },
+    {
+      "key": "hud.skill_progress",
+      "value": "{0} · {1}회 · {2}단계{3}{4}"
+    },
+    {
+      "key": "boot.failure",
+      "value": "시작할 수 없습니다. 콘솔을 확인해 주세요."
+    },
+    {
+      "key": "game.title",
+      "value": "리와인드 공증록: 레아"
+    },
+    {
+      "key": "hud.rea_health",
+      "value": "레아    {0} / {1}"
+    },
+    {
+      "key": "hud.test_save",
+      "value": "검증 저장 (본 저장과 분리)"
+    },
+    {
+      "key": "hud.save_slot",
+      "value": "슬롯 {0} 저장"
+    },
+    {
+      "key": "hud.preview_suffix",
+      "value": " · 형태 {0}단계 미리보기 (집계 제외)"
+    },
+    {
+      "key": "defense.dashing",
+      "value": "대시 중"
+    },
+    {
+      "key": "defense.parry_window",
+      "value": "패링 판정 중"
+    },
+    {
+      "key": "defense.parry_recovery",
+      "value": "패링 실패 · 경직"
+    },
+    {
+      "key": "defense.counter_ready",
+      "value": "반격 가능 · 다음 검술 강화"
+    },
+    {
+      "key": "defense.ready",
+      "value": "방어 준비"
+    },
+    {
+      "key": "defense.air_spent",
+      "value": "소진"
+    },
+    {
+      "key": "defense.air_available",
+      "value": "1회"
+    },
+    {
+      "key": "hud.dash_cooldown",
+      "value": "대시 {0}초 · 공중 {1}"
+    },
+    {
+      "key": "input.gameplay",
+      "value": "이동 A/D·방향키·스틱 | 점프 Space·A | 검술 J/Z/좌클릭·X | 기술 Q·Y | 대시 Shift/K·LB | 패링 L·RB"
+    },
+    {
+      "key": "hud.trial_hint",
+      "value": "은인과 기술 유효 사용 검증 · 지원 충전 / 재시작해도 집계 상한 유지"
+    },
+    {
+      "key": "hud.wave_hint",
+      "value": "청금 핵: 기본검 · 금빛 예고: 패링/대시 · 붉은 가드: 지정 기술"
+    },
+    {
+      "key": "hud.checkpoint_hint",
+      "value": "투기장 복귀 지점 활성 · 금빛 예고를 살피세요."
+    },
+    {
+      "key": "hud.reach_arena",
+      "value": "오른쪽 발판과 틈을 건너 대련장으로 향하세요."
+    },
+    {
+      "key": "input.retry_pause",
+      "value": "{0}  R·보기: 재시작 | Esc·메뉴: 일시정지"
+    },
+    {
+      "key": "input.debug",
+      "value": "F1~F3 형태 · F4 실제 · F5/F6 경계 | F7 잔향 / F8 카셀399 / Shift+F8 카셀120 (검증)"
+    },
+    {
+      "key": "trial.health",
+      "value": "연습 체력 {0}/{1} · 소진 시 연습 재개 · R로 배치 재시작"
+    },
+    {
+      "key": "input.benefactor_support",
+      "value": "방향 + H / 오른쪽 스틱 누름: 은인 지원\n{0}"
+    },
+    {
+      "key": "hud.echo_phase",
+      "value": "잔향 {0}페이즈 · {1}"
+    },
+    {
+      "key": "hud.practice_complete",
+      "value": "테스트 대련 완료"
+    },
+    {
+      "key": "hud.retrying",
+      "value": "다시 도전합니다…"
+    },
+    {
+      "key": "input.retry_button",
+      "value": "R / 패드 보기 버튼으로 다시 도전하세요."
+    },
+    {
+      "key": "hud.returning_checkpoint",
+      "value": "복귀 지점으로 돌아갑니다."
+    },
+    {
+      "key": "investigation.progress",
+      "value": "조사 단서 {0}/{1} · 열람 {2}/{3}"
+    },
+    {
+      "key": "investigation.collect_condition",
+      "value": "{0} 수집"
+    },
+    {
+      "key": "investigation.transfers_condition",
+      "value": "종언 이전 {0}/5"
+    },
+    {
+      "key": "investigation.skill_condition",
+      "value": "{0} {1}단계"
+    },
+    {
+      "key": "investigation.trial_condition",
+      "value": "{0} 대련 검증 완료"
+    },
+    {
+      "key": "investigation.read_condition",
+      "value": "{0} 열람 완료"
+    },
+    {
+      "key": "investigation.mid_condition",
+      "value": "중간 조사·검 실험 완료"
+    },
+    {
+      "key": "investigation.unknown_condition",
+      "value": "알 수 없는 조건"
+    },
+    {
+      "key": "investigation.done_prefix",
+      "value": "[완료] "
+    },
+    {
+      "key": "investigation.pending_prefix",
+      "value": "[대기] "
+    },
+    {
+      "key": "investigation.any_conditions",
+      "value": "\n아래 중 하나:\n{0}"
+    },
+    {
+      "key": "investigation.all_conditions",
+      "value": "모든 조건 충족 필요\n{0}{1}"
+    },
+    {
+      "key": "investigation.scroll_hint",
+      "value": "{0} · 좌우: 내용 스크롤"
+    },
+    {
+      "key": "ui.selected_prefix",
+      "value": "[선택] "
+    },
+    {
+      "key": "investigation.collected_prefix",
+      "value": "[수집] "
+    },
+    {
+      "key": "investigation.uncollected_prefix",
+      "value": "[미수집] "
+    },
+    {
+      "key": "investigation.summary_pending",
+      "value": "요약 연결 대기"
+    },
+    {
+      "key": "investigation.body_pending",
+      "value": "본문 연결 대기"
+    },
+    {
+      "key": "investigation.read_again",
+      "value": "열람 완료 · 다시 보기"
+    },
+    {
+      "key": "investigation.read_available",
+      "value": "열람 가능"
+    },
+    {
+      "key": "investigation.core_required",
+      "value": "해금 · 코어 단말에서 열람"
+    },
+    {
+      "key": "investigation.locked_requirements",
+      "value": "잠금 · 조건 보기"
+    },
+    {
+      "key": "ui.back_to_game",
+      "value": "게임으로 돌아가기"
+    },
+    {
+      "key": "ui.back_to_skills",
+      "value": "스킬 현황으로"
+    },
+    {
+      "key": "investigation.entry_suffix",
+      "value": " · 항목 {0}/{1}"
+    },
+    {
+      "key": "ui.locked_suffix",
+      "value": " · 잠금"
+    },
+    {
+      "key": "investigation.new_record_hint",
+      "value": "\n\n새 기록은 테스트 스테이지 시작 지점 왼쪽 코어 단말에서 열람하세요."
+    },
+    {
+      "key": "investigation.title_pending",
+      "value": "기록 제목 연결 대기"
+    },
+    {
+      "key": "investigation.record_summary_pending",
+      "value": "기록 요약 연결 대기"
+    },
+    {
+      "key": "investigation.related_clues",
+      "value": "관련 단서\n{0}"
+    },
+    {
+      "key": "ui.back_to_investigation",
+      "value": "조사 로그로"
+    },
+    {
+      "key": "investigation.previous_entry",
+      "value": "이전 항목"
+    },
+    {
+      "key": "investigation.next_review",
+      "value": "다음 / 재열람 마침"
+    },
+    {
+      "key": "investigation.confirm_entry",
+      "value": "항목 확인 · 다음"
+    },
+    {
+      "key": "investigation.close_keep_progress",
+      "value": "닫기 · 진행 보존"
+    },
+    {
+      "key": "input.investigation",
+      "value": "조사 지점: F / 왼쪽 스틱 누름\nEsc → 스킬 현황 → 조사 로그"
+    },
+    {
+      "key": "investigation.read_core",
+      "value": "코어 열람"
+    },
+    {
+      "key": "investigation.reread",
+      "value": "재열람"
+    },
+    {
+      "key": "investigation.inspect",
+      "value": "조사"
+    },
+    {
+      "key": "input.inspect_action",
+      "value": "F / 왼쪽 스틱 누름: {0}"
+    },
+    {
+      "key": "investigation.wait_for_action",
+      "value": "착지하고 동작을 마치면 조사할 수 있습니다."
+    },
+    {
+      "key": "echo.observing",
+      "value": "기록 관찰"
+    },
+    {
+      "key": "echo.mimicking",
+      "value": "{0} 모방"
+    },
+    {
+      "key": "echo.opening_suffix",
+      "value": " · 로테이션 빈틈!"
+    },
+    {
+      "key": "echo.switch_hint_suffix",
+      "value": " · 다른 기술로 빈틈 열기"
+    },
+    {
+      "key": "save.unsupported_version",
+      "value": "지원하지 않는 저장 버전입니다. 원본을 보존했습니다."
+    },
+    {
+      "key": "save.unknown_field",
+      "value": "알 수 없는 필드: {0}"
+    },
+    {
+      "key": "save.missing_field",
+      "value": "누락된 필드: {0}"
+    },
+    {
+      "key": "save.invalid_object",
+      "value": "객체 타입"
+    },
+    {
+      "key": "save.invalid_array",
+      "value": "배열 타입"
+    },
+    {
+      "key": "save.invalid_string",
+      "value": "문자열 타입"
+    },
+    {
+      "key": "save.invalid_boolean",
+      "value": "참/거짓 타입"
+    },
+    {
+      "key": "save.invalid_integer",
+      "value": "정수 타입/범위"
+    },
+    {
+      "key": "save.corrupt_json",
+      "value": "저장 JSON이 손상되었습니다: {0}"
+    },
+    {
+      "key": "save.trailing_data",
+      "value": "끝의 불필요한 데이터"
+    },
+    {
+      "key": "save.syntax_truncated",
+      "value": "문법/중간 절단"
+    },
+    {
+      "key": "save.nesting_depth",
+      "value": "중첩 깊이 초과"
+    },
+    {
+      "key": "save.truncated",
+      "value": "중간 절단"
+    },
+    {
+      "key": "save.duplicate_field",
+      "value": "중복 필드: {0}"
+    },
+    {
+      "key": "save.invalid_literal",
+      "value": "리터럴/중간 절단"
+    },
+    {
+      "key": "save.number_syntax",
+      "value": "숫자 문법"
+    },
+    {
+      "key": "save.truncated_number",
+      "value": "숫자 절단"
+    },
+    {
+      "key": "save.unicode_pair",
+      "value": "유니코드 쌍"
+    },
+    {
+      "key": "save.control_character",
+      "value": "문자열 제어 문자"
+    },
+    {
+      "key": "save.truncated_escape",
+      "value": "이스케이프 절단"
+    },
+    {
+      "key": "save.unicode_escape",
+      "value": "유니코드 이스케이프"
+    },
+    {
+      "key": "save.escape_syntax",
+      "value": "이스케이프 문법"
+    },
+    {
+      "key": "save.truncated_string",
+      "value": "문자열 절단"
+    },
+    {
+      "key": "save.backup_readable",
+      "value": "읽을 수 있는 이전 백업이 있습니다. 원본과 백업을 보존했습니다."
+    },
+    {
+      "key": "save.backup_unreadable",
+      "value": "읽을 수 있는 백업이 없습니다. 파일을 보존했습니다."
+    },
+    {
+      "key": "save.use_compatible_version",
+      "value": "{0} {1} 호환되는 게임 버전에서 열어 주세요."
+    },
+    {
+      "key": "save.backup_restored",
+      "value": "이전 정상 백업을 복구했습니다. 마지막 저장 이후 진행은 없을 수 있습니다. 기존 원본은 보존했습니다."
+    },
+    {
+      "key": "save.recovery_failed",
+      "value": "저장을 복구할 수 없습니다. 원본과 백업을 보존하고 저장을 차단했습니다: {0} / {1}"
+    },
+    {
+      "key": "save.invalid_version",
+      "value": "저장 버전 또는 규칙 버전이 올바르지 않습니다."
+    },
+    {
+      "key": "save.empty_file",
+      "value": "빈 저장 파일입니다."
+    },
+    {
+      "key": "save.missing_investigation",
+      "value": "조사 기록이 누락된 저장입니다. 원본을 보존합니다."
+    },
+    {
+      "key": "save.missing_finale",
+      "value": "최종전 기록이 누락된 저장입니다."
+    },
+    {
+      "key": "save.legacy_slot_mismatch",
+      "value": "이전 저장 슬롯이 일치하지 않습니다."
+    },
+    {
+      "key": "save.slot_mismatch",
+      "value": "저장 슬롯이 일치하지 않습니다."
+    },
+    {
+      "key": "save.slot_in_use",
+      "value": "사용 중인 슬롯입니다. 먼저 삭제해 주세요."
+    },
+    {
+      "key": "save.slot_blocked",
+      "value": "삭제되었거나 복구가 필요한 슬롯에는 저장할 수 없습니다."
+    },
+    {
+      "key": "save.no_record",
+      "value": "저장할 기록이 없습니다."
+    },
+    {
+      "key": "save.wrong_slot",
+      "value": "다른 슬롯의 기록입니다."
+    },
+    {
+      "key": "save.failed_preserved",
+      "value": "저장 실패 (정상본 보존): {0}"
+    },
+    {
+      "key": "save.legacy_migrated",
+      "value": "기존 기록을 슬롯 1로 이전했습니다. 기존 파일은 보존했습니다.{0}"
+    },
+    {
+      "key": "save.usage_log_failed",
+      "value": "사용 로그 기록 실패: {0}"
+    },
+    {
+      "key": "skill.acquired_notice",
+      "value": "{0} 획득 — 1~5 / E·패드 B 선택, Q·Y 사용"
+    },
+    {
+      "key": "skill.stage_up_notice",
+      "value": "{0} {1}단계 — 동작 체화"
+    },
+    {
+      "key": "skill.doom_transfer_notice",
+      "value": "극의 완전 재현 · {0} → 레아"
+    },
+    {
+      "key": "skill.doom_restored_notice",
+      "value": "종언 원장 복구 · {0} → 레아"
+    },
+    {
+      "key": "skill.true_name_notice",
+      "value": "진명 개방: 카셀 제0식 · 원형 동작 확인 (종언 추가 없음)"
+    },
+    {
+      "key": "skill.debug_boundary_notice",
+      "value": "검증 전용 저장 · 경계 {0}"
+    },
+    {
+      "key": "doom.heart_rupture",
+      "value": "제1종언: 심장 파열"
+    },
+    {
+      "key": "doom.rapid_aging",
+      "value": "제2종언: 급속 노화"
+    },
+    {
+      "key": "doom.leg_punishment",
+      "value": "제3종언: 두 다리의 형벌"
+    },
+    {
+      "key": "doom.eternal_silence",
+      "value": "제4종언: 영원한 침묵"
+    },
+    {
+      "key": "doom.blindness",
+      "value": "제5종언: 실명"
+    },
+    {
+      "key": "settings.invalid_values",
+      "value": "설정 값 또는 버전이 올바르지 않습니다."
+    },
+    {
+      "key": "settings.unsupported_version",
+      "value": "지원하지 않는 설정 버전입니다."
+    },
+    {
+      "key": "settings.empty_file",
+      "value": "설정 파일이 비어 있습니다."
+    },
+    {
+      "key": "settings.defaults_preserved",
+      "value": "{0} 원본을 보존하고 기본 설정을 사용합니다."
+    },
+    {
+      "key": "settings.backup_restored",
+      "value": "설정 백업을 복구했습니다."
+    },
+    {
+      "key": "settings.recovery_failed",
+      "value": "설정을 복구하지 못했습니다. 원본을 보존하고 기본 설정을 사용합니다."
+    },
+    {
+      "key": "settings.save_failed",
+      "value": "설정 저장 실패: {0}"
+    },
+    {
+      "key": "save.migration_failed",
+      "value": "기존 기록 이전 실패: {0}"
+    },
+    {
+      "key": "slot.occupied_hint",
+      "value": "이미 기록이 있는 슬롯입니다. 빈 슬롯을 고르거나 삭제 버튼을 사용해 주세요."
+    },
+    {
+      "key": "slot.empty_hint",
+      "value": "비어 있는 슬롯입니다. 새 게임으로 기록을 만들어 주세요."
+    },
+    {
+      "key": "slot.open_failed",
+      "value": "슬롯을 열지 못했습니다: {0}"
+    },
+    {
+      "key": "stage.saved_unavailable",
+      "value": "저장된 스테이지는 아직 준비 중입니다. 테스트 스테이지를 선택해 주세요."
+    },
+    {
+      "key": "stage.unavailable_suffix",
+      "value": ": 준비 중입니다."
+    },
+    {
+      "key": "stage.skill_required_suffix",
+      "value": ": 해당 은인 기술을 먼저 획득하세요."
+    },
+    {
+      "key": "stage.story_locked_suffix",
+      "value": ": 스토리 진행으로 해제되는 잠금 항목입니다. 현재 준비 중입니다."
+    },
+    {
+      "key": "stage.start_failed",
+      "value": "스테이지 시작 실패: {0}"
+    },
+    {
+      "key": "slot.deleted",
+      "value": "슬롯 {0} 기록을 삭제했습니다."
+    },
+    {
+      "key": "slot.delete_check",
+      "value": "삭제 처리 확인이 필요합니다: {0}"
+    },
+    {
+      "key": "save.retry_hint",
+      "value": "저장에 실패했습니다. 설정·저장 경로를 확인한 뒤 다시 시도해 주세요."
+    },
+    {
+      "key": "save.quit_blocked",
+      "value": "저장에 실패하여 종료를 보류했습니다. 취소 후 다시 시도해 주세요."
+    },
+    {
+      "key": "slot.prefix",
+      "value": "슬롯 {0} · "
+    },
+    {
+      "key": "slot.empty",
+      "value": "빈 기록"
+    },
+    {
+      "key": "slot.unreadable",
+      "value": "불러오기 불가 · 원본 보존"
+    },
+    {
+      "key": "save.date_format",
+      "value": "yyyy년 MM월 dd일 HH:mm:ss"
+    },
+    {
+      "key": "save.unknown_time",
+      "value": "저장 시각 미상"
+    },
+    {
+      "key": "slot.summary",
+      "value": "{0}{1}\n보유 스킬 {2}개 · {3}\n기본 검술 {4}회 · {5}단계"
+    },
+    {
+      "key": "game.menu_title",
+      "value": "《리와인드 공증록: 레아》"
+    },
+    {
+      "key": "ui.delete",
+      "value": "삭제"
+    },
+    {
+      "key": "ui.back",
+      "value": "뒤로"
+    },
+    {
+      "key": "ui.investigation_progress",
+      "value": "조사 로그 · {0}"
+    },
+    {
+      "key": "ui.back_to_pause",
+      "value": "일시정지 메뉴로"
+    },
+    {
+      "key": "settings.adjust_hint",
+      "value": "좌우로 조절 · 단계 미리보기는 전체 기술을 검증 저장에 지급하며 성장 집계에서 제외됩니다.\n실제 단계로 돌아가도 이번 플레이의 검증 저장 격리는 유지됩니다."
+    },
+    {
+      "key": "save.log_path_hint",
+      "value": "사용 로그 기록 오류 · 일시정지 메뉴에서 저장 경로를 확인하세요."
+    },
+    {
+      "key": "save.retrying_memory",
+      "value": "저장 실패 · 확인한 기록을 메모리에 유지하며 재시도합니다."
+    },
+    {
+      "key": "input.reading_menu",
+      "value": "위아래 / 스틱: 선택   좌우: 내용 스크롤   Enter / A: 확인   Esc / B: 뒤로"
+    },
+    {
+      "key": "input.shell_menu",
+      "value": "방향키 / 왼쪽 스틱 / 십자키: 선택   Enter / A: 확인   Esc / B: 뒤로   슬롯 삭제: Delete / X"
+    },
+    {
+      "key": "skills.no_active_record",
+      "value": "진행 중인 스킬 기록이 없습니다."
+    },
+    {
+      "key": "ui.locked_tag",
+      "value": " [잠금]"
+    },
+    {
+      "key": "heading.return_selection",
+      "value": "역공증 · 반환할 은인 기술 선택"
+    },
+    {
+      "key": "heading.return_confirm",
+      "value": "역공증 · 반환 전 확인"
+    },
+    {
+      "key": "heading.main",
+      "value": "기록을 이어갈 곳을 선택하세요"
+    },
+    {
+      "key": "heading.new_game",
+      "value": "새 게임 · 빈 슬롯 선택"
+    },
+    {
+      "key": "heading.continue",
+      "value": "계속하기 · 기록 선택"
+    },
+    {
+      "key": "heading.stage_slot",
+      "value": "스테이지 선택 · 사용할 기록 선택"
+    },
+    {
+      "key": "heading.three_slots",
+      "value": "{0} (3개 슬롯)"
+    },
+    {
+      "key": "heading.stages",
+      "value": "스테이지 선택 · 슬롯 {0} · 해금된 스테이지를 선택하세요"
+    },
+    {
+      "key": "heading.pause",
+      "value": "일시정지"
+    },
+    {
+      "key": "heading.skills",
+      "value": "스킬 현황 · 누적 유효 사용과 현재 형태"
+    },
+    {
+      "key": "heading.core",
+      "value": "코어 기록 열람 · 확인한 항목은 기록검에 보존됩니다"
+    },
+    {
+      "key": "heading.settings",
+      "value": "설정 · 변경 즉시 적용 및 저장"
+    },
+    {
+      "key": "slot.delete_confirm",
+      "value": "슬롯 {0}을 삭제할까요? 진행과 검증 기록·백업이 삭제됩니다."
+    },
+    {
+      "key": "ui.quit_confirm",
+      "value": "저장 후 게임을 종료할까요?"
+    },
+    {
+      "key": "ui.continue",
+      "value": "계속하기"
+    },
+    {
+      "key": "ui.new_game",
+      "value": "새 게임"
+    },
+    {
+      "key": "ui.stage_select",
+      "value": "스테이지 선택"
+    },
+    {
+      "key": "ui.settings",
+      "value": "설정"
+    },
+    {
+      "key": "ui.quit",
+      "value": "종료"
+    },
+    {
+      "key": "ui.skills",
+      "value": "스킬 현황"
+    },
+    {
+      "key": "ui.main_menu",
+      "value": "메인 메뉴로"
+    },
+    {
+      "key": "ui.cancel",
+      "value": "취소"
+    },
+    {
+      "key": "ui.delete_record",
+      "value": "기록 삭제"
+    },
+    {
+      "key": "ui.save_quit",
+      "value": "저장 후 종료"
+    },
+    {
+      "key": "settings.music_volume",
+      "value": "배경음악 볼륨    ◀ {0}% ▶"
+    },
+    {
+      "key": "settings.effects_volume",
+      "value": "효과음 볼륨    ◀ {0}% ▶"
+    },
+    {
+      "key": "ui.on",
+      "value": "켜짐"
+    },
+    {
+      "key": "ui.off",
+      "value": "꺼짐"
+    },
+    {
+      "key": "settings.screen_shake",
+      "value": "화면 흔들림    {0}"
+    },
+    {
+      "key": "settings.development_only",
+      "value": "개발 빌드에서 사용 가능"
+    },
+    {
+      "key": "settings.actual_stage",
+      "value": "실제 단계"
+    },
+    {
+      "key": "settings.preview_stage",
+      "value": "{0}단계 미리보기"
+    },
+    {
+      "key": "settings.stage_override",
+      "value": "단계 오버라이드 (테스트용)    {0}"
+    },
+    {
+      "key": "stage.finale_survival_locked",
+      "value": "다섯 반환 준비 완료 / 원형 동작 미완성: 생존 반환 미확보"
+    },
+    {
+      "key": "stage.locked_unavailable",
+      "value": "잠금 · 준비 중"
+    },
+    {
+      "key": "stage.playable",
+      "value": "플레이 가능"
+    },
+    {
+      "key": "stage.coming_soon",
+      "value": "준비 중"
+    },
+    {
+      "key": "stage.hub.name",
+      "value": "거점 · 망각 다락방"
+    },
+    {
+      "key": "stage.velvet.name",
+      "value": "제1구역 · 벨벳 재단거리 / 거대 직조 공방"
+    },
+    {
+      "key": "stage.clock.name",
+      "value": "제2구역 · 황혼의 태엽 시계탑 / 역류 회랑"
+    },
+    {
+      "key": "stage.opera.name",
+      "value": "제3구역 · 유리 오페라 극장 / 스포트라이트 지붕"
+    },
+    {
+      "key": "stage.bell.name",
+      "value": "제4구역 · 청동 대종루 / 공명 소리굽쇠 지하도"
+    },
+    {
+      "key": "stage.gallery.name",
+      "value": "제5구역 · 하얀 캔버스 화랑 / 색채의 온실"
+    },
+    {
+      "key": "stage.echo.name",
+      "value": "잔향전"
+    },
+    {
+      "key": "stage.cassel.name",
+      "value": "카셀전"
+    },
+    {
+      "key": "stage.prototype.name",
+      "value": "기존 테스트 스테이지 · 이동 / 검술 / 잔향 대련"
+    },
+    {
+      "key": "stage.practice_julius.name",
+      "value": "기술 대련 · 율리우스 잔향 (진자 보상)"
+    },
+    {
+      "key": "stage.practice_valeria.name",
+      "value": "기술 대련 · 발레리아 잔향 (원무 보상)"
+    },
+    {
+      "key": "stage.practice_gabriel.name",
+      "value": "기술 대련 · 가브리엘 잔향 (단조 보상)"
+    },
+    {
+      "key": "stage.practice_irina.name",
+      "value": "기술 대련 · 이리나 잔향 (화폭 보상)"
+    },
+    {
+      "key": "stage.skill_lab.name",
+      "value": "전체 기술 연습장 · 즉시 지급 / 검증 저장"
+    },
+    {
+      "key": "stage.wave_test.name",
+      "value": "구역 웨이브 테스트 · 151 / 400 / 검증 저장"
+    },
+    {
+      "key": "stage.trial_mikhail.name",
+      "value": "은인 연습 대련 · 미하일"
+    },
+    {
+      "key": "stage.trial_julius.name",
+      "value": "은인 연습 대련 · 율리우스"
+    },
+    {
+      "key": "stage.trial_valeria.name",
+      "value": "은인 연습 대련 · 발레리아"
+    },
+    {
+      "key": "stage.trial_gabriel.name",
+      "value": "은인 연습 대련 · 가브리엘"
+    },
+    {
+      "key": "stage.trial_irina.name",
+      "value": "은인 연습 대련 · 이리나"
+    },
+    {
+      "key": "encounter.rea_echo",
+      "value": "잔향 · 어제의 레아"
+    },
+    {
+      "key": "encounter.julius_echo",
+      "value": "율리우스 기술 잔향 · 시험 대련"
+    },
+    {
+      "key": "encounter.valeria_echo",
+      "value": "발레리아 기술 잔향 · 시험 대련"
+    },
+    {
+      "key": "encounter.gabriel_echo",
+      "value": "가브리엘 기술 잔향 · 시험 대련"
+    },
+    {
+      "key": "encounter.irina_echo",
+      "value": "이리나 기술 잔향 · 시험 대련"
+    },
+    {
+      "key": "evolution.preview_off",
+      "value": "테스트 · 실제 단계 복귀"
+    },
+    {
+      "key": "evolution.preview_title",
+      "value": "테스트 형태 · {0} 오버라이드"
+    },
+    {
+      "key": "evolution.preview_off_detail",
+      "value": "각 기술의 실제 성장 형태로 복귀 · 검증 저장 격리는 유지됩니다."
+    },
+    {
+      "key": "evolution.preview_detail",
+      "value": "전체 보유 기술의 형태 미리보기 · 유효 사용 집계 제외 · 실제 진화가 아닙니다."
+    },
+    {
+      "key": "evolution.test_prefix",
+      "value": "[검증 저장] "
+    },
+    {
+      "key": "evolution.title",
+      "value": "{0}{1} 진화 · {2}"
+    },
+    {
+      "key": "skills.locked_unowned",
+      "value": "잠금 · 미보유"
+    },
+    {
+      "key": "skills.unowned_progress",
+      "value": "누적 유효 사용 {0}회 · 다음 단계: 획득 후 진행"
+    },
+    {
+      "key": "skills.acquire_hint",
+      "value": "해당 은인의 기술을 획득하면 형태와 숙련도를 확인할 수 있습니다."
+    },
+    {
+      "key": "skills.override_suffix",
+      "value": " [오버라이드] · 실제 {0}"
+    },
+    {
+      "key": "skills.current_stage",
+      "value": "현재 {0}{1}"
+    },
+    {
+      "key": "skills.growth_complete",
+      "value": "실제 성장 완료 · 남은 0회"
+    },
+    {
+      "key": "skills.remaining_uses",
+      "value": "실제 {0}까지 {1}회"
+    },
+    {
+      "key": "skills.effective_uses",
+      "value": "누적 유효 사용 {0}회 · {1}"
+    },
+    {
+      "key": "skills.test_save_mode",
+      "value": "검증 저장 격리 (본 저장과 분리)"
+    },
+    {
+      "key": "slot.name",
+      "value": "슬롯 {0}"
+    },
+    {
+      "key": "skills.actual_mode_suffix",
+      "value": " · 오버라이드 꺼짐 · 실제 성장 기준"
+    },
+    {
+      "key": "skills.override_mode_suffix",
+      "value": " · 오버라이드: {0} · 사용 집계 제외 / 남은 횟수는 실제 성장 기준"
+    },
+    {
+      "key": "skills.ultimate_stage",
+      "value": "3단계 · 극의"
+    },
+    {
+      "key": "skills.stage",
+      "value": "{0}단계"
+    },
+    {
+      "key": "skills.sword.form1",
+      "value": "2연격 검술"
+    },
+    {
+      "key": "skills.sword.form2",
+      "value": "3연격 · 전진 스텝 · 마지막 타 짧은 검기"
+    },
+    {
+      "key": "skills.sword.form3",
+      "value": "4연격 · 전진 스텝 · 검기 · 잔상"
+    },
+    {
+      "key": "skills.stitch.form1",
+      "value": "관절 구속 · 균열 지지"
+    },
+    {
+      "key": "skills.stitch.form2",
+      "value": "실 바닥 설치 · 영역 구속"
+    },
+    {
+      "key": "skills.stitch.form3",
+      "value": "연결부 절단 · 연결 영역 피해"
+    },
+    {
+      "key": "skills.pendulum.form1",
+      "value": "돌진 찌르기 · 재입력으로 안전 복귀"
+    },
+    {
+      "key": "skills.pendulum.form2",
+      "value": "복귀 경로 교차 피해 · 잔상"
+    },
+    {
+      "key": "skills.pendulum.form3",
+      "value": "주변 국소 정지 · 해제 뒤 경로 폭발"
+    },
+    {
+      "key": "skills.waltz.form1",
+      "value": "상승 회전 베기 · 투사체 쳐내기"
+    },
+    {
+      "key": "skills.waltz.form2",
+      "value": "유효 접촉 뒤 공중 재입력 스텝"
+    },
+    {
+      "key": "skills.waltz.form3",
+      "value": "투사체 반사 · 낙하 충격파"
+    },
+    {
+      "key": "skills.forge.form1",
+      "value": "진동 타격 · 균열 방패 파괴"
+    },
+    {
+      "key": "skills.forge.form2",
+      "value": "대상별 공명 표식 축적 · 폭발"
+    },
+    {
+      "key": "skills.forge.form3",
+      "value": "기본 패링 + 공중 아래 종격 · 광역 반격 충격파"
+    },
+    {
+      "key": "skills.canvas.form1",
+      "value": "물감 획 피해 · 임시 바닥 지지"
+    },
+    {
+      "key": "skills.canvas.form2",
+      "value": "바닥·벽 교차 폭발 · 설치물 2개"
+    },
+    {
+      "key": "skills.canvas.form3",
+      "value": "바닥·벽 교차 · 자화상이 검술 타격 재현"
+    },
+    {
+      "key": "skills.no_form_info",
+      "value": "형태 정보 없음"
+    },
+    {
+      "key": "support.ordinary_only",
+      "value": "지원은 일반 전투에서 사용할 수 있습니다."
+    },
+    {
+      "key": "support.no_charge",
+      "value": "지원이 없습니다. 은인 대련 조건을 확인하세요."
+    },
+    {
+      "key": "support.no_target",
+      "value": "지원 효과를 받을 대상이 없습니다. 보유 횟수를 유지합니다."
+    },
+    {
+      "key": "support.save_failed",
+      "value": "저장 실패 · 지원 사용 보류"
+    },
+    {
+      "key": "support.invalid_effect",
+      "value": "지원 판정 무효 · 보유 횟수를 유지합니다."
+    },
+    {
+      "key": "support.used_notice",
+      "value": "{0} · {1} 사용 · 남은 0/1"
+    },
+    {
+      "key": "trial.missing_data",
+      "value": "은인 대련 정의가 없습니다."
+    },
+    {
+      "key": "trial.resting",
+      "value": "호흡 정리 · 연습 계속"
+    },
+    {
+      "key": "trial.windup_suffix",
+      "value": " · 준비 신호"
+    },
+    {
+      "key": "trial.action_suffix",
+      "value": " · 동작"
+    },
+    {
+      "key": "trial.opening_suffix",
+      "value": " · 연습 기회"
+    },
+    {
+      "key": "trial.acquire_first",
+      "value": "해당 기술 획득 후 대련할 수 있습니다."
+    },
+    {
+      "key": "support.charged",
+      "value": "지원 1/1 보유"
+    },
+    {
+      "key": "support.recharge_progress",
+      "value": "지원 0/1 · 일반 전투 {0}/{1}"
+    },
+    {
+      "key": "support.locked",
+      "value": "지원 잠금"
+    },
+    {
+      "key": "trial.unlocked",
+      "value": "대련 해금"
+    },
+    {
+      "key": "trial.locked_skill",
+      "value": "대련 잠금 · 기술 필요"
+    },
+    {
+      "key": "trial.session_status",
+      "value": "성장 {0}/{1} · 조건 {2}/{3} · 다음 세션: 일반 전투 {4}/{5}"
+    },
+    {
+      "key": "wave.missing_data",
+      "value": "웨이브 데이터가 없습니다."
+    },
+    {
+      "key": "wave.invalid_header",
+      "value": "웨이브 버전·시작 기록·소구역 수"
+    },
+    {
+      "key": "wave.invalid_supply",
+      "value": "공급·교차 루프 설정"
+    },
+    {
+      "key": "wave.invalid_archetype_count",
+      "value": "적 3종과 장치 1종"
+    },
+    {
+      "key": "wave.invalid_archetype_id",
+      "value": "아키타입 ID"
+    },
+    {
+      "key": "wave.invalid_gate",
+      "value": "판정 종류"
+    },
+    {
+      "key": "wave.invalid_combat_values",
+      "value": "전투 수치"
+    },
+    {
+      "key": "wave.invalid_zone",
+      "value": "구역 정의"
+    },
+    {
+      "key": "wave.invalid_connection",
+      "value": "구역 연결"
+    },
+    {
+      "key": "wave.invalid_definition",
+      "value": "웨이브 정의"
+    },
+    {
+      "key": "wave.invalid_spawn",
+      "value": "배치 정의"
+    },
+    {
+      "key": "wave.invalid_spawn_range",
+      "value": "배치 범위"
+    },
+    {
+      "key": "wave.setup_required",
+      "value": "자세 붕괴 기술 필수"
+    },
+    {
+      "key": "wave.invalid_setup_skill",
+      "value": "세팅 기술"
+    },
+    {
+      "key": "wave.invalid_zone1_supply",
+      "value": "1구역 공급"
+    },
+    {
+      "key": "wave.invalid_gate_supply",
+      "value": "구역 게이트 공급"
+    },
+    {
+      "key": "wave.invalid_mastery_supply",
+      "value": "극의 공급"
+    },
+    {
+      "key": "wave.data_error",
+      "value": "웨이브 데이터 오류: {0}"
+    },
+    {
+      "key": "wave.progress",
+      "value": "{0} · 웨이브 {1}/{2}"
+    },
+    {
+      "key": "wave.all_complete",
+      "value": "3구역 완료 · 기본검 151 / 400 도달 로그를 확인하세요. R: 처음부터"
+    },
+    {
+      "key": "wave.zone_complete",
+      "value": "구역 완료 · 오른쪽 청금 표식으로 이동하세요."
+    },
+    {
+      "key": "wave.next_enemy",
+      "value": "다음 적이 진입합니다. 연격을 마친 뒤 준비하세요."
+    },
+    {
+      "key": "wave.cut_with_sword",
+      "value": "기본검으로 절단"
+    },
+    {
+      "key": "wave.skill_then_sword",
+      "value": "{0} → 기본검"
+    },
+    {
+      "key": "wave.defense_then_sword",
+      "value": "금빛 공격에 패링 / 대시 → 기본검"
+    },
+    {
+      "key": "wave.target_hint",
+      "value": "{0} · 남은 {1} · {2}"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.displayName",
+      "value": "기본 검술"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.1.name",
+      "value": "햇병아리 베기"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.2.name",
+      "value": "청금의 궤적"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.3.name",
+      "value": "원죄공증검 — 카셀 제0식"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.displayName",
+      "value": "은실 박음질"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.1.name",
+      "value": "홑박음질"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.2.name",
+      "value": "교차 재단"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.3.name",
+      "value": "운명 봉합·절단"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.displayName",
+      "value": "진자 되감기"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.1.name",
+      "value": "진자 보법"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.2.name",
+      "value": "이중 시간선"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.3.name",
+      "value": "제로 아워"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.displayName",
+      "value": "커튼콜 원무"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.1.name",
+      "value": "회전 검무"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.2.name",
+      "value": "스포트라이트 스텝"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.3.name",
+      "value": "그랑 피날레"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.displayName",
+      "value": "공명 단조"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.1.name",
+      "value": "진동 타격"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.2.name",
+      "value": "화음 축적 폭발"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.3.name",
+      "value": "여섯 시의 파종"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.displayName",
+      "value": "여백 도려내기"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.1.name",
+      "value": "물감 획"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.2.name",
+      "value": "풍경 덧칠"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.3.name",
+      "value": "자화상 완성"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.displayName",
+      "value": "미하일"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.role",
+      "value": "가위손 재단사"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.objectiveLabel",
+      "value": "은실로 관절 구속 또는 귀환 지지대 안정화 3회"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.support.label",
+      "value": "귀환 솔기"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
+      "value": "은실 가로 재단"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
+      "value": "교차 재단"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.displayName",
+      "value": "율리우스"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.role",
+      "value": "멈춘 초침의 시계공"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.objectiveLabel",
+      "value": "진자로 상대에게 실제 피해 또는 국소 정지 3회"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.support.label",
+      "value": "귀환 시간"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.patterns.1.label",
+      "value": "진자 진입"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.patterns.2.label",
+      "value": "진자 복귀"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.displayName",
+      "value": "발레리아"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.role",
+      "value": "부서진 구두의 무희"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.objectiveLabel",
+      "value": "원무로 연습 탄막 제거 또는 반사 3회"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.support.label",
+      "value": "착지 원무"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.patterns.1.label",
+      "value": "상승 원무"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.patterns.2.label",
+      "value": "착지 전 탄막"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.displayName",
+      "value": "가브리엘"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.role",
+      "value": "침묵의 종지기"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.objectiveLabel",
+      "value": "단조 실제 타격 또는 단조 전용 반격 3회"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.support.label",
+      "value": "귀환 종격"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.patterns.1.label",
+      "value": "편 손바닥 · 멈춤 / 두 손가락 · 준비"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.patterns.2.label",
+      "value": "아래로 향한 손 · 착지·복귀"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.displayName",
+      "value": "이리나"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.role",
+      "value": "눈먼 초상화가"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.objectiveLabel",
+      "value": "물감 발판 실제 지지 또는 탄막 차단 3회"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.support.label",
+      "value": "귀환 채색"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.patterns.1.label",
+      "value": "수평 물감 획"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.patterns.2.label",
+      "value": "화폭 조각 탄막"
+    },
+    {
+      "key": "data.investigation.catalog.topics.transfer_route.label",
+      "value": "종언 이전 경로"
+    },
+    {
+      "key": "data.investigation.catalog.topics.benefactor_imprints.label",
+      "value": "은인별 각인"
+    },
+    {
+      "key": "data.investigation.catalog.topics.cassel_contract.label",
+      "value": "카셀 계약"
+    },
+    {
+      "key": "data.investigation.catalog.clues.route_ledger.label",
+      "value": "이전 경로 · 기록 단말"
+    },
+    {
+      "key": "data.investigation.catalog.clues.route_waveform.label",
+      "value": "이전 경로 · 코어 투사 각인"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_mikhail.label",
+      "value": "미하일 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_julius.label",
+      "value": "율리우스 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_valeria.label",
+      "value": "발레리아 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_gabriel.label",
+      "value": "가브리엘 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_irina.label",
+      "value": "이리나 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.clues.contract_original.label",
+      "value": "계약 문서 · 원본 봉인"
+    },
+    {
+      "key": "data.investigation.catalog.clues.contract_copy.label",
+      "value": "계약 문서 · 사본 봉인"
+    },
+    {
+      "key": "data.investigation.catalog.points.core_terminal.label",
+      "value": "코어 기록 열람 단말"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_route_ledger.label",
+      "value": "이전 경로 · 기록 단말"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_route_waveform.label",
+      "value": "이전 경로 · 코어 투사 각인"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_mikhail.label",
+      "value": "미하일 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_julius.label",
+      "value": "율리우스 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_valeria.label",
+      "value": "발레리아 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_gabriel.label",
+      "value": "가브리엘 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_irina.label",
+      "value": "이리나 · 코어 각인"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_contract_original.label",
+      "value": "계약 문서 · 원본 봉인"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_contract_copy.label",
+      "value": "계약 문서 · 사본 봉인"
+    },
+    {
+      "key": "data.investigation.catalog.stages.transfer_index.label",
+      "value": "1단계 · 종언 이전 경로"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_mikhail.label",
+      "value": "선택 열람 · 미하일"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_julius.label",
+      "value": "선택 열람 · 율리우스"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_valeria.label",
+      "value": "선택 열람 · 발레리아"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_gabriel.label",
+      "value": "선택 열람 · 가브리엘"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_irina.label",
+      "value": "선택 열람 · 이리나"
+    },
+    {
+      "key": "data.investigation.catalog.stages.contract_comparison.label",
+      "value": "2단계 · 코어 문서 대조"
+    },
+    {
+      "key": "data.investigation.catalog.stages.stored_records.label",
+      "value": "3단계 · 코어 보관 기록"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.zero.label",
+      "value": "카셀 제0식"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.thread.label",
+      "value": "반사 은실 포위망"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.pendulum.label",
+      "value": "반사 진자 교차"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.petals.label",
+      "value": "반사 원무 꽃잎"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.bell.label",
+      "value": "반사 대종 충격파"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.portrait.label",
+      "value": "반사 색채 이중 검격"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.1.name",
+      "value": "흐린 어제"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.2.name",
+      "value": "겹치는 기록"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.3.name",
+      "value": "선명한 잔향"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.notary_guard.label",
+      "value": "공증 봉합 중갑병"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.shell_sentry.label",
+      "value": "태엽 장갑 파수병"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.reflection_statue.label",
+      "value": "반사 공증 석상"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.sword_latch.label",
+      "value": "청금 걸쇠"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_1.label",
+      "value": "소구역 1 · 기본기 회랑"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_2.label",
+      "value": "소구역 2 · 교차 공방"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_3.label",
+      "value": "소구역 3 · 극의 검증로"
+    },
+    {
+      "key": "settings.language",
+      "value": "언어    ◀ {0} ▶"
+    },
+    {
+      "key": "language.ko",
+      "value": "한국어"
+    },
+    {
+      "key": "language.en",
+      "value": "English"
+    },
+    {
+      "key": "language.de",
+      "value": "Deutsch"
+    },
+    {
+      "key": "language.fr",
+      "value": "Français"
+    },
+    {
+      "key": "language.es",
+      "value": "Español"
+    },
+    {
+      "key": "language.zh-Hans",
+      "value": "简体中文"
+    },
+    {
+      "key": "language.ja",
+      "value": "日本語"
+    },
+    {
+      "key": "language.ru",
+      "value": "Русский"
+    },
+    {
+      "key": "language.it",
+      "value": "Italiano"
+    },
+    {
+      "key": "ui.confirm",
+      "value": "확인"
+    },
+    {
+      "key": "ui.save",
+      "value": "저장"
+    },
+    {
+      "key": "ui.resume",
+      "value": "계속하기"
+    },
+    {
+      "key": "input.direction_neutral",
+      "value": "중립/앞"
+    },
+    {
+      "key": "input.direction_up",
+      "value": "↑"
+    },
+    {
+      "key": "input.direction_down_air",
+      "value": "↓ 공중"
+    },
+    {
+      "key": "input.direction_down_ground",
+      "value": "↓ 지상"
+    },
+    {
+      "key": "input.direction_back",
+      "value": "뒤(반대)"
+    },
+    {
+      "key": "input.cast_hint",
+      "value": "방향 + Q·Y | 벽: 검술 홀드 + ↓ 시전"
+    },
+    {
+      "key": "input.skill_unlearned",
+      "value": "{0}: 아직 배우지 않은 기술입니다."
+    },
+    {
+      "key": "input.skill_mapping_row",
+      "value": "{0} · {1}"
+    },
+    {
+      "key": "story.court_lift",
+      "value": "대법정 승강기 앞"
+    },
+    {
+      "key": "story.resume_previous",
+      "value": "최종전 직전 기록 재개"
+    },
+    {
+      "key": "story.intro.attic.01",
+      "value": "“[공증 기록 #02 — D일 06:30 / 집행 예정: 다음 날 06:00 (잔여 23시간 30분)]\n……머리가 조금 울려. 어제저녁부터 무슨 꿈을 길게 꾼 것 같은데, 손바닥에 박힌 기록검 감촉만 선명하네.\n앗, 마르타 할머니가 챙겨 두신 박하사탕이 바닥에 굴러떨어졌잖아. 밟히기 전에 주워서 탁자 위 봉투 옆에 올려 두자.”"
+    },
+    {
+      "key": "story.intro.attic.02",
+      "value": "“벌써 깼니, 레아? 박하 공명차 달이는 김에 네 파우치에 넣으라고 꺼내 둔 사탕인데, 굴러떨어졌나 보구나. 이리 가져와 봉투 옆 빈 접시에 놓아 두렴.”\n(조작 안내: 바닥의 박하사탕 앞에서 F / 왼쪽 스틱 누름으로 줍고, 탁자 위 봉투 옆 접시에 놓으세요.)"
+    },
+    {
+      "key": "story.intro.attic.03",
+      "value": "“(박하사탕이 놓이자 탁자 위 청금석 공증 잉크 장부를 들여다보며 고개를 갸웃한다)\n참 이상도 하지…… 내 손글씨 옆에 네가 쓰는 청금석 공증 잉크로 [기록 #01 / 역류 전 06:25 — 위탁물: 사면 임무서 봉투 및 청금석 소리상자]라고 찍혀 있구나. 내가 언제 이걸 받아 적었더라……?\n어라, 비고란에 조그맣게 한 줄이 더 적혀 있네. ‘아침에 일어난 저에게 웃으면서 건네주세요. 초안은 검 안에.’ ……허어, 이 늙은이가 깜빡했나 보다.”"
+    },
+    {
+      "key": "story.intro.attic.04",
+      "value": "“(옷매무새를 가다듬고 표정을 고쳐 환하게 웃으며 봉투를 내민다)\n자, 여기 있다, 우리 레아! 중앙 공증원에서 내려온 특례 회수 임무서란다. 어서 받아 보렴.”\n(조작 안내: 탁자 위 임무서 봉투를 F / 왼쪽 스틱 누름으로 수령하세요. 단서 [계약 문서 · 사본 봉인]이 기록됩니다.)"
+    },
+    {
+      "key": "story.intro.attic.05",
+      "value": "“(봉투를 열어 『제5호 비전 동작 공증 회수 명령서(사본)』 하단 조항을 소리 내어 읽는다)\n‘제3조(특례 부칙): 기술의 3단계 공증 등재가 완료되는 즉시 수형자의 종언은 대법정 모체 코어로 흡수·소멸되며, 다섯 수형자 전원에게 특별 사면장을 발부한다.’\n……다행이야! 소문으로만 듣던 공증원 소멸 특례가 진짜로 발부됐어. 오늘 해가 다시 뜨기 전까지 다섯 분의 기술을 내 기록검에 3단계로 채록해 올리면, 아무도 처형당하지 않고 사면받을 수 있어!”"
+    },
+    {
+      "key": "story.intro.board.01",
+      "value": "“마르타 할머니, 여기 식사 예약판에 벌써 내일 아침 다섯 분 성함이 적혀 있네요?\n내일 아침에 다섯 분 모셔 올게요.”"
+    },
+    {
+      "key": "story.intro.board.02",
+      "value": "“그럼 여섯 그릇.”"
+    },
+    {
+      "key": "story.intro.board.03",
+      "value": "“전 다녀와서 먹으면…… 아, 맞다. 다녀와서네요.\n(다섯 분의 이름 옆 여섯 번째 빈칸에 손을 올리며) 네, 제 자리도 비워 두지 않을게요. 내일 아침 여섯 번째 그릇은 꼭 제가 비울게요!”\n(조작 안내: 식사 예약판 앞에서 F / 왼쪽 스틱 누름으로 여섯 번째 자리를 직접 날인하세요.)"
+    },
+    {
+      "key": "story.intro.forge.01",
+      "value": "“출정하기 전에 날부터 보러 왔나, 레아. 이리 내 봐라. 숫돌에 한 번 대어 보고 코어 홈이 흔들리지 않는지 봐 줄 테니.”\n(조작 안내: 에단의 숫돌 작업대에 F / 왼쪽 스틱 누름으로 기록검을 올리세요.)"
+    },
+    {
+      "key": "story.intro.forge.02",
+      "value": "“(회전하는 숫돌에 검신을 대려다 칼날 세 번째 마디에서 급히 손을 멈춘다. 왼쪽 청금석 의안이 미세하게 푸른 빛을 띤다)\n……잠깐. 여긴 갈아내면 안 되겠군.\n여긴 깨진 게 아니야. 같은 깊이로 세 번 냈어. 누군가 계측 거치대 핀을 똑같은 위치에 물리려고 칼날 세 번째 마디에 직접 새긴 기준 자국이다.”"
+    },
+    {
+      "key": "story.intro.forge.03",
+      "value": "“기준 자국이요? 에단 아저씨, 전 오늘 아침에 일어나서 아직 한 번도 검을 휘두르지 않았는데…… 이미 기본 검격이 백스무 번이나 코어에 새겨져 있고, 칼날에 이런 자국까지 있어요. 대체 제가 어제 뭘 한 거죠?”"
+    },
+    {
+      "key": "story.intro.forge.04",
+      "value": "“(검을 거두어 레아에게 돌려주며 묵직하게 말한다)\n내가 이 백지각인검을 벼렸으니 거짓말은 안 한다, 레아. 방금 내 청금석 의안이 네 검의 코어 기록과 맞물렸어.\n네가 이 검으로 시간을 되감아 달라고 했어. 새벽 여섯 시 십 분에 날이 갈라진 검을 들고 찾아와서, 내가 대역류 봉인을 열어 주었지. 무슨 결말을 바꾸려는지는 내게 말하지 않았고.\n……다만 그 세 번째 마디의 자국은 내가 낸 게 아니다. 네가 혼자 무언가를 재보려다 남긴 눈금이지. 조심해서 다녀와라.”"
+    },
+    {
+      "key": "story.velvet.entry.01",
+      "value": "“여기가 제1구역 벨벳 재단거리예요, 레아 누나. 중앙 공증원 호송대가 내일 새벽 여섯 시 집행 전까지 구획 바깥을 봉쇄해 뒀지만, 이 앞 재단실 옷장은 미하일 아저씨가 어제까지도 손보고 계셨어요.”"
+    },
+    {
+      "key": "story.velvet.entry.02",
+      "value": "“이 열린 옷장 안을 한번 보세요. 열한 살 치수부터 열여섯 살 치수까지, 지난 육 년 동안 매년 새로 지어 걸어 둔 겨울 코트가 여섯 벌이나 나란히 걸려 있어요. 주인을 한 번도 못 입혀 본 옷들인데도 솔기마다 다림질 자국이 반듯해요.”\n(조작 안내: 미하일의 옷장을 F / 왼쪽 스틱 누름으로 조사하세요. 단서 [미하일 · 코어 각인]이 기록됩니다.)"
+    },
+    {
+      "key": "story.velvet.entry.03",
+      "value": "“(여섯 번째 코트 소매 끝에 묶인 파란 비단 리본 자투리를 만져 보며 자기 머리의 파란 리본을 짚는다)\n내 머리에 묶인 이 파란 리본하고 똑같은 직조 매듭이야…… 열 살 이전의 기억은 하얗게 비어 있는데도, 손끝이 이 천의 결을 기억하고 있어. 미하일 아저씨는 날 모르시는 분이 아니었어. 어서 공방 안쪽으로 가 보자, 루카!”"
+    },
+    {
+      "key": "story.mikhail.i0.01",
+      "value": "“(거대한 재단 가위검으로 직조틀의 실타래를 끊으며 레아 앞을 가로막는다. 왼쪽 가슴을 움켜쥐며 거친 숨을 삼킨다)\n……그 파란 리본, 아직도 풀리지 않게 매고 다니는구나, 레아.\n그래도 여기서부터는 한 발짝도 못 지나간다. 네가 쥔 그 청금석 기록검이 무슨 물건인지 모르고 온 거냐.”"
+    },
+    {
+      "key": "story.mikhail.i0.02",
+      "value": "“미하일 아저씨! 저를 아시죠? 제 손에 있는 이 회수 명령서 사본을 보세요. 제3조 특례 부칙에 적혀 있어요! 제가 기록검으로 아저씨의 기술을 3단계까지 등재하면, 종언이 대법정 모체 코어로 흡수·소멸돼서 특별 사면을 받으신다고요!”"
+    },
+    {
+      "key": "story.mikhail.i0.03",
+      "value": "“공증원의 달콤한 선전 문구 따위를 곧이곧대로 믿은 게냐! 남의 고유 동작을 끝까지 베끼면 그자의 상처와 죽음까지 베낀 자의 몸으로 넘어가는 게 이 도시의 법도다!\n네 케이프 솔기가 뜯어질까 봐 바늘을 들었던 손이다. 내 극의만은 절대 네 검에 넘겨주지 않는다. 억지로 지나가려거든 내 가위검부터 꺾어 보거라!”\n(전투 개시: 가위손 재단사 미하일과의 보호 대련)"
+    },
+    {
+      "key": "story.mikhail.i0.04",
+      "value": "“(가위검을 바닥에 짚고 한쪽 무릎을 꿇는다. 레아의 기록검 코어가 대련 중 드러난 미하일의 1단계 바느질 검술 궤적을 푸른 빛으로 채록한다)\n큭…… 내 마지막 매듭은 감췄는데도, 그 검이 첫 박음질의 결을 읽어냈구나.\n명심해라, 레아. 거기서 멈추면 단순한 호신술이지만, 그 바느질을 네 몸에 익혀 끝까지 완성하는 순간 내 심장의 형벌이 네게로 간다. 나는 구호소로 물러나 있을 테니…… 제발 그 검을 더 쓰지 말고 돌아가거라.”\n(시스템 알림: 은실 박음질 획득 — 1~5 / E·패드 B 선택, Q·Y 사용)"
+    },
+    {
+      "key": "story.mikhail.i1.01",
+      "value": "“(왼쪽 가슴의 통증을 참으며 가위검을 들어 레아를 막아선다)\n이미 다른 곳에서 첫 종언을 네 몸으로 끌어안고 왔구나, 레아! 브로치에 금이 간 걸 보니 소멸 특례가 거짓이라는 걸 이제 알았을 텐데, 어째서 도망치지 않고 내 공방까지 찾아온 거냐!”"
+    },
+    {
+      "key": "story.mikhail.i1.02",
+      "value": "“(미하일의 무거운 가위검 강타를 레아가 뒤로 피하지 않고 몸으로 버텨 막으려 하자, 미하일이 칼날을 급히 틀어 바닥을 찍으며 버럭 소리를 지른다)\n멈춰라! 지금 무슨 짓을 하는 거냐!\n카셀에게 종언을 되돌릴 가설을 찾았다면서, 정작 눈앞의 칼날 하나는 네 몸뚱이로 때우려 들어? 구멍 난 계획을 네 몸으로 메우겠다는 소리는 내 앞에서 입 밖에도 내지 마라!”"
+    },
+    {
+      "key": "story.mikhail.i1.03",
+      "value": "“(숨을 고르며 검을 내리고, 아레나 우측 벽면에 접혀 있는 비상 탈출 목판과 청금 걸쇠를 바라본다)\n……맞아요, 미하일 아저씨. 무조건 몸으로 버티겠다고 우기면 아저씨는 절대 절 믿어 주지 않으시겠죠.\n몸으로 막는 대신, 제가 살아서 빠져나갈 퇴로부터 먼저 열게요!”\n(조작 안내: 아레나 우측의 비상 퇴로 청금 걸쇠(mikhail_retreat_latch)로 이동해 기본 검술로 베어 끊으세요. 접힌 목판이 내려와 안전한 귀환 발판이 만들어집니다.)"
+    },
+    {
+      "key": "story.mikhail.i1.04",
+      "value": "“(청금 걸쇠가 끊어지며 넓적한 목판 다리가 쿵 소리와 함께 안전 바닥으로 내려앉자, 미하일이 잠시 눈을 크게 떴다가 낮게 숨을 내쉰다)\n……그래. ‘죽어도 버티겠다’는 말보다, 돌아올 발판부터 먼저 내리는 게 백 번 낫다.\n좋다, 레아. 네가 퇴로를 열어 둔 이상 나도 물러서지 않으마. 끝까지 부딪쳐 보거라!”"
+    },
+    {
+      "key": "story.mikhail.i1.05",
+      "value": "“(대련이 끝나자 레아에게 다가와 흐트러진 크림색 숄 케이프의 솔기를 손끝으로 반듯하게 여며 주고, 방금 내려놓은 목판 다리의 경첩 나사를 가위 자루로 단단히 조여 준다)\n찬성한 건 아니다. 돌아올 바닥은 고쳤다.\n앞길에서 적의 관절을 묶거나 무너지는 지지대를 붙들어야 할 때 날 불러라. 네가 빠져나올 솔기 하나쯤은 내가 뒤에서 꿰매 주마.”\n(시스템 알림: 은실 박음질 획득 + 미하일 지원 해금 · 귀환 솔기 1/1 보유)"
+    },
+    {
+      "key": "story.mikhail.reunion.01",
+      "value": "“(구호소와 귀환 통로를 잇는 다리 옆에서 무릎을 꿇고 앉아, 흔들리던 목재 판자의 경첩을 은실과 쐐기로 단단히 보강하고 있다가 레아를 돌아본다)\n작업대에서 테오와 에단하고 무슨 실험을 벌였는지 들었다. 자기 몫의 퇴로를 찾겠다고 나선 녀석이, 정작 구호소 앞 다리 판자가 덜컥거리는 건 보지도 않고 뛰어다니더군.\n찬성한 건 아니다. 돌아올 바닥은 고쳤다. 직접 밟고 서서 옆 걸쇠가 제대로 물렸는지 네 검으로 한번 쳐 보거라.”\n(조작 안내: 미하일이 보강한 귀환 목판(mikhail_reunion_plank) 위에 올라서서 옆 점검 걸쇠를 기본 검술로 1회 타격하세요.)"
+    },
+    {
+      "key": "story.mikhail.reunion.02",
+      "value": "“미하일 아저씨…… 고맙습니다. 이제 발판이 조금도 흔들리지 않아요.\n아저씨가 고쳐 주신 이 바닥을 밟고, 다섯 분 모두와 함께 꼭 돌아올게요!”\n(시스템 알림: 미하일 지원 해금 · 귀환 솔기 1/1 보유 — 일반 전투에서 방향 + H / 패드 오른쪽 스틱 누름으로 호출할 수 있습니다.)"
+    },
+    {
+      "key": "story.transfer.first.01",
+      "value": "“(여든 번째 극의 동작이 완성되는 순간, 철제 직인이 찍히는 무거운 소리와 함께 레아의 가슴 앞 청금석 브로치 다섯 꽃잎 중 한 잎에 붉은 균열이 그어진다)\n……윽! 브로치에 금이 갔어……!\n뭐야, 공증 원장에서 종언이 사라진 게 아니잖아? [피고인 R.E.A.]…… 내 이름으로 사형 선고가 그대로 옮겨 찍혔어!”"
+    },
+    {
+      "key": "story.transfer.first.02",
+      "value": "“(통신 나팔 너머로 루카의 다급한 목소리가 울린다)\n레아 누나! 방금 구호소에 계시던 분의 종언 인장이 사라졌는데, 분소 계측기 경보가 누나 쪽 기록검에서 울리고 있어요! 테오 형이랑 에단 아저씨가 당장 분소 작업실로 돌아오래요. 지금 바로 궤도차 연결로 올릴게요!”"
+    },
+    {
+      "key": "story.invest.01_sanctuary",
+      "value": "“누나, 괜찮아요?! 구호소 쪽은 방금 확인했어요. 육 년 동안 어른들을 짓누르던 형벌 증상이 거짓말처럼 깨끗이 사라졌어요. 그런데 누나 얼굴빛이……!”"
+    },
+    {
+      "key": "story.invest.02a_stitch",
+      "value": "“(무의식중에 왼쪽 가슴의 크림색 케이프 옷깃을 강하게 움켜쥐며 숨을 몰아쉰다)\n미하일 아저씨의 심장 통증이 나한테로 왔어…… 『운명 봉합·절단』 마지막 매듭을 끊는 순간, 심장이 바늘에 꿰인 것처럼 쿵 내려앉더니 내 브로치 첫 번째 꽃잎이 갈라졌어.\n테오, 사면부칙에는 분명히 모체 코어로 흡수·소멸된다고 적혀 있었잖아. 왜 제1종언 심장 파열이 내 몸에 박힌 거야?”"
+    },
+    {
+      "key": "story.invest.02b_pendulum",
+      "value": "“(허리 파우치에서 째깍째깍 소리 내어 돌아가기 시작한 반쪽 회중시계를 꺼내 들며, 하얗게 센 왼쪽 땋은 머리 한 가닥을 만진다)\n육 년 내내 멈춰 있던 반쪽 시계 초침이…… 『제로 아워』를 완성하자마자 다시 맞물려 돌아가기 시작했어. 그리고 내 머리칼 한 가닥이 그 자리에서 하얗게 세어 버렸어.\n테오, 율리우스 아저씨의 제2종언 급속 노화가 소멸된 게 아니라 내 시간으로 옮겨 붙은 거야?”"
+    },
+    {
+      "key": "story.invest.02c_waltz",
+      "value": "“(착지 자세를 잡던 두 발목이 욱신거려 작업대 모서리를 짚으며 부츠 끈을 내려다본다)\n발레리아 언니는 육 년 만에 부목 없이 두 발로 일어서셨는데…… 『그랑 피날레』를 마치고 내려오자마자 내 두 다리에 납덩이를 매단 것처럼 형벌의 무게가 옮겨 왔어.\n테오, 소멸 특례라는 거…… 처음부터 없었던 거야?”"
+    },
+    {
+      "key": "story.invest.02d_forge",
+      "value": "“(조금 갈라지고 쉬어 버린 목소리로 목울대를 짚으며 가쁘게 숨을 고른다)\n가브리엘 아저씨의 목소리와 청력이 돌아온 대신…… 『여섯 시의 파종』을 울린 순간 내 목에서 기합 소리가 반쯤 지워졌어. 귀 끝에서 차가운 종소리 이명이 가시질 않아.\n테오, 제4종언 영원한 침묵이 코어로 소멸되지 않고 왜 내 기록검으로 들어온 거야?”"
+    },
+    {
+      "key": "story.invest.02e_canvas",
+      "value": "“(시야 가장자리에 번지는 수채화 같은 뿌연 안개를 털어내듯 눈가를 비비며 작업대를 짚는다)\n이리나 언니가 육 년 만에 두 눈으로 내 얼굴을 똑똑히 보셨어. 그런데 『자화상 완성』의 마지막 붓질을 끝내자마자, 내 눈앞 가장자리가 하얀 물감에 잠기듯 흐려졌어.\n테오, 제5종언 실명이 사라지지 않고 내 눈으로 넘어온 거지?”"
+    },
+    {
+      "key": "story.invest.03_theo",
+      "value": "“(절뚝이는 다리로 계측 단말 앞을 빠르게 오가며 파형 그래프를 띄운다)\n여기 분소 기록 단말의 원장 로그를 봐, 레아. 중앙 공증원이 홍보하던 ‘모체 코어 흡수·소멸 특례’ 따위는 기록검 설계 어디에도 존재하지 않아.\n세계의 인과율은 3단계 극의를 완벽히 재현한 너를 원주인과 ‘동일인’으로 판정해서, 예정된 종언을 네 육체로 곧장 이전시켰어.”\n(조작 안내: 분소 기록 단말(point_route_ledger)을 F / 왼쪽 스틱 누름으로 조사해 단서 [이전 경로 · 기록 단말]을 확인하세요.)"
+    },
+    {
+      "key": "story.invest.04_luka",
+      "value": "“그뿐만이 아니에요, 누나. 제가 삼촌 작업대랑 다섯 구역 기록을 모두 맞춰 봤어요.\n미하일 아저씨, 저희 삼촌 율리우스, 발레리아 누나, 가브리엘 아저씨, 이리나 누나…… 다섯 수형자분들은 죄를 지은 적이 없어요! 육 년 전 지하 대역소에서 카셀이 열 살짜리 아이 한 명에게 5대 종언을 한꺼번에 몰아넣었을 때, 그 아이를 살리려고 고통스러운 몸짓을 한 가지씩 3단계 기예로 나눠 가져가신 은인들이었어요.\n그 열 살짜리 아이가…… 바로 레아 누나였고요.”"
+    },
+    {
+      "key": "story.invest.05_marta",
+      "value": "“(마르타가 떨리는 손으로 다락방 위탁 장부와 레아의 사본 명령서를 작업대 조명 아래 나란히 펼친다)\n레아야, 이 할미는 정말로 모르고 건넸단다. 그런데 불빛에 비춰 보니…… 네가 가진 사본 하단 [제3조(특례 부칙)] 자리는 원래 인쇄된 종이 결이 칼끝으로 얇게 긁혀 나가 있구나.\n그 위에 우리 시계탑 분소 창고에 있던 구형 납활자와 네 청금석 공증 잉크로 ‘흡수·소멸 및 특별 사면’ 문구를 새로 덧찍었어. 그리고 여기 장부의 [기록 #01 / 역류 전 06:25] 위탁자 서명을 보렴.”\n(조작 안내: 작업대 위의 위탁 장부와 사본 봉인을 F / 왼쪽 스틱 누름으로 대조하세요.)"
+    },
+    {
+      "key": "story.invest.06_rea",
+      "value": "“(장부의 서명과 비고란의 『초안은 검 안에』라는 글씨를 가만히 내려다본다)\n……내 글씨야. 어릴 때부터 기역 자 끝을 살짝 둥글게 말아 쓰던 내 필적 그대로야.\n마르타 할머니나 다섯 은인분들이 날 속인 게 아니었어. 오늘 아침 06시 30분에 기억을 태우고 시간을 되감기 직전의 ‘어제의 나(기록 #01)’가…… 원래 적혀 있던 제3조 처분 문구를 칼끝으로 긁어내고 가짜 사면 조항을 찍어서 오늘의 나에게 보낸 거야.\n하지만 왜? 어제의 나는 왜 나한테까지 거짓말을 해야 했지? 여기 적힌 ‘초안은 검 안에’라는 건 무슨 뜻이야?”"
+    },
+    {
+      "key": "story.invest.07_exp1_ethan",
+      "value": "“말로만 추측할 것 없다. 검 안에 무엇이 남았는지는 직접 계측 거치대에 걸어 보면 안다.\n레아, 아까 내 대장간에서 봤던 칼날 세 번째 마디의 그 세 줄 기준 자국 기억하지? 기존 자국이 상하지 않게 검을 거치대에 올리고, 그 세 번째 마디 눈금에 작업대 계측 핀을 정확히 맞춰 봐라.”\n(조작 안내: 작업대 계측 거치대(calibration_mount)에서 F / 왼쪽 스틱 누름으로 칼날 세 번째 마디 기준 자국에 계측 핀을 맞추세요. 단서 [이전 경로 · 코어 투사 각인]이 기록됩니다.)"
+    },
+    {
+      "key": "story.invest.08_exp1_rea",
+      "value": "“(계측 핀이 세 번째 마디 홈에 맞물리는 순간, 기록검 코어 내부에서 푸른 청금석 빛의 기준선과 도중에 뚝 끊어진 파형 기록이 계측판 위로 선명하게 투사된다)\n……이 푸른 기준선 좀 봐! 코어 안에 공증 잉크 파형으로 측정 눈금이 이미 저장되어 있었어.\n누가 먼저 재봤나 봐. 어제의 나도…… 이 작업대에서 똑같이 이 검의 출력을 재보려고 했던 거야!”"
+    },
+    {
+      "key": "story.invest.09_exp2_theo",
+      "value": "“어제의 기록은 기준선만 띄워 놓고 파형이 시작점에서 끊겨 있어. 혼자서는 검을 누르면서 맞은편 계측기까지 조작할 수 없었으니까!\n하지만 지금은 내가 계측기를 잡고 에단 아저씨가 거치대를 고정하고 있어. 레아, 네가 방금 완성한 첫 3단계 기술의 발동 경로 하나를 이 작업대 계측기에서 잠시 쉬게(휴면) 해 볼게. 이 상태로 앞의 기준 표적을 네 기본 검술로 한 번 똑같이 베어 봐!”\n(조작 안내: 작업대 기준 표적(calibration_target)을 기본 검술로 1회 타격하세요.)"
+    },
+    {
+      "key": "story.invest.10_exp2_ethan",
+      "value": "“(묵직한 청금빛 충격파와 함께 표적이 크게 흔들리고 계측 바늘이 20% 위로 솟구친다)\n보았느냐. 보스 기술 한 갈래를 유지하느라 분산되어 있던 네 검의 『시간 각인 출력』 한 몫(20%)이 기본 검술 쪽으로 고스란히 실렸다.\n단, 착각하지 마라. 이 임시 휴면은 종언 제거가 아니어서 네 브로치의 종언 인장은 그대로 남아 있고, 이 작업대 계측 장치 밖에서는 임의로 경로를 영구 해방할 수 없다. 실전에서 출력을 열려면 정식 역공증 반환 절차를 밟아야 해.”"
+    },
+    {
+      "key": "story.invest.11_exp3_theo",
+      "value": "“이제 세 번째 실험이야! 맞은편 공증원 규격 반사 계측판을 켜서 네 검격을 그대로 복제해 볼게. 반사판이 네 동작 궤적과 시간 각인 출력을 어디까지 따라 하는지, 그리고 장치를 끈 뒤에도 기록이 남는지 확인하는 거야!”\n(조작 안내: 반사 계측판(reflection_plate) 앞에서 F / 왼쪽 스틱 누름으로 반사 대조 및 계측기 분리를 수행하세요.)"
+    },
+    {
+      "key": "story.invest.12_exp4_theo",
+      "value": "“(반사 계측판의 파형과 공증 잉크 원판을 대조하며 실험 노트에 빠르게 정리한다)\n됐어, 세 가지가 입증됐어!\n첫째, 반사 장치는 네 동작의 궤적(형식)은 똑같이 복제하지만, 네가 시간을 태워 쌓은 시간 각인 출력은 단 1초도 복제하지 못해.\n둘째, 반사 장치를 도중에 꺼도 원판에 찍힌 공증 기록은 지워지지 않아. 그리고 계측기를 분리하면 네 보스 기술 사용권도 정상으로 돌아오고!\n(실험 노트에 두 칸을 나누어 적는다)\n[관찰됨: 출력 분산(경로당 20%) · 각인 복제 불가 · 공증 기록 잔류]\n[미검증: 다섯 갈래 동시 예약 · 카셀의 만상공명 거울 완전 복제 · 원형 검술 최종 확정]\n한 갈래를 쉬게 하니 검 쪽 출력은 늘었어. 다섯 갈래를 모체 동작에 묶어 돌릴 수 있을지는 아직 몰라. 하지만 카셀의 거울이 우리 기술을 베끼는 순간 맞베기로 반환 예약을 걸고, 해방된 시간 각인 출력으로 원형 검술까지 맞받아치면…… 다섯 종언을 원소유자 카셀에게 되돌릴 길이 열릴지도 몰라!”"
+    },
+    {
+      "key": "story.invest.13_decision",
+      "value": "“어제의 나는…… 혼자서 이 계측기를 붙잡다가 파형이 끊겼던 거구나. 그래서 방법을 다 증명하지 못한 채, 일단 다섯 분이라도 살리려고 자기 이름을 지우는 길을 택했던 거야.\n하지만 난 혼자가 아니야. 아직 빈칸이 남아 있다는 거 알아. 그래도 지금 검을 놓으면 남은 은인분들은 내일 아침 여섯 시에 집행당해.\n테오, 에단 아저씨, 마르타 할머니, 루카. 내 몫을 미리 지우지 않을게요. 다섯 분의 종언을 내 몸에 모두 모은 뒤, 우리가 함께 검증한 이 반환 경로로 카셀에게 되돌리고…… 저도 꼭 살아서 아침 식탁으로 돌아올게요!”\n(시스템 처리: SkillSession.Investigation.CompleteMiddleInvestigation() 호출 ➔ I=1 (investigation_complete) 확정 및 저장)"
+    },
+    {
+      "key": "story.luka.approach",
+      "value": "“(궤도 위에서 막 출발하려는 태엽 화물차를 보고 습관처럼 발끝에 힘을 주어 억지로 뛰어오르려다, 브로치의 균열과 방금 작업대에서 한 약속을 떠올리며 스스로 발을 멈추고 검을 거둔다)\n……아니야. 예전처럼 무리해서 혼자 뛰어내리다 다치면 아무 소용 없어. 바로 저기 신호소에 루카가 있잖아.”"
+    },
+    {
+      "key": "story.luka.signal",
+      "value": "“루카! 잠깐, 태워 줘.”\n(조작 안내: 승강장 신호소(luka_signal_post)에서 F / 왼쪽 스틱 누름으로 루카에게 직접 신호를 보내세요.)"
+    },
+    {
+      "key": "story.luka.board",
+      "value": "“(신호 종이 울리자 루카가 제동 레버를 당겨 화물차를 멈춰 세우고, 철제 승강판을 안전 바닥 높이로 덜컹 내려 준다)\n신호 봤어요, 레아 누나! 혼자 뛰어오르지 않고 불러 줘서 고마워요. 자, 승강판 다 내려갔어요. 이리 올라타세요!”\n(조작 안내: 내려온 화물차 승강판(luka_freight_platform) 위로 직접 이동해 올라서세요.)"
+    },
+    {
+      "key": "story.luka.arrive",
+      "value": "“(승강판이 매끄럽게 이동해 구역 연결 출구에 닿는다)\n고마워, 루카. 혼자 억지로 건널 때보다 훨씬 빠르고 발목도 안 아파. 돌아올 때도 신호 보낼게!”"
+    },
+    {
+      "key": "investigation.clue.route_ledger.summary",
+      "value": "“공증 원장과 위탁 장부의 대조 기록. 3단계 극의 재현 시 종언은 소멸하지 않고 기술 완성자(피고인 R.E.A.)에게 이전되며, 마르타의 장부에는 기록 #01 / 역류 전 06:25 날인과 함께 레아 본인의 필적으로 초안은 검 안에라는 메모가 남아 있다.”"
+    },
+    {
+      "key": "investigation.clue.route_ledger.text",
+      "value": "“시계탑 분소의 공증 원장 단말과 마르타의 청금석 공증 잉크 위탁 장부를 나란히 대조한 기록이다.\n첫째, 중앙 공증원이 대외적으로 홍보해 온 ‘3단계 등재 시 모체 코어로 종언 흡수·소멸’ 특례는 기록검 회로 어디에도 존재하지 않는다. 세계의 인과율은 3단계 극의를 완벽히 재현한 검사를 원주인과 동일인으로 판정하여, 예정된 사형 인과(종언)를 검사의 육체(피고인 R.E.A.)로 즉시 이전시킨다.\n둘째, 마르타의 위탁 장부에는 코어와 동기화된 청금석 공증 잉크로 [기록 #01 / 역류 전 06:25 — 위탁물: 사면 임무서 봉투 및 청금석 소리상자]가 찍혀 있다. 위탁자 서명은 기역 자 끝을 둥글게 말아 쓰는 레아 본인의 필적이며, 비고란에는 ‘아침에 일어난 저에게 웃으면서 건네주세요. 초안은 검 안에.’라는 메모가 적혀 있다.”"
+    },
+    {
+      "key": "investigation.clue.route_waveform.summary",
+      "value": "“칼날 세 번째 마디의 세 기준 자국에 계측 핀을 맞추자 기록검 코어에서 투사된 선행 측정 기준선과 4단계 검 실험 파형. 기술 경로 휴면 시 각인 출력이 20%씩 기본검에 실리며, 반사 장치는 각인 출력을 복제하지 못한다.”"
+    },
+    {
+      "key": "investigation.clue.route_waveform.text",
+      "value": "“에단이 벼려낸 『청금석 기록검(백지각인검)』의 칼날 세 번째 마디에는 같은 깊이로 세 번 패인 측정 기준 자국이 남아 있다. 작업대 계측 거치대의 핀을 이 세 번째 마디 눈금에 정확히 물리자, 유일한 회귀 보존 저장소인 기록검 코어 내부에서 공증 잉크 파형으로 저장되어 있던 어제(#01)의 선행 측정 기준선이 계측판 위로 투사되었다. 어제의 파형은 혼자서 검과 반사판을 동시에 조작하지 못해 시작점에서 끊겨 있었다.\n오늘 테오·에단·레아가 함께 완수한 4단계 검 실험을 통해 세 가지 사실이 실측되었다: ① 완성한 보스 기술의 발동 경로 하나를 계측기에서 잠시 쉬게 하면 분산되었던 시간 각인 출력 한 몫(20%)이 기본 검술에 실린다(단, 작업대 밖에서는 임의로 영구 해방할 수 없다). ② 반사 장치는 동작의 궤적(형식)만 복제할 뿐 검신에 축적된 시간 각인 출력은 단 1초도 복제하지 못한다. ③ 반사 장치를 꺼도 원판에 찍힌 공증 기록은 사라지지 않는다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.summary",
+      "value": "“벨벳 재단거리 초입 옷장에 걸린 열한 살부터 열여섯 살까지의 겨울 코트 여섯 벌과 파란 리본 재단 흔적. 6년 전 추위에 떨던 열 살의 레아에게서 『제1종언: 심장 파열』을 대신 가져간 재단사 미하일의 기록이다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.text",
+      "value": "“제1구역 벨벳 재단거리 초입, 가위손 재단사 미하일(46세)의 재단실 옷장 안에서 발견한 기록과 유품이다.\n옷장 안에는 주인을 만나지 못한 겨울 코트 여섯 벌이 열한 살 치수부터 열여섯 살 치수까지 해마다 한 뼘씩 자란 크기로 나란히 걸려 있으며, 여섯 번째 코트 주머니에는 레아가 지금도 왼쪽 옆머리에 묶고 있는 파란 비단 리본과 똑같은 직조 자투리가 들어 있다.\n6년 전 지하 대역소에서 열 살의 레아가 카셀에게서 5대 종언을 강제로 주입당해 심장이 찢어지는 고통 속에 옷자락을 움켜쥐었을 때, 미하일은 그 떨리는 손짓을 바느질 검술 3단계 극의(『운명 봉합·절단』)로 완성하여 레아의 몸에 있던 [제1종언: 심장 파열]을 자기 심장으로 통째로 옮겨 받았다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.summary",
+      "value": "“황혼의 태엽 시계탑 초입 작업대에 놓인 나머지 반쪽 회중시계와 조율 일지. 6년 전 열 살의 레아에게 반쪽 시계를 선물하고 『제2종언: 급속 노화』를 대신 짊어져 하룻밤 새 백발이 된 시계공 율리우스의 기록이다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.text",
+      "value": "“제2구역 황혼의 태엽 시계탑 초입, 멈춘 초침의 시계공 율리우스(52세)의 작업대에서 조카 루카가 안내한 유품과 코어 공명 기록이다.\n작업대 융단 위에는 레아가 허리 파우치에 소중히 넣고 다니는 ‘바늘이 멈춘 반쪽짜리 회중시계’와 절단면이 정확히 맞물리는 나머지 반쪽 황동 회중시계가 먼지 한 톨 없이 닦여 놓여 있다.\n6년 전 지하 대역소에서 열 살의 레아가 살려 달라며 태엽 감는 시늉을 반복할 때, 율리우스는 그 손버릇을 진자 되감기 3단계 극의(『제로 아워』)로 완성하여 [제2종언: 급속 노화]를 대신 가져갔다. 하룻밤 사이에 백발 노인처럼 쇠약해진 뒤로도, 그는 레아를 마주칠 때마다 파우치 속 시계의 멈춘 초침이 다시 맞물려 돌아가지 않는지(종언이 아이에게 되돌아가지 않았는지) 귀를 기울여 살피곤 했다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.summary",
+      "value": "“유리 오페라 극장 초입 연습실의 닳아 해진 토슈즈와 마루에 그어진 작은 아이용 보폭 표시선. 6년 전 지하 창살 너머로 까치발을 들던 레아를 위해 춤추며 『제3종언: 두 다리의 형벌』을 대신 가져간 무희 발레리아의 기록이다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.text",
+      "value": "“제3구역 유리 오페라 극장 초입, 부서진 구두의 무희 발레리아(29세)가 머물던 무대 뒤편 연습실에서 확인한 유품과 코어 각인이다.\n코르크 부목 옆에는 앞코가 닳아 해진 수석 무희 시절의 토슈즈 한 켤레가 놓여 있고, 연습실 마루 바닥에는 열 살 아이의 짧은 보폭에 맞춰 넘어지지 않고 착지하는 법을 가르쳐 주려 그어 둔 분필 눈금이 코팅되어 남아 있다.\n6년 전 지하 대역소 창살 아래에서 발끝을 세우며 버티던 열 살 레아의 몸짓을 보고, 발레리아는 그 까치발 동작을 커튼콜 원무 3단계 극의(『그랑 피날레』)로 완성하여 [제3종언: 두 다리의 형벌]을 자기 두 다리로 가져갔다. 두 다리가 부서져 무대에 설 수 없게 된 뒤에도 그녀는 화려한 공중 도약보다 레아가 두 발로 안전하게 착지하는 것만을 걱정했다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.summary",
+      "value": "“청동 대종루 초입에 보관된 아침 종 악보와 세 가지 손신호 수첩. 6년 전 빛 없는 지하실의 레아에게 아침을 알려 주려 종을 울리고 『제4종언: 영원한 침묵』을 대신 가져간 종지기 가브리엘의 기록이다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.text",
+      "value": "“제4구역 청동 대종루 초입, 침묵의 종지기 가브리엘(41세)의 종루 관리실에서 확인한 악보와 필담 수첩 기록이다.\n악보 첫 장에는 『창문 없는 지하실의 아이가 아침이 온 줄 알 수 있도록, 여섯 시마다 가장 따뜻하고 낮은 울림으로 칠 것』이라는 메모가 적혀 있다.\n6년 전 지하 대역소에서 공명 폭주음에 두 귀를 감싸 쥐고 비명을 삼키던 열 살 레아를 구하기 위해, 가브리엘은 그 몸짓을 공명 단조 3단계 극의(『여섯 시의 파종』)로 완성하여 [제4종언: 영원한 침묵]을 대신 짊어지고 청력과 목소리를 모두 바쳤다. 소리를 잃은 뒤에도 그는 수첩 필담과 눈으로 볼 수 있는 세 가지 손신호(편 손바닥: 멈춤 / 두 손가락: 준비 확인 / 아래로 향한 손: 착지·복귀)를 만들어 레아의 걸음을 지켰다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.summary",
+      "value": "“하얀 캔버스 화랑 초입에 놓인 물감 돋을새김 스케치북. 6년 전 창문 없는 방의 레아에게 바다와 꽃밭을 그려 주고 『제5종언: 실명』을 대신 가져간 뒤, 손끝으로 ‘열여섯 살이 된 레아’를 그려 온 화가 이리나의 기록이다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.text",
+      "value": "“제5구역 하얀 캔버스 화랑 초입, 눈먼 초상화가 이리나(34세)의 온실 화실에서 루카가 보여준 스케치북과 코어 각인이다.\n두꺼운 화지 위에는 물감의 질감과 높낮이만으로 윤곽을 만져서 알아볼 수 있는 점자 방식의 초상화 수십 장이 묶여 있다. 제목은 모두 『살아서 열여섯 살이 된 레아』이며, 웃는 얼굴뿐 아니라 눈썹을 찡그리거나 울먹이는 얼굴까지 따뜻한 붓터치로 그려져 있다.\n6년 전 창문 없는 지하 대역소에서 허공에 손가락으로 빛을 그리던 열 살 레아를 살리기 위해, 이리나는 그 손짓을 여백 도려내기 3단계 극의(『자화상 완성』)로 완성하여 [제5종언: 실명]을 자신의 두 눈으로 가져갔다.”"
+    },
+    {
+      "key": "investigation.clue.contract_original.summary",
+      "value": "“어제의 레아(기록 #01)가 코어 심층에 봉인해 두었던 대공증관 카셀의 『제5호 비전 동작 공증 회수 명령서(원본)』. 제3조에는 특별 사면이 아니라, 다섯 종언이 모이는 즉시 피고인(R.E.A.)을 대법정 지하 『영구 박제관』에 영구 동결 격리하라는 처분이 적혀 있다.”"
+    },
+    {
+      "key": "investigation.clue.contract_original.text",
+      "value": "“다섯 은인의 종언이 모두 레아에게 모인 뒤(C=5), 기록검 코어 심층 보관소에서 출력된 대공증관 카셀 직인 날인본 『제5호 비전 동작 공증 회수 명령서(원본)』이다.\n어제의 레아(#01)가 사본에서 칼끝으로 긁어내어 숨겼던 원본 [제3조(처분)]의 실제 문구는 다음과 같다:\n‘제3조(처분): 5대 비전 동작의 3단계 회수가 완료되어 종언이 대역 피고인(R.E.A.)의 육체에 귀속되는 즉시, 피고인은 대법정 지하 『영구 박제관』으로 입관하여 영구 동결 격리에 처한다.’\n카셀의 진짜 목적은 사면이 아니라, 6년 전 흩어진 5대 종언의 공증 흔적을 레아 한 몸에 다시 모아 지하 영구 박제관에 산 채로 봉인함으로써 자신에게 돌아올 역공증 반환 가능성을 영원히 차단하는 것이었다.”"
+    },
+    {
+      "key": "investigation.clue.contract_copy.summary",
+      "value": "“오늘 아침 다락방에서 마르타를 통해 전달받은 『제5호 비전 동작 공증 회수 명령서(사본)』. 하단 제3조에 ‘모체 코어로 종언 흡수·소멸 및 5인 전원 특별 사면’이 적혀 있으나, 실제로는 어제의 레아(#01)가 원본 처분 조항을 긁어내고 분소 구형 활자와 청금석 공증 잉크로 덧찍은 위조본이다.”"
+    },
+    {
+      "key": "investigation.clue.contract_copy.text",
+      "value": "“#02 / D일 06:30 망각 다락방에서 마르타가 장부 지시(‘웃으면서 건네주세요’)에 따라 건네준 『제5호 비전 동작 공증 회수 명령서(사본)』이다.\n문서 하단 [제3조(특례 부칙)]란에는 다음과 같이 인쇄되어 있다:\n‘제3조(특례 부칙): 기술의 3단계 공증 등재가 완료되는 즉시 수형자의 종언은 대법정 모체 코어로 흡수·소멸되며, 다섯 수형자 전원에게 특별 사면장을 발부한다.’\n그러나 첫 종언 이전 직후 분소 작업대 조명 아래에서 정밀 감정한 결과, 이 조항 자리는 원래 인쇄된 종이 섬유가 칼끝으로 얇게 긁혀 나가 있었고, 그 위에 시계탑 분소 창고의 구형 납활자와 레아 본인의 청금석 공증 잉크(코어 동기화 매질)로 사면 문구를 덧찍어 회귀 너머까지 보존시킨 위조 문서임이 밝혀졌다.”"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.title",
+      "value": "종언 원장 이전 기록과 #01 위탁 장부 감정서"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.summary",
+      "value": "“3단계 극의 재현 시 수형자의 종언은 코어로 소멸되지 않고 기술 완성자(피고인 R.E.A.)의 육체로 강제 이전된다. 마르타의 장부(기록 #01 / 역류 전 06:25)와 사본 제3조의 구형 활자 흔적을 통해, 시간을 되감기 직전의 ‘어제의 레아’가 직접 사면 부칙을 위조해 오늘의 레아를 출정시켰음이 입증되었다.”"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.body",
+      "value": "[코어 원장 색인 #101 — 종언 이전 및 위탁 기록 대조]\n1. 허위 소멸 특례의 실체: 중앙 공증원이 유포한 ‘기록검 3단계 등재 시 모체 코어로 종언 흡수·소멸’은 대역 검사가 의심 없이 극의를 완성하게 만들기 위한 제도적 기만이다. 종언 원장(CoreRecord.ledger)은 3단계 극의가 재현되는 즉시 원주인(은인)의 종언 소유권을 피고인 R.E.A.(레아)로 이전 등록한다.\n2. 6년 전의 구출 경로: 다섯 은인은 범죄자가 아니라, 6년 전 대공증관 카셀이 열 살의 무각인 숙주 아이(레아)에게 강제 주입했던 5대 종언을 하나씩 3단계 기예로 나눠 가져간 보호자들이다.\n3. 위조 당사자 확정: 다락방 위탁 장부의 [기록 #01 / 역류 전 06:25] 항목은 코어에 동기화된 청금석 공증 잉크로 기록되어 24시간 대역류 너머까지 보존되었다. 서명 필적은 레아 본인이며, 어제의 레아는 오늘 아침의 자신이 사면 특례를 믿고 은인들의 기술을 채록하도록 원본 제3조를 긁어내고 특별 사면 부칙을 덧찍은 뒤 ‘초안은 검 안에’라는 단서를 남겼다."
+    },
+    {
+      "key": "investigation.record.core_waveform.title",
+      "value": "코어 선행 측정 기준선 및 4단계 검 실험 결과 보고"
+    },
+    {
+      "key": "investigation.record.core_waveform.summary",
+      "value": "“칼날 세 번째 마디의 기준 자국에서 어제(#01)가 도중에 멈춘 선행 측정 기준선이 투사되었다. 오늘 테오·에단과 수행한 4단계 검 실험을 통해 ‘발동 경로 1개 휴면 시 시간 각인 출력 +20% 해방’, ‘반사 장치의 시간 각인 복제 불가’, ‘장치 종료 후 공증 기록 잔류’가 입증되었고, 이를 바탕으로 카셀에게 5대 종언을 일괄 되돌리는 역공증 반환 가설이 수립되었다.”"
+    },
+    {
+      "key": "investigation.record.core_waveform.body",
+      "value": "[코어 파형 색인 #102 — 백지각인검 출력 분산 및 역공증 가설]\n1. 선행 측정 기준선 (복선 ①·②): 기록검 칼날 세 번째 마디에 같은 깊이로 세 번 패인 자국에 작업대 계측 핀을 맞추자, 코어 내부에 저장되어 있던 어제의 청금석 파형 기준선이 계측판 위로 투사되었다. 어제는 조력자 없이 홀로 계측기를 붙잡다 시작점에서 파형이 끊겼으나, 오늘은 테오와 에단의 협력으로 4단계 계측을 완수했다.\n2. 입증된 세 가지 물리 법칙 (관찰됨):\n- 출력 분산 (경로당 20%): 완성된 3단계 은인 기술의 발동 경로 하나를 비울 때마다, 그 기술을 유지하느라 분산되었던 추가 시간 각인 출력이 20% → 40% → 60% → 80% → 100%로 해방되어 기본 검술에 실린다(작업대 밖에서는 정식 반환 예약 절차로만 해방 가능).\n- 시간 각인 복제 불가: 공증원 반사 장치는 검술의 외형 궤적은 100% 복제하지만, 사용자가 시간을 태우고 직접 검을 휘둘러 쌓은 물리적 『시간 각인 출력』은 단 1초도 복제하지 못한다.\n- 공증 기록 잔류: 반사 장치를 도중에 닫거나 꺼도 이미 원판에 맞물려 찍힌 공증 기록은 삭제되지 않는다.\n3. 남은 미검증 과제 (미검증): 다섯 갈래 기술의 동시 반환 예약(R=1~5), 카셀의 모체 병기 『만상공명 거울』을 상대로 한 실전 맞베기, 그리고 마지막 여섯 번째 원형 동작(카셀 제0식)에 의한 일괄 확정 성립 여부는 대법정 최상층 실전에서 증명해야 한다."
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.title",
+      "value": "제1각인 완전 공명 — 가위손 재단사 미하일과 돌아올 바닥"
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.summary",
+      "value": "“6년 전 열 살 레아의 떨리는 옷자락을 바느질 검술로 감싸 안아 『제1종언: 심장 파열』을 대신 가져갔던 미하일. 오늘의 레아가 몸으로 칼날을 버티는 대신 기본 베기로 걸쇠를 끊어 탈출 목판부터 내리는 모습을 본 그는, 구호소와 귀환 통로의 바닥 판자를 직접 보강하고 전투 지원 『귀환 솔기』를 맡겼다.”"
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.body",
+      "value": "[은인 각인 기록 #01 — 미하일 (46세 / 은실 박음질 · 제1종언: 심장 파열)]\n- 6년 전의 기억 단편: 얼음장 같던 지하 대역소에서 열 살의 레아가 찢어지는 가슴을 움켜쥐고 옷깃을 여미려 할 때, 재단사 미하일은 아이에게 파란 리본과 망토를 둘러 주고 그 손짓을 『은실 박음질』 3단계 극의로 완성해 심장 파열의 사형 선고를 대신 짊어졌다. 이후 6년 동안 그는 한 번도 만나지 못한 아이가 자라는 키를 눈대중으로 헤아려 매년 새 코트를 지어 옷장에 걸어 두었다.\n- 오늘의 변화와 『귀환 솔기』: 미하일이 가장 견딜 수 없었던 것은 레아가 구멍 난 계획을 자기 몸으로 메우려 드는 태도였다. 오늘의 레아가 무모하게 공격을 받아내는 대신 먼저 옆 걸쇠를 끊어 내려올 발판(퇴로)부터 확보하자, 미하일은 “찬성한 건 아니다. 돌아올 바닥은 고쳤다.”라며 귀환 통로의 흔들리는 판자를 손수 조여 두었다."
+    },
+    {
+      "key": "investigation.record.imprint_julius.title",
+      "value": "제2각인 완전 공명 — 멈춘 초침의 시계공 율리우스와 왕복의 시간"
+    },
+    {
+      "key": "investigation.record.imprint_julius.summary",
+      "value": "“6년 전 열 살 레아의 태엽 감는 손짓을 진자 보법으로 완성해 『제2종언: 급속 노화』를 대신 짊어진 율리우스. 눈앞의 추가 공격 기회를 버리고 약속한 복귀 시점에 정확히 돌아온 오늘의 레아에게, 그는 처음으로 자신의 반쪽 회중시계를 펼쳐 보이며 함께 돌아올 시간을 맞추는 전투 지원 『귀환 시간』을 건넸다.”"
+    },
+    {
+      "key": "investigation.record.imprint_julius.body",
+      "value": "[은인 각인 기록 #02 — 율리우스 (52세 / 진자 되감기 · 제2종언: 급속 노화)]\n- 6년 전의 기억 단편: 시계공 율리우스는 지하 대역소의 열 살 레아에게 반쪽 회중시계를 건네고, 아이가 살려 달라며 태엽을 감던 손버릇을 『진자 되감기』 3단계 극의로 완성해 급속 노화의 종언을 대신 가져갔다. 30회 체화 단계에서는 시계 케이스만 공명할 뿐 멈춰 있던 초침이, 80회 극의 완성 순간 비로소 다시 맞물려 돌아가며 종언이 레아에게로 넘어왔다.\n- 오늘의 변화와 『귀환 시간』: 시간이 모자라면 레아가 자기 목숨을 마지막 순서로 미룰까 봐 두려워하던 율리우스는, 오늘의 레아가 공격 욕심을 버리고 정해진 복귀 시각에 발판으로 돌아오자 비로소 자기 몫의 나머지 반쪽 시계를 열어 보였다. 이제 두 반쪽 시계는 진입하는 시간뿐 아니라 살아서 돌아오는 왕복 시간을 함께 센다."
+    },
+    {
+      "key": "investigation.record.imprint_valeria.title",
+      "value": "제3각인 완전 공명 — 부서진 구두의 무희 발레리아와 안전한 착지"
+    },
+    {
+      "key": "investigation.record.imprint_valeria.summary",
+      "value": "“6년 전 창살 너머로 까치발을 들던 열 살 레아의 몸짓을 회전 검무로 완성해 『제3종언: 두 다리의 형벌』을 대신 가져간 발레리아. 무리한 공중 추격을 멈추고 안전 발판과 루카의 승강판 구조를 받아들인 레아의 두 발목을 살피며, 그녀는 레아의 착지를 지키는 전투 지원 『착지 원무』를 약속했다.”"
+    },
+    {
+      "key": "investigation.record.imprint_valeria.body",
+      "value": "[은인 각인 기록 #03 — 발레리아 (29세 / 커튼콜 원무 · 제3종언: 두 다리의 형벌)]\n- 6년 전의 기억 단편: 오페라 극장의 수석 무희였던 발레리아는 지하 대역소 창살 아래에서 까치발로 버티던 열 살 레아를 위해 춤을 추었고, 그 동작을 『커튼콜 원무』 3단계 극의로 완성해 두 다리가 부서지는 형벌을 대신 가져갔다.\n- 오늘의 변화와 『착지 원무』: 아픈 다리로도 남의 도움 없이 완벽하게 홀로 착지하려 애쓰는 레아의 뒷모습은 발레리아의 가장 큰 아픔이었다. 오늘의 레아가 화려한 공중 마무리 기회를 포기하고 안전한 바닥으로 내려서며 루카의 승강판 구조를 기꺼이 받아들이자, 발레리아는 레아의 부츠 끈을 단단히 고쳐 묶어 주며 살아 돌아오기 위한 선택을 따뜻하게 인정했다."
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.title",
+      "value": "제4각인 완전 공명 — 침묵의 종지기 가브리엘과 세 가지 손신호"
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.summary",
+      "value": "“6년 전 공명 폭주음 속에서 두 귀를 감싸 쥐던 열 살 레아를 구해 『제4종언: 영원한 침묵』을 대신 짊어진 가브리엘. 들리는 척 무리해 싸우기를 멈추고 먼저 정지를 요청한 레아와 함께, 그는 소리가 사라진 전장에서도 서로를 지킬 수 있는 세 가지 시각 손신호와 전투 지원 『귀환 종격』을 완성했다.”"
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.body",
+      "value": "[은인 각인 기록 #04 — 가브리엘 (41세 / 공명 단조 · 제4종언: 영원한 침묵)]\n- 6년 전의 기억 단편: 빛 없는 지하실의 열 살 레아에게 매일 아침 여섯 시의 종소리를 울려 주던 가브리엘은, 두 귀를 막고 떨던 아이의 몸짓을 『공명 단조』 3단계 극의로 완성해 자신의 청력과 목소리를 바쳤다.\n- 오늘의 변화와 『귀환 종격』: 종루의 먹먹한 공명 속에서 레아가 들리지 않으면서도 들리는 척 싸우던 것을 멈추고 손짓으로 정지를 청하자, 가브리엘은 수첩을 펼쳐 [편 손바닥: 멈춤 / 두 손가락: 준비 확인 / 아래로 향한 손: 착지·복귀]의 세 가지 시각 신호를 함께 정했다. 80회 극의 완성으로 가브리엘의 목소리가 돌아오고 레아에게 침묵의 종언이 옮겨 간 뒤에도, 두 사람은 레아가 언제든 눈으로 보고 돌아올 수 있도록 합의한 손신호를 계속 사용한다."
+    },
+    {
+      "key": "investigation.record.imprint_irina.title",
+      "value": "제5각인 완전 공명 — 눈먼 초상화가 이리나와 웃지 않아도 되는 얼굴"
+    },
+    {
+      "key": "investigation.record.imprint_irina.summary",
+      "value": "“6년 전 허공에 빛을 그리던 열 살 레아의 손짓을 붓질 검술로 완성해 『제5종언: 실명』을 대신 가져간 이리나. 입꼬리를 더듬는 손길 앞에서 억지 미소를 짓지 않고 ‘오늘은 무서워요’라고 말한 레아에게, 그녀는 ‘그 얼굴로 돌아와도 돼’라고 답하며 전투 지원 『귀환 채색』을 건넸다.”"
+    },
+    {
+      "key": "investigation.record.imprint_irina.body",
+      "value": "[은인 각인 기록 #05 — 이리나 (34세 / 여백 도려내기 · 제5종언: 실명)]\n- 6년 전의 기억 단편: 창문 없는 방의 열 살 레아에게 바다와 꽃밭을 그려 주던 초상화가 이리나는, 아이가 허공에 그림을 그리던 동작을 『여백 도려내기』 3단계 극의로 완성하여 두 눈의 시력을 바쳤다. 이후 6년간 그녀는 물감의 두께만으로 ‘살아서 열여섯 살이 된 레아’의 얼굴을 화폭에 새겼다.\n- 오늘의 변화와 『귀환 채색』: 어른들을 안심시키려고 늘 입꼬리를 올려 웃는 척하던 레아가, 오늘 이리나의 손끝 앞에서 웃지 않은 채 “오늘은 무서워요.”라고 진심을 털어놓았다. 이리나는 잠시 침묵한 뒤 손을 내리고 “그 얼굴로 돌아와도 돼.”라고 답했다. 80회 완성으로 6년 만에 시력을 되찾은 이리나가 두 눈으로 처음 마주한 것은, 억지 미소를 벗고도 단단히 서 있는 오늘의 레아였다."
+    },
+    {
+      "key": "investigation.record.original_and_copy.title",
+      "value": "제5호 비전 동작 공증 회수 명령서 — 원본(박제 처분) vs 사본(특별 사면) 전문 대조"
+    },
+    {
+      "key": "investigation.record.original_and_copy.summary",
+      "value": "“코어 심층에 보관된 카셀의 원본 명령서와 오늘 아침 다락방에서 받은 위조 사본의 제3조 실물 대조. 원본 제3조에는 다섯 종언 회수 즉시 피고인(R.E.A.)을 대법정 지하 『영구 박제관』에 입관·영구 동결 격리하라고 명시되어 있으며, 어제의 레아(#01)가 이 구절을 칼끝으로 긁어내고 ‘모체 코어 흡수·소멸 및 다섯 수형자 특별 사면’ 부칙을 덧찍었음이 확인된다.”"
+    },
+    {
+      "key": "investigation.record.original_and_copy.body",
+      "value": "조항 구분\t코어 심층 보관본 (원본)\n《제5호 비전 동작 공증 회수 명령서 (원본 · 중앙 공증원 극비 봉인)》\t다락방 교부본 (위조 사본)\n《제5호 비전 동작 공증 회수 명령서 (사본 · 시계탑 분소 교부본)》\f문서 번호 및 발령자\t• 문서 번호: 중앙 공증원 극비 집행 제5-00호 (원본)\n• 발령 및 직인: 대공증관 카셀 (Archon Cassel) 친필 서명 · 청금 국장 날인\n• 수명자: 시계탑 분소 소속 대역 공증검사 피고인 R.E.A. (레아)\t• 문서 번호: 중앙 공증원 특례 집행 제5-00호 (사본)\n• 발령 및 직인: 대공증관 카셀 직인 인영 (하단 여백에 시계탑 분소 구형 활자 재날인 흔적)\n• 수명자: 시계탑 분소 소속 공증검사 레아 (Rea)\f제1조 (목적)\n(원본·사본 동일)\t본 명령서는 6년 전 대법정 지하 대역소에서 분산 유출된 5대 사형 인과(제1종언: 심장 파열, 제2종언: 급속 노화, 제3종언: 두 다리의 형벌, 제4종언: 영원한 침묵, 제5종언: 실명)를 보유한 5인의 시한부 수형자(미하일·율리우스·발레리아·가브리엘·이리나)로부터 각 고유 비전 동작을 『청금석 기록검』에 3단계 극의까지 채록·회수함을 목적으로 한다.\t본 명령서는 6년 전 대법정 지하 대역소에서 분산 유출된 5대 사형 인과(제1종언: 심장 파열, 제2종언: 급속 노화, 제3종언: 두 다리의 형벌, 제4종언: 영원한 침묵, 제5종언: 실명)를 보유한 5인의 시한부 수형자(미하일·율리우스·발레리아·가브리엘·이리나)로부터 각 고유 비전 동작을 『청금석 기록검』에 3단계 극의까지 채록·회수함을 목적으로 한다.\f제2조 (집행 기한)\n(원본·사본 동일)\t회수 기한은 익일(D+1일) 새벽 06시 00분 정각 대종루 타종 시까지로 한다. 기한 내 3단계 극의 채록이 완수되지 않은 수형자는 즉시 구획 격리 후 현장에서 형을 집행한다.\t회수 기한은 익일(D+1일) 새벽 06시 00분 정각 대종루 타종 시까지로 한다. 기한 내 3단계 극의 채록이 완수되지 않은 수형자는 즉시 구획 격리 후 현장에서 형을 집행한다.\f제3조 (핵심 차이)\n[바뀐 구절 강조]\t【원본 제3조 (처분) — 칼끝으로 긁어내어 삭제된 원문】\n“제3조(처분): 【5대 비전 동작의 3단계 회수가 완료되어 종언이 대역 피고인(R.E.A.)의 육체에 귀속되는 즉시, 피고인은 대법정 지하 『영구 박제관』으로 입관하여 영구 동결 격리에 처한다.】”\t【위조 사본 제3조 (특례 부칙) — 분소 구형 활자·공증 잉크로 덧찍은 문구】\n“제3조(특례 부칙): 【기술의 3단계 공증 등재가 완료되는 즉시 수형자의 종언은 대법정 모체 코어로 흡수·소멸되며, 다섯 수형자 전원에게 특별 사면장을 발부한다.】”\f물리 감정 주석\t• 코어 심층 원본 보존 상태: 손상 없음 (#01 / D일 06:30 직후 어제의 레아가 다락방에서 처음 읽었던 실제 명령서).\t• 사본 하단 섬유 감정: 원본의 [처분: 피고인(R.E.A.)의 육체에 귀속되는 즉시 … 대법정 지하 『영구 박제관』으로 입관하여 영구 동결 격리에 처한다] 구절을 칼끝으로 긁어내고, 어제의 레아가 기록 #01 / D+1일 06:15~06:25에 분소 구형 활자와 청금석 공증 잉크로 [특례 부칙: 대법정 모체 코어로 흡수·소멸되며, 다섯 수형자 전원에게 특별 사면장을 발부한다]를 덮어 찍음."
+    },
+    {
+      "key": "investigation.record.preservation_order.title",
+      "value": "대법정 지하 『영구 박제관』 입관 명령 및 기록 #01 잔향 집행 지시"
+    },
+    {
+      "key": "investigation.record.preservation_order.summary",
+      "value": "“카셀의 회수 목적은 사면이 아니라 흩어진 5대 종언을 레아 한 몸에 모아 지하 『영구 박제관』에 영구 격리함으로써 자신에게 돌아올 역공증 반환 가능성을 원천 차단하는 것이었다. 더욱이 코어 내부에는 어제의 레아(#01)가 오늘의 레아를 최상층 카셀에게 보내지 않고 지하 박제관으로 강제 수용하기 위해 심어 둔 ‘잔향 집행 명령’이 함께 등록되어 있다.”"
+    },
+    {
+      "key": "investigation.record.preservation_order.body",
+      "value": "[코어 심층 극비 명령 #202 — 영구 박제관 격리 구조 및 잔향 강제 집행 코드]\n1. 대공증관 카셀의 영구 박제 설계:\n- 종언 소유권은 일반 사망이나 단순 패배로 소멸하거나 이전 주인에게 자동 역류하지 않으며, 오직 ‘3단계 완전 동작에 의한 이전’ 또는 ‘원형 검술(카셀 제0식)까지 결합된 최종 역공증 확정’으로만 바뀐다.\n- 카셀은 6년 전 다섯 시민이 쪼개어 가져간 자신의 5대 종언이 언젠가 원형 동작과 결합해 자기 육체로 역공증 반환될 가능성을 두려워했다. 이에 집행일(D+1일 06:00)을 기해 백지 숙주인 레아(R.E.A.)에게 다섯 기술을 모두 채록·회수하게 한 뒤, 최상층 심판석이 아닌 대법정 지하 『영구 박제관』에 산 채로 동결 입관시켜 인과 회로를 영구 정지시키려 했다.\n2. 어제의 레아(#01)가 코어에 심은 ‘잔향 집행 명령’:\n- 원본 명령서 하단에는 카셀의 명령뿐 아니라, 어제의 레아가 D+1일 06:20에 코어 방어 기제에 직접 각인한 [자율 집행 명령: 기록 #01의 잔향]이 덧붙여져 있다:\n- “오늘(#02)의 내가 다섯 종언을 모두 회수(C=5)하여 대법정 중앙 홀에 진입할 경우, 코어의 기억 투사체(잔향)를 승강기 앞에 실체화하여 최상층 심판석 통행을 봉합 차단하고 지하 『영구 박제관』 계단으로 강제 연행할 것.”\n- 어제의 레아는 왜 카셀에게 맞서는 대신 오늘의 자신을 박제관에 가두려 했는가? 그 이유가 다음 3단계 보관 기록(#01 실패 기록 및 폐기 초안)에 남아 있다."
+    },
+    {
+      "key": "investigation.record.record_01_failure.title",
+      "value": "코어 각인 영상 [기록 #01] — 잠긴 격리문과 유효 검격 120회, 혼자서는 끝내지 못한 계측"
+    },
+    {
+      "key": "investigation.record.record_01_failure.summary",
+      "value": "“어제의 레아(#01)는 원본 명령서의 박제 진실을 숨기지 않고 은인들에게 사실대로 도움을 청했으나, 레아가 산 채로 박제관에 묻힌다는 진실을 들은 미하일과 은인들은 채록을 거부하고 스스로 구획 격리문을 걸어 잠갔다. 잠긴 문 앞에서 홀로 내리친 무명 기본 검격 120회와 새벽 작업대에서 시작점만 찍힌 채 끊어진 단독 계측 파형, 그리고 여섯 시의 집행 종소리가 코어에 그대로 기록되어 있다.”"
+    },
+    {
+      "key": "investigation.record.record_01_failure.body",
+      "value": "스틸 #0\n#01 / D+1일 06:25\n(소리상자 개방)\n어두운 작업대 위, 마르타가 보관해 온 작은 팔각 『청금석 소리상자』 뚜껑이 열리며 따뜻한 푸른 공명 파문이 한 줄기 피어오른다.\n[청금석 소리상자 음성 기록 — 기록 #01 / 역류 5분 전]\n어제의 레아: “내일의 나는 따뜻한 걸 먹었으면 좋겠어요.”\f스틸 #1\n#01 / D일 낮~밤\n(진실을 들고 청한 도움)\n벨벳 재단거리 직조 공방 앞. 어제의 레아(#01)가 사면 조항이 없는 원본 명령서(제3조 영구 박제관 입관)와 급히 그린 역공증 초안을 두 손에 쥐고 미하일과 은인들 앞에 내밀고 있다.\n[코어 각인 기록 #01 / D일 낮 — 위조하지 않은 원본을 들고 찾아간 어제]\n어제의 레아: “명령서 제3조엔 제 몸에 종언을 모아 지하 박제관에 가둔다고 적혀 있어요. 하지만 제가 이 검으로 카셀에게 되돌릴 길을 찾아볼게요. 그러니까 도망치지 마세요, 제발 동작을 보여주세요! 저하고 같이 방법을 찾아 주세요!”\f스틸 #2\n#01 / D일 밤\n(스스로 걸어 잠근 격리문)\n‘레아가 우리 대신 영구 박제관에 산 채로 묻힌다’는 원본의 진실을 들은 미하일이 검을 뽑지 않은 채, 가위로 구획 격리문의 안쪽 걸쇠 줄을 단숨에 끊어 버린다. 두꺼운 철제 격리문이 내려앉으며 어제의 레아와 은인들 사이를 가로막는다.\n[코어 각인 기록 #01 / D일 밤 — 채록을 거부하고 스스로 문을 잠근 은인들]\n미하일 (격리문 너머): “네가 그 관에 들어가는 걸 알고서 기술을 넘겨줄 어른은 여기 아무도 없다, 레아. 제발 뒤돌아서 도망치거라.”\n(은인 다섯은 기록검이 자신들의 동작을 단 한 줄이라도 채록하지 못하도록 대련 자체를 거부한 채 처형장 호송차에 올랐다.)\f스틸 #3\n#01 / D일 심야\n(유효 검격 120회의 기원)\n굳게 닫힌 철제 격리문 바깥. 홀로 남겨진 어제의 레아가 눈물을 삼키며 잠긴 문고리와 철문을 향해 무명 기본 검술(햇병아리 베기)만 수백 번 반복해 내리치고 있다. 칼날 끝이 갈라지고 코어 카운터에 [기본 검술 유효 기록: 120회 / 습득한 은인 기술: 0개]가 찍힌다.\n[코어 각인 기록 #01 / D일 심야 — 잠긴 격리문과 유효 검격 120회]\n어제의 레아: “문을 열어 주세요! 혼자선 검증도 못 한단 말이에요! 제발요, 미하일 아저씨! 율리우스 아저씨……!”\n(잠긴 격리문 앞에서 홀로 내리친 수백 번의 검격 중 유효 타격 120회만이 코어에 각인되었다. 끝내 어느 은인의 기술도 1단계조차 채록하지 못했다.)\f스틸 #4\n#01 / D+1일 05:50~06:00\n(혼자서는 끝내지 못한 계측)\n새벽의 텅 빈 시계탑 분소 작업대. 어제의 레아가 갈라진 검의 세 번째 마디에 기준 자국 세 개를 새겨 거치대에 걸고 코어 투사 기준선을 띄웠으나, 한 손으로 흔들리는 검신을 누르면서 팔이 닿지 않는 맞은편 반사 계측판 레버를 향해 헛되이 손을 뻗고 있다. 출력 분산 파형이 시작점만 찍힌 채 허공에서 뚝 끊기고, 창밖에서 새벽 06시 집행을 알리는 대종루의 종소리가 울린다.\n[코어 각인 기록 #01 / D+1일 06:00 — 혼자서는 끝내지 못한 계측과 집행 타종]\n(한 손으로 흔들리는 검신을 누르면서 동시에 맞은편 반사 계측판을 조작할 수는 없었다. 완성된 보스 기술 슬롯조차 하나도 없었기에, 출력 분산 파형은 시작점만 찍힌 채 허공에서 끊겼다.)\n[외부 음향 기록: D+1일 06:00 — 중앙 공증원 5인 수형자 형 집행 타종]\f스틸 #5\n#01 / D+1일 06:05\n(내 생존은 지운다는 일반화)\n집행 종소리가 멎은 작업대. 어제의 레아가 끊어진 코어 투사 파형과 초안의 마지막 칸을 내려다보며 청금석 펜을 고쳐 쥔다.\n[코어 각인 기록 #01 / D+1일 06:05 — 기억 소각 직전의 결론]\n어제의 레아 (독백): “내가 이 박제 명령을 알고 있는 한, 다음의 나도 어른들 앞에서 거짓말을 못 해. 사실대로 도와달라고 매달리다가…… 또 그분들이 문을 걸어 잠그게 만들 거야. 증명도 못 한 내 생존까지 욕심내다가는 또 다섯 분을 죽이게 돼.”"
+    },
+    {
+      "key": "investigation.record.discarded_draft.title",
+      "value": "원본 뒷면 주석 [폐기된 생존 초안] — 두 줄로 지워진 [레아 생존]"
+    },
+    {
+      "key": "investigation.record.discarded_draft.summary",
+      "value": "“마르타 장부의 ‘초안은 검 안에’가 가리키던 실체. 원본 보관본 뒷면에는 오늘 테오와 그린 것과 똑같은 역공증 반환 화살표가 그려져 있으나, 마지막 결과 칸인 [레아 생존]에는 두 줄이 그어져 삭제되어 있고 ‘반환 가능성 있음 / 실전 확인 불가 / 채택하지 않음’이라 적혀 있다. 진실을 말하고 도움을 청했다가 은인들이 문을 잠그고 처형당하자, 어제의 레아는 ‘다음 시도에서도 내 생존은 지운다’고 일반화했던 것이다.”"
+    },
+    {
+      "key": "investigation.record.discarded_draft.body",
+      "value": "================================================================================\n [코어 심층 보관 문서 뒷면 주석 — 마르타 위탁 장부 비고: “초안은 검 안에”]\n 작성 시각: 기록 #01 / D+1일 06:08 (24시간 대역류 실행 22분 전)\n 작성자: 시계탑 분소 공증검사 레아 (R.E.A.)\n================================================================================\n\n ■ 1. 인과 이전 및 역공증 반환 가설 도식 (오늘 테오·레아가 그린 경로와 동일)\n\n   [대공증관 카셀 (원소유자 · 모체 검술 제0식)]\n        │  (6년 전 강제 주입)\n        ▼\n   [열 살의 레아 (백지 그릇)] ──(3단계 기예로 1개씩 분할 인수)──▶ [다섯 은인 (수형자 5인)]\n        ▲                                                            │\n        └──────────(오늘의 3단계 극의 채록 · 5대 종언 회수)──────────┘\n        │\n        ▼  [가설 단계: 만상공명 거울 맞베기 예약(R=1~5) + 시간 각인 해방 + 원형 동작 확정]\n   [대공증관 카셀에게 5대 종언 일괄 역공증 반환]\n        │\n        ▼\n   ┌────────────────────────────────────────────────────────────┐\n   │  최종 목표 결과:  [다섯 은인 전원 구출]  및  ~~[레아 생존]~~  │\n   │                                            ^^^^^^^^^^^^^^  │\n   │                                    (청금석 잉크로 두 줄 삭제됨) │\n   └────────────────────────────────────────────────────────────┘\n\n ■ 2. 기록 #01 작성자의 판정 주기 (06:08 기입)\n   • 판정: [반환 가능성 있음 / 실전 확인 불가 / 채택하지 않음]\n   • 사유:\n     1) 단독 계측 중단 — 거치대 고정과 반사판 동시 조작 불가. 출력 분산 실측 실패.\n     2) 진실 고지의 역효과 — 원본 제3조(영구 박제관 입관)를 알리면 은인들이 대련을 거부하고\n        스스로 격리문을 잠금.\n     3) 수정 실행안 (#02 적용) —\n        - 원본 제3조를 긁어내고 ‘모체 코어 흡수·소멸 및 특별 사면’ 위조 부칙을 덧찍어\n          내일의 나(#02)에게 교부한다.\n        - 내일의 내가 사면 특례를 믿고 다섯 종언을 모두 회수(C=5)하면,\n          코어에 남긴 나의 잔향이 승강기를 막고 내일의 나를 지하 『영구 박제관』에 입관시킨다.\n        - 내 생존 칸은 지운다. 그것만이 다섯 분을 확실히 살리는 유일한 길이다.\n================================================================================"
+    },
+    {
+      "key": "story.late.01_rea",
+      "value": "“(코어 단말 화면 속, 두 줄로 지워진 ~~[레아 생존]~~ 칸을 한참 동안 가만히 바라보다가 나직이 입을 연다)\n……내 대답은 어디에도 없네.\n어제의 나도 처음부터 죽고 싶었던 게 아니었어. 진실을 말하고 도와달라고 외쳤다가 문이 잠겨 버리니까…… 다음의 나한테는 물어보지도 않고 혼자서 내 자리를 두 줄로 그어 지운 거야.”"
+    },
+    {
+      "key": "story.late.02_theo",
+      "value": "“하지만 오늘의 우리는 다르잖아, 레아. 어제가 혼자서 붙잡다 끊어졌던 그 계측 파형을 오늘은 우리가 끝까지 다 재어 봤고, 구호소에 계신 다섯 은인분들도 문을 잠그는 대신 네가 돌아올 바닥과 시간과 신호를 먼저 만들어 주셨어!”"
+    },
+    {
+      "key": "story.late.03_ethan",
+      "value": "“(묵묵히 레아의 기록검에 흐르는 맑은 청금석 빛깔을 내려다보며 짧게 덧붙인다)\n……새벽 여섯 시 십 분에 그 아이가 부서진 검을 내 모루 위에 올려놓았을 때, 딱 한마디를 남겼다.\n내일의 나에게 예쁜 검기 빛깔을 남겨 달라고 했지. 자기 생존 칸을 두 줄로 그어 지운 녀석이, 정작 네가 휘두를 검기 빛깔은 예쁘게 벼려 달라고 부탁하더군.”"
+    },
+    {
+      "key": "story.late.04_depart",
+      "value": "“(가슴 앞 다섯 꽃잎에 모두 붉은 금이 간 청금석 브로치를 한 번 감싸 쥐고, 테오의 검 실험 노트와 동료들이 표시해 준 귀환 경로를 파우치에 챙긴다)\n응, 에단 아저씨. 대법정 승강기 앞에 서 있을 어제의 나한테 직접 가서 보여줄게요.\n혼자서 끝내지 못했던 실험 기록도, 다섯 분이 열어 주신 귀환길도, 그리고 지워지지 않은 내 대답도 전부 들고 갈게요. 대법정으로 가자!”"
+    },
+    {
+      "key": "trial.mikhail.enter",
+      "value": "“퇴로를 열어 두는 법은 잊지 않았겠지. 네 은실로 내 관절을 묶거나 지지대를 세 번 고정해 보거라.”"
+    },
+    {
+      "key": "trial.mikhail.verified",
+      "value": "“매듭이 단단하구나. 다음 출정길에 쓸 귀환 솔기를 다시 채워 두었다.”"
+    },
+    {
+      "key": "trial.mikhail.return",
+      "value": "“옷깃 여미고 가거라. 돌아올 바닥은 언제든 버텨 줄 테니.”"
+    },
+    {
+      "key": "trial.julius.enter",
+      "value": "“들어가서 베는 시각만큼 돌아오는 시각도 정확해야 한다. 진자 되감기로 내 움직임을 세 번 짚어 보렴.”"
+    },
+    {
+      "key": "trial.julius.verified",
+      "value": "“정확한 복귀구나. 네 반쪽 시계에 귀환 시간 한 번을 다시 감아 두었다.”"
+    },
+    {
+      "key": "trial.julius.return",
+      "value": "“서두르지 마라. 네가 돌아올 시각까지 우리가 함께 세고 있으니까.”"
+    },
+    {
+      "key": "trial.valeria.enter",
+      "value": "“화려한 도약보다 중요한 건 두 발로 무사히 내려서는 거야. 원무로 내 탄막을 세 번 쳐내 보렴.”"
+    },
+    {
+      "key": "trial.valeria.verified",
+      "value": "“훌륭한 스텝이야, 레아. 네 착지를 도울 원무 한 곡을 준비해 뒀어.”"
+    },
+    {
+      "key": "trial.valeria.return",
+      "value": "“부츠 끈 단단히 묶었지? 다치지 말고 무대 밖으로 걸어 나와야 해.”"
+    },
+    {
+      "key": "trial.gabriel.enter",
+      "value": "“[수첩: 내 손신호를 보고 공명 단조로 세 번 맞받아쳐 보거라. 편 손바닥은 멈춤, 두 손가락은 준비다.]”"
+    },
+    {
+      "key": "trial.gabriel.verified",
+      "value": "“[수첩: 정확한 울림이다. 네 귀환길을 열어 줄 종격 한 번을 담아 두었다.]”"
+    },
+    {
+      "key": "trial.gabriel.return",
+      "value": "“[가브리엘이 아래로 향한 손신호(착지·복귀)를 건네며 따뜻한 우유 잔을 가리킨다.]”"
+    },
+    {
+      "key": "trial.irina.enter",
+      "value": "“허공을 건널 땐 발밑의 물감 획부터 단단히 딛어야 해. 발판을 밟거나 방벽으로 탄막을 세 번 막아 보렴.”"
+    },
+    {
+      "key": "trial.irina.verified",
+      "value": "“발걸음 소리가 한결 안정됐네. 네 숨을 돌릴 따뜻한 색채 한 번을 팔레트에 남겨 둘게.”"
+    },
+    {
+      "key": "trial.irina.return",
+      "value": "“겁이 나면 겁나는 얼굴 그대로 돌아와도 돼, 레아. 기다리고 있을게.”"
+    },
+    {
+      "key": "area.room.hub_attic",
+      "value": "거점 · 망각 다락방"
+    },
+    {
+      "key": "area.room.hub_workroom",
+      "value": "거점 · 시계탑 분소 계측 작업실"
+    },
+    {
+      "key": "area.room.hub_forge",
+      "value": "거점 · 수로 대장간 / 고밀도 공명 연성로"
+    },
+    {
+      "key": "area.room.hub_lift",
+      "value": "거점 · 공용 화물 승강장"
+    },
+    {
+      "key": "area.room.velvet_01_entry",
+      "value": "벨벳 1번 방 · 재단거리 초입과 여섯 벌의 옷장"
+    },
+    {
+      "key": "area.room.velvet_02_loom",
+      "value": "벨벳 2번 방 · 끊어진 직조틀 회랑"
+    },
+    {
+      "key": "area.room.velvet_03_gallery",
+      "value": "벨벳 3번 방 · 실패 타래의 중층 작업실"
+    },
+    {
+      "key": "area.room.velvet_04_arena",
+      "value": "벨벳 4번 방 · 거대 직조 공방 최심부"
+    },
+    {
+      "key": "area.room.velvet_05_return",
+      "value": "벨벳 5번 방 · 하부 재단 수로 귀환 동선"
+    },
+    {
+      "key": "area.room.velvet_06_shortcut",
+      "value": "벨벳 6번 방 · 상부 벨벳 천장 시너지 회랑 & 정예 재단실"
+    },
+    {
+      "key": "area.room.hub_sanctuary",
+      "value": "거점 · 구호소"
+    },
+    {
+      "key": "area.target.mint_candy_pickup",
+      "value": "바닥의 박하사탕"
+    },
+    {
+      "key": "area.target.mint_candy_tray",
+      "value": "탁자 위 접시"
+    },
+    {
+      "key": "area.target.contract_copy_envelope",
+      "value": "위탁 임무서 봉투"
+    },
+    {
+      "key": "area.target.breakfast_board",
+      "value": "여섯째 자리 날인"
+    },
+    {
+      "key": "area.target.core_terminal",
+      "value": "코어 열람 단말"
+    },
+    {
+      "key": "area.target.point_route_ledger",
+      "value": "기록 단말"
+    },
+    {
+      "key": "area.target.marta_ledger",
+      "value": "위탁 장부와 사본 대조"
+    },
+    {
+      "key": "area.target.calibration_mount",
+      "value": "세 번째 마디 계측 핀"
+    },
+    {
+      "key": "area.target.calibration_target",
+      "value": "기준 표적"
+    },
+    {
+      "key": "area.target.reflection_plate",
+      "value": "반사 계측판"
+    },
+    {
+      "key": "area.target.ethan_grindstone",
+      "value": "에단의 숫돌 작업대"
+    },
+    {
+      "key": "area.target.resonant_crucible",
+      "value": "공명 연성로"
+    },
+    {
+      "key": "area.target.luka_signal_post",
+      "value": "루카 신호소"
+    },
+    {
+      "key": "area.target.luka_freight_platform",
+      "value": "화물 승강판"
+    },
+    {
+      "key": "area.target.mikhail_wardrobe",
+      "value": "재단 공방 옷장"
+    },
+    {
+      "key": "area.target.mikhail_retreat_latch",
+      "value": "비상 퇴로 걸쇠"
+    },
+    {
+      "key": "area.target.mikhail_escape_plank",
+      "value": "비상 퇴로 목판"
+    },
+    {
+      "key": "area.target.mikhail_reunion_plank",
+      "value": "보강 목판"
+    },
+    {
+      "key": "area.target.reunion_latch",
+      "value": "점검 걸쇠"
+    },
+    {
+      "key": "area.target.mikhail",
+      "value": "미하일"
+    },
+    {
+      "key": "area.target.return_call",
+      "value": "분소 귀환 신호"
+    },
+    {
+      "key": "area.speaker.marta",
+      "value": "마르타"
+    },
+    {
+      "key": "area.speaker.rea",
+      "value": "레아"
+    },
+    {
+      "key": "area.speaker.mikhail",
+      "value": "미하일"
+    },
+    {
+      "key": "area.speaker.ethan",
+      "value": "에단"
+    },
+    {
+      "key": "area.speaker.theo",
+      "value": "테오"
+    },
+    {
+      "key": "area.speaker.luka",
+      "value": "루카"
+    },
+    {
+      "key": "area.skip",
+      "value": "읽은 대사 넘기기"
+    },
+    {
+      "key": "area.travel",
+      "value": "F / L3 · {0}"
+    },
+    {
+      "key": "area.walk",
+      "value": "발판 위로 이동 · {0}"
+    },
+    {
+      "key": "area.strike",
+      "value": "기본 검술 · {0}"
+    },
+    {
+      "key": "area.bout",
+      "value": "보호 대련 · {0}"
+    },
+    {
+      "key": "area.continue",
+      "value": "확인 · Enter / A"
+    },
+    {
+      "key": "area.core_next",
+      "value": "다음 스틸"
+    },
+    {
+      "key": "area.core_prev",
+      "value": "이전 스틸"
+    },
+    {
+      "key": "area.latch",
+      "value": "청금 걸쇠 · 기본 검술"
+    },
+    {
+      "key": "area.uses",
+      "value": "은실 박음질 {0}/80"
+    },
+    {
+      "key": "area.sixth",
+      "value": "아침 식사 예약판 6/6"
+    },
+    {
+      "key": "area.signal",
+      "value": "승강판 내림"
+    },
+    {
+      "key": "area.help",
+      "value": "← → 이동   F / L3 조사·출입   J / X 검술   Q / Y 기술   Esc 일시정지"
+    },
+    {
+      "key": "investigation.clue.route_ledger.body",
+      "value": "“시계탑 분소의 공증 원장 단말과 마르타의 청금석 공증 잉크 위탁 장부를 나란히 대조한 기록이다.\n첫째, 중앙 공증원이 대외적으로 홍보해 온 ‘3단계 등재 시 모체 코어로 종언 흡수·소멸’ 특례는 기록검 회로 어디에도 존재하지 않는다. 세계의 인과율은 3단계 극의를 완벽히 재현한 검사를 원주인과 동일인으로 판정하여, 예정된 사형 인과(종언)를 검사의 육체(피고인 R.E.A.)로 즉시 이전시킨다.\n둘째, 마르타의 위탁 장부에는 코어와 동기화된 청금석 공증 잉크로 [기록 #01 / 역류 전 06:25 — 위탁물: 사면 임무서 봉투 및 청금석 소리상자]가 찍혀 있다. 위탁자 서명은 기역 자 끝을 둥글게 말아 쓰는 레아 본인의 필적이며, 비고란에는 ‘아침에 일어난 저에게 웃으면서 건네주세요. 초안은 검 안에.’라는 메모가 적혀 있다.”"
+    },
+    {
+      "key": "investigation.clue.route_waveform.body",
+      "value": "“에단이 벼려낸 『청금석 기록검(백지각인검)』의 칼날 세 번째 마디에는 같은 깊이로 세 번 패인 측정 기준 자국이 남아 있다. 작업대 계측 거치대의 핀을 이 세 번째 마디 눈금에 정확히 물리자, 유일한 회귀 보존 저장소인 기록검 코어 내부에서 공증 잉크 파형으로 저장되어 있던 어제(#01)의 선행 측정 기준선이 계측판 위로 투사되었다. 어제의 파형은 혼자서 검과 반사판을 동시에 조작하지 못해 시작점에서 끊겨 있었다.\n오늘 테오·에단·레아가 함께 완수한 4단계 검 실험을 통해 세 가지 사실이 실측되었다: ① 완성한 보스 기술의 발동 경로 하나를 계측기에서 잠시 쉬게 하면 분산되었던 시간 각인 출력 한 몫(20%)이 기본 검술에 실린다(단, 작업대 밖에서는 임의로 영구 해방할 수 없다). ② 반사 장치는 동작의 궤적(형식)만 복제할 뿐 검신에 축적된 시간 각인 출력은 단 1초도 복제하지 못한다. ③ 반사 장치를 꺼도 원판에 찍힌 공증 기록은 사라지지 않는다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.body",
+      "value": "“제1구역 벨벳 재단거리 초입, 가위손 재단사 미하일(46세)의 재단실 옷장 안에서 발견한 기록과 유품이다.\n옷장 안에는 주인을 만나지 못한 겨울 코트 여섯 벌이 열한 살 치수부터 열여섯 살 치수까지 해마다 한 뼘씩 자란 크기로 나란히 걸려 있으며, 여섯 번째 코트 주머니에는 레아가 지금도 왼쪽 옆머리에 묶고 있는 파란 비단 리본과 똑같은 직조 자투리가 들어 있다.\n6년 전 지하 대역소에서 열 살의 레아가 카셀에게서 5대 종언을 강제로 주입당해 심장이 찢어지는 고통 속에 옷자락을 움켜쥐었을 때, 미하일은 그 떨리는 손짓을 바느질 검술 3단계 극의(『운명 봉합·절단』)로 완성하여 레아의 몸에 있던 [제1종언: 심장 파열]을 자기 심장으로 통째로 옮겨 받았다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.body",
+      "value": "“제2구역 황혼의 태엽 시계탑 초입, 멈춘 초침의 시계공 율리우스(52세)의 작업대에서 조카 루카가 안내한 유품과 코어 공명 기록이다.\n작업대 융단 위에는 레아가 허리 파우치에 소중히 넣고 다니는 ‘바늘이 멈춘 반쪽짜리 회중시계’와 절단면이 정확히 맞물리는 나머지 반쪽 황동 회중시계가 먼지 한 톨 없이 닦여 놓여 있다.\n6년 전 지하 대역소에서 열 살의 레아가 살려 달라며 태엽 감는 시늉을 반복할 때, 율리우스는 그 손버릇을 진자 되감기 3단계 극의(『제로 아워』)로 완성하여 [제2종언: 급속 노화]를 대신 가져갔다. 하룻밤 사이에 백발 노인처럼 쇠약해진 뒤로도, 그는 레아를 마주칠 때마다 파우치 속 시계의 멈춘 초침이 다시 맞물려 돌아가지 않는지(종언이 아이에게 되돌아가지 않았는지) 귀를 기울여 살피곤 했다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.body",
+      "value": "“제3구역 유리 오페라 극장 초입, 부서진 구두의 무희 발레리아(29세)가 머물던 무대 뒤편 연습실에서 확인한 유품과 코어 각인이다.\n코르크 부목 옆에는 앞코가 닳아 해진 수석 무희 시절의 토슈즈 한 켤레가 놓여 있고, 연습실 마루 바닥에는 열 살 아이의 짧은 보폭에 맞춰 넘어지지 않고 착지하는 법을 가르쳐 주려 그어 둔 분필 눈금이 코팅되어 남아 있다.\n6년 전 지하 대역소 창살 아래에서 발끝을 세우며 버티던 열 살 레아의 몸짓을 보고, 발레리아는 그 까치발 동작을 커튼콜 원무 3단계 극의(『그랑 피날레』)로 완성하여 [제3종언: 두 다리의 형벌]을 자기 두 다리로 가져갔다. 두 다리가 부서져 무대에 설 수 없게 된 뒤에도 그녀는 화려한 공중 도약보다 레아가 두 발로 안전하게 착지하는 것만을 걱정했다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.body",
+      "value": "“제4구역 청동 대종루 초입, 침묵의 종지기 가브리엘(41세)의 종루 관리실에서 확인한 악보와 필담 수첩 기록이다.\n악보 첫 장에는 『창문 없는 지하실의 아이가 아침이 온 줄 알 수 있도록, 여섯 시마다 가장 따뜻하고 낮은 울림으로 칠 것』이라는 메모가 적혀 있다.\n6년 전 지하 대역소에서 공명 폭주음에 두 귀를 감싸 쥐고 비명을 삼키던 열 살 레아를 구하기 위해, 가브리엘은 그 몸짓을 공명 단조 3단계 극의(『여섯 시의 파종』)로 완성하여 [제4종언: 영원한 침묵]을 대신 짊어지고 청력과 목소리를 모두 바쳤다. 소리를 잃은 뒤에도 그는 수첩 필담과 눈으로 볼 수 있는 세 가지 손신호(편 손바닥: 멈춤 / 두 손가락: 준비 확인 / 아래로 향한 손: 착지·복귀)를 만들어 레아의 걸음을 지켰다.”"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.body",
+      "value": "“제5구역 하얀 캔버스 화랑 초입, 눈먼 초상화가 이리나(34세)의 온실 화실에서 루카가 보여준 스케치북과 코어 각인이다.\n두꺼운 화지 위에는 물감의 질감과 높낮이만으로 윤곽을 만져서 알아볼 수 있는 점자 방식의 초상화 수십 장이 묶여 있다. 제목은 모두 『살아서 열여섯 살이 된 레아』이며, 웃는 얼굴뿐 아니라 눈썹을 찡그리거나 울먹이는 얼굴까지 따뜻한 붓터치로 그려져 있다.\n6년 전 창문 없는 지하 대역소에서 허공에 손가락으로 빛을 그리던 열 살 레아를 살리기 위해, 이리나는 그 손짓을 여백 도려내기 3단계 극의(『자화상 완성』)로 완성하여 [제5종언: 실명]을 자신의 두 눈으로 가져갔다.”"
+    },
+    {
+      "key": "investigation.clue.contract_original.body",
+      "value": "“다섯 은인의 종언이 모두 레아에게 모인 뒤(C=5), 기록검 코어 심층 보관소에서 출력된 대공증관 카셀 직인 날인본 『제5호 비전 동작 공증 회수 명령서(원본)』이다.\n어제의 레아(#01)가 사본에서 칼끝으로 긁어내어 숨겼던 원본 [제3조(처분)]의 실제 문구는 다음과 같다:\n‘제3조(처분): 5대 비전 동작의 3단계 회수가 완료되어 종언이 대역 피고인(R.E.A.)의 육체에 귀속되는 즉시, 피고인은 대법정 지하 『영구 박제관』으로 입관하여 영구 동결 격리에 처한다.’\n카셀의 진짜 목적은 사면이 아니라, 6년 전 흩어진 5대 종언의 공증 흔적을 레아 한 몸에 다시 모아 지하 영구 박제관에 산 채로 봉인함으로써 자신에게 돌아올 역공증 반환 가능성을 영원히 차단하는 것이었다.”"
+    },
+    {
+      "key": "investigation.clue.contract_copy.body",
+      "value": "“#02 / D일 06:30 망각 다락방에서 마르타가 장부 지시(‘웃으면서 건네주세요’)에 따라 건네준 『제5호 비전 동작 공증 회수 명령서(사본)』이다.\n문서 하단 [제3조(특례 부칙)]란에는 다음과 같이 인쇄되어 있다:\n‘제3조(특례 부칙): 기술의 3단계 공증 등재가 완료되는 즉시 수형자의 종언은 대법정 모체 코어로 흡수·소멸되며, 다섯 수형자 전원에게 특별 사면장을 발부한다.’\n그러나 첫 종언 이전 직후 분소 작업대 조명 아래에서 정밀 감정한 결과, 이 조항 자리는 원래 인쇄된 종이 섬유가 칼끝으로 얇게 긁혀 나가 있었고, 그 위에 시계탑 분소 창고의 구형 납활자와 레아 본인의 청금석 공증 잉크(코어 동기화 매질)로 사면 문구를 덧찍어 회귀 너머까지 보존시킨 위조 문서임이 밝혀졌다.”"
+    },
+    {
+      "key": "story.clock.entry.01",
+      "value": "“여기가 제2구역 황혼의 태엽 시계탑이에요, 레아 누나. 저희 삼촌 율리우스가 평생 도시의 표준시와 공증 시계탑을 조율해 오신 작업실이 바로 이 초입에 있어요.”"
+    },
+    {
+      "key": "story.clock.entry.02",
+      "value": "“(허리 벨트 가죽 파우치에서 바늘이 멈춘 반쪽짜리 황동 회중시계를 꺼내 내려다본다)\n내가 열 살 이전의 기억을 잃었을 때부터 파우치에 들어 있던 이 반쪽 회중시계…… 루카, 혹시 이 시계가 원래 누구 것이었는지 알아?”"
+    },
+    {
+      "key": "story.clock.entry.03",
+      "value": "“그럼요! 이 작업대 융단 위를 한번 보세요, 누나. 삼촌이 육 년 전 하룻밤 사이에 백발 할아버지처럼 쇠약해져서 돌아오신 날부터, 하루도 빠짐없이 마른 천으로 닦아 두시던 물건이 있어요.”\n(조작 안내: 율리우스의 시계 조율 작업대(julius_workbench)를 F / 왼쪽 스틱 누름으로 조사하세요. 단서 [율리우스 · 코어 각인]이 기록됩니다.)"
+    },
+    {
+      "key": "story.clock.entry.04",
+      "value": "“(작업대 위에 놓인 나머지 반쪽 회중시계에 자기 파우치 속 반쪽 시계의 절단면을 가만히 맞대어 본다)\n톱니 자국까지 한 치의 오차도 없이 딱 맞물려……!\n육 년 전 지하 대역소에서 내가 살려 달라며 태엽 감는 시늉을 반복했을 때, 율리우스 아저씨가 내 손버릇을 진자 보법 극의로 완성해서 『제2종언: 급속 노화』를 대신 가져가셨던 거구나. 초침은 아직 멈춰 있어.”"
+    },
+    {
+      "key": "story.clock.entry.05",
+      "value": "“삼촌은 누나를 마주칠 때마다 그 반쪽 시계의 초침이 다시 돌아가지 않는지, 혹시라도 노화의 형벌이 누나에게 되돌아가지 않았는지 늘 귀를 기울여 살피셨어요.\n자, 앞쪽 시계추 회랑 문은 저 점검용 청금 걸쇠만 누나의 기록검으로 끊으면 열려요!”\n(조작 안내: 정문 옆 청금 걸쇠를 기본 검술로 1회 타격해 문을 여세요.)"
+    },
+    {
+      "key": "story.clock.route.01",
+      "value": "“천장에 매달린 황동 시계추가 거대한 발판처럼 일정한 박자로 왕복하고 있어. 시계추가 다가올 때 기본 점프와 대시로 올라타면 다른 기술 없이도 충분히 건널 수 있겠어.”"
+    },
+    {
+      "key": "story.clock.route.02",
+      "value": "“맞아요, 누나! 시계탑의 기본 점검 통로는 일반 도약과 기본 검술만으로 지나갈 수 있게 설계되어 있어요. 앞을 막는 태엽 장갑 파수병은 한 연격에 장갑이 한 층씩 벗겨지니까 침착하게 끊어 베세요!”\n(조작 안내: 대시계추 발판을 건너며 청금 걸쇠 2기를 절단하고 파수병·석상 웨이브를 돌파하세요.)"
+    },
+    {
+      "key": "story.clock.route.03",
+      "value": "“여긴 『역류 회랑』이네……! 무너져 내린 석조 다리와 부서진 톱니기어가 네 박자마다 시간을 거꾸로 감듯 제자리로 되감겨 붙고 있어.”"
+    },
+    {
+      "key": "story.clock.route.04",
+      "value": "“다리가 되감겨 맞춰지는 박자를 읽어서 건너고, 옆쪽 역류 제동 걸쇠를 기본 검술로 끊어 고정하면 안전한 길이 열려!”\n(조작 안내: 역류 주기에 맞춰 다리를 건너고 청금 걸쇠 2기 절단 및 파수병·석상·중갑병을 격파하세요.)"
+    },
+    {
+      "key": "story.clock.route.05",
+      "value": "“이 수직 탈진기 기어실만 올라가면 삼촌이 계신 최심부 문자판 전실이에요. 반사 공증 석상의 금빛 예고 공격은 기본 패링이나 대시로 흘려보낸 뒤 빈틈이 열렸을 때 기본 검술로 베어내세요!”\n(조작 안내: 탈진기 단차를 올라 청금 걸쇠 1기 및 파수병·석상을 돌파하세요.)"
+    },
+    {
+      "key": "story.clock.route.06",
+      "value": "“(최심부 대련장 문 앞에서 숨을 고르며 검신을 내려다본다)\n문 너머에서 크고 규칙적인 시계추 소리가 들려. 율리우스 아저씨가 안에서 기다리고 계셔.”"
+    },
+    {
+      "key": "story.clock.route.07",
+      "value": "“누나, 여기 문자판 전실 바닥에 복귀 지점을 맞춰 뒀어요. 준비되셨으면 정문을 열고 들어가세요!”\n(조작 안내: 대련장 정문(clock_arena_gate)에서 F / 왼쪽 스틱 누름으로 진입하세요.)"
+    },
+    {
+      "key": "story.julius.i0.01",
+      "value": "“(거대한 시계침 모양의 장검을 짚고 서 있던 백발의 율리우스가 걸음을 멈추고, 레아의 허리 파우치 쪽으로 고개를 숙여 조용히 귀를 기울인다)\n……다행이구나, 레아. 네 파우치 속 반쪽 시계에서는 아직 아무 소리도 나지 않아. 멈춘 초침이 그대로라는 뜻이지.\n그런데 어째서 그 청금석 기록검을 들고 이 시계탑 꼭대기까지 올라온 거냐.”"
+    },
+    {
+      "key": "story.julius.i0.02",
+      "value": "“율리우스 아저씨! 오늘 아침 분소에서 받은 회수 명령서 사본을 가져왔어요. 제3조 특례 부칙에 적혀 있어요! 제가 아저씨의 기술을 기록검에 3단계까지 등재하면, 아저씨의 종언이 대법정 모체 코어로 흡수·소멸되고 특별 사면을 받으신다고요!”"
+    },
+    {
+      "key": "story.julius.i0.03",
+      "value": "“(깊게 주름진 눈가를 찌푸리며 단호하게 고개를 젓는다)\n레아, 시계공은 톱니가 어디로 물려 돌아가는지 속지 않는다. 타인의 3단계 극의를 온전히 재현해 내는 순간, 세계의 인과는 두 사람을 동일인으로 판정해 원래 주인의 종언을 기술 완성자에게로 옮겨 버린다.\n내가 육 년 전 네게서 가져온 이 급속 노화의 시계태엽을…… 다시 열여섯 살 된 네 몸에 감아 줄 수는 없다.”"
+    },
+    {
+      "key": "story.julius.i0.04",
+      "value": "“내일 아침 여섯 시의 집행 종이 울릴 때까지 내 시간은 내가 감당한다. 네가 그 검으로 내 동작을 베끼려 한다면, 마지막 3단계의 시계추는 결코 보이지 않고 너를 돌려보내마!”\n(전투 개시: 멈춘 초침의 시계공 율리우스와의 보호 대련)"
+    },
+    {
+      "key": "story.julius.i0.05",
+      "value": "“(시계침 장검을 바닥에 꽂으며 거친 숨을 토해낸다. 레아의 기록검 코어가 대련 중 드러난 율리우스의 1단계 보법 궤적을 황동빛 각인으로 채록한다)\n……마지막 극의는 감추었는데도, 네 기록검이 내 첫 번째 『진자 보법』의 왕복 궤적을 읽어냈구나.\n들어 두어라, 레아. 스물아홉 번까지는 단순한 보법이고 서른 번에도 시계 케이스만 울릴 뿐이지만, 여든 번째 극의에 닿는 순간 멈춰 있던 네 반쪽 시계의 초침이 다시 돌아가며 내 노화가 네게로 덮친다.”\n(시스템 알림: 진자 되감기 획득 — 1~5 / E·패드 B 선택, Q·Y 사용)"
+    },
+    {
+      "key": "story.julius.i0.06",
+      "value": "“율리우스 아저씨는 구호소로 내려가셨어…… 하지만 내일 새벽 여섯 시까지 다섯 분을 구하려면 이 기술을 안 쓸 수 없어. 아래쪽 역류 회랑 귀환로를 통해 돌아가자!”"
+    },
+    {
+      "key": "story.julius.i1.01",
+      "value": "“(레아의 목 앞 브로치에 그어진 붉은 균열을 단번에 알아보고, 파우치 쪽에 귀를 기울였다가 무거운 목소리로 입을 연다)\n……브로치에 이미 금이 갔구나, 레아. 기록검 소멸 특례가 거짓이고 종언이 네 몸으로 옮겨 온다는 걸 직접 겪고서도, 왜 내 시계탑에 발을 들인 거냐.”"
+    },
+    {
+      "key": "story.julius.i1.02",
+      "value": "“율리우스 아저씨, 분소 작업대에서 테오랑 에단 아저씨와 함께 검을 실험해 봤어요! 기술 경로를 비울 때마다 제 기록검에 쌓인 시간 각인 출력이 해방되고, 카셀의 반사 장치는 그 시간 각인을 복제하지 못해요. 다섯 분의 종언을 제 몸에 모은 뒤, 카셀의 원형 검술에 맞베기로 되돌려 줄 가설을 세웠어요!”"
+    },
+    {
+      "key": "story.julius.i1.03",
+      "value": "“가설만으로는 부족하다, 레아! 시간이 모자라면 네 목숨을 가장 마지막 순서로 미루고 혼자 남으려는 셈 아니냐!\n네가 정말로 살아서 돌아올 계획을 세웠는지, 내 시계탑의 움직이는 격벽과 왕복 발판 위에서 직접 증명해 보거라!”\n(전투 개시: 율리우스와의 왕복 시간 검증 대련)"
+    },
+    {
+      "key": "story.julius.i1.04",
+      "value": "“(대련 중반, 율리우스가 일부러 큰 빈틈을 보이며 안쪽으로 물러서는 동시에 아레나 중앙의 황동 격벽 문이 내려오기 시작하고, 우측의 왕복 태엽 발판에서 복귀 예고 종소리가 울린다)\n지금 내 빈틈을 치러 깊숙이 들어오면 한 번 더 벨 수는 있겠지! 하지만 격벽이 닫히기 전에 저 우측 복귀 발판으로 돌아가지 못하면 퇴로가 끊긴다.\n골라 보아라, 레아! 눈앞의 공격 한 번이냐, 아니면 네가 살아서 돌아갈 복귀 시각이냐!”"
+    },
+    {
+      "key": "story.julius.i1.05",
+      "value": "“(율리우스의 빈틈을 향해 내딛던 발을 멈추고, 내려오는 황동 격벽과 우측의 복귀 태엽 발판을 돌아본다)\n……무리해서 한 번 더 베고 갇히면 아무 소용 없어요. 제가 정한 복귀 시각에 맞춰서 먼저 돌아갈게요!”\n(조작 안내: 눈앞의 추가 공격 기회를 버리고, 격벽이 닫히기 전에 우측의 왕복 태엽 발판(julius_return_platform) 위로 이동해 복귀하세요.)"
+    },
+    {
+      "key": "story.julius.i1.06",
+      "value": "“(레아가 공격 욕심을 버리고 정확한 박자에 복귀 발판 위로 돌아오자, 율리우스가 검을 거두고 품에서 자신의 나머지 반쪽 회중시계를 처음으로 꺼내 펼쳐 보인다)\n……정확히 삼 초 남기고 돌아왔구나. 눈앞의 일격보다 돌아올 시각을 먼저 지켰어.\n이리 와서 보렴, 레아. 내 반쪽 시계와 네 반쪽 시계를 나란히 놓고 남은 시간을 함께 세자. 들어가는 시간만 재는 건 특공이지만, 돌아오는 시간까지 함께 재는 건 우리의 공동 계획이다.”"
+    },
+    {
+      "key": "story.julius.i1.07",
+      "value": "“네, 율리우스 아저씨! 저 혼자 남는 시간표는 절대 쓰지 않을게요. 마지막 합까지 제 왕복 보폭을 봐 주세요!”\n(전투 재개: 남은 대련을 완주해 승리하세요.)"
+    },
+    {
+      "key": "story.julius.i1.08",
+      "value": "“(대련이 끝나자 율리우스가 레아의 파우치 속 반쪽 시계 태엽 나사를 조심스럽게 조율해 주고, 상부 귀환로의 역류 기어 주기를 늦춰 준다)\n이제 혼자 견디라는 말은 하지 않겠다. 앞길에서 적들의 포위가 너무 빠르거든 나를 불러라. 네가 빠져나와 숨을 고를 수 있도록 이 초간의 『귀환 시간』을 내 시계추로 붙잡아 주마.”\n(시스템 알림: 진자 되감기 획득 + 율리우스 지원 해금 · 귀환 시간 1/1 보유)"
+    },
+    {
+      "key": "story.julius.reunion.01",
+      "value": "“(구호소 옆 궤도 승강장 연결로에서 율리우스가 지팡이를 짚고 서서, 출발 종이 울리기 시작한 귀환 궤도차와 수련 표적을 번갈아 바라본다)\n분소 작업대에서 테오, 에단과 함께 역공증 반환 가설을 세웠다고 들었구나, 레아.\n하지만 말이 아니라 행동으로 보여 다오. 지금 저 수련 표적을 한 번 더 치려다가는 이번 귀환 열차의 복귀 시각을 놓친다. 어떻게 하겠느냐?”"
+    },
+    {
+      "key": "story.julius.reunion.02",
+      "value": "“(수련 표적을 향해 들었던 검을 즉시 거두고, 출발 종이 울리는 승강장 복귀 발판 쪽으로 몸을 돌린다)\n욕심내서 더 치지 않을게요, 율리우스 아저씨. 약속한 복귀 시각에 맞춰서 지금 바로 돌아올게요!”\n(조작 안내: 표적 공격을 멈추고 구호소 옆 궤도 승강장 복귀 발판(julius_reunion_platform) 위로 제시간에 올라서세요.)"
+    },
+    {
+      "key": "story.julius.reunion.03",
+      "value": "“(레아가 제시간에 복귀 발판 위로 올라서자, 율리우스가 비로소 품속의 나머지 반쪽 회중시계를 꺼내 레아의 반쪽 시계 옆에 나란히 펼쳐 보인다)\n……그래, 그거면 됐다. 시간이 모자라면 네 자신을 마지막 순서로 미룰까 봐 그것이 제일 두려웠단다.\n자, 내 반쪽 시계도 여기 펼쳐 두마. 이제부터는 우리가 함께 남은 왕복 시간을 세는 거다.”"
+    },
+    {
+      "key": "story.julius.reunion.04",
+      "value": "“고맙습니다, 율리우스 아저씨! 아저씨와 맞춘 이 왕복 시간표대로, 한 초도 늦지 않고 다 같이 아침 식탁으로 돌아올게요!”\n(시스템 알림: 율리우스 지원 해금 · 귀환 시간 1/1 보유 — 일반 전투에서 방향 + H / 패드 오른쪽 스틱 누름으로 호출할 수 있습니다.)"
+    },
+    {
+      "key": "story.clock.return.01",
+      "value": "“상부 귀환로의 황동 격벽이 빠르게 닫히고 있어. 방금 채록한 『진자 되감기』 1단계 『진자 보법』으로 잔상을 남기고 돌진해서 스위치를 친 다음, 1.5초 안에 재입력해서 안전 바닥으로 되감겨 돌아오자!”\n(조작 안내: 진자 되감기(Q / 패드 Y)로 격벽 너머 스위치를 타격한 뒤 재입력해 잔상 위치로 안전 복귀하세요.)"
+    },
+    {
+      "key": "story.clock.return.02",
+      "value": "“좋아요, 누나! 귀환로 앞을 지키는 공증 봉합 중갑병들은 진자 돌진이나 복귀 궤적으로 스쳐 지나가야 자세가 무너지고 청금석 핵이 열려요. 핵이 열리면 기본 검술 연격으로 분절을 끊어내세요!”\n(조작 안내: clock_07~08 귀환 동선에서 진자 세팅 ➔ 기본 검술 마무리 교차 루프로 중갑병과 기어 걸쇠를 돌파하세요.)"
+    },
+    {
+      "key": "story.clock.return.03",
+      "value": "“하부 귀환 수로를 빠져나오니까 바로 시계탑 초입 정거장과 연결됐어. 이제 언제든 루카의 승강장으로 빠르게 오갈 수 있겠어!”"
+    },
+    {
+      "key": "story.clock.synergy.01",
+      "value": "“상부 톱니실 지름길이야! 저 거대한 톱니는 너무 빨라서 그냥은 못 건너지만, 『진자 되감기』로 톱니가 멈춘 짧은 틈에 바짝 접근한 다음 미하일 아저씨의 『은실 박음질』로 덮개와 고정틀을 꿰매면 안전한 발판으로 고정할 수 있어!”\n(조작 안내: 진자 되감기로 멈춘 톱니 틈에 접근한 뒤, 은실 박음질로 덮개와 고정틀(clock_synergy_seam)을 봉합하세요.)"
+    },
+    {
+      "key": "story.clock.synergy.02",
+      "value": "“와, 시계탑의 멈춘 틈을 은실로 꿰매서 고정 발판으로 만들었어요! 이 상부 시너지 회랑의 정예 파수대만 돌파하면 최심부 전실과 구호소 승강장으로 바로 이어져요!”"
+    },
+    {
+      "key": "story.clock.mastery.01",
+      "value": "“(서른 번째 진자 복귀와 함께 1.5초 전의 잔상이 남아 양방향 교차 베기가 터지고, 파우치 속 반쪽 시계 금속 케이스가 검의 파동에 반응해 짧게 『징—』 하고 공명음을 울린다)\n앗, 파우치 속 반쪽 시계 케이스가 공명했어……!\n(급히 반쪽 시계를 꺼내 들여다보고 안도의 숨을 내쉰다)\n……후우, 초침은 여전히 멈춰 있어. 서른 번의 『이중 시간선』은 아저씨의 보법이 내 몸에 체화된 단계일 뿐, 아직 급속 노화의 종언이 옮겨 온 건 아니야.”"
+    },
+    {
+      "key": "story.clock.mastery.02",
+      "value": "“(여든 번째 극의 『제로 아워』가 완성되어 주변 시간이 이 초간 멎었다가 폭발하는 순간, 법정 철제 직인음과 함께 브로치 두 번째 꽃잎에 붉은 금이 가고 파우치 안에서 선명한 『째깍, 째깍』 소리가 울리기 시작한다!)\n……육 년 동안 멈춰 있던 반쪽 시계의 초침이, 방금 맞물려서 다시 돌아가기 시작했어……!\n(하얗게 세어 버린 왼쪽 땋은 옆머리 한 가닥을 손끝으로 만지며 숨을 삼킨다)\n『제2종언: 급속 노화』가 『피고인 R.E.A.』, 내 시간으로 확정 이전됐어.”"
+    },
+    {
+      "key": "story.clock.mastery.03",
+      "value": "“(구호소에 앉아 있던 율리우스의 백발에 검은 윤기가 돌고 주름진 손등에 젊은 기력이 돌아온다. 율리우스가 떨리는 손등을 내려다보며 낮게 탄식한다)\n……내 시계소리가 멎고, 네 시계가 대신 가기 시작했구나, 레아. 부디…… 우리가 함께 맞춘 복귀 시각을 잊지 마라.”"
+    },
+    {
+      "key": "story.clock.mastery.04",
+      "value": "“머리칼 한 가닥이 하얗게 세었지만 손목의 힘은 조금도 줄지 않았어. 율리우스 아저씨, 이 되살아난 초침 소리까지 전부 카셀에게 되돌려 줄게요!”"
+    },
+    {
+      "key": "story.opera.entry.01",
+      "value": "“여기가 제3구역 유리 오페라 극장이에요, 레아 누나. 옛날엔 밤마다 유리 돔 지붕 아래에서 공연이 열렸는데, 발레리아 누나가 다리를 다치신 뒤로는 이 무대 뒤편 연습실만 불이 켜져 있었어요.”"
+    },
+    {
+      "key": "story.opera.entry.02",
+      "value": "“연습실 거울 앞에 코르크 부목이 세워져 있어…… 발레리아 언니는 이 무대의 수석 무희셨던 거지?”"
+    },
+    {
+      "key": "story.opera.entry.03",
+      "value": "“네. 그런데 선반 위의 토슈즈랑 이 마루 바닥을 한번 내려다보세요, 누나. 발레리아 누나가 무대에 서지 못하게 된 뒤로도 매일 쓸고 닦으시던 자리에요.”\n(조작 안내: 발레리아의 토슈즈 선반과 연습실 마루(valeria_shoes_rack)를 F / 왼쪽 스틱 누름으로 조사하세요. 단서 [발레리아 · 코어 각인]이 기록됩니다.)"
+    },
+    {
+      "key": "story.opera.entry.04",
+      "value": "“(앞코가 닳아 해진 토슈즈 아래, 마루 바닥에 작은 아이의 보폭에 맞춰 그어진 하얀 분필 착지 눈금을 따라 자기 부츠 발끝을 맞춰 본다)\n이 보폭 눈금…… 열 살짜리 아이의 짧은 걸음걸이에 딱 맞춰져 있어.\n육 년 전 지하 창살 너머로 까치발을 들며 버티던 나를 위해 춤을 추어 주시고, 내 동작을 회전 검무 극의로 완성해서 『제3종언: 두 다리의 형벌』을 대신 가져가셨던 거야. 내가 넘어지지 않고 두 발로 착지하는 법을 잊지 않게 하려고……!”"
+    },
+    {
+      "key": "story.opera.entry.05",
+      "value": "“발레리아 누나는 요즘도 레아 누나가 높은 곳에서 뛰어내릴 때 발목이 꺾이지 않을까 그것만 걱정하셨어요.\n자, 객석 회랑으로 들어가는 커튼 도르래 걸쇠를 기본 검술로 끊고 안으로 가요!”\n(조작 안내: 커튼 도르래 옆 청금 걸쇠를 기본 검술로 1회 타격해 문을 여세요.)"
+    },
+    {
+      "key": "story.opera.route.01",
+      "value": "“붉은 벨벳 객석 위로 박스석 발판이 계단처럼 이어져 있어. 화려한 공중 기술이 없어도 기본 점프와 대시로 한 단씩 밟고 올라가면 안전하게 건널 수 있겠어.”"
+    },
+    {
+      "key": "story.opera.route.02",
+      "value": "“네! 무리해서 먼 틈을 한 번에 뛰려 하지 말고, 접이식 무대 다리의 청금 걸쇠를 기본 검술로 끊어서 발판을 내리며 올라가세요!”\n(조작 안내: 박스석 발판을 올라가며 청금 걸쇠 2기를 절단하고 파수병·석상 웨이브를 돌파하세요.)"
+    },
+    {
+      "key": "story.opera.route.03",
+      "value": "“천장 가까이 매달린 대형 유리 샹들리에들이 다리처럼 줄지어 있어. 유리 장식이 반짝여서 아름답지만, 반사 공증 석상들이 길목을 지키고 있네.”"
+    },
+    {
+      "key": "story.opera.route.04",
+      "value": "“석상의 공격을 기본 패링으로 튕겨낸 뒤 빈틈에 기본 검술을 꽂아 넣고, 고정 와이어 걸쇠를 끊어서 발판을 안정시키자!”\n(조작 안내: 샹들리에 평판을 건너며 청금 걸쇠 2기 절단 및 파수병·석상·중갑병을 격파하세요.)"
+    },
+    {
+      "key": "story.opera.route.05",
+      "value": "“드디어 스포트라이트 유리 지붕 위로 나왔어요, 누나! 밤하늘 아래 유리 돔 너머가 바로 발레리아 누나가 계신 대무대예요. 지붕 위 파수대만 정리하고 내려가요!”\n(조작 안내: 서쪽 유리 지붕에서 청금 걸쇠 1기 및 파수병·석상을 돌파하세요.)"
+    },
+    {
+      "key": "story.opera.route.06",
+      "value": "“(주 무대 측면 대기석에서 조명이 비치는 무대 중앙을 바라본다)\n무대 마루 위에서 부목을 짚은 발소리가 경쾌하게 울리고 있어. 발레리아 언니야.”"
+    },
+    {
+      "key": "story.opera.route.07",
+      "value": "“대기석 바닥에 복귀 지점을 열어 뒀어요, 누나. 제가 무대 아래 승강판 레버 옆에서 대기하고 있을게요!”\n(조작 안내: 주 무대 벨벳 커튼(opera_arena_gate)에서 F / 왼쪽 스틱 누름으로 진입하세요.)"
+    },
+    {
+      "key": "story.valeria.i0.01",
+      "value": "“(스포트라이트 아래에서 코르크 부목을 짚고 서 있던 발레리아가 세검을 들고 다가오더니, 싸우기 전에 먼저 레아의 갈색 가죽 부츠 끈과 발목 자세부터 꼼꼼히 내려다본다)\n……부츠 오른쪽 발목 끈이 반 매듭쯤 느슨하네, 레아. 그렇게 묶고 뛰다간 착지할 때 발목부터 다쳐.\n게다가 손에 쥔 그 청금석 기록검…… 어른들 말도 안 듣고 정말로 이 무대까지 찾아온 거니?”"
+    },
+    {
+      "key": "story.valeria.i0.02",
+      "value": "“발레리아 언니! 무대 뒤 연습실에서 언니의 토슈즈랑 마루에 그어 놓으신 보폭 표시선을 봤어요.\n이 사면 임무서 사본 제3조를 봐 주세요! 제가 언니의 검무를 기록검에 3단계까지 등재하면, 언니의 두 다리를 짓누르는 종언이 대법정 코어로 흡수·소멸되고 특별 사면을 받으실 수 있어요!”"
+    },
+    {
+      "key": "story.valeria.i0.03",
+      "value": "“(부목 짚은 다리에 힘을 주며 단호하게 미소 짓는다)\n바보 같은 소리 마렴, 레아. 무희는 자기 스텝이 어떤 무대 위를 밟고 있는지 누구보다 잘 알아.\n네가 내 회전 검무를 3단계 극의까지 똑같이 추어내는 순간, 내 두 다리를 부수었던 형벌이 네 작은 발목으로 고스란히 옮겨 가게 돼. 내가 왜 육 년 전에 이 부목을 짚었는데, 다시 네 다리를 꺾게 두겠니!”"
+    },
+    {
+      "key": "story.valeria.i0.04",
+      "value": "“부목을 짚고서도 너 하나쯤 무대 밖으로 돌려보낼 스텝은 남아 있어. 마지막 커튼콜 동작만은 절대 네 검에 보여주지 않으마!”\n(전투 개시: 부서진 구두의 무희 발레리아와의 보호 대련)"
+    },
+    {
+      "key": "story.valeria.i0.05",
+      "value": "“(세검 끝을 마루에 짚으며 숨을 고른다. 레아의 기록검 코어가 대련 중 드러난 발레리아의 1단계 회전 도약 궤적을 청록빛 각인으로 채록한다)\n……하아, 마지막 피날레는 숨겼는데도 첫 번째 『회전 검무』의 도약 각도를 네 검이 베껴 갔구나.\n부탁이야, 레아. 서른 번까지는 내 인사 버릇만 스며들 뿐이지만, 여든 번째 그랑 피날레를 완성하는 순간 내 두 다리의 형벌이 네게로 간다. 난 구호소에 내려가 있을 테니…… 제발 그 스텝을 끝까지 추지 마라.”\n(시스템 알림: 커튼콜 원무 획득 — 1~5 / E·패드 B 선택, Q·Y 사용)"
+    },
+    {
+      "key": "story.valeria.i0.06",
+      "value": "“발레리아 언니도 구호소로 물러나셨어…… 언니의 두 다리를 되찾아 드리고 내일 새벽의 집행을 막으려면 여기서 멈출 수 없어. 동쪽 지붕 귀환로로 나가자!”"
+    },
+    {
+      "key": "story.valeria.i1.01",
+      "value": "“(레아의 브로치에 그어진 붉은 금과 살짝 무거워진 걸음걸이를 단박에 알아차리고 눈빛이 날카로워진다)\n……레아! 너 벌써 다른 사람의 종언을 네 몸으로 옮겨 받았구나! 소멸 특례가 새빨간 거짓말이라는 걸 알고서도, 내 두 다리의 형벌까지 가져가려고 온 거니?!”"
+    },
+    {
+      "key": "story.valeria.i1.02",
+      "value": "“발레리아 언니, 그냥 제 몸으로 떠안고 끝내려는 게 아니에요! 분소에서 테오, 에단 아저씨와 검 실험을 마쳤어요. 다섯 분의 기술을 카셀의 거울에 맞베기로 예약하고 시간 각인 출력을 해방해서, 원소유자인 카셀에게 다섯 종언을 한꺼번에 되돌려 줄 거예요!”"
+    },
+    {
+      "key": "story.valeria.i1.03",
+      "value": "“말로는 무슨 약속인들 못 하겠니! 넌 옛날부터 발목이 아파도 남한테 기대지 않고 혼자서 완벽하게 착지하려고 무리하던 아이였어!\n네가 정말로 남의 도움을 받아 살아 돌아올 줄 아는 아이가 되었는지, 내 무대 위에서 직접 확인해 보겠다!”\n(전투 개시: 발레리아와의 착지·구조 수용 검증 대련)"
+    },
+    {
+      "key": "story.valeria.i1.04",
+      "value": "“(피니시 직전, 발레리아가 일부러 자세가 흐트러진 듯 공중의 불안정한 샹들리에 단차 위로 높게 도약한다. 동시에 우측 하단 안전 착지 발판 옆으로 루카가 보조 승강판을 내려 보낸다)\n자, 지금 무리해서 허공으로 날 쫓아 올라오면 화려한 마지막 일격을 꽂을 수 있겠지! 하지만 발판이 무너져 네 발목부터 꺾일 거다.\n어쩔 테냐, 레아! 혼자서 무리한 공중 추격을 끝까지 강행할 테냐, 아니면 공격 기회를 버리고 안전하게 내려설 테냐!”"
+    },
+    {
+      "key": "story.valeria.i1.05",
+      "value": "“(허공으로 도약하려던 무릎의 힘을 빼고 검을 거둔 뒤, 우측 하단의 안전한 무대 발판과 루카의 승강판을 내려다본다)\n……멋진 동작으로 이기려다 다쳐서 못 돌아가면 아무 의미 없어요! 공중 추격은 멈추고 안전한 바닥으로 내려설게요. 루카, 승강판 부탁해!”\n(조작 안내: 무리한 공중 추격을 멈추고 우측 하단 안전 착지 발판(valeria_safe_stage_ledge)으로 내려선 뒤, 루카가 내린 보조 승강판(luka_opera_lift)을 타고 올라오세요.)"
+    },
+    {
+      "key": "story.valeria.i1.06",
+      "value": "“(레아가 공격 기회를 미련 없이 버리고 안전 발판에 착지한 뒤 루카의 승강판을 타고 올라오자, 발레리아가 세검을 내리고 다가와 한쪽 무릎을 굽혀 레아의 착지한 두 발목과 부츠 끈부터 손으로 쓸어 본다)\n……다친 데 없구나. 눈앞의 마지막 일격을 버리고, 루카가 내린 승강판을 타고 두 발로 무사히 내려섰어.\n그래, 레아. 살아 돌아오기 위해 멋진 동작을 포기할 줄 알게 되었다면…… 이제 네 다리를 믿어 볼 수 있겠어.”"
+    },
+    {
+      "key": "story.valeria.i1.07",
+      "value": "“고마워요, 발레리아 언니! 다치지 않고 무대 밖으로 걸어 나오는 마지막 합까지 보여드릴게요!”\n(전투 재개: 마지막 합을 완주해 대련을 마무리하세요.)"
+    },
+    {
+      "key": "story.valeria.i1.08",
+      "value": "“(대련이 끝나자 발레리아가 앉아서 레아의 양쪽 부츠 끈을 절대 풀리지 않는 무희의 매듭으로 단단히 고쳐 묶어 준다)\n공중에서 적들에게 둘러싸여 내려설 자리가 막히거든 나를 불러라, 레아. 네 발밑을 깨끗이 비워 줄 『착지 원무』 한 곡은 언제든 내가 추어 줄 테니까.”\n(시스템 알림: 커튼콜 원무 획득 + 발레리아 지원 해금 · 착지 원무 1/1 보유)"
+    },
+    {
+      "key": "story.valeria.reunion.01",
+      "value": "“(구호소와 승강장을 잇는 높은 무대 계단 단차 위에서 발레리아가 부목을 짚고 서서 내려다본다)\n작업대에서 돌아올 방법을 찾았다고 들었어, 레아.\n그런데 저 높은 단차를 또 예전처럼 도움도 안 받고 혼자 억지로 뛰어오르려는 건 아니겠지? 내가 지켜보고 있으니 어떻게 내려서고 올라오는지 보여 주렴.”"
+    },
+    {
+      "key": "story.valeria.reunion.02",
+      "value": "“(단차를 향해 무리하게 뛰어오르려던 자세를 풀고 안전 발판에 내려선 뒤, 옆에서 대기 중인 루카에게 손짓한다)\n혼자 억지로 뛰지 않을게요, 발레리아 언니. 안전한 바닥을 밟고 루카의 승강판을 타고 올라갈게요!”\n(조작 안내: 안전 착지 발판을 거쳐 루카가 내려 준 구호소 연결 승강판(valeria_reunion_lift) 위로 올라서세요.)"
+    },
+    {
+      "key": "story.valeria.reunion.03",
+      "value": "“(승강판이 올라와 멈추자 발레리아가 다정하게 웃으며 몸을 숙여 레아의 착지한 두 발을 확인하고, 느슨해진 부츠 끈을 단단히 고쳐 묶어 준다)\n……잘했어, 레아. 아픈 다리로도 남의 도움 없이 혼자 완벽하게 착지하려 애쓰는 네 모습이 난 제일 무서웠거든.\n살아 돌아오기 위해 멋진 도약을 포기할 줄 아는 지금의 너라면, 내 원무를 맡겨도 되겠구나.”"
+    },
+    {
+      "key": "story.valeria.reunion.04",
+      "value": "“언니가 묶어 주신 이 부츠 끈이 풀리기 전에, 다섯 분 모두와 두 발로 걸어서 돌아올게요!”\n(시스템 알림: 발레리아 지원 해금 · 착지 원무 1/1 보유 — 일반 전투에서 방향 + H / 패드 오른쪽 스틱 누름으로 호출할 수 있습니다.)"
+    },
+    {
+      "key": "story.opera.return.01",
+      "value": "“동쪽 스포트라이트 지붕 귀환로야! 공중에 매달린 등불들을 향해 『커튼콜 원무』 1단계 『회전 검무』로 솟구쳐 오르면 투사체를 쳐내면서 높게 도약할 수 있어!”\n(조작 안내: 커튼콜 원무(Q / 패드 Y)로 공중 등불을 타격해 상승 도약하고 건너편 안전 철골로 건너가세요.)"
+    },
+    {
+      "key": "story.opera.return.02",
+      "value": "“귀환로를 지키는 공증 봉합 중갑병들은 회전 원무 영역으로 스쳐야 가드가 열려요! 가드가 열리면 착지하자마자 기본 검술 연격으로 핵을 베어내세요!”\n(조작 안내: opera_07~08 귀환 동선에서 원무 세팅 ➔ 기본 검술 마무리 교차 루프로 중갑병과 도르래 걸쇠를 돌파하세요.)"
+    },
+    {
+      "key": "story.opera.return.03",
+      "value": "“하부 유리 회랑을 지나 극장 로비 초입으로 안전하게 내려왔어. 발목도 멀쩡해!”"
+    },
+    {
+      "key": "story.opera.synergy.01",
+      "value": "“상부 무대 바닥이 끊어져서 발을 구를 자리가 없네…… 하지만 미하일 아저씨의 『은실 박음질』로 끊긴 무대 바닥을 먼저 꿰매서 안정적인 이륙·착지 지점을 만들고, 그 위에서 발레리아 언니의 『커튼콜 원무』로 도약하면 저 높은 캣워크까지 단숨에 오를 수 있어!”\n(조작 안내: 은실 박음질로 끊긴 무대 바닥(opera_synergy_seam)을 봉합한 뒤, 그 위에서 커튼콜 원무를 사용해 상부 캣워크로 도약하세요.)"
+    },
+    {
+      "key": "story.opera.synergy.02",
+      "value": "“은실로 디딜 바닥을 꿰매고 원무로 솟구치니까 흔들림이 하나도 없어요! 이 위쪽 정예 연습실 대원들만 돌파하면 지름길 완주예요!”"
+    },
+    {
+      "key": "story.opera.mastery.01",
+      "value": "“(서른 번째 회전 도약과 함께 조명 빛기둥이 레아를 비추며 공중 재입력 스텝이 열리고, 착지한 레아가 무의식중에 발끝으로 가볍게 커튼콜 인사를 한 뒤 발목을 살짝 털어낸다)\n공중에서 적이나 등불을 스칠 때마다 한 번 더 도약할 수 있는 『스포트라이트 스텝』이 몸에 익었어. 착지할 때 저절로 발레리아 언니의 발끝 인사 버릇이 나오네…… 아직 종언이 옮겨 오진 않았어.”"
+    },
+    {
+      "key": "story.opera.mastery.02",
+      "value": "“(여든 번째 극의 『그랑 피날레』가 완성되어 푸른 칼날 꽃잎이 흩날리고 수직 조명 충격파가 지면을 강타한 직후, 착지한 레아의 두 무릎이 한 번 휘청이며 브로치 세 번째 꽃잎에 붉은 금이 그어진다!)\n……윽! 착지하는 순간 두 다리에 납덩이 같은 격통이 스쳤어……!\n『제3종언: 두 다리의 형벌』이 『피고인 R.E.A.』, 내 앞으로 이전됐어.”"
+    },
+    {
+      "key": "story.opera.mastery.03",
+      "value": "“(구호소 의자 옆에 놓여 있던 코르크 부목이 바닥으로 쓰러지고, 육 년 만에 부목 없이 두 발로 온전히 일어선 발레리아가 떨리는 손으로 커튼 자락을 부여잡으며 주저앉는다)\n……내 두 다리가 가벼워졌어. 레아, 그 아이가…… 결국 내 무대의 마지막 피날레까지 다 추어 버렸구나……!”"
+    },
+    {
+      "key": "story.opera.mastery.04",
+      "value": "“(칼끝을 짚고 다시 똑바로 일어서며 단단히 묶인 부츠 끈을 내려다본다)\n괜찮아, 걸을 수 있어. 언니가 묶어 주신 부츠 끈이 내 발목을 잡아 주고 있으니까…… 이 형벌도 반드시 카셀에게 돌려줄게요!”"
+    },
+    {
+      "key": "story.bell.entry.01",
+      "value": "“여기가 제4구역 청동 대종루와 공명 소리굽쇠 지하도예요, 레아 누나. 침묵의 종지기 가브리엘 아저씨가 도시의 아침 종과 지하 공명 수로를 관리하시던 곳이에요.”"
+    },
+    {
+      "key": "story.bell.entry.02",
+      "value": "“관리실 책상 위에 소리굽쇠랑 손때 묻은 악보, 그리고 두꺼운 필담 수첩이 놓여 있어. 가브리엘 아저씨는 육 년 전부터 말씀을 못 하시고 소리도 듣지 못하시는 거지?”"
+    },
+    {
+      "key": "story.bell.entry.03",
+      "value": "“네. 아저씨가 소리를 잃으시기 직전까지 매일 새벽마다 보고 치시던 저 아침 종 악보 첫 장을 한번 읽어 보세요, 누나.”\n(조작 안내: 가브리엘의 아침 종 악보대와 필담 수첩(gabriel_score_desk)을 F / 왼쪽 스틱 누름으로 조사하세요. 단서 [가브리엘 · 코어 각인]이 기록됩니다.)"
+    },
+    {
+      "key": "story.bell.entry.04",
+      "value": "“(악보 첫 장의 여백에 꾹꾹 눌러 적힌 메모를 손끝으로 짚어 읽는다)\n『창문 없는 지하실의 아이가 아침이 온 줄 알 수 있도록, 여섯 시마다 가장 따뜻하고 낮은 울림으로 칠 것.』\n……기억나. 아무 빛도 안 들어오던 지하 대역소에서 귀가 찢어질 것 같은 공명 폭주음에 두 귀를 감싸 쥐고 떨 때, 저 낮고 따뜻한 종소리만이 유일한 아침이었어. 가브리엘 아저씨가 내 몸짓을 대종 타격 극의로 완성해서 『제4종언: 영원한 침묵』을 대신 가져가 주셨던 거야.”"
+    },
+    {
+      "key": "story.bell.entry.05",
+      "value": "“소리를 잃으신 뒤에도 아저씨는 늘 수첩과 손짓으로 저희를 챙겨 주셨어요.\n자, 소리굽쇠 지하도 입구의 청금 걸쇠를 기본 검술로 끊고 안으로 들어가요!”\n(조작 안내: 지하도 입구 옆 청금 걸쇠를 기본 검술로 1회 타격해 문을 여세요.)"
+    },
+    {
+      "key": "story.bell.route.01",
+      "value": "“거대한 소리굽쇠 기둥들이 지하도 양옆으로 늘어서 있어. 기둥 옆 청금 걸쇠를 기본 검술로 쳐서 울리면 음파 고리가 퍼지면서 숨겨진 징검다리 발판이 깨어나네!”"
+    },
+    {
+      "key": "story.bell.route.02",
+      "value": "“맞아요! 따로 공명 기술이 없어도 기본 검술로 걸쇠만 울리면 지하도 발판이 전부 열려요. 앞을 막는 파수병과 석상을 정리하며 건너가요!”\n(조작 안내: 소리굽쇠 옆 청금 걸쇠 2기를 기본 검술로 타격해 발판을 깨우고 파수병·석상 웨이브를 돌파하세요.)"
+    },
+    {
+      "key": "story.bell.route.03",
+      "value": "“이 음파 고리 수로는 천장의 작은 청동 종이 울릴 때마다 발판이 선명해지고 있어. 소리가 아니라 바닥에 퍼지는 동심원 빛깔만 눈으로 봐도 박자를 맞출 수 있겠어.”"
+    },
+    {
+      "key": "story.bell.route.04",
+      "value": "“음파 고리 박자에 맞춰 도약하고, 수로 끝 제동 걸쇠를 기본 검술로 끊어서 다리를 고정하자!”\n(조작 안내: 음파 고리 발판을 건너며 청금 걸쇠 2기 절단 및 파수병·석상·중갑병을 격파하세요.)"
+    },
+    {
+      "key": "story.bell.route.05",
+      "value": "“이제 수직 종루 나선 계단이에요, 누나! 이 계단만 올라가면 가브리엘 아저씨가 계신 최상층 타종실이 나와요!”\n(조작 안내: 수직 종루 계단을 올라 청금 걸쇠 1기 및 파수병·석상을 돌파하세요.)"
+    },
+    {
+      "key": "story.bell.route.06",
+      "value": "“(타종실 앞 대기실의 작은 나무 탁자 위에 김이 모락모락 나는 따뜻한 우유 한 잔이 놓여 있고, 그 옆에 손가락으로 탁자를 두 번 두드린 자국이 있는 것을 본다)\n따뜻한 우유 잔이야…… 내가 여기까지 올라오느라 지쳤을까 봐 가브리엘 아저씨가 방금 놓아두신 거구나.”"
+    },
+    {
+      "key": "story.bell.route.07",
+      "value": "“아저씨는 누나가 무리하는 걸 제일 걱정하세요. 대기실에 복귀 지점을 맞춰 뒀으니 준비되셨으면 타종실 문을 여세요!”\n(조작 안내: 최상층 타종실 정문(bell_arena_gate)에서 F / 왼쪽 스틱 누름으로 진입하세요.)"
+    },
+    {
+      "key": "story.gabriel.i0.01",
+      "value": "“(거대한 소리굽쇠 망치검을 쥔 가브리엘이 레아를 보고 조용히 다가와, 옆 탁자를 손가락으로 『딱, 딱』 두 번 두드려 안심시킨 뒤 품에서 필담 수첩을 펼쳐 들어 보인다)\n[수첩: 숨은 고르고 왔느냐, 레아. 네 손에 들린 그 청금석 기록검을 보니 왜 이 종루까지 올라왔는지 알겠구나.]”"
+    },
+    {
+      "key": "story.gabriel.i0.02",
+      "value": "“(가브리엘이 볼 수 있도록 사면 임무서 사본 제3조를 두 손으로 크게 펼쳐 들어 보이며 또박또박 입 모양과 수첩으로 전한다)\n가브리엘 아저씨! 이 회수 명령서 사본 제3조를 보세요! 제가 아저씨의 기술을 기록검에 3단계까지 등재하면, 아저씨의 침묵 종언이 대법정 모체 코어로 흡수·소멸되고 특별 사면을 받으신다고 적혀 있어요!”"
+    },
+    {
+      "key": "story.gabriel.i0.03",
+      "value": "“(가브리엘이 슬픈 눈으로 고개를 저으며 수첩의 다음 장을 넘겨 보여주고, 왼손 손바닥을 정면으로 넓게 펴서 『멈춤』을 뜻하는 손짓을 들어 보인다)\n[수첩: 그 종소리는 거짓이다, 레아. 내 3단계 타종을 네 검이 그대로 따라 울리는 순간, 내 영원한 침묵이 네 목소리와 두 귀를 삼킨다.]”"
+    },
+    {
+      "key": "story.gabriel.i0.04",
+      "value": "“(수첩을 접어 넣으며 소리굽쇠 망치검을 들어 올린다)\n[수첩: 네가 아침 인사를 건네는 목소리마저 잃게 둘 수는 없다. 마지막 여섯 시의 타종은 보이지 않고 너를 돌려보내마.]\n(전투 개시: 침묵의 종지기 가브리엘과의 보호 대련)”"
+    },
+    {
+      "key": "story.gabriel.i0.05",
+      "value": "“(망치검 자루를 바닥에 짚고 무릎을 굽힌다. 레아의 기록검 코어가 대련 중 드러난 가브리엘의 1단계 진동 타격 파형을 황금빛 각인으로 채록한다)\n[수첩: 첫 번째 『진동 타격』의 파동을 네 검이 채록했구나. 서른 번까지는 귀가 조금 먹먹할 뿐이지만, 여든 번째 극의에 닿으면 내 침묵이 네게로 옮겨 간다. 나는 구호소로 내려가 있을 테니 부디 그 울림을 멈추어라.]\n(시스템 알림: 공명 단조 획득 — 1~5 / E·패드 B 선택, Q·Y 사용)”"
+    },
+    {
+      "key": "story.gabriel.i0.06",
+      "value": "“가브리엘 아저씨가 남기신 수첩 글씨가 마음에 걸리지만…… 내일 새벽 여섯 시 집행을 막으려면 이 공명 단조를 익혀야만 해. 하강 공명 회랑으로 내려가자!”"
+    },
+    {
+      "key": "story.gabriel.i1.01",
+      "value": "“(레아의 브로치에 그어진 붉은 균열을 본 가브리엘의 눈동자가 크게 흔들린다. 그가 급히 수첩에 글을 적어 들어 보인다)\n[수첩: 브로치에 금이 가 있구나, 레아! 소멸 특례가 거짓이라는 걸 알고서도 왜 내 침묵의 종루까지 찾아온 것이냐.]”"
+    },
+    {
+      "key": "story.gabriel.i1.02",
+      "value": "“(자신의 공증 수첩에 테오와 함께 정리한 4단계 검 실험 노트와 반환 화살표를 크게 펼쳐 가브리엘 앞에 들어 보인다)\n가브리엘 아저씨, 제 수첩을 봐 주세요! 혼자서 떠안고 끝내려는 게 아니에요. 기술 경로를 비울 때 해방되는 시간 각인 출력으로, 카셀의 거울과 원형 검술에 맞베기를 걸어 다섯 종언을 카셀에게 되돌려 줄 길을 찾았어요!”"
+    },
+    {
+      "key": "story.gabriel.i1.03",
+      "value": "“(가브리엘이 레아의 수첩 도식을 찬찬히 읽은 뒤, 망치검으로 바닥을 한 번 울리고 수첩을 들어 보인다)\n[수첩: 소리가 사라진 전장에서도 네가 무리하지 않고 내 신호를 볼 수 있는지, 이 타종실에서 먼저 확인하겠다.]\n(전투 개시: 가브리엘과의 시각 신호 검증 대련)”"
+    },
+    {
+      "key": "story.gabriel.i1.04",
+      "value": "“(대종이 겹쳐 울리며 타종실 전체의 공명 압력이 치솟자, 주변의 모든 소리가 물속에 잠긴 듯 먹먹하게 차단된다)\n……윽! 대종 공명 때문에 귀가 먹먹해서 아무 예고음도 안 들려!\n어떡하지, 안 들리는 티를 안 내고 그냥 감으로 계속 싸워야 하나……?”"
+    },
+    {
+      "key": "story.gabriel.i1.05",
+      "value": "“(가브리엘의 표정을 보며 무리하게 휘두르던 검을 멈추고 고개를 젓는다)\n……아니야! 안 들리는데 들리는 척 싸우면 가브리엘 아저씨는 절대 절 믿어 주지 않으셔. 먼저 멈춰 달라고 손짓으로 신호를 보내자!”\n(조작 안내: 우측 시각 신호 석판(gabriel_signal_floor)으로 이동해 F / 왼쪽 스틱 누름으로 가브리엘에게 먼저 정지 손짓(편 손바닥)을 보내세요.)"
+    },
+    {
+      "key": "story.gabriel.i1.06",
+      "value": "“(레아가 검을 내리고 편 손바닥을 들어 보이자, 가브리엘이 내려치려던 망치검을 그 자리에서 즉시 멈추고 안도한 표정으로 다가와 수첩에 세 가지 손 모양을 크게 그려 보여준다)\n[수첩 합의 신호 — 소리가 없어도 서로를 지키는 세 가지 손신호]\n1. [편 손바닥 · 멈춤] : 공명 과부하 및 위험 시 즉시 공격·이동 정지\n2. [두 손가락 · 준비 확인] : 정면 종격 준비 — 기본 패링 또는 공중 아래 종격 대비\n3. [아래로 향한 손 · 착지·복귀] : 광역 울림 전 안전한 바닥으로 착지 및 거리 복귀”"
+    },
+    {
+      "key": "story.gabriel.i1.07",
+      "value": "“(가브리엘을 향해 검지와 중지 두 손가락을 곧게 세워 『준비 확인』 신호를 보내며 미소 짓는다)\n긴 말로 설득하지 않아도 이제 아저씨의 손신호가 똑똑히 보여요! 약속한 세 가지 신호로 끝까지 맞춰 봐요!”\n(전투 재개: 가브리엘 머리 위에 표시되는 [편 손바닥 · 멈춤] / [두 손가락 · 준비 확인] / [아래로 향한 손 · 착지·복귀] 윤곽 배지를 보고 남은 대련을 완주하세요.)"
+    },
+    {
+      "key": "story.gabriel.i1.08",
+      "value": "“(대련이 끝나자 가브리엘이 레아의 어깨를 다정하게 토닥인 뒤, 머리 위로 『아래로 향한 손: 착지·복귀』 신호를 지어 보이고 수첩을 내민다)\n[수첩: 내 ‘멈춰’ 신호와 네 ‘멈춰’ 신호가 정확히 맞물렸다, 레아. 앞길에서 적들의 방패에 길이 막히거든 손짓해라. 네 귀환길을 터 줄 『귀환 종격』을 언제든 울려 주마.]\n(시스템 알림: 공명 단조 획득 + 가브리엘 지원 해금 · 귀환 종격 1/1 보유)”"
+    },
+    {
+      "key": "story.gabriel.reunion.01",
+      "value": "“(구호소 종루 휴게실에서 가브리엘이 레아 앞에 김이 나는 따뜻한 우유 잔을 내려놓고, 손가락으로 탁자를 『딱, 딱』 두드려 안심시킨 뒤 수첩을 펼친다)\n[수첩: 작업대에서 돌아올 길을 찾았다고 들었다. 하지만 종루와 대법정의 깊은 공명 속에서는 소리가 끊길 때가 있다. 안 들리는데도 들리는 척 무리하지 않도록, 지금 나와 세 가지 손신호를 정하자.]”"
+    },
+    {
+      "key": "story.gabriel.reunion.02",
+      "value": "“(따뜻한 우유 잔을 두 손으로 감싸 쥐어 한 모금 마신 뒤, 가브리엘의 수첩에 적힌 세 가지 손신호를 읽고 손바닥을 펴 보인다)\n편 손바닥은 멈춤, 두 손가락은 준비 확인, 아래로 향한 손은 착지·복귀…… 네, 가브리엘 아저씨! 소리가 안 들릴 땐 절대 참지 않고 이 손신호로 먼저 말씀드릴게요!”\n(조작 안내: 구호소 탁자 위 가브리엘의 손신호 수첩(gabriel_reunion_table)에서 F / 왼쪽 스틱 누름으로 세 가지 손신호를 확인하고 응답하세요.)"
+    },
+    {
+      "key": "story.gabriel.reunion.03",
+      "value": "“(레아가 보낸 『편 손바닥 · 멈춤』 신호에 가브리엘이 즉시 종추를 내려놓고, 이어서 『아래로 향한 손 · 착지·복귀』 손신호를 따뜻하게 건넨다)\n[수첩: 좋다. 소리가 사라져도 이 세 가지 신호만 있으면 우리는 언제든 서로를 멈추고 데려올 수 있다.]”"
+    },
+    {
+      "key": "story.gabriel.reunion.04",
+      "value": "“고맙습니다, 가브리엘 아저씨! 아저씨와 맞춘 이 손신호를 보고, 다 같이 내일 아침 여섯 시의 종소리를 들으러 돌아올게요!”\n(시스템 알림: 가브리엘 지원 해금 · 귀환 종격 1/1 보유 — 일반 전투에서 방향 + H / 패드 오른쪽 스틱 누름으로 호출할 수 있습니다.)"
+    },
+    {
+      "key": "story.bell.return.01",
+      "value": "“하강 회랑 바닥에 금이 가 있어. 방금 채록한 『공명 단조』 1단계 『진동 타격』으로 지면과 균열 방패를 내려치면 단숨에 파쇄할 수 있어!”\n(조작 안내: 공명 단조(↓ 공중 + Q / 패드 Y 또는 지상 단조)로 균열 바닥과 중갑병의 방패를 타격하세요.)"
+    },
+    {
+      "key": "story.bell.return.02",
+      "value": "“단조 진동으로 중갑병의 방패가 열리면 바로 기본 검술 연격으로 청금석 핵을 베어내세요, 누나! 소리굽쇠 걸쇠도 진동 세팅 뒤에 기본 검술로 끊으면 돼요!”\n(조작 안내: bell_07~08 귀환 동선에서 단조 세팅 ➔ 기본 검술 마무리 교차 루프로 중갑병과 소리굽쇠 걸쇠를 돌파하세요.)"
+    },
+    {
+      "key": "story.bell.return.03",
+      "value": "“지하 소리굽쇠 귀환 수로를 지나 종루 초입 관리실로 돌아왔어. 이제 종루 상층과 거점을 바로 오갈 수 있겠어!”"
+    },
+    {
+      "key": "story.bell.synergy.01",
+      "value": "“저 거대한 청동 종은 금이 너무 크게 벌어져서 그냥 쳐서는 진동이 퍼지지 않아…… 하지만 미하일 아저씨의 『은실 박음질』로 벌어진 틈을 먼저 단단히 봉합해 둔 다음, 가브리엘 아저씨의 『공명 단조』로 타격하면 마지막까지 진동이 이어져서 숨겨진 음파 다리를 깨울 수 있어!”\n(조작 안내: 은실 박음질로 균열 대종의 틈(bell_synergy_seam)을 봉합한 뒤, 공명 단조로 타격해 통로를 여세요. 타격 후 은실이 끊어지며 문이 열립니다.)"
+    },
+    {
+      "key": "story.bell.synergy.02",
+      "value": "“은실이 진동을 끝까지 붙잡아 준 덕분에 대종 공명이 터지면서 실이 끊어지고 지름길이 열렸어요! 앞의 정예 파수대만 돌파해요!”"
+    },
+    {
+      "key": "story.bell.mastery.01",
+      "value": "“(서른 번째 진동 타격과 함께 적에게 새겨진 공명 음표가 화음으로 폭발하고, 순간 주변 고음역대가 0.25초간 살짝 먹먹해지자 레아가 무의식중에 귀 끝을 손가락으로 톡톡 두드린다)\n공명 표식을 쌓아 터뜨리는 『화음 축적 폭발』이 몸에 익었어. 방금 잠깐 귀가 먹먹해져서 나도 모르게 귀 끝을 두드렸네…… 아직 종언이 이전된 건 아니야.”"
+    },
+    {
+      "key": "story.bell.mastery.02",
+      "value": "“(여든 번째 극의 『여섯 시의 파종』이 기본 패링과 공중 아래 종격으로 터져 나와 황금 대종의 반격 파동이 울려 퍼진 직후, 주변 환경음이 깊은 정적에 잠기고 브로치 네 번째 꽃잎에 붉은 금이 그어진다!)\n……아, 아아…… 목에서 나오는 기합 소리가 반쯤 쉬어서 작아졌어.\n『제4종언: 영원한 침묵』이 『피고인 R.E.A.』, 내 앞으로 이전됐어.”"
+    },
+    {
+      "key": "story.bell.mastery.03",
+      "value": "“(구호소에 있던 가브리엘의 귀에 육 년 만에 세상의 소리가 밀려들고, 그의 갈라진 성대에서 마침내 낮고 묵직한 진짜 목소리가 터져 나온다. 그러나 가브리엘은 멀리 있는 레아가 소리를 놓치지 않도록, 목소리와 함께 자신의 머리 위로 『아래로 향한 손: 착지·복귀』 손신호를 또렷하게 들어 보인다)\n“……레아. 내 목소리가 돌아왔다는 건, 네가 그 무거운 침묵을 가져갔다는 뜻이겠지.\n걱정하지 마라. 네 귀가 먹먹해져도 길을 잃지 않도록, 나는 목소리가 돌아온 지금도 우리가 약속한 이 세 가지 손신호를 끝까지 함께 쓰겠다.””"
+    },
+    {
+      "key": "story.bell.mastery.04",
+      "value": "“(조금 쉬고 차분해진 목소리로 목울대를 짚으며, 가브리엘이 보여준 손신호를 향해 두 손가락을 들어 응답한다)\n가브리엘 아저씨의 진짜 목소리를 처음 들었어…… 내 목소리는 조금 작아졌지만, 아저씨의 손신호는 선명하게 보여요. 이 침묵의 종언도 반드시 카셀에게 돌려줄게요!”"
+    },
+    {
+      "key": "story.gallery.entry.01",
+      "value": "“여기가 제5구역 하얀 캔버스 화랑과 색채의 온실이에요, 레아 누나. 눈먼 초상화가 이리나 누나가 머무시던 화실이 바로 이 초입에 있어요.”"
+    },
+    {
+      "key": "story.gallery.entry.02",
+      "value": "“화랑 전체가 아무것도 그려지지 않은 새하얀 도화지 같아. 그런데 이젤 주변에서만 따뜻한 유화 물감 냄새가 진하게 나네.”"
+    },
+    {
+      "key": "story.gallery.entry.03",
+      "value": "“이리나 누나는 육 년 전에 두 눈의 시력을 잃으신 뒤에도 붓을 놓지 않으셨어요. 여기 거치대 위에 놓인 두꺼운 점자 스케치북을 한번 만져 보세요, 누나.”\n(조작 안내: 이리나의 돋을새김 점자 스케치북(irina_sketchbook_stand)을 F / 왼쪽 스틱 누름으로 조사하세요. 단서 [이리나 · 코어 각인]이 기록됩니다.)"
+    },
+    {
+      "key": "story.gallery.entry.04",
+      "value": "“(물감의 두께와 높낮이만으로 윤곽을 만져서 알 수 있게 그려진 수십 장의 초상화와 제목 『살아서 열여섯 살이 된 레아』를 손끝으로 쓸어 본다)\n……전부 내 얼굴이야. 웃는 얼굴만 있는 게 아니라, 눈썹을 찡그리거나 겁이 나서 입술을 깨무는 얼굴까지 다정한 물감 결로 그려져 있어.\n육 년 전 창문 없는 방에서 허공에 손가락으로 빛을 그리던 내 몸짓을 붓질 검술 극의로 완성해서, 이리나 언니가 『제5종언: 실명』을 대신 가져가셨던 거구나.”"
+    },
+    {
+      "key": "story.gallery.entry.05",
+      "value": "“이리나 누나는 레아 누나의 발소리와 햇살 냄새만으로도 누나가 어떤 표정을 짓고 있는지 다 아셨어요.\n자, 제1전시실로 들어가는 액자문 청금 걸쇠를 기본 검술로 끊고 들어가요!”\n(조작 안내: 액자문 옆 청금 걸쇠를 기본 검술로 1회 타격해 문을 여세요.)"
+    },
+    {
+      "key": "story.gallery.route.01",
+      "value": "“제1전시실은 벽도 바닥도 온통 새하얀 여백뿐이지만, 석고 좌대 발판들이 기본 점프와 대시 거리마다 놓여 있어. 물감 기술이 없어도 기본 이동만으로 충분히 건널 수 있겠어.”"
+    },
+    {
+      "key": "story.gallery.route.02",
+      "value": "“맞아요! 접이식 액자 다리의 청금 걸쇠를 기본 검술로 끊어서 길을 잇고, 전시실을 지키는 파수병과 석상을 정리하며 나아가요!”\n(조작 안내: 석고 좌대 발판을 건너며 청금 걸쇠 2기를 절단하고 파수병·석상 웨이브를 돌파하세요.)"
+    },
+    {
+      "key": "story.gallery.route.03",
+      "value": "“거대한 목재 이젤들이 다리처럼 세워져 있어. 고정 와이어 걸쇠를 기본 검술로 베면 대형 캔버스가 수평으로 내려앉아서 튼튼한 가교가 되겠어.”"
+    },
+    {
+      "key": "story.gallery.route.04",
+      "value": "“석상의 반사 공격은 기본 패링으로 받아쳐서 빈틈에 기본 검술을 꽂고, 캔버스 가교를 내려 온실 쪽으로 건너가자!”\n(조작 안내: 청금 걸쇠 2기 절단으로 가교를 내리고 파수병·석상·중갑병을 격파하세요.)"
+    },
+    {
+      "key": "story.gallery.route.05",
+      "value": "“여기가 색채의 유리 온실 산책로예요, 누나! 유리 천장 너머로 따뜻한 햇살이 쏟아지고 있어요. 온실 화단 위 파수대만 돌파하면 이리나 누나의 아틀리에예요!”\n(조작 안내: 온실 산책로를 올라 청금 걸쇠 1기 및 파수병·석상을 돌파하세요.)"
+    },
+    {
+      "key": "story.gallery.route.06",
+      "value": "“(아틀리에 정문 앞에서 바람에 실려 오는 따뜻한 햇살 냄새와 푸른 청금석 물감 향기를 맡는다)\n이 물감 냄새…… 어릴 때 내 곁에서 바다와 꽃밭을 그려 주시던 이리나 언니의 냄새야.”"
+    },
+    {
+      "key": "story.gallery.route.07",
+      "value": "“전실 팔레트 석판에 복귀 지점을 맞춰 뒀어요, 누나. 준비되셨으면 아틀리에 문을 여세요!”\n(조작 안내: 아틀리에 정문(gallery_arena_gate)에서 F / 왼쪽 스틱 누름으로 진입하세요.)"
+    },
+    {
+      "key": "story.irina.i0.01",
+      "value": "“(초점 없는 맑은 눈을 한 이리나가 거대한 화판 앞에서 고개를 돌리더니, 햇살 냄새와 발걸음 소리만으로 정확히 레아에게 다가와 물감 묻은 손끝으로 레아의 볼과 눈썹을 조심스럽게 더듬는다)\n……박하사탕 냄새하고 따뜻한 아침 햇살 냄새가 나네. 우리 레아가 정말로 열여섯 살만큼 자라서 내 화실까지 걸어왔구나.\n그런데 레아야, 오른손에 쥐고 있는 그 차가운 청금석 기록검은 왜 들고 온 거니?”"
+    },
+    {
+      "key": "story.irina.i0.02",
+      "value": "“이리나 언니! 초입 화실에서 언니가 손끝으로 그려 놓으신 제 초상화들을 봤어요.\n오늘 아침에 받은 이 회수 명령서 사본 제3조에 적혀 있어요! 제가 언니의 붓질 검술을 기록검에 3단계까지 등재하면, 언니의 두 눈을 가린 종언이 대법정 모체 코어로 흡수·소멸되고 특별 사면을 받으실 수 있어요!”"
+    },
+    {
+      "key": "story.irina.i0.03",
+      "value": "“(레아의 볼에서 손을 떼고 한 걸음 물러서며, 슬프지만 단호하게 고개를 젓는다)\n레아야, 눈은 보이지 않아도 물감이 어디로 번져 가는지는 손끝으로 다 느낄 수 있단다.\n네가 내 붓질을 3단계 자화상까지 똑같이 그려내는 순간, 내 두 눈의 실명이 사라지는 게 아니라 네 호박색 눈동자로 고스란히 옮겨 가게 돼. 네가 앞으로 봐야 할 바다와 꽃밭의 빛을 내가 다시 빼앗을 수는 없어.”"
+    },
+    {
+      "key": "story.irina.i0.04",
+      "value": "“(긴 붓자루 모양의 세검에 푸른 청금석 물감을 묻혀 들어 올린다)\n내 눈은 이미 육 년 전에 네 미래를 위해 바쳤다. 마지막 자화상의 붓질만은 네 검에 넘겨주지 않고 너를 화랑 밖으로 돌려보내마!”\n(전투 개시: 눈먼 초상화가 이리나와의 보호 대련)"
+    },
+    {
+      "key": "story.irina.i0.05",
+      "value": "“(붓검을 바닥에 짚고 가만히 숨을 고른다. 레아의 기록검 코어가 대련 중 허공에 그어진 이리나의 1단계 물감 궤적을 수채빛 각인으로 채록한다)\n……마지막 자화상은 감추었는데도, 네 기록검이 내 첫 번째 『물감 획』의 결을 읽어냈구나.\n명심하렴, 레아. 서른 번까지는 눈가에 수채화 빛깔이 어른거릴 뿐이지만, 여든 번째 자화상을 완성하는 순간 내 실명의 종언이 네 눈으로 넘어간다. 나는 구호소로 물러나 있을 테니…… 제발 그 붓질을 멈추고 돌아가렴.”\n(시스템 알림: 여백 도려내기 획득 — 1~5 / E·패드 B 선택, Q·Y 사용)"
+    },
+    {
+      "key": "story.irina.i0.06",
+      "value": "“이리나 언니까지 구호소로 물러나셨어…… 하지만 내일 새벽 여섯 시의 집행을 막고 언니의 두 눈을 되찾아 드리려면 이 물감 획을 완성해야 해. 온실 색상 회랑 귀환로로 내려가자!”"
+    },
+    {
+      "key": "story.irina.i1.01",
+      "value": "“(아틀리에에 들어선 레아의 발걸음 소리를 듣더니, 이리나가 다가와 레아의 목 앞 브로치에 그어진 붉은 균열 자국을 손끝으로 스치고 숨을 멈춘다)\n……브로치 꽃잎이 이미 갈라져 있네, 레아. 소멸 특례가 거짓이고 종언이 네 몸으로 옮겨 온다는 걸 다 알면서도…… 왜 도망치지 않고 내 화실까지 온 거니?”"
+    },
+    {
+      "key": "story.irina.i1.02",
+      "value": "“이리나 언니, 제 이름을 지우고 혼자 희생하려는 게 아니에요! 분소 작업대에서 테오, 에단 아저씨와 검 실험을 마쳤어요. 다섯 분의 기술을 카셀의 거울에 맞베기로 예약하고 시간 각인 출력을 해방해서, 원소유자인 카셀에게 다섯 종언을 전부 되돌려 줄 가설을 세웠어요!”"
+    },
+    {
+      "key": "story.irina.i1.03",
+      "value": "“너는 어릴 때부터 어른들을 안심시키려고, 무서울 때일수록 일부러 밝은 목소리로 웃는 척하던 아이였지.\n지금 그 말이 또 우리를 안심시키려는 억지 미소인지 아닌지, 내 붓검으로 직접 물어보마!”\n(전투 개시: 이리나와의 진심 확인 대련)"
+    },
+    {
+      "key": "story.irina.i1.04",
+      "value": "“(대련 중반, 햇살이 비치는 우측 창가에서 이리나가 붓검을 멈추고 한 걸음 다가온다. 그녀는 늘 확인하던 습관대로 물감 묻은 손끝을 뻗어 레아의 볼을 감싸 쥐고, 눈썹과 입꼬리를 조심스럽게 더듬는다)\n……손끝에 닿는 네 맥박이 이렇게나 빠르게 뛰고 있구나, 레아.\n내 손끝이 네 입꼬리에 닿아 있어. 나한테 말해 주렴. 너 지금도 날 안심시키려고 웃고 있니?”"
+    },
+    {
+      "key": "story.irina.i1.05",
+      "value": "“(이리나의 손끝 앞에서 습관처럼 올리려던 입꼬리의 힘을 풀고, 웃지 않은 얼굴 그대로 이리나의 손등을 가만히 마주 잡는다)\n……아니요, 이리나 언니. 안 웃고 있어요.\n오늘은 무서워요. 가설에 아직 빈칸이 남아 있는 것도 무섭고, 다섯 분을 잃는 것도, 제가 못 돌아오는 것도 정말 무서워요.”\n(조작 안내: 우측 햇살 창가(irina_sunlight_floor)에서 F / 왼쪽 스틱 누름으로 억지 미소를 짓지 않고 솔직한 두려움을 전하세요.)"
+    },
+    {
+      "key": "story.irina.i1.06",
+      "value": "“(레아가 웃지 않은 채 두려움을 고백하자, 이리나가 잠깐 침묵한 뒤 레아의 입꼬리에서 천천히 손을 내리고 아주 따뜻하게 입을 연다)\n……고맙다, 레아. 내가 그린 ‘웃는 레아’라는 그림 속에 너를 가두어 두고 있었구나.\n누군가를 안심시키려고 밝은 척 연기하지 않아도 돼. 그 얼굴로 돌아와도 돼.”"
+    },
+    {
+      "key": "story.irina.i1.07",
+      "value": "“네, 이리나 언니! 무서운 건 무섭다고 말하면서, 동료들 손을 잡고 그 얼굴 그대로 살아서 돌아올게요!”\n(전투 재개: 남은 대련을 완주해 승리하세요.)"
+    },
+    {
+      "key": "story.irina.i1.08",
+      "value": "“(대련이 끝나자 이리나가 레아의 뺨에 묻은 먼지를 손수건으로 닦아 주고, 팔레트의 가장 따뜻한 청금·금빛 물감을 레아의 기록검 끝에 묻혀 준다)\n싸우다가 숨이 차고 겁이 나거든 참지 말고 나를 불러라, 레아. 네가 잠시 숨을 고를 수 있도록 내 『귀환 채색』으로 네 마음을 덮어 줄 테니까.”\n(시스템 알림: 여백 도려내기 획득 + 이리나 지원 해금 · 귀환 채색 1/1 보유)"
+    },
+    {
+      "key": "story.irina.reunion.01",
+      "value": "“(구호소 햇살 창가에서 이리나가 발걸음 소리를 듣고 일어서서 레아에게 다가온다. 그녀는 늘 하던 대로 물감 묻은 손끝으로 레아의 볼을 감싸 쥐고 눈썹과 입꼬리를 더듬는다)\n작업대에서 테오, 에단과 함께 카셀에게 맞설 반환 계획을 세웠다고 들었단다, 레아.\n그런데 내 손끝에 닿는 네 입꼬리가…… 또 어른들을 안심시키려고 억지로 웃으려 하고 있지는 않니?”"
+    },
+    {
+      "key": "story.irina.reunion.02",
+      "value": "“(올리려던 입꼬리를 내리고, 웃지 않는 얼굴 그대로 이리나의 손끝에 뺨을 기댄다)\n억지로 웃지 않을게요, 이리나 언니. 오늘은 무서워요. 그래서 혼자 버티지 않고 다 같이 방법을 찾고 있어요.”\n(조작 안내: 구호소 햇살 창가(irina_reunion_window)에서 F / 왼쪽 스틱 누름으로 억지 미소 없이 진심을 전하세요.)"
+    },
+    {
+      "key": "story.irina.reunion.03",
+      "value": "“(잠깐 침묵하던 이리나가 레아의 입꼬리에서 부드럽게 손을 내리고, 가장 평온한 목소리로 답한다)\n……그래. 그 얼굴로 돌아와도 돼.\n네가 무섭다고 말해 주니까, 이제야 네가 진짜로 살아서 내 곁으로 돌아오려 한다는 걸 믿을 수 있겠구나.”"
+    },
+    {
+      "key": "story.irina.reunion.04",
+      "value": "“고마워요, 이리나 언니! 내일 아침엔 연기하지 않는 제 진짜 얼굴로 언니 앞에 마주 앉을게요!”\n(시스템 알림: 이리나 지원 해금 · 귀환 채색 1/1 보유 — 일반 전투에서 방향 + H / 패드 오른쪽 스틱 누름으로 호출할 수 있습니다.)"
+    },
+    {
+      "key": "story.gallery.return.01",
+      "value": "“온실 귀환로 턱 너머로 바닥이 비어 있어. 지상에서 『여백 도려내기』 1단계 『물감 획』을 그으면 내 앞쪽 허공에 3초 동안 청금석 물감 발판이 남아! 그 물감 획을 밟고 건너편으로 도약하자!”\n(조작 안내: 단차 턱 끝 지상에서 ↓ + Q / 패드 Y로 전방 허공에 물감 획 발판을 설치하고 밟아 건너가세요.)"
+    },
+    {
+      "key": "story.gallery.return.02",
+      "value": "“좋아요, 누나! 귀환로의 공증 봉합 중갑병들은 발밑에 물감 획이나 교차 영역이 닿아야 자세가 열려요. 자세가 열리면 기본 검술 연격으로 핵을 베어내세요!”\n(조작 안내: gallery_07~08 귀환 동선에서 화폭 세팅 ➔ 기본 검술 마무리 교차 루프로 중갑병과 캔버스 걸쇠를 돌파하세요.)"
+    },
+    {
+      "key": "story.gallery.return.03",
+      "value": "“하부 화랑 수장고를 지나 초입 화실로 돌아왔어. 이제 화랑과 거점 승강장이 완전히 이어졌어!”"
+    },
+    {
+      "key": "story.gallery.synergy.01",
+      "value": "“여긴 두 고정면이 있는 갈라진 바닥 너머로 아예 지지점이 없는 빈 허공이 이어져 있어!\n먼저 미하일 아저씨의 『은실 박음질』로 실제 바닥의 갈라진 틈을 꿰매서 건너간 다음, 그 은실 바닥 끝에서 이리나 언니의 『여백 도려내기』로 허공에 물감 발판을 그어 도약하면 두 기술의 장점을 합쳐서 건널 수 있어!”\n(조작 안내: 은실 박음질로 갈라진 바닥(gallery_synergy_seam)을 메워 밟고 선 뒤, 그 끝에서 여백 도려내기(↓ + Q / 패드 Y)로 전방 물감 발판을 그어 테라스로 건너가세요.)"
+    },
+    {
+      "key": "story.gallery.synergy.02",
+      "value": "“고정면이 있는 틈은 은실로 꿰매고 지지점 없는 허공은 물감 획으로 건너니까 어떤 절벽도 막히지 않네요! 저 앞 정예 화실 파수대만 돌파하면 완벽해요!”"
+    },
+    {
+      "key": "story.gallery.mastery.01",
+      "value": "“(서른 번째 물감 획과 함께 바닥과 벽에 두 개의 색채 획이 교차하며 폭발하고, 시야 가장자리에 옅고 아름다운 수채화 번짐이 스치자 레아가 무의식중에 손등으로 눈가를 가볍게 비빈다)\n두 획을 교차시켜 터뜨리는 『풍경 덧칠』이 몸에 익었어. 방금 눈가에 수채화 물감 빛깔이 스쳐서 나도 모르게 눈을 비볐네…… 아직 실명의 종언이 넘어온 건 아니야.”"
+    },
+    {
+      "key": "story.gallery.mastery.02",
+      "value": "“(여든 번째 극의 『자화상 완성』이 펼쳐져 색채 환영 분신이 0.3초 시차로 레아의 검격을 그대로 따라 그린 직후, 화면 테두리에 하얀 캔버스 결이 한 번 맺히고 브로치 다섯 번째 꽃잎에 붉은 금이 그어진다!)\n……윽! 눈앞 가장자리가 하얀 도화지에 잠기듯 흐릿해졌어……!\n『제5종언: 실명』이 『피고인 R.E.A.』, 내 앞으로 확정 이전됐어.”"
+    },
+    {
+      "key": "story.gallery.mastery.03",
+      "value": "“(구호소 창가에 서 있던 이리나의 두 눈에 육 년 만에 선명한 초점과 빛이 돌아온다. 이리나가 떨리는 속눈썹을 깜빡이며 창밖 너머, 억지 미소를 짓지 않고도 단단하게 서 있는 열여섯 살 레아의 모습을 두 눈으로 똑똑히 바라본다)\n“……보인다. 내 두 눈이 다시 보이게 됐어……!\n레아야, 내가 손끝으로만 그리던 열여섯 살의 네가…… 억지로 웃지 않는 저 단단한 얼굴로 내 눈앞에 서 있구나.””"
+    },
+    {
+      "key": "story.gallery.mastery.04",
+      "value": "“(눈가를 한 번 훔치고, 기록검 끝에 맺힌 맑은 청금석 빛깔을 똑바로 응시한다)\n이리나 언니가 육 년 만에 두 눈으로 날 보셨어. 앞을 보고 검을 휘두르는 데는 아무 문제 없어…… 이 실명의 종언까지 전부 카셀에게 되돌려 줄게요!”"
+    },
+    {
+      "key": "area.room.clock_01_entry",
+      "value": "시계탑 1번 방 · 황혼 시계탑 초입과 조율 작업실"
+    },
+    {
+      "key": "area.room.clock_02_pendulum",
+      "value": "시계탑 2번 방 · 대시계추 승강 회랑"
+    },
+    {
+      "key": "area.room.clock_03_counterflow",
+      "value": "시계탑 3번 방 · 역류 톱니 다리"
+    },
+    {
+      "key": "area.room.clock_04_escapement",
+      "value": "시계탑 4번 방 · 탈진기 중층 정거장"
+    },
+    {
+      "key": "area.room.clock_05_vestibule",
+      "value": "시계탑 5번 방 · 태엽 문자판 전실"
+    },
+    {
+      "key": "area.room.clock_06_arena",
+      "value": "시계탑 6번 방 · 황혼의 태엽 시계탑 최심부"
+    },
+    {
+      "key": "area.room.clock_07_return_upper",
+      "value": "시계탑 7번 방 · 역류 회랑 상부 귀환로"
+    },
+    {
+      "key": "area.room.clock_08_return_lower",
+      "value": "시계탑 8번 방 · 역류 회랑 하부 귀환 수로"
+    },
+    {
+      "key": "area.room.clock_09_shortcut",
+      "value": "시계탑 9번 방 · 멈춘 톱니실 상부 시너지 회랑"
+    },
+    {
+      "key": "area.room.clock_10_sanctuary_rail",
+      "value": "시계탑 10번 방 · 구호소 옆 궤도 승강장 연결로 & 정예 검증실"
+    },
+    {
+      "key": "area.target.julius_workbench",
+      "value": "시계 조율 작업대"
+    },
+    {
+      "key": "area.target.clock_entry_latch",
+      "value": "청금 걸쇠"
+    },
+    {
+      "key": "area.target.clock_arena_gate",
+      "value": "대련장 정문"
+    },
+    {
+      "key": "area.target.julius_trial_bell",
+      "value": "연습 대련 호출종"
+    },
+    {
+      "key": "area.target.julius_return_platform",
+      "value": "왕복 태엽 발판"
+    },
+    {
+      "key": "area.target.julius_reunion_platform",
+      "value": "귀환 열차 복귀 발판"
+    },
+    {
+      "key": "area.speaker.julius",
+      "value": "율리우스"
+    },
+    {
+      "key": "area.room.opera_01_entry",
+      "value": "오페라 1번 방 · 극장 로비와 무대 뒤편 연습실"
+    },
+    {
+      "key": "area.room.opera_02_auditorium",
+      "value": "오페라 2번 방 · 붉은 벨벳 객석 회랑"
+    },
+    {
+      "key": "area.room.opera_03_chandelier",
+      "value": "오페라 3번 방 · 샹들리에 중층 브리지"
+    },
+    {
+      "key": "area.room.opera_04_rooftop_west",
+      "value": "오페라 4번 방 · 서쪽 스포트라이트 유리 지붕"
+    },
+    {
+      "key": "area.room.opera_05_wings",
+      "value": "오페라 5번 방 · 주 무대 측면 대기석"
+    },
+    {
+      "key": "area.room.opera_06_arena",
+      "value": "오페라 6번 방 · 유리 오페라 대무대 & 돔 지붕 아레나"
+    },
+    {
+      "key": "area.room.opera_07_return_roof",
+      "value": "오페라 7번 방 · 동쪽 스포트라이트 지붕 귀환로"
+    },
+    {
+      "key": "area.room.opera_08_return_foyer",
+      "value": "오페라 8번 방 · 유리 회랑 하부 귀환 통로"
+    },
+    {
+      "key": "area.room.opera_09_shortcut",
+      "value": "오페라 9번 방 · 끊긴 상부 무대 시너지 브리지"
+    },
+    {
+      "key": "area.room.opera_10_sanctuary_stairs",
+      "value": "오페라 10번 방 · 구호소 무대 계단 연결로 & 정예 연습실"
+    },
+    {
+      "key": "area.target.valeria_shoes_rack",
+      "value": "토슈즈 선반과 보폭 마루"
+    },
+    {
+      "key": "area.target.opera_entry_latch",
+      "value": "청금 걸쇠"
+    },
+    {
+      "key": "area.target.opera_arena_gate",
+      "value": "대련장 정문"
+    },
+    {
+      "key": "area.target.valeria_trial_bell",
+      "value": "연습 대련 호출종"
+    },
+    {
+      "key": "area.target.valeria_safe_stage_ledge",
+      "value": "안전 착지 발판"
+    },
+    {
+      "key": "area.target.luka_opera_lift",
+      "value": "루카의 보조 승강판"
+    },
+    {
+      "key": "area.target.valeria_reunion_lift",
+      "value": "구호소 연결 승강판"
+    },
+    {
+      "key": "area.speaker.valeria",
+      "value": "발레리아"
+    },
+    {
+      "key": "area.room.bell_01_entry",
+      "value": "대종루 1번 방 · 종루 초입 관리실과 아침 종 악보대"
+    },
+    {
+      "key": "area.room.bell_02_tunnels",
+      "value": "대종루 2번 방 · 공명 소리굽쇠 지하도 초입"
+    },
+    {
+      "key": "area.room.bell_03_acoustic_hall",
+      "value": "대종루 3번 방 · 음파 고리 지하 수로"
+    },
+    {
+      "key": "area.room.bell_04_belfry_shaft",
+      "value": "대종루 4번 방 · 수직 종루 상승 계단"
+    },
+    {
+      "key": "area.room.bell_05_silence_landing",
+      "value": "대종루 5번 방 · 침묵의 종각 대기실"
+    },
+    {
+      "key": "area.room.bell_06_arena",
+      "value": "대종루 6번 방 · 청동 대종루 최상층 타종실"
+    },
+    {
+      "key": "area.room.bell_07_return_chime",
+      "value": "대종루 7번 방 · 타종실 하강 공명 회랑"
+    },
+    {
+      "key": "area.room.bell_08_return_undercroft",
+      "value": "대종루 8번 방 · 지하 소리굽쇠 귀환 수로"
+    },
+    {
+      "key": "area.room.bell_09_shortcut",
+      "value": "대종루 9번 방 · 균열 대종의 시너지 공명실"
+    },
+    {
+      "key": "area.room.bell_10_sanctuary_table",
+      "value": "대종루 10번 방 · 구호소 종루 휴게실 & 정예 타종장"
+    },
+    {
+      "key": "area.target.gabriel_score_desk",
+      "value": "아침 종 악보대"
+    },
+    {
+      "key": "area.target.bell_entry_latch",
+      "value": "청금 걸쇠"
+    },
+    {
+      "key": "area.target.bell_arena_gate",
+      "value": "대련장 정문"
+    },
+    {
+      "key": "area.target.gabriel_trial_bell",
+      "value": "연습 대련 호출종"
+    },
+    {
+      "key": "area.target.gabriel_request_stop",
+      "value": "정지 손신호"
+    },
+    {
+      "key": "area.target.gabriel_reunion_table",
+      "value": "수첩의 세 손신호"
+    },
+    {
+      "key": "area.speaker.gabriel",
+      "value": "가브리엘"
+    },
+    {
+      "key": "area.room.gallery_01_entry",
+      "value": "화랑 1번 방 · 하얀 캔버스 화랑 초입과 온실 화실"
+    },
+    {
+      "key": "area.room.gallery_02_white_hall",
+      "value": "화랑 2번 방 · 여백의 제1전시실"
+    },
+    {
+      "key": "area.room.gallery_03_easel_bridge",
+      "value": "화랑 3번 방 · 캔버스 이젤 가교"
+    },
+    {
+      "key": "area.room.gallery_04_greenhouse_path",
+      "value": "화랑 4번 방 · 색채의 유리 온실 산책로"
+    },
+    {
+      "key": "area.room.gallery_05_frame_foyer",
+      "value": "화랑 5번 방 · 미완의 액자 전실"
+    },
+    {
+      "key": "area.room.gallery_06_arena",
+      "value": "화랑 6번 방 · 색채의 온실 최심부 아틀리에"
+    },
+    {
+      "key": "area.room.gallery_07_return_atelier",
+      "value": "화랑 7번 방 · 온실 색상 회랑 귀환로"
+    },
+    {
+      "key": "area.room.gallery_08_return_gallery",
+      "value": "화랑 8번 방 · 하부 화랑 수장고 귀환 통로"
+    },
+    {
+      "key": "area.room.gallery_09_shortcut",
+      "value": "화랑 9번 방 · 여백 절벽의 은실·화폭 시너지 회랑"
+    },
+    {
+      "key": "area.room.gallery_10_sanctuary_window",
+      "value": "화랑 10번 방 · 구호소 햇살 창가 연결로 & 정예 화실"
+    },
+    {
+      "key": "area.target.irina_sketchbook_stand",
+      "value": "점자 스케치북"
+    },
+    {
+      "key": "area.target.gallery_entry_latch",
+      "value": "청금 걸쇠"
+    },
+    {
+      "key": "area.target.gallery_arena_gate",
+      "value": "대련장 정문"
+    },
+    {
+      "key": "area.target.irina_trial_bell",
+      "value": "연습 대련 호출종"
+    },
+    {
+      "key": "area.target.irina_confess_fear",
+      "value": "오늘은 무서워요."
+    },
+    {
+      "key": "area.target.irina_reunion_window",
+      "value": "햇살 창가"
+    },
+    {
+      "key": "area.speaker.irina",
+      "value": "이리나"
+    },
+    {
+      "key": "story.echo.entry.01",
+      "value": "“[공증 기록 #02 — D+1일 05:30 / 집행 예정 시각까지 잔여 30분]\n대법정 중앙 홀에 들어왔어. 정면 위쪽은 대공증관 카셀이 있는 최상층 심판석 승강기이고, 오른쪽 아래로 꺼진 어두운 계단은…… 원본 명령서 제3조에 적혀 있던 지하 『영구 박제관』 입구야.”"
+    },
+    {
+      "key": "story.echo.entry.02",
+      "value": "“(홀 한가운데에 노출된 거대한 청금석 제어 기둥의 회로 결을 따라 시선을 올린다)\n이 청금석 제어 연결부를 봐. 최상층의 모체 병기 『만상공명 거울』과 지하 『영구 박제관』의 동결 격리 장치가 하나의 제어 핵으로 묶여 있어.\n테오가 분석했던 대로야. 최상층에서 거울 모체의 코어를 깨뜨리면 지하 박제관의 수용 체계도 함께 무너져 내리는 구조야!”\n(조작 안내: 홀 중앙의 청금석 제어 연결 기둥(court_control_pillar)을 F / 왼쪽 스틱 누름으로 조사해 연결 구조를 확인하세요.)"
+    },
+    {
+      "key": "story.echo.entry.03",
+      "value": "“저 앞 분기 홀 승강기 앞에서 내 기록검 코어와 똑같은 파동이 울리고 있어. 어제의 내가 남긴 잔향이야……! 앞을 가로막는 석상과 중갑병들을 돌파하고 승강기 앞으로 가자!”\n(조작 안내: 중앙 홀의 적들을 격파하고 우측 분기 홀(court_02_echo_arena)로 진입하세요.)"
+    },
+    {
+      "key": "story.echo.pre.01",
+      "value": "“(최상층으로 향하는 중앙 승강기 문 앞을 팽팽한 보랏빛 은실 봉합 장벽으로 겹겹이 꿰매어 가로막은 채, 갈라진 기록검을 쥔 『잔향 · 어제의 레아』가 차갑게 서 있다)\n……다섯 분의 종언을 무사히 네 몸에 모두 모았구나, 오늘의 나.\n거기까지면 충분해. 위쪽 승강기는 내가 봉합해 두었어. 카셀에게 올라가지 말고, 오른쪽 계단을 따라 지하 『영구 박제관』으로 내려가.”"
+    },
+    {
+      "key": "story.echo.pre.02",
+      "value": "“(어제의 레아 앞에 멈춰 서서 코어 단말에서 읽은 폐기 초안의 기억을 똑바로 마주 본다)\n몰라서 이 길을 막은 게 아니었어?\n너도 작업대에서 칼날 세 번째 마디에 자국을 내고, 카셀에게 종언을 되돌리는 역공증 경로를 그려 봤잖아!”"
+    },
+    {
+      "key": "story.echo.pre.03",
+      "value": "“(보랏빛 잔영이 미세하게 흔들리지만 검 끝은 조금도 내리지 않는다)\n가능하다는 말은 있었어. 된다는 증거는 없었어.”"
+    },
+    {
+      "key": "story.echo.pre.04",
+      "value": "“그래서 내 대답까지 지웠어?\n나한테는 물어보지도 않고, 초안 마지막 칸의 『레아 생존』을 두 줄로 그어 버리고 가짜 사면장을 찍어서 날 이 박제관 앞으로 데려온 거야?”"
+    },
+    {
+      "key": "story.echo.pre.05",
+      "value": "“내가 사실대로 말했다가 다섯 분이 스스로 격리문을 걸어 잠그고 처형당하는 걸 내 눈으로 봤으니까!\n혼자서는 계측기 파형 하나도 끝까지 재지 못했어. 증명도 못 한 생존 반환을 붙잡고 최상층에 올라갔다가 여섯 시 종이 울리기 전에 검이 부서지면…… 그땐 다섯 분도, 너도 영영 끝이야. 네가 이 지하 박제관에 들어가 주는 것만이 다섯 분을 확실히 살리는 유일한 길이야!”"
+    },
+    {
+      "key": "story.echo.pre.06",
+      "value": "“(파우치에서 테오의 글씨로 가득 찬 4단계 검 실험 노트와 다섯 은인이 표시해 준 귀환 경로 지도를 꺼내 어제의 레아 앞에 펼쳐 보인다)\n나도 무서워. 그래서 이번에는 다른 사람들한테도 보여줬어. 내 몫을 지우기 전에.\n봐, 네가 혼자서 붙잡다 끊어졌던 그 계측 파형을 오늘은 테오와 에단 아저씨가 같이 잡아 줘서 끝까지 실측했어! 다섯 분도 문을 잠그는 대신 내가 살아서 돌아올 바닥과 시간과 신호를 먼저 만들어 주셨어! 난 박제관으로 내려가지 않아!”\n(조작 안내: F / 왼쪽 스틱 누름으로 어제의 레아에게 검 실험 기록과 귀환 경로를 내미세요.)"
+    },
+    {
+      "key": "story.echo.battle.01_p1",
+      "value": "“(잔향이 갈라진 검을 들어 올리자 오늘의 레아가 방금 전까지 가장 자주 사용한 주력 기술과 접근 보폭이 보랏빛 예고선으로 그대로 재현된다)\n말로는 날 못 지나가! 네가 오늘 어떤 보폭으로 파고들고 어떤 주력 기술부터 꺼내는지, 같은 코어를 공유하는 내 눈엔 전부 보여!\n네 검이 부서지기 전에 내 손으로 너를 지하 계단까지 밀어 넣겠어!”\n(전투 안내: 잔향 1페이즈 · 흐린 어제 — 잔향은 최근 유효 사용 1위 기술을 모방합니다. 예고된 기술과 다른 기술로 유효 타격을 가하면 모방이 취소되고 +1.6초 로테이션 빈틈이 열립니다!)"
+    },
+    {
+      "key": "story.echo.battle.02_p2",
+      "value": "“(체력이 줄어들자 잔향이 위쪽 승강기 통로의 은실 장벽을 더욱 팽팽히 조이고, 옆길 지지대 연결부를 일제히 절단해 지하 박제관 계단 쪽으로 발판을 무너뜨린다!)\n위쪽 길은 절대 안 열어 줘! 네가 첫 번째 기술을 바꾼다면, 네 손에 익은 두 번째 마무리 습관까지 겹쳐서 길목을 끊어 놓겠어!”\n(전투 안내: 잔향 2페이즈 · 겹치는 기록 — 잔향이 1위 시동(A) → 2위 마무리(B) 연속 모방과 지형 절단으로 박제관 계단 쪽 압박을 가합니다. 봉합선을 기본 검술로 끊거나 다른 기술 전환 카운터로 대응하세요!)"
+    },
+    {
+      "key": "story.echo.battle.03_p2_rea",
+      "value": "“내 몸을 실로 낚아채서 억지로 끌고 가지는 못하잖아! 네가 옆길 지지대를 끊어 놓아도, 난 미하일 아저씨한테 배운 대로 먼저 내 발판부터 살피고 네 예고를 다른 기술로 받아칠 거야!”"
+    },
+    {
+      "key": "story.echo.battle.04_p3",
+      "value": "“(보랏빛 잔영이 가장 선명하게 타오르며, 어제가 잠긴 격리문 앞에서 백스무 번 검을 내리치던 절규와 오늘의 3단계 극의 궤적이 하나로 겹쳐진다)\n여섯 시 종이 울리는 소리를…… 난 두 번 다시 들을 수 없어!\n네가 다섯 분한테 배운 3단계 극의가 정말로 카셀의 거울을 이길 수 있는지, 내 세 번의 연속 모방 앞에서 끝까지 증명해 봐!”\n(전투 안내: 잔향 3페이즈 · 선명한 잔향 — 잔향이 3단계 극의 상한으로 A → B → A 3연속 모방을 구사합니다. 마지막 0.2초 조준 고정과 로테이션 카운터 빈틈을 노려 결착을 내세요!)"
+    },
+    {
+      "key": "story.echo.battle.05_p3_rea",
+      "value": "“(마지막 카운터 일격이 잔향의 갈라진 검 가드를 튕겨내고, 잔향이 한쪽 무릎을 꿇으며 바닥에 검 끝을 짚는다. 그러나 위쪽 승강기 문을 막은 은실 봉합 장벽은 아직 풀리지 않은 채 남아 있다)\n……하아, 하아. 이겼어. 내 습관을 그대로 따라 하는 어제의 나를 넘어섰어!”"
+    },
+    {
+      "key": "story.echo.after.01",
+      "value": "“(무릎을 꿇은 잔향의 목전까지 갔던 기록검을 스스로 멈추고, 한 걸음 물러서서 검을 내린다)\n날 속인 건 아직 아파. 내가 싫다고 해도 데려가려던 건 더 무서웠고.”\n(조작 안내: 무릎 꿇은 잔향 앞에서 F / 왼쪽 스틱 누름으로 검을 거두고 대화를 이어가세요.)"
+    },
+    {
+      "key": "story.echo.after.02",
+      "value": "“(바닥을 짚은 손끝을 떨며 위쪽 승강기 장벽을 돌아본다)\n놓으면…… 네가 죽을 수도 있어.”"
+    },
+    {
+      "key": "story.echo.after.03",
+      "value": "“그래도 내 대답을 들어.”"
+    },
+    {
+      "key": "story.echo.after.04",
+      "value": "“(긴 침묵 끝에, 어제의 레아가 먼저 스스로 갈라진 검을 들어 위쪽 승강기 통로를 가로막고 있던 보랏빛 은실 봉합 장벽을 단숨에 풀어 거둔다. 코어에 등록되어 있던 지하 『영구 박제관』 강제 집행 명령이 해제되며 중앙 승강기 문이 활짝 열린다)”\n(시스템 처리: janhyang_order_withdrawn 및 cassel_open 플래그 확정 — 승강기 통행 개방)"
+    },
+    {
+      "key": "story.echo.after.05",
+      "value": "“(통행 차단을 모두 거두고 난 뒤에야, 어제의 레아가 고개를 숙인 채 작게 떨리는 목소리로 속마음을 털어놓는다)\n……나도 올라가고 싶었어.\n나도 박제관 따위에 묻히고 싶지 않았어. 다섯 분을 구하고…… 내일 아침 여섯 번째 그릇 앞에 나도 같이 앉고 싶었어.”"
+    },
+    {
+      "key": "story.echo.after.06",
+      "value": "“(오늘의 레아가 다가와 무릎 꿇은 어제의 레아 앞에 손을 내밀어 맞잡고 일으켜 세운다. 어제의 잔향은 소멸하지 않고 오늘의 기록검 코어 속 푸른 빛결로 나란히 스며들어 동행한다)\n혼자 두고 가지 않아, 어제의 나. 네가 잠긴 문 앞에서 내리쳤던 백스무 번의 기본 검격도, 내일의 나에게 예쁜 검기 빛깔을 남겨 달라고 에단 아저씨께 부탁했던 마음도 전부 이 검 안에 있잖아.\n우리 둘이 같이 최상층으로 올라가자. 그리고 같이 살아서 내려오자!”\n(조작 안내: 어제의 레아(echo_hand_clasp) 앞에서 F / 왼쪽 스틱 누름으로 손을 맞잡아 코어에 동행시키세요.)"
+    },
+    {
+      "key": "story.echo.after.07",
+      "value": "“(활짝 열린 대법정 중앙 승강기 앞 안전 바닥에 선다. 기록검 코어 안에서 어제의 잔향과 오늘의 파동이 고요하게 공명한다)\n여기가 최상층 심판석으로 올라가는 대법정 승강기 앞이야. 다섯 은인 기술의 3단계 반환 준비는 모두 끝났어.\n만약 카셀의 원형 동작을 끝까지 맞받아칠 기본 검술 극의(400회)가 아직 부족하다면 여기서 수로 대장간 『고밀도 공명 연성로』로 잠시 돌아가 에단 아저씨와 마무리 연마를 할 수 있고, 지금 바로 승강기를 타고 올라가 결전을 시작할 수도 있어.”\n(시스템 안내: 대법정 승강기 앞(court_lift) 저장점 활성화 — B<3 상태일 때는 출정 화면에 다섯 반환 준비 완료 / 원형 동작 미완성: 생존 반환 미확보가 표시됩니다.)"
+    },
+    {
+      "key": "story.echo.after.08",
+      "value": "“(승강기 발판이 움직이며 새벽빛이 스며드는 대법정 최상층 심판석을 향해 솟구쳐 오른다. 코어 속에서 어제의 레아가 나직이 속삭인다)\n저 위가 대공증관 카셀과 모체 병기 『만상공명 거울』이 있는 심판석이야. 내 백스무 번의 검격도 네 손끝에 보탤게. 가자, 오늘의 나!”\n(조작 안내: 승강기 제어반(cassel_lift_console)에서 F / 왼쪽 스틱 누름으로 최상층 심판석(cassel)에 진입하세요.)"
+    },
+    {
+      "key": "story.cassel.p1.01",
+      "value": "“(새벽 어스름이 깔린 대법정 최상층 심판석. 다섯 겹의 거대한 반사경으로 이루어진 모체 병기 『만상공명 거울』 앞에서, 외견 서른다섯 살의 젊은 모습을 유지한 대공증관 카셀이 차가운 금빛 예복 자락을 여미며 내려다본다)\n제5호 회수 명령서 제3조의 처분 장소는 이 최상층이 아니라 대법정 지하 『영구 박제관』이었을 텐데.\n다섯 죄인의 종언을 한 몸에 모은 대역 피고인 R.E.A.가, 어째서 스스로 관으로 걸어 들어가지 않고 내 심판석까지 기어 올라온 것이냐.”"
+    },
+    {
+      "key": "story.cassel.p1.02",
+      "value": "“(가슴 앞 다섯 꽃잎에 모두 금이 간 브로치를 달고, 코어 속에 어제의 잔향을 동행시킨 채 기록검을 겨눈다)\n그 다섯 분은 죄인이 아니에요, 카셀! 육 년 전 당신이 자기 죽음을 피하려고 열 살짜리 내 몸에 억지로 쑤셔 넣었던 5대 종언을, 날 살리려고 한 가지씩 나눠 짊어지셨던 내 은인들이에요!\n어제의 나도, 오늘의 나도 당신이 만든 박제관 따위엔 들어가지 않아요. 당신이 떠넘겼던 다섯 종언을 원래 주인인 당신에게 전부 되돌려 주러 왔어요!”"
+    },
+    {
+      "key": "story.cassel.p1.03",
+      "value": "“(비웃음조차 없이 서늘하고 오만한 법관의 어조로 장검을 뽑아 든다)\n백지 그릇 주제에 역공증 따위를 입에 담는구나. 종언의 소유권은 단순한 칼부림이나 패배로 바뀌지 않는다. 오직 완전한 원형 동작의 공증 판정만이 인과를 움직이지.\n네 손에 익은 그 어설픈 기초 검술이 원래 누구의 것이었는지, 원소유자의 칼날로 직접 일깨워 주마!”"
+    },
+    {
+      "key": "story.cassel.p1.04",
+      "value": "“왔어……! 카셀의 준비 자세가 내 기본 검술하고 똑같아!”\n(전투 개시: 카셀 1페이즈 · 원형 검술 — 카셀의 모체 검술(카셀 제0식)과 다섯 원형 패턴을 기본 패링·대시·기술로 공략해 체력을 120까지 낮추세요.)"
+    },
+    {
+      "key": "story.cassel.p1.05",
+      "value": "“(카셀의 4연속 돌진 베기와 레아의 기본 검술이 불꽃을 튀기며 똑같은 각도로 맞부딪힌다)\n……손목의 각도부터 발을 딛는 보폭까지 한 치도 안 틀리고 내 기본 검술과 똑같아!\n열 살 이전의 기억이 지워진 뒤에도 내 손이 무의식중에 기억하고 있던 『햇병아리 베기』는…… 육 년 전 카셀이 내 몸에 5대 종언을 떠넘기려고 강제로 새겨 넣었던 카셀 본인의 모체 검술이었어!”"
+    },
+    {
+      "key": "story.cassel.p1.06",
+      "value": "“(기록검 코어 안에서 어제의 레아가 맑은 청금석 파동으로 대답한다)\n맞아, 오늘의 나. 검술의 동작 형식은 카셀이 심은 것이야.\n하지만 에단 아저씨가 심해의 청금석으로 벼려내고, 우리가 기억을 태우며 수백 번 직접 휘둘러 쌓은 이 『백지각인검』의 시간 각인만큼은 절대로 카셀의 것이 아니야! 밀어붙여!”"
+    },
+    {
+      "key": "story.cassel.p1.07_mirror",
+      "value": "“(체력이 120에 닿자 카셀이 뒤로 물러서며 손을 들어 올린다. 등 뒤의 모체 병기 『만상공명 거울』 다섯 반사층이 일제히 푸른 빛으로 열리며 레아의 다섯 은인 기술을 복제할 준비를 마친다!)\n제법이구나, 피고인 R.E.A.. 허나 내 모체 병기 『만상공명 거울』 앞에서는 네가 배운 다섯 가지 극의조차 모두 내 심판의 도구로 반사될 뿐이다!”\n(전투 안내: 카셀 2페이즈 · 만상공명 거울 — 거울 노출 중 F / 왼쪽 스틱 누름으로 반환할 은인 기술을 선택하세요!)"
+    },
+    {
+      "key": "story.cassel.p2.01_prompt",
+      "value": "“만상공명 거울이 열렸어! 테오와 실험했던 대로야. 거울이 내 3단계 기술을 복제해 반사하는 순간, 내가 고른 순서대로 똑같은 3단계 종결 동작까지 맞베기를 꽂아 넣으면 카셀에게 반환 예약을 걸 수 있어!”\n(조작 안내: 거울 노출 중 F / 왼쪽 스틱 누름을 눌러 역공증 · 반환할 은인 기술 선택 화면을 여세요.)"
+    },
+    {
+      "key": "story.cassel.p2.02_confirm",
+      "value": "“이 기술의 공증 사용권을 반환 예약에 묶으면 이번 전투에서는 다시 쓸 수 없게 돼. 대신 그 기술을 유지하느라 흩어져 있던 우리 검의 『시간 각인 출력』이 20%씩 해방되어 기본 검술에 실릴 거야. 준비됐어?”\n(조작 안내: 확인 · 선택 기술 맞베기 준비를 누른 뒤, 카셀 근처(8m 이내)에서 선택한 3단계 기술을 끝까지 사용해 거울의 반사 패턴과 맞베기를 성립시키세요.)"
+    },
+    {
+      "key": "story.cassel.return.stitch_early",
+      "value": "“(팽팽해진 은실의 일제 단절이 거울의 반사 은실과 정면으로 맞물려 끊어지며 첫 번째 반사층이 어두워진다! 기존 은실 표면은 3초간 푸른 빛으로 점멸하며 안전 착지를 돕는다)\n미하일 아저씨의 『은실 박음질』 반환 예약 완료!\n보조 실 발판과 둔화 영역을 일찍 비우는 대신, 거울이 아레나 양끝을 조이던 『반사 은실 포위망』을 먼저 봉인했어. 이제 넓은 심판석 바닥을 마음껏 쓸 수 있어!”\n(오디오 큐: 거울의 은실 현악 반사 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.stitch_late",
+      "value": "“(후반까지 카셀의 맹렬한 돌진을 늦추고 발판을 지탱해 준 은실이 마지막 절단 맞베기와 함께 거울에 예약 날인된다!)\n미하일 아저씨, 지금까지 내 발밑과 퇴로를 단단히 꿰매 주셔서 고마워요!\n이제 아저씨의 『은실 박음질』과 심장 파열의 종언을 카셀의 거울에 반환 예약으로 묶을게요!”\n(오디오 큐: 거울의 은실 현악 반사 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.pendulum_early",
+      "value": "“(『제로 아워』의 시계침 폭발이 거울의 진자 궤적과 정확히 포개지며 두 번째 반사층의 빛이 꺼진다!)\n율리우스 아저씨의 『진자 되감기』 반환 예약 완료!\n잔상 복귀를 일찍 내려놓는 대신, 거울에서 가장 까다롭던 『긴 예고 뒤 두 번의 교차 돌진』을 먼저 잠갔어. 이제 카셀의 정직해진 검 박자를 내 눈으로 보고 정면 패링할 수 있어!”\n(오디오 큐: 거울의 왜곡된 시계추 반사 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.pendulum_late",
+      "value": "“(위험한 후반 공방까지 안전하게 왕복 시간을 지켜 준 진자 궤적이 거울의 반사 진자와 맞물려 부서진다!)\n율리우스 아저씨, 아저씨가 맞춰 주신 왕복 시간 덕분에 여기까지 한 번도 늦지 않고 싸웠어요!\n이제 『진자 되감기』와 급속 노화의 종언을 카셀에게 되돌릴 시간이에요!”\n(오디오 큐: 거울의 왜곡된 시계추 반사 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.waltz_early",
+      "value": "“(『그랑 피날레』의 회전 조명 검기가 거울이 쏘아낸 푸른 꽃잎 탄막을 정면에서 갈라내며 반사층 하나를 침묵시킨다!)\n발레리아 언니의 『커튼콜 원무』 반환 예약 완료!\n화려한 공중 다단 도약을 먼저 비운 대신, 위에서 쏟아지던 거울의 『반사 원무 꽃잎』 탄막을 깨끗이 지웠어. 두 발로 심판석 바닥을 단단히 딛고 싸우겠어!”\n(오디오 큐: 거울의 반사 바이올린 왈츠 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.waltz_late",
+      "value": "“(후반부 카셀의 거센 지상 연격을 가볍게 뛰어넘게 해 준 마지막 원무가 거울의 반사 꽃잎과 함께 흩날리며 예약 각인을 찍는다!)\n발레리아 언니, 언니의 원무 덕분에 카셀의 칼날 위에서도 발목 하나 다치지 않고 날아올랐어요!\n이제 『커튼콜 원무』와 두 다리의 형벌을 카셀의 거울에 돌려줄게요!”\n(오디오 큐: 거울의 반사 바이올린 왈츠 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.forge_early",
+      "value": "“(기본 패링 직후 공중 아래 종격으로 찍어 누른 『여섯 시의 파종』 황금 대종 파동이 거울의 지면 충격파와 정면 충돌하며 반사층을 깨뜨린다!)\n가브리엘 아저씨의 『공명 단조』 반환 예약 완료!\n광역 반격 종격을 일찍 비운 대신, 지면 전체를 덮치던 거울의 『반사 대종 충격파』를 먼저 멈춰 세웠어. 이제 억지로 뛰어오르지 않고 지상 패링에 집중할 수 있어!”\n(오디오 큐: 거울의 차가운 반사 대종 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.forge_late",
+      "value": "“(후반까지 카셀의 직접 공격 가드를 기본 패링 + 공중 아래 종격으로 통쾌하게 꺾어 준 대종 파동이 거울에 깊숙이 박힌다!)\n가브리엘 아저씨, 아저씨가 알려 주신 신호와 종격이 카셀의 굳게 닫힌 거울을 몇 번이고 다시 열어젖혔어요!\n이제 『공명 단조』와 영원한 침묵의 종언을 카셀에게 반환 예약할게요!”\n(오디오 큐: 거울의 차가운 반사 대종 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.canvas_early",
+      "value": "“(0.3초 시차로 따라 그린 『자화상 완성』의 붓질 검격이 거울의 색채 이중 검격과 정확히 겹쳐지며 반사층의 물감을 지워낸다! 기존 물감 발판은 3초간 점멸하며 착지를 보장한다)\n이리나 언니의 『여백 도려내기』 반환 예약 완료!\n즉석 물감 발판과 분신을 먼저 내려놓는 대신, 거울의 까다로운 『0.3초 시차 반사 색채 이중 검격』을 일찍 지웠어. 이제 카셀의 단일 검격만 똑바로 보고 쳐내면 돼!”\n(오디오 큐: 거울의 반사 피아노 아르페지오 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.return.canvas_late",
+      "value": "“(후반까지 레아의 곁에서 두 몫의 검격을 함께 그려 주던 색채 자화상이 거울의 이중 검격과 맞물려 찬란하게 흩어진다!)\n이리나 언니, 언니가 그려 준 자화상이 끝까지 제 옆에서 같이 검을 휘둘러 줬어요!\n이제 『여백 도려내기』와 실명의 종언을 카셀의 거울에 되돌려 놓을게요!”\n(오디오 큐: 거울의 반사 피아노 아르페지오 루프 영구 소거 + 시간 각인 공명 레이어 +1단 상승)"
+    },
+    {
+      "key": "story.cassel.p2.08_r1_cassel",
+      "value": "“(첫 번째 반환 예약 1/5가 공증 원장에 찍히고 레아의 기록검에서 추가 시간 각인 출력 +20%가 푸른 불꽃처럼 뿜어져 나오자, 카셀의 눈썹이 처음으로 꿈틀한다. 카셀은 남은 네 기술을 순순히 받아주지 않기 위해 『만상공명 거울』을 등 뒤로 접어 닫고 빠르게 백스텝으로 물러난다!)\n……만상공명 거울의 반사 판정을 역이용해 내 원장에 반환 예약을 걸었느냐!\n허나 거울의 반사창을 접어 두면 네 남은 기술들은 맞베기 대상을 잃는다. 내 직접 검술로 네 본체부터 베어 버리겠다!”\n(전술 안내: 카셀이 거울을 닫고 카셀 제0식 3연속 돌진 베기로 직접 공격합니다. 보스 기술을 낭비하지 말고 기본 패링(L / RB)으로 쳐내세요!)"
+    },
+    {
+      "key": "story.cassel.p2.09_r1_rea",
+      "value": "“(카셀의 3타째 직접 검격을 기본 패링으로 정면에서 튕겨낸 직후, 레아가 해방된 시간 각인 출력 +20%가 실린 묵직한 기본 검술 연격으로 카셀의 검 가드를 내리찍는다! 자기 시간을 단 1초도 태워 본 적 없는 카셀은 그 무거운 시간의 질량을 손목으로 버티지 못해 자세가 크게 무너지며, 본체 치명상을 막으려 접어 두었던 『만상공명 거울』을 전면에 급히 다시 펼친다!)\n거울을 접어도 이미 찍힌 예약은 안 지워져요! 그리고 반사 방벽을 접은 당신 손목으로는, 어제와 오늘의 내가 직접 휘둘러 쌓은 이 『시간 각인 출력』의 무게를 못 버티잖아요!\n봐, 살려고 거울을 다시 펼쳤어! 반사 회로가 강제로 열렸을 때 다음 기술을 꽂아 넣자!”"
+    },
+    {
+      "key": "story.cassel.p2.10_r2",
+      "value": "“(두 번째 반환 예약 2/5 성립! 시간 각인 출력이 +40%로 치솟으며 레아의 기본 연격 마지막 타격 끝에 1.8m 길이의 청금석 충격파가 뻗어 나간다)\n반환 예약 둘! 기술 경로를 두 개 비웠더니 기본 연격 마지막 타격에 청금 충격파가 실려서, 카셀이 백스텝으로 물러나도 끝까지 닿아!”"
+    },
+    {
+      "key": "story.cassel.p2.11_r3",
+      "value": "“(세 번째 반환 예약 3/5 성립! 거울의 반사층 다섯 중 셋이 꺼지고, 배경음악에서도 카셀의 파이프 오르간을 넘어 레아의 시간 각인 현악·피아노 드라이브가 심판석을 지배한다. 카셀이 가쁜 숨을 내쉬며 4타 직접 검술로 전환한다)\n크윽……! 내 모체 거울이 어째서 저 아이의 검신에 쌓인 시간의 압력을 베껴내지 못하는 것이냐!\n대시나 착지 직후에 뻗어 오는 저 첫 베기만으로 내 공격 시동이 끊기고 있어……!”"
+    },
+    {
+      "key": "story.cassel.p2.12_r4",
+      "value": "“(네 번째 반환 예약 4/5 성립! 이제 오늘의 레아가 기본 검술을 휘두를 때마다 0.12초 뒤를 따라 어제의 레아(#01)의 보랏빛·청금빛 잔상이 똑같은 궤적으로 한 번 더 카셀의 가드를 강타한다!)\n이제 다섯 중 네 개까지 왔어, 오늘의 나!\n네가 한 번 벨 때마다 0.12초 뒤에서 내 검격이 카셀의 가드를 한 번 더 두드릴게. 우리 둘의 무게로 마지막 한 겹 남은 거울을 열어젖히자!”"
+    },
+    {
+      "key": "story.cassel.p2.13_r5",
+      "value": "“(다섯 번째 맞베기가 작렬하며 『만상공명 거울』의 반사층 다섯 개가 모두 암전되고, 왜곡된 반사 음향이 완전히 사라진다! 레아의 스킬 슬롯 다섯 칸은 모두 [반환 예약]으로 비워졌고, 검신 중앙 룬 홈에서 100% (×2.0) 해방된 시간 각인 출력이 눈부신 청금빛 기둥으로 솟구친다)\n[반환 예약 5/5 완료 — 추가 시간 각인 출력 100% 개방]\n다섯 은인분들의 기술 사용권은 모두 반환 기록에 맡겼어. 이제 내 손에 남은 공격 기술은 기본 검술 하나뿐이지만, 내 다리와 대시와 패링, 그리고 어제와 오늘 우리가 직접 휘두른 모든 시간 각인이 이 칼날 하나에 모였어!”"
+    },
+    {
+      "key": "story.cassel.p3.01_open",
+      "value": "“(반사 기능을 모두 잃고 금이 간 거울 모체 앞에서, 카셀이 처음으로 예복이 흩트러진 채 두 손으로 장검을 고쳐 쥐고 레아의 이름을 똑바로 부른다)\n……다섯 갈래의 예약을 모두 걸었어도, 마지막 여섯 번째 원형 동작인 내 『카셀 제0식』을 끝까지 맞받아치지 못하면 종언의 일괄 반환은 결코 확정되지 않는다, 레아!\n보스 기술 하나 남지 않은 그 빈 손으로 내 원형 검술을 넘어설 수 있을 것 같으냐!”\n(전투 안내: 카셀 3페이즈 · 기본기 결전 — B=3(400회 이상)일 때는 기본 패링 후 3단계 기본 검술 1~4타 완전 연격으로 진 엔딩 맞베기를 확정하세요! B<3일 때는 기본 검술로 코어 내구도 48을 깎아 비상 파괴를 수행합니다.)"
+    },
+    {
+      "key": "story.cassel.p3.02_live_b3",
+      "value": "“(카셀과 칼날을 맞부딪친 바로 그 타격으로 기본 검술 유효 사용이 사백 번째에 도달하는 순간! 금빛 확산 링과 함께 검신의 마지막 룬이 개방되며 [진명 개방: 원죄공증검 — 카셀 제0식]이 점등된다!)\n……방금 이 한 타로 사백 번째 각인이 채워졌어!\n당신이 내 몸에 심었던 원형 동작의 끝이 이제 내 손안에서 완전히 열렸어요, 카셀! 다음 패링에서 네 번의 극의 연격으로 다섯 종언을 전부 확정 반환하겠어!”"
+    },
+    {
+      "key": "story.cassel.p3.03_b3_ready",
+      "value": "“원형 동작 3단계 준비 완료야, 오늘의 나!\n카셀이 『카셀 제0식』으로 파고들 때 기본 패링으로 튕겨내고, 빈틈이 열린 동안 우리의 3단계 기본 검술 1타부터 4타까지를 끝까지 꽂아 넣어! 내가 첫 타부터 마지막 네 번째 타까지 네 등 뒤에서 똑같이 함께 벨게!”"
+    },
+    {
+      "key": "story.cassel.p3.04_b3_retry",
+      "value": "“괜찮아, 서두르지 마! 우리의 원형 동작은 이미 3단계 극의에 닿아 있어. 코어를 그냥 부수지 말고, 숨을 고른 뒤 다시 기본 패링에서 이어지는 1~4타 완전 연격으로 맞베기를 끝까지 완성하자!”"
+    },
+    {
+      "key": "story.cassel.p3.05_true_hit",
+      "value": "“(카셀의 검격을 기본 패링으로 튕겨낸 순간, 오늘의 레아(#02)와 코어에서 실체화된 어제의 레아(#01), 그리고 지금까지 휘둘러 온 수백 번의 시간 각인 실루엣들이 하나로 겹쳐지는 『각인 중첩』 4연속 극의 검무가 카셀의 『카셀 제0식』을 정면에서 완벽하게 베어 넘긴다!\n모든 소리가 1.0초간 완벽한 무음에 잠겼다가, 만상공명 거울이 산산조각 파열하는 굉음과 함께 공증 원장에 [원형 동작 확인 / 5대 종언 일괄 반환 확정 : 피고인 R.E.A. ➔ 원소유자 대공증관 카셀]이 황금빛 직인으로 찍힌다!)\n이것이 어제의 나와 오늘의 내가, 아홉 사람과 함께 증명해 낸 우리의 대답이야!\n당신이 떠넘겼던 다섯 가지 종언, 지금 여기서 원소유자인 당신에게 전량 반환 확정합니다!”"
+    },
+    {
+      "key": "story.cassel.p3.06_true_fall",
+      "value": "“(거울 모체가 가루처럼 부서져 내리고, 레아의 브로치에 그어져 있던 다섯 줄기 붉은 균열이 한꺼번에 빠져나가 카셀의 가슴과 눈, 두 다리와 목울대, 백발로 세어 가는 머리카락 위로 단 한 번에 덮친다!)\n크아아악……! 이럴 리가 없다……! 백 년 넘게 대역 그릇들에게 쪼개어 미뤄 두었던 다섯 종언이, 단 한 번의 원형 맞베기로 내 육체에 전부 되돌아오다니……!\n내 시간이…… 백사십이 년의 시간이 한꺼번에 무너져 내린다……!”"
+    },
+    {
+      "key": "story.cassel.p3.07_basic_break",
+      "value": "“(기본 검술이 아직 3단계 원형 극의에 닿지 못해 다섯 예약의 최종 반환 확정이 성립하지 않는다. 레아는 망설이지 않고 두 손으로 기록검을 고쳐 쥐어, 검신 코어에 남은 모든 시간 각인을 한 번에 불태우는 비상 파괴 일격으로 거울 모체와 지하 『영구 박제관』의 동일 제어 연결 핵을 정면에서 꿰뚫어 부순다!)\n[원형 동작 미완성 — 비상 코어 파괴 실행 : 만상공명 거울 및 지하 영구 박제관 제어 핵 붕괴]\n원형 동작의 마지막 확정은 닿지 않았어…… 하지만 이 기록검 코어를 전부 태워서라도, 이 거울 모체와 지하 박제관의 연결 핵만은 여기서 완전히 끊어 놓겠어!\n다섯 은인분들을 다시 가두고 처형할 당신의 법정은, 지금 이 일격으로 끝이에요!”"
+    },
+    {
+      "key": "story.cassel.p3.08_basic_fall",
+      "value": "“(제어 핵이 산산조각 나며 만상공명 거울과 지하 박제관의 동결 회로가 연쇄 폭발을 일으킨다. 병기의 생명 유지 보호를 잃은 카셀이 무너지는 심판석 단상 아래로 추락한다)\n미친 짓을……! 원형 맞베기를 확정하지도 못한 채 기록검 코어를 자폭시켜 모체 제어 핵을 부수다니!\n내 거울과 박제관이 무너지면 나도 끝장이지만…… 네 몸에 모인 다섯 종언도 결코 지워지지 않는다, R.E.A.……!”"
+    },
+    {
+      "key": "story.cassel.p3.09_defeat",
+      "value": "“(심판석 바닥에 쓰러진 레아의 손을 코어 속 어제의 레아가 붙잡아 체크포인트로 되감는다)\n아직 끝난 게 아니야, 오늘의 나! 우리가 쌓은 숙련도와 기록은 코어에 그대로 남아 있어. 다섯 기술 슬롯도 모두 원래대로 돌아왔으니, 숨을 고르고 다시 올라가자!”"
+    },
+    {
+      "key": "story.ending.basic.01",
+      "value": "“(만상공명 거울과 지하 박제관의 제어 핵이 무너져 내린 뒤, 여섯 시의 창백한 새벽빛이 스며드는 대법정 지붕 전망대. 코어의 빛이 모두 타버려 금이 간 기록검을 짚고 선 레아가 조용히 가쁜 숨을 고른다. 가슴 앞 브로치의 다섯 균열은 여전히 남아 있으나, 도시 아래 구호소 쪽에서는 처형 종소리가 울리지 않는다)\n……여섯 시가 지났는데도 집행 종이 울리지 않았어.\n지하 박제관도, 카셀의 거울도 다 무너졌어. 다섯 분 모두…… 이제 아무한테도 쫓기지 않고 무사히 살아 계셔.”"
+    },
+    {
+      "key": "story.ending.basic.02",
+      "value": "“(푸른 빛을 다 써버린 기록검 코어에서 어제의 레아가 반투명한 모습으로 걸어 나와, 지붕 난간에 기댄 오늘의 레아 앞에 마주 선다. 트랙 12의 조용한 펠트 피아노와 오르골 선율이 흐른다)\n기록검 코어가 다 타버려서…… 더는 데스 리와인드가 작동하지 않아, 오늘의 나.\n원형 동작의 마지막 확정에 닿지 못해서 다섯 종언이 네 몸에 그대로 남았어. 미안해…… 내가 처음부터 겁을 먹고 길을 막지만 않았더라면.”"
+    },
+    {
+      "key": "story.ending.basic.03",
+      "value": "“(오늘의 레아가 고개를 젓고, 한 걸음 다가서서 떨고 있는 어제의 자신을 먼저 두 팔로 따뜻하게 끌어안는다)\n사과하지 마, 어제의 나. 우리가 조금 부족했던 것도 아니고, 자격이 없었던 것도 아니야.\n네가 어제 잠긴 문 앞에서 끝까지 포기하지 않고 시간을 되감아 줬기 때문에, 오늘 우리가 다섯 분을 모두 구해 낸 거야.”\n(조작 안내: 어제의 레아(rooftop_echo_embrace)에게 다가가 F / 왼쪽 스틱 누름으로 먼저 끌어안으세요.)"
+    },
+    {
+      "key": "story.ending.basic.04",
+      "value": "“(어제의 어깨를 감싸 안은 채, 새벽빛이 비치는 공증 장부를 내려다보며 담담하고 또렷하게 말한다)\n우리까지 살아서 돌아오려던 건 틀린 일이 아니었어. 이 장부 끝에는 내 대답도 그대로 적어 줘.”"
+    },
+    {
+      "key": "story.ending.basic.05",
+      "value": "“(어제의 레아가 오늘의 레아를 마주 끌어안으며 조용히 고개를 끄덕인다)\n응. 네가 끝까지 살아서 돌아오려 했다는 기록은, 두 줄로 지우지 않을게.”"
+    },
+    {
+      "key": "story.ending.basic.06",
+      "value": "“(두 레아가 나란히 손을 포개어 쥐고, 공증 장부의 마지막 줄에 청금석 펜으로 지워지지 않는 한 문장을 또박또박 적어 넣는다:\n[공증 기록 #02 최종 등재 — 다섯 은인 전원 구출 완료. 그리고 오늘의 레아는 끝까지 함께 살아서 돌아오려 했다.])”\n(조작 안내: 마지막 공증 장부(basic_ending_ledger)에서 F / 왼쪽 스틱 누름으로 오늘의 대답을 지우지 않고 날인하세요.)"
+    },
+    {
+      "key": "story.ending.basic.07",
+      "value": "“(지붕 계단 문이 열리며 미하일과 율리우스, 발레리아, 가브리엘, 이리나, 그리고 테오·마르타·에단·루카가 숨을 몰아쉬며 달려 올라온다. 미하일이 무너져 내리는 레아의 어깨를 급히 받아 안는다)\n레아! 정신 차려라, 레아! 우리가 왔다…… 돌아올 바닥을 다 고쳐 두었잖느냐, 눈을 떠 보거라!”"
+    },
+    {
+      "key": "story.ending.basic.08",
+      "value": "“(레아가 자신을 감싸 쥔 아홉 사람의 따뜻한 손길을 느끼며, 조금도 두렵지 않은 얼굴로 옅게 숨을 내쉰다)\n……다들 무사히 오셨네요. 이리나 언니 말대로…… 억지로 웃지 않고, 제 얼굴 그대로 다섯 분을 다 만났어요.\n테오, 마르타 할머니…… 내 대답은 장부 끝에 그대로 적어 뒀어요……”"
+    },
+    {
+      "key": "story.ending.basic.09",
+      "value": "“(새벽 바람 속에서 레아가 조용히 숨을 거두고, 테오가 떨리는 손으로 두 줄로 지워지지 않은 레아의 마지막 문장이 적힌 공증 장부를 소중히 덮어 닫는다. 오르골의 여섯 번째 박자는 끝내 울리지 않은 채 고요한 새벽 공기 속으로 잦아든다)\n……응, 레아. 두 줄로 지워지지 않은 네 대답, 우리가 끝까지 기억할게.”\n(시스템 알림: 기본 엔딩 — 「이 장부 끝에는 내 대답도 그대로 적어 줘」 완료)"
+    },
+    {
+      "key": "story.ending.basic.10",
+      "value": "“[기록 재개 안내]\n기본 엔딩 기록이 슬롯에 보존되었습니다. 최종전 직전 기록 재개를 선택하면 같은 플레이 기록의 『대법정 승강기 앞』으로 즉시 복귀하여, 수로 대장간 『고밀도 공명 연성로』에서 기본 검술을 3단계 극의(400회)까지 연마한 뒤 카셀전 진 엔딩에 다시 도전할 수 있습니다.”"
+    },
+    {
+      "key": "story.ending.true.01_brooch",
+      "value": "“([공증 기록 #02 — D+1일 06:05]\n여섯 시의 아침 햇살이 구름을 뚫고 대법정 지붕 전망대 위로 눈부시게 쏟아진다. 레아가 떨리는 손으로 목 앞의 다섯 꽃잎 청금석 브로치를 만져 본다. 다섯 줄기의 붉은 균열이 흔적도 없이 사라져 맑은 푸른 빛을 띠고 있고, 바늘에 찔리던 심장도, 흐려지던 눈앞도, 쉬어 있던 목소리와 무겁던 두 발목도 모두 가벼워졌다)\n……브로치의 금이 전부 사라졌어.\n다섯 종언이 카셀에게 완전히 돌아갔어……! 숨이 쉬어져. 아침 햇살이 끝까지 또렷하게 보여!”"
+    },
+    {
+      "key": "story.ending.true.02_beating",
+      "value": "“(다른 사람들이 지붕으로 올라오기 전, 기록검에서 걸어 나온 어제의 레아가 조심스럽게 다가와 오늘의 레아의 왼쪽 가슴에 가만히 귀를 댄다. 조용한 심장 고동 소리가 따뜻한 펠트 피아노와 오르골의 첫 선율로 바뀐다)\n……아직 뛰네.”"
+    },
+    {
+      "key": "story.ending.true.03_seat",
+      "value": "“(오늘의 레아가 눈시울을 붉히며 먼저 두 팔을 뻗어 어제의 자신을 있는 힘껏 끌어안는다)\n응. 우리 자리도 남아 있어.”\n(조작 안내: 어제의 레아(rooftop_echo_embrace)에게 다가가 F / 왼쪽 스틱 누름으로 힘껏 끌어안으세요.)"
+    },
+    {
+      "key": "story.ending.true.04_echo",
+      "value": "“(어제의 레아가 오늘의 품 안에서 처음으로 긴장을 풀고 환하게 웃으며, 따뜻한 아침 빛이 되어 오늘의 레아의 마음과 검신 속으로 고요히 스며든다. 열 살 이전의 기억이나 어제 태운 스물네 시간의 기억이 기적처럼 돌아온 것은 아니었지만, 나를 희생시키려 했던 어제의 나까지 온전히 끌어안고 오늘의 나도 살려냈다는 사실만은 손바닥의 온기처럼 선명했다)\n고마워, 오늘의 나. 내 몫까지 지우지 않고…… 우리 둘 다 아침으로 데려와 줘서.”"
+    },
+    {
+      "key": "story.ending.true.05_mikhail",
+      "value": "“(지붕 문이 열리며 아홉 사람이 한꺼번에 달려 나온다. 가장 먼저 달려온 미하일이 가슴 통증이 완전히 사라진 손으로 레아의 크림색 숄 케이프 솔기를 여며 주고, 왼쪽 옆머리의 파란 리본 매듭을 단정하게 고쳐 묶어 준다)\n……네가 내려놓은 퇴로 발판이 끝까지 버텨 주었구나, 레아.\n내 옷장에 걸어 둔 여섯 번째 코트, 올겨울엔 드디어 주인한테 입힐 수 있겠다. 살아 돌아와 줘서 고맙다.”"
+    },
+    {
+      "key": "story.ending.true.06_julius",
+      "value": "“(검은 머리카락과 젊은 기력을 되찾은 율리우스가 다가와, 자신의 반쪽 회중시계와 레아의 반쪽 회중시계를 나란히 맞대어 보인다. 두 시계의 초침이 이제는 어떤 형벌도 없이 경쾌하고 건강한 아침 시간을 함께 세고 있다)\n우리가 함께 맞춘 왕복 시간표에서 단 일 초도 늦지 않고 돌아왔구나, 레아. 이제 내 시계는 네가 무사히 돌아왔다는 시간만을 가리킨다.”"
+    },
+    {
+      "key": "story.ending.true.07_valeria",
+      "value": "“(육 년 동안 짚고 다니던 코르크 부목을 던져 버리고 두 발로 가볍게 달려온 발레리아가, 아침 햇살 속에서 우아하게 한 바퀴 회전 스텝을 밟은 뒤 레아를 끌어안고 두 발목을 살핀다)\n봐, 레아! 부목 없이도 내 두 다리로 다시 춤을 출 수 있어!\n멋진 동작 대신 안전하게 두 발로 내려서는 길을 택해 줘서…… 정말 고마워, 우리 레아.”"
+    },
+    {
+      "key": "story.ending.true.08_gabriel",
+      "value": "“(가브리엘이 미소 지으며 오른손으로 우리가 정했던 [아래로 향한 손 : 착지·복귀] 신호를 먼저 보여준 뒤, 육 년 만에 되찾은 깊고 따뜻한 진짜 목소리로 천천히 입을 연다)\n……잘 돌아왔다, 레아.\n오늘 아침 여섯 시의 종소리는 처형을 알리는 종이 아니라, 네가 살아 돌아온 아침을 알리는 종소리다.”"
+    },
+    {
+      "key": "story.ending.true.09_irina",
+      "value": "“(맑은 초점이 돌아온 두 눈으로 레아를 한참 동안 바라보던 이리나가 다가와, 물감 묻은 손끝으로 레아의 볼과 눈썹을 쓰다듬으며 눈물을 글썽인다)\n어제까지는 무섭다고 말해 줘서 고마웠고…… 지금 내 두 눈으로 처음 보는 열여섯 살 네 얼굴이 이렇게 환하게 웃고 있어서 더 고마워, 레아. 내가 손끝으로만 그리던 어떤 자화상보다 오늘의 네가 제일 예쁘구나.”"
+    },
+    {
+      "key": "story.ending.true.10_theo_luka",
+      "value": "“(테오가 절뚝이는 다리로 밝게 웃으며 실험 노트를 펼쳐 보이고, 루카가 옆에서 승강장 신호기를 흔든다)\n봐, 레아! 어제가 두 줄로 지웠던 ~~[레아 생존]~~ 칸 옆에 내가 큼직하게 [실전 검증 완료 — 여섯 분 전원 생존 귀환!]이라고 적어 놨어!\n루카: 맞아요, 레아 누나! 누나가 승강장에서 ‘잠깐, 태워 줘’라고 불러 주신 덕분에 오늘 아침 귀환 열차는 만석이에요!”"
+    },
+    {
+      "key": "story.ending.true.11_marta_ethan",
+      "value": "“(마르타가 앞치마로 눈가를 훔치며 다정하게 손짓하고, 에단이 레아의 오른손에 들린 기록검의 맑은 청금석 칼날을 가리킨다)\n마르타: 다락방 아궁이에 아침 국이 다 끓어간단다, 얘들아. 식기 전에 어서 가자꾸나.\n에단: 가기 전에 네 검을 한번 보거라, 레아. 카셀에게 종언이 모두 돌아가면서 네 몸을 묶고 있던 대역 공증 연결과 『카셀 제0식』이라는 공증 등록이 완전히 풀렸다. 이제 그 백지각인검의 첫 칸은 진짜 백지다. 네가 직접 첫 이름을 붙여 줘라.”"
+    },
+    {
+      "key": "story.ending.true.12_blank_slate",
+      "value": "“(레아가 자신의 스킬창과 검신을 내려다본다. 다섯 은인의 대역 기술과 『원죄공증검 — 카셀 제0식』이라는 붉은 공증 명칭이 깨끗이 지워져 새하얀 백지 첫 칸이 비어 있다. 그러나 검을 쥐는 감각과 아홉 사람과 함께 걸어온 발걸음은 조금도 사라지지 않았다)\n카셀이 심었던 모체 검술이라는 이름은 사라졌지만, 내 손이 검을 쥐는 법도, 다섯 분과 테오·에단 아저씨·마르타 할머니·루카에게 배운 마음도 전부 내 안에 남아 있어.”"
+    },
+    {
+      "key": "story.ending.true.13_swing_prompt",
+      "value": "“누군가의 죽음을 대신 짊어지기 위한 대역 검술이 아니라, 오늘을 살아가는 내가 내 이름으로 쓰는 첫 번째 동작을 여기 새길래요!”\n(조작 안내: 아침 햇살이 비치는 지붕 전망대 앞(rea_form_one_sky)에서 검술 버튼(J / Z / 좌클릭 / 패드 X)을 눌러 레아만의 첫 베기를 직접 휘두르세요!)"
+    },
+    {
+      "key": "story.ending.true.14_registered",
+      "value": "“(레아가 아침 하늘을 향해 맑고 경쾌한 청금빛·금빛 대각선 베기를 휘두르는 순간, 백지 스킬창 첫 번째 칸에 따뜻한 금빛 글씨로 새로운 고유 기술이 각인된다:\n[신규 고유 기술 등록 : 레아류 제1식 — 어제의 나와 내일 아침 마중 가기])”\n“됐다……! 어제의 나와 오늘의 내가 함께 만든 우리의 첫 번째 검술, 『레아류 제1식』이야!”"
+    },
+    {
+      "key": "story.ending.true.15_luka_call",
+      "value": "“자, 다들 승강판으로 오세요! 망각 다락방 행 아침 첫 궤도차, 지금 출발합니다!”"
+    },
+    {
+      "key": "story.ending.true.16_to_attic",
+      "value": "“응! 배고프다, 다 같이 아침 먹으러 가요!”\n(조작 안내: 지붕 승강장 출구(rooftop_to_attic_exit)에서 F / 왼쪽 스틱 누름으로 망각 다락방 아침 식탁으로 이동하세요.)"
+    },
+    {
+      "key": "story.ending.true.17_marta_table",
+      "value": "“([공증 기록 #02 — D+1일 06:30 / 거점 · 망각 다락방]\n따뜻한 햇살이 가득 들어찬 다락방의 긴 나무 식탁 위. 마르타가 어제 아침 예약판에 찍혀 있던 대로 미하일·율리우스·발레리아·가브리엘·이리나, 그리고 레아의 몫인 여섯 번째 그릇까지 김이 모락모락 나는 아침 수프 여섯 그릇을 나란히 내려놓고, 테오·에단·루카·자신의 찻잔과 빵 바구니를 함께 차려낸다)\n자, 어제 아침에 네가 다섯 분 모셔 오겠다고 약속했던 여섯 그릇, 한 그릇도 빠짐없이 다 차렸단다!”"
+    },
+    {
+      "key": "story.ending.true.18_board",
+      "value": "“(출입문 옆 식사 예약판에 반듯하게 찍혀 있는 여섯 개의 도장과, 탁자 위 열린 『청금석 소리상자』와 박하사탕 접시를 바라본다)\n어제의 내가 소리상자에 남겼던 한마디…… ‘내일의 나는 따뜻한 걸 먹었으면 좋겠어요’였잖아.\n마르타 할머니, 제가 어제 아침에 직접 찍어 뒀던 여섯 번째 자리, 비워 두지 않고 정말로 돌아왔어요!”"
+    },
+    {
+      "key": "story.ending.true.19_sit",
+      "value": "“(미하일이 식탁 한가운데의 여섯 번째 의자를 쓱 빼어 주며 무뚝뚝하지만 가장 따뜻한 목소리로 말한다)\n서서 구경만 할 셈이냐, 레아. 네가 직접 도장 찍어 둔 여섯 번째 자리다. 국 식기 전에 어서 와서 앉거라.”\n(조작 안내: 식탁의 여섯 번째 자리(sixth_breakfast_seat)로 이동해 F / 왼쪽 스틱 누름으로 앉으세요.)"
+    },
+    {
+      "key": "story.ending.true.20_sixth_beat",
+      "value": "“(레아가 다섯 은인과 네 조력자 사이의 여섯 번째 의자에 앉는 순간!\n타이틀 테마부터 거점과 다섯 구역, 잔향전과 카셀전에 이르기까지 늘 여섯 번째 박자가 쉼표(침묵)로 비어 있던 『여섯 번째 박자가 비어 있는 왈츠』의 마지막 여섯 번째 박자가, 사운드트랙 전체에서 오직 이 순간 처음으로 따뜻한 오르골·피아노·풀 챔버 현악 화음으로 또렷하게 채워지며 온전한 6박자 왈츠로 완성된다!\n미완의 예법도, 두 줄로 지워진 빈자리도 아닌, 열 사람이 함께 숨 쉬는 아침의 음악이 다락방을 가득 채운다)\n……들려, 오늘의 나? 내내 비어 있던 여섯 번째 박자가 드디어 채워졌어.”"
+    },
+    {
+      "key": "story.ending.true.21_spoon",
+      "value": "“(레아가 따뜻한 수프 그릇을 두 손으로 감싸 쥐고, 모락모락 피어오르는 김 속에서 첫 숟가락을 크게 떠서 입에 넣는다. 뺨 위로 따뜻한 눈물 한 방울이 굴러떨어지지만 입가에는 가장 편안하고 환한 미소가 번진다)\n……따뜻해. 정말 맛있어요, 마르타 할머니!”\n(조작 안내: F / 왼쪽 스틱 누름 또는 Enter / A로 여섯 번째 그릇의 따뜻한 아침 식사를 함께하세요.)"
+    },
+    {
+      "key": "story.ending.true.22_complete",
+      "value": "“(창밖 시계탑의 초침이 되감기지 않고 앞으로, 내일을 향해 힘차게 걸어간다. 다락방 식탁에 둘러앉은 열 사람의 웃음소리 위로 마지막 공증 기록이 금빛으로 새겨진다)\n고마워, 어제의 나. 그리고 날 도와준 모든 사람들.\n우리의 오늘은 이제부터 시작이야!”\n(시스템 최종 인장: [공증 완료: 레아의 오늘 / 시간 진행 중] — 진 엔딩 「백지 위에 쓰는 우리의 첫 번째 동작, 그리고 여섯 그릇의 아침」 완결)"
+    },
+    {
+      "key": "story.resume.lift.01",
+      "value": "“([최종전 직전 기록 재개 — 장소: 대법정 승강기 앞]\n카셀과 결전을 치르기 직전, 어제의 내가 은실 봉합 장벽을 거두고 코어에 동행한 대법정 승강기 앞 기록으로 돌아왔어.\n다섯 은인 기술의 3단계 사용권도 모두 원래대로 돌아와 있고, 마지막 장부에 적었던 우리 대답도 슬롯에 그대로 남아 있어.”"
+    },
+    {
+      "key": "story.resume.lift.02_echo",
+      "value": "“(기록검 코어 속에서 어제의 레아가 힘찬 목소리로 말을 건넨다)\n방금 결전에서 우리는 다섯 갈래 반환 예약(R=5)까지는 완벽하게 성공시켰어, 오늘의 나.\n이제 카셀의 마지막 『카셀 제0식』을 정면에서 맞받아칠 수 있도록, 우리의 기본 검술을 3단계 극의(400회)까지 완성하기만 하면 돼. 그러면 이번엔 코어를 태우지 않고 다섯 종언을 카셀에게 일괄 확정 반환하고 우리 둘 다 살아남을 수 있어!”"
+    },
+    {
+      "key": "story.resume.lift.03_theo",
+      "value": "“(통신 나팔 너머로 테오의 안내 목소리가 들려온다)\n레아! 기본 검술 횟수를 채우려면 억지로 구역을 길게 돌아다닐 필요 없어. 바로 옆 귀환 통로나 스테이지 선택으로 에단 아저씨의 수로 대장간 『고밀도 공명 연성로』로 오면, 정예 패링·연격 훈련으로 부족한 횟수를 금방 400회까지 채우고 다시 그 승강기 앞으로 돌아갈 수 있어!”\n(조작 안내: 수로 대장간 / 고밀도 공명 연성로로 이동해 기본 검술을 3단계(400회)까지 연마하거나, 승강기 제어반에서 즉시 카셀전에 재도전하세요.)"
+    },
+    {
+      "key": "story.resume.crucible.01_ethan",
+      "value": "“(수로 대장간 안쪽의 거대한 청금석 가마 『고밀도 공명 연성로』의 화구 문을 열어젖히며 에단이 고개를 끄덕인다)\n왔구나, 레아. 카셀의 모체 검술을 마지막 네 번째 타격까지 맞받아치려면 네 손에 익은 기본 검술이 사백 번째 극의에 닿아야 한다.\n이 연성로 안에는 네 기본 패링과 기본 검술 연격을 지체 없이 받아 줄 고밀도 공명 표적과 파수병들이 준비되어 있다. 이분이면 충분하니 마음껏 검을 휘둘러 보거라!”\n(조작 안내: 고밀도 공명 연성로(resonant_crucible)를 F / 왼쪽 스틱 누름으로 가동하세요.)"
+    },
+    {
+      "key": "story.resume.crucible.02_theo",
+      "value": "“연성로 계측기 켰어, 레아! 금빛 공격을 패링하거나 바로 기본 검술 연격을 끝까지 꽂아 넣으면 유효 횟수가 빠르게 올라가. 400회 『원죄공증검 — 카셀 제0식』이 열릴 때까지 몰아치자!”\n(조작 안내: 연성로 웨이브에서 기본 검술을 유효 적중시켜 누적 400회(3단계 극의 B=3)를 달성하세요.)"
+    },
+    {
+      "key": "story.resume.crucible.03_ethan",
+      "value": "“(사백 번째 유효 타격과 함께 검신 세 번째 마디까지 황금빛·청금빛 각인이 가득 차오르며 [진명 개방: 카셀 제0식 · 원형 동작 확인]이 울려 퍼진다! 에단이 만족스러운 눈빛으로 검신을 바라본다)\n……됐다. 이제 네 백지각인검은 카셀의 원형 동작 4연격을 첫 타부터 끝 타까지 한 치의 오차도 없이 맞받아칠 수 있다. 비상 파괴로 검을 태울 필요 없다. 정면에서 베어 넘기고 살아 돌아오너라!”"
+    },
+    {
+      "key": "story.resume.crucible.04_rea",
+      "value": "“고마워요, 에단 아저씨, 테오! 이제 출정 화면에서도 『생존 반환 미확보』 경고가 사라지고 원형 동작이 완전히 준비됐어.\n대법정 승강기 앞으로 돌아가서, 이번엔 꼭 살아서 아침 식탁으로 내려올게요!”\n(조작 안내: 대장간 직통 통로(forge_to_court_lift)에서 F / 왼쪽 스틱 누름으로 대법정 승강기 앞에 복귀해 카셀전 진 엔딩에 도전하세요.)"
+    },
+    {
+      "key": "story.epilogue.01_marta",
+      "value": "“(아침 햇살이 머무는 망각 다락방. 이제 화면 상단에는 처형 시한 카운트다운 대신 [공증 완료: 레아의 오늘 / 시간 진행 중]이 평온하게 떠 있다. 마르타가 따뜻한 박하 공명차 한 잔을 레아 앞에 놓아 준다)\n아침 수프 여섯 그릇을 다 비우고도 박하차 들어갈 배는 남아 있지, 우리 레아? 이제 누구한테도 쫓기지 말고 천천히 마시렴.”\n(조작 안내: 식탁 위의 따뜻한 박하 공명차(attic_mint_tea)를 F / 왼쪽 스틱 누름으로 마시며 평화로운 아침을 만끽하세요.)"
+    },
+    {
+      "key": "story.epilogue.02_benefactors",
+      "value": "“(다락방 창가와 계단참에서 다섯 은인이 저마다 건강한 모습으로 레아에게 인사를 건넨다)\n미하일: 새 겨울 코트 소매 길이가 딱 맞는구나. 솔기 뜯어지면 언제든 재단실로 가져오거라.\n율리우스·발레리아·가브리엘·이리나: 시계탑도, 오페라 무대도, 아침 종루도, 온실 화랑도 이제 모두 네가 언제든 놀러 올 수 있는 우리 집이야, 레아.”"
+    },
+    {
+      "key": "story.epilogue.03_theo",
+      "value": "“레아, 분소 작업실의 코어 기록 열람 단말에는 우리가 모아 둔 모든 단서와 다섯 은인분들의 각인 기록이 그대로 보존되어 있어. 아직 확인하지 못한 선택 열람 기록이 있다면 언제든 단말이나 조사 로그에서 다시 읽어 볼 수 있어!”"
+    },
+    {
+      "key": "story.epilogue.04_ethan_replay",
+      "value": "“그리고 만약 이 검에 새겨진 여정을 처음부터 다시 되짚어 보고 싶다면 메뉴의 『기록 재플레이』를 사용하면 된다.\n네가 다시 기억을 태우거나 새로운 회차를 겪는 게 아니다. 완결된 이 기록 위에 우리의 시간 각인 연마와 각인 중첩의 빛깔을 간직한 채 그날 아침의 시작 구성을 다시 펼쳐 보는 기능이지.”"
+    },
+    {
+      "key": "story.epilogue.05_rea_final",
+      "value": "“(백지 스킬창 첫 칸에 반짝이는 『레아류 제1식 — 어제의 나와 내일 아침 마중 가기』를 확인하고, 왼쪽 옆머리의 파란 리본과 파우치 속 반쪽 시계를 가볍게 매만지며 미소 짓는다)\n응! 어제의 나와 오늘의 내가 함께 지켜 낸 이 아침을, 언제까지나 소중히 걸어갈게요!”"
+    },
+    {
+      "key": "area.speaker.rea_echo",
+      "value": "잔향 · 어제의 레아"
+    },
+    {
+      "key": "area.speaker.cassel",
+      "value": "대공증관 카셀"
+    },
+    {
+      "key": "area.room.court_01_hall",
+      "value": "대법정 · 중앙 홀과 박제관 분기 계단"
+    },
+    {
+      "key": "area.room.court_02_echo_arena",
+      "value": "대법정 · 잔향 대련장"
+    },
+    {
+      "key": "area.room.court_03_lift",
+      "value": "대법정 승강기 앞"
+    },
+    {
+      "key": "area.room.court_04_tribunal",
+      "value": "대법정 · 최상층 심판석"
+    },
+    {
+      "key": "area.room.court_05_rooftop",
+      "value": "대법정 · 새벽의 지붕 전망대"
+    },
+    {
+      "key": "area.target.court_control_pillar",
+      "value": "청금석 제어 연결 기둥"
+    },
+    {
+      "key": "area.target.echo_notes",
+      "value": "검 실험 기록과 귀환 경로"
+    },
+    {
+      "key": "area.target.echo_side_knot",
+      "value": "옆길 지지대 매듭"
+    },
+    {
+      "key": "area.target.echo_escape_step",
+      "value": "계단 옆 안전 발판"
+    },
+    {
+      "key": "area.target.echo_seal_barrier",
+      "value": "승강기 은실 봉합 장벽"
+    },
+    {
+      "key": "area.target.echo_hand_clasp",
+      "value": "어제의 레아의 손"
+    },
+    {
+      "key": "area.target.cassel_lift_console",
+      "value": "최상층 승강기 제어반"
+    },
+    {
+      "key": "area.target.rooftop_echo_embrace",
+      "value": "어제의 레아"
+    },
+    {
+      "key": "area.target.basic_ending_ledger",
+      "value": "마지막 공증 장부"
+    },
+    {
+      "key": "area.target.rea_form_one_sky",
+      "value": "레아류 제1식 허공 표적"
+    },
+    {
+      "key": "area.target.rooftop_to_attic_exit",
+      "value": "다락방행 승강장"
+    },
+    {
+      "key": "area.target.sixth_breakfast_seat",
+      "value": "여섯 번째 식탁 자리"
+    },
+    {
+      "key": "area.target.attic_mint_tea",
+      "value": "박하 공명차"
+    },
+    {
+      "key": "area.target.forge_to_court_lift",
+      "value": "대법정 승강기 복귀 통로"
+    }
+  ]
+}

@@ -13,6 +13,7 @@ namespace RewindNotary
         private CanvasCarveSkill owner;
         private CombatMotor2D player;
         private float until;
+        private float returnFadeUntil;
         private bool supported, credit, retiring;
         private Sprite sprite;
         private SpriteRenderer visual;
@@ -42,6 +43,14 @@ namespace RewindNotary
         private void Update()
         {
             if (!GameInput.GameplayEnabled) return;
+            if (returnFadeUntil > 0)
+            {
+                float left = returnFadeUntil - Time.time;
+                visual.color = new Color(0.2f, 0.8f, 1f, Mathf.Clamp01(left / 3f));
+                if (left <= 0) { Remove(); }
+                return;
+            }
+
             if (retiring) { if (!Supporting()) Remove(); return; }
             if (!Live) return;
             if (Time.time >= until) { Retire(); return; }
@@ -54,8 +63,11 @@ namespace RewindNotary
             if (credit) owner.ReportEffect(name + ":projectile_block");
             return true;
         }
+        public void BeginReturnFade()
+        { Live = credit = false; retiring = false; returnFadeUntil = Time.time + 3f; }
         public void Retire()
         {
+            if (returnFadeUntil > 0) return;
             Live = credit = false;
             retiring = Supporting();
             if (retiring) visual.color = new Color(0.2f, 0.8f, 1f, 0.4f);

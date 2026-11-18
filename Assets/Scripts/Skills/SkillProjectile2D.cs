@@ -13,6 +13,10 @@ namespace RewindNotary
         private Vector2 velocity;
         private float remaining = SkillGeometry.ProjectileLifetime;
         private bool spent;
+        private int damage = SkillGeometry.ProjectileDamage;
+        private float flightSpeed = SkillGeometry.ProjectileSpeed;
+        public void ConfigureTrialShot(Vector2 flight, int hitDamage, float lifetime)
+        { velocity = flight; flightSpeed = flight.magnitude; damage = hitDamage; remaining = lifetime; }
         private Sprite sprite;
         private SpriteRenderer visual;
         public void Initialize(CombatMotor2D actor, CombatMotor2D target)
@@ -31,7 +35,7 @@ namespace RewindNotary
             if (spent || !Hostile) return false;
             if (!reflect) { Consume(); return true; }
             Hostile = false; temporal.Release();
-            velocity = ((Vector2)(enemy.transform.position + Vector3.up - transform.position)).normalized * SkillGeometry.ProjectileSpeed;
+            velocity = ((Vector2)(enemy.transform.position + Vector3.up - transform.position)).normalized * flightSpeed;
             visual.color = Color.cyan; return true;
         }
         public bool Block() { if (spent || !Hostile) return false; Consume(); return true; }
@@ -53,7 +57,7 @@ namespace RewindNotary
             transform.position = end;
             var target = Hostile ? player : enemy;
             if (!target.Health.Dead && swept.Intersects(target.GetComponent<Collider2D>().bounds))
-            { target.Health.Hit(SkillGeometry.ProjectileDamage, start); Consume(); }
+            { target.Health.Hit(Hostile ? damage : FinaleCombat.Scale(player.Skills, damage), start); Consume(); }
         }
         private void OnDestroy() { if (sprite != null) Destroy(sprite); }
         public static void ClearAll()

@@ -13,7 +13,8 @@ namespace RewindNotary
         private struct Echo { public float at; public Bounds blade; public int damage; public AttackEcho2D.Pose pose; }
         public override void Initialize(SkillSession skills, CombatMotor2D target)
         { base.Initialize(skills, target); motor.BasicStrikeDelivered += QueueEcho; }
-        public override bool Activate()
+        public override bool Activate() => Activate(GameInput.PaintWallHeld);
+        public bool Activate(bool paintWall)
         {
             if (!CanAct || Time.time < readyAt) return false;
             bool fresh = !Active;
@@ -22,7 +23,7 @@ namespace RewindNotary
             if (drawn >= profile.installationLimit || PaintSurface2D.All.Count >= profile.installationLimit)
             { if (fresh) Finish(); return false; }
             PaintSurface2D first = strokes.Count > 0 && strokes[0] != null && strokes[0].Live ? strokes[0] : null;
-            bool wall = use.Stage >= 2 && (first != null ? !first.Wall : GameInput.PaintWallHeld);
+            bool wall = use.Stage >= 2 && (first != null ? !first.Wall : paintWall);
             Vector2 size = wall ? new Vector2(SkillGeometry.PaintThickness, profile.reach) : new Vector2(profile.reach, SkillGeometry.PaintThickness);
             Vector2 at = motor.Body.position + (wall
                 ? new Vector2(motor.Facing * SkillGeometry.WallOffset, profile.reach * 0.5f + SkillGeometry.PaintGroundOffset)
@@ -71,7 +72,7 @@ namespace RewindNotary
             {
                 var echo = echoes.Dequeue(); AttackEcho2D.Show(echo.pose);
                 // Never call Attack/BeginUse/BasicStrikeDelivered: copies cannot copy themselves or credit sword.
-                Damage(echo.blade, echo.damage); Stroke(echo.blade.min, echo.blade.max, Color.cyan);
+                Damage(echo.blade, echo.damage, false); Stroke(echo.blade.min, echo.blade.max, Color.cyan);
             }
             bool live = false;
             foreach (var paint in strokes) if (paint != null && paint.Live) live = true;

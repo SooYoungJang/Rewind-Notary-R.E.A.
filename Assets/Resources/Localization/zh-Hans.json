@@ -1,0 +1,3937 @@
+{
+  "language": "zh-Hans",
+  "entries": [
+    {
+      "key": "finale.ending.true",
+      "value": "已达成真结局条件"
+    },
+    {
+      "key": "finale.ending.basic",
+      "value": "已达成普通结局条件"
+    },
+    {
+      "key": "finale.ending.defeat",
+      "value": "战败 · 准备再战"
+    },
+    {
+      "key": "finale.result",
+      "value": "结果：{0}"
+    },
+    {
+      "key": "finale.approaching",
+      "value": "接近中"
+    },
+    {
+      "key": "finale.original_sword",
+      "value": "原型剑术 · {0}"
+    },
+    {
+      "key": "finale.mirror_open",
+      "value": "镜面暴露 · F / 左摇杆：选择归还技能"
+    },
+    {
+      "key": "finale.mirror_closed",
+      "value": "镜面闭合 · 普通招架后用剑术破防"
+    },
+    {
+      "key": "finale.selected_finisher",
+      "value": "\n所选技能终结招式：{0}"
+    },
+    {
+      "key": "finale.core_hint",
+      "value": "核心 {0}/{1} · 普通招架后打满连段 / B<3则摧毁核心"
+    },
+    {
+      "key": "finale.boss_status",
+      "value": "卡塞尔 第{0}阶段 · 已预约归还 {1}/5 · 刻印 +{2}%（×{3}）\n{4}"
+    },
+    {
+      "key": "finale.already_pledged",
+      "value": "该技能已预约归还。"
+    },
+    {
+      "key": "finale.return_requirements",
+      "value": "请确认镜面已暴露，且技能达到3阶。"
+    },
+    {
+      "key": "finale.return_instructions",
+      "value": "已预约归还 {0}/5 · 刻印输出 +{1}%\n选择并确认后，在镜面暴露期间靠近卡塞尔，完整施放该技能。"
+    },
+    {
+      "key": "finale.available_suffix",
+      "value": " · 可选择"
+    },
+    {
+      "key": "finale.pledged_suffix",
+      "value": " · 已预约归还"
+    },
+    {
+      "key": "finale.back_to_battle",
+      "value": "返回战斗"
+    },
+    {
+      "key": "finale.confirm_return_body",
+      "value": "选择归还{0}。\n\n对斩完成后，本场战斗将无法再使用该技能。\n刻印输出 +{1}% · 基础剑术和剩余技能获得强化。\n移动、跳跃、冲刺、招架及剑术不受影响。平台将在3秒后消失。\n所有终焉将在最后一次原型对斩成功后统一归还。"
+    },
+    {
+      "key": "finale.cancel_return",
+      "value": "取消 · 重新选择技能"
+    },
+    {
+      "key": "finale.arm_return",
+      "value": "确认 · 准备以所选技能对斩"
+    },
+    {
+      "key": "finale.debug_save_failed",
+      "value": "保存失败 · 暂缓进入测试"
+    },
+    {
+      "key": "finale.requires_five_skills",
+      "value": "挑战卡塞尔需要五项技能均达到3阶。"
+    },
+    {
+      "key": "stage.already_running",
+      "value": "已有正在进行的关卡。"
+    },
+    {
+      "key": "finale.entry_locked",
+      "value": "尚未满足卡塞尔战的进入条件。"
+    },
+    {
+      "key": "skill.unowned_suffix",
+      "value": "（未获得）"
+    },
+    {
+      "key": "skill.return_suffix",
+      "value": " [已预约归还]"
+    },
+    {
+      "key": "hud.skill_progress",
+      "value": "{0} · {1}次 · {2}阶{3}{4}"
+    },
+    {
+      "key": "boot.failure",
+      "value": "无法启动，请查看控制台。"
+    },
+    {
+      "key": "game.title",
+      "value": "回溯公证录：蕾娅"
+    },
+    {
+      "key": "hud.rea_health",
+      "value": "蕾娅    {0} / {1}"
+    },
+    {
+      "key": "hud.test_save",
+      "value": "测试存档（与正式存档分离）"
+    },
+    {
+      "key": "hud.save_slot",
+      "value": "保存至存档位{0}"
+    },
+    {
+      "key": "hud.preview_suffix",
+      "value": " · {0}阶形态预览（不计成长）"
+    },
+    {
+      "key": "defense.dashing",
+      "value": "冲刺中"
+    },
+    {
+      "key": "defense.parry_window",
+      "value": "招架判定中"
+    },
+    {
+      "key": "defense.parry_recovery",
+      "value": "招架失败 · 硬直中"
+    },
+    {
+      "key": "defense.counter_ready",
+      "value": "可反击 · 下次剑术攻击强化"
+    },
+    {
+      "key": "defense.ready",
+      "value": "防御就绪"
+    },
+    {
+      "key": "defense.air_spent",
+      "value": "已用尽"
+    },
+    {
+      "key": "defense.air_available",
+      "value": "剩余1次"
+    },
+    {
+      "key": "hud.dash_cooldown",
+      "value": "冲刺 {0}秒 · 空中：{1}"
+    },
+    {
+      "key": "input.gameplay",
+      "value": "移动 A/D·方向键·摇杆 | 跳跃 Space·A | 剑术 J/Z/左键·X | 技能 Q·Y | 冲刺 Shift/K·LB | 招架 L·RB"
+    },
+    {
+      "key": "hud.trial_hint",
+      "value": "与恩人验证技能有效使用 · 充能支援 / 重试不重置成长上限"
+    },
+    {
+      "key": "hud.wave_hint",
+      "value": "青金核心：基础剑术 · 金色预警：招架/冲刺 · 红色防御：指定技能"
+    },
+    {
+      "key": "hud.checkpoint_hint",
+      "value": "竞技场返回点已激活 · 留意金色预警。"
+    },
+    {
+      "key": "hud.reach_arena",
+      "value": "向右跨过平台与缺口，前往演武场。"
+    },
+    {
+      "key": "input.retry_pause",
+      "value": "{0}  R·View：重新开始 | Esc·Menu：暂停"
+    },
+    {
+      "key": "input.debug",
+      "value": "F1~F3形态 · F4实际 · F5/F6临界值 | F7残响 / F8卡塞尔399 / Shift+F8卡塞尔120（测试）"
+    },
+    {
+      "key": "trial.health",
+      "value": "练习生命 {0}/{1} · 耗尽后继续练习 · R重置站位"
+    },
+    {
+      "key": "input.benefactor_support",
+      "value": "方向 + H / 按下右摇杆：恩人支援\n{0}"
+    },
+    {
+      "key": "hud.echo_phase",
+      "value": "残响 第{0}阶段 · {1}"
+    },
+    {
+      "key": "hud.practice_complete",
+      "value": "测试对练完成"
+    },
+    {
+      "key": "hud.retrying",
+      "value": "再次挑战……"
+    },
+    {
+      "key": "input.retry_button",
+      "value": "按R / 手柄View键再次挑战。"
+    },
+    {
+      "key": "hud.returning_checkpoint",
+      "value": "正在返回复活点。"
+    },
+    {
+      "key": "investigation.progress",
+      "value": "调查线索 {0}/{1} · 已阅 {2}/{3}"
+    },
+    {
+      "key": "investigation.collect_condition",
+      "value": "收集{0}"
+    },
+    {
+      "key": "investigation.transfers_condition",
+      "value": "终焉转移 {0}/5"
+    },
+    {
+      "key": "investigation.skill_condition",
+      "value": "{0} {1}阶"
+    },
+    {
+      "key": "investigation.trial_condition",
+      "value": "完成{0}的对练验证"
+    },
+    {
+      "key": "investigation.read_condition",
+      "value": "完成{0}的阅览"
+    },
+    {
+      "key": "investigation.mid_condition",
+      "value": "完成中期调查与剑术实验"
+    },
+    {
+      "key": "investigation.unknown_condition",
+      "value": "未知条件"
+    },
+    {
+      "key": "investigation.done_prefix",
+      "value": "[已完成] "
+    },
+    {
+      "key": "investigation.pending_prefix",
+      "value": "[待完成] "
+    },
+    {
+      "key": "investigation.any_conditions",
+      "value": "\n另需满足以下任一项：\n{0}"
+    },
+    {
+      "key": "investigation.all_conditions",
+      "value": "需满足全部条件\n{0}{1}"
+    },
+    {
+      "key": "investigation.scroll_hint",
+      "value": "{0} · 左右：滚动内容"
+    },
+    {
+      "key": "ui.selected_prefix",
+      "value": "[已选择] "
+    },
+    {
+      "key": "investigation.collected_prefix",
+      "value": "[已收集] "
+    },
+    {
+      "key": "investigation.uncollected_prefix",
+      "value": "[未收集] "
+    },
+    {
+      "key": "investigation.summary_pending",
+      "value": "摘要待接入"
+    },
+    {
+      "key": "investigation.body_pending",
+      "value": "正文待接入"
+    },
+    {
+      "key": "investigation.read_again",
+      "value": "已阅 · 再次查看"
+    },
+    {
+      "key": "investigation.read_available",
+      "value": "可阅览"
+    },
+    {
+      "key": "investigation.core_required",
+      "value": "已解锁 · 请前往核心终端阅览"
+    },
+    {
+      "key": "investigation.locked_requirements",
+      "value": "未解锁 · 查看条件"
+    },
+    {
+      "key": "ui.back_to_game",
+      "value": "返回游戏"
+    },
+    {
+      "key": "ui.back_to_skills",
+      "value": "返回技能状态"
+    },
+    {
+      "key": "investigation.entry_suffix",
+      "value": " · 条目 {0}/{1}"
+    },
+    {
+      "key": "ui.locked_suffix",
+      "value": " · 未解锁"
+    },
+    {
+      "key": "investigation.new_record_hint",
+      "value": "\n\n请前往测试关卡起点左侧的核心终端，阅览新记录。"
+    },
+    {
+      "key": "investigation.title_pending",
+      "value": "记录标题待接入"
+    },
+    {
+      "key": "investigation.record_summary_pending",
+      "value": "记录摘要待接入"
+    },
+    {
+      "key": "investigation.related_clues",
+      "value": "相关线索\n{0}"
+    },
+    {
+      "key": "ui.back_to_investigation",
+      "value": "返回调查日志"
+    },
+    {
+      "key": "investigation.previous_entry",
+      "value": "上一条"
+    },
+    {
+      "key": "investigation.next_review",
+      "value": "下一条 / 结束重读"
+    },
+    {
+      "key": "investigation.confirm_entry",
+      "value": "确认条目 · 下一条"
+    },
+    {
+      "key": "investigation.close_keep_progress",
+      "value": "关闭 · 保留进度"
+    },
+    {
+      "key": "input.investigation",
+      "value": "调查地点：F / 按下左摇杆\nEsc → 技能状态 → 调查日志"
+    },
+    {
+      "key": "investigation.read_core",
+      "value": "阅览核心记录"
+    },
+    {
+      "key": "investigation.reread",
+      "value": "再次阅览"
+    },
+    {
+      "key": "investigation.inspect",
+      "value": "调查"
+    },
+    {
+      "key": "input.inspect_action",
+      "value": "F / 按下左摇杆：{0}"
+    },
+    {
+      "key": "investigation.wait_for_action",
+      "value": "落地并结束当前动作后即可调查。"
+    },
+    {
+      "key": "echo.observing",
+      "value": "观察记录中"
+    },
+    {
+      "key": "echo.mimicking",
+      "value": "模仿{0}"
+    },
+    {
+      "key": "echo.opening_suffix",
+      "value": " · 轮换破绽！"
+    },
+    {
+      "key": "echo.switch_hint_suffix",
+      "value": " · 切换技能制造破绽"
+    },
+    {
+      "key": "save.unsupported_version",
+      "value": "不支持此存档版本，原文件已保留。"
+    },
+    {
+      "key": "save.unknown_field",
+      "value": "未知字段：{0}"
+    },
+    {
+      "key": "save.missing_field",
+      "value": "缺少字段：{0}"
+    },
+    {
+      "key": "save.invalid_object",
+      "value": "对象类型错误"
+    },
+    {
+      "key": "save.invalid_array",
+      "value": "数组类型错误"
+    },
+    {
+      "key": "save.invalid_string",
+      "value": "字符串类型错误"
+    },
+    {
+      "key": "save.invalid_boolean",
+      "value": "布尔类型错误"
+    },
+    {
+      "key": "save.invalid_integer",
+      "value": "整数类型或范围错误"
+    },
+    {
+      "key": "save.corrupt_json",
+      "value": "存档JSON损坏：{0}"
+    },
+    {
+      "key": "save.trailing_data",
+      "value": "末尾有多余数据"
+    },
+    {
+      "key": "save.syntax_truncated",
+      "value": "语法错误或数据截断"
+    },
+    {
+      "key": "save.nesting_depth",
+      "value": "嵌套层数超限"
+    },
+    {
+      "key": "save.truncated",
+      "value": "数据截断"
+    },
+    {
+      "key": "save.duplicate_field",
+      "value": "重复字段：{0}"
+    },
+    {
+      "key": "save.invalid_literal",
+      "value": "字面量错误或截断"
+    },
+    {
+      "key": "save.number_syntax",
+      "value": "数字语法错误"
+    },
+    {
+      "key": "save.truncated_number",
+      "value": "数字截断"
+    },
+    {
+      "key": "save.unicode_pair",
+      "value": "Unicode代理对错误"
+    },
+    {
+      "key": "save.control_character",
+      "value": "字符串含非法控制字符"
+    },
+    {
+      "key": "save.truncated_escape",
+      "value": "转义序列截断"
+    },
+    {
+      "key": "save.unicode_escape",
+      "value": "Unicode转义错误"
+    },
+    {
+      "key": "save.escape_syntax",
+      "value": "转义语法错误"
+    },
+    {
+      "key": "save.truncated_string",
+      "value": "字符串截断"
+    },
+    {
+      "key": "save.backup_readable",
+      "value": "存在可读取的旧备份，原文件与备份均已保留。"
+    },
+    {
+      "key": "save.backup_unreadable",
+      "value": "没有可读取的备份，文件已保留。"
+    },
+    {
+      "key": "save.use_compatible_version",
+      "value": "{0} {1} 请使用兼容的游戏版本读取。"
+    },
+    {
+      "key": "save.backup_restored",
+      "value": "已恢复上次正常备份，最近一次保存后的进度可能丢失。原文件已保留。"
+    },
+    {
+      "key": "save.recovery_failed",
+      "value": "无法恢复存档。已保留原文件与备份，并禁止写入：{0} / {1}"
+    },
+    {
+      "key": "save.invalid_version",
+      "value": "存档版本或规则版本无效。"
+    },
+    {
+      "key": "save.empty_file",
+      "value": "存档文件为空。"
+    },
+    {
+      "key": "save.missing_investigation",
+      "value": "存档缺少调查记录，原文件已保留。"
+    },
+    {
+      "key": "save.missing_finale",
+      "value": "存档缺少最终战记录。"
+    },
+    {
+      "key": "save.legacy_slot_mismatch",
+      "value": "旧存档的存档位不匹配。"
+    },
+    {
+      "key": "save.slot_mismatch",
+      "value": "存档位不匹配。"
+    },
+    {
+      "key": "save.slot_in_use",
+      "value": "该存档位已被占用，请先删除。"
+    },
+    {
+      "key": "save.slot_blocked",
+      "value": "无法写入已删除或需要恢复的存档位。"
+    },
+    {
+      "key": "save.no_record",
+      "value": "没有可保存的记录。"
+    },
+    {
+      "key": "save.wrong_slot",
+      "value": "该记录属于其他存档位。"
+    },
+    {
+      "key": "save.failed_preserved",
+      "value": "保存失败（正常存档已保留）：{0}"
+    },
+    {
+      "key": "save.legacy_migrated",
+      "value": "已将旧记录迁移至存档位1，原文件已保留。{0}"
+    },
+    {
+      "key": "save.usage_log_failed",
+      "value": "使用日志写入失败：{0}"
+    },
+    {
+      "key": "skill.acquired_notice",
+      "value": "已获得{0} — 1~5 / E·手柄B选择，Q·Y使用"
+    },
+    {
+      "key": "skill.stage_up_notice",
+      "value": "{0} {1}阶 — 招式已融会贯通"
+    },
+    {
+      "key": "skill.doom_transfer_notice",
+      "value": "极意完全再现 · {0} → 蕾娅"
+    },
+    {
+      "key": "skill.doom_restored_notice",
+      "value": "终焉账簿已恢复 · {0} → 蕾娅"
+    },
+    {
+      "key": "skill.true_name_notice",
+      "value": "真名解放：卡塞尔零式 · 原型动作已确认（不增加终焉）"
+    },
+    {
+      "key": "skill.debug_boundary_notice",
+      "value": "仅限测试存档 · 临界值{0}"
+    },
+    {
+      "key": "doom.heart_rupture",
+      "value": "第1终焉：心脏破裂"
+    },
+    {
+      "key": "doom.rapid_aging",
+      "value": "第2终焉：急速衰老"
+    },
+    {
+      "key": "doom.leg_punishment",
+      "value": "第3终焉：双腿之刑"
+    },
+    {
+      "key": "doom.eternal_silence",
+      "value": "第4终焉：永恒沉默"
+    },
+    {
+      "key": "doom.blindness",
+      "value": "第5终焉：失明"
+    },
+    {
+      "key": "settings.invalid_values",
+      "value": "设置值或版本无效。"
+    },
+    {
+      "key": "settings.unsupported_version",
+      "value": "不支持此设置版本。"
+    },
+    {
+      "key": "settings.empty_file",
+      "value": "设置文件为空。"
+    },
+    {
+      "key": "settings.defaults_preserved",
+      "value": "{0} 已保留原文件，并使用默认设置。"
+    },
+    {
+      "key": "settings.backup_restored",
+      "value": "已从备份恢复设置。"
+    },
+    {
+      "key": "settings.recovery_failed",
+      "value": "无法恢复设置。已保留原文件，并使用默认设置。"
+    },
+    {
+      "key": "settings.save_failed",
+      "value": "设置保存失败：{0}"
+    },
+    {
+      "key": "save.migration_failed",
+      "value": "旧记录迁移失败：{0}"
+    },
+    {
+      "key": "slot.occupied_hint",
+      "value": "该存档位已有记录，请选择空位或使用删除按钮。"
+    },
+    {
+      "key": "slot.empty_hint",
+      "value": "该存档位为空，请通过新游戏创建记录。"
+    },
+    {
+      "key": "slot.open_failed",
+      "value": "无法打开存档位：{0}"
+    },
+    {
+      "key": "stage.saved_unavailable",
+      "value": "存档中的关卡尚未开放，请选择测试关卡。"
+    },
+    {
+      "key": "stage.unavailable_suffix",
+      "value": "：尚未开放。"
+    },
+    {
+      "key": "stage.skill_required_suffix",
+      "value": "：请先获得该恩人的技能。"
+    },
+    {
+      "key": "stage.story_locked_suffix",
+      "value": "：推进剧情后解锁，目前尚未开放。"
+    },
+    {
+      "key": "stage.start_failed",
+      "value": "关卡启动失败：{0}"
+    },
+    {
+      "key": "slot.deleted",
+      "value": "已删除存档位{0}的记录。"
+    },
+    {
+      "key": "slot.delete_check",
+      "value": "需确认删除结果：{0}"
+    },
+    {
+      "key": "save.retry_hint",
+      "value": "保存失败。请检查设置和存档路径后重试。"
+    },
+    {
+      "key": "save.quit_blocked",
+      "value": "保存失败，已暂缓退出。请取消后重试。"
+    },
+    {
+      "key": "slot.prefix",
+      "value": "存档位{0} · "
+    },
+    {
+      "key": "slot.empty",
+      "value": "空记录"
+    },
+    {
+      "key": "slot.unreadable",
+      "value": "无法读取 · 已保留原文件"
+    },
+    {
+      "key": "save.date_format",
+      "value": "yyyy年MM月dd日 HH:mm:ss"
+    },
+    {
+      "key": "save.unknown_time",
+      "value": "保存时间未知"
+    },
+    {
+      "key": "slot.summary",
+      "value": "{0}{1}\n已拥有技能 {2}项 · {3}\n基础剑术 {4}次 · {5}阶"
+    },
+    {
+      "key": "game.menu_title",
+      "value": "《回溯公证录：蕾娅》"
+    },
+    {
+      "key": "ui.delete",
+      "value": "删除"
+    },
+    {
+      "key": "ui.back",
+      "value": "返回"
+    },
+    {
+      "key": "ui.investigation_progress",
+      "value": "调查日志 · {0}"
+    },
+    {
+      "key": "ui.back_to_pause",
+      "value": "返回暂停菜单"
+    },
+    {
+      "key": "settings.adjust_hint",
+      "value": "左右调整 · 阶段预览会在测试存档中发放全部技能，使用不计入成长。\n即使切回实际阶段，本次游戏仍使用独立测试存档。"
+    },
+    {
+      "key": "save.log_path_hint",
+      "value": "使用日志写入出错 · 请在暂停菜单中检查存档路径。"
+    },
+    {
+      "key": "save.retrying_memory",
+      "value": "保存失败 · 已确认的记录保留在内存中，正在重试。"
+    },
+    {
+      "key": "input.reading_menu",
+      "value": "上下 / 摇杆：选择   左右：滚动   Enter / A：确认   Esc / B：返回"
+    },
+    {
+      "key": "input.shell_menu",
+      "value": "方向键 / 左摇杆 / 十字键：选择   Enter / A：确认   Esc / B：返回   Delete / X：删除存档"
+    },
+    {
+      "key": "skills.no_active_record",
+      "value": "当前没有进行中的技能记录。"
+    },
+    {
+      "key": "ui.locked_tag",
+      "value": " [未解锁]"
+    },
+    {
+      "key": "heading.return_selection",
+      "value": "逆公证 · 选择要归还的恩人技能"
+    },
+    {
+      "key": "heading.return_confirm",
+      "value": "逆公证 · 归还确认"
+    },
+    {
+      "key": "heading.main",
+      "value": "选择继续书写记录的起点"
+    },
+    {
+      "key": "heading.new_game",
+      "value": "新游戏 · 选择空存档位"
+    },
+    {
+      "key": "heading.continue",
+      "value": "继续游戏 · 选择记录"
+    },
+    {
+      "key": "heading.stage_slot",
+      "value": "选择关卡 · 选择使用的记录"
+    },
+    {
+      "key": "heading.three_slots",
+      "value": "{0}（3个存档位）"
+    },
+    {
+      "key": "heading.stages",
+      "value": "选择关卡 · 存档位{0} · 请选择已解锁关卡"
+    },
+    {
+      "key": "heading.pause",
+      "value": "暂停"
+    },
+    {
+      "key": "heading.skills",
+      "value": "技能状态 · 累计有效使用与当前形态"
+    },
+    {
+      "key": "heading.core",
+      "value": "核心记录阅览 · 已确认的条目将保存在记录剑中"
+    },
+    {
+      "key": "heading.settings",
+      "value": "设置 · 更改立即生效并保存"
+    },
+    {
+      "key": "slot.delete_confirm",
+      "value": "删除存档位{0}？进度、测试记录及备份都将被删除。"
+    },
+    {
+      "key": "ui.quit_confirm",
+      "value": "保存并退出游戏？"
+    },
+    {
+      "key": "ui.continue",
+      "value": "继续游戏"
+    },
+    {
+      "key": "ui.new_game",
+      "value": "新游戏"
+    },
+    {
+      "key": "ui.stage_select",
+      "value": "选择关卡"
+    },
+    {
+      "key": "ui.settings",
+      "value": "设置"
+    },
+    {
+      "key": "ui.quit",
+      "value": "退出"
+    },
+    {
+      "key": "ui.skills",
+      "value": "技能状态"
+    },
+    {
+      "key": "ui.main_menu",
+      "value": "返回主菜单"
+    },
+    {
+      "key": "ui.cancel",
+      "value": "取消"
+    },
+    {
+      "key": "ui.delete_record",
+      "value": "删除记录"
+    },
+    {
+      "key": "ui.save_quit",
+      "value": "保存并退出"
+    },
+    {
+      "key": "settings.music_volume",
+      "value": "音乐音量    ◀ {0}% ▶"
+    },
+    {
+      "key": "settings.effects_volume",
+      "value": "音效音量    ◀ {0}% ▶"
+    },
+    {
+      "key": "ui.on",
+      "value": "开启"
+    },
+    {
+      "key": "ui.off",
+      "value": "关闭"
+    },
+    {
+      "key": "settings.screen_shake",
+      "value": "屏幕震动    {0}"
+    },
+    {
+      "key": "settings.development_only",
+      "value": "仅限开发构建"
+    },
+    {
+      "key": "settings.actual_stage",
+      "value": "实际阶段"
+    },
+    {
+      "key": "settings.preview_stage",
+      "value": "{0}阶预览"
+    },
+    {
+      "key": "settings.stage_override",
+      "value": "阶段覆盖（测试用）    {0}"
+    },
+    {
+      "key": "stage.finale_survival_locked",
+      "value": "五项归还准备完成 / 原型动作未完成：尚未确保生还归还"
+    },
+    {
+      "key": "stage.locked_unavailable",
+      "value": "未解锁 · 尚未开放"
+    },
+    {
+      "key": "stage.playable",
+      "value": "可以游玩"
+    },
+    {
+      "key": "stage.coming_soon",
+      "value": "尚未开放"
+    },
+    {
+      "key": "stage.hub.name",
+      "value": "据点 · 遗忘阁楼"
+    },
+    {
+      "key": "stage.velvet.name",
+      "value": "第1区 · 天鹅绒裁衣街 / 巨型织造工坊"
+    },
+    {
+      "key": "stage.clock.name",
+      "value": "第2区 · 暮色发条钟塔 / 逆流回廊"
+    },
+    {
+      "key": "stage.opera.name",
+      "value": "第3区 · 玻璃歌剧院 / 聚光灯屋顶"
+    },
+    {
+      "key": "stage.bell.name",
+      "value": "第4区 · 青铜大钟楼 / 共鸣音叉地下道"
+    },
+    {
+      "key": "stage.gallery.name",
+      "value": "第5区 · 白画布画廊 / 色彩温室"
+    },
+    {
+      "key": "stage.echo.name",
+      "value": "残响战"
+    },
+    {
+      "key": "stage.cassel.name",
+      "value": "卡塞尔战"
+    },
+    {
+      "key": "stage.prototype.name",
+      "value": "原测试关卡 · 移动 / 剑术 / 残响对练"
+    },
+    {
+      "key": "stage.practice_julius.name",
+      "value": "技能对练 · 尤利乌斯残响（奖励：钟摆）"
+    },
+    {
+      "key": "stage.practice_valeria.name",
+      "value": "技能对练 · 瓦莱莉娅残响（奖励：圆舞）"
+    },
+    {
+      "key": "stage.practice_gabriel.name",
+      "value": "技能对练 · 加布里埃尔残响（奖励：锻造）"
+    },
+    {
+      "key": "stage.practice_irina.name",
+      "value": "技能对练 · 伊莉娜残响（奖励：画布）"
+    },
+    {
+      "key": "stage.skill_lab.name",
+      "value": "全技能练习场 · 立即发放 / 测试存档"
+    },
+    {
+      "key": "stage.wave_test.name",
+      "value": "区域波次测试 · 151 / 400 / 测试存档"
+    },
+    {
+      "key": "stage.trial_mikhail.name",
+      "value": "恩人对练 · 米哈伊尔"
+    },
+    {
+      "key": "stage.trial_julius.name",
+      "value": "恩人对练 · 尤利乌斯"
+    },
+    {
+      "key": "stage.trial_valeria.name",
+      "value": "恩人对练 · 瓦莱莉娅"
+    },
+    {
+      "key": "stage.trial_gabriel.name",
+      "value": "恩人对练 · 加布里埃尔"
+    },
+    {
+      "key": "stage.trial_irina.name",
+      "value": "恩人对练 · 伊莉娜"
+    },
+    {
+      "key": "encounter.rea_echo",
+      "value": "残响 · 昨日的蕾娅"
+    },
+    {
+      "key": "encounter.julius_echo",
+      "value": "尤利乌斯技能残响 · 测试对练"
+    },
+    {
+      "key": "encounter.valeria_echo",
+      "value": "瓦莱莉娅技能残响 · 测试对练"
+    },
+    {
+      "key": "encounter.gabriel_echo",
+      "value": "加布里埃尔技能残响 · 测试对练"
+    },
+    {
+      "key": "encounter.irina_echo",
+      "value": "伊莉娜技能残响 · 测试对练"
+    },
+    {
+      "key": "evolution.preview_off",
+      "value": "测试 · 恢复实际阶段"
+    },
+    {
+      "key": "evolution.preview_title",
+      "value": "测试形态 · 覆盖为{0}"
+    },
+    {
+      "key": "evolution.preview_off_detail",
+      "value": "各技能恢复实际成长形态 · 继续使用独立测试存档。"
+    },
+    {
+      "key": "evolution.preview_detail",
+      "value": "预览全部已拥有技能的形态 · 不计有效使用 · 并非实际进化。"
+    },
+    {
+      "key": "evolution.test_prefix",
+      "value": "[测试存档] "
+    },
+    {
+      "key": "evolution.title",
+      "value": "{0}{1}进化 · {2}"
+    },
+    {
+      "key": "skills.locked_unowned",
+      "value": "未解锁 · 未获得"
+    },
+    {
+      "key": "skills.unowned_progress",
+      "value": "累计有效使用{0}次 · 获得技能后可继续成长"
+    },
+    {
+      "key": "skills.acquire_hint",
+      "value": "获得该恩人的技能后，即可查看形态与熟练度。"
+    },
+    {
+      "key": "skills.override_suffix",
+      "value": " [覆盖] · 实际{0}"
+    },
+    {
+      "key": "skills.current_stage",
+      "value": "当前{0}{1}"
+    },
+    {
+      "key": "skills.growth_complete",
+      "value": "实际成长已完成 · 剩余0次"
+    },
+    {
+      "key": "skills.remaining_uses",
+      "value": "距实际{0}还需{1}次"
+    },
+    {
+      "key": "skills.effective_uses",
+      "value": "累计有效使用{0}次 · {1}"
+    },
+    {
+      "key": "skills.test_save_mode",
+      "value": "独立测试存档（与正式存档分离）"
+    },
+    {
+      "key": "slot.name",
+      "value": "存档位{0}"
+    },
+    {
+      "key": "skills.actual_mode_suffix",
+      "value": " · 阶段覆盖已关闭 · 按实际成长显示"
+    },
+    {
+      "key": "skills.override_mode_suffix",
+      "value": " · 阶段覆盖：{0} · 不计使用次数 / 剩余次数按实际成长计算"
+    },
+    {
+      "key": "skills.ultimate_stage",
+      "value": "3阶 · 极意"
+    },
+    {
+      "key": "skills.stage",
+      "value": "{0}阶"
+    },
+    {
+      "key": "skills.sword.form1",
+      "value": "2连击剑术"
+    },
+    {
+      "key": "skills.sword.form2",
+      "value": "3连击 · 前踏步 · 末击释放短程剑气"
+    },
+    {
+      "key": "skills.sword.form3",
+      "value": "4连击 · 前踏步 · 剑气 · 残影"
+    },
+    {
+      "key": "skills.stitch.form1",
+      "value": "束缚关节 · 支撑裂隙"
+    },
+    {
+      "key": "skills.stitch.form2",
+      "value": "铺设丝线地板 · 范围束缚"
+    },
+    {
+      "key": "skills.stitch.form3",
+      "value": "切断连接 · 连接区域伤害"
+    },
+    {
+      "key": "skills.pendulum.form1",
+      "value": "突进刺击 · 再次输入安全返回"
+    },
+    {
+      "key": "skills.pendulum.form2",
+      "value": "返回路径交叉伤害 · 残影"
+    },
+    {
+      "key": "skills.pendulum.form3",
+      "value": "局部时停 · 解除后路径爆炸"
+    },
+    {
+      "key": "skills.waltz.form1",
+      "value": "上升回旋斩 · 击落投射物"
+    },
+    {
+      "key": "skills.waltz.form2",
+      "value": "有效命中后再次输入，发动空中踏步"
+    },
+    {
+      "key": "skills.waltz.form3",
+      "value": "反射投射物 · 下落冲击波"
+    },
+    {
+      "key": "skills.forge.form1",
+      "value": "震动打击 · 击碎破裂盾牌"
+    },
+    {
+      "key": "skills.forge.form2",
+      "value": "为各目标叠加共鸣印记 · 引爆"
+    },
+    {
+      "key": "skills.forge.form3",
+      "value": "普通招架 + 空中下砸钟击 · 广域反击冲击波"
+    },
+    {
+      "key": "skills.canvas.form1",
+      "value": "颜料划击伤害 · 临时地板支撑"
+    },
+    {
+      "key": "skills.canvas.form2",
+      "value": "地板与墙壁交叉爆炸 · 可放置2个构造物"
+    },
+    {
+      "key": "skills.canvas.form3",
+      "value": "地板与墙壁交叉 · 自画像再现剑术打击"
+    },
+    {
+      "key": "skills.no_form_info",
+      "value": "暂无形态信息"
+    },
+    {
+      "key": "support.ordinary_only",
+      "value": "支援仅可在普通战斗中使用。"
+    },
+    {
+      "key": "support.no_charge",
+      "value": "暂无可用支援，请查看恩人对练条件。"
+    },
+    {
+      "key": "support.no_target",
+      "value": "没有可接受支援效果的目标，次数已保留。"
+    },
+    {
+      "key": "support.save_failed",
+      "value": "保存失败 · 暂缓使用支援"
+    },
+    {
+      "key": "support.invalid_effect",
+      "value": "支援未生效，次数已保留。"
+    },
+    {
+      "key": "support.used_notice",
+      "value": "{0} · 已使用{1} · 剩余0/1"
+    },
+    {
+      "key": "trial.missing_data",
+      "value": "缺少恩人对练数据。"
+    },
+    {
+      "key": "trial.resting",
+      "value": "调整呼吸 · 继续练习"
+    },
+    {
+      "key": "trial.windup_suffix",
+      "value": " · 准备信号"
+    },
+    {
+      "key": "trial.action_suffix",
+      "value": " · 动作中"
+    },
+    {
+      "key": "trial.opening_suffix",
+      "value": " · 练习机会"
+    },
+    {
+      "key": "trial.acquire_first",
+      "value": "获得该技能后才能进行对练。"
+    },
+    {
+      "key": "support.charged",
+      "value": "支援1/1可用"
+    },
+    {
+      "key": "support.recharge_progress",
+      "value": "支援0/1 · 普通战斗 {0}/{1}"
+    },
+    {
+      "key": "support.locked",
+      "value": "支援未解锁"
+    },
+    {
+      "key": "trial.unlocked",
+      "value": "对练已解锁"
+    },
+    {
+      "key": "trial.locked_skill",
+      "value": "对练未解锁 · 需先获得技能"
+    },
+    {
+      "key": "trial.session_status",
+      "value": "成长 {0}/{1} · 条件 {2}/{3} · 下次对练：普通战斗 {4}/{5}"
+    },
+    {
+      "key": "wave.missing_data",
+      "value": "缺少波次数据。"
+    },
+    {
+      "key": "wave.invalid_header",
+      "value": "波次版本、初始记录或分区数量"
+    },
+    {
+      "key": "wave.invalid_supply",
+      "value": "供给或交叉循环设置"
+    },
+    {
+      "key": "wave.invalid_archetype_count",
+      "value": "需要3种敌人和1种机关"
+    },
+    {
+      "key": "wave.invalid_archetype_id",
+      "value": "原型ID"
+    },
+    {
+      "key": "wave.invalid_gate",
+      "value": "判定类型"
+    },
+    {
+      "key": "wave.invalid_combat_values",
+      "value": "战斗数值"
+    },
+    {
+      "key": "wave.invalid_zone",
+      "value": "区域定义"
+    },
+    {
+      "key": "wave.invalid_connection",
+      "value": "区域连接"
+    },
+    {
+      "key": "wave.invalid_definition",
+      "value": "波次定义"
+    },
+    {
+      "key": "wave.invalid_spawn",
+      "value": "生成定义"
+    },
+    {
+      "key": "wave.invalid_spawn_range",
+      "value": "生成范围"
+    },
+    {
+      "key": "wave.setup_required",
+      "value": "需要破势技能"
+    },
+    {
+      "key": "wave.invalid_setup_skill",
+      "value": "前置技能"
+    },
+    {
+      "key": "wave.invalid_zone1_supply",
+      "value": "第1区供给"
+    },
+    {
+      "key": "wave.invalid_gate_supply",
+      "value": "区域门槛供给"
+    },
+    {
+      "key": "wave.invalid_mastery_supply",
+      "value": "极意供给"
+    },
+    {
+      "key": "wave.data_error",
+      "value": "波次数据错误：{0}"
+    },
+    {
+      "key": "wave.progress",
+      "value": "{0} · 第{1}/{2}波"
+    },
+    {
+      "key": "wave.all_complete",
+      "value": "3区完成 · 请查看基础剑术151 / 400次的达成日志。R：从头开始"
+    },
+    {
+      "key": "wave.zone_complete",
+      "value": "区域完成 · 前往右侧的青金标记。"
+    },
+    {
+      "key": "wave.next_enemy",
+      "value": "下一个敌人正在入场，结束连击后做好准备。"
+    },
+    {
+      "key": "wave.cut_with_sword",
+      "value": "用基础剑术切断"
+    },
+    {
+      "key": "wave.skill_then_sword",
+      "value": "{0} → 基础剑术"
+    },
+    {
+      "key": "wave.defense_then_sword",
+      "value": "招架 / 冲刺应对金色攻击 → 基础剑术"
+    },
+    {
+      "key": "wave.target_hint",
+      "value": "{0} · 剩余{1} · {2}"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.displayName",
+      "value": "基础剑术"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.1.name",
+      "value": "雏鸟斩"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.2.name",
+      "value": "青金轨迹"
+    },
+    {
+      "key": "data.skills.catalog.skills.basic_sword.stages.3.name",
+      "value": "原罪公证剑 — 卡塞尔零式"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.displayName",
+      "value": "银丝缝合"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.1.name",
+      "value": "单线缝针"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.2.name",
+      "value": "交叉裁剪"
+    },
+    {
+      "key": "data.skills.catalog.skills.silver_stitch.stages.3.name",
+      "value": "缝命·断缘"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.displayName",
+      "value": "钟摆回溯"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.1.name",
+      "value": "钟摆步法"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.2.name",
+      "value": "双重时间线"
+    },
+    {
+      "key": "data.skills.catalog.skills.pendulum_rewind.stages.3.name",
+      "value": "零时"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.displayName",
+      "value": "谢幕圆舞"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.1.name",
+      "value": "回旋剑舞"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.2.name",
+      "value": "聚光踏步"
+    },
+    {
+      "key": "data.skills.catalog.skills.curtain_call_waltz.stages.3.name",
+      "value": "盛大终幕"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.displayName",
+      "value": "共鸣锻造"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.1.name",
+      "value": "震动打击"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.2.name",
+      "value": "和音蓄爆"
+    },
+    {
+      "key": "data.skills.catalog.skills.resonance_forge.stages.3.name",
+      "value": "六点的播种"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.displayName",
+      "value": "裁绘留白"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.1.name",
+      "value": "颜料笔划"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.2.name",
+      "value": "覆绘风景"
+    },
+    {
+      "key": "data.skills.catalog.skills.canvas_carve.stages.3.name",
+      "value": "自画像完成"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.displayName",
+      "value": "米哈伊尔"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.role",
+      "value": "剪刀手裁缝"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.objectiveLabel",
+      "value": "用银丝束缚关节或稳固返回支架3次"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.support.label",
+      "value": "归途缝线"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
+      "value": "银丝横裁"
+    },
+    {
+      "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
+      "value": "交叉裁剪"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.displayName",
+      "value": "尤利乌斯"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.role",
+      "value": "停秒之钟表匠"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.objectiveLabel",
+      "value": "用钟摆对对手造成实际伤害或局部时停3次"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.support.label",
+      "value": "归途时刻"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.patterns.1.label",
+      "value": "钟摆突入"
+    },
+    {
+      "key": "data.trials.catalog.trials.julius.patterns.2.label",
+      "value": "钟摆返回"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.displayName",
+      "value": "瓦莱莉娅"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.role",
+      "value": "碎鞋舞者"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.objectiveLabel",
+      "value": "用圆舞清除或反射练习弹幕3次"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.support.label",
+      "value": "落地圆舞"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.patterns.1.label",
+      "value": "上升圆舞"
+    },
+    {
+      "key": "data.trials.catalog.trials.valeria.patterns.2.label",
+      "value": "落地前弹幕"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.displayName",
+      "value": "加布里埃尔"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.role",
+      "value": "沉默守钟人"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.objectiveLabel",
+      "value": "用锻造造成实际打击或发动锻造专属反击3次"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.support.label",
+      "value": "归途钟击"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.patterns.1.label",
+      "value": "摊开手掌：停下 / 两根手指：准备"
+    },
+    {
+      "key": "data.trials.catalog.trials.gabriel.patterns.2.label",
+      "value": "手掌朝下：落地、返回"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.displayName",
+      "value": "伊莉娜"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.role",
+      "value": "盲眼肖像画家"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.objectiveLabel",
+      "value": "用颜料平台实际承托或阻挡弹幕3次"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.support.label",
+      "value": "归途着色"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.patterns.1.label",
+      "value": "水平颜料划击"
+    },
+    {
+      "key": "data.trials.catalog.trials.irina.patterns.2.label",
+      "value": "画布碎片弹幕"
+    },
+    {
+      "key": "data.investigation.catalog.topics.transfer_route.label",
+      "value": "终焉转移路径"
+    },
+    {
+      "key": "data.investigation.catalog.topics.benefactor_imprints.label",
+      "value": "恩人刻印"
+    },
+    {
+      "key": "data.investigation.catalog.topics.cassel_contract.label",
+      "value": "卡塞尔契约"
+    },
+    {
+      "key": "data.investigation.catalog.clues.route_ledger.label",
+      "value": "转移路径 · 记录终端"
+    },
+    {
+      "key": "data.investigation.catalog.clues.route_waveform.label",
+      "value": "转移路径 · 核心投射刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_mikhail.label",
+      "value": "米哈伊尔 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_julius.label",
+      "value": "尤利乌斯 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_valeria.label",
+      "value": "瓦莱莉娅 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_gabriel.label",
+      "value": "加布里埃尔 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.imprint_irina.label",
+      "value": "伊莉娜 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.contract_original.label",
+      "value": "契约文件 · 原本封印"
+    },
+    {
+      "key": "data.investigation.catalog.clues.contract_copy.label",
+      "value": "契约文件 · 副本封印"
+    },
+    {
+      "key": "data.investigation.catalog.points.core_terminal.label",
+      "value": "核心记录阅览终端"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_route_ledger.label",
+      "value": "转移路径 · 记录终端"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_route_waveform.label",
+      "value": "转移路径 · 核心投射刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_mikhail.label",
+      "value": "米哈伊尔 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_julius.label",
+      "value": "尤利乌斯 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_valeria.label",
+      "value": "瓦莱莉娅 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_gabriel.label",
+      "value": "加布里埃尔 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_imprint_irina.label",
+      "value": "伊莉娜 · 核心刻印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_contract_original.label",
+      "value": "契约文件 · 原本封印"
+    },
+    {
+      "key": "data.investigation.catalog.points.point_contract_copy.label",
+      "value": "契约文件 · 副本封印"
+    },
+    {
+      "key": "data.investigation.catalog.stages.transfer_index.label",
+      "value": "第1阶段 · 终焉转移路径"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_mikhail.label",
+      "value": "可选阅览 · 米哈伊尔"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_julius.label",
+      "value": "可选阅览 · 尤利乌斯"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_valeria.label",
+      "value": "可选阅览 · 瓦莱莉娅"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_gabriel.label",
+      "value": "可选阅览 · 加布里埃尔"
+    },
+    {
+      "key": "data.investigation.catalog.stages.imprint_irina.label",
+      "value": "可选阅览 · 伊莉娜"
+    },
+    {
+      "key": "data.investigation.catalog.stages.contract_comparison.label",
+      "value": "第2阶段 · 核心文书对照"
+    },
+    {
+      "key": "data.investigation.catalog.stages.stored_records.label",
+      "value": "第3阶段 · 核心封存记录"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.zero.label",
+      "value": "卡塞尔零式"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.thread.label",
+      "value": "反射银丝包围网"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.pendulum.label",
+      "value": "反射钟摆交叉"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.petals.label",
+      "value": "反射圆舞花瓣"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.bell.label",
+      "value": "反射大钟冲击波"
+    },
+    {
+      "key": "data.bosses.cassel.patterns.portrait.label",
+      "value": "反射色彩双重剑击"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.1.name",
+      "value": "模糊的昨日"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.2.name",
+      "value": "重叠的记录"
+    },
+    {
+      "key": "data.bosses.janhyang.phases.3.name",
+      "value": "清晰的残响"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.notary_guard.label",
+      "value": "公证缝合重甲兵"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.shell_sentry.label",
+      "value": "发条装甲哨兵"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.reflection_statue.label",
+      "value": "反射公证石像"
+    },
+    {
+      "key": "data.waves.test-stage.archetypes.sword_latch.label",
+      "value": "青金锁扣"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_1.label",
+      "value": "分区1 · 基础回廊"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_2.label",
+      "value": "分区2 · 交叉工坊"
+    },
+    {
+      "key": "data.waves.test-stage.zones.zone_3.label",
+      "value": "分区3 · 极意试炼道"
+    },
+    {
+      "key": "settings.language",
+      "value": "语言    ◀ {0} ▶"
+    },
+    {
+      "key": "language.ko",
+      "value": "한국어"
+    },
+    {
+      "key": "language.en",
+      "value": "English"
+    },
+    {
+      "key": "language.de",
+      "value": "Deutsch"
+    },
+    {
+      "key": "language.fr",
+      "value": "Français"
+    },
+    {
+      "key": "language.es",
+      "value": "Español"
+    },
+    {
+      "key": "language.zh-Hans",
+      "value": "简体中文"
+    },
+    {
+      "key": "language.ja",
+      "value": "日本語"
+    },
+    {
+      "key": "language.ru",
+      "value": "Русский"
+    },
+    {
+      "key": "language.it",
+      "value": "Italiano"
+    },
+    {
+      "key": "ui.confirm",
+      "value": "确认"
+    },
+    {
+      "key": "ui.save",
+      "value": "保存"
+    },
+    {
+      "key": "ui.resume",
+      "value": "继续游戏"
+    },
+    {
+      "key": "input.direction_neutral",
+      "value": "无方向/向前"
+    },
+    {
+      "key": "input.direction_up",
+      "value": "↑"
+    },
+    {
+      "key": "input.direction_down_air",
+      "value": "↓ 空中"
+    },
+    {
+      "key": "input.direction_down_ground",
+      "value": "↓ 地面"
+    },
+    {
+      "key": "input.direction_back",
+      "value": "反方向"
+    },
+    {
+      "key": "input.cast_hint",
+      "value": "方向 + Q·Y | 画墙：按住攻击 + ↓施放"
+    },
+    {
+      "key": "input.skill_unlearned",
+      "value": "{0}：尚未学会此技能。"
+    },
+    {
+      "key": "input.skill_mapping_row",
+      "value": "{0} · {1}"
+    },
+    {
+      "key": "story.court_lift",
+      "value": "大法庭升降机前"
+    },
+    {
+      "key": "story.resume_previous",
+      "value": "从最终战前的记录继续"
+    },
+    {
+      "key": "story.intro.attic.01",
+      "value": "[公证记录 #02 — D日 06:30 / 预定行刑：次日 06:00（剩余 23 小时 30 分钟）]\n……头稍微有点发沉。好像从昨晚起做了个很长的梦，可只有掌心里攥着的记录剑触感格外清晰。\n啊，玛尔塔奶奶特意备好的薄荷糖掉到地上了。趁没踩到之前捡起来，放到桌子信封旁边吧。"
+    },
+    {
+      "key": "story.intro.attic.02",
+      "value": "“已经醒啦，蕾娅？我熬薄荷共鸣茶时顺便拿出来给你装进腰包的糖，大概滚落到地上了。拿过来放到信封旁的空碟子里吧。”\n（操作提示：在地上的薄荷糖前按 F / 按下左摇杆拾取，再放到桌上的信封旁小碟里。）"
+    },
+    {
+      "key": "story.intro.attic.03",
+      "value": "（薄荷糖刚放好，她便俯身端详桌上青金石公证墨水账簿，歪了歪头）\n“真是稀奇啊……我的字迹旁边，不知怎么用你的青金石公证墨水盖着[记录 #01 / 逆流前 06:25 — 委托物：赦免任务书信封及青金石音乐盒]。我什么时候抄录过这个……？\n哎呀，备注栏里还多了一行小字呢：‘早上醒来时请微笑着递给醒来的我。草稿在剑里。’ ……呵呵，真是人老了记性糊涂喽。”"
+    },
+    {
+      "key": "story.intro.attic.04",
+      "value": "（理了理衣襟，她换上灿烂的笑脸递出信封）\n“诺，拿着吧，我们的蕾娅！这是中央公证院下发的特例回收任务书，快收好吧。”\n（操作提示：对桌上的任务书信封按 F / 按下左摇杆领取。将记录线索[契约文件 · 副本封印]。）"
+    },
+    {
+      "key": "story.intro.attic.05",
+      "value": "（拆开信封，出声念出《第5号秘传招式公证回收命令书（副本）》下方的条款）\n“‘第3条（特例附则）：技能的3阶公证登记一旦完成，受刑者的终焉即刻由大法庭母体核心吸收·消灭，并向五位受刑者全体颁布特别赦免令。’\n……太好了！之前只在传闻里听过的公证院消灭特例居然真的批准下来了！只要在明天日出前把五位恩人的招式全都收录进记录剑的3阶，就没人会被行刑，大家都能得到赦免了！”"
+    },
+    {
+      "key": "story.intro.board.01",
+      "value": "“玛尔塔奶奶，这里的早餐预约牌上已经写好明早五位大人的名字了呀？\n明天早上我一定把五位全都接回来。”"
+    },
+    {
+      "key": "story.intro.board.02",
+      "value": "“那就是六碗喽。”"
+    },
+    {
+      "key": "story.intro.board.03",
+      "value": "“我等回来再吃……啊，对哦，是接回来之后嘛。\n（把手按在五个名字旁第六个空位上）嗯，我也不会把自己的位置空着。明天早上的第六碗汤，我一定亲口喝完！”\n（操作提示：在早餐预约牌前按 F / 按下左摇杆，亲手盖下第六个座位印章。）"
+    },
+    {
+      "key": "story.intro.forge.01",
+      "value": "“出发前先来看看剑刃吗，蕾娅。拿来吧。我拿磨刀石轻蹭一下，看看核心槽位稳不稳当。”\n（操作提示：在伊森的磨刀石工作台按 F / 按下左摇杆放上记录剑。）"
+    },
+    {
+      "key": "story.intro.forge.02",
+      "value": "（刚要把剑身贴上旋转的磨刀石，他的手却在剑刃第三段陡然停住。左眼的青金石义眼泛出微弱的蓝光）\n“……慢着。这地方不能磨。\n这不是磕豁的。三道同样深度的缺口。有人专门在剑刃第三段刻下了基准印记，好把测量架销钉每次都卡进完全相同的位置。”"
+    },
+    {
+      "key": "story.intro.forge.03",
+      "value": "“基准印记？伊森大叔，我今天早上醒来后都还没挥过一次剑呢……可核心里却已经刻了一百二十次基础剑术记录，剑刃上还有这样的刻痕。昨天我到底做过什么呀？”"
+    },
+    {
+      "key": "story.intro.forge.04",
+      "value": "（收回剑递还给蕾娅，他沉声说道）\n“这把白纸刻印剑是我亲手打的，我不会骗你，蕾娅。刚才我的青金石义眼和你的剑核心记录接上了。\n是你求我用这把剑把时间倒流回去的。清晨六点十分带着开裂的剑找来，我便替你解开了大逆流封印。至于你想改写什么结局，你没跟我说。\n……不过第三段那几道刻痕不是我弄的。是你独自想要测量什么时留下的刻度。出去以后万事小心。”"
+    },
+    {
+      "key": "story.velvet.entry.01",
+      "value": "“这里就是第1区天鹅绒裁衣街，蕾娅姐。中央公证院押送队把外围封锁到明早六点行刑前为止，不过前面裁缝室这个衣橱，米哈伊尔大叔直到昨天还在照料呢。”"
+    },
+    {
+      "key": "story.velvet.entry.02",
+      "value": "“你快看看这扇敞开的衣橱里面。从十一岁尺寸到十六岁尺寸，过去六年里每年新裁一件的冬衣挂得整整齐齐，一共有六件呢。明明从没让主人穿过一次，每条缝线却都熨得笔挺。”\n（操作提示：按 F / 按下左摇杆调查米哈伊尔的衣橱。将记录线索[米哈伊尔 · 核心刻印]。）"
+    },
+    {
+      "key": "story.velvet.entry.03",
+      "value": "（轻触系在第六件大衣袖口的蓝色丝带边角，她又抬手摸了摸自己头上的蓝丝带）\n“和我头上系着的这条蓝丝带是完全一样的织法与结扣……十岁以前的记忆明明是一片空白，指尖却还记得这块布料的纹路。米哈伊尔大叔对我来说并不是外人啊。快进工坊里面看看吧，卢卡！”"
+    },
+    {
+      "key": "story.mikhail.i0.01",
+      "value": "（挥动巨大的裁缝剪刀剑斩断织机丝线，拦在蕾娅身前。他捂住左胸，咽下一口粗重的呼吸）\n“……那根蓝丝带，你到现在还牢牢系着没让它散开啊，蕾娅。\n就算这样，从这儿起你也一步休想过去。你知不知道你手里握着的那把青金石记录剑到底是什么东西？”"
+    },
+    {
+      "key": "story.mikhail.i0.02",
+      "value": "“米哈伊尔大叔！您认得我的对吧？请看我手里这份回收命令书副本，第3条特例附则上写得清清楚楚！只要我用记录剑把大叔您的招式登记到3阶，终焉就会被大法庭母体核心吸收并消灭，您就能得到特别赦免了！”"
+    },
+    {
+      "key": "story.mikhail.i0.03",
+      "value": "“你也把公证院那种甜言蜜语当真了？！把别人的独门招式原样学到底，对方的伤痛与死劫就会跟着转到学艺者自己身上——这就是这座城市的铁律！\n这双手当年拿起针线，是怕你的披风散了缝线。唯独我的极意，绝不能交到你那把剑上。硬要闯过去的话，就先折断我的剪刀剑试试看！”\n（战斗开始：与剪刀手裁缝米哈伊尔的保护对练）"
+    },
+    {
+      "key": "story.mikhail.i0.04",
+      "value": "（把剪刀剑拄在地上，单膝跪倒。蕾娅的记录剑核心以蓝色光芒录下了对练中展露的米哈伊尔1阶缝合剑术轨迹）\n“呃……明明藏住了我最后的死结，那把剑还是看穿了第一针的纹路啊。\n记清楚了，蕾娅。停在那里不过是普通的护身招式，可一旦你把那针法练透到头，我心脏里的刑罚就会转移到你身上。我要退回救护所去了……求你别再挥那把剑，快回去吧。”\n（系统提示：已获得银丝缝合 — 1~5 / E·手柄B选择，Q·Y使用）"
+    },
+    {
+      "key": "story.mikhail.i1.01",
+      "value": "（强忍着左胸的剧痛，他举起剪刀剑拦住蕾娅）\n“你已经在别处把第一道终焉揽到自己身上了啊，蕾娅！胸针都裂开了，你现在该知道消灭特例是骗局了吧，怎么还不逃跑，反倒找进我的工坊来了！”"
+    },
+    {
+      "key": "story.mikhail.i1.02",
+      "value": "（见蕾娅面对米哈伊尔沉重的剪刀剑猛劈竟不向后闪避，而是想用身体硬抗挡下，米哈伊尔急忙扭转剑刃劈进地板，厉声怒吼）\n“住手！你到底在干什么！！\n嘴上说着找到了把终焉还给卡塞尔的假说，结果眼面前这一刀却想拿自己的肉身去填？在我面前，少说那种拿自己性命补计划窟窿的蠢话！”"
+    },
+    {
+      "key": "story.mikhail.i1.03",
+      "value": "（她稳住呼吸垂下剑，望向演武场右侧墙面上收折起来的紧急逃生木板与青金锁扣）\n“……您说得对，米哈伊尔大叔。如果我一味蛮干着说要用身体硬扛，您绝对不会信任我。\n与其用身体去挡，我先把能让我活着退出来的退路打开！”\n（操作提示：移动到演武场右侧的紧急退路青金锁扣（mikhail_retreat_latch）旁，用基础剑术劈断。收折的木板落下后会搭成安全的归还踏板。）"
+    },
+    {
+      "key": "story.mikhail.i1.04",
+      "value": "（随着青金锁扣断裂、宽厚木板轰然一声砸落在安全地面上，米哈伊尔眼瞳微张，随后低声吐出一口气）\n“……没错。比起嘴上喊着‘死也要扛住’，先把归途的踏板放下来强上一百倍。\n好吧，蕾娅。既然你先给自己开出了退路，我也不再藏拙。拿出全部本事攻过来吧！”"
+    },
+    {
+      "key": "story.mikhail.i1.05",
+      "value": "（对练结束，他走到蕾娅身旁，用指尖把她凌乱的米白色披肩斗篷缝线理正，又用剪刀柄把刚放下的木板铰链螺丝一一拧紧）\n“我没赞成过。我只是修好了你回来要踩的地板。\n前路需要束住敌人关节或者撑住快塌的支架时，就叫我一声。帮你从背后缝出一条脱身的缝线，我还是做得到的。”\n（系统提示：已获得银丝缝合 + 解锁米哈伊尔支援 · 已持有归还缝线 1/1）"
+    },
+    {
+      "key": "story.mikhail.reunion.01",
+      "value": "（他单膝跪在连接救护所与归还通道的木桥旁，正用银丝和木楔加固晃动的木板铰链，闻声转过头看向蕾娅）\n“听说你在工作台和泰奥、伊森搞了什么实验了。自己嘴上说着要找归途的家伙，跑过救护所前面晃悠的桥板居然连看都不看一眼。\n我没赞成过。我只是修好了你回来要踩的地板。自己站上去，用剑朝旁边的检修锁扣敲一下，试试咬得紧不紧。”\n（操作提示：踏上米哈伊尔加固过的木板（mikhail_reunion_plank），用基础剑术击打旁边检修锁扣 1 次。）"
+    },
+    {
+      "key": "story.mikhail.reunion.02",
+      "value": "“米哈伊尔大叔……谢谢您。现在踏板一点也不晃了。\n踩着您修好的这片地板，我一定会和五位恩人一起平安回来的！”\n（系统提示：已解锁米哈伊尔支援 · 持有归还缝线 1/1 — 普通战斗中可用 方向 + H / 按下右摇杆 呼叫。）"
+    },
+    {
+      "key": "story.transfer.first.01",
+      "value": "（第八十次极意动作完成的瞬间，伴随着沉重的铁印盖落声，一道猩红裂纹划破了蕾娅胸前青金石胸针五片花瓣中的一片）\n“……唔！胸针裂开了……！\n怎么回事，终焉根本没有从公证账簿上消失啊？！[被告人 R.E.A.]……死刑判决原封不动地过户印到我的名字上了！”"
+    },
+    {
+      "key": "story.transfer.first.02",
+      "value": "（传声筒另一头响起卢卡急促的声音）\n“蕾娅姐！刚才救护所里那位大人的终焉印记消失了，紧接着分所测量仪就从你那边的记录剑上拉响警报了！泰奥哥和伊森大叔让你立刻回分所工作室！我马上把轨道车连上来！”"
+    },
+    {
+      "key": "story.invest.01_sanctuary",
+      "value": "“蕾娅姐，你没事吧？！我刚才去确认过救护所了，压了大人们六年的刑罚症状像做梦一样全消失了！可姐姐你的脸色怎么这么苍白……！”"
+    },
+    {
+      "key": "story.invest.02a_stitch",
+      "value": "（她下意识紧紧攥住左胸口米白色斗篷的衣襟，急促喘息）\n“米哈伊尔大叔的心脏绞痛跑到我身上来了……切断《缝命·断缘》最后一个死结的那一秒，心脏就像被针扎穿一样猛地一沉，我胸针的第一片花瓣也裂开了。\n泰奥，赦免附则明明写着会由母体核心吸收并消灭。为什么第1终焉心脏破裂会扎进我的身体里？！”"
+    },
+    {
+      "key": "story.invest.02b_pendulum",
+      "value": "（从腰包里掏出已开始发出咔嗒声响转动的半块怀表，她轻触左侧发辫间一缕变成雪白的发丝）\n“整整六年纹丝不动的半块怀表秒针……刚一练成《零时》就重新咬合走动起来了。我的一缕头发也当场变白了。\n泰奥，尤利乌斯大叔的第2终焉急速衰老根本没有消灭，而是转移到我的时间上了吧？”"
+    },
+    {
+      "key": "story.invest.02c_waltz",
+      "value": "（摆出落地姿态的双踝隐隐作痛，她扶住工作台边缘低头望向靴带）\n“瓦莱莉娅姐姐时隔六年终于不用拐杖双脚站起来了……可我一完成《盛大终幕》落地，刑罚的重压就像坠了铅块一样压到我双腿上。\n泰奥，所谓的消灭特例……打从一开始就不存在吧？”"
+    },
+    {
+      "key": "story.invest.02d_forge",
+      "value": "（她捂住喉咙急促喘气，嗓音变得有些干涩嘶哑）\n“换回加布里埃尔大叔声音和听力的代价……就在敲响《六点的播种》那一刻，我喉咙里的喊声哑掉了一半。耳边冷冰冰的钟鸣耳鸣一直消散不去。\n泰奥，第4终焉永恒沉默为什么没有在核心里消灭，反而进了我的记录剑里？！”"
+    },
+    {
+      "key": "story.invest.02e_canvas",
+      "value": "（一手撑住工作台，她揉了揉眼角，仿佛想拂去视野边缘晕开的水彩般的白雾）\n“伊莉娜姐姐时隔六年终于用双眼看清了我的脸。可《自画像完成》最后一笔刚落下，我眼前的边缘就像浸入白色颜料一样模糊了。\n泰奥，第5终焉失明没有消失——它转到我的眼睛里了对吧？”"
+    },
+    {
+      "key": "story.invest.03_theo",
+      "value": "（拖着微跛的腿在测量终端前快步来回，调出波形图表）\n“你看分所记录终端上的账簿日志，蕾娅。中央公证院一直鼓吹的什么‘母体核心吸收·消灭特例’，在记录剑设计电路里压根不存在。\n世界的因果律会把完美重现3阶极意的你判定成与原主‘同一人’，然后直接把预定的终焉转移进你的肉体。”\n（操作提示：按 F / 按下左摇杆调查分所记录终端（point_route_ledger），确认线索[终焉转移路径 · 记录终端]。）"
+    },
+    {
+      "key": "story.invest.04_luka",
+      "value": "“还不止这样，蕾娅姐。我把叔叔工作台还有五个区划的记录全都拼起来了。\n米哈伊尔大叔、我叔叔尤利乌斯、瓦莱莉娅姐姐、加布里埃尔大叔、伊莉娜姐姐……那五位受刑者大人根本没犯过罪！六年前在地下替身室里，卡塞尔一口气把5大终焉强行塞进一个十岁孩子体内时，是他们为了救那个孩子，把折磨人的动作一个一个拆成3阶技艺各自替她背走的恩人啊。\n而那个十岁的孩子……就是蕾娅姐你啊。”"
+    },
+    {
+      "key": "story.invest.05_marta",
+      "value": "（玛尔塔用颤抖的双手把阁楼委托账簿和蕾娅手里的副本命令书并排摊开在工作台灯光下）\n“蕾娅呀，老婆子递给你的时候是真的全不知情。可迎着灯光一照……你这张副本底端[第3条（特例附则）]的位置，原来的纸纤维被人用刀尖薄薄刮掉了。\n上面用咱们钟塔分所仓库里的旧铅字和你自己的青金石公证墨水重新盖上了‘吸收·消灭及特别赦免’。再看看这账簿里[记录 #01 / 逆流前 06:25]的委托人签名吧。”\n（操作提示：按 F / 按下左摇杆对照工作台上的委托账簿与副本封印。）"
+    },
+    {
+      "key": "story.invest.06_rea",
+      "value": "（静静低头看着账簿签名和备注栏中“草稿在剑里”几个字）\n“……是我的笔迹。从小时起写到拐弯就习惯略微画个圆圈的我自己的字迹。\n不是玛尔塔奶奶或者五位恩人骗了我。今天清晨 06:30 烧掉记忆倒流时间之前的‘昨日的我（记录 #01）’……用刀尖刮掉了原本写着的第3条处分条文，自己盖上假赦免条款寄给今天的我。\n可为什么？为什么昨日的我连我都要骗？这里写的‘草稿在剑里’又是什么意思？”"
+    },
+    {
+      "key": "story.invest.07_exp1_ethan",
+      "value": "“光靠嘴猜没用。剑里到底留着什么，架到测量架上便知。\n蕾娅，还记得刚才在我铁匠铺看过的剑刃第三段那三道基准刻痕吧？小心别伤着旧刻痕把剑架上去，让工作台的测量销钉严丝合缝卡进第三段那道刻度里。”\n（操作提示：在工作台测量架（calibration_mount）按 F / 按下左摇杆将测量销钉对准剑刃第三段基准刻痕。将记录线索[终焉转移路径 · 核心投射刻印]。）"
+    },
+    {
+      "key": "story.invest.08_exp1_rea",
+      "value": "（测量销钉咬合进第三段凹槽的瞬间，记录剑核心内部一道湛蓝的青金石基准线与中途骤断的波形记录清晰投射到了测量板上）\n“……快看这条蓝色基准线！核心里早就用公证墨水波形存下了测量刻度。\n以前有人先测过。昨日的我……也曾在这张工作台上同样测过这把剑的输出！”"
+    },
+    {
+      "key": "story.invest.09_exp2_theo",
+      "value": "“昨天的记录只拉出基准线，波形就在起点处断掉了。因为一个人按着剑身没法同时去扳对面的测量仪嘛！\n不过现在有我按着测量仪、伊森大叔扶稳剑架。蕾娅，我先让你刚练成的第一个3阶技能的一条发动路径在这个测量仪里短暂休息（休眠）。就在这状态下，用你的基础剑术把前面的基准靶标劈一下！”\n（操作提示：用基础剑术击打工作台基准靶标（calibration_target）1 次。）"
+    },
+    {
+      "key": "story.invest.10_exp2_ethan",
+      "value": "（伴随沉厚的青金冲击波，靶标剧烈震晃，仪表指针猛地窜升 20%）\n“看见了吗。原本为了维持那条Boss技能分支而分散出去的《时间刻印输出》，整整一份（20%）全都稳稳叠加到你的基础剑术上了。\n不过别会错意。这种临时休眠去不掉终焉，你胸针上的终焉印章还在，而且离开工作台这台测量装置，谁也别想擅自永久解放路径。想在实战里解开输出，必须走正式的逆公证归还程序。”"
+    },
+    {
+      "key": "story.invest.11_exp3_theo",
+      "value": "“接下来是第三项实验！我把对面公证院规格的反射测量板打开，让它原封不动复制你的剑击。看看反射板到底能把你的动作轨迹和时间刻印输出模仿到哪一步，以及关掉装置后记录还会不会留着！”\n（操作提示：在反射测量板（reflection_plate）前按 F / 按下左摇杆进行反射对照并断开测量仪。）"
+    },
+    {
+      "key": "story.invest.12_exp4_theo",
+      "value": "（对照着反射板波形与公证墨水原板，他在实验笔记上飞快记下结论）\n“成了，三件事全都证实了！\n第一，反射装置能把你动作的轨迹（形式）一模一样复制出来，但你烧灼时间一剑一剑攒出的时间刻印输出，它连1秒也复制不出来。\n第二，中途关掉反射装置，印在原板上的公证记录也不会抹除。而且断开测量仪之后，你的Boss技能使用权也能恢复正常！\n（他在实验笔记上划出两栏写下来）\n[已观测：输出分散（每条路径20%） · 刻印无法复制 · 公证记录残留]\n[未验证：五条路径同时预约 · 卡塞尔万象共鸣镜完整复制 · 原型剑术最终确立]\n让一条分支休息后，剑这边的输出确实涨了。虽然还不知道能不能把五条分支一起绑回母体动作，但只要卡塞尔的镜面抄袭我们的招式时我们迎面对斩挂上归还预约，再用解放出的时间刻印输出把原型剑术也迎面压回去……没准就能把五道终焉全都退还给原持有者卡塞尔！”"
+    },
+    {
+      "key": "story.invest.13_decision",
+      "value": "“昨日的我……是一个人按着这台测量仪才让波形断掉的呀。所以她来不及证明全部方法，只能为了先救那五位恩人选择抹掉自己的名字。\n但我不是一个人。我知道那里还留着没验证完的空白。可要是现在放下剑，剩下的恩人明早六点就会被行刑。\n泰奥、伊森大叔、玛尔塔奶奶、卢卡。我不会提前划掉自己的那一份。等把五位恩人的终焉全都聚齐到我身上，再顺着我们共同验证过的归还路径还给卡塞尔……我也一定会活着回到早餐桌前的！”\n（系统处理：调用 SkillSession.Investigation.CompleteMiddleInvestigation() ➔ 确认并保存 I=1（investigation_complete））"
+    },
+    {
+      "key": "story.luka.approach",
+      "value": "（看见轨道上正要开动的发条货运车，她习惯性地脚尖一绷就想硬跳过去——随即便想起胸针上的裂纹与刚才在工作台立下的约定，自行收住脚步收起长剑）\n“……不行。像以前那样逞强自己跳过去万一摔伤就得不偿失了。前面信号站不就有卢卡嘛。”"
+    },
+    {
+      "key": "story.luka.signal",
+      "value": "“卢卡！等一下，捎我一程！”\n（操作提示：在升降台信号站（luka_signal_post）按 F / 按下左摇杆直接向卢卡发信号。）"
+    },
+    {
+      "key": "story.luka.board",
+      "value": "（信号铃一响，卢卡便拉下制动杆刹住货车，咣当一声把铁制升降板降到与安全地面平齐）\n“看到信号啦，蕾娅姐！谢谢你没有自己硬跳而是先叫我。好啦，升降板全放下来了，快上来吧！”\n（操作提示：直接移动踏上降下的货运升降板（luka_freight_platform）。）"
+    },
+    {
+      "key": "story.luka.arrive",
+      "value": "（升降板平稳滑动，抵达连接区划的出口）\n“谢啦，卢卡。比自己硬跃过去快得多，脚腕一点也不疼。回来的时候我也给你发信号！”"
+    },
+    {
+      "key": "investigation.clue.route_ledger.summary",
+      "value": "公证账簿与委托账簿的对照记录。重现3阶极意时终焉不会消灭，而是会转移到招式完成者（被告人 R.E.A.）身上；玛尔塔的账簿上留有“记录 #01 / 逆流前 06:25”的印章与蕾娅本人笔迹写下的备忘：“草稿在剑里”。"
+    },
+    {
+      "key": "investigation.clue.route_ledger.text",
+      "value": "将钟塔分所的公证账簿终端与玛尔塔的青金石公证墨水委托账簿并排对照的记录。\n首先，中央公证院对外宣传的“3阶登记时由母体核心吸收·消灭终焉”特例在记录剑电路中根本不存在。世界的因果律会将完美重现3阶极意的剑士判定为与原持有者“同一人”，瞬间将预定的死刑因果（终焉）转移至剑士肉体（被告人 R.E.A.）。\n其次，玛尔塔的委托账簿上印有与核心同步的青金石公证墨水戳记：[记录 #01 / 逆流前 06:25 — 委托物：赦免任务书信封及青金石音乐盒]。委托人签名是收笔处略微画圆的蕾娅本人字迹，备注栏写着：“早上醒来时请微笑着递给醒来的我。草稿在剑里。”"
+    },
+    {
+      "key": "investigation.clue.route_waveform.summary",
+      "value": "将测量销钉对准剑身第三段的三个基准刻痕后，从记录剑核心投射出的先行测量基准线与4阶段剑实验波形。让一条技能路径休眠后，20%的刻印输出会加载到基础剑术上，而反射装置无法复制刻印输出。"
+    },
+    {
+      "key": "investigation.clue.route_waveform.text",
+      "value": "伊森锻造出的《青金石记录剑（白纸刻印剑）》剑刃第三段，留有三个同等深度的测量基准刻痕。将工作台测量架销钉精准咬合到这第三段刻度上时，唯一跨越回溯保留的存储库——记录剑核心内部以公证墨水波形存下的昨日（#01）先行测量基准线便投射到了测量板上。昨日的波形因为独自一人无法同时按住剑身又操作反射板而在起点处中断。\n今天由泰奥、伊森与蕾娅共同完成的4阶段剑实验实测出了三件事：① 让已掌握的Boss技能一条发动路径在测量器中短暂休息（休眠），原本分散的时间刻印输出就会分出一份（20%）加载到基础剑术上（但离开工作台外无法随意永久解放）。② 反射装置只能复制招式的轨迹（形式），剑身上积累的时间刻印输出哪怕1秒也无法复制。③ 即使关掉反射装置，印在原板上的公证记录也不会消失。"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.summary",
+      "value": "挂在天鹅绒裁衣街入口衣橱里从十一岁到十六岁的六件冬衣与蓝色丝带碎布。记录着6年前代寒风中瑟瑟发抖的十岁蕾娅承接《第1终焉：心脏破裂》的裁缝米哈伊尔。"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.text",
+      "value": "在第1区天鹅绒裁衣街入口、剪刀手裁缝米哈伊尔（46岁）裁缝室衣橱中发现的记录与遗物。\n衣橱内整整齐齐挂着六件未曾迎来主人的冬衣，从十一岁尺寸到十六岁尺寸每年长高一拃；第六件大衣的口袋里，放着与蕾娅至今仍系在左侧鬓发上的蓝色丝带一模一样的织料边角。\n6年前在地下替身室中，当十岁的蕾娅被卡塞尔强行灌入5大终焉、在撕心裂肺的剧痛中紧攥衣襟时，米哈伊尔将那颤抖的动作化作银丝缝合3阶极意（《缝命·断缘》），把蕾娅体内的[第1终焉：心脏破裂]原封不动转移到了自己心脏之中。"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.summary",
+      "value": "放在暮色发条钟塔入口工作台上的另一半怀表与调校日志。记录着6年前将半块怀表送给十岁蕾娅，并代为背负《第2终焉：急速衰老》而一夜白头的钟表匠尤利乌斯。"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.text",
+      "value": "在第2区暮色发条钟塔入口、停秒之钟表匠尤利乌斯（52岁）的工作台上，经其外甥卢卡引导看到的遗物与核心共鸣记录。\n工作台的绒毯上，与蕾娅珍藏在腰包里的“指针停摆的半块怀表”断面丝丝入扣的另一半黄铜怀表，正一尘不染地擦拭摆放着。\n6年前在地下替身室中，当十岁的蕾娅哭求活命并反复比划上发条的动作时，尤利乌斯把那个习惯练成钟摆回溯3阶极意（《零时》），代她承接了[第2终焉：急速衰老]。一夜之间衰老如白发老人后，每当碰见蕾娅，他仍总会侧耳细听她腰包里停住的秒针有没有重新转动（确认终焉没有回到孩子身上）。"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.summary",
+      "value": "玻璃歌剧院入口排练室里磨损的芭蕾足尖鞋与地上画着的孩子步幅记号。记录着6年前为隔着地下铁栅栏踮起脚尖的蕾娅起舞，并代为承接《第3终焉：双腿之刑》的舞者瓦莱莉娅。"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.text",
+      "value": "在第3区玻璃歌剧院入口、碎鞋舞者瓦莱莉娅（29岁）曾停留的幕后排练室中确认到的遗物与核心刻印。\n软木拐杖旁放着一双首席舞者时代磨破鞋头的足尖鞋，排练室木地板上还封存着用粉笔照着十岁孩童短小步幅画下、好教她如何平稳落地而不摔倒的刻度线。\n6年前，看见地下替身室铁栅栏下踮脚支撑的十岁蕾娅，瓦莱莉娅将那踮脚动作练成谢幕圆舞3阶极意（《盛大终幕》），将[第3终焉：双腿之刑]揽到了自己双腿上。哪怕双腿碎裂再也无法登台，她牵挂的依然不是华丽的空中腾跃，而是蕾娅能否用双脚安稳落地。"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.summary",
+      "value": "保存在青铜大钟楼入口处的晨钟乐谱与三手势记事本。记录着6年前为了让没有窗户的地下室里的十岁蕾娅知道清晨到来而敲响钟声，并代为背负《第4终焉：永恒沉默》的守钟人加布里埃尔。"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.text",
+      "value": "在第4区青铜大钟楼入口、沉默守钟人加布里埃尔（41岁）的钟楼值班室中确认到的乐谱与笔谈记事本。\n乐谱第一页写着这样一段备忘：“为了让没有窗户的地下室里的孩子知道清晨已经到来，每天六点都要以最温暖低沉的回响敲响大钟。”\n6年前在地下替身室中，为了拯救在共鸣暴走轰鸣中捂住双耳、强忍尖叫的十岁蕾娅，加布里埃尔将那份动作化作共鸣锻造3阶极意（《六点的播种》），独自背负了[第4终焉：永恒沉默]，献出了听力与嗓音。失去声音之后，他仍制作了笔谈本与肉眼可见的三种手势（摊开手掌：停下 / 两根手指：准备 / 手掌朝下：落地、返回）守护着蕾娅的脚步。"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.summary",
+      "value": "放在白画布画廊入口处的颜料浮雕速写本。记录着6年前为没有窗户的房间里的蕾娅画出大海与花田，并代为承接《第5终焉：失明》后，依然用指尖描绘“活到十六岁的蕾娅”的画家伊莉娜。"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.text",
+      "value": "在第5区白画布画廊入口、盲眼肖像画家伊莉娜（34岁）的温室画室中，卢卡展示的速写本与核心刻印。\n厚实的画纸上装订着数十张仅凭颜料质感与高低起伏便能触摸辨认轮廓的盲文式肖像。标题全都是《活到十六岁的蕾娅》，以温暖的笔触既画了笑脸，也画了皱眉或含泪的面容。\n6年前在没有窗户的地下替身室中，为了救下用手指在半空描摹光亮的十岁蕾娅，伊莉娜将那道手势练成裁绘留白3阶极意（《自画像完成》），将[第5终焉：失明]揽入自己的双眸。"
+    },
+    {
+      "key": "investigation.clue.contract_original.summary",
+      "value": "昨日的蕾娅（记录 #01）封存在核心深处的大公证官卡塞尔《第5号秘传招式公证回收命令书（原本）》。第3条中写明的并非特别赦免，而是命令五道终焉一经集齐，立即将被告人 R.E.A. 永世冰封隔离于大法庭地下的《永久标本馆》。"
+    },
+    {
+      "key": "investigation.clue.contract_original.text",
+      "value": "当五位恩人的终焉全部汇聚到蕾娅身上（C=5）后，从记录剑核心深层档案库输出的大公证官卡塞尔亲印原本《第5号秘传招式公证回收命令书（原本）》。\n被昨日的蕾娅（#01）在副本上用刀尖刮去并隐藏的原本[第3条（处分）]实际条文如下：\n“第3条（处分）：5大秘传招式的3阶回收完成、终焉归属于替身被告人（R.E.A.）肉体之时，即刻将被告人押入大法庭地下《永久标本馆》入棺，施以永久冰封隔离。”\n卡塞尔的真正目的从来不是赦免，而是将6年前分散的5大终焉公证痕迹重新汇入蕾娅一人体内，趁她还活着封入地下标本馆，永久断绝终焉通过逆公证归还给自己的可能。"
+    },
+    {
+      "key": "investigation.clue.contract_copy.summary",
+      "value": "今晨在阁楼通过玛尔塔收到的《第5号秘传招式公证回收命令书（副本）》。下方第3条写有“由母体核心吸收并消灭终焉，并向5人全体颁布特别赦免”，但实际上是昨日的蕾娅（#01）刮掉原版处分条款后，用分所旧铅字与青金石公证墨水覆印而成的伪造本。"
+    },
+    {
+      "key": "investigation.clue.contract_copy.text",
+      "value": "#02 / D日 06:30，在遗忘阁楼中，玛尔塔照着账簿指示（“请微笑着递交”）交出的《第5号秘传招式公证回收命令书（副本）》。\n文件下方的[第3条（特例附则）]印着如下条文：\n“第3条（特例附则）：技能的3阶公证登记一旦完成，受刑者的终焉即刻由大法庭母体核心吸收·消灭，并向五位受刑者全体颁布特别赦免令。”\n然而在首次终焉转移后，于分所工作台灯光下精密鉴定才发现，这一栏的原印纸纤维早已被刀尖薄薄刮去，其上用钟塔分所仓库的旧式铅字与蕾娅本人的青金石公证墨水（核心同步媒介）重新套印了赦免措辞，使其得以跨过时间逆流保存至今。"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.title",
+      "value": "终焉账簿转移记录与 #01 委托账簿鉴定书"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.summary",
+      "value": "重现3阶极意时受刑者的终焉不会消散于核心，而是强制转移进招式完成者（被告人 R.E.A.）的肉体。经由玛尔塔的账簿（记录 #01 / 逆流前 06:25）和副本第3条的旧铅字痕迹证实，正是临近时间回溯前的“昨日蕾娅”亲手伪造赦免附则、将今日的蕾娅送上了征程。"
+    },
+    {
+      "key": "investigation.record.transfer_ledger.body",
+      "value": "[核心账簿索引 #101 — 终焉转移与委托记录对照]\n1. 虚假消灭特例的真相：中央公证院散布的“记录剑3阶登记后由母体核心吸收·消灭终焉”，是为了让替身剑士毫无戒心地练成极意而设的体制欺瞒。终焉账簿（CoreRecord.ledger）会在3阶极意被重现的瞬间，立刻把原持有者（恩人）的终焉所有权过户登记到被告人 R.E.A.（蕾娅）名下。\n2. 6年前的救赎路径：五位恩人绝非罪犯，而是6年前在卡塞尔将5大终焉强行注入无刻印十岁容器孩童（蕾娅）体内时，各自用3阶技艺分摊带走一道终焉的守护者。\n3. 伪造者确认：阁楼委托账簿中[记录 #01 / 逆流前 06:25]一条以与核心同步的青金石公证墨水写就，从而跨越了24小时大逆流得以留存。签名笔迹正是蕾娅本人——昨日的蕾娅为了使今晨的自己深信赦免特例并收录恩人们的技能，亲手刮去原本第3条、套印上特别赦免附则，并留下了“草稿在剑里”的线索。"
+    },
+    {
+      "key": "investigation.record.core_waveform.title",
+      "value": "核心先行测量基准线及4阶段剑实验结果报告"
+    },
+    {
+      "key": "investigation.record.core_waveform.summary",
+      "value": "从剑身第三段的基准刻痕投射出了昨日（#01）中途中断的先行测量基准线。今天与泰奥、伊森共同进行的4阶段剑实验证实了“休眠1条发动路径可释放+20%时间刻印输出”、“反射装置无法复制时间刻印”、“关闭装置后公证记录依然保留”，并据此确立了将5大终焉一并归还给卡塞尔的逆公证返还假说。"
+    },
+    {
+      "key": "investigation.record.core_waveform.body",
+      "value": "[核心波形索引 #102 — 白纸刻印剑输出分散与逆公证假说]\n1. 先行测量基准线（伏笔 ①·②）：将工作台测量销钉咬合至记录剑第三段三处同等深度的刻痕后，核心内部封存的昨日青金石波形基准线投射到了测量板上。昨日因无助手独自按住测量器而在起点处断线，今天经泰奥与伊森协力完成了全部4阶段测量。\n2. 实证的三条物理法则（已观测）：\n- 输出分散（每条路径 20%）：每空出一条已完成的3阶恩人技能发动路径，原本为维持该技能而分散的额外时间刻印输出便以 20% → 40% → 60% → 80% → 100% 依次解放并加载到基础剑术上（工作台外唯有通过正式预约归还程序方可解放）。\n- 时间刻印不可复制：公证院反射装置可100%复制剑术的外在轨迹，但由使用者燃烧自身时间亲手挥剑累积的物理《时间刻印输出》，哪怕1秒也无法复制。\n- 公证记录残留：即便中途关闭或切断反射装置，已经咬合并印在原板上的公证记录也不会被删除。\n3. 尚待实证课题（未验证）：五条技能路径的同时预约归还（R=1~5）、对抗卡塞尔母体兵器《万象共鸣镜》的实战对斩，以及最后第六道原型动作（卡塞尔零式）能否一锤定音，尚需在大法庭顶层实战中证明。"
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.title",
+      "value": "第1刻印完全共鸣 — 剪刀手裁缝米哈伊尔与归途的地板"
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.summary",
+      "value": "6年前用缝合剑术护住十岁蕾娅颤抖衣襟、代为背负《第1终焉：心脏破裂》的米哈伊尔。看见今日的蕾娅不再用肉身硬扛刀锋，而是先用基础劈斩切断锁扣放下逃生木板，他亲自加固了救护所与归途通道的木板，并将战斗支援《归还缝线》托付给她。"
+    },
+    {
+      "key": "investigation.record.imprint_mikhail.body",
+      "value": "[恩人刻印记录 #01 — 米哈伊尔（46岁 / 银丝缝合 · 第1终焉：心脏破裂）]\n- 6年前的记忆碎片：在冰窖般的地下替身室里，十岁的蕾娅捂着仿佛撕裂的胸口试图拢紧衣领，裁缝米哈伊尔为她披上蓝丝带与斗篷，将那动作化作《银丝缝合》3阶极意，替她扛下了心脏破裂的死刑。此后6年，他全凭目测估算未曾谋面的孩子长高的身量，每年亲手缝一件新冬衣挂进衣橱。\n- 今日的改变与《归还缝线》：米哈伊尔最看不惯的，就是蕾娅拿自己的身体去堵计划的窟窿。见今天的蕾娅不再鲁莽硬接攻势，而是先切断侧壁锁扣放下退路木板，米哈伊尔亲手拧紧了归途通道摇晃的木板，低声道：“我没赞成过。我只是修好了你回来要踩的地板。”"
+    },
+    {
+      "key": "investigation.record.imprint_julius.title",
+      "value": "第2刻印完全共鸣 — 停秒之钟表匠尤利乌斯与往返的时间"
+    },
+    {
+      "key": "investigation.record.imprint_julius.summary",
+      "value": "6年前将十岁蕾娅上发条的手势炼成钟摆步法，代为背负《第2终焉：急速衰老》的尤利乌斯。面对放弃眼前贪刀、在约定好的归还时刻准时退回平台的今日蕾娅，他首次摊开自己的半块怀表，交出了共同核对归期的时间支援《归还时刻》。"
+    },
+    {
+      "key": "investigation.record.imprint_julius.body",
+      "value": "[恩人刻印记录 #02 — 尤利乌斯（52岁 / 钟摆回溯 · 第2终焉：急速衰老）]\n- 6年前的记忆碎片：钟表匠尤利乌斯把半块怀表递给地下替身室里的十岁蕾娅，将孩子哭求活命时拧发条的习惯动作练成《钟摆回溯》3阶极意，代她背负了急速衰老的终焉。在30次融会贯通时只有表壳随之共鸣、停摆的秒针毫无动静；直到80次极意大成那一刻，秒针才重新咬合走动，终焉也随之转移到蕾娅身上。\n- 今日的改变与《归还时刻》：一直害怕时间不够时蕾娅会把自己留在最后的尤利乌斯，看见今天的蕾娅放下贪功的念头、在约好的归还点准时撤回平台，这才终于展开自己手中的另半块怀表。如今两半怀表不再只算计突入的时间，而是一同记录活着归来的往返时刻。"
+    },
+    {
+      "key": "investigation.record.imprint_valeria.title",
+      "value": "第3刻印完全共鸣 — 碎鞋舞者瓦莱莉娅与安全着陆"
+    },
+    {
+      "key": "investigation.record.imprint_valeria.summary",
+      "value": "6年前将十岁蕾娅隔着铁栅栏踮起脚尖的姿态化作回旋剑舞，代为背负《第3终焉：双腿之刑》的瓦莱莉娅。看到放弃冒险空中追击、主动踏上安全平台并接受卢卡升降机接应的蕾娅，她细心查看蕾娅的双踝，承诺以《落地圆舞》护住她的落脚点。"
+    },
+    {
+      "key": "investigation.record.imprint_valeria.body",
+      "value": "[恩人刻印记录 #03 — 瓦莱莉娅（29岁 / 谢幕圆舞 · 第3终焉：双腿之刑）]\n- 6年前的记忆碎片：曾是歌剧院首席舞者的瓦莱莉娅，为了在地下替身室铁栅栏下踮着脚尖撑住的十岁蕾娅翩然起舞，将那动作练成《谢幕圆舞》3阶极意，独自承受了双腿碎裂之刑。\n- 今日的改变与《落地圆舞》：看着蕾娅拖着疼痛的双腿还执拗地想独自完美落地，是瓦莱莉娅最心痛的事。当今天的蕾娅果断舍弃华丽的空中连段，降落到安全地面并坦然接受卢卡升降板救援时，瓦莱莉娅替蕾娅牢牢系紧靴带，温暖地认可了她选择活着归来的决意。"
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.title",
+      "value": "第4刻印完全共鸣 — 沉默守钟人加布里埃尔与三种手势"
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.summary",
+      "value": "6年前为了救在共鸣轰鸣中捂住双耳的十岁蕾娅，代为背负《第4终焉：永恒沉默》的加布里埃尔。与停止假装听见、主动比手势请求停下的蕾娅一起，他完善了即便在无声战场上也能彼此守护的三种视觉手势与战斗支援《归还钟击》。"
+    },
+    {
+      "key": "investigation.record.imprint_gabriel.body",
+      "value": "[恩人刻印记录 #04 — 加布里埃尔（41岁 / 共鸣锻造 · 第4终焉：永恒沉默）]\n- 6年前的记忆碎片：每天清晨为没有光亮的地下室里的十岁蕾娅敲响六点钟声的加布里埃尔，将孩子捂住双耳颤抖的动作化作《共鸣锻造》3阶极意，献出了自己的听力与嗓音。\n- 今日的改变与《归还钟击》：在钟楼沉闷的共鸣中，当蕾娅不再假装听见而挥手示意停下时，加布里埃尔翻开记事本，与她约定好三种视觉信号：[摊开手掌：停下 / 两根手指：准备 / 手掌朝下：落地、返回]。即便完成80次极意让加布里埃尔恢复嗓音、沉默的终焉移至蕾娅身上，两人依然继续使用这组约定好的手势，好让蕾娅随时能用眼睛确认并安全归来。"
+    },
+    {
+      "key": "investigation.record.imprint_irina.title",
+      "value": "第5刻印完全共鸣 — 盲眼肖像画家伊莉娜与不必勉强微笑的脸"
+    },
+    {
+      "key": "investigation.record.imprint_irina.summary",
+      "value": "6年前将十岁蕾娅在半空描摹光亮的手势炼成画笔剑术，代为背负《第5终焉：失明》的伊莉娜。面对在她轻抚的指尖下没有强挤微笑、坦白“今天好害怕”的蕾娅，她回答“露出那张脸回来也可以”，并交出了战斗支援《归还着色》。"
+    },
+    {
+      "key": "investigation.record.imprint_irina.body",
+      "value": "[恩人刻印记录 #05 — 伊莉娜（34岁 / 裁绘留白 · 第5终焉：失明）]\n- 6年前的记忆碎片：曾为没有窗户的房间里的十岁蕾娅绘出大海与花田的肖像画家伊莉娜，将孩子在半空画画的动作练成《裁绘留白》3阶极意，献出了双眼视力。此后6年间，她仅凭颜料厚度在画布上刻画“活到十六岁的蕾娅”。\n- 今日的改变与《归还着色》：过去为了安抚大人们而总是强扯嘴角微笑的蕾娅，今天在伊莉娜指尖触碰时没有假笑，而是坦白：“今天我好害怕。”伊莉娜静默片刻后垂下手答道：“露出那张脸回来也可以。”第80次使用完成让伊莉娜时隔6年重见光明时，她双眼最先看见的，正是摘下勉强微笑、依然坚定站立的今日蕾娅。"
+    },
+    {
+      "key": "investigation.record.original_and_copy.title",
+      "value": "第5号秘传招式公证回收命令书 — 原本（标本处分）与副本（特别赦免）全文对照"
+    },
+    {
+      "key": "investigation.record.original_and_copy.summary",
+      "value": "封存于核心深处的卡塞尔原本命令书与今晨在阁楼收到的伪造副本第3条实物比对。原本第3条明确记载一旦集齐五大终焉立即将被告人 R.E.A. 押入地下《永久标本馆》入棺并永久冰封隔离，证实了昨日的蕾娅（#01）用刀尖刮掉这段条文并覆印了“母体核心吸收·消灭与五位受刑者特别赦免”附则。"
+    },
+    {
+      "key": "investigation.record.original_and_copy.body",
+      "value": "条款区分\t核心深层保管本（原本）\n《第5号秘传招式公证回收命令书（原本 · 中央公证院绝密封印）》\t阁楼交付本（伪造副本）\n《第5号秘传招式公证回收命令书（副本 · 钟塔分所交付本）》\f文号与签发方\t• 文件编号：中央公证院绝密执行第5-00号（原本）\n• 签发与印信：大公证官卡塞尔亲笔署名 · 青金局长印章\n• 受命人：钟塔分所替身公证剑士 被告人 R.E.A.（蕾娅）\t• 文件编号：中央公证院特例执行第5-00号（副本）\n• 签发与印信：大公证官卡塞尔印章影印（底栏留有钟塔分所旧铅字重印痕迹）\n• 受命人：钟塔分所公证剑士 蕾娅（Rea）\f第1条（目的）\n（原本·副本相同）\t本命令书旨在从持有6年前自大法庭地下替身室分散流出之5大死刑因果（第1终焉：心脏破裂、第2终焉：急速衰老、第3终焉：双腿之刑、第4终焉：永恒沉默、第5终焉：失明）的5名限时受刑者（米哈伊尔·尤利乌斯·瓦莱莉娅·加布里埃尔·伊莉娜）处，将其各自固有秘传招式悉数收录并回收至《青金石记录剑》3阶极意。\t本命令书旨在从持有6年前自大法庭地下替身室分散流出之5大死刑因果（第1终焉：心脏破裂、第2终焉：急速衰老、第3终焉：双腿之刑、第4终焉：永恒沉默、第5终焉：失明）的5名限时受刑者（米哈伊尔·尤利乌斯·瓦莱莉娅·加布里埃尔·伊莉娜）处，将其各自固有秘传招式悉数收录并回收至《青金石记录剑》3阶极意。\f第2条（执行期限）\n（原本·副本相同）\t回收期限至次日（D+1日）凌晨 06 时 00 分整青铜大钟楼鸣钟为止。期限内未完成3阶极意收录之受刑者，即刻实施区划隔离并当场行刑。\t回收期限至次日（D+1日）凌晨 06 时 00 分整青铜大钟楼鸣钟为止。期限内未完成3阶极意收录之受刑者，即刻实施区划隔离并当场行刑。\f第3条（核心差异）\n[已标出篡改段落]\t【原本第3条（处分） — 被刀尖刮除的原文】\n“第3条（处分）：【5大秘传招式的3阶回收完成、终焉归属于替身被告人（R.E.A.）肉体之时，即刻将被告人押入大法庭地下《永久标本馆》入棺，施以永久冰封隔离。】”\t【伪造副本第3条（特例附则） — 用分所旧铅字·公证墨水覆印的条文】\n“第3条（特例附则）：【技能的3阶公证登记一旦完成，受刑者的终焉即刻由大法庭母体核心吸收·消灭，并向五位受刑者全体颁布特别赦免令。】”\f物理鉴定批注\t• 核心深层原本保存状况：完好无损（#01 / D日 06:30 刚过时昨日的蕾娅在阁楼最初读到的真实命令书）。\t• 副本下端纤维鉴定：原本中[处分：归属于被告人（R.E.A.）肉体之时……押入大法庭地下《永久标本馆》入棺，施以永久冰封隔离]一句被刀尖刮除，由昨日的蕾娅于记录 #01 / D+1日 06:15~06:25 间以分所旧铅字与青金石公证墨水套印为[特例附则：由大法庭母体核心吸收·消灭，并向五位受刑者全体颁布特别赦免令]。"
+    },
+    {
+      "key": "investigation.record.preservation_order.title",
+      "value": "大法庭地下《永久标本馆》入棺命令及记录 #01 残响执行指令"
+    },
+    {
+      "key": "investigation.record.preservation_order.summary",
+      "value": "卡塞尔回收的真正目的并非赦免，而是把分散的5大终焉归集到蕾娅一身后封入地下《永久标本馆》永久隔离，彻底堵死终焉逆公证回到自己身上的路径。不仅如此，核心内部还一同登记着昨日的蕾娅（#01）为了不让今日的蕾娅上去找顶层的卡塞尔、强行把她送进地下标本馆而设下的“残响执行指令”。"
+    },
+    {
+      "key": "investigation.record.preservation_order.body",
+      "value": "[核心深层绝密命令 #202 — 永久标本馆隔离结构与残响强制执行代码]\n1. 大公证官卡塞尔的永久封存设计：\n- 终焉归属权不会因普通死亡或单纯战败而消灭，也不会自动倒流回前任持有者，唯有通过“3阶完整动作导致的转移”或“结合原型剑术（卡塞尔零式）的最终逆公证确认”才能改变。\n- 卡塞尔害怕6年前五位市民分摊带走的5大终焉有朝一日结合原型动作逆公证回到自己体中。因此他安排在行刑日（D+1日 06:00），让白纸容器蕾娅（R.E.A.）收录回收全部五门技艺，再把她活生生冰封入棺进大法庭地下《永久标本馆》而非顶层审判席，让因果回路永远停摆。\n2. 昨日的蕾娅（#01）种入核心的“残响执行指令”：\n- 原本命令书下方除了卡塞尔的命令外，还附着昨日的蕾娅于 D+1日 06:20 直接刻入核心防御机制的[自主执行指令：记录 #01 之残响]：\n- “若今日的我（#02）集齐全部五道终焉（C=5）并进入大法庭中央大厅，则将核心记忆投影（残响）实体化于升降机前，封锁顶层审判席通行，强行押送其沿阶梯进入地下《永久标本馆》。”\n- 昨日的蕾娅为何没有迎战卡塞尔，反而试图把今日的自己关进标本馆？理由留在了第3阶段的保管记录（#01 失败记录与废弃草稿）之中。"
+    },
+    {
+      "key": "investigation.record.record_01_failure.title",
+      "value": "核心刻印影像[记录 #01] — 反锁的隔离门、120次有效剑击与独自未能测完的实验"
+    },
+    {
+      "key": "investigation.record.record_01_failure.summary",
+      "value": "昨日的蕾娅（#01）没有隐瞒原本命令书的标本处分真相，向恩人们如实求助；然而得知蕾娅会被活生生封入标本馆的米哈伊尔与众人拒绝收录，亲手反锁了区划隔离门。她在门外独自砍出的120次无名基础剑击、清晨在工作台刚起笔便断掉的单独测量波形以及六点的行刑钟声，全都被记录在核心里。"
+    },
+    {
+      "key": "investigation.record.record_01_failure.body",
+      "value": "静画 #0\n#01 / D+1日 06:25\n（开启音乐盒）\n昏暗的工作台上，玛尔塔一直保管的八角形小巧《青金石音乐盒》盒盖打开，一缕温暖的蓝色共鸣波纹悄然浮起。\n[青金石音乐盒语音记录 — 记录 #01 / 逆流前5分钟]\n昨日的蕾娅：“真希望明天的我，能吃上一点热乎的东西呀。”\f静画 #1\n#01 / D日 白昼~夜晚\n（带着真相请求帮助）\n天鹅绒裁衣街织造工坊前。昨日的蕾娅（#01）双手捧着未曾伪造的原本命令书（第3条永久标本馆入棺）和匆忙绘就的逆公证草稿，递到米哈伊尔与恩人们面前。\n[核心刻印记录 #01 / D日 白昼 — 携未伪造原本前往求援的昨日]\n昨日的蕾娅：“命令书第3条写着会把终焉汇入我体内再把我关进地下标本馆。可我会用这把剑找到还给卡塞尔的办法的！所以请别躲开，求求你们把招式展示给我看吧！请和我一起想办法！”\f静画 #2\n#01 / D日 夜晚\n（自行锁上的隔离门）\n听闻原本真相——“蕾娅将代替我们活埋于永久标本馆”——的米哈伊尔没有拔剑，而是挥剪一刀剪断了区划隔离门内侧的插销绳。沉重的铁质隔离门轰然落下，隔开了昨日的蕾娅与恩人们。\n[核心刻印记录 #01 / D日 夜晚 — 拒绝收录并自行反锁门的恩人们]\n米哈伊尔（隔离门彼端）：“这里没有哪位大人会明知你要踏进那口棺材还把招式交出去的，蕾娅。快转身逃走吧。”\n（为了不让记录剑收录哪怕一招一式，五位恩人拒绝切磋，一同登上了刑场押送车。）\f静画 #3\n#01 / D日 深夜\n（120次有效剑击的由来）\n紧闭的铁质隔离门外。独自留下的昨日蕾娅咽下泪水，对着紧锁的门把手与铁门，用无名基础剑术（雏鸟斩）挥砍了数百次。剑尖开裂，核心计数器上刻下[基础剑术有效记录：120次 / 习得恩人技能：0个]。\n[核心刻印记录 #01 / D日 深夜 — 紧闭的隔离门与 120次有效剑击]\n昨日的蕾娅：“请开门呀！我一个人连验证都做不到！求求您了，米哈伊尔大叔！尤利乌斯大叔……！”\n（在反锁的铁门前独自挥出的数百次斩击中，只有120次有效打击刻入了核心。终究没能收录任何一位恩人哪怕第1阶的招式。）\f静画 #4\n#01 / D+1日 05:50~06:00\n（独自没能做完的测量）\n黎明空荡荡的钟塔分所工作台。昨日的蕾娅在开裂剑身第三段刻下三道基准刻痕放上架台投射出了核心基准线，可一只手按住晃动的剑身时，够不着对面远处的反射测量板拉杆而徒劳伸长手臂。输出分散波形刚标出起点便凌空断开，窗外同时响起宣告凌晨 06 点行刑的青铜大钟楼钟声。\n[核心刻印记录 #01 / D+1日 06:00 — 独自未尽的测量与行刑鸣钟]\n（不可能一边单手按住晃动的剑身一边操作对面的反射测量板。况且连一个已完成的Boss技能槽都没有，输出分散波形刚落笔就在起点处截断。）\n[外部音响记录：D+1日 06:00 — 中央公证院5名受刑者行刑鸣钟]\f静画 #5\n#01 / D+1日 06:05\n（把自己的生存划掉的归纳结论）\n行刑钟声停歇后的工作台。昨日的蕾娅垂眸看着断开的核心投射波形与草稿最后一栏，重新握紧了青金石笔。\n[核心刻印记录 #01 / D+1日 06:05 — 烧毁记忆前夕的结论]\n昨日的蕾娅（独白）：“只要我还知道这道标本馆命令，下一个我也没法在长辈们面前撒谎。她会实话实说、哭求帮忙……然后再次让他们把门反锁起来。如果还贪心自己那没得到证明的生还，就又会害死五位恩人。”"
+    },
+    {
+      "key": "investigation.record.discarded_draft.title",
+      "value": "原本背面注释[废弃的生存草稿] — 被两道横线划掉的[蕾娅生存]"
+    },
+    {
+      "key": "investigation.record.discarded_draft.summary",
+      "value": "玛尔塔账簿中“草稿在剑里”所指的真相。原本背面画着与今天和泰奥所绘完全相同的逆公证归还箭头，但最终结果栏[蕾娅生存]却被两道横线划掉，并标注着“存在归还可能 / 实战无法验证 / 不予采用”。只因如实告知真相求援却导致恩人们锁门赴死，昨日的蕾娅便泛化得出“下一次尝试也把我的生存划掉”的结论。"
+    },
+    {
+      "key": "investigation.record.discarded_draft.body",
+      "value": "================================================================================\n [核心深层保管文件背面注释 — 玛尔塔委托账簿备注：“草稿在剑里”]\n 撰写时间：记录 #01 / D+1日 06:08（24小时大逆流启动前 22 分钟）\n 撰写者：钟塔分所公证剑士蕾娅（R.E.A.）\n================================================================================\n\n ■ 1. 因果转移与逆公证归还图式（与今日泰奥·蕾娅所绘路径一致）\n\n   [大公证官卡塞尔（原持有者 · 母体剑术零式）]\n        │  （6年前强行注入）\n        ▼\n   [十岁蕾娅（白纸容器）] ──（借3阶技艺逐一分担 1 项）──▶ [五位恩人（5名受刑者）]\n        ▲                                                         │\n        └──────────（今日的3阶极意收录 · 回收 5 大终焉）──────────┘\n        │\n        ▼  [假说阶段：万象共鸣镜对斩预约（R=1~5）+ 时间刻印解放 + 原型动作确立]\n   [向大公证官卡塞尔一并逆公证归还5大终焉]\n        │\n        ▼\n   ┌────────────────────────────────────────────────────────────┐\n   │  最终目标结果：[五位恩人全员获救] 与 ~~[蕾娅生存]~~        │\n   │                                      ^^^^^^^^^^^^          │\n   │                               （以青金石墨水划双线删除）   │\n   └────────────────────────────────────────────────────────────┘\n\n ■ 2. 记录 #01 撰写者判定附注（06:08 记入）\n   • 判定：[存在归还可能 / 实战无法验证 / 不予采用]\n   • 理由：\n     1) 单独测量中断 — 无法同时固定剑架并操作反射板，输出分散实测失败。\n     2) 告知真相的适得其反 — 只要公开原本第3条（押入永久标本馆），\n        恩人们便会拒绝对练并自行反锁隔离门。\n     3) 修正执行方案（#02 适用）—\n        - 刮去原本第3条，覆印“母体核心吸收·消灭及特别赦免”伪造附则，\n          交付给明日的我（#02）。\n        - 一旦明日的我轻信赦免特例集齐五大终焉（C=5），\n          留在核心中的我的残响便封住升降机，将明日的我押入地下《永久标本馆》。\n        - 划掉我的生存栏。唯独这是确保五位全员生还的唯一道路。\n================================================================================"
+    },
+    {
+      "key": "story.late.01_rea",
+      "value": "（久久凝视着核心终端画面里被两道横线划掉的 ~~[蕾娅生存]~~ 一栏，低声开口）\n“……我的回答哪里都没有写进去呢。\n昨日的我打从一开始也不想死呀。只是说了实话哭着求援，结果隔离门反倒锁死了……所以她连问都没问下一个我，就自己拿笔把我的位子划掉了。”"
+    },
+    {
+      "key": "story.late.02_theo",
+      "value": "“但今天的我们不一样了，蕾娅。昨天一个人按住才断掉的那道测量波形，今天我们一起从头到尾全测出来了；救护所的五位恩人也没有把门锁死，而是先替你铺好了能回来的地板、时刻和信号！”"
+    },
+    {
+      "key": "story.late.03_ethan",
+      "value": "（静静低头看着流淌在蕾娅记录剑上的澄澈青金石光彩，简短添了一句）\n“……凌晨六点十分，那丫头把断剑放到我铁砧上时，只留下了一句话。\n她说让给明天的自己留个好看的剑气光色。明明用两道杠划掉了自己的生存栏，偏偏还拜托我把你要挥出的剑气光彩锻漂亮些。”"
+    },
+    {
+      "key": "story.late.04_depart",
+      "value": "（在胸前五片花瓣皆布满赤红裂纹的青金石胸针上轻按一下，将泰奥的剑实验笔记和同伴标出的归还路径收进腰包）\n“嗯，伊森大叔。我要亲自走到大法庭升降机前等待的昨日的我面前，把这些全都给她看。\n她独自没能做完的实验记录，五位恩人替我们敞开的归路，还有从未被抹掉的我的回答，我全都要带上。出发去大法庭吧！”"
+    },
+    {
+      "key": "trial.mikhail.enter",
+      "value": "“可别忘了怎么事先留出退路。用你的银丝束缚住我的关节或固定支架三次吧。”"
+    },
+    {
+      "key": "trial.mikhail.verified",
+      "value": "“结打得很牢靠。我把下次出征要用的归还缝线替你重新补满了。”"
+    },
+    {
+      "key": "trial.mikhail.return",
+      "value": "“把衣领拉紧再出发。归途上的地板无论何时都会稳稳托住你。”"
+    },
+    {
+      "key": "trial.julius.enter",
+      "value": "“返回的时刻必须像切入挥斩的时刻一样精准。用钟摆回溯捕捉我的动作三次吧。”"
+    },
+    {
+      "key": "trial.julius.verified",
+      "value": "“分毫不差地回来了呢。我已经替你的半块怀表重新上好了一次归还时刻。”"
+    },
+    {
+      "key": "trial.julius.return",
+      "value": "“别着急。连你回来的时刻，我们也在替你一并数着。”"
+    },
+    {
+      "key": "trial.valeria.enter",
+      "value": "“比起华丽的腾跃，更重要的是用双脚安稳落地。用圆舞弹开我的弹幕三次吧。”"
+    },
+    {
+      "key": "trial.valeria.verified",
+      "value": "“漂亮的舞步，蕾娅。我为你准备了一支能护住你落地的圆舞。”"
+    },
+    {
+      "key": "trial.valeria.return",
+      "value": "“靴带系紧了吗？可要毫发无伤地走出这座舞台呀。”"
+    },
+    {
+      "key": "trial.gabriel.enter",
+      "value": "“[手记：看清我的手势信号，用共鸣锻造反击三次。摊开手掌表示停下，两根手指表示准备。]”"
+    },
+    {
+      "key": "trial.gabriel.verified",
+      "value": "“[手记：精准的共鸣。我为你存下了一次能打开归途的归还钟击。]”"
+    },
+    {
+      "key": "trial.gabriel.return",
+      "value": "“[加布里埃尔比出手掌朝下（落地、返回）的手势，指向一杯温牛奶。]”"
+    },
+    {
+      "key": "trial.irina.enter",
+      "value": "“跨越虚空时，必须先踩稳脚下的颜料笔划。站上平台或用屏障挡下弹幕三次吧。”"
+    },
+    {
+      "key": "trial.irina.verified",
+      "value": "“你的脚步声沉稳多了。我在调色盘里留好了一笔让你喘口气的温暖归还着色。”"
+    },
+    {
+      "key": "trial.irina.return",
+      "value": "“如果害怕，露出害怕的表情回来也没关系，蕾娅。我会一直等你的。”"
+    },
+    {
+      "key": "area.room.hub_attic",
+      "value": "据点 · 遗忘阁楼"
+    },
+    {
+      "key": "area.room.hub_workroom",
+      "value": "据点 · 钟塔分所测量工作室"
+    },
+    {
+      "key": "area.room.hub_forge",
+      "value": "据点 · 水道铁匠铺 / 高密度共鸣炼成炉"
+    },
+    {
+      "key": "area.room.hub_lift",
+      "value": "据点 · 公共货运升降台"
+    },
+    {
+      "key": "area.room.velvet_01_entry",
+      "value": "天鹅绒1号室 · 裁衣街入口与六件大衣的衣橱"
+    },
+    {
+      "key": "area.room.velvet_02_loom",
+      "value": "天鹅绒2号室 · 断裂织机回廊"
+    },
+    {
+      "key": "area.room.velvet_03_gallery",
+      "value": "天鹅绒3号室 · 线轴中层工坊"
+    },
+    {
+      "key": "area.room.velvet_04_arena",
+      "value": "天鹅绒4号室 · 巨型织造工坊最深处"
+    },
+    {
+      "key": "area.room.velvet_05_return",
+      "value": "天鹅绒5号室 · 下层裁衣水道归还动线"
+    },
+    {
+      "key": "area.room.velvet_06_shortcut",
+      "value": "天鹅绒6号室 · 上层天鹅绒天棚协同回廊与精英裁缝室"
+    },
+    {
+      "key": "area.room.hub_sanctuary",
+      "value": "据点 · 救护所"
+    },
+    {
+      "key": "area.target.mint_candy_pickup",
+      "value": "地上的薄荷糖"
+    },
+    {
+      "key": "area.target.mint_candy_tray",
+      "value": "桌上的小碟"
+    },
+    {
+      "key": "area.target.contract_copy_envelope",
+      "value": "委托任务书信封"
+    },
+    {
+      "key": "area.target.breakfast_board",
+      "value": "盖下第六个座位印章"
+    },
+    {
+      "key": "area.target.core_terminal",
+      "value": "核心记录阅览终端"
+    },
+    {
+      "key": "area.target.point_route_ledger",
+      "value": "记录终端"
+    },
+    {
+      "key": "area.target.marta_ledger",
+      "value": "委托账簿与副本对照"
+    },
+    {
+      "key": "area.target.calibration_mount",
+      "value": "第三段测量销钉"
+    },
+    {
+      "key": "area.target.calibration_target",
+      "value": "基准靶标"
+    },
+    {
+      "key": "area.target.reflection_plate",
+      "value": "反射测量板"
+    },
+    {
+      "key": "area.target.ethan_grindstone",
+      "value": "伊森的磨刀石工作台"
+    },
+    {
+      "key": "area.target.resonant_crucible",
+      "value": "共鸣炼成炉"
+    },
+    {
+      "key": "area.target.luka_signal_post",
+      "value": "卢卡信号站"
+    },
+    {
+      "key": "area.target.luka_freight_platform",
+      "value": "货运升降板"
+    },
+    {
+      "key": "area.target.mikhail_wardrobe",
+      "value": "裁缝工坊衣橱"
+    },
+    {
+      "key": "area.target.mikhail_retreat_latch",
+      "value": "紧急退路锁扣"
+    },
+    {
+      "key": "area.target.mikhail_escape_plank",
+      "value": "紧急退路木板"
+    },
+    {
+      "key": "area.target.mikhail_reunion_plank",
+      "value": "加固木板"
+    },
+    {
+      "key": "area.target.reunion_latch",
+      "value": "检修锁扣"
+    },
+    {
+      "key": "area.target.mikhail",
+      "value": "米哈伊尔"
+    },
+    {
+      "key": "area.target.return_call",
+      "value": "分所归还信号"
+    },
+    {
+      "key": "area.speaker.marta",
+      "value": "玛尔塔"
+    },
+    {
+      "key": "area.speaker.rea",
+      "value": "蕾娅"
+    },
+    {
+      "key": "area.speaker.mikhail",
+      "value": "米哈伊尔"
+    },
+    {
+      "key": "area.speaker.ethan",
+      "value": "伊森"
+    },
+    {
+      "key": "area.speaker.theo",
+      "value": "泰奥"
+    },
+    {
+      "key": "area.speaker.luka",
+      "value": "卢卡"
+    },
+    {
+      "key": "area.skip",
+      "value": "跳过已读对话"
+    },
+    {
+      "key": "area.travel",
+      "value": "F / L3 · {0}"
+    },
+    {
+      "key": "area.walk",
+      "value": "踏上平台 · {0}"
+    },
+    {
+      "key": "area.strike",
+      "value": "基础剑术 · {0}"
+    },
+    {
+      "key": "area.bout",
+      "value": "保护对练 · {0}"
+    },
+    {
+      "key": "area.continue",
+      "value": "确认 · Enter / A"
+    },
+    {
+      "key": "area.core_next",
+      "value": "下一幅静画"
+    },
+    {
+      "key": "area.core_prev",
+      "value": "上一幅静画"
+    },
+    {
+      "key": "area.latch",
+      "value": "青金锁扣 · 基础剑术"
+    },
+    {
+      "key": "area.uses",
+      "value": "银丝缝合 {0}/80"
+    },
+    {
+      "key": "area.sixth",
+      "value": "早餐预约牌 6/6"
+    },
+    {
+      "key": "area.signal",
+      "value": "升降板降下"
+    },
+    {
+      "key": "area.help",
+      "value": "← → 移动   F / L3 调查·进出   J / X 剑术   Q / Y 技能   Esc 暂停"
+    },
+    {
+      "key": "investigation.clue.route_ledger.body",
+      "value": "将钟塔分所的公证账簿终端与玛尔塔的青金石公证墨水委托账簿并排对照的记录。\n首先，中央公证院对外宣传的“3阶登记时由母体核心吸收·消灭终焉”特例在记录剑电路中根本不存在。世界的因果律会将完美重现3阶极意的剑士判定为与原持有者“同一人”，瞬间将预定的死刑因果（终焉）转移至剑士肉体（被告人 R.E.A.）。\n其次，玛尔塔的委托账簿上印有与核心同步的青金石公证墨水戳记：[记录 #01 / 逆流前 06:25 — 委托物：赦免任务书信封及青金石音乐盒]。委托人签名是收笔处略微画圆的蕾娅本人字迹，备注栏写着：“早上醒来时请微笑着递给醒来的我。草稿在剑里。”"
+    },
+    {
+      "key": "investigation.clue.route_waveform.body",
+      "value": "伊森锻造出的《青金石记录剑（白纸刻印剑）》剑刃第三段，留有三个同等深度的测量基准刻痕。将工作台测量架销钉精准咬合到这第三段刻度上时，唯一跨越回溯保留的存储库——记录剑核心内部以公证墨水波形存下的昨日（#01）先行测量基准线便投射到了测量板上。昨日的波形因为独自一人无法同时按住剑身又操作反射板而在起点处中断。\n今天由泰奥、伊森与蕾娅共同完成的4阶段剑实验实测出了三件事：① 让已掌握的Boss技能一条发动路径在测量器中短暂休息（休眠），原本分散的时间刻印输出就会分出一份（20%）加载到基础剑术上（但离开工作台外无法随意永久解放）。② 反射装置只能复制招式的轨迹（形式），剑身上积累的时间刻印输出哪怕1秒也无法复制。③ 即使关掉反射装置，印在原板上的公证记录也不会消失。"
+    },
+    {
+      "key": "investigation.clue.imprint_mikhail.body",
+      "value": "在第1区天鹅绒裁衣街入口、剪刀手裁缝米哈伊尔（46岁）裁缝室衣橱中发现的记录与遗物。\n衣橱内整整齐齐挂着六件未曾迎来主人的冬衣，从十一岁尺寸到十六岁尺寸每年长高一拃；第六件大衣的口袋里，放着与蕾娅至今仍系在左侧鬓发上的蓝色丝带一模一样的织料边角。\n6年前在地下替身室中，当十岁的蕾娅被卡塞尔强行灌入5大终焉、在撕心裂肺的剧痛中紧攥衣襟时，米哈伊尔将那颤抖的动作化作银丝缝合3阶极意（《缝命·断缘》），把蕾娅体内的[第1终焉：心脏破裂]原封不动转移到了自己心脏之中。"
+    },
+    {
+      "key": "investigation.clue.imprint_julius.body",
+      "value": "在第2区暮色发条钟塔入口、停秒之钟表匠尤利乌斯（52岁）的工作台上，经其外甥卢卡引导看到的遗物与核心共鸣记录。\n工作台的绒毯上，与蕾娅珍藏在腰包里的“指针停摆的半块怀表”断面丝丝入扣的另一半黄铜怀表，正一尘不染地擦拭摆放着。\n6年前在地下替身室中，当十岁的蕾娅哭求活命并反复比划上发条的动作时，尤利乌斯把那个习惯练成钟摆回溯3阶极意（《零时》），代她承接了[第2终焉：急速衰老]。一夜之间衰老如白发老人后，每当碰见蕾娅，他仍总会侧耳细听她腰包里停住的秒针有没有重新转动（确认终焉没有回到孩子身上）。"
+    },
+    {
+      "key": "investigation.clue.imprint_valeria.body",
+      "value": "在第3区玻璃歌剧院入口、碎鞋舞者瓦莱莉娅（29岁）曾停留的幕后排练室中确认到的遗物与核心刻印。\n软木拐杖旁放着一双首席舞者时代磨破鞋头的足尖鞋，排练室木地板上还封存着用粉笔照着十岁孩童短小步幅画下、好教她如何平稳落地而不摔倒的刻度线。\n6年前，看见地下替身室铁栅栏下踮脚支撑的十岁蕾娅，瓦莱莉娅将那踮脚动作练成谢幕圆舞3阶极意（《盛大终幕》），将[第3终焉：双腿之刑]揽到了自己双腿上。哪怕双腿碎裂再也无法登台，她牵挂的依然不是华丽的空中腾跃，而是蕾娅能否用双脚安稳落地。"
+    },
+    {
+      "key": "investigation.clue.imprint_gabriel.body",
+      "value": "在第4区青铜大钟楼入口、沉默守钟人加布里埃尔（41岁）的钟楼值班室中确认到的乐谱与笔谈记事本。\n乐谱第一页写着这样一段备忘：“为了让没有窗户的地下室里的孩子知道清晨已经到来，每天六点都要以最温暖低沉的回响敲响大钟。”\n6年前在地下替身室中，为了拯救在共鸣暴走轰鸣中捂住双耳、强忍尖叫的十岁蕾娅，加布里埃尔将那份动作化作共鸣锻造3阶极意（《六点的播种》），独自背负了[第4终焉：永恒沉默]，献出了听力与嗓音。失去声音之后，他仍制作了笔谈本与肉眼可见的三种手势（摊开手掌：停下 / 两根手指：准备 / 手掌朝下：落地、返回）守护着蕾娅的脚步。"
+    },
+    {
+      "key": "investigation.clue.imprint_irina.body",
+      "value": "在第5区白画布画廊入口、盲眼肖像画家伊莉娜（34岁）的温室画室中，卢卡展示的速写本与核心刻印。\n厚实的画纸上装订着数十张仅凭颜料质感与高低起伏便能触摸辨认轮廓的盲文式肖像。标题全都是《活到十六岁的蕾娅》，以温暖的笔触既画了笑脸，也画了皱眉或含泪的面容。\n6年前在没有窗户的地下替身室中，为了救下用手指在半空描摹光亮的十岁蕾娅，伊莉娜将那道手势练成裁绘留白3阶极意（《自画像完成》），将[第5终焉：失明]揽入自己的双眸。"
+    },
+    {
+      "key": "investigation.clue.contract_original.body",
+      "value": "当五位恩人的终焉全部汇聚到蕾娅身上（C=5）后，从记录剑核心深层档案库输出的大公证官卡塞尔亲印原本《第5号秘传招式公证回收命令书（原本）》。\n被昨日的蕾娅（#01）在副本上用刀尖刮去并隐藏的原本[第3条（处分）]实际条文如下：\n“第3条（处分）：5大秘传招式的3阶回收完成、终焉归属于替身被告人（R.E.A.）肉体之时，即刻将被告人押入大法庭地下《永久标本馆》入棺，施以永久冰封隔离。”\n卡塞尔的真正目的从来不是赦免，而是将6年前分散的5大终焉公证痕迹重新汇入蕾娅一人体内，趁她还活着封入地下标本馆，永久断绝终焉通过逆公证归还给自己的可能。"
+    },
+    {
+      "key": "investigation.clue.contract_copy.body",
+      "value": "#02 / D日 06:30，在遗忘阁楼中，玛尔塔照着账簿指示（“请微笑着递交”）交出的《第5号秘传招式公证回收命令书（副本）》。\n文件下方的[第3条（特例附则）]印着如下条文：\n“第3条（特例附则）：技能的3阶公证登记一旦完成，受刑者的终焉即刻由大法庭母体核心吸收·消灭，并向五位受刑者全体颁布特别赦免令。”\n然而在首次终焉转移后，于分所工作台灯光下精密鉴定才发现，这一栏的原印纸纤维早已被刀尖薄薄刮去，其上用钟塔分所仓库的旧式铅字与蕾娅本人的青金石公证墨水（核心同步媒介）重新套印了赦免措辞，使其得以跨过时间逆流保存至今。"
+    },
+    {
+      "key": "story.clock.entry.01",
+      "value": "“这里就是第2区暮色发条钟塔，蕾娅姐。我叔叔尤利乌斯一辈子校准城市标准时间与公证钟塔的工作室，就在这入口处。”"
+    },
+    {
+      "key": "story.clock.entry.02",
+      "value": "（她从腰带皮包里掏出那块指针停摆的半块黄铜怀表，低头端详）\n“从我失去十岁以前的记忆起，这半块怀表就一直装在我的皮包里……卢卡，你知道这块表原本是谁的吗？”"
+    },
+    {
+      "key": "story.clock.entry.03",
+      "value": "“当然知道！姐，你快看看这张工作台的绒毯上吧。六年前叔叔一夜之间像白发老人一样虚弱归来，从那天起，他没有一天落下过用干布擦拭这件东西。”\n（操作提示：按 F / 按下左摇杆调查尤利乌斯的时钟调校工作台（julius_workbench）。将记录线索[尤利乌斯 · 核心刻印]。）"
+    },
+    {
+      "key": "story.clock.entry.04",
+      "value": "（将皮包里半块怀表的切面轻轻对上工作台上放着的另一半怀表）\n“连齿轮的锯齿纹路都丝毫不差地严丝合缝……！\n六年前在地下替身室里，我哭着求生反复做出拧发条的动作时，尤利乌斯大叔把我的小动作练成了钟摆步法极意，代我背负了《第2终焉：急速衰老》啊。秒针现在还停着。”"
+    },
+    {
+      "key": "story.clock.entry.05",
+      "value": "“叔叔每次遇见你，总是侧耳细听那半块怀表的秒针有没有重新转动，生怕衰老的刑罚又回到你身上。\n好了，前面通往钟摆回廊的门只要用你的记录剑斩断那个检修用的青金锁扣就能打开！”\n（操作提示：用基础剑术击打正门旁的青金锁扣 1 次来开门。）"
+    },
+    {
+      "key": "story.clock.route.01",
+      "value": "“天花板垂下的黄铜钟摆像巨大的踏板一样按固定节拍来回摆动。趁钟摆摆过来的时候用基础跳跃和冲刺跳上去，不用其他技能也足够过去了。”"
+    },
+    {
+      "key": "story.clock.route.02",
+      "value": "“没错，蕾娅姐！钟塔的基础检修通道原本就是设计成只靠普通跳跃和基础剑术就能通过的。挡路的发条装甲哨兵每一套连击都会剥掉一层装甲，沉住气斩断它们吧！”\n（操作提示：跨越大钟摆踏板，切断 2 处青金锁扣并突破哨兵与石像波次。）"
+    },
+    {
+      "key": "story.clock.route.03",
+      "value": "“这里就是《逆流回廊》啊……！坍塌的石桥和碎裂的齿轮每四拍就会像倒流时间一样重新拼合回原位。”"
+    },
+    {
+      "key": "story.clock.route.04",
+      "value": "“看准石桥倒流拼合的节拍穿过去，再用基础剑术斩断旁边的逆流制动锁扣把桥固定住，就能打开安全通道了！”\n（操作提示：配合逆流周期过桥，切断 2 处青金锁扣并击败哨兵、石像与重甲兵。）"
+    },
+    {
+      "key": "story.clock.route.05",
+      "value": "“只要爬上这间垂直擒纵轮齿轮室，前面就是叔叔所在的最深处表盘前厅了。用普通招架或冲刺拨开反射公证石像的金色预警攻击，趁破绽打开时用基础剑术劈过去！”\n（操作提示：攀上擒纵轮台阶，突破 1 处青金锁扣以及哨兵与石像。）"
+    },
+    {
+      "key": "story.clock.route.06",
+      "value": "（在最深处演武场大门前稳住呼吸，低头注视着剑身）\n“门后传来宏大而规律的钟摆声。尤利乌斯大叔就在里面等着。”"
+    },
+    {
+      "key": "story.clock.route.07",
+      "value": "“蕾娅姐，我已经把返回点校准好在表盘前厅地面了。准备好的话就打开正门进去吧！”\n（操作提示：在演武场正门（clock_arena_gate）按 F / 按下左摇杆进入。）"
+    },
+    {
+      "key": "story.julius.i0.01",
+      "value": "（拄着巨大指针长剑立于原地的白发尤利乌斯停下脚步，微微俯身凑近蕾娅腰间的皮包侧耳细听）\n“……万幸啊，蕾娅。你皮包里的半块怀表里还没有传出任何声音，说明停住的秒针依然没有转动。\n可你为什么还要拿着那把青金石记录剑爬到这座钟塔顶端来？”"
+    },
+    {
+      "key": "story.julius.i0.02",
+      "value": "“尤利乌斯大叔！我带来了今早在分所拿到的回收命令书副本。第3条特例附则写得明明白白！只要我把大叔您的招式登记进记录剑到3阶，您的终焉就会被大法庭母体核心吸收消灭，您也能获得特别赦免！”"
+    },
+    {
+      "key": "story.julius.i0.03",
+      "value": "（他蹙起布满深纹的眼角，坚定地摇了摇头）\n“蕾娅，钟表匠绝不会被齿轮咬合转往何处这种把戏蒙骗。一旦把别人的3阶极意原原本本再现出来，世界的因果就会把两个人判定为同一人，把原主的终焉直接转给练成招式的人。\n我六年前从你那里接过来的这根急速衰老发条……绝不能再重新绕回到如今十六岁的你身上了。”"
+    },
+    {
+      "key": "story.julius.i0.04",
+      "value": "“直到明早六点的行刑钟声敲响之前，我的时间由我自己来扛。如果你非要用那把剑临摹我的动作，我绝不给你看3阶的钟摆，直接把你打回去！”\n（战斗开始：与停秒之钟表匠尤利乌斯的保护对练）"
+    },
+    {
+      "key": "story.julius.i0.05",
+      "value": "（将指针长剑拄进地面，喘出粗重气息。蕾娅的记录剑核心以黄铜光芒录下了对练中尤利乌斯显露的1阶步法轨迹）\n“……明明藏住了最后的极意，你的记录剑还是看穿了我第一式《钟摆步法》的往返轨迹吗。\n听好，蕾娅。二十九次之前都只是单纯的步法，到三十次时也不过表壳共鸣一下；可一旦触及第八十次极意，你半块怀表里停住的秒针就会重新转动，我的衰老也会一下子压到你身上。”\n（系统提示：已获得钟摆回溯 — 1~5 / E·手柄B选择，Q·Y使用）"
+    },
+    {
+      "key": "story.julius.i0.06",
+      "value": "“尤利乌斯大叔回救护所去了……可是为了赶在明早六点前救下五位恩人，这个技能是非用不可的。顺着下面逆流回廊的归还道回去吧！”"
+    },
+    {
+      "key": "story.julius.i1.01",
+      "value": "（一眼认出蕾娅领前胸针上刻下的猩红裂纹，他又往皮包侧耳听了听，沉声开口）\n“……胸针都已经裂了啊，蕾娅。既然亲身经历了消灭特例是谎言、终焉会转进你体内，为什么还要踏进我的钟塔？”"
+    },
+    {
+      "key": "story.julius.i1.02",
+      "value": "“尤利乌斯大叔，我在分所工作台和泰奥还有伊森大叔一起做过剑实验了！每清空一条技能路径，我记录剑里积蓄的时间刻印输出就会解放，而且卡塞尔的反射装置复制不了这份时间刻印。我立下了假说——把五位恩人的终焉聚到我身上，再对卡塞尔的原型剑术使出对斩全部还给他！”"
+    },
+    {
+      "key": "story.julius.i1.03",
+      "value": "“光有假说是不够的，蕾娅！真到了时间不够的时候，你难道不是打算把自己的性命放到最后顺序、独自留下来吗？！\n你究竟有没有定下活着回来的计划，就在我钟塔的移动隔板和往返踏板上亲自证明给我看！”\n（战斗开始：与尤利乌斯的往返时间验证对练）"
+    },
+    {
+      "key": "story.julius.i1.04",
+      "value": "（对练中段，尤利乌斯故意露出巨大破绽向内退开，与此同时演武场中央的黄铜隔板门开始降下，右侧的往返发条踏板响起了回归预警钟声）\n“趁现在冲进我这破绽里，确实能再多砍一刀！可要是赶在隔板合拢前没能退回右侧那块返回踏板，你的退路可就彻底断了。\n选吧，蕾娅！是贪眼前这一击，还是守住让你活着归来的返回时刻！”"
+    },
+    {
+      "key": "story.julius.i1.05",
+      "value": "（她刹住朝尤利乌斯破绽跨出的脚步，回头望向正在降落的黄铜隔板与右侧的往返发条踏板）\n“……贪这一刀结果被关在里面才什么用都没有。我会照着自己定下的归还时刻先退回来！”\n（操作提示：放弃眼前的追击机会，趁隔板关闭前移动至右侧的往返发条踏板（julius_return_platform）完成回归。）"
+    },
+    {
+      "key": "story.julius.i1.06",
+      "value": "（见蕾娅果断舍弃贪刀、分毫不差地踏回返回踏板，尤利乌斯收起剑，生平第一次从怀里拿出自己那另一半怀表摊开展示）\n“……分毫不差提前三秒回来了呢。比起眼前的一击，你先守住了返回的时刻。\n过来看看吧，蕾娅。把我的半块怀表和你的半块怀表并排放在一起，我们一块儿数剩下的时间。只算冲进去的时间那是特攻，把回来的时间也一起算上，才是我们共同的计划。”"
+    },
+    {
+      "key": "story.julius.i1.07",
+      "value": "“好的，尤利乌斯大叔！我绝对不再写只有自己留下的时间表了。直到最后一合，请看清我的往返步幅吧！”\n（战斗继续：打完剩余对练并取胜。）"
+    },
+    {
+      "key": "story.julius.i1.08",
+      "value": "（对练结束，尤利乌斯小心替蕾娅皮包里的半块怀表校准发条螺丝，又调慢了上层归还道逆流齿轮的周期）\n“我不会再叫你独自硬撑了。前路要是被敌人合围得太急，就叫我一声。我会用钟摆为你停住两秒的《归还时刻》，好让你脱身喘口气。”\n（系统提示：已获得钟摆回溯 + 解锁尤利乌斯支援 · 已持有归还时刻 1/1）"
+    },
+    {
+      "key": "story.julius.reunion.01",
+      "value": "（在救护所旁的轨道站台通道里，尤利乌斯拄着手杖立在原地，目光在已敲响出发铃的归还轨道车与训练靶标之间来回扫视）\n“我听说你在分所工作台和泰奥、伊森一起立下了逆公证归还的假说，蕾娅。\n不过别光用嘴说，用行动证明给我看。眼下要是再贪着多打那根训练靶标一下，就会错过这趟归还列车的返回时刻。你打算怎么做？”"
+    },
+    {
+      "key": "story.julius.reunion.02",
+      "value": "（她立刻收起朝训练靶标举起的剑，转身走向出发铃正在响起的站台返回踏板）\n“我不会贪着多砍一下的，尤利乌斯大叔。我会照约好的返回时刻现在就退回来！”\n（操作提示：停止攻击靶标，及时踏上救护所旁的归还列车返回踏板（julius_reunion_platform）。）"
+    },
+    {
+      "key": "story.julius.reunion.03",
+      "value": "（见蕾娅准时站上返回踏板，尤利乌斯这才从怀里取出自己的另一半怀表，并排摊开在蕾娅的那半块旁边）\n“……嗯，这样就够了。我最怕的就是一旦时间不够，你会把自己排到最后一个。\n来，我的这半块怀表也摊开在这里。从今往后，剩下的往返时间由我们一起来数。”"
+    },
+    {
+      "key": "story.julius.reunion.04",
+      "value": "“谢谢您，尤利乌斯大叔！照着和大叔对好的这份往返时刻表，一秒都不会迟到，我们一定会一起回到早餐桌前的！”\n（系统提示：已解锁尤利乌斯支援 · 持有归还时刻 1/1 — 普通战斗中可用 方向 + H / 按下右摇杆 呼叫。）"
+    },
+    {
+      "key": "story.clock.return.01",
+      "value": "“上层归还道的黄铜隔板合拢得好快。用刚录下的《钟摆回溯》1阶《钟摆步法》留下残影后突进击打开关，再在 1.5秒内重新输入，就能安全回溯退回稳固地面！”\n（操作提示：使用钟摆回溯（Q / 手柄Y）击打隔板那头的开关后再次输入，安全返回残影位置。）"
+    },
+    {
+      "key": "story.clock.return.02",
+      "value": "“太棒了，姐！守在归还道前的公证缝合重甲兵，必须用钟摆突进或回溯轨迹擦身穿过才会破防、露出青金石核心。核心一打开就用基础剑术连击斩断分段！”\n（操作提示：在 clock_07~08 归还动线上用“钟摆起手 ➔ 基础剑术收尾”的交替循环突破重甲兵与齿轮锁扣。）"
+    },
+    {
+      "key": "story.clock.return.03",
+      "value": "“穿过下层归还水道就直接接回钟塔入口停靠站了。以后随时都能快速往返卢卡的升降台了！”"
+    },
+    {
+      "key": "story.clock.synergy.01",
+      "value": "“是上层齿轮室的捷径！那个大齿轮转得太快没法直接踩，不过先用《钟摆回溯》趁齿轮停住的短暂空隙贴近过去，再用米哈伊尔大叔的《银丝缝合》把盖板和固定框缝在一起，就能牢牢固定成安全踏板！”\n（操作提示：用钟摆回溯接近停转的齿轮空隙后，再用银丝缝合封合盖板与固定框（clock_synergy_seam）。）"
+    },
+    {
+      "key": "story.clock.synergy.02",
+      "value": "“哇，你竟然用银丝把钟塔停转的空隙缝成了固定踏板！只要突破这条上层协同回廊的精英守卫队，就能直通最深处前厅和救护所升降台了！”"
+    },
+    {
+      "key": "story.clock.mastery.01",
+      "value": "（第三十次钟摆返回瞬间，1.5秒前的残影留驻原地爆发双向交叉斩击，皮包里的半块怀表金属表壳随剑波共鸣发出一声短暂的“叮——”轻响）\n“啊，皮包里的半块怀表表壳刚才共鸣了……！\n（她急忙掏出半块怀表凑近细看，随后松了口气）\n……呼，秒针还停着。三十次《双重时间线》只是大叔的步法融入我身体里的阶段，急速衰老的终焉还没有转移过来。”"
+    },
+    {
+      "key": "story.clock.mastery.02",
+      "value": "（第八十次极意《零时》大成、将周围时间停滞两秒随后爆裂的瞬间，伴随法庭铁印盖落声，胸针第二片花瓣裂开猩红纹路，皮包内响起了清晰的“咔嗒、咔嗒”走针声！）\n“……停了六年的半块怀表秒针，刚才重新咬合开始转动了……！\n（她指尖轻触左侧发辫上一缕变成雪白的发丝，倒吸一口气）\n《第2终焉：急速衰老》已经正式转移到《被告人 R.E.A.》、我的时间上了。”"
+    },
+    {
+      "key": "story.clock.mastery.03",
+      "value": "（坐在救护所里的尤利乌斯白发间重现乌黑光泽，布满皱纹的手背也恢复了年轻的力气。尤利乌斯低头望着微微颤抖的手背，低声叹息）\n“……我的表声停了，换你的表走起来了吗，蕾娅。千万……别忘了我们一起对准的归还时刻啊。”"
+    },
+    {
+      "key": "story.clock.mastery.04",
+      "value": "“虽说白了一缕头发，手腕上的力气却丝毫没减。尤利乌斯大叔，连同这重新响起的秒针声，我都会一并还给卡塞尔的！”"
+    },
+    {
+      "key": "story.opera.entry.01",
+      "value": "“这里就是第3区玻璃歌剧院，蕾娅姐。以前每晚都会在玻璃穹顶下上演剧目，自从瓦莱莉娅姐伤了双腿后，就只有这间幕后排练室还亮着灯。”"
+    },
+    {
+      "key": "story.opera.entry.02",
+      "value": "“排练室镜子前面立着软木拐杖……瓦莱莉娅姐姐曾是这座舞台的首席舞者吧？”"
+    },
+    {
+      "key": "story.opera.entry.03",
+      "value": "“是的。姐，你再看看架子上的足尖鞋还有这片木地板。瓦莱莉娅姐就算不能再登台，每天也还是会来把这里扫得干干净净。”\n（操作提示：按 F / 按下左摇杆调查瓦莱莉娅的足尖鞋架与排练室地板（valeria_shoes_rack）。将记录线索[瓦莱莉娅 · 核心刻印]。）"
+    },
+    {
+      "key": "story.opera.entry.04",
+      "value": "（磨损开线的足尖鞋下方，木地板上照着幼童步幅画着白色粉笔落地刻度线，她抬起靴尖沿着刻度对上去）\n“这些步幅刻度……刚好吻合十岁孩子短短的脚步。\n六年前，为了隔着地下铁栅栏踮着脚尖苦撑的我而起舞，把我的动作练成回旋剑舞极意，代我背负了《第3终焉：双腿之刑》……全是为了让我不要忘记怎么用双脚稳稳落地而不摔倒啊……！”"
+    },
+    {
+      "key": "story.opera.entry.05",
+      "value": "“瓦莱莉娅姐最近也总是只担心你从高处跳下来时会不会扭伤脚踝呢。\n好啦，用基础剑术斩断通往观众席回廊的幕布滑轮锁扣，进去里面吧！”\n（操作提示：用基础剑术击打幕布滑轮旁的青金锁扣 1 次来开门。）"
+    },
+    {
+      "key": "story.opera.route.01",
+      "value": "“红丝绒观众席上方，包厢踏板像台阶一样连成一排。就算没有华丽的空中招式，靠基础跳跃和冲刺一级级踩上去也能安全通过。”"
+    },
+    {
+      "key": "story.opera.route.02",
+      "value": "“对！别勉强一口气跨大缝隙，用基础剑术斩断折叠舞台桥的青金锁扣，把踏板放下来再往上爬！”\n（操作提示：登上包厢踏板，切断 2 处青金锁扣并突破哨兵与石像波次。）"
+    },
+    {
+      "key": "story.opera.route.03",
+      "value": "“悬在天花板附近的大型玻璃吊灯像桥梁一样排成一列。玻璃饰片闪耀得很美，不过反射公证石像正守在过道上呢。”"
+    },
+    {
+      "key": "story.opera.route.04",
+      "value": "“用普通招架弹开石像的攻击，抓住破绽砍入基础剑术，再斩断固定钢索的锁扣稳住踏板吧！”\n（操作提示：跨过吊灯平台，切断 2 处青金锁扣并击败哨兵、石像与重甲兵。）"
+    },
+    {
+      "key": "story.opera.route.05",
+      "value": "“终于来到聚光灯玻璃屋顶上了，蕾娅姐！夜空下的玻璃穹顶对面就是瓦莱莉娅姐所在的大舞台。把屋顶守卫清理掉就下去吧！”\n（操作提示：在西侧玻璃屋顶突破 1 处青金锁扣以及哨兵与石像。）"
+    },
+    {
+      "key": "story.opera.route.06",
+      "value": "（站在主舞台侧幕等候区，望向灯光照亮的舞台中央）\n“舞台木地板上传来拄着拐杖却依然轻快的脚步声。是瓦莱莉娅姐姐。”"
+    },
+    {
+      "key": "story.opera.route.07",
+      "value": "“我已经在等候区地面开好返回点了，蕾娅姐。我就在舞台下面升降板的拉杆旁等着！”\n（操作提示：在主舞台丝绒幕帘（opera_arena_gate）按 F / 按下左摇杆进入。）"
+    },
+    {
+      "key": "story.valeria.i0.01",
+      "value": "（站在聚光灯下拄着软木拐杖的瓦莱莉娅提着细剑走近，开打前先仔细低头打量起蕾娅棕色皮靴的鞋带与脚踝姿态）\n“……右脚靴带松了半个结呀，蕾娅。系成那样乱跳的话，落地时第一个受伤的就是脚踝。\n还有你手里握着的这把青金石记录剑……真没听大人们的话，自己跑到这座舞台上来了吗？”"
+    },
+    {
+      "key": "story.valeria.i0.02",
+      "value": "“瓦莱莉娅姐姐！我在幕后排练室看见姐姐的足尖鞋和画在地板上的步幅标记线了。\n请看看这份赦免任务书副本的第3条吧！只要我把姐姐的剑舞登记进记录剑到3阶，压在姐姐双腿上的终焉就会被大法庭核心吸收并消灭，您就能得到特别赦免了！”"
+    },
+    {
+      "key": "story.valeria.i0.03",
+      "value": "（她撑稳上了夹板的腿，露出坚决的微笑）\n“别说傻话了，蕾娅。舞者比谁都清楚自己的舞步踏在什么样的舞台上。\n只要你把我的回旋剑舞一直跳到3阶极意，当年折断我双腿的刑罚就会原封不动移到你那双小巧的脚踝上。我六年前拄起这根拐杖，难道是为了眼睁睁看着你的腿再断一次吗！”"
+    },
+    {
+      "key": "story.valeria.i0.04",
+      "value": "“就算拄着拐杖，我剩下的舞步也足够把你送下舞台了。唯独最后的谢幕动作，绝不会让你的剑看见！”\n（战斗开始：与碎鞋舞者瓦莱莉娅的保护对练）"
+    },
+    {
+      "key": "story.valeria.i0.05",
+      "value": "（她用细剑剑尖撑住木地板喘息。蕾娅的记录剑核心以青绿色光芒录下了对练中瓦莱莉娅显露的1阶回旋腾跃轨迹）\n“……哈啊，明明藏住了最后的终幕，你的剑还是抄走了第一式《回旋剑舞》的腾跃角度啊。\n拜托了，蕾娅。到三十次为止都只会染上我的谢幕礼习惯，可一旦完成第八十次盛大终幕，我双腿的刑罚就会转移到你身上。我先退回救护所去了……求你千万别把那套舞步跳到头。”\n（系统提示：已获得谢幕圆舞 — 1~5 / E·手柄B选择，Q·Y使用）"
+    },
+    {
+      "key": "story.valeria.i0.06",
+      "value": "“连瓦莱莉娅姐姐也退回救护所了……可要想替姐姐找回双腿、阻止明早黎明的行刑，我不能停在这里。从东侧屋顶归还道出去吧！”"
+    },
+    {
+      "key": "story.valeria.i1.01",
+      "value": "（一眼察觉蕾娅胸针上的猩红裂纹与略显沉重的步履，瓦莱莉娅眼神骤然锐利起来）\n“……蕾娅！你已经把别人的终焉转到自己身上了啊！明知所谓的消灭特例彻头彻尾是骗局，你还敢来连我双腿的刑罚一并揽走吗？！”"
+    },
+    {
+      "key": "story.valeria.i1.02",
+      "value": "“瓦莱莉娅姐姐，我不是要独自背下来了事！我和泰奥还有伊森大叔在分所把剑实验做完了。我们要把五位恩人的技能拿去和卡塞尔的镜子对斩预约归还，解放时间刻印输出，把五道终焉一口气全还给原主卡塞尔！”"
+    },
+    {
+      "key": "story.valeria.i1.03",
+      "value": "“光靠嘴说谁不会承诺呀！你从小就这样，哪怕脚踝痛得要命也不肯依靠别人，非得自己逞强完美落地不可！\n就在我的舞台上让我亲眼看看，你是不是真的学会了接受别人帮忙、活着回来！”\n（战斗开始：与瓦莱莉娅的着陆与接应验证对练）"
+    },
+    {
+      "key": "story.valeria.i1.04",
+      "value": "（临近终结前，瓦莱莉娅仿佛失衡般高高跃上空中摇摇欲坠的吊灯台阶，与此同时卢卡在右下方安全着陆踏板旁降下了辅助升降板）\n“来啊，现在逞强追到半空中来，说不定能劈出华丽的最后一击呢！可踏板一塌，先折断的就是你的脚踝。\n你打算怎么办，蕾娅？是一个人强行追上半空，还是放弃进攻机会安稳落下去？！”"
+    },
+    {
+      "key": "story.valeria.i1.05",
+      "value": "（她松开正要朝半空起跳的膝盖力道、收起长剑，低头望向右下方安全的舞台踏板与卢卡的升降板）\n“……为了用漂亮动作赢下来却摔伤回不去的话，那就毫无意义了！我不追上空中了，这就降落到安全地面。卢卡，升降板拜托了！”\n（操作提示：停止鲁莽的空中追击，退至右下方安全着陆踏板（valeria_safe_stage_ledge），随后搭乘卢卡放下的辅助升降板（luka_opera_lift）上来。）"
+    },
+    {
+      "key": "story.valeria.i1.06",
+      "value": "（见蕾娅毫不恋战地放弃攻击机会、落到安全踏板并乘卢卡的升降板上来，瓦莱莉娅收起细剑走近，单膝蹲下先用手细细拂过蕾娅落地后的双踝与靴带）\n“……没有受伤呢。舍弃眼前的最后一击，搭上卢卡放下的升降板，稳稳用双脚落地了。\n是啊，蕾娅。既然懂得为了活着归来而放弃漂亮的动作……现在我总算能放心托付给你双腿了。”"
+    },
+    {
+      "key": "story.valeria.i1.07",
+      "value": "“谢谢您，瓦莱莉娅姐姐！直到最后一合，我都会毫发无伤地走出这座舞台给您看的！”\n（战斗继续：打完最后一合结束对练。）"
+    },
+    {
+      "key": "story.valeria.i1.08",
+      "value": "（对练结束，瓦莱莉娅坐下来，替蕾娅用绝对不会松开的舞者结法把两只靴带牢牢系好）\n“在半空要是被敌人围住找不到落脚点，就叫我一声，蕾娅。帮你把脚下清空的《落地圆舞》，姐姐随时都可以为你跳一曲。”\n（系统提示：已获得谢幕圆舞 + 解锁瓦莱莉娅支援 · 已持有落地圆舞 1/1）"
+    },
+    {
+      "key": "story.valeria.reunion.01",
+      "value": "（站在连接救护所与升降台的高高舞台阶梯台面上，瓦莱莉娅拄着拐杖俯身看下来）\n“听说你在工作台找到回来的办法了，蕾娅。\n不过你该不会还想跟以前一样，不靠任何帮忙自己硬跳上那道高台阶吧？我可看着呢，示范给我看看你是怎么落脚上来的。”"
+    },
+    {
+      "key": "story.valeria.reunion.02",
+      "value": "（她松开正准备硬跳上高台阶的姿势，退步踩上安全踏板，向守在旁边的卢卡招了招手）\n“我不会一个人硬跳了，瓦莱莉娅姐姐。我会踩在稳固的地面上，坐卢卡的升降板上去！”\n（操作提示：经由安全着陆踏板踏上卢卡降下的救护所连接升降板（valeria_reunion_lift）。）"
+    },
+    {
+      "key": "story.valeria.reunion.03",
+      "value": "（升降板升起停稳，瓦莱莉娅温和地笑着俯下身查看蕾娅落地后的双脚，并把松开的靴带重新牢牢系紧）\n“……做得好，蕾娅。以前看着你明明双腿疼痛却还不肯求助、非要独自完美落地，才是我最害怕的事。\n懂得为了活着归来而舍弃漂亮飞跃的现在的你，已经足够托付我的圆舞了。”"
+    },
+    {
+      "key": "story.valeria.reunion.04",
+      "value": "“在姐姐帮我系好的这根靴带散开之前，我一定会和五位恩人一起用双脚走回来的！”\n（系统提示：已解锁瓦莱莉娅支援 · 持有落地圆舞 1/1 — 普通战斗中可用 方向 + H / 按下右摇杆 呼叫。）"
+    },
+    {
+      "key": "story.opera.return.01",
+      "value": "“这是东侧聚光灯屋顶归还道！朝着半空悬挂的灯笼施展《谢幕圆舞》1阶《回旋剑舞》腾空而起，就能一边弹开弹幕一边高高跃起！”\n（操作提示：用谢幕圆舞（Q / 手柄Y）击打空中灯笼借力升空，落到对面的安全钢梁上。）"
+    },
+    {
+      "key": "story.opera.return.02",
+      "value": "“守在归还道上的公证缝合重甲兵，必须被旋转圆舞的范围擦到才会破防！一破防就趁着落地立刻用基础剑术连击劈开核心！”\n（操作提示：在 opera_07~08 归还动线上用“圆舞起手 ➔ 基础剑术收尾”的交替循环突破重甲兵与滑轮锁扣。）"
+    },
+    {
+      "key": "story.opera.return.03",
+      "value": "“穿过下层玻璃回廊，平安回到剧院大厅入口了。脚踝也完好无损！”"
+    },
+    {
+      "key": "story.opera.synergy.01",
+      "value": "“上层舞台地板断掉了，没地方蹬脚起跳呢……不过先用米哈伊尔大叔的《银丝缝合》把断裂的舞台地板缝补出稳定的起跳与落脚点，再站在上面施展瓦莱莉娅姐姐的《谢幕圆舞》飞跃上去，就能一口气跳到高处的猫道上了！”\n（操作提示：用银丝缝合封合断裂舞台地板（opera_synergy_seam）后，站在上面使用谢幕圆舞跃上上层猫道。）"
+    },
+    {
+      "key": "story.opera.synergy.02",
+      "value": "“先用银丝缝好踩踏地面，再借圆舞腾跃上去，简直纹丝不动！只要突破前面精英排练室的守卫，这条捷径就算大功告成了！”"
+    },
+    {
+      "key": "story.opera.mastery.01",
+      "value": "（第三十次旋转腾跃同时，灯光光柱映照在蕾娅身上解锁了空中二次踏步，落地后的蕾娅下意识用脚尖行了个轻巧的谢幕礼，又轻轻晃了晃脚踝）\n“每次在空中擦过敌人或灯笼就能再跃一次的《聚光踏步》已经融入身体了。落地时还会不由自主做出瓦莱莉娅姐姐的脚尖谢幕动作……不过终焉还没有转移过来。”"
+    },
+    {
+      "key": "story.opera.mastery.02",
+      "value": "（第八十次极意《盛大终幕》绽放、蓝色刀刃花瓣纷飞且垂直灯光冲击波轰然砸落地面的下一瞬，落地的蕾娅双膝微微一软，胸针第三片花瓣裂开猩红纹路！）\n“……唔！落地的瞬间，双腿像灌了铅一样一阵剧痛……！\n《第3终焉：双腿之刑》已经转移到《被告人 R.E.A.》、我身上了。”"
+    },
+    {
+      "key": "story.opera.mastery.03",
+      "value": "（靠在救护所椅子旁的软木拐杖跌落在地，时隔六年无需拐杖双脚稳稳站起的瓦莱莉娅用颤抖的手抓住帘幕缓缓滑坐下去）\n“……我的双腿变轻了。蕾娅，那个孩子……终究还是把我舞台最后的终幕都跳完了吗……！”"
+    },
+    {
+      "key": "story.opera.mastery.04",
+      "value": "（她用剑尖撑地重新站直身子，低头望向系得牢牢的靴带）\n“没关系，能走稳。因为姐姐系好的靴带正牢牢护着我的脚踝……这份刑罚也一定要还给卡塞尔！”"
+    },
+    {
+      "key": "story.bell.entry.01",
+      "value": "“这里就是第4区青铜大钟楼与共鸣音叉地下道，蕾娅姐。以前沉默守钟人加布里埃尔大叔就是在这里照看城市晨钟与地下共鸣水道的。”"
+    },
+    {
+      "key": "story.bell.entry.02",
+      "value": "“值班室桌上摆着音叉、翻得磨旧的乐谱，还有厚厚的笔谈记事本。加布里埃尔大叔从六年前起就一直无法说话、也听不见声音了对吧？”"
+    },
+    {
+      "key": "story.bell.entry.03",
+      "value": "“是的。大叔直到失去声音前每天黎明都会照着敲钟，姐，你看看那份晨钟乐谱的第一页吧。”\n（操作提示：按 F / 按下左摇杆调查加布里埃尔的晨钟乐谱台与笔谈本（gabriel_score_desk）。将记录线索[加布里埃尔 · 核心刻印]。）"
+    },
+    {
+      "key": "story.bell.entry.04",
+      "value": "（她用指尖循着乐谱第一页页边用力写下的备忘字迹细细读去）\n“‘为了让没有窗户的地下室里的孩子知道清晨已经到来，每天六点都要以最温暖低沉的回响敲响大钟。’\n……我想起来了。在不见一丝光亮的地下替身室里，因震耳欲聋的共鸣暴走声捂紧双耳发抖时，唯独那低沉温暖的钟声是我唯一的清晨。加布里埃尔大叔把我的动作练成了大钟打击极意，代我背负了《第4终焉：永恒沉默》啊。”"
+    },
+    {
+      "key": "story.bell.entry.05",
+      "value": "“就算失去声音以后，大叔也一直用记事本和手势照顾着我们。\n来，用基础剑术斩断音叉地下道入口的青金锁扣进去吧！”\n（操作提示：用基础剑术击打地下道入口旁的青金锁扣 1 次来开门。）"
+    },
+    {
+      "key": "story.bell.route.01",
+      "value": "“地下道两侧排列着巨大的音叉立柱。只要用基础剑术敲响立柱旁的青金锁扣，声波环就会扩散开来唤醒隐藏的垫脚踏板！”"
+    },
+    {
+      "key": "story.bell.route.02",
+      "value": "“没错！不用专门的共鸣技能，只要用基础剑术敲响锁扣，地下道踏板就会全部打开。一边清理挡路的哨兵和石像一边过去吧！”\n（操作提示：用基础剑术击打音叉旁的 2 处青金锁扣唤醒踏板，并突破哨兵与石像波次。）"
+    },
+    {
+      "key": "story.bell.route.03",
+      "value": "“这条声波环水道里，每当天花板上的小铜钟鸣响，踏板就会变得清晰。就算不听声音，光用眼睛看地面扩散开来的同心圆光晕也能踩准节拍。”"
+    },
+    {
+      "key": "story.bell.route.04",
+      "value": "“踩准声波环的节拍跳过去，再用基础剑术斩断水道尽头的制动锁扣固定住桥梁吧！”\n（操作提示：跨过声波环踏板，切断 2 处青金锁扣并击败哨兵、石像与重甲兵。）"
+    },
+    {
+      "key": "story.bell.route.05",
+      "value": "“接下来就是垂直钟楼的螺旋阶梯了，蕾娅姐！只要爬上这段楼梯，就是加布里埃尔大叔所在的顶层敲钟室了！”\n（操作提示：登上垂直钟楼阶梯，突破 1 处青金锁扣以及哨兵与石像。）"
+    },
+    {
+      "key": "story.bell.route.06",
+      "value": "（敲钟室前等候室的小木桌上放着一杯冒着热气的温牛奶，旁边还留着手指在桌面上轻敲两下的印痕）\n“温牛奶……一定是加布里埃尔大叔担心我爬这么高累着，刚刚才放下的。”"
+    },
+    {
+      "key": "story.bell.route.07",
+      "value": "“大叔最担心的就是你勉强自己。我已经在等候室校准好返回点了，准备好的话就打开敲钟室的门吧！”\n（操作提示：在顶层敲钟室正门（bell_arena_gate）按 F / 按下左摇杆进入。）"
+    },
+    {
+      "key": "story.gabriel.i0.01",
+      "value": "（手持巨大音叉锤剑的加布里埃尔看到蕾娅便静静走近，用手指在旁边桌面上“叩、叩”轻敲两下安抚她，随即展开随身携带的笔谈记事本举起来）\n“[手记：上来之前好好喘过气了吗，蕾娅。看着你手里的青金石记录剑，我便明白你为何登临这座钟楼了。]”"
+    },
+    {
+      "key": "story.gabriel.i0.02",
+      "value": "（她双手把赦免任务书副本第3条大幅摊开让加布里埃尔看清，再一字一顿对着口型并用笔记传达）\n“加布里埃尔大叔！请看这份回收命令书副本第3条！只要我用记录剑把大叔您的招式登记到3阶，大叔的沉默终焉就会被大法庭母体核心吸收并消灭，您就能获得特别赦免！”"
+    },
+    {
+      "key": "story.gabriel.i0.03",
+      "value": "（加布里埃尔眼中满怀悲伤地摇了摇头，翻到记事本下一页举起来，同时摊开左手掌朝正前方平推，比出“停下”的手势）\n“[手记：那阵钟声是骗局，蕾娅。你的剑照着敲响我3阶那一击的瞬间，我这永恒的沉默就会吞掉你的嗓音与双耳。]”"
+    },
+    {
+      "key": "story.gabriel.i0.04",
+      "value": "（他合上记事本收进怀里，举起音叉锤剑）\n“[手记：绝不能让你连道一声早安的嗓音都失去。最后那记六点敲钟，我不会给你看，这就送你回去。]”\n（战斗开始：与沉默守钟人加布里埃尔的保护对练）"
+    },
+    {
+      "key": "story.gabriel.i0.05",
+      "value": "（他将锤剑长柄拄地屈膝。蕾娅的记录剑核心以金色光芒录下了对练中加布里埃尔显露的1阶震动打击波形）\n“[手记：你的剑还是录下了我第一式《震动打击》的波动。三十次之前不过是耳朵略微发闷，可一旦触及第八十次极意，我的沉默就会转移到你身上。我要退回救护所去了，切记停下那共鸣。]”\n（系统提示：已获得共鸣锻造 — 1~5 / E·手柄B选择，Q·Y使用）"
+    },
+    {
+      "key": "story.gabriel.i0.06",
+      "value": "“虽然很在意加布里埃尔大叔记事本上写的话……可为了阻止明早六点的行刑，非把这套共鸣锻造练会不可。顺着下行共鸣回廊下去吧！”"
+    },
+    {
+      "key": "story.gabriel.i1.01",
+      "value": "（看见蕾娅胸针上刻出的猩红裂纹，加布里埃尔瞳孔剧震，急忙在记事本上飞快写字举起）\n“[手记：胸针已经裂开了啊，蕾娅！明知道消灭特例是骗局，为什么还要找到我这沉默的钟楼来？!]”"
+    },
+    {
+      "key": "story.gabriel.i1.02",
+      "value": "（她把自己公证记事本里与泰奥一起整理的 4阶段剑实验笔记与归还箭头大幅摊开，举到加布里埃尔面前）\n“加布里埃尔大叔，请看看我的记事本！我不是要独自揽下一切了事。靠清空技能路径时解放的时间刻印输出，和卡塞尔的镜子与原型剑术对斩，我找到把五道终焉全还给卡塞尔的路了！”"
+    },
+    {
+      "key": "story.gabriel.i1.03",
+      "value": "（加布里埃尔仔细看完蕾娅记事本上的图示后，用锤剑朝地面敲响一声，随后举起记事本）\n“[手记：哪怕在声音消失的战场上，你能不能不逞强、看清我的手势信号——我先在这间敲钟室里确认清楚。]”\n（战斗开始：与加布里埃尔的视觉信号验证对练）"
+    },
+    {
+      "key": "story.gabriel.i1.04",
+      "value": "（大钟重叠鸣响、整间敲钟室的共鸣压力飙升，四周一切声音顿时如沉入水底般被闷住隔绝）\n“……唔！大钟的共鸣震得耳朵发闷，完全听不见任何攻击预警音了！\n怎么办，要强装听得见凭感觉硬打下去吗……？”"
+    },
+    {
+      "key": "story.gabriel.i1.05",
+      "value": "（看着加布里埃尔的神情，她停下硬挥出去的剑摇了摇头）\n“……不行！听不见却装作听得见硬打，加布里埃尔大叔绝对不会信任我。先比手势请大叔停下来！”\n（操作提示：移动至右侧视觉信号石板（gabriel_signal_floor），按 F / 按下左摇杆先向加布里埃尔发出停止手势（摊开手掌）。）"
+    },
+    {
+      "key": "story.gabriel.i1.06",
+      "value": "（见蕾娅垂下剑、举起摊开的手掌，加布里埃尔当场刹住正要劈落的锤剑，松了口气走上前，在记事本上画下三种清晰的大手势）\n“[手记约定信号 — 即使无声也能彼此守护的三种手势]\n1. [摊开手掌 · 停下] : 共鸣过载或危险时立即停止攻击与移动\n2. [两根手指 · 准备] : 正面钟击预备 — 准备普通招架或空中下砸钟击\n3. [手掌朝下 · 落地、返回] : 在大范围震波前落回安全地面并拉开距离”"
+    },
+    {
+      "key": "story.gabriel.i1.07",
+      "value": "（她朝加布里埃尔竖直食指与中指比出“准备”的手势，微笑起来）\n“不用长篇大论地解释，我现在清清楚楚看得到大叔的手势了！用约定好的三种信号配合到底吧！”\n（战斗继续：观察加布里埃尔头顶显示的 [摊开手掌 · 停下] / [两根手指 · 准备] / [手掌朝下 · 落地、返回] 轮廓图标，完成剩余对练。）"
+    },
+    {
+      "key": "story.gabriel.i1.08",
+      "value": "（对练结束，加布里埃尔亲切地拍拍蕾娅的肩膀，在头顶比出“手掌朝下：落地、返回”的手势，递出记事本）\n“[手记：我的‘停下’和你的‘停下’完全契合上了，蕾娅。前路要是被敌人的盾牌挡住去路，就对我比个手势。帮你震开归途的《归还钟击》，我随时为你敲响。]”\n（系统提示：已获得共鸣锻造 + 解锁加布里埃尔支援 · 已持有归还钟击 1/1）"
+    },
+    {
+      "key": "story.gabriel.reunion.01",
+      "value": "（在救护所钟楼休息室里，加布里埃尔往蕾娅面前放下一杯冒着热气的温牛奶，用手指在桌上“叩、叩”敲了两下安抚她，然后展开记事本）\n“[手记：听说在工作台找到归途的办法了。但在钟楼和大法庭深沉的共鸣里，声音有时会断绝。为了别在听不见时强撑假装听见，现在和我约定三种手势吧。]”"
+    },
+    {
+      "key": "story.gabriel.reunion.02",
+      "value": "（她用双手捧着温牛奶杯轻啜一口，读过加布里埃尔记事本上写下的三种手势后，摊开手掌比了比）\n“摊开手掌是停下，两根手指是准备，手掌朝下是落地、返回……明白，加布里埃尔大叔！听不见的时候我绝不硬撑，一定会先用这个手势告诉您！”\n（操作提示：在救护所桌上加布里埃尔的手势记事本（gabriel_reunion_table）按 F / 按下左摇杆确认三种手势并回应。）"
+    },
+    {
+      "key": "story.gabriel.reunion.03",
+      "value": "（看见蕾娅比出的“摊开手掌 · 停下”手势，加布里埃尔立刻放下钟锤，温和地回以“手掌朝下 · 落地、返回”的手势）\n“[手记：好。哪怕声音彻底消失，只要有这三种信号，我们随时都能叫停彼此、把对方带回来。]”"
+    },
+    {
+      "key": "story.gabriel.reunion.04",
+      "value": "“谢谢您，加布里埃尔大叔！看着和您约好的这些手势信号，大家一定会一起回来听明早六点的钟声的！”\n（系统提示：已解锁加布里埃尔支援 · 持有归还钟击 1/1 — 普通战斗中可用 方向 + H / 按下右摇杆 呼叫。）"
+    },
+    {
+      "key": "story.bell.return.01",
+      "value": "“下行回廊的地面已经裂开了。用刚录下的《共鸣锻造》1阶《震动打击》砸向地面与裂纹盾牌，就能一击震碎！”\n（操作提示：使用共鸣锻造（↓ 空中 + Q / 手柄Y 或地面锻造）击打裂纹地面与重甲兵盾牌。）"
+    },
+    {
+      "key": "story.bell.return.02",
+      "value": "“锻造震动震开重甲兵盾牌的瞬间，立刻衔接基础剑术连击斩断青金石核心吧，姐！音叉锁扣也是先震动起手再用基础剑术斩断就行！”\n（操作提示：在 bell_07~08 归还动线上用“锻造起手 ➔ 基础剑术收尾”的交替循环突破重甲兵与音叉锁扣。）"
+    },
+    {
+      "key": "story.bell.return.03",
+      "value": "“穿过地下音叉归还水道就回到钟楼入口值班室了。现在大钟楼上层和据点可以直接互通了！”"
+    },
+    {
+      "key": "story.bell.synergy.01",
+      "value": "“那口巨大的青铜钟裂口张得太大，普通一敲震动根本传不过去……不过先用米哈伊尔大叔的《银丝缝合》把裂开的缝隙牢牢缝合、让震动传导开来，再用加布里埃尔大叔的《共鸣锻造》猛击，震动就能贯通到底唤醒隐藏的声波桥！”\n（操作提示：先用银丝缝合封合裂纹大钟的缝隙（bell_synergy_seam），再用共鸣锻造敲击打开通道。敲击后银丝会绷断并开启大门。）"
+    },
+    {
+      "key": "story.bell.synergy.02",
+      "value": "“多亏银丝一路锁住震动，大钟共鸣爆开把银丝震断，捷径这就敞开了！只要突破前面的精英守卫队就好！”"
+    },
+    {
+      "key": "story.bell.mastery.01",
+      "value": "（第三十次震动打击落下，刻在敌人身上的共鸣音符轰然奏响和音爆裂，四周高频声响瞬间沉闷 0.25秒，蕾娅下意识用指尖轻敲了下耳尖）\n“叠满共鸣印记后一齐引爆的《和音蓄爆》已经融入身体了。刚才耳朵忽然闷了一下，害我不由自主去敲耳尖……但终焉还没有转移过来。”"
+    },
+    {
+      "key": "story.bell.mastery.02",
+      "value": "（第八十次极意《六点的播种》凭普通招架接空中下砸钟击轰然绽放、掀起金色大钟反击波动的下一刻，周围环境音瞬间沉入深邃死寂，胸针第四片花瓣裂开猩红纹路！）\n“……啊、啊啊……嗓子里发出的战吼声哑掉了一半，变小了。\n《第4终焉：永恒沉默》已经转移到《被告人 R.E.A.》、我身上了。”"
+    },
+    {
+      "key": "story.bell.mastery.03",
+      "value": "（救护所里，时隔六年世间万象的声响重新涌入加布里埃尔耳中，他干涩的声带终于震响出低沉浑厚的真实嗓音。然而为了让远方的蕾娅不至于漏听，他发声的同时仍清晰地在头顶比出了“手掌朝下：落地、返回”的手势）\n“……蕾娅。我的声音能回来，就说明你替我背走那份沉重的沉默了吧。\n别担心。就算我现在找回了声音，为了让耳朵发闷的你绝不迷路，我们约好的这三种手势我也会一直用到最后。”"
+    },
+    {
+      "key": "story.bell.mastery.04",
+      "value": "（她捂住喉咙用略带沙哑却沉静的声音说道，朝加布里埃尔比出的信号竖起两根手指回应）\n“第一次听到了加布里埃尔大叔真正的声音……虽然我的声音变小了些，但大叔的手势我看得一清二楚。这份沉默的终焉也一定要还给卡塞尔！”"
+    },
+    {
+      "key": "story.gallery.entry.01",
+      "value": "“这里就是第5区白画布画廊与色彩温室，蕾娅姐。盲眼肖像画家伊莉娜姐住过的画室就在这入口处。”"
+    },
+    {
+      "key": "story.gallery.entry.02",
+      "value": "“整座画廊就像一张什么都没画过的雪白画纸。唯独画架周围散发着浓郁又温暖的油画颜料气息。”"
+    },
+    {
+      "key": "story.gallery.entry.03",
+      "value": "“伊莉娜姐六年前失去双眼视力以后也一直没有放下画笔。姐，你摸摸看支架上那本厚实的盲文速写本吧。”\n（操作提示：按 F / 按下左摇杆调查伊莉娜的浮雕盲文速写本（irina_sketchbook_stand）。将记录线索[伊莉娜 · 核心刻印]。）"
+    },
+    {
+      "key": "story.gallery.entry.04",
+      "value": "（她用指尖抚过仅凭颜料厚度与高低起伏就能摸清轮廓的数十幅肖像，以及题名《活到十六岁的蕾娅》）\n“……全都是我的脸。不止有笑脸，连皱起眉头、害怕得咬住嘴唇的神情，都用温柔的颜料肌理画了出来。\n六年前在没有窗户的房间里，我用手指在半空描摹光亮的动作，被伊莉娜姐姐练成了画笔剑术极意，代我背负了《第5终焉：失明》啊。”"
+    },
+    {
+      "key": "story.gallery.entry.05",
+      "value": "“伊莉娜姐光凭你的脚步声和阳光气息，就能清清楚楚知道你露出了什么表情呢。\n来，用基础剑术斩断通往第1展厅的画框门青金锁扣进去吧！”\n（操作提示：用基础剑术击打画框门旁的青金锁扣 1 次来开门。）"
+    },
+    {
+      "key": "story.gallery.route.01",
+      "value": "“第1展厅里无论墙壁还是地面都一片雪白留白，不过石膏底座踏板正好摆在基础跳跃和冲刺的距离内。不用颜料技能，只靠基础移动也完全过得去。”"
+    },
+    {
+      "key": "story.gallery.route.02",
+      "value": "“没错！用基础剑术斩断折叠画框桥的青金锁扣接通道路，一边清理守在展厅的哨兵与石像一边前进吧！”\n（操作提示：跨过石膏底座踏板，切断 2 处青金锁扣并突破哨兵与石像波次。）"
+    },
+    {
+      "key": "story.gallery.route.03",
+      "value": "“巨大的木制画架像桥墩一样竖立着。用基础剑术斩断固定钢索锁扣的话，巨幅画布就会水平降下来变成结实的桥梁。”"
+    },
+    {
+      "key": "story.gallery.route.04",
+      "value": "“用普通招架挡回石像的反射攻击再趁破绽刺入基础剑术，放倒画布桥梁朝温室那边过去吧！”\n（操作提示：切断 2 处青金锁扣放下桥梁，并击败哨兵、石像与重甲兵。）"
+    },
+    {
+      "key": "story.gallery.route.05",
+      "value": "“这就是色彩玻璃温室漫步道，蕾娅姐！温暖的阳光正穿透玻璃天花板洒下来呢。只要突破温室花坛上的守卫，前面就是伊莉娜姐的画室了！”\n（操作提示：沿温室漫步道向上，突破 1 处青金锁扣以及哨兵与石像。）"
+    },
+    {
+      "key": "story.gallery.route.06",
+      "value": "（站在画室正门前，她轻嗅着随微风飘来的暖阳与湛蓝青金石颜料气息）\n“这股颜料的味道……是小时候在我身旁画大海与花田的伊莉娜姐姐身上的味道。”"
+    },
+    {
+      "key": "story.gallery.route.07",
+      "value": "“我把返回点校准在前厅调色盘石板上了，蕾娅姐。准备好了就推开画室大门吧！”\n（操作提示：在画室正门（gallery_arena_gate）按 F / 按下左摇杆进入。）"
+    },
+    {
+      "key": "story.irina.i0.01",
+      "value": "（站在巨幅画板前、双眸澄澈却毫无焦点的伊莉娜回过头，仅凭阳光气息与脚步声径直走到蕾娅身旁，用沾着颜料的指尖轻柔抚过蕾娅的脸颊与眉梢）\n“……闻得到薄荷糖和温暖晨光的味道呢。我们的蕾娅真的长到十六岁、走到我的画室里来了呀。\n不过蕾娅，你右手里握着的那把冰冷的青金石记录剑，是为什么带来的呢？”"
+    },
+    {
+      "key": "story.irina.i0.02",
+      "value": "“伊莉娜姐姐！我在入口画室里看见姐姐亲手摸索着给我画的那些肖像画了。\n今早收到的这份回收命令书副本第3条写得清清楚楚！只要我把姐姐的画笔剑术登记进记录剑到3阶，遮住姐姐双眼的终焉就会被大法庭母体核心吸收并消灭，姐姐就能获得特别赦免了！”"
+    },
+    {
+      "key": "story.irina.i0.03",
+      "value": "（她从蕾娅脸颊移开手退后一步，神情哀伤却坚定地摇了摇头）\n“蕾娅，哪怕眼睛看不见，颜料往哪儿晕开，我用指尖全能感觉得到。\n只要你把我的笔法一模一样画到3阶自画像，我眼中的失明非但不会消失，反而会一分不差地转移到你琥珀色的眼眸里。往后本该由你去亲眼看的大海与花田之光，姐姐怎么能再抢走呢。”"
+    },
+    {
+      "key": "story.irina.i0.04",
+      "value": "（她把长画笔柄般的细剑蘸满青金石蓝颜料抬起）\n“六年前我的双眼就已经献给你的未来了。唯有最后那幅自画像的笔触，绝不会交给你的剑——我要把你送回画廊外去！”\n（战斗开始：与盲眼肖像画家伊莉娜的保护对练）"
+    },
+    {
+      "key": "story.irina.i0.05",
+      "value": "（她把画笔剑拄在地上轻轻顺了口气。蕾娅的记录剑核心以水彩般的光泽录下了对练中伊莉娜在半空勾勒的1阶颜料轨迹）\n“……明明藏起了最后的自画像，你的记录剑还是读出了我第一道《颜料笔划》的纹理呀。\n切记，蕾娅。三十次为止都只是眼角掠过水彩般的色晕，可一旦画成第八十幅自画像，我失明的终焉就会转进你的眼睛里。我先退回救护所去了……求你收起笔触回去吧。”\n（系统提示：已获得裁绘留白 — 1~5 / E·手柄B选择，Q·Y使用）"
+    },
+    {
+      "key": "story.irina.i0.06",
+      "value": "“连伊莉娜姐姐也退回救护所了……可是要想阻止明早六点的行刑、替姐姐找回双眼，必须把这颜料笔划练到精通才行。顺着温室色彩回廊归还道下去吧！”"
+    },
+    {
+      "key": "story.irina.i1.01",
+      "value": "（听见踏入画室的脚步声，伊莉娜走近，指尖轻轻拂过蕾娅胸前胸针上裂开的猩红纹路，瞬间屏住了呼吸）\n“……胸针的花瓣已经裂开了啊，蕾娅。明明全都知道消灭特例是谎言、终焉会转进你体内……怎么还不逃跑，反倒找到我的画室来了呢？”"
+    },
+    {
+      "key": "story.irina.i1.02",
+      "value": "“伊莉娜姐姐，我不是要抹掉自己的名字独自牺牲！我和泰奥还有伊森大叔在分所工作台把剑实验做完了。我们要把五位恩人的技能拿去和卡塞尔的镜子对斩预约归还，解放时间刻印输出，把五道终焉全都还给原主卡塞尔！”"
+    },
+    {
+      "key": "story.irina.i1.03",
+      "value": "“你从小就那样，越是害怕的时候，反而越要故意用明快的声音装着微笑，好让大人们安心。\n你刚才说的话到底是不是又在勉强自己挤笑脸安抚我们——我用画笔剑亲自来问个明白！”\n（战斗开始：与伊莉娜的真心确认对练）"
+    },
+    {
+      "key": "story.irina.i1.04",
+      "value": "（对练中段，在阳光洒落的右侧窗边，伊莉娜停下画笔剑走近一步。她照着一贯确认的习惯伸出沾着颜料的指尖捧住蕾娅的脸颊，小心翼翼地摸索她的眉眼与嘴角）\n“……指尖触到的你的脉搏跳得好快呀，蕾娅。\n我的指尖正碰在你的嘴角上呢。告诉我吧，你现在是不是也还在为了让我安心而强笑着？”"
+    },
+    {
+      "key": "story.irina.i1.05",
+      "value": "（在伊莉娜的指尖前，她松开原本下意识想往上弯起的嘴角，不带笑意地轻轻握住伊莉娜的手背）\n“……没有，伊莉娜姐姐。我没有在笑。\n今天我好害怕。既害怕假说里还有没填上的空白，也害怕失去五位恩人，更真的好怕自己回不来。”\n（操作提示：在右侧阳光窗边（irina_sunlight_floor）按 F / 按下左摇杆，不勉强微笑、坦白真心的恐惧。）"
+    },
+    {
+      "key": "story.irina.i1.06",
+      "value": "（见蕾娅收起笑容坦白恐惧，伊莉娜静默片刻，随后缓缓从蕾娅嘴角垂下手，语气无比温柔地开口）\n“……谢谢你，蕾娅。原来是我一直把你关在名叫‘微笑的蕾娅’的画里呀。\n不必为了安抚谁就装作开朗。露出那张脸回来也可以。”"
+    },
+    {
+      "key": "story.irina.i1.07",
+      "value": "“嗯，伊莉娜姐姐！怕的时候我就老实说怕，紧紧牵着同伴的手，就带着这张脸活着回来！”\n（战斗继续：打完剩余对练并取胜。）"
+    },
+    {
+      "key": "story.irina.i1.08",
+      "value": "（对练结束，伊莉娜用手帕替蕾娅擦去脸颊上的灰尘，从调色盘里蘸取最温暖的青金与金色颜料点在蕾娅的记录剑尖上）\n“战斗时要是喘不上气或者觉得害怕，千万别憋着，叫我一声吧，蕾娅。我会用我的《归还着色》护住你的心，让你稍微喘口气的。”\n（系统提示：已获得裁绘留白 + 解锁伊莉娜支援 · 已持有归还着色 1/1）"
+    },
+    {
+      "key": "story.irina.reunion.01",
+      "value": "（在救护所的阳光窗边，伊莉娜听到脚步声便起身向蕾娅走来。她一如既往地用沾着颜料的指尖捧住蕾娅的脸颊，抚过她的眉眼与嘴角）\n“听说你在工作台和泰奥、伊森定下了对抗卡塞尔的归还计划呀，蕾娅。\n可是我指尖碰到的你的嘴角……该不会又为了安抚大人们而想勉强挤出笑容吧？”"
+    },
+    {
+      "key": "story.irina.reunion.02",
+      "value": "（她把差点扬起的嘴角放平，不带笑意地把脸颊轻轻贴在伊莉娜指尖上）\n“我不会勉强微笑了，伊莉娜姐姐。今天我好害怕。正因如此我才没有独自硬撑，而是大家一起寻找办法。”\n（操作提示：在救护所阳光窗边（irina_reunion_window）按 F / 按下左摇杆，不带强笑地坦露真心。）"
+    },
+    {
+      "key": "story.irina.reunion.03",
+      "value": "（静默片刻的伊莉娜轻轻从蕾娅嘴角垂下手，用最安宁的声音回答）\n“……嗯。露出那张脸回来也可以。\n肯亲口告诉我你害怕，我这才总算相信你是真的打算活着回到我身边呀。”"
+    },
+    {
+      "key": "story.irina.reunion.04",
+      "value": "“谢谢您，伊莉娜姐姐！明天早上，我一定用不加掩饰的真正面容坐到姐姐面前！”\n（系统提示：已解锁伊莉娜支援 · 持有归还着色 1/1 — 普通战斗中可用 方向 + H / 按下右摇杆 呼叫。）"
+    },
+    {
+      "key": "story.gallery.return.01",
+      "value": "“温室归还道的台阶边缘前面全都是悬空的呢。在地面施展《裁绘留白》1阶《颜料笔划》，前方半空就会留下一块持续 3秒的青金石颜料踏板！踩着那道颜料笔划跃过去吧！”\n（操作提示：站在台阶边缘地面按 ↓ + Q / 手柄Y 在前方空中画下颜料笔划踏板，踩上去跨过缺口。）"
+    },
+    {
+      "key": "story.gallery.return.02",
+      "value": "“太好了，姐！归还道上的公证缝合重甲兵，必须脚底接触到颜料笔划或交叉区域才会破防。一破防就立刻用基础剑术连击斩断核心！”\n（操作提示：在 gallery_07~08 归还动线上用“画幅起手 ➔ 基础剑术收尾”的交替循环突破重甲兵与画布锁扣。）"
+    },
+    {
+      "key": "story.gallery.return.03",
+      "value": "“穿过下层画廊藏品库回到入口画室了。这下画廊和据点升降台彻底连通了！”"
+    },
+    {
+      "key": "story.gallery.synergy.01",
+      "value": "“这里越过两端有固定支撑的裂隙地面之后，紧接着就是完全没有支点的空无虚空！\n先用米哈伊尔大叔的《银丝缝合》缝好实地面裂缝走过去，站到银丝地面尽头再用伊莉娜姐姐的《裁绘留白》往虚空里画出一块颜料踏板跃过去，就能把两门技能的长处合起来通过！”\n（操作提示：用银丝缝合补上裂隙地面（gallery_synergy_seam）并站到尽头，再用裁绘留白（↓ + Q / 手柄Y）画出前方颜料踏板跨往露台。）"
+    },
+    {
+      "key": "story.gallery.synergy.02",
+      "value": "“两边有固定面的裂缝用银丝缝合，毫无支点的虚空用颜料笔划跨过去，任何悬崖都挡不住了！只剩前面精英画室守卫队，冲过去就完美了！”"
+    },
+    {
+      "key": "story.gallery.mastery.01",
+      "value": "（第三十次颜料笔划挥出，地面与墙壁两道色彩笔划交叉爆裂，视野边缘掠过一抹淡雅的水彩晕染，蕾娅下意识用手背轻轻揉了揉眼角）\n“让两道笔划交叉引爆的《覆绘风景》已经融入身体了。刚才水彩颜料的色光掠过眼角，害我不由自主揉了揉眼睛……不过失明的终焉还没有转过来。”"
+    },
+    {
+      "key": "story.gallery.mastery.02",
+      "value": "（第八十次极意《自画像完成》展开、色彩幻影分身以 0.3秒时差一模一样追绘出蕾娅剑击的下一瞬，画面四周浮现一圈白画布纹理，胸针第五片花瓣裂开猩红纹路！）\n“……唔！眼前的边缘像浸进雪白画纸里一样变模糊了……！\n《第5终焉：失明》已经正式转移到《被告人 R.E.A.》、我身上了。”"
+    },
+    {
+      "key": "story.gallery.mastery.03",
+      "value": "（站在救护所窗边的伊莉娜，双眸时隔六年重现澄明的焦点与光明。她颤动着睫毛眨了眨眼，隔着窗望见不需要勉强微笑、依然坚定站立的十六岁蕾娅的模样，用自己的双眼看得清清楚楚）\n“……看得见了。我的双眼又能看见了……！\n蕾娅，我从前只能凭指尖描绘的十六岁的你……正带着那张不强颜欢笑的坚定面孔，站在我眼前呢。”"
+    },
+    {
+      "key": "story.gallery.mastery.04",
+      "value": "（她轻轻擦了下眼角，笔直凝视着记录剑尖凝结出的澄澈青金石光芒）\n“伊莉娜姐姐时隔六年用双眼看见我了。我看着前方挥剑一点问题也没有……连同这份失明的终焉，我也会全部还给卡塞尔！”"
+    },
+    {
+      "key": "area.room.clock_01_entry",
+      "value": "钟塔1号室 · 暮色钟塔入口与调校工作室"
+    },
+    {
+      "key": "area.room.clock_02_pendulum",
+      "value": "钟塔2号室 · 大钟摆升降回廊"
+    },
+    {
+      "key": "area.room.clock_03_counterflow",
+      "value": "钟塔3号室 · 逆流齿轮桥"
+    },
+    {
+      "key": "area.room.clock_04_escapement",
+      "value": "钟塔4号室 · 擒纵轮中层停靠站"
+    },
+    {
+      "key": "area.room.clock_05_vestibule",
+      "value": "钟塔5号室 · 发条表盘前厅"
+    },
+    {
+      "key": "area.room.clock_06_arena",
+      "value": "钟塔6号室 · 暮色发条钟塔最深处"
+    },
+    {
+      "key": "area.room.clock_07_return_upper",
+      "value": "钟塔7号室 · 逆流回廊上层归还道"
+    },
+    {
+      "key": "area.room.clock_08_return_lower",
+      "value": "钟塔8号室 · 逆流回廊下层归还水道"
+    },
+    {
+      "key": "area.room.clock_09_shortcut",
+      "value": "钟塔9号室 · 停转齿轮室上层协同回廊"
+    },
+    {
+      "key": "area.room.clock_10_sanctuary_rail",
+      "value": "钟塔10号室 · 救护所旁轨道站台通道与精英验证室"
+    },
+    {
+      "key": "area.target.julius_workbench",
+      "value": "时钟调校工作台"
+    },
+    {
+      "key": "area.target.clock_entry_latch",
+      "value": "青金锁扣"
+    },
+    {
+      "key": "area.target.clock_arena_gate",
+      "value": "演武场正门"
+    },
+    {
+      "key": "area.target.julius_trial_bell",
+      "value": "练习对练召唤钟"
+    },
+    {
+      "key": "area.target.julius_return_platform",
+      "value": "往返发条踏板"
+    },
+    {
+      "key": "area.target.julius_reunion_platform",
+      "value": "归还列车返回踏板"
+    },
+    {
+      "key": "area.speaker.julius",
+      "value": "尤利乌斯"
+    },
+    {
+      "key": "area.room.opera_01_entry",
+      "value": "歌剧院1号室 · 剧院大厅与幕后排练室"
+    },
+    {
+      "key": "area.room.opera_02_auditorium",
+      "value": "歌剧院2号室 · 红丝绒观众席回廊"
+    },
+    {
+      "key": "area.room.opera_03_chandelier",
+      "value": "歌剧院3号室 · 吊灯中层天桥"
+    },
+    {
+      "key": "area.room.opera_04_rooftop_west",
+      "value": "歌剧院4号室 · 西侧聚光灯玻璃屋顶"
+    },
+    {
+      "key": "area.room.opera_05_wings",
+      "value": "歌剧院5号室 · 主舞台侧幕等候区"
+    },
+    {
+      "key": "area.room.opera_06_arena",
+      "value": "歌剧院6号室 · 玻璃歌剧大舞台与穹顶屋顶演武场"
+    },
+    {
+      "key": "area.room.opera_07_return_roof",
+      "value": "歌剧院7号室 · 东侧聚光灯屋顶归还道"
+    },
+    {
+      "key": "area.room.opera_08_return_foyer",
+      "value": "歌剧院8号室 · 玻璃回廊下层归还通道"
+    },
+    {
+      "key": "area.room.opera_09_shortcut",
+      "value": "歌剧院9号室 · 断裂上层舞台协同天桥"
+    },
+    {
+      "key": "area.room.opera_10_sanctuary_stairs",
+      "value": "歌剧院10号室 · 救护所舞台阶梯通道与精英排练室"
+    },
+    {
+      "key": "area.target.valeria_shoes_rack",
+      "value": "足尖鞋架与步幅地板"
+    },
+    {
+      "key": "area.target.opera_entry_latch",
+      "value": "青金锁扣"
+    },
+    {
+      "key": "area.target.opera_arena_gate",
+      "value": "演武场正门"
+    },
+    {
+      "key": "area.target.valeria_trial_bell",
+      "value": "练习对练召唤钟"
+    },
+    {
+      "key": "area.target.valeria_safe_stage_ledge",
+      "value": "安全着陆踏板"
+    },
+    {
+      "key": "area.target.luka_opera_lift",
+      "value": "卢卡的辅助升降板"
+    },
+    {
+      "key": "area.target.valeria_reunion_lift",
+      "value": "救护所连接升降板"
+    },
+    {
+      "key": "area.speaker.valeria",
+      "value": "瓦莱莉娅"
+    },
+    {
+      "key": "area.room.bell_01_entry",
+      "value": "大钟楼1号室 · 钟楼入口值班室与晨钟乐谱台"
+    },
+    {
+      "key": "area.room.bell_02_tunnels",
+      "value": "大钟楼2号室 · 共鸣音叉地下道入口"
+    },
+    {
+      "key": "area.room.bell_03_acoustic_hall",
+      "value": "大钟楼3号室 · 声波环地下水道"
+    },
+    {
+      "key": "area.room.bell_04_belfry_shaft",
+      "value": "大钟楼4号室 · 垂直钟楼上升阶梯"
+    },
+    {
+      "key": "area.room.bell_05_silence_landing",
+      "value": "大钟楼5号室 · 沉默钟阁等候室"
+    },
+    {
+      "key": "area.room.bell_06_arena",
+      "value": "大钟楼6号室 · 青铜大钟楼顶层敲钟室"
+    },
+    {
+      "key": "area.room.bell_07_return_chime",
+      "value": "大钟楼7号室 · 敲钟室下行共鸣归还回廊"
+    },
+    {
+      "key": "area.room.bell_08_return_undercroft",
+      "value": "大钟楼8号室 · 地下音叉归还水道"
+    },
+    {
+      "key": "area.room.bell_09_shortcut",
+      "value": "大钟楼9号室 · 裂纹大钟协同共鸣室"
+    },
+    {
+      "key": "area.room.bell_10_sanctuary_table",
+      "value": "大钟楼10号室 · 救护所钟楼休息室与精英敲钟场"
+    },
+    {
+      "key": "area.target.gabriel_score_desk",
+      "value": "晨钟乐谱台"
+    },
+    {
+      "key": "area.target.bell_entry_latch",
+      "value": "青金锁扣"
+    },
+    {
+      "key": "area.target.bell_arena_gate",
+      "value": "演武场正门"
+    },
+    {
+      "key": "area.target.gabriel_trial_bell",
+      "value": "练习对练召唤钟"
+    },
+    {
+      "key": "area.target.gabriel_request_stop",
+      "value": "停止手势"
+    },
+    {
+      "key": "area.target.gabriel_reunion_table",
+      "value": "记事本里的三种手势"
+    },
+    {
+      "key": "area.speaker.gabriel",
+      "value": "加布里埃尔"
+    },
+    {
+      "key": "area.room.gallery_01_entry",
+      "value": "画廊1号室 · 白画布画廊入口与温室画室"
+    },
+    {
+      "key": "area.room.gallery_02_white_hall",
+      "value": "画廊2号室 · 留白第1展厅"
+    },
+    {
+      "key": "area.room.gallery_03_easel_bridge",
+      "value": "画廊3号室 · 画布画架天桥"
+    },
+    {
+      "key": "area.room.gallery_04_greenhouse_path",
+      "value": "画廊4号室 · 色彩玻璃温室漫步道"
+    },
+    {
+      "key": "area.room.gallery_05_frame_foyer",
+      "value": "画廊5号室 · 未完画框前厅"
+    },
+    {
+      "key": "area.room.gallery_06_arena",
+      "value": "画廊6号室 · 色彩温室最深处画室"
+    },
+    {
+      "key": "area.room.gallery_07_return_atelier",
+      "value": "画廊7号室 · 温室色彩回廊归还道"
+    },
+    {
+      "key": "area.room.gallery_08_return_gallery",
+      "value": "画廊8号室 · 下层画廊藏品库归还通道"
+    },
+    {
+      "key": "area.room.gallery_09_shortcut",
+      "value": "画廊9号室 · 留白峭壁的银丝·画幅协同回廊"
+    },
+    {
+      "key": "area.room.gallery_10_sanctuary_window",
+      "value": "画廊10号室 · 救护所阳光窗边通道与精英画室"
+    },
+    {
+      "key": "area.target.irina_sketchbook_stand",
+      "value": "盲文速写本"
+    },
+    {
+      "key": "area.target.gallery_entry_latch",
+      "value": "青金锁扣"
+    },
+    {
+      "key": "area.target.gallery_arena_gate",
+      "value": "演武场正门"
+    },
+    {
+      "key": "area.target.irina_trial_bell",
+      "value": "练习对练召唤钟"
+    },
+    {
+      "key": "area.target.irina_confess_fear",
+      "value": "今天我好害怕。"
+    },
+    {
+      "key": "area.target.irina_reunion_window",
+      "value": "阳光窗边"
+    },
+    {
+      "key": "area.speaker.irina",
+      "value": "伊莉娜"
+    },
+    {
+      "key": "story.echo.entry.01",
+      "value": "[公证记录 #02 — D+1日 05:30 / 距离预定行刑时刻还剩 30 分钟]\n走进大法庭中央大厅了。正前方往上是通往大公证官卡塞尔所在顶层审判席的升降机，而右下角通往深处的幽暗阶梯……就是原本命令书第3条写着的地下《永久标本馆》入口。"
+    },
+    {
+      "key": "story.echo.entry.02",
+      "value": "（顺着大厅正中暴露出来的巨大青金石控制立柱回路纹路抬头望去）\n“看这座青金石控制连接柱。顶层的母体兵器《万象共鸣镜》和地下《永久标本馆》的冰封隔离装置绑在同一个控制核心上。\n跟泰奥分析的一样。如果在顶层砸碎镜面母体的核心，地下标本馆的收容体系也会跟着一起崩塌！”\n（操作提示：按 F / 按下左摇杆调查大厅中央的青金石控制连接立柱（court_control_pillar），确认连接结构。）"
+    },
+    {
+      "key": "story.echo.entry.03",
+      "value": "“前面分岔大厅的升降机前，正响着和我记录剑核心一模一样的波动。那是昨日的我留下的残响……！突破挡路的石像和重甲兵，赶去升降机前吧！”\n（操作提示：击败中央大厅的敌人并进入右侧分岔大厅（court_02_echo_arena）。）"
+    },
+    {
+      "key": "story.echo.pre.01",
+      "value": "（在通往顶层的中央升降机门前，一层又一层紧绷的紫色银丝封合屏障将道路缝死，手持裂剑的《残响 · 昨日的蕾娅》冷冷伫立）\n“……五位恩人的终焉果然安然汇集到你身上了啊，今日的我。\n到这里就够了。上面的升降机已被我封死。别去见卡塞尔，顺着右边的阶梯下去地下《永久标本馆》吧。”"
+    },
+    {
+      "key": "story.echo.pre.02",
+      "value": "（在昨日的蕾娅面前停住脚步，坦然迎上在核心终端读到的废弃草稿记忆）\n“你不是因为不知道才挡住这条路的对吧？\n你明明也在工作台第三段刻下了印记，还画出了把终焉退还给卡塞尔的逆公证路径！”"
+    },
+    {
+      "key": "story.echo.pre.03",
+      "value": "（紫色的残影微不可察地晃了一下，剑尖却丝毫不肯垂落）\n“有过可能性的推演。但没有能成功的证明。”"
+    },
+    {
+      "key": "story.echo.pre.04",
+      "value": "“所以你就连我的回答也一并抹掉了吗？\n连问都不问我一声，就把草稿最后一格里的‘蕾娅生存’划上两道线、套印了假赦免书把我一路引到这座标本馆前面来吗？！”"
+    },
+    {
+      "key": "story.echo.pre.05",
+      "value": "“因为我亲眼看见我说出实情后，五位大人亲手反锁隔离门赴刑的模样啊！\n一个人连一条测量仪波形都测不完。要是抱着没证明过的生还归还冲上顶层，结果在六点钟声敲响前断了剑……那时候五位恩人和你都会彻底完蛋。唯有你代替大家走进这间地下标本馆，才是确保五位一定活下来的唯一出路！”"
+    },
+    {
+      "key": "story.echo.pre.06",
+      "value": "（从腰包取出写满泰奥字迹的4阶段剑实验笔记与五位恩人标好的归还路径地图，摊开在昨日的蕾娅面前）\n“我也怕呀。正因为这样，这一次我在划掉自己那份之前，先拿给大家看了。\n你看，你一个人按住才断掉的那道测量波形，今天泰奥和伊森大叔陪我一起按住，从头到尾实测成功了！五位恩人也没有锁门，而是先为我造好了能活着回来的地板、时刻和信号！我是不会下到标本馆去的！”\n（操作提示：按 F / 按下左摇杆向昨日的蕾娅展示剑实验记录与归还路径。）"
+    },
+    {
+      "key": "story.echo.battle.01_p1",
+      "value": "（残响举起开裂的记录剑，今日蕾娅刚才最常使用的主力技能和逼近步幅立即化作紫色预警线一模一样地重现出来）\n“光靠嘴上是过不去我这一关的！共享着同一个核心，你今天用什么步幅突进、先抽哪个主力技，我眼里看得清清楚楚！\n趁你的剑还没碎，我要亲手把你逼下地下阶梯！”\n（战斗提示：残响 第1阶段 · 模糊的昨日 — 残响会模仿你最近有效使用第1位的技能。用与预警技能不同的技能有效击中即可打断模仿并打开 +1.6秒轮换空隙！）"
+    },
+    {
+      "key": "story.echo.battle.02_p2",
+      "value": "（生命值下降后，残响将上方升降机通道的银丝屏障收得更紧，并一齐斩断侧路支架连接处，使脚下踏板朝地下标本馆阶梯塌陷！）\n“上面的路绝不放开！就算你换掉第一个起手技，我也会把你顺手的第二个收尾习惯叠加上来封死你的去路！”\n（战斗提示：残响 第2阶段 · 重叠的记录 — 残响会以第1起手（A）→第2收尾（B）连招模仿并切断通往阶梯侧的地形。可用基础剑术斩断封合线，或切换不同技能打断反击！）"
+    },
+    {
+      "key": "story.echo.battle.03_p2_rea",
+      "value": "“你休想用银丝套住我强行拖走！就算你把侧路支架全切断，我也会像米哈伊尔大叔教的那样先站稳脚下踏板，再用别的技能接住你的预警！”"
+    },
+    {
+      "key": "story.echo.battle.04_p3",
+      "value": "（紫色残影燃起最锋利的光芒，昨日在反锁铁门前挥砍一百二十次的哀鸣与今日的3阶极意轨迹融为一体）\n“凌晨六点的钟声……我绝不能再听第二次！\n你从五位那里学来的3阶极意到底能不能赢过卡塞尔的镜面，就在我这三连模仿面前证明到底吧！”\n（战斗提示：残响 第3阶段 · 清晰的残响 — 残响会以3阶极意上限发动 A → B → A 3连模仿。盯紧最后 0.2秒锁定与轮换反击破绽决出胜负！）"
+    },
+    {
+      "key": "story.echo.battle.05_p3_rea",
+      "value": "（最后一记反击震开了残响裂剑的架势，残响单膝跪地将剑尖拄向地板，然而挡在上方升降机门前的银丝封合屏障却依旧未解）\n“……哈啊，哈啊。我赢了。我跨过了只顾复制自己习惯的昨日之我！”"
+    },
+    {
+      "key": "story.echo.after.01",
+      "value": "（将几乎贴近跪地残响咽喉的记录剑主动停住，后退一步垂下剑锋）\n“被你骗过还是很难受。即使我说不要你也硬想带我走，更是吓坏我了。”\n（操作提示：在跪地的残响前按 F / 按下左摇杆收起剑，继续对话。）"
+    },
+    {
+      "key": "story.echo.after.02",
+      "value": "（扶着地面的指尖微微发颤，她回头望向上方的升降机屏障）\n“如果放开你……你可能会死的。”"
+    },
+    {
+      "key": "story.echo.after.03",
+      "value": "“即便如此，也听听我的回答吧。”"
+    },
+    {
+      "key": "story.echo.after.04",
+      "value": "（长久的沉默过后，昨日的蕾娅率先举起裂剑，一挥手解除了封死上方升降机通道的紫色银丝封合屏障。登记在核心中的地下《永久标本馆》强制执行指令随即解除，中央升降机大门豁然洞开）\n（系统处理：已确认 janhyang_order_withdrawn 与 cassel_open 标记 — 升降机通行已开启）"
+    },
+    {
+      "key": "story.echo.after.05",
+      "value": "（直到所有封锁全部撤除后，昨日的蕾娅才垂下头，用轻得发颤的声音吐露真心）\n“……其实我也想上去的。\n我也不想被埋进什么标本馆里。我也想救下五位恩人……明天早上也和大家一起坐在第六只碗前面。”"
+    },
+    {
+      "key": "story.echo.after.06",
+      "value": "（今日的蕾娅走上前，向跪地的昨日蕾娅伸手紧握并拉她起身。昨日的残响没有消散，而是化作一缕澄净蓝光融入今日记录剑核心之中，与她并肩同行）\n“我不会把你一个人留下的，昨日的我。你在紧闭门前砍出的那一百二十次基础剑击，还有拜托伊森大叔为明天的我留下漂亮剑气光彩的心意，不都在这把剑里吗。\n我们两个一起登上最顶层吧。然后，一起活着下来！”\n（操作提示：在昨日的蕾娅（echo_hand_clasp）前按 F / 按下左摇杆握紧双手，使其在核心同行。）"
+    },
+    {
+      "key": "story.echo.after.07",
+      "value": "（站在敞开的大法庭中央升降机前安全地面上，记录剑核心内昨日的残响与今日的波动平静共鸣）\n“这里就是通往顶层审判席的大法庭升降机前了。五位恩人技能的3阶归还准备全都完成了。\n如果用来正面迎击卡塞尔原型动作到底的基础剑术极意（400次）还差火候，现在还能暂回水道铁匠铺找伊森大叔借《高密度共鸣炼成炉》完成最后打磨；也可以立刻乘升降机上去开启决战。”\n（系统提示：已激活大法庭升降机前（court_lift）存档点 — 处于 B<3 状态时，出战界面将显示“五项归还准备完成 / 原型动作未完成：尚未确保生还归还”。）"
+    },
+    {
+      "key": "story.echo.after.08",
+      "value": "（升降机踏板启动，向着透入晨光的大法庭顶层审判席缓缓升起。核心之中昨日的蕾娅低声耳语）\n“上面就是大公证官卡塞尔和母体兵器《万象共鸣镜》所在的审判席了。我那一百二十次剑击也会添在你的指尖上。走吧，今日的我！”\n（操作提示：在升降机控制台（cassel_lift_console）按 F / 按下左摇杆进入顶层审判席（cassel）。）"
+    },
+    {
+      "key": "story.cassel.p1.01",
+      "value": "（微曦笼罩的大法庭顶层审判席。在由五重巨型反射镜构成的母体兵器《万象共鸣镜》前，依旧维持着三十五岁年轻外貌的大公证官卡塞尔拢了拢冰冷的金色礼服下摆，居高临下俯视而来）\n“第5号回收命令书第3条指定的处分地点本非这顶层，而是大法庭地下《永久标本馆》。\n集五名罪人之终焉于一身的替身被告人 R.E.A.，为何不乖乖步入棺木，反倒爬到本官的审判席上来了？”"
+    },
+    {
+      "key": "story.cassel.p1.02",
+      "value": "（胸前五片花瓣皆布满裂纹，核心中有昨日的残响并肩相伴，她举起记录剑直指前方）\n“那五位才不是什么罪人，卡塞尔！六年前你为了躲避自己的死劫强行塞进十岁的我体内的5大终焉，是他们为了救我才一人一道分摊过去的恩人！\n不管是昨日的我还是今日的我，都不会进你那座标本馆。我来就是为了把你推卸出去的五道终焉，全部还给原主人你！”"
+    },
+    {
+      "key": "story.cassel.p1.03",
+      "value": "（连一丝嗤笑也没有，他以冷酷傲慢的法官腔调拔出长剑）\n“区区白纸容器也敢妄谈逆公证。终焉的归属权岂会因寻常拼杀或败北而动摇。唯有完整原型动作的公证判定，方能拨动因果。\n你手中那套生涩的基础剑术本来是谁的招式，就用原持有者的剑锋亲自叫醒你吧！”"
+    },
+    {
+      "key": "story.cassel.p1.04",
+      "value": "“来了……！卡塞尔的起手架势跟我的基础剑术一模一样！”\n（战斗开始：卡塞尔 第1阶段 · 原型剑术 — 用普通招架、冲刺和技能应对卡塞尔的母体剑术（卡塞尔零式）及五套原型招式，将其生命降至 120。）"
+    },
+    {
+      "key": "story.cassel.p1.05",
+      "value": "（卡塞尔的4连突进斩与蕾娅的基础剑术火星四溅，以完全一致的角度正面对撞）\n“……从手腕角度到踏步步幅，分毫不差地和我的基础剑术完全一样！\n十岁之前的记忆被抹消后，我的手却下意识依然记得的这套《雏鸟斩》……竟是六年前卡塞尔为了把5大终焉甩到我身上而强行刻进我体内的他自己的母体剑术！”"
+    },
+    {
+      "key": "story.cassel.p1.06",
+      "value": "（记录剑核心内，昨日的蕾娅以澄澈的青金石波动回应）\n“没错，今日的我。剑术的招式形式是卡塞尔种下的。\n可伊森大叔用深海青金石锻成、又由我们燃烧记忆挥剑数百次亲手积攒出来的这把《白纸刻印剑》的时间刻印，绝对不属于卡塞尔！顶上去！”"
+    },
+    {
+      "key": "story.cassel.p1.07_mirror",
+      "value": "（生命值降至 120，卡塞尔后撤一步扬起手掌。他身后的母体兵器《万象共鸣镜》五重反射层齐齐绽放幽蓝光芒，准备复制蕾娅的五项恩人技能！）\n“倒有几分本事，被告人 R.E.A.。然而在我的母体兵器《万象共鸣镜》面前，连你学到的五门极意也全都会化作我审判的工具反射回去！”\n（战斗提示：卡塞尔 第2阶段 · 万象共鸣镜 — 镜面暴露期间按 F / 按下左摇杆，选择要归还的恩人技能！）"
+    },
+    {
+      "key": "story.cassel.p2.01_prompt",
+      "value": "“万象共鸣镜打开了！和跟泰奥做的实验一样。镜面复制反射我3阶技能的瞬间，按我选定的顺序一路打到完全相同的3阶终结招式完成对斩，就能向卡塞尔挂上归还预约！”\n（操作提示：镜面暴露期间按 F / 按下左摇杆，打开“逆公证 · 选择要归还的恩人技能”界面。）"
+    },
+    {
+      "key": "story.cassel.p2.02_confirm",
+      "value": "“一旦把这门技能的公证使用权绑进归还预约，本场战斗中就不能再使用了。作为交换，为了维持它而分散的剑之《时间刻印输出》会解放 20% 到基础剑术上。准备好了吗？”\n（操作提示：按下 确认 · 准备以所选技能对斩，随后在卡塞尔附近（8米内）完整施放所选3阶技能，与镜面反射招式完成对斩。）"
+    },
+    {
+      "key": "story.cassel.return.stitch_early",
+      "value": "（绷紧银丝的一齐断绝与镜面的反射银丝正面对撞崩断，第一层镜面暗下！已有银丝平面会闪耀蓝光 3 秒确保安全着陆）\n米哈伊尔大叔的《银丝缝合》预约归还完成！\n提前让出辅助丝线落脚点与减速区，先一步封印了镜面缠遍场地的《反射银丝包围网》。现在整个宽敞的审判席地面都能放开手脚周旋了！\n（音效提示：镜面银丝弦乐反射循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.stitch_late",
+      "value": "（直到后半战都在延缓卡塞尔凶猛突进、撑住落脚点的银丝，伴随最后一记切断对斩把预约盖上了镜面！）\n米哈伊尔大叔，谢谢您一路替我牢牢缝住脚底与退路！\n现在就把大叔您的《银丝缝合》和心脏破裂的终焉一起绑进卡塞尔的镜子里！\n（音效提示：镜面银丝弦乐反射循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.pendulum_early",
+      "value": "（《零时》的钟针爆裂与镜面钟摆轨迹完美重合，第二层反射镜的灯光熄灭！）\n尤利乌斯大叔的《钟摆回溯》预约归还完成！\n提前放下残影回归，先锁住了镜面里最棘手的《长预警后二次交叉突进》。现在用肉眼就能看清卡塞尔端正下来的剑拍直接招架了！\n（音效提示：镜面扭曲钟摆反射循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.pendulum_late",
+      "value": "（在凶险的后半攻防战中一直准时护住往返时刻的钟摆轨迹，与镜面反射钟摆对撞碎裂！）\n尤利乌斯大叔，多亏了您帮我对准的往返时间，我才能一步不差地撑到这儿！\n现在是时候把《钟摆回溯》和急速衰老的终焉一起还给卡塞尔了！\n（音效提示：镜面扭曲钟摆反射循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.waltz_early",
+      "value": "（《盛大终幕》的旋转灯光剑气正面劈开镜面射出的蓝色花瓣弹幕，让一层反射镜彻底沉寂！）\n瓦莱莉娅姐姐的《谢幕圆舞》预约归还完成！\n先放下了华丽的空中多段跃步，彻底擦除了从天压下的镜面《反射圆舞花瓣》弹幕。这下可以双脚踩稳审判席石板堂堂正正战斗了！\n（音效提示：镜面反射小提琴圆舞循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.waltz_late",
+      "value": "（后半程让蕾娅轻盈越过卡塞尔凌厉地面连击的最后一曲圆舞，伴随着镜面的反射花瓣飘散，盖下预约刻印！）\n瓦莱莉娅姐姐，多亏了姐姐的圆舞，我在卡塞尔的剑锋之上也没有伤着半点脚踝！\n现在就把《谢幕圆舞》和双腿之刑还回卡塞尔的镜子里！\n（音效提示：镜面反射小提琴圆舞循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.forge_early",
+      "value": "（普通招架紧接空中下砸拍出的《六点的播种》金色大钟波动，与镜面的地面冲击波正面相撞击碎了反射层！）\n加布里埃尔大叔的《共鸣锻造》预约归还完成！\n早早交出了广域反击钟击，换来先一步截停横扫全场的镜面《反射大钟冲击波》。现在不用再被迫起跳，专心地面招架就好！\n（音效提示：镜面冰冷大钟反射循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.forge_late",
+      "value": "（一路靠普通招架加空中下砸钟击痛快撬开卡塞尔直接攻击防御的大钟波动，深深楔入镜面！）\n加布里埃尔大叔，您教给我的手势和钟击一次次撞开了卡塞尔紧闭的镜门！\n现在就把《共鸣锻造》和永恒沉默的终焉预约归还给卡塞尔！\n（音效提示：镜面冰冷大钟反射循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.canvas_early",
+      "value": "（以 0.3秒时间差追绘出的《自画像完成》笔刷剑击精准叠上镜面的色彩双重剑击，抹净了反射层的颜料！现有颜料平台会闪烁 3 秒确保安全着陆）\n伊莉娜姐姐的《裁绘留白》预约归还完成！\n先放下即时颜料踏板和分身，早早抹掉了镜面最刁钻的《0.3秒时差反射色彩双重剑击》。往后只要看紧卡塞尔本体的单重劈斩就好！\n（音效提示：镜面反射钢琴琶音循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.return.canvas_late",
+      "value": "（直到后半场都陪在蕾娅身边共同挥出双份剑击的色彩自画像，与镜面的双重剑击交织成璀璨光屑消散！）\n伊莉娜姐姐，您为我画的自画像陪我并肩挥剑到最后啦！\n现在就把《裁绘留白》和失明的终焉一起还给卡塞尔的镜子！\n（音效提示：镜面反射钢琴琶音循环永久消除 + 时间刻印共鸣层 +1 层）"
+    },
+    {
+      "key": "story.cassel.p2.08_r1_cassel",
+      "value": "（第一项归还预约 1/5 盖入公证账簿，蕾娅的记录剑上轰然绽放出 +20% 额外时间刻印输出如蓝焰喷涌，卡塞尔的眉头首次微不可察地一颤。为了不让余下四门招式顺利得手，卡塞尔反手将《万象共鸣镜》合拢到背后，迅捷后撤步拉远距离！）\n“……居然反过来利用万象共鸣镜的反射判定，在我的账簿上挂上了归还预约吗？！\n可只要我合上镜面的反射窗，你剩下的技能便失去了对斩对象。先用我的直接剑术将你本体一刀两断！”\n（战术提示：卡塞尔收起镜面，改用卡塞尔零式 3连突进斩直接进攻。别浪费Boss技能，用普通招架（L / RB）弹开！）"
+    },
+    {
+      "key": "story.cassel.p2.09_r1_rea",
+      "value": "（正面用普通招架弹开卡塞尔第 3 记直接斩击的瞬间，蕾娅夹带着解放出的 +20% 时间刻印输出，重重一记基础剑术连击劈落卡塞尔剑格！连1秒钟自己时间都不曾烧灼过的卡塞尔腕力根本架不住这沉重的时间质量，架势骤然崩解，为防本体受创只得急忙重新在身前展开合起的《万象共鸣镜》！）\n“合起镜子也抹不掉已经盖下的预约！况且收起反射屏障后，就凭你那双手腕，根本扛不住昨日和今日的我亲手挥剑攒下的这股《时间刻印输出》的分量吧！\n看呀，他为了保命又把镜子张开了！趁反射电路被强行逼开，把下一门技能压进去！”"
+    },
+    {
+      "key": "story.cassel.p2.10_r2",
+      "value": "（第二项归还预约 2/5 达成！时间刻印输出飙升至 +40%，蕾娅基础连击最后一击末梢迸发出 1.8米长的青金石冲击波）\n“归还预约两个！空出两条技能路径后，基础连击最后一击带上了青金冲击波——就算卡塞尔后撤步拉远也能追打到尽头！”"
+    },
+    {
+      "key": "story.cassel.p2.11_r3",
+      "value": "（第三项归还预约 3/5 达成！五重镜面已有三重熄灭，连背景音乐里蕾娅那股奔涌的时间刻印弦乐与钢琴也压过卡塞尔的管风琴主宰了审判席。卡塞尔急促喘息，转入 4段直接剑术）\n“唔呃……！我的母体之镜为何竟模仿不出这丫头剑身所积蓄的时间重压？！\n单靠冲刺或落地瞬间刺出的那第一记斩击，就屡屡打断本官的起手……！”"
+    },
+    {
+      "key": "story.cassel.p2.12_r4",
+      "value": "（第四项归还预约 4/5 达成！此刻起，今日蕾娅每次挥动基础剑术，0.12秒后昨日的蕾娅（#01）紫蓝残影便会沿着完全相同的轨迹再敲一次卡塞尔的防御！）\n“五个里面已经完成四个了，今日的我！\n每当你斩出一剑，隔 0.12秒后我的剑击就会再敲一次卡塞尔的架势。用我们两人的分量，把最后一层镜子也轰开吧！”"
+    },
+    {
+      "key": "story.cassel.p2.13_r5",
+      "value": "（第五次对斩轰鸣炸裂，《万象共鸣镜》的五重反射层尽数熄暗，扭曲的反声音响彻彻底归寂！蕾娅五个技能栏全都化作空栏[已预约归还]，剑身中央符文槽中彻底解放的 100%（×2.0）时间刻印输出化作耀眼青金光柱冲天而起）\n[归还预约 5/5 完成 — 额外时间刻印输出 100% 解放]\n“五位恩人技能的使用权全都托付给归还记录了。现在我手里剩下的进攻招式只有基础剑术这一样——但我的双腿、我的冲刺、我的招架，还有昨日和今日我们亲手挥出的全部时间刻印，全都汇聚在这同一把剑刃上了！”"
+    },
+    {
+      "key": "story.cassel.p3.01_open",
+      "value": "（面对失去所有反射机能、遍布裂痕的镜面母体，卡塞尔礼服生平头一遭散乱，双手握紧长剑直呼蕾娅的名字）\n“……即便你挂上了全部五道预约，若不能迎面反制到最后的第六道原型动作——我这记《卡塞尔零式》，终焉的一并归还便绝不可能成立，蕾娅！\n区区连一门Boss技能都不剩的空手，难道真能越过我的原型剑术不成？！”\n（战斗提示：卡塞尔 第3阶段 · 基础功决战 — B=3（400次以上）时，请在普通招架后打满 3阶基础剑术 1~4段完整连击锁定真结局对斩！B<3 时，请用基础剑术削减核心耐久 48 完成紧急破坏。）"
+    },
+    {
+      "key": "story.cassel.p3.02_live_b3",
+      "value": "（与卡塞尔剑锋相交的那一击正好让基础剑术有效使用迈入第四百次！伴随扩散的金环，剑身最终符文彻底点亮：[真名解放：原罪公证剑 — 卡塞尔零式]！）\n“……刚才这一击恰好填满第四百次刻印！\n你当年种进我身体里的原型动作尽头，现在已经彻底在我手里敞开了，卡塞尔！下一次招架之后，我就用四段极意连击确认归还全部五道终焉！”"
+    },
+    {
+      "key": "story.cassel.p3.03_b3_ready",
+      "value": "“原型动作 3阶准备完毕了，今日的我！\n等卡塞尔用《卡塞尔零式》突进过来时用普通招架弹开，趁破绽敞开把我们的 3阶基础剑术第 1击到第 4击一口气插到底！从第一剑到最后第四剑，我会在你背后一模一样地一起劈下去！”"
+    },
+    {
+      "key": "story.cassel.p3.04_b3_retry",
+      "value": "“没关系，别慌！我们的原型动作已经达到 3阶极意了。先别急着把核心砸碎，稳住呼吸，然后再从普通招架接上的 1~4段完整连击把对斩收官到底！”"
+    },
+    {
+      "key": "story.cassel.p3.05_true_hit",
+      "value": "（用普通招架弹开卡塞尔劈斩的瞬间，今日的蕾娅（#02）、从核心具现而出的昨日蕾娅（#01），以及迄今挥出的数百道时间刻印剪影合而为一，这套《刻印重叠》4连极意剑舞正面向前将卡塞尔的《卡塞尔零式》斩了个透彻！\n天地万物陷入整整 1.0 秒彻底的静寂，紧接着万象共鸣镜在震耳欲聋的爆响中粉碎崩解，公证账簿上金色大印盖下：[原型动作确认 / 5大终焉一并归还确认：被告人 R.E.A. ➔ 原持有者大公证官卡塞尔]！）\n“这就是昨日的我与今日的我，连同九个人一起证明出来的我们的回答！\n你推给我们的五道终焉，此时此地，确认全数归还给你这位原持有者！”"
+    },
+    {
+      "key": "story.cassel.p3.06_true_fall",
+      "value": "（镜面母体化为粉末四散崩落，蕾娅胸针上那五道赤红裂纹一齐抽出，一口气狠狠砸落在卡塞尔胸口、双眼、双腿、喉咙与瞬间泛白的发丝上！）\n“呃啊啊……！绝无可能……！一百多年来拆给替身容器一推再推的五道终焉，竟然靠一次原型对斩就全数倒灌回我肉身了……！\n我的时间……一百四十二年的时间一下子全塌了……！”"
+    },
+    {
+      "key": "story.cassel.p3.07_basic_break",
+      "value": "（由于基础剑术尚未到达 3阶原型极意，五道预约的最终归还未能敲定成立。蕾娅毫无犹豫地双手重新握紧记录剑，化作一道烧尽核心里残余全部时间刻印的紧急破坏重击，正面贯碎了镜面母体与地下《永久标本馆》共用的同一控制连接核心！）\n[原型动作未完成 — 执行紧急核心破坏：万象共鸣镜及地下永久标本馆控制核心崩坏]\n“原型动作的最后确认虽然没够着……可就算把这把记录剑核心烧个一干二净，我也要在这里把这座镜面母体和地下标本馆的连接核心彻底斩断！\n你那座还想关押处决五位恩人的法庭，就在这一击下彻底结束吧！”"
+    },
+    {
+      "key": "story.cassel.p3.08_basic_fall",
+      "value": "（控制核心碎成齑粉，万象共鸣镜与地下标本馆的冰封电路接连爆发连锁爆轰。失去兵器生命维系保护的卡塞尔从崩塌的审判席高台坠落下去）\n“疯子……！连原型对斩都没确认成立，竟自爆记录剑核心来炸毁母体控制核吗？！\n我的镜子和标本馆就算毁了……汇聚在你体内的五道终焉也绝不可能抹掉，R.E.A.……！”"
+    },
+    {
+      "key": "story.cassel.p3.09_defeat",
+      "value": "（核心中的昨日蕾娅握住倒在审判席地板上的今日蕾娅双手，将其回溯至存档检查点）\n“还没结束呢，今日的我！我们攒下的熟练度和记录都好好留在核心里。五个技能槽也全都恢复原状了，稳住呼吸再上去吧！”"
+    },
+    {
+      "key": "story.ending.basic.01",
+      "value": "（万象共鸣镜与地下标本馆控制核心轰然坍塌后，清晨六点的苍白微光洒上大法庭屋顶展望台。光华燃尽、布满裂纹的记录剑拄在地上，蕾娅轻轻喘息平稳下来。胸前胸针的五道裂纹虽仍在，但山下救护所的方向再也没有敲响行刑钟声）\n“……已经过了六点了，行刑钟却没有响。\n地下标本馆和卡塞尔的镜子全都塌了。五位恩人……如今都平平安安活着，再也不用被任何人追捕了。”"
+    },
+    {
+      "key": "story.ending.basic.02",
+      "value": "（耗尽蓝光的记录剑核心中，昨日的蕾娅化作半透明身影步出，站在靠着屋顶栏杆的今日蕾娅面前。Track 12 恬静的弱音钢琴与音乐盒旋律缓缓响起）\n“记录剑核心已经彻底烧干了……死亡回溯再也发动不了了，今日的我。\n因为没能抵达原型动作的最后确认，五道终焉还留在你身体里。对不起……要不是我一开始心怀畏惧挡住了路。”"
+    },
+    {
+      "key": "story.ending.basic.03",
+      "value": "（今日的蕾娅摇了摇头，上前一步，主动伸出双臂温柔抱住了颤抖的昨日之自己）\n“别道歉，昨日的我。既不是因为我们哪里不够好，也不是因为我们不配。\n正是因为昨天你在反锁的门前直到最后都没放弃并倒转了时间，今天我们才把五位恩人全都救回来了呀。”\n（操作提示：走近昨日的蕾娅（rooftop_echo_embrace）按 F / 按下左摇杆率先拥抱她。）"
+    },
+    {
+      "key": "story.ending.basic.04",
+      "value": "（揽着昨日自己的双肩，她低头看向被晨光照亮的公证账簿，平静而清晰地说道）\n“连我们也想活着一起回来，本来就不是一件错事。在这本账簿最后，把我的回答也原原本本写上去吧。”"
+    },
+    {
+      "key": "story.ending.basic.05",
+      "value": "（昨日的蕾娅回抱住今日的蕾娅，轻轻点了点头）\n“嗯。你拼到最后也想活着回来的这份记录，我绝不会用两道横线划掉。”"
+    },
+    {
+      "key": "story.ending.basic.06",
+      "value": "（两个蕾娅并排叠手握笔，在公证账簿的最后一行用青金石墨水工整写下一句永不磨灭的话：\n[公证记录 #02 最终登记 — 五位恩人全员救出完毕。并且今日的蕾娅直到最后也想与大家一起活着回去。]）\n（操作提示：在最后的公证账簿（basic_ending_ledger）前按 F / 按下左摇杆，不加删改地盖下今日的回答。）"
+    },
+    {
+      "key": "story.ending.basic.07",
+      "value": "（屋顶楼梯门砰然推开，米哈伊尔、尤利乌斯、瓦莱莉娅、加布里埃尔、伊莉娜，连同泰奥、玛尔塔、伊森与卢卡喘着气一拥而上。米哈伊尔赶忙伸手接住缓缓倒下的蕾娅双肩）\n“蕾娅！撑住啊，蕾娅！我们来了……我都把你回来的地板修好了，睁开眼睛看看啊！”"
+    },
+    {
+      "key": "story.ending.basic.08",
+      "value": "（感受着九个人握住自己的温暖双手，蕾娅脸上毫无畏惧地轻轻吐出一口气）\n“……大家全都平安赶到了呢。就像伊莉娜姐姐说的……不用勉强赔笑，用我自己本来的脸见到了五位恩人呀。\n泰奥、玛尔塔奶奶……我的回答已经原原本本写在账簿最后了……”"
+    },
+    {
+      "key": "story.ending.basic.09",
+      "value": "（清晨微风拂过，蕾娅静静闭上了眼睛，泰奥双手颤抖着轻轻合上那本留着未被划掉的蕾娅最后一句话的公证账簿。音乐盒的第六拍终究未能奏响，悄然消散在寂静的晨风之中）\n“……嗯，蕾娅。没有被两道横线划掉的你的回答，我们会一直记到最后的。”\n（系统提示：普通结局 — 《在这本账簿最后，把我的回答也原原本本写上去吧》完结）"
+    },
+    {
+      "key": "story.ending.basic.10",
+      "value": "[继续记录指南]\n普通结局记录已保存至该存档位。若选择“从最终战前的记录继续”，将即刻回到同一周目的《大法庭升降机前》，可在水道铁匠铺《高密度共鸣炼成炉》将基础剑术打磨至 3阶极意（400次）后再次挑战卡塞尔真结局。"
+    },
+    {
+      "key": "story.ending.true.01_brooch",
+      "value": "（[公证记录 #02 — D+1日 06:05]\n清晨六点的朝阳穿破云层，耀眼地洒满大法庭屋顶展望台。蕾娅用颤抖的手轻触领口前的五瓣青金石胸针。五道赤红裂纹已消失得无影无踪，焕发出澄澈湛蓝的光泽；被针刺般绞痛的心脏、模糊的视线、嘶哑的嗓音与沉重的双踝全都轻盈舒畅起来）\n“……胸针上的裂纹全都消失了。\n五道终焉彻彻底底还给卡塞尔了……！能顺畅呼吸了。连天边的朝阳都看得清清楚楚！”"
+    },
+    {
+      "key": "story.ending.true.02_beating",
+      "value": "（在其他人赶上屋顶之前，昨日的蕾娅从记录剑里走出来，小心翼翼地靠近，将耳朵轻贴到今日蕾娅的左胸口。沉稳的心跳声化作了温暖柔音钢琴与音乐盒的第一声旋律）\n“……还在跳动呢。”"
+    },
+    {
+      "key": "story.ending.true.03_seat",
+      "value": "（今日的蕾娅眼眶微红，抢先张开双臂用尽全身力气抱住了昨日的自己）\n“嗯。我们的座位也还好好留着呢。”\n（操作提示：靠近昨日的蕾娅（rooftop_echo_embrace）按 F / 按下左摇杆紧紧拥抱她。）"
+    },
+    {
+      "key": "story.ending.true.04_echo",
+      "value": "（昨日的蕾娅在今日怀中第一次彻底卸下紧绷，展颜灿笑，化作温暖的晨光静静渗入今日蕾娅的心口与剑身之中。十岁之前的记忆或昨日燃尽的二十四小时虽未奇迹般失而复得，但把曾想牺牲自己的昨日之我完整拥入怀中、也让今日之我活下来的这份事实，却像掌心余温般无比真切）\n“谢谢你，今日的我。没有把我的那份也划掉……把我们两个都带进清晨里来。”"
+    },
+    {
+      "key": "story.ending.true.05_mikhail",
+      "value": "（屋顶大门敞开，九个人一同奔涌而出。跑在最前面的米哈伊尔用胸痛全消的双手替蕾娅理平米白披肩斗篷的缝线，把她左侧鬓发的蓝色丝带重新系得端端正正）\n“……你放下来的那块退路踏板到底还是撑到了最后啊，蕾娅。\n我衣橱里挂着的那第六件冬衣，今年冬天总算能穿到主人身上了。谢谢你活着回来。”"
+    },
+    {
+      "key": "story.ending.true.06_julius",
+      "value": "（重拾乌黑头发与年轻精力的尤利乌斯走上前，把自己的半块怀表与蕾娅的半块怀表严丝合缝并在一起。两块半表的秒针再无任何刑罚束缚，轻快而健康地共同细数清晨光阴）\n“在我们约好的往返时刻表上可是一秒都没迟到呢，蕾娅。今后我的怀表，只用来指明你平安回来的时刻。”"
+    },
+    {
+      "key": "story.ending.true.07_valeria",
+      "value": "（一把甩开拄了六年的软木拐杖，双脚轻快跑来的瓦莱莉娅在朝阳下优雅地旋转一步，随后抱住蕾娅细细端详她的双踝）\n“快看啊，蕾娅！不用拐杖，靠我自己的两条腿又能跳舞了！\n谢谢你放弃华丽花哨的动作，选了用双脚安稳落地的那条路……真的谢谢你，我们的蕾娅。”"
+    },
+    {
+      "key": "story.ending.true.08_gabriel",
+      "value": "（微笑的加布里埃尔先用右手比出两人约定好的[手掌朝下：落地、返回]手势，随后用时隔六年找回的深沉温暖真实嗓音缓缓开口）\n“……欢迎回来，蕾娅。\n今天早上六点的钟声，不是宣告行刑的钟声，而是迎接你活着归来的晨钟。”"
+    },
+    {
+      "key": "story.ending.true.09_irina",
+      "value": "（用重现清明焦点的双眼凝望了蕾娅许久的伊莉娜走上前来，用沾着颜料的指尖轻抚蕾娅的脸颊与眉梢，眼角含泪）\n“谢谢你昨天肯告诉我你也会害怕……更谢谢十六岁的你现在在我的眼睛里笑得这么灿烂，蕾娅。比起我只凭手指摸索画过的任何一幅自画像，今天的你都最美。”"
+    },
+    {
+      "key": "story.ending.true.10_theo_luka",
+      "value": "（泰奥一瘸一拐却笑容灿烂地摊开实验笔记，一旁的卢卡挥舞着站台信号旗）\n“你看，蕾娅！就在昨日用双线划掉的 ~~[蕾娅生存]~~ 旁边，我拿大字写上了[实战验证完毕 — 六位全员生还归来！]”\n卢卡：“没错没错，蕾娅姐！多亏姐姐在站台上喊了那声‘等一下，捎我一程’，今天早上的归途列车可是大客满哦！”"
+    },
+    {
+      "key": "story.ending.true.11_marta_ethan",
+      "value": "（玛尔塔用围裙擦拭眼角亲切招呼，伊森则指向蕾娅右手紧握的记录剑澄澈的青金石剑刃）\n玛尔塔：“阁楼灶台上的早汤都快煮好了，孩子们。趁热快回去吧。”\n伊森：“走之前先看看你的剑，蕾娅。随着终焉悉数归还卡塞尔，捆住你身体的替身公证连线和《卡塞尔零式》这道公证登录已经彻底解开了。如今这把白纸刻印剑的第一栏是真正的白纸了。你自己给它题上第一个名字吧。”"
+    },
+    {
+      "key": "story.ending.true.12_blank_slate",
+      "value": "（蕾娅低头看向自己的技能栏与剑身。五位恩人的替身技能与《原罪公证剑 — 卡塞尔零式》那猩红的公证名称已被擦拭一空，露出了洁白无瑕的第一格空白。然而握剑的手感以及与九人并肩走过的每一步都未曾有丝毫消散）\n“卡塞尔当年种下的母体剑术名称虽然消失了，但我双手握剑的方法，还有从五位恩人、泰奥、伊森大叔、玛尔塔奶奶和卢卡那里学来的一切，全都好好留在我心里。”"
+    },
+    {
+      "key": "story.ending.true.13_swing_prompt",
+      "value": "“不再是为了替别人背负死劫的替身剑术，我要在这里刻下活在今天的我以自己之名写就的第一个动作！”\n（操作提示：面向洒满朝阳的屋顶展望台（rea_form_one_sky），按下剑术键（J / Z / 左键 / 手柄X）亲手挥出只属于蕾娅的第一斩！）"
+    },
+    {
+      "key": "story.ending.true.14_registered",
+      "value": "（蕾娅迎着晨空挥出一记清亮轻快的青金与金色斜斩，空白技能栏第一格中随即以温暖金字铭刻下全新固有招式：\n[新固有技能已登录：蕾娅流第一式 — 与昨日的我一同迎接明晨]）\n“成功了……！昨日的我与今日的我一起创造的我们第一门剑术——《蕾娅流第一式》！”"
+    },
+    {
+      "key": "story.ending.true.15_luka_call",
+      "value": "“好啦，大家请往升降板这边来！开往遗忘阁楼的清晨第一班轨道车，现在发车！”"
+    },
+    {
+      "key": "story.ending.true.16_to_attic",
+      "value": "“嗯！肚子饿扁啦，我们大家一起去吃早饭吧！”\n（操作提示：在屋顶升降台出口（rooftop_to_attic_exit）按 F / 按下左摇杆返回遗忘阁楼早餐桌。）"
+    },
+    {
+      "key": "story.ending.true.17_marta_table",
+      "value": "（[公证记录 #02 — D+1日 06:30 / 据点 · 遗忘阁楼]\n温暖阳光洒满阁楼的长木餐桌。正如昨天早上预约牌上盖印的那样，玛尔塔把热气腾腾的六碗早汤——米哈伊尔、尤利乌斯、瓦莱莉娅、加布里埃尔、伊莉娜，还有蕾娅的那第六碗——一字排开摆好，连同泰奥、伊森、卢卡与她自己的茶杯和面包篮也一并端上桌）\n“好喽，昨天早上你答应把五位接回来时说好的六碗汤，一碗不落全都盛齐啦！”"
+    },
+    {
+      "key": "story.ending.true.18_board",
+      "value": "（望向门旁整整齐齐印着六个印章的早餐预约牌、桌上敞开的《青金石音乐盒》与薄荷糖小碟）\n“昨日的我在音乐盒里留下的那句话……是‘真希望明天的我，能吃上一点热乎的东西呀’。\n玛尔塔奶奶，我昨天早上亲手盖下的第六个座位，没有空着——我真的回来啦！”"
+    },
+    {
+      "key": "story.ending.true.19_sit",
+      "value": "（米哈伊尔顺手拉开餐桌正中的第六把椅子，用粗犷却比谁都温暖的嗓音说道）\n“打算站在那儿干看着吗，蕾娅。这可是你亲手盖章留好的第六个位子。趁汤没凉赶紧坐下。”\n（操作提示：走到餐桌第六个座位（sixth_breakfast_seat）旁按 F / 按下左摇杆坐下。）"
+    },
+    {
+      "key": "story.ending.true.20_sixth_beat",
+      "value": "（蕾娅在五位恩人与四位同伴之间的第六张椅子上落座的瞬间！\n从标题主题曲到据点与五大区划、从残响战到卡塞尔战，始终把第六拍空作休止符（静默）的《缺了第六拍的圆舞曲》，终于在这一刻于整张原声带里第一次由温暖的音乐盒、钢琴与全编制室内弦乐和弦清晰填满，奏响完整的 6拍圆舞曲！\n不再是不完整的礼法，也不再是被双线划去的空席——十个人一同呼吸的清晨乐章注满了整间阁楼）\n“……听见了吗，今日的我？一直空缺着的第六拍，终于被填满了呀。”"
+    },
+    {
+      "key": "story.ending.true.21_spoon",
+      "value": "（蕾娅双手捧起温热的汤碗，从袅袅热气中舀起满满第一勺送入口中。一滴滚烫的泪水顺着脸颊滑落，嘴角却绽开最安稳灿烂的笑容）\n“……好暖和。真的好好吃啊，玛尔塔奶奶！”\n（操作提示：按 F / 按下左摇杆或 Enter / A 一同享用第六碗温暖的早餐。）"
+    },
+    {
+      "key": "story.ending.true.22_complete",
+      "value": "（窗外钟塔的秒针不再倒流，而是朝着明天有力地迈步向前。在围坐阁楼餐桌旁的十人欢声笑语之上，最后的公证记录化作金字铭刻而下）\n“谢谢你，昨日的我。还有帮助过我的每一个人。\n我们的今天，就从现在开始！”\n（系统最终印章：[公证完毕：蕾娅的今日 / 时间进行中] — 真结局《在白纸上写下的我们的第一个动作，与六碗早餐》完结）"
+    },
+    {
+      "key": "story.resume.lift.01",
+      "value": "（[从最终战前的记录继续 — 地点：大法庭升降机前]\n我回到了与卡塞尔决战之前、昨日的我撤去银丝封合屏障并与核心同行的那一刻大法庭升降机前记录。\n五位恩人技能的3阶使用权全都保持完好，写入最后账簿的我们的回答也依然保留在这个存档槽里。"
+    },
+    {
+      "key": "story.resume.lift.02_echo",
+      "value": "（记录剑核心之中，昨日的蕾娅精神饱满地开口说道）\n“刚才那一战我们已经顺利完成到五条分支预约归还（R=5）了，今日的我。\n接下来只要把我们的基础剑术也练到 3阶极意（400次），就能正面迎击卡塞尔最后的《卡塞尔零式》。这样一来这回不用烧毁核心，就能把五道终焉一并归还给卡塞尔，我们两个也能一起活下来了！”"
+    },
+    {
+      "key": "story.resume.lift.03_theo",
+      "value": "（传声筒里传来泰奥的指引声音）\n“蕾娅！要补齐基础剑术次数不用绕去跑好长一截区划啦。直接走旁边的返回通道或者用选择关卡去水道铁匠铺找伊森大叔借《高密度共鸣炼成炉》，靠那里的精英招架和连击特训很快就能刷满 400次再回来这座升降机前！”\n（操作提示：前往水道铁匠铺 / 共鸣炼成炉将基础剑术打磨至 3阶（400次），或在升降机控制台立刻再度挑战卡塞尔。）"
+    },
+    {
+      "key": "story.resume.crucible.01_ethan",
+      "value": "（伊森推开水道铁匠铺里巨大的青金石炉窑《高密度共鸣炼成炉》炉门，点了点头）\n“来了啊，蕾娅。想把卡塞尔的母体剑术连最后第四刀一并反制下去，你顺手的基础剑术必须达到第四百次极意才行。\n这座炼成炉里备好了能接住你普通招架和基础剑术连击的高密度共鸣靶标与哨兵。两分钟就够了，放开手痛快挥剑吧！”\n（操作提示：按 F / 按下左摇杆启动高密度共鸣炼成炉（resonant_crucible）。）"
+    },
+    {
+      "key": "story.resume.crucible.02_theo",
+      "value": "“炼成炉测量器开好啦，蕾娅！招架住金色攻击或者马上把基础剑术连段砍满，有效次数就会飞快往上涨。一口气冲到 400次解锁《原罪公证剑 — 卡塞尔零式》吧！”\n（操作提示：在炼成炉波次中用基础剑术有效命中，累计达成 400次（3阶极意 B=3）。）"
+    },
+    {
+      "key": "story.resume.crucible.03_ethan",
+      "value": "（伴随着第四百次有效击打，金蓝两色刻印一路蓄满到剑身第三段，[真名解放：卡塞尔零式 · 原型动作已确认]的回响随之荡开！伊森满意地端详剑身）\n“……成了。现在你这把白纸刻印剑已经能从第一击到最后一击分毫不差地迎击卡塞尔的 4连击原型动作了。用不着搞什么紧急破坏把剑烧掉——正面劈过去然后活着回来吧！”"
+    },
+    {
+      "key": "story.resume.crucible.04_rea",
+      "value": "“谢谢伊森大叔，泰奥！这下出战界面上那个‘尚未确保生还归还’的警告也会消失，我的原型动作已经万全了。\n这就回大法庭升降机前去，这次我一定活着下来和大家吃早饭！”\n（操作提示：在铁匠铺直通通道（forge_to_court_lift）按 F / 按下左摇杆返回大法庭升降机前，向卡塞尔真结局发起挑战。）"
+    },
+    {
+      "key": "story.epilogue.01_marta",
+      "value": "（晨光停驻在遗忘阁楼。如今画面上方不再是行刑倒计时，而是安详地浮现着[公证完毕：蕾娅的今日 / 时间进行中]。玛尔塔把一杯温热的薄荷共鸣茶放到蕾娅面前）\n“就算喝完满满六碗早汤，也还有地方再喝口薄荷茶的吧，我们的蕾娅？现在谁也不会再追着赶着你了，慢点喝呀。”\n（操作提示：对着桌上温热的薄荷共鸣茶（attic_mint_tea）按 F / 按下左摇杆饮用，享受平静的清晨。）"
+    },
+    {
+      "key": "story.epilogue.02_benefactors",
+      "value": "（阁楼窗边与楼梯平台上，五位恩人都精神饱满地向蕾娅打招呼）\n米哈伊尔：“新冬衣的袖长正合适嘛。哪天缝线要是开线了，随时拿回裁缝室来。”\n尤利乌斯 · 瓦莱莉娅 · 加布里埃尔 · 伊莉娜：“钟塔也好、歌剧舞台也好、清晨的钟楼也好、温室画廊也好，现在全都是你随时可以来玩的我们的家哦，蕾娅。”"
+    },
+    {
+      "key": "story.epilogue.03_theo",
+      "value": "“蕾娅，分所工作室的核心记录阅览终端里完整保存着我们收集过的所有线索和五位恩人的刻印记录。要是有还没看过细节的可选阅览记录，随时都能去终端或调查日志里再翻阅一遍哦！”"
+    },
+    {
+      "key": "story.epilogue.04_ethan_replay",
+      "value": "“要是还想从头把刻在这把剑里的旅途重新走一遍，用菜单里的《记录重演》就行。\n不是让你再去烧掉记忆，也不是重受一次轮回。那是在这份完结记录之上，保留着我们所有时间刻印磨砺与刻印重叠光彩的同时，重新展开那天清晨初始配置的功能。”"
+    },
+    {
+      "key": "story.epilogue.05_rea_final",
+      "value": "（确认着白纸技能栏第一格闪耀的《蕾娅流第一式 — 与昨日的我一同迎接明晨》，她轻轻拂过左侧鬓角的蓝丝带和腰包里的半块怀表，露出了微笑）\n“嗯！昨日的我与今日的我一起守护下来的这个清晨，往后我也会一直无比珍惜地走下去！”"
+    },
+    {
+      "key": "area.speaker.rea_echo",
+      "value": "残响 · 昨日的蕾娅"
+    },
+    {
+      "key": "area.speaker.cassel",
+      "value": "大公证官卡塞尔"
+    },
+    {
+      "key": "area.room.court_01_hall",
+      "value": "大法庭 · 中央大厅与标本馆分岔阶梯"
+    },
+    {
+      "key": "area.room.court_02_echo_arena",
+      "value": "大法庭 · 残响演武场"
+    },
+    {
+      "key": "area.room.court_03_lift",
+      "value": "大法庭升降机前"
+    },
+    {
+      "key": "area.room.court_04_tribunal",
+      "value": "大法庭 · 顶层审判席"
+    },
+    {
+      "key": "area.room.court_05_rooftop",
+      "value": "大法庭 · 黎明屋顶展望台"
+    },
+    {
+      "key": "area.target.court_control_pillar",
+      "value": "青金石控制连接立柱"
+    },
+    {
+      "key": "area.target.echo_notes",
+      "value": "剑实验记录与归还路径"
+    },
+    {
+      "key": "area.target.echo_side_knot",
+      "value": "侧路支架绳结"
+    },
+    {
+      "key": "area.target.echo_escape_step",
+      "value": "阶梯旁安全踏板"
+    },
+    {
+      "key": "area.target.echo_seal_barrier",
+      "value": "升降机银丝封合屏障"
+    },
+    {
+      "key": "area.target.echo_hand_clasp",
+      "value": "昨日蕾娅的手"
+    },
+    {
+      "key": "area.target.cassel_lift_console",
+      "value": "顶层升降机控制台"
+    },
+    {
+      "key": "area.target.rooftop_echo_embrace",
+      "value": "昨日的蕾娅"
+    },
+    {
+      "key": "area.target.basic_ending_ledger",
+      "value": "最后的公证账簿"
+    },
+    {
+      "key": "area.target.rea_form_one_sky",
+      "value": "蕾娅流第一式虚空靶标"
+    },
+    {
+      "key": "area.target.rooftop_to_attic_exit",
+      "value": "通往阁楼的升降台"
+    },
+    {
+      "key": "area.target.sixth_breakfast_seat",
+      "value": "第六个餐桌座位"
+    },
+    {
+      "key": "area.target.attic_mint_tea",
+      "value": "薄荷共鸣茶"
+    },
+    {
+      "key": "area.target.forge_to_court_lift",
+      "value": "大法庭升降机返回通道"
+    }
+  ]
+}

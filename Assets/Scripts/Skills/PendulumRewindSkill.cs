@@ -7,6 +7,7 @@ namespace RewindNotary
     {
         public override string SkillId => BenefactorIds.Pendulum;
         public override bool BlocksActions => dashing;
+        public string LastReturnUse { get; private set; }
         private bool dashing, returned;
         private Vector2 origin, savedVelocity, previous;
         private float dashEnd, returnEnd, releaseAt, nextBurst, gravity;
@@ -22,7 +23,7 @@ namespace RewindNotary
                 Vector2 departure = motor.Body.position;
                 if (use.Stage >= 2) SkillStroke.Afterimage(motor.Animation.GetComponent<SpriteRenderer>(), SkillGeometry.EchoVisualSeconds);
                 motor.Body.position = origin; transform.position = origin;
-                motor.Body.linearVelocity = Vector2.zero; returned = true;
+                motor.Body.linearVelocity = Vector2.zero; returned = true; LastReturnUse = use.Id;
                 Bounds crossing = Path(origin, departure);
                 traces.Add(crossing);
                 if (use.Stage >= 2) Damage(crossing, profile.burstDamage);
