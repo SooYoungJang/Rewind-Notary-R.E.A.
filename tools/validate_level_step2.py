@@ -139,6 +139,50 @@ def waterway(room, skill):
                     supportsToMastery=skill['stage3At'] - n - joints)
 
 
+def cast_position(x, facing, seam, direction, half_span, max_lead, stride):
+    """Replay grounded A/D inputs until the bot stops to issue neutral Q."""
+    for _ in range(80):
+        lead = (seam - x) * direction
+        if lead >= max_lead:
+            facing = direction
+        elif lead <= half_span or facing != direction:
+            facing = -direction
+        else:
+            return x
+        x += facing * stride
+    return None
+
+
+def return_cast_positions(room, skill, motion, max_lead, ticks_per_frame):
+    deck = [s['rect'] for s in room['terrain'] if s.get('oneWay')]
+    balcony = next(s['rect'] for s in room['terrain'] if s['id'] == 'balcony')
+    stride = motion[0] * motion[-1] * ticks_per_frame
+    for stage, run in enumerate(room['seamRuns']):
+        direction = 1 if run['stepX'] > 0 else -1
+        half_span = 1.1 if stage else .45
+        arrival = next(f['x'] for f in room['floors'] if f.get('contactSave')) if stage else room['floors'][0]['x']
+        height = top(balcony) if stage else 0
+        reach = skill['stages'][stage]['reach']
+        centers = [run['x'] + i * run['stepX'] for i in range(run['count'])]
+        for i, center in enumerate(centers):
+            start = centers[i - 1] if i else arrival
+            # Include an overshoot and a landing at the old stand-off facing away.
+            for x in (start, center + direction * .25, center - direction * 1.70):
+                for facing in (-1, 1):
+                    cast = cast_position(x, facing, center, direction, half_span, max_lead, stride)
+                    if cast is None:
+                        return False
+                    lead = (center - cast) * direction
+                    if lead <= half_span or lead**2 + (run['y'] - height)**2 > reach**2:
+                        return False
+                    if stage and not any(abs(top(r) - height) < .01 and r['x'] <= cast <= r['x'] + r['width'] for r in deck):
+                        return False
+                    # An expired installation still occupies the only slot while PlayerOnFloor is true.
+                    if i and abs(cast - centers[i - 1]) <= half_span + .4:
+                        return False
+    return True
+
+
 def jump_unstitched(room, motion):
     # Start at rest on each right lip and land on the next left island with one ordinary jump.
     run = room['seamRuns'][1]
@@ -254,6 +298,40 @@ def validate_level_step2(check, project, scripts):
         change(bad)
         mutation(not waterway(bad, skill), label)
 
+    room = rooms[IDS[4]]
+    short = room['seamRuns'][0]
+    second = short['x'] + short['stepX']
+    traversal = scripts['VelvetTraversal']
+    max_lead = number(traversal, 'maxCastLead')
+    stride = motion[0] * motion[-1]
+    # Run 7 ended inside the old Walk tolerance facing west. One D tick left that tolerance.
+    stop_x = 6.9064002
+    old_stance = second - 1.70
+    verify(abs(stop_x - old_stance) <= .12 < stop_x + stride - old_stance,
+           'run 7 / turn for seam_1 left the old Walk window in one physics tick')
+    cast = cast_position(stop_x, -1, second, 1, .45, max_lead, stride)
+    verify(cast is not None and 0 < second - cast < skill['stages'][0]['reach'],
+           'run 7 / reverse facing at failure position converges to neutral Q on seam_1')
+    timing = (project/'ProjectSettings/TimeManager.asset').read_text()
+    max_ticks = round(float(re.search(r'Maximum Allowed Timestep: ([.\d]+)', timing)[1]) / motion[-1])
+    def approaches(source):
+        limit = number(source, 'maxCastLead')
+        return max_ticks >= 1 and all(return_cast_positions(room, skill, motion, limit, ticks)
+                                      for ticks in range(1, max_ticks + 1))
+    verify(approaches(traversal), 'both seam runs / cast from fixed cloth outside prior support at every frame stride')
+    for label, limit in [('turn skips the upper cast window', 1.11), ('waiting on previous support', 2.35)]:
+        bad = re.sub(r'maxCastLead = [.\d]+f', f'maxCastLead = {limit}f', traversal)
+        mutation(bad != traversal and not approaches(bad), label)
+
+    def walk_goals(source):
+        approach = source.partition('if (seam.Installed)')[2].partition('keys.Cast();')[0]
+        return re.findall(r'\bWalk\(([^)]+)\)', approach)
+    goals = ['x, .15f', 'x, 0f']  # mount the installed seam, or approach the uninstalled one
+    verify(walk_goals(traversal) == goals, 'seam approach has no extra waypoint before turning or casting')
+    legacy_gate = 'if (!Walk(x - direction * 1.70f, .12f)) return true;'
+    bad = traversal.replace('if (lead >= maxCastLead)', legacy_gate + '\n            if (lead >= maxCastLead)')
+    mutation(walk_goals(bad) != goals, 'run 7 exact waypoint restored before the cast window')
+
     contracts = [
         ('RepresentativeRoomLayout','x = run.x + inRun * run.stepX;', 'y = run.y;', 'Place("seam_" + i, x, y)',
          'i < Room.singleSeams ? .9f : 2.2f'),
@@ -268,6 +346,10 @@ def validate_level_step2(check, project, scripts):
          'previousRoom != Loom || !investigated','previousRoom == Bridge','result.contacts.Count != 6',
          'result.firstSilverTarget != Waterway + ":seam_0"','uses.Add(e.useId)'),
         ('VelvetTraversal','keys.Cast()', 'if (seam.Installed)','Walk(x, .15f)','lastSewn == id + ":support"'),
+        ('VelvetTraversal','int direction = run.stepX > 0f ? 1 : -1;',
+         'float lead = (x - Player.Body.position.x) * direction;', 'if (lead >= maxCastLead)\n                Walk(x, 0f);',
+         'else if (lead <= seam.Bounds.extents.x || Player.Facing != direction)',
+         'keys.Hold(direction > 0 ? KeyCode.A : KeyCode.D);', 'else if (Player.Grounded)\n                keys.Cast();'),
         ('AutoTestRuntime','Report.velvetDistrict.run.status != "pass"')]
     for script, *tokens in contracts:
         source = scripts[script]

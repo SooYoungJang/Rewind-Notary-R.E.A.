@@ -86,11 +86,17 @@ namespace RewindNotary
                 Walk(x, .15f);
                 return true;
             }
-            float side = upper ? 1 : -1;
-            if (!Walk(x + side * 1.70f, .12f)) return true;
-            if ((x - Player.Body.position.x) * Player.Facing < 0)
-            { keys.Hold(upper ? KeyCode.A : KeyCode.D); return true; }
-            if (Player.Grounded) keys.Cast();
+            // Approach from the fixed cloth, clear of the previous installation's retirement area.
+            const float maxCastLead = 1.85f;
+            int direction = run.stepX > 0f ? 1 : -1;
+            float lead = (x - Player.Body.position.x) * direction;
+            if (lead >= maxCastLead)
+                Walk(x, 0f);
+            else if (lead <= seam.Bounds.extents.x || Player.Facing != direction)
+                // Back out before turning. The turn itself moves Rea one or more physics ticks.
+                keys.Hold(direction > 0 ? KeyCode.A : KeyCode.D);
+            else if (Player.Grounded)
+                keys.Cast();
             return true;
         }
     }
