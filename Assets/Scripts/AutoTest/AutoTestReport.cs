@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Threading;
 using UnityEngine;
 
 namespace RewindNotary
@@ -53,11 +54,32 @@ namespace RewindNotary
 
         public void Write(string directory)
         {
+            const int maxRetries = 5;
+            const int retryDelayMs = 50;
             attackInputs.unaccepted = attackInputs.issued - attackInputs.accepted;
             string path = Path.Combine(directory, "report.json");
-            File.WriteAllText(path + ".tmp", JsonUtility.ToJson(this, true) + "\n");
-            if (File.Exists(path)) File.Replace(path + ".tmp", path, null);
-            else File.Move(path + ".tmp", path);
+            string temp = path + ".tmp";
+            string json = JsonUtility.ToJson(this, true) + "\n";
+            bool tempWritten = false;
+            for (int retry = 0; ; retry++)
+            {
+                try
+                {
+                    // A locked destination can be retried with the already completed temp file.
+                    if (!tempWritten)
+                    {
+                        File.WriteAllText(temp, json);
+                        tempWritten = true;
+                    }
+                    if (File.Exists(path)) File.Replace(temp, path, null);
+                    else File.Move(temp, path);
+                    return;
+                }
+                catch (IOException) when (retry < maxRetries)
+                {
+                    Thread.Sleep(retryDelayMs);
+                }
+            }
         }
 
         public void Error(string type, string message, string stack = "") => errors.Add(LogEntry(type, message, stack));

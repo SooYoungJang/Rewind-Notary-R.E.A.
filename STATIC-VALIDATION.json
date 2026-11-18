@@ -1,5 +1,5 @@
 {
-  "passed": 7837,
+  "passed": 7840,
   "errors": [],
   "warnings": [
     "Clock step 3: fixed routes, first-visit supply and gate conditions checked statically. Third-slot contacts, timed recall and lift trips require Unity.",
@@ -7105,6 +7105,9 @@
     "Autotest: editor-only warning routing and fatal fallback shared by both log callbacks",
     "Autotest: v2 errors and warnings preserve the same original log fields",
     "Autotest: only errors affect the active step and final exit code",
+    "Autotest: retry covers incomplete temp writes and reuses a complete temp for atomic move or replacement",
+    "Autotest: five 50 ms waits share one budget and the final I/O exception escapes",
+    "Autotest: driver records the publishing exception and failure of the final write forces a logged nonzero exit",
     "Autotest: checkpoint PNGs requested, linked and checked before bounded shutdown",
     "Autotest: accepted activations, effective uses, damage, deaths and timed attempts are observed",
     "Autotest: actual scene/room loading and frame-time slowest percentile tail",
@@ -15885,8 +15888,8 @@
     "csharp_compiled": false
   },
   "autotest_metrics": {
-    "checks": 72,
-    "passed": 72,
+    "checks": 75,
+    "passed": 75,
     "steps": [
       "NewSlot",
       "Attic",

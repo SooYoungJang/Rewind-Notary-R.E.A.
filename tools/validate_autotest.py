@@ -153,6 +153,31 @@ def validate_log_classification(verify, runtime, report, driver, body):
            'only errors affect the active step and final exit code')
 
 
+def validate_report_write(verify, report, driver, runtime, body):
+    write = body(report, 'public void Write(string directory)')
+    loop = body(write, 'for (int retry = 0; ; retry++)', braced=True)
+    attempt = body(loop, 'try', braced=True)
+    stage = body(attempt, 'if (!tempWritten)', braced=True)
+    verify('bool tempWritten = false;' in write.partition('for (')[0]
+           and ' '.join(stage.split()) == 'File.WriteAllText(temp, json); tempWritten = true;'
+           and ' '.join(attempt.split()).endswith(
+               'if (File.Exists(path)) File.Replace(temp, path, null); else File.Move(temp, path); return;'),
+           'retry covers incomplete temp writes and reuses a complete temp for atomic move or replacement')
+
+    handler = body(loop, 'catch (IOException) when (retry < maxRetries)', braced=True)
+    verify('const int maxRetries = 5;' in write and 'const int retryDelayMs = 50;' in write
+           and handler.strip() == 'Thread.Sleep(retryDelayMs);' and write.count('catch') == 1,
+           'five 50 ms waits share one budget and the final I/O exception escapes')
+
+    driver_error = body(body(driver, 'private void Update()'), 'catch (Exception e)', braced=True)
+    finish = body(runtime, 'internal static void Finish(bool completed)')
+    verify('report.Error("harness", e.Message, e.StackTrace);' in driver_error
+           and 'Stop("exception in scenario driver: " + e.Message);' in driver_error
+           and 'EndStep("fail", reason);' in body(driver, 'private void Stop(string reason)')
+           and 'Report.Write(directory); } catch (Exception e) { code = 1; Debug.LogException(e); }' in ' '.join(finish.split()),
+           'driver records the publishing exception and failure of the final write forces a logged nonzero exit')
+
+
 def validate_autotest(check, project, scripts, body):
     outcomes = []
 
@@ -238,6 +263,7 @@ def validate_autotest(check, project, scripts, body):
     verify(all(t in runtime for t in ('Application.logMessageReceived += OnLog', 'LogType.Error', 'LogType.Exception',
            'LogType.Assert', 'Report.errors.Count == 0', 'Application.Quit(code)')), 'Unity errors retained and affect exit status')
     validate_log_classification(verify, runtime, report, driver, body)
+    validate_report_write(verify, report, driver, runtime, body)
     verify(all(t in driver for t in ('Capture("start")', 'Capture("boss-start")', 'Capture("boss-end-"',
            'ScreenCapture.CaptureScreenshot', 'CompletePng(', 'drainStarted < 10')) and
            'com.unity.modules.screencapture' in (project / 'Packages/manifest.json').read_text(),
