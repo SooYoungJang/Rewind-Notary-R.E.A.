@@ -8,10 +8,11 @@ namespace RewindNotary
 {
     [Serializable] public sealed class AutoTestReport
     {
-        public int schemaVersion = 1, exitCode = 1;
+        public int schemaVersion = 2, exitCode = 1;
         public string status = "running", startedUtc = DateTime.UtcNow.ToString("O"), endedUtc, mode, unityVersion;
         public List<StepResult> steps = new List<StepResult>();
         public List<RunError> errors = new List<RunError>();
+        public List<RunError> warnings = new List<RunError>();
         public List<Checkpoint> checkpoints = new List<Checkpoint>();
         public List<LoadSample> loads = new List<LoadSample>();
         public List<BoutAttempt> bossAttempts = new List<BoutAttempt>();
@@ -53,10 +54,11 @@ namespace RewindNotary
             else File.Move(path + ".tmp", path);
         }
 
-        public void Error(string type, string message, string stack = "")
-        {
-            errors.Add(new RunError { utc = DateTime.UtcNow.ToString("O"), type = type, message = message, stack = stack });
-        }
+        public void Error(string type, string message, string stack = "") => errors.Add(LogEntry(type, message, stack));
+        internal void Warning(string type, string message, string stack) => warnings.Add(LogEntry(type, message, stack));
+
+        private static RunError LogEntry(string type, string message, string stack) =>
+            new RunError { utc = DateTime.UtcNow.ToString("O"), type = type, message = message, stack = stack };
     }
 
     [Serializable] public sealed class StepResult

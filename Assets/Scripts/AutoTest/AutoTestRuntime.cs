@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -133,12 +134,58 @@ namespace RewindNotary
             for (int i = 0; i < pending && backgroundLogs.TryDequeue(out var entry); i++)
                 OnLog(entry.message, entry.stack, entry.type);
         }
+
+        // One known editor callback, with its observed BCL, editor and stack-formatting frames.
+        private const string SearchStartup = "UnityEditor.Search.SearchInit.IndexationOnStartup";
+        private static readonly HashSet<string> SearchStartupFrames = new HashSet<string>(StringComparer.Ordinal)
+        {
+            SearchStartup,
+            "System.Collections.Generic.List`1.get_Item",
+            "System.Collections.Generic.List`1[T].get_Item(System.Int32 index)",
+            "UnityEditor.Search.SearchDatabase+<EnumerateAll>d__78.MoveNext",
+            "System.Linq.Enumerable.TryGetFirst",
+            "System.Linq.Enumerable.TryGetFirst[TSource](System.Collections.Generic.IEnumerable`1[T] source, System.Boolean& found)",
+            "System.Linq.Enumerable.First[TSource](System.Collections.Generic.IEnumerable`1[T] source)",
+            "UnityEditor.Search.SearchDatabase.GetDefaultSearchDatabase",
+            "UnityEditor.EditorApplication.Internal_CallDelayFunctions",
+            "UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)"
+        };
+
+        // Accept the optional "at" prefix and Unity's opaque source location. A project path or
+        // other unrecognized suffix must stay visible to the classifier and fail the match.
+        private static readonly Regex ManagedFrame = new Regex(
+            @"^(?:at[ \t]+)?([^\s()]+)(?:[ \t]*\(([^()]*)\))?(?:[ \t]+\(at <[0-9a-fA-F]{32}>:[0-9]+\))?$");
+
+        internal static bool IsEditorSearchStartupNoise(string stack)
+        {
+            if (string.IsNullOrWhiteSpace(stack)) return false;
+            bool sawStartup = false;
+            foreach (string line in stack.Split('\n'))
+            {
+                string frame = line.Trim();
+                if (frame.Length == 0) continue;
+                Match match = ManagedFrame.Match(frame);
+                if (!match.Success) return false;
+                string signature = match.Groups[1].Value;
+                string arguments = match.Groups[2].Value;
+                if (arguments.Length != 0) signature += "(" + arguments + ")";
+                if (!SearchStartupFrames.Contains(signature)) return false;
+                if (signature == SearchStartup) sawStartup = true;
+            }
+            return sawStartup;
+        }
+
         private static void OnLog(string message, string stack, LogType type)
         {
             log.WriteLine(DateTime.UtcNow.ToString("O") + " [" + type + "] " + message);
             if (!string.IsNullOrEmpty(stack)) log.WriteLine(stack);
             if (type == LogType.Error || type == LogType.Assert || type == LogType.Exception)
-                Report.Error(type.ToString(), message, stack);
+            {
+                if (Application.isEditor && IsEditorSearchStartupNoise(stack))
+                    Report.Warning(type.ToString(), message, stack);
+                else
+                    Report.Error(type.ToString(), message, stack);
+            }
         }
 
         private static bool SavedArrival(string path)
