@@ -25,6 +25,10 @@ namespace RewindNotary
         private int index, lastShotFrame = -1;
         private string lastShot, progress;
         private double started, entered, lastFrame, lastProgress, nextProbe, drainStarted;
+        private const double DistrictLogInterval = 30, DistrictIdleLimit = 120;
+        private double nextDistrictLog, lastDistrictProgress;
+        private int lastContacts, lastCleared;
+        private string lastWaveRoom;
         private Vector2 lastPosition;
         private bool finishing, allPassed, exited, bossWon;
 
@@ -57,6 +61,8 @@ namespace RewindNotary
                 {
                     Probe(now);
                     if (now - lastProgress > 18) { Stop("no position or state progress for 18 seconds"); return; }
+                    if ((clock != null || district != null) && !CheckDistrictProgress(now))
+                    { Stop("no district contact, kill or target progress for 120 seconds"); return; }
                 }
                 if (clock != null)
                 {
@@ -133,6 +139,10 @@ namespace RewindNotary
             progress = null;
             frameMs.Clear();
             entered = lastFrame = lastProgress = nextProbe = AutoTestRuntime.Now;
+            lastDistrictProgress = entered;
+            nextDistrictLog = entered + DistrictLogInterval;
+            lastContacts = lastCleared = 0;
+            lastWaveRoom = null;
             Capture("start");
             Debug.Log("AUTOTEST begin " + step.id);
             report.Write(AutoTestRuntime.DirectoryPath);
@@ -156,6 +166,39 @@ namespace RewindNotary
                 progress = state;
                 lastPosition = position;
             }
+        }
+
+        private int DistrictContacts => clock != null ? report.clockDistrict.contacts.Count : report.velvetDistrict.contacts.Count;
+
+        private bool CheckDistrictProgress(double now)
+        {
+            var area = bot.Area;
+            string room = area?.Room?.id;
+            int cleared = area?.ClearedWaveTargets ?? 0;
+            int contacts = DistrictContacts;
+            if (contacts > lastContacts || (room == lastWaveRoom && cleared > lastCleared)) lastDistrictProgress = now;
+            lastWaveRoom = room;
+            lastCleared = cleared;
+            lastContacts = contacts;
+            if (now - lastDistrictProgress >= DistrictIdleLimit) return false;
+            if (now >= nextDistrictLog)
+            {
+                Debug.Log("AUTOTEST district " + DistrictState(now));
+                nextDistrictLog = now + DistrictLogInterval;
+            }
+            return true;
+        }
+
+        private string DistrictState(double now)
+        {
+            var area = bot.Area;
+            var player = area?.Rea;
+            var target = area?.DistrictWaveTarget;
+            var feet = player == null ? "-" : player.Body.position.ToString("F2");
+            int remaining = area == null ? 0 : area.WaveTargetCount - area.ClearedWaveTargets;
+            return $"{step.id} elapsed={now - entered:F1}s idle={now - lastDistrictProgress:F1}s room={area?.Room?.id ?? "-"} " +
+                $"feet={feet} grounded={player?.Grounded} row={area?.ActiveRow?.textKey ?? "-"} action={area?.PendingAction ?? "-"} " +
+                $"remainingTargets={remaining} waveTarget={target?.TargetId ?? "-"} segments={target?.State.Remaining ?? 0} contacts={DistrictContacts}";
         }
 
         private void ObserveSession()
@@ -206,7 +249,12 @@ namespace RewindNotary
             clock?.ObserveUse(e, bot.Area.Room.id);
             if (clock != null && e.kind == "attempt_reset")
                 report.Error("clockDistrict", "Attempt reset during continuous clock traversal");
-            if (e.kind == "valid_use") step.Count(e.skillId).validUses++;
+            if (e.kind == "valid_use")
+            {
+                step.Count(e.skillId).validUses++;
+                // The progression service emits this only for an applied effect on a named target.
+                if (clock != null || district != null) lastDistrictProgress = AutoTestRuntime.Now;
+            }
             if (district != null && e.kind == "attempt_reset")
                 report.Error("velvetDistrict", "Attempt reset during continuous checkpoint traversal");
             if (e.kind == "attempt_reset")
@@ -256,6 +304,11 @@ namespace RewindNotary
         }
         private void Stop(string reason)
         {
+            if (clock != null || district != null)
+            {
+                try { reason += " | " + DistrictState(AutoTestRuntime.Now); }
+                catch (Exception e) { report.Error("district-state", e.Message, e.StackTrace); }
+            }
             feel.Abort(reason);
             if ((PlaytestStep)index == PlaytestStep.Velvet)
                 pilot.Abort(report.pilot, reason);

@@ -233,7 +233,7 @@ namespace RewindNotary
         internal WorldState Snapshot()
         {
             var r = Record;
-            var t = Area?.RouteTarget;
+            var t = Area?.DistrictWaveTarget;
             var p = Area?.Rea;
             return new WorldState {
                 page = Shell == null ? "boot" : Shell.Page.ToString(), menuIndex = Shell?.MenuIndex ?? -1, message = Shell?.MenuMessage,

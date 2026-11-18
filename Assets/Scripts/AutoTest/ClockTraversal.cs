@@ -79,7 +79,12 @@ namespace RewindNotary
         {
             var at = target.transform.position;
             var face = FaceAt(at.x, at.y);
-            if (!AtClockHeight(face)) { ClockPosition(face, at.x); return; }
+            // Hand the keyboard to combat only after the jump has landed and released Space.
+            if (jumpingFrom != null || !Area.StandingOn(face))
+            {
+                ClockPosition(face, at.x);
+                return;
+            }
             if (target.State.NeedsSetup && !target.State.Ready(Time.time))
             {
                 if (target.StrikeIn <= .085f) { keys.Tap(KeyCode.L); return; }

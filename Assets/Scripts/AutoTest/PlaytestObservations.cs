@@ -18,6 +18,20 @@ namespace RewindNotary
         internal WaveTarget2D ClockTargetOnTier => roomTargets.Find(t => !t.State.Cleared &&
             Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f);
         internal WaveTarget2D UnclearedClockTarget => roomTargets.Find(t => !t.State.Cleared);
+        internal WaveTarget2D DistrictWaveTarget => Room == null ? null :
+            Room.stage == "clock" ? UnclearedClockTarget : RouteTarget;
+        // Inactive targets still belong to the wave, including queued velvet entry enemies.
+        internal int WaveTargetCount => roomTargets.Count + entryWave.Count;
+        internal int ClearedWaveTargets
+        {
+            get
+            {
+                int cleared = 0;
+                foreach (var t in roomTargets) if (t.State.Cleared) cleared++;
+                foreach (var t in entryWave) if (t.State.Cleared) cleared++;
+                return cleared;
+            }
+        }
         internal CombatMotor2D BoutOpponent => mikhailBout == null ? null : opponent;
         internal BenefactorTrialOpponent Bout => mikhailBout;
         internal string PendingAction => ReadyForAction ? ActionToken : null;

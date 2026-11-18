@@ -257,6 +257,130 @@ def validate_probe_doors(verify, hub, links, clock_rooms, scripts):
            'generic door navigation confines the balcony stairs to defined high velvet doors')
 
 
+def replay_hall_latch(room, scripts, motion, handoff, skin=0, latch_index=0):
+    """Replay the first flight from the overlap midpoint, then the first available sword strike.
+    One input sample per fixed tick. Only the two fixed faces on this flight span can collide.
+    """
+    jump, gravity, dt = motion
+    group = next(g for g in room['roster'] if g['id'] == 'sword_latch')
+    target = next(p for p in room['placements'] if p['id'] == group['placementIds'][latch_index])
+    tiers = [bounds(s) for s in fixed(room)]
+    goal = next(i for i, (l, r, h) in enumerate(tiers) if l <= target['x'] <= r and abs(h - target['y']) < .5)
+    floor, ledge = tiers[goal - 1], tiers[goal]
+    x = (max(floor[0], ledge[0]) + min(floor[1], ledge[1])) / 2
+    facing = 1 if target['x'] >= x else -1
+    y = peak = floor[2] + skin
+    vx, vy = 0, jump
+    player, motor = scripts['PlayerController2D'], scripts['CombatMotor2D']
+    speed, accel, brake = number(player, 'MoveSpeed'), number(motor, 'AirAcceleration'), number(motor, 'AirBrake')
+    cut_factor = float(re.search(r'linearVelocity\.y \* ([.\d]+)f', player)[1])
+    aim_range = float(re.search(r'if \(range > ([.\d]+)f\) \{ Walk', scripts['FirstDepartureBot'])[1])
+    _, delay, _, reach, width, height, *_ = map(float, re.search(
+        r'new AttackSpec\(([^)]+)\)', motor)[1].replace('f', '').split(','))
+    old_band = float(re.search(r'private bool AtClockHeight\(.*?<= ([.\d]+)f', scripts['ClockTraversal'])[1])
+    guard_by_height = '!AtClockHeight(face)'
+
+    held, in_jump, landed = True, True, False
+    cut_at = landing_time = strike_at = hit = None
+    remaining = group['segments']
+    for tick in range(round(2 / dt)):
+        now = tick * dt
+        travel = abs(y - ledge[2]) > old_band if handoff == guard_by_height else in_jump or not landed
+        dx = target['x'] - x
+        axis = (1 if dx > 0 else -1) if not travel and abs(dx) > aim_range else 0
+        if not travel and not axis and strike_at is None:
+            strike_at = now + delay
+        if strike_at is not None and hit is None and now + 1e-8 >= strike_at:
+            # A first swing registers only inside the feet zone and with intersecting sword/target bounds.
+            hit = (contains(target['active'], x, y) and
+                   abs(x + facing * reach - target['x']) <= width / 2 + .4 and
+                   abs(y + 1 - (target['y'] + .9)) <= height / 2 + .9)
+            remaining -= int(hit)
+            break
+        space = travel and not landed
+        if held and not space and vy > 0:
+            cut_at = (round(now, 3), round(y, 6))
+            vy *= cut_factor
+        held = space
+        if landed:
+            in_jump = False
+            vx = axis * speed
+        else:
+            step = (accel if axis else brake) * dt
+            vx += max(-step, min(step, axis * speed - vx))
+            previous = y
+            vy -= gravity * dt
+            y += vy * dt
+            peak = max(peak, y)
+            if vy < 0 and ledge[0] <= x + vx * dt <= ledge[1] and y <= ledge[2] + skin <= previous:
+                landed, vy, y = True, 0, ledge[2] + skin
+                landing_time = round(now + dt, 3)
+            elif vy < 0 and y <= floor[2] + skin:
+                break
+        x += vx * dt
+    return dict(peakY=round(peak, 6), jumpRelease=cut_at, upperLandingSeconds=landing_time,
+                strikeFeet=[round(x, 3), round(y, 3)] if hit is not None else None, cuts=int(bool(hit)),
+                remainingSegments=remaining)
+
+
+def validate_hall_regression(verify, room, scripts, motion):
+    traversal = scripts['ClockTraversal']
+    fight = traversal.split('void ClockFight(')[1].split('private bool AtClockHeight')[0]
+    match = re.search(r'if \(([^{}\n]+)\)\s*\{\s*ClockPosition\(face, at\.x\);\s*return;\s*\}', fight)
+    if not match or match[1] not in ('!AtClockHeight(face)', 'jumpingFrom != null || !Area.StandingOn(face)'):
+        verify(False, 'run 10 / cannot replay the ClockFight handoff')
+        return {}
+    guard = match[1]
+    before = replay_hall_latch(room, scripts, motion, '!AtClockHeight(face)')
+    after = replay_hall_latch(room, scripts, motion, guard)
+    verify(before['jumpRelease'] is not None and before['peakY'] < faces(room)['east_shoe'][2] and
+           before['upperLandingSeconds'] is None and before['cuts'] == 0 and before['remainingSegments'] == 1,
+           'run 10 / early handoff releases Space below east_shoe and leaves its latch intact')
+    verify(after['jumpRelease'] is None and after['upperLandingSeconds'] is not None and
+           after['cuts'] == 1 and after['remainingSegments'] == 0,
+           'run 10 / held jump lands on east_shoe and an active sword overlap removes the segment')
+    for offset in (.01, .05):
+        verify(not replay_hall_latch(room, scripts, motion, '!AtClockHeight(face)', offset)['cuts'] and
+               replay_hall_latch(room, scripts, motion, guard, offset)['cuts'] == 1,
+               f'run 10 / old and current latch handoff at feet offset {offset}')
+    verify('if (jumpingFrom != null) keys.Hold(KeyCode.Space);' in traversal and
+           'player.Grounded &&' in scripts['StoryTerrain'] and 'box.IsTouching(actor)' in scripts['StoryTerrain'] and
+           'if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;' in scripts['PlayerController2D'] and
+           'else FightTarget(target);' in fight and 'if (target.State.Ready(Time.time)) keys.Tap(KeyCode.J);' in scripts['FirstDepartureBot'],
+           'latch replay uses physical support, held input, release cut and ordinary combat')
+    west = replay_hall_latch(room, scripts, motion, guard, latch_index=1)
+    verify(west['upperLandingSeconds'] is not None and west['cuts'] == 1 and west['remainingSegments'] == 0,
+           'the second hall latch is reachable with the same grounded handoff walking west')
+    verify(sum(g['count'] for g in room['roster']) == 5 and
+           sum(g['count'] * g['segments'] for g in room['roster']) == 11 and
+           'definition.Label, State.Remaining' in scripts['WaveTarget2D'],
+           'hall wave has five targets and eleven segments; the HUD reports the selected target segments')
+    observations = scripts['PlaytestObservations']
+    driver = scripts['AutoTestDriver']
+    verify('roomTargets.Find(t => !t.State.Cleared);' in observations and
+           'var target = roomTargets.Find(t => !t.State.Cleared);' in scripts['DistrictRoomLayout'] and
+           'roomTargets.TrueForAll(t => t.State.Cleared)' in scripts['DistrictRoomLayout'] and
+           'roomTargets.Count + entryWave.Count' in observations and
+           all('foreach (var t in ' + group + ') if (t.State.Cleared) cleared++;' in observations
+               for group in ('roomTargets', 'entryWave')),
+           'HUD, clock target and wave counts include uncleared objects outside their feet zones')
+    verify('if ((clock != null || district != null) && !CheckDistrictProgress(now))' in driver and
+           'DistrictLogInterval = 30, DistrictIdleLimit = 120' in driver and
+           'if (now - lastProgress > 18)' in driver and driver.count('now - entered > 1500') == 2,
+           'both districts have a separate 120-second idle limit, 18-second motion check and 1500-second cap')
+    verify('contacts > lastContacts || (room == lastWaveRoom && cleared > lastCleared)' in driver and
+           re.search(r'if \(e.kind == "valid_use"\)\s*\{[^}]*lastDistrictProgress = AutoTestRuntime.Now;', driver) and
+           'if (now - lastDistrictProgress >= DistrictIdleLimit) return false;' in driver,
+           'recorded contacts, kills and successful target changes refresh the district timer')
+    verify('Debug.Log("AUTOTEST district " + DistrictState(now))' in driver and
+           'reason += " | " + DistrictState(AutoTestRuntime.Now)' in driver and
+           all(field + '=' in driver for field in ('room', 'feet', 'row', 'action', 'remainingTargets',
+                                                    'waveTarget', 'segments', 'idle')) and
+           'var t = Area?.DistrictWaveTarget;' in scripts['FirstDepartureBot'],
+           'district heartbeat and failure include the actual clock roster target, segment count and position')
+    return dict(before=before, current=after, westLatch=west)
+
+
 def lift(rs):
     for a,b,landing in [(0,3,'clock_lift_cage'),(3,0,'clock_lift_foot')]:
         d = next((d for d in rs[a]['exits'] if d['room']==rs[b]['id']),{})
@@ -297,6 +421,7 @@ def validate_level_step3(check, project, scripts):
     verify(reverse_exact(patch,raw+' ') == raw+' ', 'unrelated clock edit cannot be reversed as an approved historical change')
     dt = float(re.search(r'Fixed Timestep: ([.\d]+)',(project/'ProjectSettings/TimeManager.asset').read_text())[1])
     motion = number(scripts['PlayerController2D'],'JumpSpeed'), 9.81*number(scripts['CombatMotor2D'],'Body.gravityScale'), dt
+    latch = validate_hall_regression(verify, rooms['clock_02_pendulum'], scripts, motion)
     sets = {s['id']:s['layers'] for s in read('GameArt/backgrounds/room-sets.json')['sets']}
     routes,counts = {},{}
     for idx,(r,b,spec) in enumerate(zip(rs,old,FORMATIONS)):
@@ -395,4 +520,4 @@ def validate_level_step3(check, project, scripts):
         verify(all(t in code for t in tokens),src+' / clock runtime contracts')
         for t in tokens:
             mutant(t in code and not all(k in code.replace(t,'') for k in tokens),src+' / lost '+t)
-    return dict(routes=routes,countsBeforeAfter=counts,mutations=len(mutants),detected=sum(mutants),unity_executed=False)
+    return dict(hallLatch=latch,routes=routes,countsBeforeAfter=counts,mutations=len(mutants),detected=sum(mutants),unity_executed=False)

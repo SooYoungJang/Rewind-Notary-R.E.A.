@@ -1,5 +1,5 @@
 {
-  "passed": 7798,
+  "passed": 7809,
   "errors": [],
   "warnings": [
     "Clock step 3: fixed routes, first-visit supply and gate conditions checked statically. Third-slot contacts, timed recall and lift trips require Unity.",
@@ -7521,6 +7521,17 @@
     "Level step 3: generic door navigation confines the balcony stairs to defined high velvet doors",
     "Level step 3: exact predecessor, 42 original clock rows, entrance links and every v4 arrival ID",
     "Level step 3: unrelated clock edit cannot be reversed as an approved historical change",
+    "Level step 3: run 10 / early handoff releases Space below east_shoe and leaves its latch intact",
+    "Level step 3: run 10 / held jump lands on east_shoe and an active sword overlap removes the segment",
+    "Level step 3: run 10 / old and current latch handoff at feet offset 0.01",
+    "Level step 3: run 10 / old and current latch handoff at feet offset 0.05",
+    "Level step 3: latch replay uses physical support, held input, release cut and ordinary combat",
+    "Level step 3: the second hall latch is reachable with the same grounded handoff walking west",
+    "Level step 3: hall wave has five targets and eleven segments; the HUD reports the selected target segments",
+    "Level step 3: HUD, clock target and wave counts include uncleared objects outside their feet zones",
+    "Level step 3: both districts have a separate 120-second idle limit, 18-second motion check and 1500-second cap",
+    "Level step 3: recorded contacts, kills and successful target changes refresh the district timer",
+    "Level step 3: district heartbeat and failure include the actual clock roster target, segment count and position",
     "Level step 3: clock_01_entry / ordinary ascent and exposed descent lips on every fixed tier",
     "Level step 3: clock_01_entry / supported marks, camera, fall line, door volumes and destinations",
     "Level step 3: clock_01_entry / every instance binds its authored segments, setup, zone and position",
@@ -16087,6 +16098,41 @@
     "unity_executed": false
   },
   "level_step3_metrics": {
+    "hallLatch": {
+      "before": {
+        "peakY": 8.05596,
+        "jumpRelease": [
+          0.12,
+          7.792788
+        ],
+        "upperLandingSeconds": null,
+        "strikeFeet": null,
+        "cuts": 0,
+        "remainingSegments": 1
+      },
+      "current": {
+        "peakY": 8.92788,
+        "jumpRelease": null,
+        "upperLandingSeconds": 0.64,
+        "strikeFeet": [
+          36.93,
+          8.2
+        ],
+        "cuts": 1,
+        "remainingSegments": 0
+      },
+      "westLatch": {
+        "peakY": 12.12788,
+        "jumpRelease": null,
+        "upperLandingSeconds": 0.62,
+        "strikeFeet": [
+          13.11,
+          11.45
+        ],
+        "cuts": 1,
+        "remainingSegments": 0
+      }
+    },
     "routes": {
       "clock_01_entry": {
         "tops": [
