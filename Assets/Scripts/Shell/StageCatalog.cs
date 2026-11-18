@@ -36,6 +36,7 @@ namespace RewindNotary
             new StageEntry("gallery", "stage.gallery.name", "districts_open", true),
             new StageEntry("janhyang", "stage.echo.name", "janhyang_open", true),
             new StageEntry("cassel", "stage.cassel.name", "cassel_open", true),
+            new StageEntry("echo_duel", "encounter.rea_echo", "", true),
             new StageEntry("prototype", "stage.prototype.name", "", true),
             new StageEntry("practice_julius", "stage.practice_julius.name", "", true),
             new StageEntry("practice_valeria", "stage.practice_valeria.name", "", true),

@@ -57,7 +57,7 @@ namespace RewindNotary
         public string SaveDirectory { get; private set; }
         public string UseLogPath => logPath;
         private float noticeUntil, retryAt;
-        private bool dirty, closed;
+        private bool dirty, closed, standaloneDuel;
         private readonly string sessionId = Guid.NewGuid().ToString("N");
         [Serializable]
         private sealed class LogRow
@@ -74,6 +74,7 @@ namespace RewindNotary
             store = selectedStore;
             string recoveryNotice = store.RecoveryNotice ?? store.LastError;
             logPath = Path.Combine(SaveDirectory, "uses-" + sessionId + ".jsonl");
+            standaloneDuel = record.lastStageId == "echo_duel";
             Progression = new SkillProgressionService(catalog, record);
             if (record.lastStageId != "cassel") record.finalBattleAttempt.Stop("interrupted");
             Finale = new FinalBattleService(Progression, Save, storesPrevious: true);
@@ -104,6 +105,7 @@ namespace RewindNotary
         public void Save()
         {
             if (Progression == null || closed || sceneTransaction) return;
+            if (standaloneDuel) return; // The stage selector owns the untouched campaign record.
             dirty = !store.Save(Progression.Record, Finale.PendingPrevious);
             if (!dirty) Finale.Saved();
             retryAt = Time.unscaledTime + 5f;

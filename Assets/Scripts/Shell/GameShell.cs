@@ -54,6 +54,8 @@ namespace RewindNotary
         private void Go(ShellPage page)
         {
             Page = page; selected = 0; previousAxis = Vector2.zero; repeatAt = Time.unscaledTime + 0.3f;
+            if (page == ShellPage.Main && Array.TrueForAll(records, r => r == null)
+                && Array.TrueForAll(slotErrors, e => e == null)) selected = 1;
             GameInput.SetGameplay(page == ShellPage.Playing);
         }
         private void Update()
@@ -260,6 +262,15 @@ namespace RewindNotary
             }
             try
             {
+                if (stage.Id == "echo_duel")
+                {
+                    // An optional match uses the slot's loadout without replacing its campaign checkpoint.
+                    var duel = JsonUtility.FromJson<CoreRecord>(JsonUtility.ToJson(selectedRecord));
+                    duel.lastStageId = stage.Id;
+                    game.StartStage(selectedStore, duel);
+                    Time.timeScale = 1f; Go(ShellPage.Playing);
+                    return;
+                }
                 string priorStage = selectedRecord.lastStageId;
                 selectedRecord.lastStageId = stage.Id;
                 // Room completion and lift choices already saved this destination before releasing the previous world.
@@ -270,6 +281,20 @@ namespace RewindNotary
                 Time.timeScale = 1f; Go(ShellPage.Playing);
             }
             catch (Exception e) { game.AbortStage(); Time.timeScale = 1f; Go(ShellPage.Slots); message = Loc.Get("stage.start_failed", e.Message); }
+        }
+        internal void FinishDeparture()
+        {
+            if (!Playing || !game.ActiveSkills.LastSaveSucceeded) return;
+            selectedRecord = game.ActiveSkills.Progression.Record;
+            ShowStageChoices("clock");
+        }
+        internal void FinishEchoDuel() => ShowStageChoices("echo_duel");
+        private void ShowStageChoices(string initialStage)
+        {
+            game.StopStage();
+            purpose = SlotPurpose.StageSelect;
+            Go(ShellPage.Stages);
+            selected = Array.FindIndex(StageCatalog.All, s => s.Id == initialStage);
         }
         private void RequestDelete(int slot)
         {
@@ -395,10 +420,11 @@ namespace RewindNotary
             else if (Page == ShellPage.Stages)
             {
                 int rows = Mathf.CeilToInt(StageCatalog.All.Length / 2f);
+                int pitch = Mathf.Min(45, 450 / rows);
                 for (int i = 0; i < StageCatalog.All.Length; i++)
                 {
                     var stage = StageCatalog.All[i];
-                    Row(i, stage.Name + "\n[" + stage.Status(selectedRecord) + "]", new Rect(50 + (i / rows) * 600, 136 + (i % rows) * 45, 580, 43));
+                    Row(i, stage.Name + "\n[" + stage.Status(selectedRecord) + "]", new Rect(50 + (i / rows) * 600, 136 + (i % rows) * pitch, 580, pitch - 2));
                     if (Page != renderedPage) break;
                 }
                 if (Page == renderedPage)

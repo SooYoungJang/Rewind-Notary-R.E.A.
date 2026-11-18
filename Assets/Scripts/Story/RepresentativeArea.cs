@@ -178,6 +178,8 @@ namespace RewindNotary
             if (committed)
             {
                 if (Record.lastStageId == EndingCheckpoint.Lift || Record.lastStageId == "cassel") return;
+                if (ActiveRow?.completionFlag == "luka_lift_complete")
+                { shell.FinishDeparture(); return; }
                 if (relocate) { Restore(); return; }
                 ActiveRow = null; committed = worldAction = false; actionIndex = 0;
                 RefreshFixtures();
@@ -220,7 +222,7 @@ namespace RewindNotary
                 if (CourtAction() || DistrictAction()) return;
                 if (!Safe) return;
                 string token = ActionToken;
-                if (token == "use:return_call") { if (InspectPressed) FinishAction(); return; }
+                if (token == "use:return_call") { if (OnFixedFloor() && InspectPressed) FinishAction(); return; }
                 int split = token.IndexOf(':');
                 if (split < 0) return;
                 var target = Room.Point(token.Substring(split + 1));
@@ -234,6 +236,8 @@ namespace RewindNotary
             }
             if (Safe && InspectPressed)
             {
+                if (Room.id == "hub_lift" && Has("luka_lift_complete") && Distance(Room.Point("luka_freight_platform").x) <= 1.25f)
+                { shell.FinishDeparture(); return; }
                 if (TryTrialBell() || TryForgeReturn()) return;
                 if (NearCore()) shell.OpenStoryCore();
                 else
@@ -265,13 +269,22 @@ namespace RewindNotary
                 opponent.Health.Initialize(finale ? Room.interludeHealth : Room.boutHealth, .35f);
                 opponent.Health.MinimumHealth = ActiveRow == null || ActionToken.StartsWith("interlude:", StringComparison.Ordinal)
                     ? Room.interludeHealth : 0;
-                opponent.ResetAt(new Vector2(17, .1f));
+                bool mikhail = Room.id == "velvet_04_arena";
+                float spawnX = mikhail ? Mathf.Clamp(player.Body.position.x + 5f, 3f, 38f) : 17f;
+                opponent.ResetAt(new Vector2(spawnX, .1f));
+                if (mikhail)
+                {
+                    mikhailBout = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
+                    mikhailBout.StartStoryBout(player, mikhailTrial, Room.interludeHealth);
+                    AudioManager.SetMusic(AudioManager.Music.Boss);
+                }
                 attackAt = Time.time + .8f;
             }
             if (ActiveRow != null && ActionToken.StartsWith("interlude:", StringComparison.Ordinal)
                 && opponent.Health.Current <= Room.interludeHealth)
             { if (Complete()) StopBout(); return; }
             if (opponent.Health.Dead) { if (Complete()) StopBout(); return; }
+            if (mikhailBout != null) return;
             if (opponent.Stunned || opponent.Temporal.Frozen || opponent.GetComponent<StitchBinding>().Bound) return;
             opponent.RefreshGround();
             float dx = player.transform.position.x - opponent.transform.position.x;
@@ -285,8 +298,22 @@ namespace RewindNotary
             if (!committed && worldAction && ActiveRow != null && ActionToken.StartsWith("win:", StringComparison.Ordinal)
                 && opponent.gameObject.activeSelf && opponent.Health.Dead && Complete()) StopBout();
         }
+        private BenefactorTrialOpponent mikhailBout;
         private void StopBout()
         {
+            if (mikhailBout != null)
+            {
+                if (opponent.Health.Dead)
+                {
+                    AudioManager.Play(AudioManager.Sfx.BossDefeat);
+                    ImpactFeedback.BossDefeated();
+                }
+                AudioManager.SetMusic(AudioManager.Music.Field);
+                mikhailBout.enabled = false;
+                Destroy(mikhailBout);
+                mikhailBout = null;
+                opponent.Animation.Tint(Color.white);
+            }
             opponent.gameObject.SetActive(false);
             opponent.Health.MinimumHealth = 0;
             opponent.Health.Initialize(0, 0);

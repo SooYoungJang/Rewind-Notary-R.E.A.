@@ -25,7 +25,7 @@ namespace RewindNotary
         private BenefactorSupportController support;
         private StitchBinding bossBinding;
         private Font hudFont;
-        private bool checkpoint, won, initialized;
+        private bool checkpoint, won, initialized, echoDuel;
         private float deathTimer;
         private string failure;
 
@@ -54,6 +54,7 @@ namespace RewindNotary
         }
         private void Build(SkillSaveStore store, CoreRecord record)
         {
+            echoDuel = record.lastStageId == "echo_duel";
             bool finale = record.lastStageId == "cassel";
             if (finale && !record.testData && !StageCatalog.Find("cassel").Unlocked(record))
                 throw new System.InvalidOperationException(Loc.Get("finale.entry_locked"));
@@ -62,6 +63,7 @@ namespace RewindNotary
             var trialDefinition = BenefactorTrialCatalog.Load().ForStage(record.lastStageId);
             skills.EncounterId = trialDefinition != null ? trialDefinition.stageId
                 : record.lastStageId == "skill_lab" ? "practice_skill_lab" : encounter.EncounterId;
+            if (echoDuel) skills.EncounterId = record.lastStageId;
             if (finale) skills.EncounterId = "cassel_finale";
             skills.Initialize(store, record);
             skills.Progression.Trials.Configure(record.lastStageId);
@@ -107,7 +109,7 @@ namespace RewindNotary
             {
                 bossAI = boss.gameObject.AddComponent<JanhyangBoss>(); bossAI.Initialize(player);
                 reward.EncounterId = encounter.EncounterId; reward.RewardSkillId = encounter.SkillId;
-                reward.Initialize(boss.Health, skills.Progression);
+                if (!echoDuel) reward.Initialize(boss.Health, skills.Progression);
             }
             else
             {
@@ -140,11 +142,20 @@ namespace RewindNotary
                     anchor.AddComponent<StitchSurface2D>().Initialize(anchor.name, 2.5f, false, player, boss);
                 }
             }
-            if (!story && !finale && !waveTest && trialDefinition == null) SkillPracticeWorld.Build(Child("Skill practice").transform, player, boss);
-            if (!story && !finale && !waveTest && trialDefinition == null && record.lastStageId != "prototype")
+            if (!story && !finale && !waveTest && trialDefinition == null && !echoDuel)
             {
-                practice = Child("Remaining skill practice").AddComponent<SkillPracticeArena2D>();
-                practice.Initialize(player, boss);
+                SkillPracticeWorld.Build(Child("Skill practice").transform, player, boss);
+                if (record.lastStageId != "prototype")
+                {
+                    practice = Child("Remaining skill practice").AddComponent<SkillPracticeArena2D>();
+                    practice.Initialize(player, boss);
+                }
+            }
+            if (echoDuel)
+            {
+                checkpoint = true;
+                player.ResetAt(LevelBuilder.ArenaStart);
+                bossAI.Activate();
             }
             if (record.lastStageId == "skill_lab")
             {
@@ -203,9 +214,11 @@ namespace RewindNotary
             if (cassel != null && skills.Progression.Record.lastStageId != "cassel") return;
             if (Area != null && skills.Progression.Record.lastStageId == "cassel") return;
             if ((Area != null || cassel != null) && !skills.LastSaveSucceeded) return;
-            if ((Debug.isDebugBuild || Application.isEditor) && Input.GetKeyDown(KeyCode.F8))
+            if (!echoDuel && (Debug.isDebugBuild || Application.isEditor) && Input.GetKeyDown(KeyCode.F8))
             { shell.EnterCasselPractice(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)); return; }
             if (Debug.isDebugBuild || Application.isEditor) UpdateSkillDebug();
+            if (echoDuel && won && GameInput.InvestigateDown)
+            { shell.FinishEchoDuel(); return; }
             if (GameInput.RetryDown) { ResetRun(true); return; }
             if (player.Health.Dead)
             {
@@ -241,7 +254,7 @@ namespace RewindNotary
             foreach (var hazard in PracticeTemporalHazard2D.All) hazard.ResetAttempt();
             bossBinding.Break();
             if (Area != null) { Area.Restore(); deathTimer = 0; cameraTarget.Snap(); return; }
-            if (fromStart) checkpoint = false;
+            if (fromStart) checkpoint = echoDuel;
             waves?.ResetAttempt(fromStart);
             ImpactFeedback.ResetEffects();
             AudioManager.ResetPlayback(checkpoint);
@@ -259,7 +272,7 @@ namespace RewindNotary
         }
         private void UpdateSkillDebug()
         {
-            if (Area != null || cassel != null) return;
+            if (echoDuel || Area != null || cassel != null) return;
             if (Input.GetKeyDown(KeyCode.F7)) EnterJanhyangPractice();
             int preview = Input.GetKeyDown(KeyCode.F1) ? 1 : Input.GetKeyDown(KeyCode.F2) ? 2
                 : Input.GetKeyDown(KeyCode.F3) ? 3 : Input.GetKeyDown(KeyCode.F4) ? 0 : -1;
@@ -276,7 +289,7 @@ namespace RewindNotary
         }
         public void EnterJanhyangPractice()
         {
-            if (!initialized || Area != null || !GameShell.DebugAvailable || cassel != null || waves != null || trial != null) return;
+            if (!initialized || echoDuel || Area != null || !GameShell.DebugAvailable || cassel != null || waves != null || trial != null) return;
             // Existing prototype / skill-lab route; never unlock a story flag or overwrite the main slot.
             skills.Progression.GrantPracticeSkills();
             checkpoint = true;
@@ -284,7 +297,7 @@ namespace RewindNotary
         }
         public void ApplyStageOverride(int stage)
         {
-            if (!initialized || Area != null || cassel != null || !GameShell.DebugAvailable || skills.PreviewStage == stage) return;
+            if (!initialized || echoDuel || Area != null || cassel != null || !GameShell.DebugAvailable || skills.PreviewStage == stage) return;
             ResetRun(false);
             skills.SetPreview(stage);
         }
@@ -356,6 +369,22 @@ namespace RewindNotary
             GUI.Label(new Rect(36, 28, 380, 34), Loc.Get("game.title"), title);
             GUI.Label(new Rect(36, 64, 370, 25), Loc.Get("hud.rea_health", player.Health.Current, player.Health.Maximum), label);
             Bar(new Rect(36, 99, 366, 15), player.Health, new Color(0.18f, 0.82f, 0.73f));
+            if (echoDuel)
+            {
+                GUI.Box(new Rect(455, 18, 800, 128), "");
+                GUI.Label(new Rect(475, 27, 760, 32), encounter.Label + "   " + boss.Health.Current + " / " + boss.Health.Maximum, title);
+                GUI.Label(new Rect(475, 66, 760, 29), Loc.Get("hud.echo_phase", bossAI.Phase, bossAI.PatternLabel), label);
+                Bar(new Rect(475, 106, 760, 14), boss.Health, new Color(.47f, .65f, .92f));
+                GUI.Label(new Rect(30, 630, 1220, 36), Loc.Get("input.gameplay"), label);
+                GUI.Label(new Rect(30, 673, 1220, 32), Loc.Get("input.retry_pause", encounter.Label), label);
+                if (won || player.Health.Dead)
+                {
+                    GUI.Box(new Rect(390, 265, 500, 120), "");
+                    GUI.Label(new Rect(412, 277, 455, 42), won ? Loc.Get("finale.result", encounter.Label) : Loc.Get("hud.retrying"), title);
+                    GUI.Label(new Rect(412, 333, 455, 42), won ? Loc.Get("area.travel", Loc.Get("ui.stage_select")) : Loc.Get("hud.returning_checkpoint"), label);
+                }
+                GUI.matrix = previous; return;
+            }
             GUI.Box(new Rect(20, 154, 440, 366), "");
             GUI.Label(new Rect(36, 164, 420, 28), SkillLabel(SkillRules.BasicSword), label);
             var mapping = new GUIStyle(label) { fontSize = 14, wordWrap = true };
@@ -443,7 +472,7 @@ namespace RewindNotary
             skills.Save();
             return skills.LastSaveSucceeded;
         }
-        private static void Bar(Rect rect, Health health, Color color)
+        internal static void Bar(Rect rect, Health health, Color color)
         {
             GUI.color = new Color(0.12f, 0.16f, 0.2f); GUI.DrawTexture(rect, Texture2D.whiteTexture);
             rect.width *= (float)health.Current / health.Maximum;

@@ -60,6 +60,7 @@ namespace RewindNotary
         {
             if (layout != null) { layout.SetActive(false); Destroy(layout); }
             layout = new GameObject(Room.id); layout.transform.SetParent(transform, false);
+            entryWave.Clear(); entryMember = 0;
             movingSpan = null; raisedLift = null; emitters.Clear();
             fixedFloors.Clear(); fixtures.Clear(); latches.Clear(); roomTargets.Clear(); stationHit = false;
             var stone = Room.stage == "hub" ? new Color(.36f,.35f,.31f) : new Color(.37f,.22f,.30f);
@@ -136,11 +137,14 @@ namespace RewindNotary
             if (fixtures.TryGetValue("echo_seal_barrier", out var seal)) seal.SetActive(!Has("janhyang_order_withdrawn"));
             if (fixtures.TryGetValue("echo_side_knot", out var knot)) knot.SetActive(!Has("echo_phase2_shifted"));
             if (HasBridge) fixtures["bridge"].SetActive(Has(BridgeFlag));
+            string nextDoor = NextDoorId();
             foreach (var e in Room.exits)
-                fixtures["door:" + e.room].GetComponent<SpriteRenderer>().color = Gate(e) ? Color.cyan : Color.gray;
+                fixtures["door:" + e.room].GetComponent<SpriteRenderer>().color = !Gate(e) ? Color.gray :
+                    e.room == nextDoor ? Color.yellow : Color.cyan;
         }
         private bool Gate(StoryDoor door)
         {
+            if (door.room == "velvet_02_loom" && NeedsEntryWave) return false;
             if (door.gate == "courtEntry") return RepresentativeScript.CourtEntry(Record);
             if (door.gate == "settled") return FinaleEndingEvaluator.Evaluate(Record.finalBattleAttempt) != FinaleEnding.None;
             if (door.room == "court_04_tribunal" && !StageCatalog.Find("cassel").Unlocked(Record)) return false;
@@ -159,6 +163,7 @@ namespace RewindNotary
         }
         private void LateUpdate()
         {
+            if (shell.Playing) UpdateEntryWave();
             UpdateDistrictFixtures();
             FlushVictory();
             if (!shell.Playing || !HasBridge || Has(BridgeFlag) || !session.LastSaveSucceeded) return;
@@ -177,6 +182,13 @@ namespace RewindNotary
                 GUI.Label(new Rect(34, 92, 950, 34), Loc.Get("stage.finale_survival_locked"), style);
             else if (BenefactorTrialProgress.Has(Record, DistrictTrial ?? mikhailTrial, "unlocked"))
                 GUI.Label(new Rect(34, 92, 950, 34), BenefactorTrialProgress.Status(Record, DistrictTrial ?? mikhailTrial), style);
+            if (mikhailBout != null)
+            {
+                GUI.Box(new Rect(215, 138, 850, 78), "");
+                GUI.Label(new Rect(235, 144, 810, 36), Loc.Get("area.bout", Loc.Get("area.target.mikhail")) + "   " +
+                    opponent.Health.Current + " / " + opponent.Health.Maximum + "   " + mikhailBout.PatternLabel, style);
+                GameBootstrap.Bar(new Rect(235, 190, 810, 12), opponent.Health, new Color(.90f, .48f, .40f));
+            }
             DrawHandSignal();
             string hint = "";
             if (!session.LastSaveSucceeded) hint = session.StorageError;
@@ -194,6 +206,7 @@ namespace RewindNotary
                 else hint = Loc.Get(key, Loc.Get("area.target." + action[1])) + (p != null ? Arrow(p.x) : "");
             }
             else if (FightNeeded()) hint = Loc.Get("area.bout", Loc.Get("area.target.mikhail"));
+            else if (FirstDepartureHint() is string next) hint = next;
             else
             {
                 if (BellReady) hint += Loc.Get("area.travel", Loc.Get("area.target." + Benefactor + "_trial_bell")) + Arrow(Room.Point(Benefactor + "_trial_bell").x) + "    ";
@@ -208,6 +221,7 @@ namespace RewindNotary
                 if (HasBridge && !Has(BridgeFlag)) hint += Loc.Get("area.latch");
                 if (Room.id == "hub_attic" && Has("sixth_bowl_stamped")) hint += Loc.Get("area.sixth");
             }
+            if (mikhailBout != null || NeedsEntryWave) hint += "\n" + Loc.Get("input.gameplay");
             GUI.Box(new Rect(20, 534, 1240, 168), "");
             GUI.Label(new Rect(35, 545, 1200, 100), hint, style);
             GUI.Label(new Rect(35, 658, 1200, 36), Loc.Get("area.help"), style);
