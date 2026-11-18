@@ -65,7 +65,6 @@ namespace RewindNotary
         }
         internal bool RidingSurface(StorySurface surface) => surface.Moving &&
             surfaces[surface.id].IsTouching(player.GetComponent<Collider2D>());
-        internal CombatMotor2D ClockOpponent => opponent;
         internal WaveTarget2D ClockTargetOnTier => roomTargets.Find(t => !t.State.Cleared &&
             Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f);
         internal WaveTarget2D UnclearedClockTarget => roomTargets.Find(t => !t.State.Cleared);
@@ -83,7 +82,7 @@ namespace RewindNotary
                 return cleared;
             }
         }
-        internal CombatMotor2D BoutOpponent => mikhailBout == null ? null : opponent;
+        internal CombatMotor2D BoutOpponent => opponent.gameObject.activeSelf && FightNeeded() ? opponent : null;
         internal BenefactorTrialOpponent Bout => mikhailBout;
         internal string PendingAction => ReadyForAction ? ActionToken : null;
         internal bool OnReturnFloor => Safe && OnFixedFloor();

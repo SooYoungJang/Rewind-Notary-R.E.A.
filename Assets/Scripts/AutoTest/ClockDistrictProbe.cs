@@ -17,6 +17,8 @@ namespace RewindNotary
         public List<ClockContact> contacts = new List<ClockContact>();
         public List<string> liftRooms = new List<string>();
         public string firstPendulumTarget, stageTwoRoom, masteryRoom;
+        public string silverBoutWinFlag;
+        public int silverBoutEntryHP, silverBoutOpponentHP;
         public int stationUses, combatUses, slot;
         public bool slotReadback, synergyDoorUsed, closedBeforeInvestigation, closedAfterEscapementClear, immediateReturn, upperLanding, lowerLanding;
         public double outboundSeconds, liftSeconds, returnLiftSeconds;
@@ -177,6 +179,15 @@ namespace RewindNotary
             if (page != ShellPage.Playing || area == null || !GameInput.CanPlay)
             { bot.Drive(PlaytestStep.Velvet); return false; }
             if (area.Rea.Health.Dead) throw new InvalidOperationException("Clock first visit interrupted by death");
+            if (!onClock && area.BoutOpponent != null && area.ActiveRow?.effect == "defeat" &&
+                area.PendingAction?.StartsWith("win:", StringComparison.Ordinal) == true && string.IsNullOrEmpty(result.silverBoutWinFlag))
+            {
+                result.silverBoutWinFlag = area.ActiveRow.completionFlag;
+                result.silverBoutEntryHP = area.Rea.Health.Current;
+                result.silverBoutOpponentHP = area.BoutOpponent.Health.Current;
+                publish();
+            }
+            if (bot.TryDistrictHeal()) return false;
             bool investigated = bot.Record.storyFlags.Contains("investigation_complete");
             if (!onClock)
             {
@@ -191,8 +202,7 @@ namespace RewindNotary
                     }
                     if (room == "velvet_05_return" && bot.Record.Get(SkillRules.SilverStitch).acquired)
                     {
-                        var hub = Array.Find(area.Room.exits, d => d.room == "hub_lift");
-                        if (bot.MoveTo(hub.x) && area.OnReturnFloor && hub.InReach(area.Rea.Body.position)) keys.Tap(KeyCode.F);
+                        Door(bot, keys, "hub_lift");
                         return false;
                     }
                 }
@@ -209,12 +219,14 @@ namespace RewindNotary
             if (result.lowerLanding && room == Chain && result.contacts.Count == Route.Length)
             {
                 if (!result.synergyDoorUsed || !bot.Record.Get(SkillRules.SilverStitch).acquired || !investigated ||
+                    string.IsNullOrEmpty(result.silverBoutWinFlag) || !bot.Record.storyFlags.Contains(result.silverBoutWinFlag) ||
                     result.stageTwoRoom != Upper || result.masteryRoom != Lower)
-                    throw new InvalidOperationException("Missing synergy entrance or first-visit mastery");
+                    throw new InvalidOperationException("Missing synergy entrance, silver bout victory or first-visit mastery");
                 return true;
             }
             if (action == "use:return_call" || area.ActiveRow?.room == "*")
             { bot.Drive(PlaytestStep.SafeReturn); return false; }
+            if (area.BoutOpponent != null) { bot.FightBoss(); return false; }
             if (area.ActiveRow != null && action == null) return false;
             if ((room == Upper || room == Lower) && !bot.Record.firstTransferPending)
             {
@@ -229,7 +241,6 @@ namespace RewindNotary
                 { if (bot.ClockPosition(point.surface, point.x)) keys.Tap(KeyCode.F); }
                 else if (action.StartsWith("timed:", StringComparison.Ordinal) && point != null)
                     bot.ClockPosition(point.surface, point.x);
-                else if (action == "win:julius") bot.ClockBout();
                 else if (bot.ClockTarget != null) bot.ClockFight(bot.ClockTarget);
                 else if (action == "clear:wave") bot.ClockPosition("drum_floor", 36);
                 else if (action.StartsWith("advance:", StringComparison.Ordinal)) Door(bot, keys, area.ActiveRow.alternateRoom);

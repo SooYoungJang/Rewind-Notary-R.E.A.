@@ -8,6 +8,7 @@ import re
 from story_link_baseline import reverse_exact
 from validate_level_step1 import contains, digest, number
 from validate_fixed_surface_route import validate_fixed_surface_route
+from validate_story_bout import validate_story_bout
 
 SKILL = 'pendulum_rewind'
 # (archetype, count, finite segments, preparations per segment). P means a pendulum setup.
@@ -280,7 +281,7 @@ def replay_hall_latch(room, scripts, motion, handoff, skin=0, latch_index=0):
     aim_range = float(re.search(r'if \(range > ([.\d]+)f\) \{ Walk', scripts['FirstDepartureBot'])[1])
     _, delay, _, reach, width, height, *_ = map(float, re.search(
         r'new AttackSpec\(([^)]+)\)', motor)[1].replace('f', '').split(','))
-    old_band = float(re.search(r'private bool AtClockHeight\(.*?<= ([.\d]+)f', scripts['ClockTraversal'])[1])
+    old_band = .45  # The retired run-10 AtClockHeight handoff.
     guard_by_height = '!AtClockHeight(face)'
 
     held, in_jump, landed = True, True, False
@@ -328,7 +329,7 @@ def replay_hall_latch(room, scripts, motion, handoff, skin=0, latch_index=0):
 
 def validate_hall_regression(verify, room, scripts, motion):
     traversal = scripts['ClockTraversal']
-    fight = traversal.split('void ClockFight(')[1].split('private bool AtClockHeight')[0]
+    fight = traversal.split('void ClockFight(')[1].split('private float nextClockCast')[0]
     match = re.search(r'if \(([^{}\n]+)\)\s*\{\s*ClockPosition\(face, at\.x\);\s*return;\s*\}', fight)
     if not match and 'if (!ReachedCombatSurface(face, at.x)) return;' in fight:
         helper = traversal.split('bool ReachedCombatSurface(')[1].split('void ClockFight(')[0]
@@ -431,6 +432,7 @@ def validate_level_step3(check, project, scripts):
     latch = validate_hall_regression(verify, rooms['clock_02_pendulum'], scripts, motion)
     sword = next(s for s in read('Skills/catalog.json')['skills'] if s['skillId'] == 'basic_sword')
     sentry = validate_fixed_surface_route(verify, rs, scripts, motion, sword)
+    bout = validate_story_bout(verify, project, scripts, motion, sword)
     sets = {s['id']:s['layers'] for s in read('GameArt/backgrounds/room-sets.json')['sets']}
     routes,counts = {},{}
     for idx,(r,b,spec) in enumerate(zip(rs,old,FORMATIONS)):
@@ -529,4 +531,4 @@ def validate_level_step3(check, project, scripts):
         verify(all(t in code for t in tokens),src+' / clock runtime contracts')
         for t in tokens:
             mutant(t in code and not all(k in code.replace(t,'') for k in tokens),src+' / lost '+t)
-    return dict(hallLatch=latch,hallSentry=sentry,routes=routes,countsBeforeAfter=counts,mutations=len(mutants),detected=sum(mutants),unity_executed=False)
+    return dict(hallLatch=latch,hallSentry=sentry,storyBout=bout,routes=routes,countsBeforeAfter=counts,mutations=len(mutants),detected=sum(mutants),unity_executed=False)

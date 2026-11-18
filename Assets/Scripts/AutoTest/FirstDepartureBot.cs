@@ -96,7 +96,7 @@ namespace RewindNotary
             if (Area == null || !GameInput.CanPlay) return;
             if (Player.Health.Dead) { keys.Tap(KeyCode.R); return; }
             if (Time.time < jumpUntil) keys.Hold(KeyCode.Space);
-            if (Area.Bout != null)
+            if (Area.BoutOpponent != null)
             {
                 FightBoss();
                 return;
@@ -191,10 +191,6 @@ namespace RewindNotary
             }
             return true;
         }
-        private void Strike(float x)
-        {
-            if (Aim(x) && !Player.Attacking) keys.Tap(KeyCode.J);
-        }
         private void StrikeStoryPoint(float x)
         {
             if (Player.Attacking) return;
@@ -213,32 +209,72 @@ namespace RewindNotary
             }
             else Walk(x, 0f);
         }
+        // Longest sword recovery (.56s) plus the lead needed for a parry.
+        private const float SafeSwingLead = .65f;
+
+        private bool ReserveWaveParry(WaveTarget2D target)
+        {
+            if (target.StrikeIn <= .085f)
+            {
+                keys.Tap(KeyCode.L);
+                return true;
+            }
+            return Player.Health.Current * 2 <= Player.Health.Maximum && target.StrikeIn <= SafeSwingLead;
+        }
+
         private void FightTarget(WaveTarget2D target)
         {
             if (target.State.Cleared) return;
             bool aimed = Aim(target.transform.position.x);
-            if (target.StrikeIn <= .085f)
-            {
-                keys.Tap(KeyCode.L);
-                return;
-            }
+            if (ReserveWaveParry(target)) return;
             if (!aimed || Player.Attacking || target.State.LastSword?.Closed == false) return;
             if (target.State.Ready(Time.time)) keys.Tap(KeyCode.J);
             else if (target.State.NeedsSetup) keys.Cast();
         }
-        private void FightBoss()
+        // Down + support selects the grounded healing assist through the ordinary input map.
+        internal bool TryDistrictHeal()
         {
-            if (Area.Room.id == "velvet_04_arena" && Player.Body.position.y > 1)
-            { MoveTo(0); return; }
-            float strikeIn = Area.Bout.StrikeIn;
+            if (!Player.Grounded || Player.Health.Dead || Player.Health.Current == Player.Health.Maximum ||
+                !Session.Progression.Trials.OrdinaryCombat || Session.PreviewStage != 0) return false;
+            var skill = GameInput.ResolveSkill(Vector2.down, Player.Facing, Player.Grounded);
+            var assist = BenefactorTrialCatalog.Load().ForSkill(skill);
+            if (assist?.support.effect != "heal" || !BenefactorTrialProgress.Has(Record, assist, "charged") ||
+                Player.Health.Maximum - Player.Health.Current < assist.support.heal) return false;
+            keys.Hold(KeyCode.DownArrow);
+            keys.Tap(KeyCode.H);
+            return true;
+        }
+
+        internal void FightBoss()
+        {
+            var foe = Area.BoutOpponent;
+            float strikeIn = Area.Bout?.StrikeIn ?? float.PositiveInfinity;
+            // An incoming attack can reach us on a low plank or in mid-jump.
             if (strikeIn <= .09f)
             {
                 keys.Tap(KeyCode.L);
                 return;
             }
-            float x = Area.BoutOpponent.Body.position.x;
-            if (strikeIn <= .38f) { Aim(x); return; }
-            Strike(x);
+            var at = foe.Body.position;
+            var feet = Player.Body.position;
+            if (stepFrom >= 0 || (Player.Grounded && Mathf.Abs(feet.y - at.y) > 1.25f))
+            {
+                var support = FixedFaceAt(at.x, at.y);
+                if (support != null && !ReachedCombatSurface(support, at.x)) return;
+            }
+            float dx = at.x - feet.x;
+            const float swordRange = 1.75f; // Tip of the first swing, measured from Rea's feet.
+            if (Mathf.Abs(dx) > swordRange) { Walk(at.x, swordRange); return; }
+            if (Mathf.Abs(dx) > .06f && dx * Player.Facing < 0)
+            {
+                keys.Hold(dx < 0 ? KeyCode.A : KeyCode.D);
+                return;
+            }
+            // Let a hop clear the lip and settle before committing the next swing.
+            // Preserve enough of the telegraph to finish the swing and open a parry.
+            if (Player.Grounded && Mathf.Abs(feet.y - at.y) <= 1.25f && strikeIn > SafeSwingLead &&
+                !Player.Attacking && !Player.Stunned && !Player.Defense.BlocksActions)
+                keys.Tap(KeyCode.J);
         }
 
         internal WorldState Snapshot()

@@ -95,6 +95,7 @@ namespace RewindNotary
             if (bot.Session != null && bot.Session.ActiveSlot != 2)
                 throw new InvalidOperationException("District probe left its independent slot");
             var area = bot.Area;
+            if (area != null && page == ShellPage.Playing && GameInput.CanPlay && bot.TryDistrictHeal()) return false;
             string room = area?.Room.id;
             if (room != previousRoom) roomEntered = now;
             if (start == 0 && room == Entry) start = last = previous = now;

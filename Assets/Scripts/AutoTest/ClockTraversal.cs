@@ -172,7 +172,7 @@ namespace RewindNotary
             if (!ReachedCombatSurface(face, at.x)) return;
             if (target.State.NeedsSetup && !target.State.Ready(Time.time))
             {
-                if (target.StrikeIn <= .085f) { keys.Tap(KeyCode.L); return; }
+                if (ReserveWaveParry(target)) return;
                 // Hit a finite joint from outside its body and recall before the sword cut.
                 var ledge = face.rect;
                 int side = at.x - ledge.x < 3 ? -1 : ledge.x + ledge.width - at.x < 3 ? 1 :
@@ -181,8 +181,6 @@ namespace RewindNotary
             }
             else FightTarget(target);
         }
-
-        private bool AtClockHeight(string face) => Mathf.Abs(Player.Body.position.y - Area.Room.SurfaceTop(face)) <= .45f;
         private float nextClockCast;
         internal void ObserveClockCast(UseContext use)
         {
@@ -218,10 +216,5 @@ namespace RewindNotary
             return positioned && Area.OnReturnFloor && door.InReach(Player.Body.position);
         }
 
-        internal void ClockBout()
-        {
-            if (!AtClockHeight("drum_floor")) { ClockPosition("drum_floor", 17); return; }
-            Strike(Area.ClockOpponent.Body.position.x);
-        }
     }
 }

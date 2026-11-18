@@ -194,12 +194,14 @@ namespace RewindNotary
             var area = bot.Area;
             var player = area?.Rea;
             var target = area?.DistrictWaveTarget;
+            var foe = area?.BoutOpponent;
             var feet = player == null ? "-" : player.Body.position.ToString("F2");
             int remaining = area == null ? 0 : area.WaveTargetCount - area.ClearedWaveTargets;
             string support = clock != null && area != null ? " support=" + area.ClockSupportDescription() : "";
             return $"{step.id} elapsed={now - entered:F1}s idle={now - lastDistrictProgress:F1}s room={area?.Room?.id ?? "-"} " +
                 $"feet={feet} grounded={player?.Grounded} row={area?.ActiveRow?.textKey ?? "-"} action={area?.PendingAction ?? "-"} " +
-                $"remainingTargets={remaining} waveTarget={target?.TargetId ?? "-"} segments={target?.State.Remaining ?? 0} contacts={DistrictContacts}" + support;
+                $"remainingTargets={remaining} waveTarget={target?.TargetId ?? "-"} segments={target?.State.Remaining ?? 0} contacts={DistrictContacts}" + support +
+                $" hp={player?.Health.Current}/{player?.Health.Maximum} bossHp={foe?.Health.Current}/{foe?.Health.Maximum} bossFeet={foe?.Body.position.ToString("F2") ?? "-"}";
         }
 
         private void ObserveSession()
@@ -234,7 +236,12 @@ namespace RewindNotary
             observed = null;
             health = null;
         }
-        private void Damaged(Vector2 _) { step.hits++; pilot.ObserveHit(bot.Area.Rea, report.pilot); }
+        private void Damaged(Vector2 _)
+        {
+            step.hits++;
+            pilot.ObserveHit(bot.Area.Rea, report.pilot);
+            if (clock != null || district != null) Debug.Log("AUTOTEST district hit " + DistrictState(AutoTestRuntime.Now));
+        }
         private void AttackAccepted() { report.attackInputs.accepted++; }
         private void Died() { step.deaths++; }
         private void UseBegan(UseContext use)
