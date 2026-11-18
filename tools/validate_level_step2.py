@@ -337,7 +337,7 @@ def validate_level_step2(check, project, scripts):
          'i < Room.singleSeams ? .9f : 2.2f'),
         ('StitchSurface2D','span > profile.maxSpan','PlayerOnFloor() && player.Grounded',
          'floor.IsTouching(player.GetComponent<Collider2D>())','TargetId + ":support"'),
-        ('AutoTestDriver','if (++index == report.steps.Count) { BeginDistrict();','bot = new FirstDepartureBot(keyboard);',
+        ('AutoTestDriver','if (++index == report.steps.Count) { BeginDistrict();','bot = new FirstDepartureBot(keyboard, Stop);',
          'if (now - lastProgress > 18)', 'if (district.Drive(bot, keyboard, now))'),
         ('VelvetDistrictProbe','bot.Session?.ActiveSlot == 2','area.StandingOn(mark.surface)',
          'Mathf.Abs(area.Rea.Body.position.x - mark.x) > .8f','scene_floor:velvet:', 'now - last',

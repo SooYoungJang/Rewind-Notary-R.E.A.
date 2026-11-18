@@ -29,10 +29,17 @@ namespace RewindNotary
         private GameObject Block(string id, float x, float y, float width, float height, Color color, bool solid = false)
         {
             var go = Place(id, x, y);
-            var visual = go.AddComponent<SpriteRenderer>();
-            visual.sprite = square; visual.color = color;
             bool woven = Room.stage == "velvet" && Room.terrain != null && Room.terrain.Length > 0;
             bool machined = Room.stage == "clock" && Room.terrain != null;
+            var art = go;
+            if (machined && solid)
+            {
+                // Keep the 1.6-unit brass tile off the object that owns the authored box.
+                art = new GameObject("Brass") { layer = LevelBuilder.GroundLayer };
+                art.transform.SetParent(go.transform, false);
+            }
+            var visual = art.AddComponent<SpriteRenderer>();
+            visual.sprite = square; visual.color = color;
             if (woven || machined)
             {
                 visual.sprite = machined ? BrassSprite() : WeaveSprite();
@@ -44,6 +51,7 @@ namespace RewindNotary
             {
                 go.layer = LevelBuilder.GroundLayer;
                 var box = go.AddComponent<BoxCollider2D>();
+                if (machined) box.autoTiling = false;
                 if (woven || machined) box.size = new Vector2(width, height);
                 fixedFloors.Add(box);
             }

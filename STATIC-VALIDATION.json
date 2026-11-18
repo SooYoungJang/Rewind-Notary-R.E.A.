@@ -1,5 +1,5 @@
 {
-  "passed": 7840,
+  "passed": 7859,
   "errors": [],
   "warnings": [
     "Clock step 3: fixed routes, first-visit supply and gate conditions checked statically. Third-slot contacts, timed recall and lift trips require Unity.",
@@ -7452,7 +7452,7 @@
     "Level step 2: mutation detected / StitchSurface2D / TargetId + \":support\"",
     "Level step 2: AutoTestDriver / if (++index == report.steps.Count) { BeginDistrict();",
     "Level step 2: mutation detected / AutoTestDriver / if (++index == report.steps.Count) { BeginDistrict();",
-    "Level step 2: mutation detected / AutoTestDriver / bot = new FirstDepartureBot(keyboard);",
+    "Level step 2: mutation detected / AutoTestDriver / bot = new FirstDepartureBot(keyboard, Stop);",
     "Level step 2: mutation detected / AutoTestDriver / if (now - lastProgress > 18)",
     "Level step 2: mutation detected / AutoTestDriver / if (district.Drive(bot, keyboard, now))",
     "Level step 2: VelvetDistrictProbe / bot.Session?.ActiveSlot == 2",
@@ -7560,8 +7560,27 @@
     "Level step 3: horizontal gap / accept the short air-steered jump and reject the long one",
     "Level step 3: horizontal gap / a solid wall obstructs the otherwise reachable jump",
     "Level step 3: descent / an intervening shelf prevents a direct edge to the lower floor",
+    "Level step 3: clock_03_counterflow / reconstructed collider agrees with run 13 on both sides of idler",
+    "Level step 3: clock_04_escapement / reconstructed collider agrees with run 13 on both sides of drum_floor",
+    "Level step 3: clock_07_return_upper / reconstructed collider agrees with run 13 on both sides of turn_0",
+    "Level step 3: run 13 / brass tile pitch belongs to the visual child and the unscaled root owns the sized collider",
+    "Level step 3: run 13 / ramp length and timed plank colour still address the brass renderer",
+    "Level step 3: run 13 / a disconnected graph synchronously records the active probe failure and partial state",
     "Level step 3: clock_07_return_upper / no walk-off behind solid end walls at 1.6x width",
+    "Level step 3: clock_07_return_upper / every outgoing station tier seals the full lane with no carrier, ramp, kick post or extra plank",
+    "Level step 3: clock_07_return_upper / run 13 blocked, authored boxes reachable on foot / turn_0 -> turn_1",
+    "Level step 3: clock_07_return_upper / run 13 blocked, authored boxes reachable on foot / turn_1 -> turn_2",
+    "Level step 3: clock_07_return_upper / run 13 blocked, authored boxes reachable on foot / turn_2 -> turn_3",
+    "Level step 3: clock_07_return_upper / run 13 blocked, authored boxes reachable on foot / turn_3 -> turn_4",
+    "Level step 3: clock_07_return_upper / run 13 blocked, authored boxes reachable on foot / turn_4 -> turn_5",
+    "Level step 3: clock_07_return_upper / run 13 blocked, authored boxes reachable on foot / turn_5 -> drum_floor",
     "Level step 3: clock_08_return_lower / no walk-off behind solid end walls at 1.6x width",
+    "Level step 3: clock_08_return_lower / every outgoing station tier seals the full lane with no carrier, ramp, kick post or extra plank",
+    "Level step 3: clock_08_return_lower / run 13 blocked, authored boxes reachable on foot / lower_gallery_0 -> lower_gallery_1",
+    "Level step 3: clock_08_return_lower / run 13 blocked, authored boxes reachable on foot / lower_gallery_1 -> lower_gallery_2",
+    "Level step 3: clock_08_return_lower / run 13 blocked, authored boxes reachable on foot / lower_gallery_2 -> lower_gallery_3",
+    "Level step 3: clock_08_return_lower / run 13 blocked, authored boxes reachable on foot / lower_gallery_3 -> lower_gallery_4",
+    "Level step 3: clock_08_return_lower / run 13 blocked, authored boxes reachable on foot / lower_gallery_4 -> drum_floor",
     "Level step 3: clock_01_entry / ordinary ascent and exposed descent lips on every fixed tier",
     "Level step 3: clock_01_entry / supported marks, camera, fall line, door volumes and destinations",
     "Level step 3: clock_01_entry / every instance binds its authored segments, setup, zone and position",
@@ -16278,6 +16297,387 @@
           60,
           110
         ]
+      },
+      "run13ReturnDescents": {
+        "clock_07_return_upper": {
+          "wallLimitedX": [
+            -3.37,
+            45.37
+          ],
+          "beforeStationDescents": 0,
+          "afterStationDescents": 6,
+          "afterPairs": [
+            156,
+            156
+          ],
+          "paths": [
+            {
+              "start": "turn_0",
+              "goal": "turn_1",
+              "steps": [
+                {
+                  "support": "pawl_0",
+                  "lipX": 37,
+                  "aimX": 38.45,
+                  "walkOff": 1
+                },
+                {
+                  "support": "turn_1",
+                  "lipX": 34,
+                  "aimX": 32.55,
+                  "walkOff": -1
+                }
+              ],
+              "startX": 34.159915924072266,
+              "landings": [
+                {
+                  "surface": "pawl_0",
+                  "x": 38.814,
+                  "top": 37.95,
+                  "seconds": 0.84
+                },
+                {
+                  "surface": "turn_1",
+                  "x": 32.098,
+                  "top": 36.3,
+                  "seconds": 1.98
+                }
+              ]
+            },
+            {
+              "start": "turn_1",
+              "goal": "turn_2",
+              "steps": [
+                {
+                  "support": "pawl_1",
+                  "lipX": 5,
+                  "aimX": 3.55,
+                  "walkOff": -1
+                },
+                {
+                  "support": "turn_2",
+                  "lipX": 9,
+                  "aimX": 10.45,
+                  "walkOff": 1
+                }
+              ],
+              "startX": 8.0,
+              "landings": [
+                {
+                  "surface": "pawl_1",
+                  "x": 3.104,
+                  "top": 34.65,
+                  "seconds": 0.86
+                },
+                {
+                  "surface": "turn_2",
+                  "x": 10.86,
+                  "top": 33.0,
+                  "seconds": 2.16
+                }
+              ]
+            },
+            {
+              "start": "turn_2",
+              "goal": "turn_3",
+              "steps": [
+                {
+                  "support": "pawl_2",
+                  "lipX": 37,
+                  "aimX": 38.45,
+                  "walkOff": 1
+                },
+                {
+                  "support": "turn_3",
+                  "lipX": 34,
+                  "aimX": 32.55,
+                  "walkOff": -1
+                }
+              ],
+              "startX": 34.5,
+              "landings": [
+                {
+                  "surface": "pawl_2",
+                  "x": 38.876,
+                  "top": 31.35,
+                  "seconds": 0.78
+                },
+                {
+                  "surface": "turn_3",
+                  "x": 32.16,
+                  "top": 29.7,
+                  "seconds": 1.92
+                }
+              ]
+            },
+            {
+              "start": "turn_3",
+              "goal": "turn_4",
+              "steps": [
+                {
+                  "support": "pawl_3",
+                  "lipX": 5,
+                  "aimX": 3.55,
+                  "walkOff": -1
+                },
+                {
+                  "support": "turn_4",
+                  "lipX": 9,
+                  "aimX": 10.45,
+                  "walkOff": 1
+                }
+              ],
+              "startX": 8.0,
+              "landings": [
+                {
+                  "surface": "pawl_3",
+                  "x": 3.104,
+                  "top": 28.05,
+                  "seconds": 0.86
+                },
+                {
+                  "surface": "turn_4",
+                  "x": 10.86,
+                  "top": 26.4,
+                  "seconds": 2.16
+                }
+              ]
+            },
+            {
+              "start": "turn_4",
+              "goal": "turn_5",
+              "steps": [
+                {
+                  "support": "pawl_4",
+                  "lipX": 37,
+                  "aimX": 38.45,
+                  "walkOff": 1
+                },
+                {
+                  "support": "turn_5",
+                  "lipX": 34,
+                  "aimX": 32.55,
+                  "walkOff": -1
+                }
+              ],
+              "startX": 34.5,
+              "landings": [
+                {
+                  "surface": "pawl_4",
+                  "x": 38.876,
+                  "top": 24.75,
+                  "seconds": 0.78
+                },
+                {
+                  "surface": "turn_5",
+                  "x": 32.16,
+                  "top": 23.1,
+                  "seconds": 1.92
+                }
+              ]
+            },
+            {
+              "start": "turn_5",
+              "goal": "drum_floor",
+              "steps": [
+                {
+                  "support": "drum_floor",
+                  "lipX": 42,
+                  "aimX": 43.45,
+                  "walkOff": 1
+                }
+              ],
+              "startX": 8.0,
+              "landings": [
+                {
+                  "surface": "drum_floor",
+                  "x": 43.386,
+                  "top": 19.8,
+                  "seconds": 5.76
+                }
+              ]
+            }
+          ]
+        },
+        "clock_08_return_lower": {
+          "wallLimitedX": [
+            -3.37,
+            45.37
+          ],
+          "beforeStationDescents": 0,
+          "afterStationDescents": 5,
+          "afterPairs": [
+            110,
+            110
+          ],
+          "paths": [
+            {
+              "start": "lower_gallery_0",
+              "goal": "lower_gallery_1",
+              "steps": [
+                {
+                  "support": "lower_pawl_0",
+                  "lipX": 7,
+                  "aimX": 5.55,
+                  "walkOff": -1
+                },
+                {
+                  "support": "lower_gallery_1",
+                  "lipX": 12,
+                  "aimX": 13.45,
+                  "walkOff": 1
+                }
+              ],
+              "startX": 9.7,
+              "landings": [
+                {
+                  "surface": "lower_pawl_0",
+                  "x": 5.224,
+                  "top": 17.82,
+                  "seconds": 0.84
+                },
+                {
+                  "surface": "lower_gallery_1",
+                  "x": 13.853,
+                  "top": 15.84,
+                  "seconds": 2.3
+                }
+              ]
+            },
+            {
+              "start": "lower_gallery_1",
+              "goal": "lower_gallery_2",
+              "steps": [
+                {
+                  "support": "lower_pawl_1",
+                  "lipX": 40,
+                  "aimX": 41.45,
+                  "walkOff": 1
+                },
+                {
+                  "support": "lower_gallery_2",
+                  "lipX": 35,
+                  "aimX": 33.55,
+                  "walkOff": -1
+                }
+              ],
+              "startX": 36.1,
+              "landings": [
+                {
+                  "surface": "lower_pawl_1",
+                  "x": 41.869,
+                  "top": 13.86,
+                  "seconds": 1.02
+                },
+                {
+                  "surface": "lower_gallery_2",
+                  "x": 33.233,
+                  "top": 11.88,
+                  "seconds": 2.5
+                }
+              ]
+            },
+            {
+              "start": "lower_gallery_2",
+              "goal": "lower_gallery_3",
+              "steps": [
+                {
+                  "support": "lower_pawl_2",
+                  "lipX": 7,
+                  "aimX": 5.55,
+                  "walkOff": -1
+                },
+                {
+                  "support": "lower_gallery_3",
+                  "lipX": 12,
+                  "aimX": 13.45,
+                  "walkOff": 1
+                }
+              ],
+              "startX": 9.7,
+              "landings": [
+                {
+                  "surface": "lower_pawl_2",
+                  "x": 5.224,
+                  "top": 9.9,
+                  "seconds": 0.84
+                },
+                {
+                  "surface": "lower_gallery_3",
+                  "x": 13.853,
+                  "top": 7.92,
+                  "seconds": 2.3
+                }
+              ]
+            },
+            {
+              "start": "lower_gallery_3",
+              "goal": "lower_gallery_4",
+              "steps": [
+                {
+                  "support": "lower_pawl_3",
+                  "lipX": 40,
+                  "aimX": 41.45,
+                  "walkOff": 1
+                },
+                {
+                  "support": "lower_gallery_4",
+                  "lipX": 35,
+                  "aimX": 33.55,
+                  "walkOff": -1
+                }
+              ],
+              "startX": 36.1,
+              "landings": [
+                {
+                  "surface": "lower_pawl_3",
+                  "x": 41.869,
+                  "top": 5.94,
+                  "seconds": 1.02
+                },
+                {
+                  "surface": "lower_gallery_4",
+                  "x": 33.233,
+                  "top": 3.96,
+                  "seconds": 2.5
+                }
+              ]
+            },
+            {
+              "start": "lower_gallery_4",
+              "goal": "drum_floor",
+              "steps": [
+                {
+                  "support": "lower_pawl_4",
+                  "lipX": 7,
+                  "aimX": 5.55,
+                  "walkOff": -1
+                },
+                {
+                  "support": "drum_floor",
+                  "lipX": 0,
+                  "aimX": -1.45,
+                  "walkOff": -1
+                }
+              ],
+              "startX": 9.7,
+              "landings": [
+                {
+                  "surface": "lower_pawl_4",
+                  "x": 5.224,
+                  "top": 1.98,
+                  "seconds": 0.84
+                },
+                {
+                  "surface": "drum_floor",
+                  "x": -1.845,
+                  "top": 0.0,
+                  "seconds": 2.06
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "routes": {

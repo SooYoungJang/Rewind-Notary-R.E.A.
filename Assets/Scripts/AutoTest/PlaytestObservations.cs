@@ -36,7 +36,13 @@ namespace RewindNotary
             {
                 var b = box.bounds;
                 if (box.IsTouching(actor) && Mathf.Abs(actor.bounds.min.y - b.max.y) <= .12f)
-                    return $"{box.name}[{b.min.x:F2},{b.max.x:F2}]@{b.max.y:F2}";
+                {
+                    var shape = (BoxCollider2D)box;
+                    var rect = Room.Surface(box.name).rect;
+                    return $"{box.name}[{b.min.x:F2},{b.max.x:F2}]@{b.max.y:F2}" +
+                        $" authoredWidth={rect.width:F2} boxLocalWidth={shape.size.x:F2}" +
+                        $" worldScaleX={box.transform.lossyScale.x:F2} autoTiling={shape.autoTiling}";
+                }
             }
             return "-";
         }

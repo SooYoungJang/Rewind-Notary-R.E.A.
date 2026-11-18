@@ -238,15 +238,16 @@ def validate_probe_doors(verify, hub, links, clock_rooms, scripts):
             verify(face in deck and contains(door['approach'], door['x'], deck[face][2] + .05),
                    'clock door resolves a reachable fixed tier / ' + room['id'] + ' -> ' + door['room'])
 
-    verify(re.search(r'else\s+positioned = ClockPosition\(FaceAt\(door.x, box.y \+ box.height \* \.5f\)(?:\.id)?, door.x\);', method) and method.count('return ') == 1 and
+    verify('else positioned = TryFaceAt(door.x, box.y + box.height * .5f, out var face) && ClockPosition(face.id, door.x);'
+           in ' '.join(method.split()) and method.count('return ') == 1 and
            'return positioned && Area.OnReturnFloor && door.InReach(Player.Body.position);' in method,
            'both approaches require position, safe fixed ground and the live door reach check')
     legacy_lookup = ('room.terrain == null ? null : Array.Find(room.terrain,' in traversal and
                      'room.terrain == null ? -1 : Array.FindIndex(room.terrain,' in traversal)
     observed_lookup = ('Room.terrain ?? System.Array.Empty<StorySurface>()' in scripts['PlaytestObservations'] and
                        'terrain = Area.ProbeTerrain();' in traversal and 'Array.FindIndex(terrain, s => s.id == face)' in traversal)
-    verify((legacy_lookup or observed_lookup) and 'if (face == null) throw new InvalidOperationException' in traversal and
-           'if (goal < 0) throw new InvalidOperationException' in traversal,
+    verify((legacy_lookup or observed_lookup) and 'if (face == null) return FailRoute("Unsupported position "' in traversal and
+           'if (goal < 0) return FailRoute("Missing fixed face "' in traversal,
            'explicit clock combat and waypoint targets fail with context when their terrain is missing')
     probe = ' '.join(scripts['ClockDistrictProbe'].split())
     verify('if (room == "hub_lift" && !investigated && area.ActiveRow == null) { Door(bot, keys, Entry);' in probe and

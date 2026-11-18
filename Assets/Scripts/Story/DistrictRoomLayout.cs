@@ -209,7 +209,7 @@ namespace RewindNotary
             if (ActionToken.StartsWith("timed:", StringComparison.Ordinal))
             {
                 bool open = ReturnWindowOpen;
-                fixtures[ActionToken.Substring(6)].GetComponent<SpriteRenderer>().color = open ? Color.cyan : Color.gray;
+                fixtures[ActionToken.Substring(6)].GetComponentInChildren<SpriteRenderer>().color = open ? Color.cyan : Color.gray;
                 if (fixtures.TryGetValue("shutter", out var shutter))
                     shutter.transform.position = new Vector2(28, Room.SurfaceTop("drum_floor") + (open ? 3.4f : 1.2f));
             }

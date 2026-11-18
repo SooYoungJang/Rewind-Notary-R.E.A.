@@ -20,6 +20,7 @@ namespace RewindNotary
         };
         internal static readonly int[] Limits = { 45, 100, 240, 180, 45, 600, 180, 150, 45 };
         private readonly BotKeyboard keys;
+        private readonly Action<string> stop;
         internal GameBootstrap Game { get; private set; }
         internal GameShell Shell { get; private set; }
         internal RepresentativeArea Area => Game == null ? null : Game.Area;
@@ -30,7 +31,11 @@ namespace RewindNotary
         private float jumpUntil;
         private readonly int clockIndex = Array.FindIndex(StageCatalog.All, s => s.Id == "clock");
 
-        internal FirstDepartureBot(BotKeyboard keyboard) { keys = keyboard; }
+        internal FirstDepartureBot(BotKeyboard keyboard, Action<string> stop)
+        {
+            keys = keyboard;
+            this.stop = stop;
+        }
         internal void Locate()
         {
             if (Game == null) Game = UnityEngine.Object.FindFirstObjectByType<GameBootstrap>();

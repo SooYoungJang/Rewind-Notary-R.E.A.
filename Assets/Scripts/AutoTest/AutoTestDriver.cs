@@ -36,7 +36,7 @@ namespace RewindNotary
         {
             report = AutoTestRuntime.Report;
             if (report == null) { enabled = false; return; }
-            bot = new FirstDepartureBot(keyboard);
+            bot = new FirstDepartureBot(keyboard, Stop);
             feel = gameObject.AddComponent<FeelProbe>();
             pilot = new PilotProbe(CapturePilot);
             GameInputDevice.Source = keyboard;
@@ -81,7 +81,7 @@ namespace RewindNotary
                         EndStep("pass", "");
                         Detach();
                         district = null;
-                        bot = new FirstDepartureBot(keyboard);
+                        bot = new FirstDepartureBot(keyboard, Stop);
                         clock = new ClockDistrictProbe(report.clockDistrict, () => report.Write(AutoTestRuntime.DirectoryPath));
                         step = report.clockDistrict.run;
                         StartMeasurement();
@@ -121,7 +121,7 @@ namespace RewindNotary
         private void BeginDistrict()
         {
             Detach();
-            bot = new FirstDepartureBot(keyboard);
+            bot = new FirstDepartureBot(keyboard, Stop);
             district = new VelvetDistrictProbe(report.velvetDistrict, () => report.Write(AutoTestRuntime.DirectoryPath));
             step = report.velvetDistrict.run;
             StartMeasurement();

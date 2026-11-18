@@ -1,4 +1,4 @@
-"""Independent fixed-tick oracle for layered probe navigation and the run-11 contact."""
+"""Fixed-tick checks for clock traversal, including the run-11 and run-13 contacts."""
 from collections import deque
 from dataclasses import dataclass, replace
 import re
@@ -44,18 +44,29 @@ def steer(vx, dx, physics):
     return vx + max(-rate, min(rate, goal - vx))
 
 
-def can_land(deck, start, end, launch, land, direction, physics):
+def simulate_landing(deck, start, end, launch, land, direction, physics, walk_from=None):
     jump, gravity, dt, speed, _, _, radius, height, tolerance = physics
     x, y = launch + direction * radius, start.top
     vx, vy = direction * speed, 0 if direction else jump
     west, east = walk_limits(deck, radius)
     if not west <= launch <= east:
-        return False
+        return None
+    ticks = 0
+    if walk_from is not None:
+        if not direction or not start.left <= walk_from <= start.right:
+            return None
+        x = walk_from
+        while start.left - radius < x < start.right + radius:
+            ticks += 1
+            x += vx * dt
+            if not west <= x <= east:
+                return None
     while True:
+        ticks += 1
         vx = steer(vx, land - x, physics)
         x += vx * dt
         if not west <= x <= east:
-            return False
+            return None
         prev = y
         vy = max(vy, -18) - gravity * dt
         y += vy * dt
@@ -67,11 +78,13 @@ def can_land(deck, start, end, launch, land, direction, physics):
                 if caught is None or f.top > caught.top:
                     caught = f
             elif not f.one_way and y < f.top and y + height > f.bottom:
-                return False
+                return None
         if caught:
-            return caught == end and end.left + tolerance < x < end.right - tolerance
+            if caught == end and end.left + tolerance < x < end.right - tolerance:
+                return x, ticks
+            return None
         if vy <= 0 and y < end.top:
-            return False
+            return None
 
 
 def link(deck, a, b, physics):
@@ -85,33 +98,157 @@ def link(deck, a, b, physics):
     lo, hi = max(a.left + inset, land_left), min(a.right - inset, land_right)
     if b.top > a.top and b.one_way and lo <= hi:
         for x in ((lo + hi) / 2, lo, hi):
-            if can_land(deck, a, b, x, x, 0, physics):
+            if simulate_landing(deck, a, b, x, x, 0, physics):
                 return (x, x, 0)
     for direction, lip in ((-1, a.left), (1, a.right)):
         land = max(land_left, min(land_right, lip + direction * (1 + inset)))
         if (land - lip) * direction <= inset:
             continue
-        if b.top < a.top and can_land(deck, a, b, lip, land, direction, physics):
+        if b.top < a.top and simulate_landing(deck, a, b, lip, land, direction, physics):
             return (lip, land, direction)
         launch = lip - direction * inset
-        if can_land(deck, a, b, launch, land, 0, physics):
+        if simulate_landing(deck, a, b, launch, land, 0, physics):
             return (launch, land, 0)
     return None
 
 
-def connected_pairs(deck, physics):
+def fixed_edges(deck, physics):
     nodes = [f for f in deck if not f.wall]
-    edges = {a: [b for b in nodes if link(deck, a, b, physics)] for a in nodes}
-    pairs = 0
-    for a in nodes:
-        seen, todo = {a}, deque([a])
-        while todo:
-            for b in edges[todo.popleft()]:
-                if b not in seen:
-                    seen.add(b)
-                    todo.append(b)
-        pairs += len(seen) - 1
-    return pairs, len(nodes) * (len(nodes) - 1)
+    return {a: [b for b in sorted(nodes, key=lambda f: abs(f.top - a.top)) if link(deck, a, b, physics)]
+            for a in nodes}
+
+
+def paths_from(edges, start):
+    parents, todo = {start: None}, deque([start])
+    while todo:
+        a = todo.popleft()
+        for b in edges[a]:
+            if b not in parents:
+                parents[b] = a
+                todo.append(b)
+    return parents
+
+
+def connected_pairs(deck, physics):
+    edges = fixed_edges(deck, physics)
+    return sum(len(paths_from(edges, a)) - 1 for a in edges), len(edges) * (len(edges) - 1)
+
+
+def scaled_face(face, scale):
+    dx = (face.right - face.left) * (scale - 1) / 2
+    dy = (face.top - face.bottom) * (scale - 1) / 2
+    return replace(face, left=face.left - dx, right=face.right + dx, bottom=face.bottom - dy, top=face.top + dy)
+
+
+def return_paths(room, deck, physics):
+    """Find a route for each change of storey in station order."""
+    tiers = list(dict.fromkeys(m['surface'] for m in room['stationMarks']))
+    by_id = {f.name: f for f in deck}
+    edges = fixed_edges(deck, physics)
+    paths = []
+    for upper, lower in zip(tiers, tiers[1:]):
+        start, goal = by_id[upper], by_id[lower]
+        parents = paths_from(edges, start)
+        path = []
+        if goal in parents:
+            at = goal
+            while at != start:
+                prev = parents[at]
+                lip, aim, direction = link(deck, prev, at, physics)
+                path.append(dict(support=at.name, lipX=lip, aimX=aim, walkOff=direction))
+                at = prev
+        paths.append(dict(start=upper, goal=lower, steps=path[::-1]))
+    return paths
+
+
+def replay_descent(deck, path, start_x, physics):
+    by_id = {f.name: f for f in deck}
+    support, x, ticks = by_id[path['start']], start_x, 0
+    contacts = []
+    for step in path['steps']:
+        goal = by_id[step['support']]
+        landing = simulate_landing(deck, support, goal, step['lipX'], step['aimX'], step['walkOff'], physics, x)
+        if landing is None:
+            break
+        x, elapsed = landing
+        ticks += elapsed
+        contacts.append(dict(surface=goal.name, x=round(x, 3), top=goal.top, seconds=round(ticks * physics[2], 2)))
+        support = goal
+    return contacts
+
+
+def validate_return_descent(verify, rooms, scripts, physics):
+    # These are Collider2D.bounds from run 13 (not renderer widths).
+    measured_scale = 1.6
+    for room, face, left, right in ((rooms[2], 'idler', 21.8, 44.2), (rooms[3], 'drum_floor', -17.7, 60.7),
+                                    (rooms[6], 'turn_0', -8.5, 47.5)):
+        grown = scaled_face(next(f for f in room_faces(room) if f.name == face), measured_scale)
+        verify((round(grown.left, 2), round(grown.right, 2)) == (left, right),
+               room['id'] + ' / reconstructed collider agrees with run 13 on both sides of ' + face)
+
+    block = scripts['RepresentativeRoomLayout'].split('private GameObject Block(')[1].split('return go;')[0]
+    block = ' '.join(re.sub(r'//[^\n]*', '', block).split())
+    own_box = all(part in block for part in (
+        'if (machined && solid) { art = new GameObject("Brass") { layer = LevelBuilder.GroundLayer }; art.transform.SetParent(go.transform, false); }',
+        'var visual = art.AddComponent<SpriteRenderer>();', 'visual.size = new Vector2(width, height);',
+        'if (!woven && !machined) go.transform.localScale = new Vector3(width, height, 1);',
+        'var box = go.AddComponent<BoxCollider2D>(); if (machined) box.autoTiling = false;',
+        'if (woven || machined) box.size = new Vector2(width, height);'))
+    verify(own_box and 'plate.width / 1.6f' in scripts['StoryTerrain'] and
+           'machined = Room.stage == "clock" && Room.terrain != null;' in block,
+           'run 13 / brass tile pitch belongs to the visual child and the unscaled root owns the sized collider')
+    verify('go.GetComponentInChildren<SpriteRenderer>().size = box.size;' in scripts['StoryTerrain'] and
+           'fixtures[ActionToken.Substring(6)].GetComponentInChildren<SpriteRenderer>().color' in scripts['DistrictRoomLayout'],
+           'run 13 / ramp length and timed plank colour still address the brass renderer')
+    traversal = ' '.join(scripts['ClockTraversal'].split())
+    driver = scripts['AutoTestDriver']
+    verify('if (!route.Next(here, goal, out step)) return FailRoute("No fixed route in " + room.id + " from " + terrain[here].id + " to " + face);' in traversal and
+           'bool FailRoute(string reason) { stop(reason); return false; }' in traversal and
+           'this.stop = stop;' in scripts['FirstDepartureBot'] and
+           driver.count('new FirstDepartureBot(keyboard, Stop)') == driver.count('new FirstDepartureBot(') > 0 and
+           all(part in driver for part in ('reason += " | " + DistrictState(', 'step.endState = bot.Snapshot();',
+                                           'Capture("failure");', 'EndStep("fail", reason);', 'StartDrain(false);')),
+           'run 13 / a disconnected graph synchronously records the active probe failure and partial state')
+
+    widened, results = {}, {}
+    for room in rooms[6:8]:
+        name = room['id']
+        authored = room_faces(room)
+        old = [scaled_face(f, measured_scale) for f in authored]
+        new = authored if own_box else old
+        old_paths, new_paths = (return_paths(room, deck, physics) for deck in (old, new))
+        # A continuous wall-to-wall top is also a barrier to arbitrary horizontal steering,
+        # independently of which manoeuvres the graph happens to sample.
+        west, east = walk_limits(old, physics[6])
+        walls = [f for f in old if f.wall]
+        jump_ceiling = max(f.top for f in old if not f.wall) + physics[0] ** 2 / (2 * physics[1])
+        top = next(f for f in old if f.name == old_paths[0]['start'])
+        verify(top.left < west < east < top.right and not any(link(old, top, lower, physics)
+               for lower in old if lower.top < top.top), name + ' / no walk-off behind solid end walls at 1.6x width')
+        verify(len(room['terrain']) == len(old) - 2 and not room.get('crossing') and not room['points'] and
+               len(walls) == 2 and all(wall.top > jump_ceiling for wall in walls) and
+               all(f.left < west < east < f.right for f in old if f.name in {p['start'] for p in old_paths}),
+               name + ' / every outgoing station tier seals the full lane with no carrier, ramp, kick post or extra plank')
+        # At a storey change use the last switch position. The stopped upper run also gives an exact foot x.
+        departures = [a['x'] for a, b in zip(room['stationMarks'], room['stationMarks'][1:])
+                      if a['surface'] != b['surface']]
+        if room == rooms[6]:
+            departures[0] = 34.159915924072266
+        landed = 0
+        for before, after, x in zip(old_paths, new_paths, departures, strict=True):
+            after['startX'] = x
+            contacts = replay_descent(new, after, x, physics)
+            after['landings'] = contacts
+            arrived = bool(contacts) and contacts[-1]['surface'] == after['goal']
+            landed += arrived
+            verify(not before['steps'] and arrived,
+                   name + ' / run 13 blocked, authored boxes reachable on foot / ' + before['start'] + ' -> ' + before['goal'])
+        widened[name] = connected_pairs(old, physics)
+        results[name] = dict(wallLimitedX=[round(west, 2), round(east, 2)],
+                             beforeStationDescents=sum(bool(p['steps']) for p in old_paths),
+                             afterStationDescents=landed,
+                             afterPairs=connected_pairs(new, physics), paths=new_paths)
+    return widened, results
 
 
 def replay_sentry(start, goal, target, segments, physics, swing, step_profile, current, live_lip,
@@ -247,18 +384,6 @@ def validate_fixed_surface_route(verify, rooms, scripts, motion, sword):
     upper = Face('upper', 4, 16, 2.85, 3.2)
     verify(link([low, upper], upper, low, physics) and link([low, shelf, upper], upper, low, physics) is None,
            'descent / an intervening shelf prevents a direct edge to the lower floor')
-    # The run-11 image gives a visual width. Exercise that width as a separate sensitivity
-    # case: the frame contains no measured Collider2D.bounds for the two return rooms.
-    widened = {}
-    for room in rooms[6:8]:
-        def expand(f):
-            dx, dy = .3 * (f.right - f.left), .3 * (f.top - f.bottom)
-            return replace(f, left=f.left - dx, right=f.right + dx, bottom=f.bottom - dy, top=f.top + dy)
-        deck = [expand(f) for f in room_faces(room)]
-        widened[room['id']] = connected_pairs(deck, physics)
-        mark = room['stationMarks'][0]
-        top = next(f for f in deck if f.name == mark['surface'])
-        west, east = walk_limits(deck, physics[6])
-        verify(top.left < west < east < top.right and not any(link(deck, top, lower, physics)
-               for lower in deck if lower.top < top.top), room['id'] + ' / no walk-off behind solid end walls at 1.6x width')
-    return dict(before=before, after=after, authored=authored, orderedPairs=pairs, widerBoundsPairs=widened)
+    widened, descents = validate_return_descent(verify, rooms, scripts, physics)
+    return dict(before=before, after=after, authored=authored, orderedPairs=pairs, widerBoundsPairs=widened,
+                run13ReturnDescents=descents)

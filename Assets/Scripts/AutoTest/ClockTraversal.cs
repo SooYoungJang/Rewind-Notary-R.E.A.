@@ -15,6 +15,12 @@ namespace RewindNotary
 
         internal WaveTarget2D ClockTarget => Area.UnclearedClockTarget;
 
+        private bool FailRoute(string reason)
+        {
+            stop(reason);
+            return false;
+        }
+
         private bool OnSurface(StorySurface s) => Area.StandingOn(s.id) || Area.StandingOnGeneratedFloor(s);
 
         private void ClearStep()
@@ -38,7 +44,7 @@ namespace RewindNotary
             var room = Area.Room;
             ReadTerrain();
             int goal = Array.FindIndex(terrain, s => s.id == face);
-            if (goal < 0) throw new InvalidOperationException("Missing fixed face " + face + " in " + room.id);
+            if (goal < 0) return FailRoute("Missing fixed face " + face + " in " + room.id);
             if (route == null)
             {
                 // A pendulum dash temporarily disables gravity.
@@ -101,7 +107,7 @@ namespace RewindNotary
             if (stepFrom != here || stepGoal != goal)
             {
                 if (!route.Next(here, goal, out step))
-                    throw new InvalidOperationException("No fixed route in " + room.id + " from " + terrain[here].id + " to " + face);
+                    return FailRoute("No fixed route in " + room.id + " from " + terrain[here].id + " to " + face);
                 stepFrom = here;
                 stepGoal = goal;
             }
@@ -140,11 +146,11 @@ namespace RewindNotary
             return nearest;
         }
 
-        private StorySurface FaceAt(float x, float y)
+        private bool TryFaceAt(float x, float y, out StorySurface face)
         {
-            var face = FixedFaceAt(x, y);
-            if (face == null) throw new InvalidOperationException("Unsupported position " + new Vector2(x, y) + " in " + Area.Room.id);
-            return face;
+            face = FixedFaceAt(x, y);
+            if (face == null) return FailRoute("Unsupported position " + new Vector2(x, y) + " in " + Area.Room.id);
+            return true;
         }
 
         private bool ReachedCombatSurface(StorySurface support, float targetX)
@@ -162,7 +168,7 @@ namespace RewindNotary
         internal void ClockFight(WaveTarget2D target)
         {
             var at = target.transform.position;
-            var face = FaceAt(at.x, at.y);
+            if (!TryFaceAt(at.x, at.y, out var face)) return;
             if (!ReachedCombatSurface(face, at.x)) return;
             if (target.State.NeedsSetup && !target.State.Ready(Time.time))
             {
@@ -208,7 +214,7 @@ namespace RewindNotary
             if (box == null || !box.Defined || Area.Room.Surface("drum_floor") == null)
                 positioned = Walk(door.x, .35f);
             else
-                positioned = ClockPosition(FaceAt(door.x, box.y + box.height * .5f).id, door.x);
+                positioned = TryFaceAt(door.x, box.y + box.height * .5f, out var face) && ClockPosition(face.id, door.x);
             return positioned && Area.OnReturnFloor && door.InReach(Player.Body.position);
         }
 

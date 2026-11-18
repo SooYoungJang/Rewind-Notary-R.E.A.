@@ -92,7 +92,7 @@ namespace RewindNotary
                     go.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(tangent.y, tangent.x) * Mathf.Rad2Deg);
                     go.transform.position = new Vector2(r.x, r.y + r.height) + tangent / 2 - normal * (r.height / 2);
                     box.size = new Vector2(tangent.magnitude, r.height);
-                    go.GetComponent<SpriteRenderer>().size = box.size;
+                    go.GetComponentInChildren<SpriteRenderer>().size = box.size;
                     face.RampNormal = normal;
                     fixedFloors.Remove(box);
                 }
