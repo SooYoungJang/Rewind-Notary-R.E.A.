@@ -16,7 +16,8 @@ namespace RewindNotary
         private SkillSession observed;
         private Health health;
         private BoutAttempt attempt;
-        private int boutId, index, lastShotFrame = -1;
+        private BenefactorTrialOpponent observedBout;
+        private int index, lastShotFrame = -1;
         private string lastShot, progress;
         private double started, entered, lastFrame, lastProgress, nextProbe, drainStarted;
         private Vector2 lastPosition;
@@ -146,14 +147,14 @@ namespace RewindNotary
         private void ObserveBout()
         {
             var bout = bot.Area?.Bout;
-            if (attempt != null && (bout == null || bout.GetInstanceID() != boutId))
+            if (attempt != null && (bout == null || bout != observedBout))
             {
                 bool won = bot.Record?.storyFlags.Contains("mikhail_defeated") == true;
                 bossWon |= won;
                 EndBout(won ? "victory" : "interrupted");
             }
             if (attempt != null || bout == null) return;
-            boutId = bout.GetInstanceID();
+            observedBout = bout;
             attempt = new BoutAttempt { startSeconds = AutoTestRuntime.Now - started, outcome = "running" };
             report.bossAttempts.Add(attempt);
             report.bossAttemptCount = report.bossAttempts.Count;
@@ -166,6 +167,7 @@ namespace RewindNotary
             attempt.outcome = outcome;
             report.bossSeconds += attempt.seconds;
             attempt = null;
+            observedBout = null;
             Capture("boss-end-" + outcome);
         }
 
