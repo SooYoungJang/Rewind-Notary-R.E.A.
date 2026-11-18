@@ -1,7 +1,8 @@
 {
-  "passed": 7516,
+  "passed": 7760,
   "errors": [],
   "warnings": [
+    "Clock step 3: fixed routes, first-visit supply and gate conditions checked statically. Third-slot contacts, timed recall and lift trips require Unity.",
     "Velvet step 2: ordinary-jump trajectories, seam budget and shortcut gates are static checks. The six checkpoint intervals and updated playthrough require Unity.",
     "Finale scenes: authored text, source wiring, checkpoint walks and 120 return-order projections are static checks. Hybrid captions, physics, menu input and real save/resume require Unity Play Mode.",
     "Directional input: source contracts, extracted decision expressions and Python references only. Press-time facing/ground, dash buffering, canvas attack-hold, HUD fit and physical controller axes require Unity Play Mode.",
@@ -149,6 +150,12 @@
     "Unique GUID: Assets/Resources/GameArt/backgrounds",
     "Metadata present: Assets/Resources/GameArt/backgrounds/attic-branch.png",
     "Unique GUID: Assets/Resources/GameArt/backgrounds/attic-branch.png",
+    "Metadata present: Assets/Resources/GameArt/backgrounds/brass-plate.png",
+    "Unique GUID: Assets/Resources/GameArt/backgrounds/brass-plate.png",
+    "Metadata present: Assets/Resources/GameArt/backgrounds/clock-interior.png",
+    "Unique GUID: Assets/Resources/GameArt/backgrounds/clock-interior.png",
+    "Metadata present: Assets/Resources/GameArt/backgrounds/clock-train.png",
+    "Unique GUID: Assets/Resources/GameArt/backgrounds/clock-train.png",
     "Metadata present: Assets/Resources/GameArt/backgrounds/dyehouse.png",
     "Unique GUID: Assets/Resources/GameArt/backgrounds/dyehouse.png",
     "Metadata present: Assets/Resources/GameArt/backgrounds/hub-props.png",
@@ -169,6 +176,8 @@
     "Unique GUID: Assets/Resources/GameArt/backgrounds/tailor-workshop.png",
     "Metadata present: Assets/Resources/GameArt/sprites",
     "Unique GUID: Assets/Resources/GameArt/sprites",
+    "Metadata present: Assets/Resources/GameArt/sprites/clock-switch.png",
+    "Unique GUID: Assets/Resources/GameArt/sprites/clock-switch.png",
     "Metadata present: Assets/Resources/GameArt/sprites/janhyang-sheet-layout.json",
     "Unique GUID: Assets/Resources/GameArt/sprites/janhyang-sheet-layout.json",
     "Metadata present: Assets/Resources/GameArt/sprites/janhyang-sheet.png",
@@ -251,6 +260,10 @@
     "Unique GUID: Assets/Scripts/AutoTest/AutoTestRuntime.cs",
     "Metadata present: Assets/Scripts/AutoTest/BotKeyboard.cs",
     "Unique GUID: Assets/Scripts/AutoTest/BotKeyboard.cs",
+    "Metadata present: Assets/Scripts/AutoTest/ClockDistrictProbe.cs",
+    "Unique GUID: Assets/Scripts/AutoTest/ClockDistrictProbe.cs",
+    "Metadata present: Assets/Scripts/AutoTest/ClockTraversal.cs",
+    "Unique GUID: Assets/Scripts/AutoTest/ClockTraversal.cs",
     "Metadata present: Assets/Scripts/AutoTest/FeelProbe.cs",
     "Unique GUID: Assets/Scripts/AutoTest/FeelProbe.cs",
     "Metadata present: Assets/Scripts/AutoTest/FirstDepartureBot.cs",
@@ -6537,6 +6550,7 @@
     "Districts: gallery later masteries and reload do not recall or replay",
     "Districts: all-predefeated route has four ordered reunions between sanctuary and lift",
     "Districts: representative finite room supplies +42/+14/+20 from 120",
+    "Districts: live clock returns provide 84 first switches and 16 finite preparations",
     "Districts: clock room-spawn projection 24+18 skill opportunities; sword cumulative 272",
     "Districts: opera room-spawn projection 23+18 skill opportunities; sword cumulative 348",
     "Districts: 330 on fourth lower-return cut after opera boss and upper return",
@@ -7325,6 +7339,36 @@
     "Level step 1: velvet_suspension / textured far plus two transparent depth strips",
     "Level step 1: mutation detected / velvet_suspension / old strip substituted",
     "Level step 1: mutation detected / velvet_suspension / black far layer",
+    "Level step 1: clock_winding_key / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_winding_key / old strip substituted",
+    "Level step 1: mutation detected / clock_winding_key / black far layer",
+    "Level step 1: clock_great_pendulum / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_great_pendulum / old strip substituted",
+    "Level step 1: mutation detected / clock_great_pendulum / black far layer",
+    "Level step 1: clock_reversing_train / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_reversing_train / old strip substituted",
+    "Level step 1: mutation detected / clock_reversing_train / black far layer",
+    "Level step 1: clock_escapement / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_escapement / old strip substituted",
+    "Level step 1: mutation detected / clock_escapement / black far layer",
+    "Level step 1: clock_dial_vestibule / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_dial_vestibule / old strip substituted",
+    "Level step 1: mutation detected / clock_dial_vestibule / black far layer",
+    "Level step 1: clock_regulator_court / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_regulator_court / old strip substituted",
+    "Level step 1: mutation detected / clock_regulator_court / black far layer",
+    "Level step 1: clock_upper_drum / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_upper_drum / old strip substituted",
+    "Level step 1: mutation detected / clock_upper_drum / black far layer",
+    "Level step 1: clock_lower_drum / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_lower_drum / old strip substituted",
+    "Level step 1: mutation detected / clock_lower_drum / black far layer",
+    "Level step 1: clock_chain_lift / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_chain_lift / old strip substituted",
+    "Level step 1: mutation detected / clock_chain_lift / black far layer",
+    "Level step 1: clock_shelter_rail / textured far plus two transparent depth strips",
+    "Level step 1: mutation detected / clock_shelter_rail / old strip substituted",
+    "Level step 1: mutation detected / clock_shelter_rail / black far layer",
     "Level step 2: exact step 1 predecessor, original hub, rows and all v4 floor IDs",
     "Level step 2: six distinct parallax compositions",
     "Level step 2: velvet_01_entry / three plain jumps on actual fixed tops",
@@ -7437,6 +7481,205 @@
     "Level step 2: mutation detected / VelvetTraversal / else if (Player.Grounded)\n                keys.Cast();",
     "Level step 2: AutoTestRuntime / Report.velvetDistrict.run.status != \"pass\"",
     "Level step 2: mutation detected / AutoTestRuntime / Report.velvetDistrict.run.status != \"pass\"",
+    "Level step 3: exact predecessor, 42 original clock rows, entrance links and every v4 arrival ID",
+    "Level step 3: unrelated clock edit cannot be reversed as an approved historical change",
+    "Level step 3: clock_01_entry / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_01_entry / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_01_entry / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_01_entry / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_01_entry / broken vertical handoff",
+    "Level step 3: mutation detected / clock_01_entry / missing support",
+    "Level step 3: mutation detected / clock_01_entry / group 0 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_01_entry / missing instance sword_latch_0",
+    "Level step 3: clock_02_pendulum / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_02_pendulum / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_02_pendulum / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_02_pendulum / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_02_pendulum / broken vertical handoff",
+    "Level step 3: mutation detected / clock_02_pendulum / missing support",
+    "Level step 3: mutation detected / clock_02_pendulum / group 0 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_02_pendulum / missing instance sword_latch_0",
+    "Level step 3: mutation detected / clock_02_pendulum / missing instance sword_latch_1",
+    "Level step 3: mutation detected / clock_02_pendulum / group 1 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_02_pendulum / missing instance shell_sentry_2",
+    "Level step 3: mutation detected / clock_02_pendulum / missing instance shell_sentry_3",
+    "Level step 3: mutation detected / clock_02_pendulum / missing instance shell_sentry_4",
+    "Level step 3: clock_03_counterflow / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_03_counterflow / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_03_counterflow / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_03_counterflow / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_03_counterflow / broken vertical handoff",
+    "Level step 3: mutation detected / clock_03_counterflow / missing support",
+    "Level step 3: mutation detected / clock_03_counterflow / group 0 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_03_counterflow / missing instance sword_latch_0",
+    "Level step 3: mutation detected / clock_03_counterflow / missing instance sword_latch_1",
+    "Level step 3: mutation detected / clock_03_counterflow / group 1 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_03_counterflow / missing instance shell_sentry_2",
+    "Level step 3: mutation detected / clock_03_counterflow / group 2 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_03_counterflow / missing instance reflection_statue_3",
+    "Level step 3: mutation detected / clock_03_counterflow / missing instance reflection_statue_4",
+    "Level step 3: clock_04_escapement / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_04_escapement / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_04_escapement / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_04_escapement / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_04_escapement / broken vertical handoff",
+    "Level step 3: mutation detected / clock_04_escapement / missing support",
+    "Level step 3: mutation detected / clock_04_escapement / group 0 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_04_escapement / missing instance sword_latch_0",
+    "Level step 3: mutation detected / clock_04_escapement / missing instance sword_latch_1",
+    "Level step 3: mutation detected / clock_04_escapement / group 1 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_04_escapement / missing instance reflection_statue_2",
+    "Level step 3: mutation detected / clock_04_escapement / group 2 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_04_escapement / missing instance shell_sentry_3",
+    "Level step 3: clock_05_vestibule / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_05_vestibule / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_05_vestibule / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_05_vestibule / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_05_vestibule / broken vertical handoff",
+    "Level step 3: mutation detected / clock_05_vestibule / missing support",
+    "Level step 3: clock_06_arena / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_06_arena / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_06_arena / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_06_arena / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_06_arena / broken vertical handoff",
+    "Level step 3: mutation detected / clock_06_arena / missing support",
+    "Level step 3: clock_07_return_upper / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_07_return_upper / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_07_return_upper / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_07_return_upper / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_07_return_upper / broken vertical handoff",
+    "Level step 3: mutation detected / clock_07_return_upper / missing support",
+    "Level step 3: mutation detected / clock_07_return_upper / group 0 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_07_return_upper / missing instance notary_guard_0",
+    "Level step 3: mutation detected / clock_07_return_upper / missing instance notary_guard_1",
+    "Level step 3: mutation detected / clock_07_return_upper / group 1 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_07_return_upper / missing instance sword_latch_2",
+    "Level step 3: mutation detected / clock_07_return_upper / missing instance sword_latch_3",
+    "Level step 3: clock_08_return_lower / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_08_return_lower / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_08_return_lower / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_08_return_lower / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_08_return_lower / broken vertical handoff",
+    "Level step 3: mutation detected / clock_08_return_lower / missing support",
+    "Level step 3: mutation detected / clock_08_return_lower / group 0 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_08_return_lower / missing instance sword_latch_0",
+    "Level step 3: mutation detected / clock_08_return_lower / group 1 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_08_return_lower / missing instance notary_guard_1",
+    "Level step 3: mutation detected / clock_08_return_lower / missing instance notary_guard_2",
+    "Level step 3: mutation detected / clock_08_return_lower / missing instance notary_guard_3",
+    "Level step 3: clock_09_shortcut / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_09_shortcut / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_09_shortcut / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_09_shortcut / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_09_shortcut / broken vertical handoff",
+    "Level step 3: mutation detected / clock_09_shortcut / missing support",
+    "Level step 3: mutation detected / clock_09_shortcut / group 0 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_09_shortcut / missing instance notary_guard_0",
+    "Level step 3: mutation detected / clock_09_shortcut / missing instance notary_guard_1",
+    "Level step 3: mutation detected / clock_09_shortcut / group 1 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_09_shortcut / missing instance reflection_statue_2",
+    "Level step 3: mutation detected / clock_09_shortcut / group 2 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_09_shortcut / missing instance sword_latch_3",
+    "Level step 3: mutation detected / clock_09_shortcut / missing instance sword_latch_4",
+    "Level step 3: clock_10_sanctuary_rail / ordinary ascent and exposed descent lips on every fixed tier",
+    "Level step 3: clock_10_sanctuary_rail / supported marks, camera, fall line, door volumes and destinations",
+    "Level step 3: clock_10_sanctuary_rail / every instance binds its authored segments, setup, zone and position",
+    "Level step 3: clock_10_sanctuary_rail / clock painting, suspended works and brass foreground",
+    "Level step 3: mutation detected / clock_10_sanctuary_rail / broken vertical handoff",
+    "Level step 3: mutation detected / clock_10_sanctuary_rail / missing support",
+    "Level step 3: mutation detected / clock_10_sanctuary_rail / group 0 lost explicit preparation count",
+    "Level step 3: mutation detected / clock_10_sanctuary_rail / missing instance notary_guard_0",
+    "Level step 3: mutation detected / clock_10_sanctuary_rail / missing instance notary_guard_1",
+    "Level step 3: mutation detected / clock_10_sanctuary_rail / missing instance notary_guard_2",
+    "Level step 3: ten distinct clock compositions",
+    "Level step 3: clock_01_entry / continuous storey across next door",
+    "Level step 3: clock_02_pendulum / continuous storey across next door",
+    "Level step 3: clock_03_counterflow / continuous storey across next door",
+    "Level step 3: clock_04_escapement / continuous storey across next door",
+    "Level step 3: clock_05_vestibule / continuous storey across next door",
+    "Level step 3: clock_07_return_upper / continuous storey across next door",
+    "Level step 3: investigation and escapement clear required in both directions and aligned lift landings",
+    "Level step 3: mutation detected / lift side 1 / lost gate",
+    "Level step 3: mutation detected / lift side 1 / lost requiresFlag",
+    "Level step 3: mutation detected / lift side 1 / lost destinationFloor",
+    "Level step 3: mutation detected / lift side 4 / lost gate",
+    "Level step 3: mutation detected / lift side 4 / lost requiresFlag",
+    "Level step 3: mutation detected / lift side 4 / lost destinationFloor",
+    "Level step 3: clock_01_entry / continuous sloped face joins two fixed landings",
+    "Level step 3: mutation detected / clock_01_entry / ramp misses upper lip",
+    "Level step 3: clock_05_vestibule / continuous sloped face joins two fixed landings",
+    "Level step 3: mutation detected / clock_05_vestibule / ramp misses upper lip",
+    "Level step 3: clock_02_pendulum / moving branch bounded above fixed floor",
+    "Level step 3: mutation detected / clock_02_pendulum / carrier leaves shaft",
+    "Level step 3: clock_03_counterflow / moving branch bounded above fixed floor",
+    "Level step 3: mutation detected / clock_03_counterflow / carrier leaves shaft",
+    "Level step 3: investigated duel keeps four-second open interval in its six-second shutter cycle",
+    "Level step 3: both Julius branches land on the immediate first switch tier after the live reward",
+    "Level step 3: chain lift shared guard preparation and defense opening",
+    "Level step 3: clock_07_return_upper / 42 disjoint finite first casts from fixed ledges",
+    "Level step 3: mutation detected / clock_07_return_upper / bad first switch x",
+    "Level step 3: mutation detected / clock_07_return_upper / bad first switch surface",
+    "Level step 3: mutation detected / clock_07_return_upper / one activation would touch two stations",
+    "Level step 3: clock_08_return_lower / 42 disjoint finite first casts from fixed ledges",
+    "Level step 3: mutation detected / clock_08_return_lower / bad first switch x",
+    "Level step 3: mutation detected / clock_08_return_lower / bad first switch surface",
+    "Level step 3: mutation detected / clock_08_return_lower / one activation would touch two stations",
+    "Level step 3: station-only first visit clears 30 and 80 without a repeated target",
+    "Level step 3: RepresentativeRoomLayout / clock runtime contracts",
+    "Level step 3: mutation detected / RepresentativeRoomLayout / lost !string.IsNullOrEmpty(door.requiresFlag) && !Has(door.requiresFlag)",
+    "Level step 3: mutation detected / RepresentativeRoomLayout / lost BuildSurfaces();",
+    "Level step 3: mutation detected / RepresentativeRoomLayout / lost Room.Placement(group.placementIds[i])",
+    "Level step 3: mutation detected / RepresentativeRoomLayout / lost target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly)",
+    "Level step 3: DistrictRoomLayout / clock runtime contracts",
+    "Level step 3: mutation detected / DistrictRoomLayout / lost Room.stationMarks[i].x",
+    "Level step 3: mutation detected / DistrictRoomLayout / lost Room.SurfaceTop(Room.stationMarks[i].surface)",
+    "Level step 3: mutation detected / DistrictRoomLayout / lost StationTop(i) +",
+    "Level step 3: mutation detected / DistrictRoomLayout / lost LastReturnUse == switchUse",
+    "Level step 3: mutation detected / DistrictRoomLayout / lost ReturnWindowOpen && Safe && OnPlank",
+    "Level step 3: ClockDistrictProbe / clock runtime contracts",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost bot.Session?.ActiveSlot == 3",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost area.StandingOn(f.surface)",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost scene_floor:clock:",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost segmentSeconds = now - lastContact",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost if (onClock) inDistrict += now - lastFrame",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost CountStations(Upper) < 42",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost uses.Add(e.useId)",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost stations.Add(e.targetId)",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost rewind.LastReturnUse != firstUse",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost Time.frameCount > clearedFrame + 1",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost cage.InReach(area.Rea.Body.position)",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost Landed(bot, \"clock_lift_cage\")",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost Landed(bot, \"clock_lift_foot\")",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost result.outboundSeconds <= result.liftSeconds",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost result.contacts.Count == Route.Length",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost result.synergyDoorUsed = lastRoom == Hall",
+    "Level step 3: mutation detected / ClockDistrictProbe / lost Upper + \":station_0:posture\"",
+    "Level step 3: AuthoredSurface / clock runtime contracts",
+    "Level step 3: mutation detected / AuthoredSurface / lost !floor.IsTouching(actor)",
+    "Level step 3: mutation detected / AuthoredSurface / lost Vector2.Dot(center - lip, RampNormal) - radius",
+    "Level step 3: StoryMovingSurface / clock runtime contracts",
+    "Level step 3: mutation detected / StoryMovingSurface / lost StepVelocity = (next - body.position) / Time.fixedDeltaTime",
+    "Level step 3: mutation detected / StoryMovingSurface / lost body.MovePosition(next)",
+    "Level step 3: CombatMotor2D / clock runtime contracts",
+    "Level step 3: mutation detected / CombatMotor2D / lost surface.SupportsRamp(this, capsule, floor)",
+    "Level step 3: mutation detected / CombatMotor2D / lost carrierSpeed = carrier.StepVelocity.x",
+    "Level step 3: mutation detected / CombatMotor2D / lost Vector2.right * carrierSpeed",
+    "Level step 3: ClockTraversal / clock runtime contracts",
+    "Level step 3: mutation detected / ClockTraversal / lost keys.Cast(-Player.Facing);",
+    "Level step 3: mutation detected / ClockTraversal / lost Area.StandingOn(s.id)",
+    "Level step 3: mutation detected / ClockTraversal / lost keys.Hold(KeyCode.Space);",
+    "Level step 3: mutation detected / ClockTraversal / lost FaceAt(door.x, box.y",
+    "Level step 3: mutation detected / ClockTraversal / lost door.InReach(Player.Body.position)",
+    "Level step 3: AutoTestDriver / clock runtime contracts",
+    "Level step 3: mutation detected / AutoTestDriver / lost if (clock.Drive(bot, keyboard, now))",
+    "Level step 3: mutation detected / AutoTestDriver / lost clock?.ObserveUse(e, bot.Area.Room.id)",
+    "Level step 3: mutation detected / AutoTestDriver / lost if (now - lastProgress > 18)",
+    "Level step 3: mutation detected / AutoTestDriver / lost clock != null && e.kind == \"attempt_reset\"",
+    "Level step 3: mutation detected / AutoTestDriver / lost new ClockDistrictProbe(report.clockDistrict",
+    "Level step 3: AutoTestRuntime / clock runtime contracts",
+    "Level step 3: mutation detected / AutoTestRuntime / lost completed && Report.clockDistrict.run.status != \"pass\"",
+    "Level step 3: mutation detected / AutoTestRuntime / lost \"slot-3.json\"",
+    "Level step 3: mutation detected / AutoTestRuntime / lost save.storyFlags.Contains(\"scene_floor:clock:clock_rest_09\")",
     "C# delimiters balanced (not compile): SpriteAnimator.cs",
     "C# delimiters balanced (not compile): Health.cs",
     "C# delimiters balanced (not compile): CombatMotor2D.cs",
@@ -7541,7 +7784,9 @@
     "C# delimiters balanced (not compile): FeelProbe.cs",
     "C# delimiters balanced (not compile): PilotProbe.cs",
     "C# delimiters balanced (not compile): VelvetTraversal.cs",
-    "C# delimiters balanced (not compile): VelvetDistrictProbe.cs"
+    "C# delimiters balanced (not compile): VelvetDistrictProbe.cs",
+    "C# delimiters balanced (not compile): ClockTraversal.cs",
+    "C# delimiters balanced (not compile): ClockDistrictProbe.cs"
   ],
   "audio_metrics": [
     {
@@ -15422,7 +15667,7 @@
     "stills": 6
   },
   "area_link_metrics": {
-    "checks": 444,
+    "checks": 445,
     "rooms": 40,
     "rows": 168,
     "covered_rows": 168,
@@ -15450,7 +15695,7 @@
           3
         ],
         "sword_total": 272,
-        "return_uses": 24,
+        "return_uses": 100,
         "elite_uses": 18
       },
       "opera": {
@@ -15663,8 +15908,8 @@
         "movement_seconds": 3.1
       }
     },
-    "mutations": 77,
-    "detected": 77,
+    "mutations": 97,
+    "detected": 97,
     "unity_executed": false
   },
   "level_step2_metrics": {
@@ -15801,6 +16046,272 @@
     },
     "mutations": 69,
     "detected": 69,
+    "unity_executed": false
+  },
+  "level_step3_metrics": {
+    "routes": {
+      "clock_01_entry": {
+        "tops": [
+          0.0,
+          1.65,
+          3.3,
+          4.95,
+          6.6
+        ],
+        "jumpSeconds": 2.48
+      },
+      "clock_02_pendulum": {
+        "tops": [
+          6.6,
+          8.2,
+          9.8,
+          11.45,
+          13.15,
+          14.85
+        ],
+        "jumpSeconds": 3.14
+      },
+      "clock_03_counterflow": {
+        "tops": [
+          14.85,
+          16.25,
+          17.8,
+          19.55,
+          21.35,
+          23.1
+        ],
+        "jumpSeconds": 3.1
+      },
+      "clock_04_escapement": {
+        "tops": [
+          23.1,
+          24.95,
+          26.75,
+          28.35,
+          29.85,
+          31.35
+        ],
+        "jumpSeconds": 3.1
+      },
+      "clock_05_vestibule": {
+        "tops": [
+          31.35,
+          32.85,
+          34.45,
+          36.15,
+          37.9,
+          39.6
+        ],
+        "jumpSeconds": 3.12
+      },
+      "clock_06_arena": {
+        "tops": [
+          36.3,
+          37.95,
+          39.6,
+          41.25
+        ],
+        "jumpSeconds": 1.86
+      },
+      "clock_07_return_upper": {
+        "tops": [
+          19.8,
+          21.45,
+          23.1,
+          24.75,
+          26.4,
+          28.05,
+          29.7,
+          31.35,
+          33.0,
+          34.65,
+          36.3,
+          37.95,
+          39.6
+        ],
+        "jumpSeconds": 7.44
+      },
+      "clock_08_return_lower": {
+        "tops": [
+          0.0,
+          1.98,
+          3.96,
+          5.94,
+          7.92,
+          9.9,
+          11.88,
+          13.86,
+          15.84,
+          17.82,
+          19.8
+        ],
+        "jumpSeconds": 5.6
+      },
+      "clock_09_shortcut": {
+        "tops": [
+          8.25,
+          9.65,
+          11.3,
+          13.15,
+          14.8
+        ],
+        "jumpSeconds": 2.48
+      },
+      "clock_10_sanctuary_rail": {
+        "tops": [
+          0.0,
+          1.55,
+          3.15,
+          4.85,
+          6.5
+        ],
+        "jumpSeconds": 2.52
+      }
+    },
+    "countsBeforeAfter": {
+      "clock_01_entry": [
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 1
+        },
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 1
+        }
+      ],
+      "clock_02_pendulum": [
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 11
+        },
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 11
+        }
+      ],
+      "clock_03_counterflow": [
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 13
+        },
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 13
+        }
+      ],
+      "clock_04_escapement": [
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 7
+        },
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 7
+        }
+      ],
+      "clock_05_vestibule": [
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 0
+        },
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 0
+        }
+      ],
+      "clock_06_arena": [
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 0
+        },
+        {
+          "stations": 0,
+          "joints": 0,
+          "silverSeams": 0,
+          "swordSegments": 0
+        }
+      ],
+      "clock_07_return_upper": [
+        {
+          "stations": 4,
+          "joints": 8,
+          "silverSeams": 0,
+          "swordSegments": 8
+        },
+        {
+          "stations": 42,
+          "joints": 8,
+          "silverSeams": 0,
+          "swordSegments": 8
+        }
+      ],
+      "clock_08_return_lower": [
+        {
+          "stations": 4,
+          "joints": 8,
+          "silverSeams": 0,
+          "swordSegments": 8
+        },
+        {
+          "stations": 42,
+          "joints": 8,
+          "silverSeams": 0,
+          "swordSegments": 8
+        }
+      ],
+      "clock_09_shortcut": [
+        {
+          "stations": 3,
+          "joints": 6,
+          "silverSeams": 3,
+          "swordSegments": 11
+        },
+        {
+          "stations": 3,
+          "joints": 6,
+          "silverSeams": 3,
+          "swordSegments": 11
+        }
+      ],
+      "clock_10_sanctuary_rail": [
+        {
+          "stations": 0,
+          "joints": 9,
+          "silverSeams": 0,
+          "swordSegments": 3
+        },
+        {
+          "stations": 0,
+          "joints": 9,
+          "silverSeams": 0,
+          "swordSegments": 3
+        }
+      ]
+    },
+    "mutations": 130,
+    "detected": 130,
     "unity_executed": false
   },
   "unity_executed": false,

@@ -63,7 +63,8 @@ namespace RewindNotary
             return script.Room(destination);
         }
 
-        private static float StationX(int i) => 7 + 7 * i;
+        private float StationX(int i) => Room.stationMarks == null || Room.stationMarks.Length == 0 ? 7 + 7 * i : Room.stationMarks[i].x;
+        private float StationTop(int i) => Room.stationMarks == null || Room.stationMarks.Length == 0 ? 0f : Room.SurfaceTop(Room.stationMarks[i].surface);
         private void BuildPaintLedges(Color stone)
         {
             float left = -4;
@@ -159,16 +160,27 @@ namespace RewindNotary
                     emitters.Add(new Emitter { origin = new Vector2(x, 1.3f), id = id });
                 else
                 {
-                    var station = Place(id, x, Room.skill == BenefactorIds.Waltz ? 2.4f : Room.skill == BenefactorIds.Forge ? .55f : .05f);
+                    var station = Place(id, x, StationTop(i) + (Room.skill == BenefactorIds.Waltz ? 2.4f : Room.skill == BenefactorIds.Forge ? .55f : .05f));
                     stations.Add(station);
                     if (Room.skill == BenefactorIds.Waltz) station.AddComponent<PracticeLamp2D>();
                     else if (Room.skill == BenefactorIds.Forge) station.AddComponent<ResonanceTarget2D>().InitializeMechanism();
-                    else station.AddComponent<WaveTarget2D>().Initialize(waves.Archetype("sword_latch"),
-                        new WaveSpawn { setupSkill = Room.skill, segments = 1 }, player, square, 1, true);
+                    else
+                    {
+                        var target = station.AddComponent<WaveTarget2D>();
+                        target.Initialize(waves.Archetype("sword_latch"),
+                            new WaveSpawn { setupSkill = Room.skill, segments = 1 }, player, square, 1, true);
+                        if (Room.stage == "clock") target.SetPicture(RosterPicture("clock_switch"));
+                    }
                 }
             }
             if (Room.Point("julius_return_platform") != null)
-                fixtures["shutter"] = Block("julius_timed_shutter", 28, 3, .45f, 2.4f, stone);
+            {
+                var shutter = Block("julius_timed_shutter", 28, Room.SurfaceTop("drum_floor") + 3.4f,
+                    .45f, 2.4f, stone, true);
+                shutter.AddComponent<AuthoredSurface>();
+                fixedFloors.Remove(shutter.GetComponent<BoxCollider2D>());
+                fixtures["shutter"] = shutter;
+            }
         }
 
         private void UpdateDistrictFixtures()
@@ -199,7 +211,7 @@ namespace RewindNotary
                 bool open = ReturnWindowOpen;
                 fixtures[ActionToken.Substring(6)].GetComponent<SpriteRenderer>().color = open ? Color.cyan : Color.gray;
                 if (fixtures.TryGetValue("shutter", out var shutter))
-                    shutter.transform.position = new Vector2(28, open ? 3.4f : 1.2f);
+                    shutter.transform.position = new Vector2(28, Room.SurfaceTop("drum_floor") + (open ? 3.4f : 1.2f));
             }
         }
         private bool ReturnWindowOpen => Mathf.Repeat(Time.time - signalAt, 6f) < 4f;
@@ -287,7 +299,9 @@ namespace RewindNotary
             }
             if (token == "cross:floor")
             {
-                if (Safe && OnFixedFloor() && player.Body.position.x > StationX(Mathf.Max(0, stationIndex)) + 1.5f) FinishAction();
+                int i = Mathf.Max(0, stationIndex);
+                bool correctTier = Room.stationMarks == null || Room.stationMarks.Length == 0 || StandingOn(Room.stationMarks[i].surface);
+                if (correctTier && Safe && OnFixedFloor() && player.Body.position.x > StationX(i) + 1.5f) FinishAction();
                 return true;
             }
             if (token.StartsWith("ride:", StringComparison.Ordinal))

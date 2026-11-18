@@ -11,12 +11,29 @@ namespace RewindNotary
         internal string LastContactFloor { get; private set; }
         internal double LastContactTime { get; private set; }
         private string touchingCheckpoint;
-        private Sprite weave;
+        private Sprite weave, brass;
+        private Sprite BrassSprite()
+        {
+            if (brass == null)
+            {
+                var plate = Resources.Load<Texture2D>("GameArt/backgrounds/brass-plate");
+                brass = Sprite.Create(plate, new Rect(0, 0, plate.width, plate.height), Vector2.one * .5f,
+                    plate.width / 1.6f, 0, SpriteMeshType.FullRect);
+            }
+            return brass;
+        }
         private readonly Dictionary<string, Sprite> rosterArt = new Dictionary<string, Sprite>();
 
         private Sprite RosterPicture(string id)
         {
             if (rosterArt.TryGetValue(id, out var sprite)) return sprite;
+            if (id == "clock_switch")
+            {
+                var dial = Resources.Load<Texture2D>("GameArt/sprites/clock-switch");
+                sprite = Sprite.Create(dial, new Rect(0, 0, dial.width, dial.height), Vector2.one * .5f, dial.height);
+                rosterArt.Add(id, sprite);
+                return sprite;
+            }
             var atlas = Resources.Load<Texture2D>("GameArt/sprites/velvet-roster");
             // The four poses have different widths. Keep each silhouette inside its own UV window.
             float left, right;
@@ -64,9 +81,22 @@ namespace RewindNotary
             {
                 var r = surface.rect;
                 var go = Block(surface.id, r.x + r.width / 2, r.y + r.height / 2, r.width, r.height,
-                    surface.wallJump ? new Color(.94f,.70f,.38f) : new Color(.85f,.54f,.52f), true);
+                    surface.wallJump ? new Color(.94f,.70f,.38f) : Room.stage == "clock" ? new Color(.92f,.91f,.79f) : new Color(.85f,.54f,.52f), true);
                 var box = go.GetComponent<BoxCollider2D>();
-                go.AddComponent<AuthoredSurface>().Kickable = surface.wallJump && !surface.Moving && !surface.oneWay;
+                var face = go.AddComponent<AuthoredSurface>();
+                if (surface.rampRise != 0)
+                {
+                    // The authored rectangle starts at the low lip. Rotate the top edge about that lip.
+                    var tangent = new Vector2(r.width, surface.rampRise);
+                    var normal = Vector2.Perpendicular(tangent.normalized);
+                    go.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(tangent.y, tangent.x) * Mathf.Rad2Deg);
+                    go.transform.position = new Vector2(r.x, r.y + r.height) + tangent / 2 - normal * (r.height / 2);
+                    box.size = new Vector2(tangent.magnitude, r.height);
+                    go.GetComponent<SpriteRenderer>().size = box.size;
+                    face.RampNormal = normal;
+                    fixedFloors.Remove(box);
+                }
+                face.Kickable = surface.wallJump && !surface.Moving && !surface.oneWay;
                 surfaces.Add(surface.id, box);
                 if (surface.Moving)
                 {
@@ -88,6 +118,12 @@ namespace RewindNotary
             if (!surfaces.TryGetValue(surface, out var box) || !box.enabled || box.attachedRigidbody != null) return false;
             var actor = player.GetComponent<Collider2D>();
             return player.Grounded && Mathf.Abs(actor.bounds.min.y - box.bounds.max.y) <= .12f && box.IsTouching(actor);
+        }
+
+        internal bool StandingOnRamp(StorySurface ramp)
+        {
+            var floor = surfaces[ramp.id];
+            return floor.GetComponent<AuthoredSurface>().SupportsRamp(player, player.GetComponent<CapsuleCollider2D>(), floor);
         }
 
         private float FloorDistance(StoryMark floor) => Vector2.Distance(player.Body.position, new Vector2(floor.x, LandingY(floor.id)));

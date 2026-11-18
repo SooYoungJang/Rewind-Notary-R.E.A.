@@ -2,6 +2,9 @@
 import json
 import re
 from collections import Counter
+from pathlib import Path
+
+from story_link_baseline import reverse_exact
 
 from area_link_source import DISTRICTS, delivery, handoff, room_table, scene_rows
 from localization_followup import approved_table, with_cast_hint
@@ -300,16 +303,22 @@ def validate_area_links(check, project, scripts):
     first_path = cumulative + sum(map(sword, velvet[:3]))
     cumulative += sum(map(sword, velvet))
     verify((first_path, cumulative) == (162, 196), 'representative finite room supplies +42/+14/+20 from 120')
+    clock_path = 'Assets/Resources/Story/clock.json'
+    clock_patch = json.loads(Path(__file__).with_name('level-step3-extensions.json').read_text())[clock_path]
+    original_clock = json.loads(reverse_exact(clock_patch, (project / clock_path).read_text()))
     for d, expected in zip(districts, [(24, 18, 272), (23, 18, 348), (24, 19, 423), (25, 19, 498)]):
         rs = d['rooms']
         a = rs[0]['stage']
         cuts = list(map(sword, rs))
         returns, elite = sum(map(technique, rs[6:8])), sum(map(technique, rs[8:]))
+        previous_returns = sum(map(technique, original_clock['rooms'][6:8])) if a == 'clock' else returns
+        if a == 'clock':
+            verify(returns == 100, 'live clock returns provide 84 first switches and 16 finite preparations')
         after_boss = cumulative + sum(cuts[:6])
         cumulative += sum(cuts)
         verify(cuts[:6] == [1, 11, 13, 7, 0, 14] and 120 + sum(cuts[:5]) == 152 and
-               (returns, elite, cumulative) == expected and cuts[6:9] == [8, 8, 11],
-               f'{a} room-spawn projection {returns}+{elite} skill opportunities; sword cumulative {cumulative}')
+               (previous_returns, elite, cumulative) == expected and cuts[6:9] == [8, 8, 11],
+               f'{a} room-spawn projection {previous_returns}+{elite} skill opportunities; sword cumulative {cumulative}')
         if a == 'opera':
             verify(after_boss == 318 and after_boss + cuts[6] + 4 == 330 and cuts[7] >= 4,
                    '330 on fourth lower-return cut after opera boss and upper return')

@@ -220,7 +220,9 @@ def validate_level_step1(check, project, scripts):
     verify(len(rooms) == 56 and sum(len(d['rows']) for d in docs) == 321 and
            digest([d['rows'] for d in docs]) == 'b86303ec3a3ec31e51e41ea1d5399b750fc206086203beb775c74f42c4637203',
            '56 rooms, 321 original authored rows including conditions and rewards')
-    verify(digest(docs[1:]) == '20aaae8ffd385c67a53e7cd0a55a4b7619ef15f8a46abc5fb238402ce92367ee',
+    clock_patch = json.loads(Path(__file__).with_name('level-step3-extensions.json').read_text())['Assets/Resources/Story/clock.json']
+    original_clock = json.loads(reverse_exact(clock_patch, (resources/'Story/clock.json').read_text()))
+    verify(digest([original_clock, *docs[2:]]) == '20aaae8ffd385c67a53e7cd0a55a4b7619ef15f8a46abc5fb238402ce92367ee',
            'all four other districts and finale match the original data')
     patch = json.loads(Path(__file__).with_name('level-step2-extensions.json').read_text())
     old = json.loads(reverse_exact(patch, (resources/'Story/representative.json').read_text()))

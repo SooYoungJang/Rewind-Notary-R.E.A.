@@ -8,48 +8,182 @@
       "floors": [
         {
           "id": "clock_entry_floor",
-          "x": 3
+          "x": 3,
+          "surface": "drum_floor"
         },
         {
           "id": "clock_workbench_floor",
-          "x": 19
+          "x": 12,
+          "surface": "drum_floor"
         },
         {
           "id": "clock_entry_east",
-          "x": 41
+          "x": 22,
+          "surface": "dial_walk"
+        },
+        {
+          "id": "clock_rest_01",
+          "contactSave": true,
+          "x": 25,
+          "surface": "dial_walk"
+        },
+        {
+          "id": "clock_lift_foot",
+          "x": 20,
+          "surface": "dial_walk"
         }
       ],
       "points": [
         {
           "id": "julius_workbench",
           "x": 12,
-          "platform": false
+          "platform": false,
+          "surface": "drum_floor"
         },
         {
           "id": "clock_entry_latch",
-          "x": 24,
-          "platform": false
+          "x": 16,
+          "platform": false,
+          "surface": "drum_floor"
         }
       ],
       "exits": [
         {
           "room": "hub_lift",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": 0,
+            "y": -0.15,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "clock_02_pendulum",
-          "x": 42,
-          "gate": "clock_entry_complete"
+          "x": 30,
+          "gate": "clock_entry_complete",
+          "approach": {
+            "x": 29,
+            "y": 6.45,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_pendulum_west"
+        },
+        {
+          "room": "clock_04_escapement",
+          "gate": "investigation_complete",
+          "requiresFlag": "clock_04_cleared",
+          "x": 20,
+          "approach": {
+            "x": 19,
+            "y": 6.45,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_lift_cage"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "sword_latch_0"
+          ]
         }
-      ]
+      ],
+      "backgroundSet": "clock_winding_key",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -8,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": -0.35,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "keyway",
+          "rect": {
+            "x": 9,
+            "y": 1.3,
+            "width": 11,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "east_ramp",
+          "rect": {
+            "x": 16,
+            "y": 2.95,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "winder",
+          "rect": {
+            "x": 32,
+            "y": 4.6,
+            "width": 11,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "dial_walk",
+          "rect": {
+            "x": 17,
+            "y": 6.25,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "winding_ramp",
+          "rect": {
+            "x": 22,
+            "y": -0.18,
+            "width": 13,
+            "height": 0.18
+          },
+          "oneWay": true,
+          "rampRise": 3.3
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 16,
+          "y": 0.05,
+          "active": {
+            "x": 11.5,
+            "y": -0.24,
+            "width": 9,
+            "height": 1.04
+          }
+        }
+      ],
+      "cameraBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 46,
+        "height": 9.1
+      }
     },
     {
       "id": "clock_02_pendulum",
@@ -59,53 +193,235 @@
       "floors": [
         {
           "id": "clock_pendulum_west",
-          "x": 3
+          "x": 20,
+          "surface": "drum_floor"
         },
         {
           "id": "clock_pendulum_mid",
-          "x": 19
+          "x": 25,
+          "surface": "cradle"
         },
         {
           "id": "clock_pendulum_east",
-          "x": 39
+          "x": 19,
+          "surface": "axle_head"
+        },
+        {
+          "id": "clock_rest_02",
+          "contactSave": true,
+          "x": 16,
+          "surface": "axle_head"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "clock_01_entry",
-          "x": 1,
-          "gate": ""
+          "x": 18,
+          "gate": "",
+          "approach": {
+            "x": 17,
+            "y": 6.45,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_entry_east"
         },
         {
           "room": "clock_03_counterflow",
-          "x": 42,
-          "gate": "clock_02_cleared"
+          "x": 20,
+          "gate": "clock_02_cleared",
+          "approach": {
+            "x": 19,
+            "y": 14.7,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_counter_west"
         },
         {
           "room": "clock_09_shortcut",
-          "x": 37,
-          "gate": "synergy"
+          "x": 12,
+          "gate": "synergy",
+          "approach": {
+            "x": 11,
+            "y": 11.3,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_shortcut_safe"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "shell_sentry",
-          "count": 2,
-          "segments": 3
-        },
-        {
-          "id": "reflection_statue",
-          "count": 1,
-          "segments": 3
+          "count": 3,
+          "segments": 3,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "shell_sentry_2",
+            "shell_sentry_3",
+            "shell_sentry_4"
+          ]
         }
       ],
-      "crossing": "swing"
+      "crossing": "swing",
+      "backgroundSet": "clock_great_pendulum",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -1.4,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": 6.25,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "east_shoe",
+          "rect": {
+            "x": 29,
+            "y": 7.85,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "cradle",
+          "rect": {
+            "x": 18,
+            "y": 9.45,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pendulum_walk",
+          "rect": {
+            "x": 6,
+            "y": 11.1,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "west_pivot",
+          "rect": {
+            "x": 2,
+            "y": 12.8,
+            "width": 8,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "axle_head",
+          "rect": {
+            "x": 6,
+            "y": 14.5,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "swing_carrier",
+          "rect": {
+            "x": 5,
+            "y": 7.8,
+            "width": 3.2,
+            "height": 0.3
+          },
+          "oneWay": true,
+          "travelX": 4,
+          "travelY": 1.4,
+          "period": 3.6
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 38,
+          "y": 8.25,
+          "active": {
+            "x": 33.5,
+            "y": 7.96,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 12,
+          "y": 11.5,
+          "active": {
+            "x": 7.5,
+            "y": 11.21,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "shell_sentry_2",
+          "x": 23,
+          "y": 9.85,
+          "active": {
+            "x": 18.5,
+            "y": 9.56,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "shell_sentry_3",
+          "x": 17,
+          "y": 11.5,
+          "active": {
+            "x": 12.5,
+            "y": 11.21,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "shell_sentry_4",
+          "x": 13,
+          "y": 14.9,
+          "active": {
+            "x": 8.5,
+            "y": 14.61,
+            "width": 9,
+            "height": 1.04
+          }
+        }
+      ],
+      "cameraBounds": {
+        "x": 0,
+        "y": 7.6,
+        "width": 46,
+        "height": 10.75
+      }
     },
     {
       "id": "clock_03_counterflow",
@@ -115,49 +431,238 @@
       "floors": [
         {
           "id": "clock_counter_west",
-          "x": 3
+          "x": 18,
+          "surface": "drum_floor"
         },
         {
           "id": "clock_counter_east",
-          "x": 39
+          "x": 20,
+          "surface": "bridge_head"
+        },
+        {
+          "id": "clock_rest_03",
+          "contactSave": true,
+          "x": 28,
+          "surface": "bridge_head"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "clock_02_pendulum",
-          "x": 1,
-          "gate": ""
+          "x": 17,
+          "gate": "",
+          "approach": {
+            "x": 16,
+            "y": 14.7,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_pendulum_east"
         },
         {
           "room": "clock_04_escapement",
-          "x": 42,
-          "gate": "clock_03_cleared"
+          "x": 22,
+          "gate": "clock_03_cleared",
+          "approach": {
+            "x": 21,
+            "y": 22.95,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_escapement_center"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "shell_sentry",
-          "count": 2,
-          "segments": 3
+          "count": 1,
+          "segments": 3,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "shell_sentry_2"
+          ]
         },
         {
           "id": "reflection_statue",
-          "count": 1,
-          "segments": 3
-        },
-        {
-          "id": "notary_guard",
-          "count": 1,
-          "segments": 2
+          "count": 2,
+          "segments": 4,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "reflection_statue_3",
+            "reflection_statue_4"
+          ]
         }
       ],
-      "crossing": "cycle"
+      "crossing": "cycle",
+      "backgroundSet": "clock_reversing_train",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 6.85,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": 14.5,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "backstop",
+          "rect": {
+            "x": 4,
+            "y": 15.9,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "reverse_rack",
+          "rect": {
+            "x": 12,
+            "y": 17.45,
+            "width": 18,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "idler",
+          "rect": {
+            "x": 26,
+            "y": 19.2,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "outer_lip",
+          "rect": {
+            "x": 33,
+            "y": 21.0,
+            "width": 11,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "bridge_head",
+          "rect": {
+            "x": 16,
+            "y": 22.75,
+            "width": 21,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "reverse_bridge",
+          "rect": {
+            "x": 34,
+            "y": 15.95,
+            "width": 3.2,
+            "height": 0.3
+          },
+          "oneWay": true,
+          "travelX": -4,
+          "travelY": 1.35,
+          "period": 4.4
+        },
+        {
+          "id": "outer_ratchet",
+          "rect": {
+            "x": 43.7,
+            "y": 18.65,
+            "width": 0.5,
+            "height": 4.4
+          },
+          "wallJump": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 8,
+          "y": 16.3,
+          "active": {
+            "x": 3.5,
+            "y": 16.01,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 40,
+          "y": 21.4,
+          "active": {
+            "x": 35.5,
+            "y": 21.11,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "shell_sentry_2",
+          "x": 22,
+          "y": 17.85,
+          "active": {
+            "x": 17.5,
+            "y": 17.56,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "reflection_statue_3",
+          "x": 29,
+          "y": 19.6,
+          "active": {
+            "x": 24.5,
+            "y": 19.31,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "reflection_statue_4",
+          "x": 26,
+          "y": 23.15,
+          "active": {
+            "x": 21.5,
+            "y": 22.86,
+            "width": 9,
+            "height": 1.04
+          }
+        }
+      ],
+      "cameraBounds": {
+        "x": 0,
+        "y": 15.85,
+        "width": 46,
+        "height": 10.75
+      }
     },
     {
       "id": "clock_04_escapement",
@@ -167,45 +672,228 @@
       "floors": [
         {
           "id": "clock_escapement_center",
-          "x": 3
+          "x": 21,
+          "surface": "drum_floor"
+        },
+        {
+          "id": "clock_rest_04",
+          "contactSave": true,
+          "x": 14,
+          "surface": "lift_head"
+        },
+        {
+          "id": "clock_lift_cage",
+          "x": 21,
+          "surface": "lift_head"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "clock_03_counterflow",
-          "x": 1,
-          "gate": ""
+          "x": 19,
+          "gate": "",
+          "approach": {
+            "x": 18,
+            "y": 22.95,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_counter_east"
         },
         {
           "room": "clock_05_vestibule",
-          "x": 42,
-          "gate": "clock_04_cleared"
+          "x": 16,
+          "gate": "clock_04_cleared",
+          "approach": {
+            "x": 15,
+            "y": 31.2,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_pre_boss_floor"
         },
         {
           "room": "clock_08_return_lower",
-          "x": 37,
-          "gate": "julius_defeated"
+          "x": 38,
+          "gate": "julius_defeated",
+          "approach": {
+            "x": 37,
+            "y": 22.95,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_return_lower_safe"
+        },
+        {
+          "room": "clock_01_entry",
+          "gate": "investigation_complete",
+          "requiresFlag": "clock_04_cleared",
+          "x": 21,
+          "approach": {
+            "x": 20,
+            "y": 31.2,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_lift_foot"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
-          "count": 1,
-          "segments": 1
-        },
-        {
-          "id": "shell_sentry",
-          "count": 1,
-          "segments": 3
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 2,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "reflection_statue_2"
+          ]
+        },
+        {
+          "id": "shell_sentry",
+          "count": 1,
+          "segments": 3,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "shell_sentry_3"
+          ]
         }
       ],
-      "crossing": "steps"
+      "crossing": "steps",
+      "backgroundSet": "clock_escapement",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 15.1,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": 22.75,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "pallet",
+          "rect": {
+            "x": 26,
+            "y": 24.6,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "escape_wheel",
+          "rect": {
+            "x": 13,
+            "y": 26.4,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lock_face",
+          "rect": {
+            "x": 4,
+            "y": 28.0,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "west_pallet",
+          "rect": {
+            "x": 1,
+            "y": 29.5,
+            "width": 8,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lift_head",
+          "rect": {
+            "x": 5,
+            "y": 31.0,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 35,
+          "y": 25.0,
+          "active": {
+            "x": 30.5,
+            "y": 24.71,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 24,
+          "y": 26.8,
+          "active": {
+            "x": 19.5,
+            "y": 26.51,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "reflection_statue_2",
+          "x": 11,
+          "y": 28.4,
+          "active": {
+            "x": 6.5,
+            "y": 28.11,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "shell_sentry_3",
+          "x": 6,
+          "y": 29.9,
+          "active": {
+            "x": 1.5,
+            "y": 29.61,
+            "width": 9,
+            "height": 1.04
+          }
+        }
+      ],
+      "cameraBounds": {
+        "x": 0,
+        "y": 24.1,
+        "width": 46,
+        "height": 10.75
+      }
     },
     {
       "id": "clock_05_vestibule",
@@ -215,39 +903,153 @@
       "floors": [
         {
           "id": "clock_pre_boss_floor",
-          "x": 3
+          "x": 20,
+          "surface": "drum_floor"
+        },
+        {
+          "id": "clock_rest_05",
+          "contactSave": true,
+          "x": 15,
+          "surface": "crown"
         }
       ],
       "points": [
         {
           "id": "clock_arena_gate",
-          "x": 34,
-          "platform": false
+          "x": 27,
+          "platform": false,
+          "surface": "door_ring"
         },
         {
           "id": "julius_trial_bell",
           "x": 16,
-          "platform": false
+          "platform": false,
+          "surface": "drum_floor"
         }
       ],
       "exits": [
         {
           "room": "clock_04_escapement",
-          "x": 1,
-          "gate": ""
+          "x": 17,
+          "gate": "",
+          "approach": {
+            "x": 16,
+            "y": 31.2,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_lift_cage"
         },
         {
           "room": "clock_06_arena",
-          "x": 42,
-          "gate": "clock_route_complete"
+          "x": 18,
+          "gate": "clock_route_complete",
+          "approach": {
+            "x": 17,
+            "y": 39.45,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "julius_arena_west"
         },
         {
           "room": "clock_07_return_upper",
-          "x": 37,
-          "gate": "julius_defeated"
+          "x": 36,
+          "gate": "julius_defeated",
+          "approach": {
+            "x": 35,
+            "y": 31.2,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_return_upper_safe"
         }
       ],
-      "roster": []
+      "roster": [],
+      "backgroundSet": "clock_dial_vestibule",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 23.35,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": 31.0,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "approach",
+          "rect": {
+            "x": 7,
+            "y": 32.5,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "minute_rack",
+          "rect": {
+            "x": 18,
+            "y": 34.1,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "bell_rim",
+          "rect": {
+            "x": 30,
+            "y": 35.8,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "door_ring",
+          "rect": {
+            "x": 21,
+            "y": 37.55,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "crown",
+          "rect": {
+            "x": 9,
+            "y": 39.25,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "bronze_approach",
+          "rect": {
+            "x": 0,
+            "y": 31.17,
+            "width": 8,
+            "height": 0.18
+          },
+          "oneWay": true,
+          "rampRise": 1.5
+        }
+      ],
+      "placements": [],
+      "cameraBounds": {
+        "x": 0,
+        "y": 32.35,
+        "width": 46,
+        "height": 10.75
+      }
     },
     {
       "id": "clock_06_arena",
@@ -257,39 +1059,111 @@
       "floors": [
         {
           "id": "julius_arena_west",
-          "x": 3
+          "x": 19,
+          "surface": "court_ring",
+          "contactSave": true
         },
         {
           "id": "julius_arena_center",
-          "x": 19
+          "x": 19,
+          "surface": "drum_floor"
         },
         {
           "id": "julius_return_platform",
-          "x": 31
+          "x": 31,
+          "surface": "drum_floor"
         }
       ],
       "points": [
         {
           "id": "julius_return_platform",
           "x": 31,
-          "platform": true
+          "platform": true,
+          "surface": "drum_floor"
         }
       ],
       "exits": [
         {
           "room": "clock_05_vestibule",
-          "x": 1,
-          "gate": ""
+          "x": 22,
+          "gate": "",
+          "approach": {
+            "x": 21,
+            "y": 39.45,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_rest_05"
         },
         {
           "room": "clock_07_return_upper",
-          "x": 42,
-          "gate": "julius_defeated"
+          "x": 28,
+          "gate": "julius_defeated",
+          "approach": {
+            "x": 27,
+            "y": 39.45,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_return_upper_safe"
         }
       ],
       "roster": [],
       "boutHealth": 14,
-      "interludeHealth": 7
+      "interludeHealth": 7,
+      "backgroundSet": "clock_regulator_court",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -8,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": 35.95,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "shutter_rim",
+          "rect": {
+            "x": 29,
+            "y": 37.6,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "court_ring",
+          "rect": {
+            "x": 16,
+            "y": 39.25,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "gallery_rail",
+          "rect": {
+            "x": 5,
+            "y": 40.9,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [],
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.5,
+        "width": 46,
+        "height": 43.25
+      }
     },
     {
       "id": "clock_07_return_upper",
@@ -299,24 +1173,46 @@
       "floors": [
         {
           "id": "clock_return_upper_safe",
-          "x": 3
+          "x": 5.5,
+          "surface": "turn_0"
         },
         {
           "id": "clock_return_upper_mid",
-          "x": 19
+          "x": 20,
+          "surface": "turn_3"
+        },
+        {
+          "id": "clock_rest_07",
+          "contactSave": true,
+          "x": 5.5,
+          "surface": "turn_0"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "clock_06_arena",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 39.45,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "julius_arena_center"
         },
         {
           "room": "clock_08_return_lower",
-          "x": 42,
-          "gate": "julius_defeated"
+          "x": 34,
+          "gate": "julius_defeated",
+          "approach": {
+            "x": 33,
+            "y": 19.65,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_return_lower_safe"
         }
       ],
       "roster": [
@@ -324,16 +1220,386 @@
           "id": "notary_guard",
           "count": 2,
           "segments": 3,
-          "setupSkill": "pendulum_rewind"
+          "setupSkill": "pendulum_rewind",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ]
         },
         {
           "id": "sword_latch",
           "count": 2,
           "segments": 1,
-          "setupSkill": "pendulum_rewind"
+          "setupSkill": "pendulum_rewind",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "sword_latch_2",
+            "sword_latch_3"
+          ]
         }
       ],
-      "stations": 4
+      "stations": 42,
+      "backgroundSet": "clock_upper_drum",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 11.8,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": 19.45,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "pawl_5",
+          "rect": {
+            "x": 0,
+            "y": 21.1,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_5",
+          "rect": {
+            "x": 5,
+            "y": 22.75,
+            "width": 37,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pawl_4",
+          "rect": {
+            "x": 34,
+            "y": 24.4,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_4",
+          "rect": {
+            "x": 2,
+            "y": 26.05,
+            "width": 35,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pawl_3",
+          "rect": {
+            "x": 0,
+            "y": 27.7,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_3",
+          "rect": {
+            "x": 5,
+            "y": 29.35,
+            "width": 37,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pawl_2",
+          "rect": {
+            "x": 34,
+            "y": 31.0,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_2",
+          "rect": {
+            "x": 2,
+            "y": 32.65,
+            "width": 35,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pawl_1",
+          "rect": {
+            "x": 0,
+            "y": 34.3,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_1",
+          "rect": {
+            "x": 5,
+            "y": 35.95,
+            "width": 37,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pawl_0",
+          "rect": {
+            "x": 34,
+            "y": 37.6,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_0",
+          "rect": {
+            "x": 2,
+            "y": 39.25,
+            "width": 35,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 41,
+          "y": 24.8,
+          "active": {
+            "x": 37,
+            "y": 24.5,
+            "width": 8,
+            "height": 1.05
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 2,
+          "y": 21.5,
+          "active": {
+            "x": -2,
+            "y": 21.2,
+            "width": 8,
+            "height": 1.05
+          }
+        },
+        {
+          "id": "sword_latch_2",
+          "x": 3,
+          "y": 28.1,
+          "active": {
+            "x": -1,
+            "y": 27.8,
+            "width": 8,
+            "height": 1.05
+          }
+        },
+        {
+          "id": "sword_latch_3",
+          "x": 43,
+          "y": 19.85,
+          "active": {
+            "x": 39,
+            "y": 19.55,
+            "width": 8,
+            "height": 1.05
+          }
+        }
+      ],
+      "cameraBounds": {
+        "x": 0,
+        "y": 20.8,
+        "width": 46,
+        "height": 22.3
+      },
+      "stationMarks": [
+        {
+          "x": 8.0,
+          "surface": "turn_0"
+        },
+        {
+          "x": 13.3,
+          "surface": "turn_0"
+        },
+        {
+          "x": 18.6,
+          "surface": "turn_0"
+        },
+        {
+          "x": 23.9,
+          "surface": "turn_0"
+        },
+        {
+          "x": 29.2,
+          "surface": "turn_0"
+        },
+        {
+          "x": 34.5,
+          "surface": "turn_0"
+        },
+        {
+          "x": 34.5,
+          "surface": "turn_1"
+        },
+        {
+          "x": 29.2,
+          "surface": "turn_1"
+        },
+        {
+          "x": 23.9,
+          "surface": "turn_1"
+        },
+        {
+          "x": 18.6,
+          "surface": "turn_1"
+        },
+        {
+          "x": 13.3,
+          "surface": "turn_1"
+        },
+        {
+          "x": 8.0,
+          "surface": "turn_1"
+        },
+        {
+          "x": 8.0,
+          "surface": "turn_2"
+        },
+        {
+          "x": 13.3,
+          "surface": "turn_2"
+        },
+        {
+          "x": 18.6,
+          "surface": "turn_2"
+        },
+        {
+          "x": 23.9,
+          "surface": "turn_2"
+        },
+        {
+          "x": 29.2,
+          "surface": "turn_2"
+        },
+        {
+          "x": 34.5,
+          "surface": "turn_2"
+        },
+        {
+          "x": 34.5,
+          "surface": "turn_3"
+        },
+        {
+          "x": 29.2,
+          "surface": "turn_3"
+        },
+        {
+          "x": 23.9,
+          "surface": "turn_3"
+        },
+        {
+          "x": 18.6,
+          "surface": "turn_3"
+        },
+        {
+          "x": 13.3,
+          "surface": "turn_3"
+        },
+        {
+          "x": 8.0,
+          "surface": "turn_3"
+        },
+        {
+          "x": 8.0,
+          "surface": "turn_4"
+        },
+        {
+          "x": 13.3,
+          "surface": "turn_4"
+        },
+        {
+          "x": 18.6,
+          "surface": "turn_4"
+        },
+        {
+          "x": 23.9,
+          "surface": "turn_4"
+        },
+        {
+          "x": 29.2,
+          "surface": "turn_4"
+        },
+        {
+          "x": 34.5,
+          "surface": "turn_4"
+        },
+        {
+          "x": 34.5,
+          "surface": "turn_5"
+        },
+        {
+          "x": 29.2,
+          "surface": "turn_5"
+        },
+        {
+          "x": 23.9,
+          "surface": "turn_5"
+        },
+        {
+          "x": 18.6,
+          "surface": "turn_5"
+        },
+        {
+          "x": 13.3,
+          "surface": "turn_5"
+        },
+        {
+          "x": 8.0,
+          "surface": "turn_5"
+        },
+        {
+          "x": 8.0,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 13.3,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 18.6,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 23.9,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 29.2,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 34.5,
+          "surface": "drum_floor"
+        }
+      ]
     },
     {
       "id": "clock_08_return_lower",
@@ -343,48 +1609,432 @@
       "floors": [
         {
           "id": "clock_return_lower_safe",
-          "x": 3
+          "x": 39,
+          "surface": "lower_gallery_0"
+        },
+        {
+          "id": "clock_rest_08",
+          "contactSave": true,
+          "x": 39,
+          "surface": "lower_gallery_0"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "clock_07_return_upper",
-          "x": 1,
-          "gate": "julius_defeated"
+          "x": 42,
+          "gate": "julius_defeated",
+          "approach": {
+            "x": 41,
+            "y": 19.65,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_return_upper_mid"
         },
         {
           "room": "clock_04_escapement",
-          "x": 42,
-          "gate": ""
+          "x": 40,
+          "gate": "",
+          "approach": {
+            "x": 39,
+            "y": -0.15,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_escapement_center"
         },
         {
           "room": "clock_01_entry",
-          "x": 37,
-          "gate": ""
+          "x": 8,
+          "gate": "",
+          "approach": {
+            "x": 7,
+            "y": -0.15,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_entry_floor"
         },
         {
           "room": "hub_lift",
           "x": 32,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": 31,
+            "y": -0.15,
+            "width": 2,
+            "height": 0.9
+          }
         }
       ],
       "roster": [
         {
-          "id": "notary_guard",
-          "count": 2,
-          "segments": 3,
-          "setupSkill": "pendulum_rewind"
+          "id": "sword_latch",
+          "count": 1,
+          "segments": 2,
+          "setupSkill": "pendulum_rewind",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "sword_latch_0"
+          ]
         },
         {
-          "id": "sword_latch",
-          "count": 2,
-          "segments": 1,
-          "setupSkill": "pendulum_rewind"
+          "id": "notary_guard",
+          "count": 3,
+          "segments": 2,
+          "setupSkill": "pendulum_rewind",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "notary_guard_1",
+            "notary_guard_2",
+            "notary_guard_3"
+          ]
         }
       ],
-      "stations": 4,
-      "projectileStations": false
+      "stations": 42,
+      "projectileStations": false,
+      "backgroundSet": "clock_lower_drum",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -8,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": -0.35,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "lower_pawl_4",
+          "rect": {
+            "x": 0,
+            "y": 1.63,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_gallery_4",
+          "rect": {
+            "x": 7,
+            "y": 3.61,
+            "width": 37,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_pawl_3",
+          "rect": {
+            "x": 35,
+            "y": 5.59,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_gallery_3",
+          "rect": {
+            "x": 2,
+            "y": 7.57,
+            "width": 38,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_pawl_2",
+          "rect": {
+            "x": 0,
+            "y": 9.55,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_gallery_2",
+          "rect": {
+            "x": 7,
+            "y": 11.53,
+            "width": 37,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_pawl_1",
+          "rect": {
+            "x": 35,
+            "y": 13.51,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_gallery_1",
+          "rect": {
+            "x": 2,
+            "y": 15.49,
+            "width": 38,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_pawl_0",
+          "rect": {
+            "x": 0,
+            "y": 17.47,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_gallery_0",
+          "rect": {
+            "x": 7,
+            "y": 19.45,
+            "width": 37,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 42,
+          "y": 5.99,
+          "active": {
+            "x": 38,
+            "y": 5.69,
+            "width": 8,
+            "height": 1.05
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 2,
+          "y": 2.03,
+          "active": {
+            "x": -2,
+            "y": 1.73,
+            "width": 8,
+            "height": 1.05
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 3,
+          "y": 9.95,
+          "active": {
+            "x": -1,
+            "y": 9.65,
+            "width": 8,
+            "height": 1.05
+          }
+        },
+        {
+          "id": "notary_guard_3",
+          "x": 43,
+          "y": 0.05,
+          "active": {
+            "x": 39,
+            "y": -0.25,
+            "width": 8,
+            "height": 1.05
+          }
+        }
+      ],
+      "cameraBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 46,
+        "height": 22.3
+      },
+      "stationMarks": [
+        {
+          "x": 36.1,
+          "surface": "lower_gallery_0"
+        },
+        {
+          "x": 31.7,
+          "surface": "lower_gallery_0"
+        },
+        {
+          "x": 27.3,
+          "surface": "lower_gallery_0"
+        },
+        {
+          "x": 22.9,
+          "surface": "lower_gallery_0"
+        },
+        {
+          "x": 18.5,
+          "surface": "lower_gallery_0"
+        },
+        {
+          "x": 14.1,
+          "surface": "lower_gallery_0"
+        },
+        {
+          "x": 9.7,
+          "surface": "lower_gallery_0"
+        },
+        {
+          "x": 9.7,
+          "surface": "lower_gallery_1"
+        },
+        {
+          "x": 14.1,
+          "surface": "lower_gallery_1"
+        },
+        {
+          "x": 18.5,
+          "surface": "lower_gallery_1"
+        },
+        {
+          "x": 22.9,
+          "surface": "lower_gallery_1"
+        },
+        {
+          "x": 27.3,
+          "surface": "lower_gallery_1"
+        },
+        {
+          "x": 31.7,
+          "surface": "lower_gallery_1"
+        },
+        {
+          "x": 36.1,
+          "surface": "lower_gallery_1"
+        },
+        {
+          "x": 36.1,
+          "surface": "lower_gallery_2"
+        },
+        {
+          "x": 31.7,
+          "surface": "lower_gallery_2"
+        },
+        {
+          "x": 27.3,
+          "surface": "lower_gallery_2"
+        },
+        {
+          "x": 22.9,
+          "surface": "lower_gallery_2"
+        },
+        {
+          "x": 18.5,
+          "surface": "lower_gallery_2"
+        },
+        {
+          "x": 14.1,
+          "surface": "lower_gallery_2"
+        },
+        {
+          "x": 9.7,
+          "surface": "lower_gallery_2"
+        },
+        {
+          "x": 9.7,
+          "surface": "lower_gallery_3"
+        },
+        {
+          "x": 14.1,
+          "surface": "lower_gallery_3"
+        },
+        {
+          "x": 18.5,
+          "surface": "lower_gallery_3"
+        },
+        {
+          "x": 22.9,
+          "surface": "lower_gallery_3"
+        },
+        {
+          "x": 27.3,
+          "surface": "lower_gallery_3"
+        },
+        {
+          "x": 31.7,
+          "surface": "lower_gallery_3"
+        },
+        {
+          "x": 36.1,
+          "surface": "lower_gallery_3"
+        },
+        {
+          "x": 36.1,
+          "surface": "lower_gallery_4"
+        },
+        {
+          "x": 31.7,
+          "surface": "lower_gallery_4"
+        },
+        {
+          "x": 27.3,
+          "surface": "lower_gallery_4"
+        },
+        {
+          "x": 22.9,
+          "surface": "lower_gallery_4"
+        },
+        {
+          "x": 18.5,
+          "surface": "lower_gallery_4"
+        },
+        {
+          "x": 14.1,
+          "surface": "lower_gallery_4"
+        },
+        {
+          "x": 9.7,
+          "surface": "lower_gallery_4"
+        },
+        {
+          "x": 9.7,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 14.1,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 18.5,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 22.9,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 27.3,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 31.7,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 36.1,
+          "surface": "drum_floor"
+        }
+      ]
     },
     {
       "id": "clock_09_shortcut",
@@ -394,7 +2044,14 @@
       "floors": [
         {
           "id": "clock_shortcut_safe",
-          "x": 3
+          "x": 3,
+          "surface": "drum_floor"
+        },
+        {
+          "id": "clock_rest_09",
+          "contactSave": true,
+          "x": 20,
+          "surface": "switchback"
         }
       ],
       "points": [],
@@ -402,17 +2059,38 @@
         {
           "room": "clock_02_pendulum",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": 0,
+            "y": 8.1,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_pendulum_mid"
         },
         {
           "room": "clock_05_vestibule",
-          "x": 42,
-          "gate": ""
+          "x": 28,
+          "gate": "",
+          "approach": {
+            "x": 27,
+            "y": 14.65,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_pre_boss_floor"
         },
         {
           "room": "clock_10_sanctuary_rail",
-          "x": 32,
-          "gate": "synergy"
+          "x": 21,
+          "gate": "synergy",
+          "approach": {
+            "x": 20,
+            "y": 14.65,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_reunion_safe_floor"
         }
       ],
       "roster": [
@@ -420,23 +2098,195 @@
           "id": "notary_guard",
           "count": 2,
           "segments": 3,
-          "setupSkill": "pendulum_rewind"
-        },
-        {
-          "id": "sword_latch",
-          "count": 2,
-          "segments": 1
+          "setupSkill": "pendulum_rewind",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "reflection_statue_2"
+          ]
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupSkill": "",
+          "setupHits": 1,
+          "skillOnly": false,
+          "placementIds": [
+            "sword_latch_3",
+            "sword_latch_4"
+          ]
         }
       ],
       "stations": 3,
       "stitchAnchors": 3,
       "singleSeams": 3,
-      "seamId": "clock_synergy_seam"
+      "seamId": "clock_synergy_seam",
+      "backgroundSet": "clock_chain_lift",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 0.25,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": 7.9,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "chain_shoe",
+          "rect": {
+            "x": 6,
+            "y": 9.3,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "chain_walk",
+          "rect": {
+            "x": 17,
+            "y": 10.95,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "sprocket",
+          "rect": {
+            "x": 28,
+            "y": 12.8,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "switchback",
+          "rect": {
+            "x": 18,
+            "y": 14.45,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 25,
+          "y": 11.35,
+          "active": {
+            "x": 20.5,
+            "y": 11.06,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 33,
+          "y": 13.2,
+          "active": {
+            "x": 28.5,
+            "y": 12.91,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "reflection_statue_2",
+          "x": 31,
+          "y": 13.2,
+          "active": {
+            "x": 26.5,
+            "y": 12.91,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "sword_latch_3",
+          "x": 11,
+          "y": 9.7,
+          "active": {
+            "x": 6.5,
+            "y": 9.41,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "sword_latch_4",
+          "x": 26,
+          "y": 14.85,
+          "active": {
+            "x": 21.5,
+            "y": 14.56,
+            "width": 9,
+            "height": 1.04
+          }
+        }
+      ],
+      "cameraBounds": {
+        "x": 0,
+        "y": 9.25,
+        "width": 46,
+        "height": 9.05
+      },
+      "stationMarks": [
+        {
+          "x": 7,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 16,
+          "surface": "drum_floor"
+        },
+        {
+          "x": 24,
+          "surface": "drum_floor"
+        }
+      ],
+      "seamRuns": [
+        {
+          "count": 1,
+          "x": 5.9,
+          "y": 8.49,
+          "stepX": 0
+        },
+        {
+          "count": 1,
+          "x": 14.9,
+          "y": 8.49,
+          "stepX": 0
+        },
+        {
+          "count": 1,
+          "x": 22.9,
+          "y": 8.49,
+          "stepX": 0
+        }
+      ]
     },
     {
       "id": "clock_10_sanctuary_rail",
@@ -446,36 +2296,70 @@
       "floors": [
         {
           "id": "clock_reunion_safe_floor",
-          "x": 3
+          "x": 3,
+          "surface": "drum_floor"
+        },
+        {
+          "id": "clock_rest_10",
+          "contactSave": true,
+          "x": 20,
+          "surface": "rail_head"
         }
       ],
       "points": [
         {
           "id": "julius_reunion_platform",
           "x": 18,
-          "platform": true
+          "platform": true,
+          "surface": "drum_floor"
         }
       ],
       "exits": [
         {
           "room": "hub_sanctuary",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": 0,
+            "y": -0.15,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "hub_lift",
-          "x": 42,
-          "gate": ""
+          "x": 18,
+          "gate": "",
+          "approach": {
+            "x": 17,
+            "y": 6.35,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "clock_01_entry",
-          "x": 37,
-          "gate": "depart"
+          "x": 22,
+          "gate": "depart",
+          "approach": {
+            "x": 21,
+            "y": 6.35,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_entry_floor"
         },
         {
           "room": "clock_09_shortcut",
           "x": 28,
-          "gate": "synergy"
+          "gate": "synergy",
+          "approach": {
+            "x": 27,
+            "y": -0.15,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "clock_shortcut_safe"
         }
       ],
       "roster": [
@@ -484,9 +2368,112 @@
           "count": 3,
           "segments": 1,
           "setupSkill": "pendulum_rewind",
-          "setupHits": 3
+          "setupHits": 3,
+          "skillOnly": false,
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1",
+            "notary_guard_2"
+          ]
         }
-      ]
+      ],
+      "backgroundSet": "clock_shelter_rail",
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -8,
+      "terrain": [
+        {
+          "id": "drum_floor",
+          "rect": {
+            "x": -3,
+            "y": -0.35,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "rail_shoe",
+          "rect": {
+            "x": 24,
+            "y": 1.2,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rail_span",
+          "rect": {
+            "x": 11,
+            "y": 2.8,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drill_rim",
+          "rect": {
+            "x": 4,
+            "y": 4.5,
+            "width": 11,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rail_head",
+          "rect": {
+            "x": 10,
+            "y": 6.15,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 29,
+          "y": 1.6,
+          "active": {
+            "x": 24.5,
+            "y": 1.31,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 19,
+          "y": 3.2,
+          "active": {
+            "x": 14.5,
+            "y": 2.91,
+            "width": 9,
+            "height": 1.04
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 9,
+          "y": 4.9,
+          "active": {
+            "x": 4.5,
+            "y": 4.61,
+            "width": 9,
+            "height": 1.04
+          }
+        }
+      ],
+      "cameraBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 46,
+        "height": 9.0
+      }
     }
   ],
   "rows": [

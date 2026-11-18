@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace RewindNotary
 {
     public sealed partial class GameShell
@@ -12,6 +14,10 @@ namespace RewindNotary
     public sealed partial class RepresentativeArea
     {
         internal CombatMotor2D Rea => player;
+        internal CombatMotor2D ClockOpponent => opponent;
+        internal WaveTarget2D ClockTargetOnTier => roomTargets.Find(t => !t.State.Cleared &&
+            Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f);
+        internal WaveTarget2D UnclearedClockTarget => roomTargets.Find(t => !t.State.Cleared);
         internal CombatMotor2D BoutOpponent => mikhailBout == null ? null : opponent;
         internal BenefactorTrialOpponent Bout => mikhailBout;
         internal string PendingAction => ReadyForAction ? ActionToken : null;

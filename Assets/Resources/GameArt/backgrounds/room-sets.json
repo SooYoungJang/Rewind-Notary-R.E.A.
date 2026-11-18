@@ -582,6 +582,536 @@
           "offset": -6
         }
       ]
+    },
+    {
+      "id": "clock_winding_key",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.02,
+            "y": 0,
+            "width": 0.67,
+            "height": 0.79
+          },
+          "tint": "#c5bea8",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": -5
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.0,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.6,
+          "offset": -4
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.4,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -5.0,
+          "spacing": 1.5,
+          "offset": 5
+        }
+      ]
+    },
+    {
+      "id": "clock_great_pendulum",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.25,
+            "y": 0.2,
+            "width": 0.62,
+            "height": 0.76
+          },
+          "tint": "#a3bbba",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": -3
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.2,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.7200000000000002,
+          "offset": -3
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.6,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -4.4,
+          "spacing": 1.65,
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "id": "clock_reversing_train",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.48,
+            "y": 0.13,
+            "width": 0.52,
+            "height": 0.83
+          },
+          "tint": "#aabfc3",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": -1
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.4,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.84,
+          "offset": -2
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.8,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -3.8,
+          "spacing": 1.8,
+          "offset": 3
+        }
+      ]
+    },
+    {
+      "id": "clock_escapement",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.08,
+            "y": 0.32,
+            "width": 0.63,
+            "height": 0.65
+          },
+          "tint": "#ceb67f",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": 1
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.6,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.6,
+          "offset": -1
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.0,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -5.0,
+          "spacing": 1.95,
+          "offset": 2
+        }
+      ]
+    },
+    {
+      "id": "clock_dial_vestibule",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.55,
+            "y": 0.24,
+            "width": 0.45,
+            "height": 0.76
+          },
+          "tint": "#ddbf9f",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": 3
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.8,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.7200000000000002,
+          "offset": 0
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.2,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -4.4,
+          "spacing": 1.5,
+          "offset": 1
+        }
+      ]
+    },
+    {
+      "id": "clock_regulator_court",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.39,
+            "y": 0.03,
+            "width": 0.6,
+            "height": 0.89
+          },
+          "tint": "#f0caa5",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": 5
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.0,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.84,
+          "offset": 1
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.4,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -3.8,
+          "spacing": 1.65,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "clock_upper_drum",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.2,
+            "y": 0.05,
+            "width": 0.74,
+            "height": 0.82
+          },
+          "tint": "#b8c4bc",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": 7
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.2,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.6,
+          "offset": 2
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.6,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -5.0,
+          "spacing": 1.8,
+          "offset": -1
+        }
+      ]
+    },
+    {
+      "id": "clock_lower_drum",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.01,
+            "y": 0.02,
+            "width": 0.58,
+            "height": 0.68
+          },
+          "tint": "#9baeb4",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": 9
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.4,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.7200000000000002,
+          "offset": 3
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.8,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -4.4,
+          "spacing": 1.95,
+          "offset": -2
+        }
+      ]
+    },
+    {
+      "id": "clock_chain_lift",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.36,
+            "y": 0.29,
+            "width": 0.58,
+            "height": 0.68
+          },
+          "tint": "#cdc2a1",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": 11
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.6,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.84,
+          "offset": 4
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.0,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -3.8,
+          "spacing": 1.5,
+          "offset": -3
+        }
+      ]
+    },
+    {
+      "id": "clock_shelter_rail",
+      "layers": [
+        {
+          "resource": "clock-interior",
+          "crop": {
+            "x": 0.03,
+            "y": 0.17,
+            "width": 0.66,
+            "height": 0.72
+          },
+          "tint": "#b1b7c5",
+          "factor": 0.11,
+          "vertical": 0.94,
+          "height": 18,
+          "bottom": -7,
+          "spacing": 1,
+          "offset": 13
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.8,
+            "y": 0.5,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b5ae9c",
+          "factor": 0.35,
+          "vertical": 0.94,
+          "height": 10,
+          "bottom": -3.7,
+          "spacing": 1.6,
+          "offset": 5
+        },
+        {
+          "resource": "clock-train",
+          "crop": {
+            "x": 0.2,
+            "y": 0,
+            "width": 0.2,
+            "height": 0.5
+          },
+          "tint": "#b69872",
+          "factor": 0.72,
+          "vertical": 0.9,
+          "height": 5.5,
+          "bottom": -5.0,
+          "spacing": 1.65,
+          "offset": -4
+        }
+      ]
     }
   ]
 }

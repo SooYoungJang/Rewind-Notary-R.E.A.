@@ -17,7 +17,7 @@ namespace RewindNotary
         public StoryRect rect;
         public bool wallJump, oneWay;
         // Nonzero travel uses a kinematic body. Static marks never bind to it.
-        public float travelX, travelY, period;
+        public float travelX, travelY, period, rampRise;
         public bool Moving => travelX != 0 || travelY != 0;
     }
     [Serializable] public sealed class StoryMark
@@ -34,7 +34,7 @@ namespace RewindNotary
     }
     [Serializable] public sealed class StoryDoor
     {
-        public string source, room, gate, destinationFloor;
+        public string source, room, gate, requiresFlag, destinationFloor;
         public float x;
         public StoryRect approach;
         public bool InReach(Vector2 feet) => approach != null && approach.Defined
@@ -56,7 +56,12 @@ namespace RewindNotary
     {
         public string id, stage, skill, benefactor, crossing, seamId;
         public bool projectileStations;
-        public StoryMark[] floors, points;
+        public StoryMark[] floors, points, stationMarks;
+        public float SurfaceTop(string key)
+        {
+            var face = Surface(key);
+            return face == null ? 0f : face.rect.y + face.rect.height;
+        }
         public string backgroundSet;
         public StoryRect cameraBounds;
         public float fallLine;

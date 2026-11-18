@@ -1,0 +1,693 @@
+{
+  "Assets/Resources/Story/clock.json": {
+    "original": "7667d52b65af01da555c2c289b8d36f480df6587566823e24046e101de9d206a",
+    "updated": "3033113c4902ec9aafa2a3f1b2d6dcf8201140390ae9d468614d4bac667c1dbc",
+    "edits": [
+      [
+        10,
+        12,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        15,
+        17,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        20,
+        33,
+        [
+          "          \"x\": 41\n"
+        ]
+      ],
+      [
+        39,
+        41,
+        [
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        44,
+        47,
+        [
+          "          \"x\": 24,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        53,
+        60,
+        [
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        63,
+        85,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"clock_entry_complete\"\n"
+        ]
+      ],
+      [
+        91,
+        98,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        99,
+        186,
+        [
+          "      ]\n"
+        ]
+      ],
+      [
+        195,
+        197,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        200,
+        202,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        205,
+        213,
+        [
+          "          \"x\": 39\n"
+        ]
+      ],
+      [
+        219,
+        228,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        231,
+        240,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"clock_02_cleared\"\n"
+        ]
+      ],
+      [
+        243,
+        252,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        258,
+        266,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        269,
+        296,
+        [
+          "          \"count\": 2,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        298,
+        359,
+        [
+          "          \"id\": \"reflection_statue\",\n",
+          "          \"count\": 1,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        361,
+        424,
+        [
+          "      \"crossing\": \"swing\"\n"
+        ]
+      ],
+      [
+        433,
+        435,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        438,
+        446,
+        [
+          "          \"x\": 39\n"
+        ]
+      ],
+      [
+        452,
+        461,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        464,
+        473,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"clock_03_cleared\"\n"
+        ]
+      ],
+      [
+        479,
+        487,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        490,
+        498,
+        [
+          "          \"count\": 2,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        501,
+        527,
+        [
+          "          \"count\": 1,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        529,
+        600,
+        [
+          "          \"id\": \"notary_guard\",\n",
+          "          \"count\": 1,\n",
+          "          \"segments\": 2\n"
+        ]
+      ],
+      [
+        602,
+        665,
+        [
+          "      \"crossing\": \"cycle\"\n"
+        ]
+      ],
+      [
+        674,
+        687,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        693,
+        702,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        705,
+        714,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"clock_04_cleared\"\n"
+        ]
+      ],
+      [
+        717,
+        739,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"julius_defeated\"\n"
+        ]
+      ],
+      [
+        744,
+        756,
+        []
+      ],
+      [
+        757,
+        764,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        768,
+        792,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        794,
+        842,
+        [
+          "          \"id\": \"reflection_statue\",\n",
+          "          \"count\": 1,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        844,
+        896,
+        [
+          "      \"crossing\": \"steps\"\n"
+        ]
+      ],
+      [
+        905,
+        913,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        918,
+        921,
+        [
+          "          \"x\": 34,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        925,
+        927,
+        [
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        932,
+        941,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        944,
+        953,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"clock_route_complete\"\n"
+        ]
+      ],
+      [
+        956,
+        965,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"julius_defeated\"\n"
+        ]
+      ],
+      [
+        967,
+        1052,
+        [
+          "      \"roster\": []\n"
+        ]
+      ],
+      [
+        1061,
+        1064,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1067,
+        1069,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        1072,
+        1074,
+        [
+          "          \"x\": 31\n"
+        ]
+      ],
+      [
+        1080,
+        1082,
+        [
+          "          \"platform\": true\n"
+        ]
+      ],
+      [
+        1087,
+        1096,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1099,
+        1108,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"julius_defeated\"\n"
+        ]
+      ],
+      [
+        1112,
+        1166,
+        [
+          "      \"interludeHealth\": 7\n"
+        ]
+      ],
+      [
+        1175,
+        1177,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1180,
+        1188,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        1194,
+        1203,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1206,
+        1215,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"julius_defeated\"\n"
+        ]
+      ],
+      [
+        1222,
+        1229,
+        [
+          "          \"setupSkill\": \"pendulum_rewind\"\n"
+        ]
+      ],
+      [
+        1234,
+        1241,
+        [
+          "          \"setupSkill\": \"pendulum_rewind\"\n"
+        ]
+      ],
+      [
+        1243,
+        1602,
+        [
+          "      \"stations\": 4\n"
+        ]
+      ],
+      [
+        1611,
+        1619,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1625,
+        1634,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"julius_defeated\"\n"
+        ]
+      ],
+      [
+        1637,
+        1646,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1649,
+        1658,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1662,
+        1669,
+        [
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1673,
+        1682,
+        [
+          "          \"id\": \"notary_guard\",\n",
+          "          \"count\": 2,\n",
+          "          \"segments\": 3,\n",
+          "          \"setupSkill\": \"pendulum_rewind\"\n"
+        ]
+      ],
+      [
+        1684,
+        1695,
+        [
+          "          \"id\": \"sword_latch\",\n",
+          "          \"count\": 2,\n",
+          "          \"segments\": 1,\n",
+          "          \"setupSkill\": \"pendulum_rewind\"\n"
+        ]
+      ],
+      [
+        1697,
+        2037,
+        [
+          "      \"stations\": 4,\n",
+          "      \"projectileStations\": false\n"
+        ]
+      ],
+      [
+        2046,
+        2054,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        2061,
+        2069,
+        [
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2072,
+        2081,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2084,
+        2093,
+        [
+          "          \"x\": 32,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        2100,
+        2118,
+        [
+          "          \"setupSkill\": \"pendulum_rewind\"\n"
+        ]
+      ],
+      [
+        2122,
+        2130,
+        [
+          "          \"segments\": 1\n",
+          "        },\n",
+          "        {\n",
+          "          \"id\": \"reflection_statue\",\n",
+          "          \"count\": 1,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        2135,
+        2289,
+        [
+          "      \"seamId\": \"clock_synergy_seam\"\n"
+        ]
+      ],
+      [
+        2298,
+        2306,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        2312,
+        2314,
+        [
+          "          \"platform\": true\n"
+        ]
+      ],
+      [
+        2320,
+        2327,
+        [
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2330,
+        2338,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2341,
+        2350,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"depart\"\n"
+        ]
+      ],
+      [
+        2354,
+        2362,
+        [
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        2370,
+        2377,
+        [
+          "          \"setupHits\": 3\n"
+        ]
+      ],
+      [
+        2378,
+        2476,
+        [
+          "      ]\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/RepresentativeArea.cs": {
+    "original": "fb57a66ce92e0da7273629b1ad7a4053824720ceafbbfcdae461c1f48bddb391",
+    "updated": "c562420fa0eac8e515740f6491fbeee84a19d6199966fdf04e49471d9c4fcdde",
+    "edits": [
+      [
+        195,
+        197,
+        [
+          "            else if (ActiveRow == null && !SaveContactFloor()) return;\n"
+        ]
+      ],
+      [
+        238,
+        239,
+        [
+          "                if (target == null || Vector2.Distance(player.Body.position, new Vector2(target.x, .3f)) > 1.25f) return;\n"
+        ]
+      ],
+      [
+        283,
+        284,
+        [
+          "                opponent.ResetAt(new Vector2(spawnX, .1f));\n"
+        ]
+      ],
+      [
+        336,
+        337,
+        []
+      ]
+    ]
+  },
+  "Assets/Scripts/CombatMotor2D.cs": {
+    "original": "bf352cba84961c6f6144464920dbc7a975c74871f471cdf0924e82a08bea04e9",
+    "updated": "066c14b440e7730733e3bcca784ffc9aeba624914ef6e70e15cb0a4c4f21c11d",
+    "edits": [
+      [
+        14,
+        15,
+        []
+      ],
+      [
+        114,
+        119,
+        [
+          "            if (Body.linearVelocity.y <= .1f)\n",
+          "                for (int i = 0; i < hits; i++)\n"
+        ]
+      ],
+      [
+        120,
+        121,
+        [
+          "                    var floor = groundHits[i];\n",
+          "                    // Touching a wall while close to a different floor must not recharge a dash.\n",
+          "                    if ((needsLandingContact || floor.TryGetComponent<AuthoredSurface>(out _)) &&\n",
+          "                        (Mathf.Abs(Body.position.y - floor.bounds.max.y) > .09f ||\n",
+          "                         !floor.IsTouching(capsule))) continue;\n"
+        ]
+      ],
+      [
+        124,
+        134,
+        []
+      ],
+      [
+        164,
+        165,
+        [
+          "            Body.linearVelocity = new Vector2(Attacking ? attackMove : speed, Body.linearVelocity.y);\n"
+        ]
+      ]
+    ]
+  }
+}

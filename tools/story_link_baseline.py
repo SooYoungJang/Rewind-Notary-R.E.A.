@@ -37,6 +37,17 @@ def reverse_exact(item, source):
     return previous if hashlib.sha256(previous.encode()).hexdigest() == item['original'] else source
 
 
+STEP3_EDITS = json.loads(Path(__file__).with_name('level-step3-extensions.json').read_text())
+
+
+def prior_level3_source(path, source):
+    project = Path('unity/RewindNotary')
+    path = Path(path)
+    if path.is_relative_to(project):
+        path = path.relative_to(project)
+    return reverse_exact(STEP3_EDITS.get(path.as_posix()), source)
+
+
 def prior_story_source(path, source):
     path = Path(path)
     if path.is_absolute():
@@ -46,6 +57,7 @@ def prior_story_source(path, source):
             return source
     if path.parent == Path('unity/RewindNotary/Assets/Resources/Localization') and str(path) in FINALE_EDITS:
         source = prior_translation_source(path.stem, source, FINALE_EDITS[str(path)]['updated'])
+    source = prior_level3_source(path, source)
     source = reverse_exact(LEVEL_EDITS.get(str(path)), source)
     source = reverse_exact(FEEL_EDITS.get(str(path)), source)
     source = reverse_exact(AUTOTEST_EDITS.get(str(path)), source)

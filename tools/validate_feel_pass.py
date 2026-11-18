@@ -6,7 +6,7 @@ import operator
 import re
 
 from localization_followup import AUDIT, approved_table, prior_help_source
-from story_link_baseline import FEEL_EDITS, LEVEL_EDITS, reverse_exact
+from story_link_baseline import prior_level3_source, FEEL_EDITS, LEVEL_EDITS, reverse_exact
 
 
 def number(source, name):
@@ -209,7 +209,8 @@ def validate_feel_pass(check, project, scripts, body):
         detected = base[label] and source.count(old) == 1 and not contracts(mutant, body, dt)[label]
         mutations[f'{name} / {old} -> {new}'] = detected
     for path, audit in FEEL_EDITS.items():
-        source = reverse_exact(LEVEL_EDITS.get(path), (project.parents[1]/path).read_text())
+        source = prior_level3_source(path, (project.parents[1]/path).read_text())
+        source = reverse_exact(LEVEL_EDITS.get(path), source)
         previous = reverse_exact(audit, source)
         check(previous != source and hashlib.sha256(previous.encode()).hexdigest() == audit['original'],
               'Feel: exact historical source ' + path)

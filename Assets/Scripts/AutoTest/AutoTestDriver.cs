@@ -19,6 +19,7 @@ namespace RewindNotary
         private FeelProbe feel;
         private PilotProbe pilot;
         private VelvetDistrictProbe district;
+        private ClockDistrictProbe clock;
         private BoutAttempt attempt;
         private BenefactorTrialOpponent observedBout;
         private int index, lastShotFrame = -1;
@@ -57,13 +58,28 @@ namespace RewindNotary
                     Probe(now);
                     if (now - lastProgress > 18) { Stop("no position or state progress for 18 seconds"); return; }
                 }
+                if (clock != null)
+                {
+                    if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
+                    if (now - entered > 1500) { Stop("Clock district deadline"); return; }
+                    if (clock.Drive(bot, keyboard, now)) { EndStep("pass", ""); StartDrain(true); }
+                    return;
+                }
                 if (district != null)
                 {
                     if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
                     if (now - entered > 1500)
                     { Stop("District probe exceeded progress or run deadline"); return; }
                     if (district.Drive(bot, keyboard, now))
-                    { EndStep("pass", ""); StartDrain(true); }
+                    {
+                        EndStep("pass", "");
+                        Detach();
+                        district = null;
+                        bot = new FirstDepartureBot(keyboard);
+                        clock = new ClockDistrictProbe(report.clockDistrict, () => report.Write(AutoTestRuntime.DirectoryPath));
+                        step = report.clockDistrict.run;
+                        StartMeasurement();
+                    }
                     return;
                 }
                 ObserveBout();
@@ -131,7 +147,9 @@ namespace RewindNotary
             var position = p == null ? Vector2.zero : p.Body.position;
             string state = string.Join("|", bot.Shell?.Page, bot.Shell?.MenuIndex, area?.Room.id, area?.ActiveRow?.textKey,
                 area?.PendingAction, bot.Record?.storyFlags.Count, bot.Record?.Get(SkillRules.SilverStitch)?.validUseCount,
-                target?.TargetId, target?.State.Remaining, area?.BoutOpponent?.Health.Current);
+                target?.TargetId, target?.State.Remaining, area?.BoutOpponent?.Health.Current,
+                clock != null ? bot.Record?.Get(BenefactorIds.Pendulum)?.validUseCount : null,
+                clock != null ? area?.UnclearedClockTarget?.State.Remaining : null);
             if (state != progress || (position - lastPosition).sqrMagnitude >= .25f)
             {
                 lastProgress = now;
@@ -153,7 +171,7 @@ namespace RewindNotary
                 throw new IOException("Skill session did not use the isolated directory.");
             health = bot.Area.Rea.Health;
             controller = health.GetComponent<PlayerController2D>();
-            if (district == null) controller.AttackInputAccepted += AttackAccepted;
+            if (district == null && clock == null) controller.AttackInputAccepted += AttackAccepted;
             health.Damaged += Damaged;
             health.Died += Died;
             observed.Progression.UseBegan += UseBegan;
@@ -178,12 +196,16 @@ namespace RewindNotary
         private void UseBegan(UseContext use)
         {
             step.Count(use.SkillId).activations++;
+            if (clock != null) bot.ObserveClockCast(use);
             pilot.ObserveUse();
         }
         private void ProgressionEvent(ProgressionEvent e)
         {
             bot.ObserveSilver(e);
             district?.ObserveUse(e, bot.Area.Room.id);
+            clock?.ObserveUse(e, bot.Area.Room.id);
+            if (clock != null && e.kind == "attempt_reset")
+                report.Error("clockDistrict", "Attempt reset during continuous clock traversal");
             if (e.kind == "valid_use") step.Count(e.skillId).validUses++;
             if (district != null && e.kind == "attempt_reset")
                 report.Error("velvetDistrict", "Attempt reset during continuous checkpoint traversal");

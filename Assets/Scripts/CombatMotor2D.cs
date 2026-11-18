@@ -12,6 +12,7 @@ namespace RewindNotary
         public SpriteAnimator Animation { get; private set; }
         public int Facing { get; private set; } = 1;
         public bool Grounded { get; private set; }
+        private float carrierSpeed;
         public bool Attacking { get; private set; }
         public float LastLandedAt { get; private set; } = float.NegativeInfinity;
         public bool Stunned => Time.time < stunUntil;
@@ -111,17 +112,26 @@ namespace RewindNotary
                 Body.position + new Vector2(0, 0.025f), new Vector2(0.48f, 0.12f),
                 0f, filter, groundHits);
             Grounded = false;
-            if (Body.linearVelocity.y <= .1f)
-                for (int i = 0; i < hits; i++)
+            carrierSpeed = 0;
+            for (int i = 0; i < hits; i++)
+            {
+                var floor = groundHits[i];
+                if (floor.TryGetComponent<AuthoredSurface>(out var surface) && surface.RampNormal != Vector2.zero)
                 {
-                    var floor = groundHits[i];
-                    // Touching a wall while close to a different floor must not recharge a dash.
-                    if ((needsLandingContact || floor.TryGetComponent<AuthoredSurface>(out _)) &&
-                        (Mathf.Abs(Body.position.y - floor.bounds.max.y) > .09f ||
-                         !floor.IsTouching(capsule))) continue;
+                    if (!surface.SupportsRamp(this, capsule, floor)) continue;
                     Grounded = true;
                     break;
                 }
+                var carrier = floor.attachedRigidbody == null ? null : floor.GetComponent<StoryMovingSurface>();
+                if (Body.linearVelocity.y > (carrier == null ? 0f : carrier.StepVelocity.y) + .1f) continue;
+                // Touching a wall while close to a different floor must not recharge a dash.
+                if ((needsLandingContact || floor.TryGetComponent<AuthoredSurface>(out _)) &&
+                    (Mathf.Abs(Body.position.y - floor.bounds.max.y) > .09f ||
+                     !floor.IsTouching(capsule))) continue;
+                if (carrier != null) carrierSpeed = carrier.StepVelocity.x;
+                Grounded = true;
+                break;
+            }
             if (Grounded && !wasGrounded)
             {
                 Defense?.State.Land();
@@ -152,7 +162,7 @@ namespace RewindNotary
             }
             float attackMove = Attacking && chainProfile != null && Time.time - attackStartedAt < chainProfile.stepSeconds
                 ? Facing * chainProfile.stepSpeed : 0f;
-            Body.linearVelocity = new Vector2(Attacking ? attackMove : speed, Body.linearVelocity.y);
+            Body.linearVelocity = new Vector2(Attacking ? attackMove : speed, Body.linearVelocity.y) + Vector2.right * carrierSpeed;
             if (!Attacking) Face(speed);
         }
         public void Jump(float velocity)

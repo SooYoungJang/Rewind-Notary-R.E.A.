@@ -22,6 +22,7 @@ namespace RewindNotary
         public FeelResults feel = new FeelResults();
         public PilotResults pilot = new PilotResults();
         public VelvetDistrictResult velvetDistrict = new VelvetDistrictResult();
+        public ClockDistrictResult clockDistrict = new ClockDistrictResult();
         public AttackInputCounts attackInputs = new AttackInputCounts();
 
         public static AutoTestReport NewRun(string mode)

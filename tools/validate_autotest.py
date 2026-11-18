@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from story_link_baseline import AUTOTEST_EDITS, FEEL_EDITS, LEVEL_EDITS, reverse_exact
+from story_link_baseline import AUTOTEST_EDITS, FEEL_EDITS, LEVEL_EDITS, prior_level3_source, reverse_exact
 
 
 def validate_story_point_strike(verify, project, scripts, story, body):
@@ -167,7 +167,8 @@ def validate_autotest(check, project, scripts, body):
     story = json.loads((project / 'Assets/Resources/Story/representative.json').read_text())
     validate_story_point_strike(verify, project, scripts, story, body)
     for path, change in AUTOTEST_EDITS.items():
-        source = reverse_exact(LEVEL_EDITS.get(path), (project.parents[1] / path).read_text())
+        source = prior_level3_source(path, (project.parents[1] / path).read_text())
+        source = reverse_exact(LEVEL_EDITS.get(path), source)
         source = reverse_exact(FEEL_EDITS.get(path), source)
         prior = reverse_exact(change, source)
         verify(hashlib.sha256(prior.encode()).hexdigest() == change['original'] and prior != source

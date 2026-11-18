@@ -217,6 +217,17 @@ namespace RewindNotary
                     if (completed)
                     {
                         audit.verifiedFinalSlot = audit.observedSlotWrite && SavedArrival(slot);
+                        var third = Path.Combine(sandbox, "SkillSystem", "slot-3.json");
+                        if (File.Exists(third))
+                        {
+                            var save = JsonUtility.FromJson<CoreRecord>(File.ReadAllText(third));
+                            Report.clockDistrict.slotReadback = save != null && save.schemaVersion == CoreRecord.SchemaVersion &&
+                                !save.testData && save.slotId == "slot-3" && save.lastStageId == "clock" &&
+                                save.Get(BenefactorIds.Pendulum).stage >= 3 && save.Get(BenefactorIds.Pendulum).validUseCount >= 80 &&
+                                save.Get(SkillRules.SilverStitch).acquired && save.storyFlags.Contains("clock_04_cleared") &&
+                                save.storyFlags.Contains("investigation_complete") && save.storyFlags.Contains("scene_floor:clock:clock_rest_09");
+                        }
+                        if (!Report.clockDistrict.slotReadback) Report.Error("clockDistrict", "Missing third-slot clock checkpoint on disk.");
                         if (!audit.verifiedFinalSlot) Report.Error("save", "Missing final district checkpoint on disk.");
                     }
                 }
@@ -237,6 +248,7 @@ namespace RewindNotary
                 DrainLogs();
                 if (completed && !Report.pilot.Passed) Report.Error("pilot", "Incomplete pilot route or contact save");
                 if (completed && Report.velvetDistrict.run.status != "pass") Report.Error("velvetDistrict", "Incomplete district traversal");
+                if (completed && Report.clockDistrict.run.status != "pass") Report.Error("clockDistrict", "Incomplete clock traversal");
                 if (completed && !Report.feel.Passed) Report.Error("feel", "Required input measurements are incomplete.");
                 if (completed && (Report.attackInputs.accepted < 1 || Report.attackInputs.accepted > Report.attackInputs.issued))
                     Report.Error("feel", "Inconsistent bot attack input counts.");

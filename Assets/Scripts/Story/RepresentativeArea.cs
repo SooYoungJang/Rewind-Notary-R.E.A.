@@ -193,7 +193,8 @@ namespace RewindNotary
             }
             bool safeFloor = Safe && OnFixedFloor();
             if (!safeFloor) touchingCheckpoint = null;
-            else if (ActiveRow == null && !SaveContactFloor()) return;
+            else if ((ActiveRow == null || (Room.stage == "clock" && worldAction && !opponent.gameObject.activeSelf))
+                && !SaveContactFloor()) return;
             var finaleRow = ActiveRow == null ? script.NextFinale(Room, session.Investigation) : null;
             var cut = Room.stage == "janhyang" || InEnding || finaleRow != null || ActiveRow?.sceneId.StartsWith("post_", StringComparison.Ordinal) == true
                 ? null : script.Interrupt(session.Investigation, safeFloor);
@@ -235,7 +236,7 @@ namespace RewindNotary
                 int split = token.IndexOf(':');
                 if (split < 0) return;
                 var target = Room.Point(token.Substring(split + 1));
-                if (target == null || Vector2.Distance(player.Body.position, new Vector2(target.x, .3f)) > 1.25f) return;
+                if (target == null || Vector2.Distance(player.Body.position, new Vector2(target.x, Room.SurfaceTop(target.surface) + .3f)) > 1.25f) return;
                 if (token.StartsWith("walk:", StringComparison.Ordinal))
                 {
                     if (OnPlank(target.id)) FinishAction();
@@ -280,7 +281,7 @@ namespace RewindNotary
                     ? Room.interludeHealth : 0;
                 bool mikhail = Room.id == "velvet_04_arena";
                 float spawnX = mikhail ? Mathf.Clamp(player.Body.position.x + 5f, 3f, 38f) : 17f;
-                opponent.ResetAt(new Vector2(spawnX, .1f));
+                opponent.ResetAt(new Vector2(spawnX, Room.SurfaceTop("drum_floor") + .1f));
                 if (mikhail)
                 {
                     mikhailBout = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
@@ -333,6 +334,7 @@ namespace RewindNotary
             if (session != null) session.Progression.Event -= OnDistrictEffect;
             foreach (var sprite in rosterArt.Values) Destroy(sprite);
             if (square != null) Destroy(square);
+            if (brass != null) Destroy(brass);
             if (weave != null) { Destroy(weave.texture); Destroy(weave); }
         }
     }
