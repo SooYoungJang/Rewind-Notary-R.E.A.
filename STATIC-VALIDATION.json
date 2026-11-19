@@ -1,5 +1,5 @@
 {
-  "passed": 12285,
+  "passed": 12302,
   "errors": [],
   "warnings": [
     "Bell step 5: fixed-tick mobility, silent refuge margins and per-station opportunities are offline checks. Slot-5 contact and width measurements require Unity.",
@@ -7949,6 +7949,12 @@
     "QA29 / campaign60 crosses the last loom span, clears every guard before each door and reaches 80 in the arena",
     "QA29 / campaignOffset crosses the last loom span, clears every guard before each door and reaches 80 in the arena",
     "QA29 / held and released direction during the same swing at the captured position",
+    "QA30 / afterInvestigation leaves the captured silt bed and takes the entry door on fixed ground",
+    "QA30 / manualAfterInvestigation leaves the captured silt bed and takes the entry door on fixed ground",
+    "QA30 / the blocked launch gets a run-up for a reachable plank and no jump for a lip above the apex",
+    "QA30 / jumping at the captured lip hits the lower corner of the plank and returns to the silt bed",
+    "QA30 / the slot-2 probe earns all six floor contacts, opens the investigated upper return and lands in the arena",
+    "QA30 / 80 distinct slot-2 casts include the 16 short seams, 16 guard preparations and 48 upper supports",
     "Level step 3: run 9 / hub_lift first clock door with a non-null default rectangle walks to x=27",
     "Level step 3: every merged hub_lift exit supports both absent approach representations",
     "Level step 3: a bounded door on a default floor never searches null or empty terrain",
@@ -8869,6 +8875,16 @@
     "Level step 4: physical ordered checkpoints",
     "Level step 4: existing and new watchdogs and input",
     "Level step 4: slot readback and other files",
+    "Level step 4: QA31 / opera seam runs have a cast position and a crossing on the linked fixed tier",
+    "Level step 4: QA31 / bell seam runs have a cast position and a crossing on the linked fixed tier",
+    "Level step 4: QA31 / gallery seam runs have a cast position and a crossing on the linked fixed tier",
+    "Level step 4: QA31 / clock seam runs have a cast position and a crossing on the linked fixed tier",
+    "Level step 4: QA31 / bell probe earns the seam receipt and requests its linked station and crossing",
+    "Level step 4: QA31 / gallery probe earns the seam receipt and requests its linked station and crossing",
+    "Level step 4: QA31 / the opera probe saves ten ordered landings including the arena and finishes both timed routes",
+    "Level step 4: QA31 / first-return station input earns the waltz thresholds in the roof and foyer",
+    "Level step 4: QA31 / the linked lamp and fixed crossing open the sanctuary trip before the final shortcut save",
+    "Level step 4: QA31 / from the recorded access step even the nearest seam lies below the silver blade",
     "Level step 5: 42 rows and hub links byte-identical",
     "Level step 5: bell_01_entry camera and fall margin",
     "Level step 5: bell_01_entry / ordinary jump and walk to every face from quay",
@@ -10261,6 +10277,7 @@
     "Level step 6: slot six records feet, both clocks, real paint contacts, actual branch and mixed encounter",
     "Level step 6: five isolated files, sixth slot disk receipt and unchanged failure deadlines",
     "Level step 6: 142 opera and bell surfaces plus all authored gallery rectangles, separately counted dynamic placements",
+    "Level step 6: QA31 / leave the retired stroke at the sash edge, then resume the hub door route on dry floor",
     "Level step 6: story.clock.return.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
     "Level step 6: story.clock.synergy.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
     "Level step 6: story.opera.return.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
@@ -21143,170 +21160,152 @@
           {
             "tick": 40,
             "face": "tailrace",
-            "x": 28.172,
+            "x": 28.225,
             "y": -1.55
           },
           {
-            "tick": 83,
-            "face": "tailrace",
-            "x": 32.335,
-            "y": -1.55
-          },
-          {
-            "tick": 118,
+            "tick": 75,
             "face": "outfall_quay",
-            "x": 33.774,
+            "x": 31.735,
             "y": 0
           },
           {
-            "tick": 303,
+            "tick": 305,
             "face": "outfall_quay",
-            "x": 34.089,
+            "x": 32.185,
             "y": 0
           },
           {
-            "tick": 347,
+            "tick": 359,
             "face": "outfall_quay",
-            "x": 34.129,
+            "x": 32.115,
             "y": 0
           },
           {
-            "tick": 391,
+            "tick": 415,
             "face": "outfall_quay",
-            "x": 34.148,
+            "x": 32.045,
             "y": 0
           },
           {
-            "tick": 435,
+            "tick": 470,
             "face": "outfall_quay",
-            "x": 34.073,
+            "x": 32.105,
             "y": 0
           },
           {
-            "tick": 480,
-            "face": "outfall_quay",
-            "x": 34.074,
-            "y": 0
-          },
-          {
-            "tick": 560,
+            "tick": 564,
             "face": "velvet_05_return:seam_6",
-            "x": 40.485,
+            "x": 40.466,
             "y": 0.31
           },
           {
-            "tick": 576,
+            "tick": 580,
             "face": "outfall_quay",
-            "x": 42.33,
+            "x": 42.311,
             "y": 0
           },
           {
-            "tick": 667,
+            "tick": 671,
             "face": "lock_bed",
-            "x": 47.894,
+            "x": 47.875,
             "y": -1.8
           },
           {
             "tick": 689,
             "face": "counterfloat",
-            "x": 49.714,
+            "x": 49.825,
             "y": -1.756
           },
           {
             "tick": 834,
             "face": "wheel_gallery",
-            "x": 53.582,
+            "x": 53.63,
             "y": 2.1
           },
           {
-            "tick": 903,
+            "tick": 902,
             "face": "dry_dock",
-            "x": 56.835,
+            "x": 56.895,
             "y": 0
           },
           {
-            "tick": 1001,
+            "tick": 999,
             "face": "tread_1",
-            "x": 59.435,
+            "x": 59.365,
             "y": 1.35
           },
           {
-            "tick": 1044,
+            "tick": 1043,
             "face": "tread_2",
-            "x": 62.425,
+            "x": 62.364,
             "y": 2.7
           },
           {
             "tick": 1086,
             "face": "balcony",
-            "x": 65.286,
+            "x": 65.355,
             "y": 4.05
           },
           {
-            "tick": 1193,
-            "face": "tread_2",
-            "x": 60.605,
-            "y": 2.7
-          },
-          {
-            "tick": 1209,
+            "tick": 1198,
             "face": "tread_1",
-            "x": 59.037,
+            "x": 60.801,
             "y": 1.35
           },
           {
-            "tick": 1251,
+            "tick": 1255,
             "face": "wheel_gallery",
-            "x": 54.245,
+            "x": 54.189,
             "y": 2.1
           },
           {
-            "tick": 1325,
+            "tick": 1328,
             "face": "outfall_quay",
-            "x": 45.137,
+            "x": 45.132,
             "y": 0
           }
         ],
         "combat": [
           {
-            "tick": 589,
+            "tick": 593,
             "target": "velvet_05_return:notary_guard_1",
             "action": "setup",
-            "x": 43.89
+            "x": 43.871
           },
           {
-            "tick": 623,
+            "tick": 627,
             "target": "velvet_05_return:notary_guard_1",
             "action": "open",
-            "x": 43.89
+            "x": 43.871
           },
           {
-            "tick": 632,
+            "tick": 636,
             "target": "velvet_05_return:notary_guard_1",
             "action": "cut",
             "remaining": 0,
-            "x": 43.89,
+            "x": 43.871,
             "y": 0,
             "support": "outfall_quay"
           },
           {
-            "tick": 916,
+            "tick": 915,
             "target": "velvet_05_return:notary_guard_2",
             "action": "setup",
-            "x": 58.395
+            "x": 58.455
           },
           {
-            "tick": 950,
+            "tick": 949,
             "target": "velvet_05_return:notary_guard_2",
             "action": "open",
-            "x": 58.395
+            "x": 58.455
           },
           {
-            "tick": 959,
+            "tick": 958,
             "target": "velvet_05_return:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 58.395,
+            "x": 58.455,
             "y": 0,
             "support": "dry_dock"
           },
@@ -21314,73 +21313,73 @@
             "tick": 1093,
             "target": "velvet_05_return:notary_guard_3",
             "action": "setup",
-            "x": 65.416
+            "x": 65.485
           },
           {
             "tick": 1127,
             "target": "velvet_05_return:notary_guard_3",
             "action": "open",
-            "x": 65.416
+            "x": 65.485
           },
           {
             "tick": 1136,
             "target": "velvet_05_return:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 65.416,
+            "x": 65.485,
             "y": 4.05,
             "support": "balcony"
           }
         ],
         "credits": [
           {
-            "tick": 44,
+            "tick": 45,
             "use": 1,
             "target": "velvet_05_return:seam_4"
           },
           {
-            "tick": 258,
-            "use": 6,
+            "tick": 265,
+            "use": 7,
             "target": "velvet_05_return:seam_5"
           },
           {
-            "tick": 521,
-            "use": 7,
+            "tick": 526,
+            "use": 8,
             "target": "velvet_05_return:seam_6"
           },
           {
-            "tick": 589,
-            "use": 8,
-            "target": "velvet_05_return:notary_guard_1:posture"
-          },
-          {
-            "tick": 623,
+            "tick": 593,
             "use": 9,
             "target": "velvet_05_return:notary_guard_1:posture"
           },
           {
-            "tick": 855,
+            "tick": 627,
             "use": 10,
+            "target": "velvet_05_return:notary_guard_1:posture"
+          },
+          {
+            "tick": 855,
+            "use": 11,
             "target": "velvet_05_return:seam_7"
           },
           {
-            "tick": 916,
-            "use": 11,
-            "target": "velvet_05_return:notary_guard_2:posture"
-          },
-          {
-            "tick": 950,
+            "tick": 915,
             "use": 12,
             "target": "velvet_05_return:notary_guard_2:posture"
           },
           {
-            "tick": 1093,
+            "tick": 949,
             "use": 13,
+            "target": "velvet_05_return:notary_guard_2:posture"
+          },
+          {
+            "tick": 1093,
+            "use": 14,
             "target": "velvet_05_return:notary_guard_3:posture"
           },
           {
             "tick": 1127,
-            "use": 14,
+            "use": 15,
             "target": "velvet_05_return:notary_guard_3:posture"
           }
         ],
@@ -21396,7 +21395,7 @@
             "to": "velvet_01_entry",
             "support": "outfall_quay",
             "feet": [
-              38.117,
+              38.112,
               0
             ],
             "guards": [
@@ -21421,7 +21420,7 @@
         ],
         "waterSave": {
           "tick": 1148,
-          "x": 64.116,
+          "x": 64.185,
           "y": 4.05,
           "floor": "waterway_splice_floor"
         },
@@ -21445,14 +21444,14 @@
         ],
         "stop": "waterway exit",
         "end": {
-          "tick": 1380,
-          "fixedTick": 1381,
+          "tick": 1383,
+          "fixedTick": 1384,
           "frameSeconds": 0.02,
           "room": "velvet_05_return",
           "uses": 16,
           "hp": 6,
           "feet": [
-            38.117,
+            38.112,
             0
           ],
           "support": "outfall_quay",
@@ -21460,11 +21459,12 @@
           "keys": [
             "F"
           ],
-          "activations": 14,
-          "idleSeconds": 0.04,
+          "activations": 15,
+          "idleSeconds": 0.1,
           "step": {
-            "LandX": 45.55,
+            "To": 7,
             "LaunchX": 47.5,
+            "LandX": 45.55,
             "WalkOff": -1
           },
           "lastSewn": "velvet_05_return:notary_guard_3:posture"
@@ -21771,37 +21771,37 @@
             "outcome": "parry"
           },
           {
-            "tick": 4368,
+            "tick": 4369,
             "target": "velvet_01_entry:notary_guard_2",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 10434,
+            "tick": 10445,
             "target": "velvet_02_loom:notary_guard_4",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 11205,
+            "tick": 11216,
             "target": "velvet_03_gallery:reflection_statue_5",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 11365,
+            "tick": 11376,
             "target": "velvet_03_gallery:reflection_statue_5",
             "outcome": "hit",
             "hp": 4
           },
           {
-            "tick": 11423,
+            "tick": 11434,
             "target": "velvet_03_gallery:reflection_statue_4",
             "outcome": "hit",
             "hp": 3
           },
           {
-            "tick": 11536,
+            "tick": 11547,
             "target": "velvet_03_gallery:reflection_statue_4",
             "outcome": "hit",
             "hp": 2
@@ -22054,20 +22054,20 @@
             "tick": 4409,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "setup",
-            "x": 4.023
+            "x": 4.08
           },
           {
             "tick": 4443,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "open",
-            "x": 4.023
+            "x": 4.08
           },
           {
             "tick": 4452,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "cut",
             "remaining": 0,
-            "x": 4.023,
+            "x": 4.08,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -22075,20 +22075,20 @@
             "tick": 4494,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "setup",
-            "x": 9.353
+            "x": 9.41
           },
           {
             "tick": 4528,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "open",
-            "x": 9.353
+            "x": 9.41
           },
           {
             "tick": 4538,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 9.353,
+            "x": 9.41,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -22096,20 +22096,20 @@
             "tick": 4601,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "setup",
-            "x": 17.413
+            "x": 17.47
           },
           {
             "tick": 4635,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "open",
-            "x": 17.413
+            "x": 17.47
           },
           {
             "tick": 4645,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 17.413,
+            "x": 17.47,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -22117,211 +22117,211 @@
             "tick": 4711,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "setup",
-            "x": 25.863
+            "x": 25.92
           },
           {
             "tick": 4745,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "open",
-            "x": 25.863
+            "x": 25.92
           },
           {
             "tick": 4755,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "cut",
             "remaining": 0,
-            "x": 25.863,
+            "x": 25.92,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
           {
-            "tick": 10276,
+            "tick": 10288,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.173
+            "x": 8.182
           },
           {
-            "tick": 10285,
+            "tick": 10298,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 3,
-            "x": 8.173,
+            "x": 8.182,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10310,
+            "tick": 10322,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.173
+            "x": 8.182
           },
           {
-            "tick": 10320,
+            "tick": 10332,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 2,
-            "x": 8.173,
+            "x": 8.182,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10344,
+            "tick": 10356,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.173
+            "x": 8.182
           },
           {
-            "tick": 10354,
+            "tick": 10366,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 1,
-            "x": 8.173,
+            "x": 8.182,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10378,
+            "tick": 10390,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.173
+            "x": 8.182
           },
           {
-            "tick": 10388,
+            "tick": 10399,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 8.173,
+            "x": 8.182,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10447,
+            "tick": 10458,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.135
+            "x": 1.144
           },
           {
-            "tick": 10457,
+            "tick": 10468,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 3,
-            "x": 1.135,
+            "x": 1.144,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10481,
+            "tick": 10492,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.135
+            "x": 1.144
           },
           {
-            "tick": 10491,
+            "tick": 10502,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 2,
-            "x": 1.135,
+            "x": 1.144,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10515,
+            "tick": 10526,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.135
+            "x": 1.144
           },
           {
-            "tick": 10524,
+            "tick": 10535,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 1,
-            "x": 1.135,
+            "x": 1.144,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10549,
+            "tick": 10560,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.135
+            "x": 1.144
           },
           {
-            "tick": 10559,
+            "tick": 10570,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 1.135,
+            "x": 1.144,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10582,
+            "tick": 10593,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 2.955
+            "x": 2.964
           },
           {
-            "tick": 10592,
+            "tick": 10603,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 3,
-            "x": 2.955,
+            "x": 2.964,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10616,
+            "tick": 10627,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 2.955
+            "x": 2.964
           },
           {
-            "tick": 10626,
+            "tick": 10637,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 2,
-            "x": 3.255,
+            "x": 3.264,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10650,
+            "tick": 10661,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 3.255
+            "x": 3.264
           },
           {
-            "tick": 10660,
+            "tick": 10671,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 1,
-            "x": 3.555,
+            "x": 3.564,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10684,
+            "tick": 10695,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 3.555
+            "x": 3.564
           },
           {
-            "tick": 10694,
+            "tick": 10705,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 0,
-            "x": 3.855,
+            "x": 3.864,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 11047,
+            "tick": 11058,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 8.882
           },
           {
-            "tick": 11057,
+            "tick": 11068,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 3,
@@ -22330,13 +22330,13 @@
             "support": "floor"
           },
           {
-            "tick": 11081,
+            "tick": 11092,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 9.182
           },
           {
-            "tick": 11091,
+            "tick": 11102,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 2,
@@ -22345,13 +22345,13 @@
             "support": "floor"
           },
           {
-            "tick": 11115,
+            "tick": 11126,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 9.482
           },
           {
-            "tick": 11124,
+            "tick": 11135,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 1,
@@ -22360,13 +22360,13 @@
             "support": "floor"
           },
           {
-            "tick": 11149,
+            "tick": 11160,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 9.732
           },
           {
-            "tick": 11159,
+            "tick": 11170,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 0,
@@ -22375,13 +22375,13 @@
             "support": "floor"
           },
           {
-            "tick": 11218,
+            "tick": 11229,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
             "x": 2.994
           },
           {
-            "tick": 11228,
+            "tick": 11239,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 3,
@@ -22390,13 +22390,13 @@
             "support": "floor"
           },
           {
-            "tick": 11252,
+            "tick": 11263,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
             "x": 3.054
           },
           {
-            "tick": 11262,
+            "tick": 11273,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 2,
@@ -22405,13 +22405,13 @@
             "support": "floor"
           },
           {
-            "tick": 11286,
+            "tick": 11297,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
             "x": 3.064
           },
           {
-            "tick": 11296,
+            "tick": 11307,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 1,
@@ -22420,13 +22420,13 @@
             "support": "floor"
           },
           {
-            "tick": 11320,
+            "tick": 11331,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
             "x": 2.944
           },
           {
-            "tick": 11330,
+            "tick": 11341,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 0,
@@ -22435,13 +22435,13 @@
             "support": "floor"
           },
           {
-            "tick": 11415,
+            "tick": 11426,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 13.422
           },
           {
-            "tick": 11446,
+            "tick": 11457,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 3,
@@ -22450,13 +22450,13 @@
             "support": "floor"
           },
           {
-            "tick": 11468,
+            "tick": 11479,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 14.56
           },
           {
-            "tick": 11478,
+            "tick": 11489,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 2,
@@ -22465,13 +22465,13 @@
             "support": "floor"
           },
           {
-            "tick": 11502,
+            "tick": 11513,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 14.49
           },
           {
-            "tick": 11512,
+            "tick": 11523,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 1,
@@ -22480,13 +22480,13 @@
             "support": "floor"
           },
           {
-            "tick": 11536,
+            "tick": 11547,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 14.55
           },
           {
-            "tick": 11559,
+            "tick": 11570,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 0,
@@ -22582,37 +22582,37 @@
             "target": "velvet_01_entry:seam_0"
           },
           {
-            "tick": 2468,
+            "tick": 2466,
             "use": 38,
             "target": "velvet_01_entry:seam_1"
           },
           {
-            "tick": 2714,
+            "tick": 2713,
             "use": 39,
             "target": "velvet_01_entry:seam_2"
           },
           {
-            "tick": 2926,
+            "tick": 2925,
             "use": 43,
             "target": "velvet_01_entry:seam_3"
           },
           {
-            "tick": 3142,
+            "tick": 3140,
             "use": 49,
             "target": "velvet_01_entry:seam_4"
           },
           {
-            "tick": 3347,
+            "tick": 3346,
             "use": 54,
             "target": "velvet_01_entry:seam_5"
           },
           {
-            "tick": 3565,
+            "tick": 3564,
             "use": 58,
             "target": "velvet_01_entry:seam_6"
           },
           {
-            "tick": 3797,
+            "tick": 3796,
             "use": 63,
             "target": "velvet_01_entry:seam_7"
           },
@@ -22657,22 +22657,22 @@
             "target": "velvet_01_entry:notary_guard_4:posture"
           },
           {
-            "tick": 5392,
+            "tick": 5393,
             "use": 72,
             "target": "velvet_01_entry:seam_8:support"
           },
           {
-            "tick": 5602,
+            "tick": 5603,
             "use": 77,
             "target": "velvet_01_entry:seam_9:support"
           },
           {
-            "tick": 5808,
+            "tick": 5809,
             "use": 82,
             "target": "velvet_01_entry:seam_10:support"
           },
           {
-            "tick": 6018,
+            "tick": 6019,
             "use": 87,
             "target": "velvet_01_entry:seam_11:support"
           },
@@ -22697,203 +22697,203 @@
             "target": "velvet_01_entry:seam_15:support"
           },
           {
-            "tick": 7549,
+            "tick": 7550,
             "use": 106,
             "target": "velvet_02_loom:seam_0:support"
           },
           {
-            "tick": 7749,
-            "use": 109,
+            "tick": 7785,
+            "use": 110,
             "target": "velvet_02_loom:seam_1:support"
           },
           {
-            "tick": 7967,
-            "use": 113,
+            "tick": 8003,
+            "use": 114,
             "target": "velvet_02_loom:seam_2:support"
           },
           {
-            "tick": 8185,
-            "use": 116,
+            "tick": 8221,
+            "use": 117,
             "target": "velvet_02_loom:seam_3:support"
           },
           {
-            "tick": 8389,
-            "use": 121,
+            "tick": 8425,
+            "use": 122,
             "target": "velvet_02_loom:seam_4:support"
           },
           {
-            "tick": 8606,
-            "use": 126,
+            "tick": 8642,
+            "use": 127,
             "target": "velvet_02_loom:seam_5:support"
           },
           {
-            "tick": 8824,
-            "use": 131,
+            "tick": 8860,
+            "use": 132,
             "target": "velvet_02_loom:seam_6:support"
           },
           {
-            "tick": 9039,
-            "use": 136,
+            "tick": 9075,
+            "use": 137,
             "target": "velvet_02_loom:seam_7:support"
           },
           {
-            "tick": 9271,
-            "use": 139,
+            "tick": 9306,
+            "use": 140,
             "target": "velvet_02_loom:seam_8:support"
           },
           {
-            "tick": 9492,
-            "use": 144,
+            "tick": 9527,
+            "use": 145,
             "target": "velvet_02_loom:seam_9:support"
           },
           {
-            "tick": 9725,
-            "use": 149,
+            "tick": 9760,
+            "use": 150,
             "target": "velvet_02_loom:seam_10:support"
           },
           {
-            "tick": 9950,
-            "use": 154,
+            "tick": 9985,
+            "use": 155,
             "target": "velvet_02_loom:seam_11:support"
           },
           {
-            "tick": 10276,
-            "use": 155,
-            "target": "velvet_02_loom:notary_guard_2:posture"
-          },
-          {
-            "tick": 10310,
+            "tick": 10288,
             "use": 156,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 10344,
+            "tick": 10322,
             "use": 157,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 10378,
+            "tick": 10356,
             "use": 158,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 10447,
+            "tick": 10390,
             "use": 159,
-            "target": "velvet_02_loom:notary_guard_3:posture"
+            "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 10481,
+            "tick": 10458,
             "use": 160,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 10515,
+            "tick": 10492,
             "use": 161,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 10549,
+            "tick": 10526,
             "use": 162,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 10582,
+            "tick": 10560,
             "use": 163,
-            "target": "velvet_02_loom:notary_guard_4:posture"
+            "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 10616,
+            "tick": 10593,
             "use": 164,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 10650,
+            "tick": 10627,
             "use": 165,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 10684,
+            "tick": 10661,
             "use": 166,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 11047,
+            "tick": 10695,
             "use": 167,
-            "target": "velvet_03_gallery:notary_guard_1:posture"
+            "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 11081,
+            "tick": 11058,
             "use": 168,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 11115,
+            "tick": 11092,
             "use": 169,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 11149,
+            "tick": 11126,
             "use": 170,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 11218,
+            "tick": 11160,
             "use": 171,
-            "target": "velvet_03_gallery:notary_guard_2:posture"
+            "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 11252,
+            "tick": 11229,
             "use": 172,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 11286,
+            "tick": 11263,
             "use": 173,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 11320,
+            "tick": 11297,
             "use": 174,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 11415,
+            "tick": 11331,
             "use": 175,
-            "target": "velvet_03_gallery:notary_guard_3:posture"
+            "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 11468,
+            "tick": 11426,
             "use": 176,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 11502,
+            "tick": 11479,
             "use": 177,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 11536,
+            "tick": 11513,
             "use": 178,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 11872,
+            "tick": 11547,
             "use": 179,
+            "target": "velvet_03_gallery:notary_guard_3:posture"
+          },
+          {
+            "tick": 11883,
+            "use": 180,
             "target": "velvet_04_arena:seam_0:support"
           },
           {
-            "tick": 12102,
-            "use": 183,
+            "tick": 12113,
+            "use": 184,
             "target": "velvet_04_arena:seam_1:support"
           },
           {
-            "tick": 12335,
-            "use": 187,
+            "tick": 12347,
+            "use": 188,
             "target": "velvet_04_arena:seam_2:support"
           },
           {
-            "tick": 12555,
-            "use": 190,
+            "tick": 12567,
+            "use": 191,
             "target": "velvet_04_arena:seam_3:support"
           }
         ],
@@ -22952,7 +22952,7 @@
             "to": "velvet_02_loom",
             "support": "balcony",
             "feet": [
-              28.377,
+              28.339,
               3.85
             ],
             "guards": [
@@ -22979,7 +22979,7 @@
             "to": "velvet_03_gallery",
             "support": "east",
             "feet": [
-              36.843,
+              36.852,
               0
             ],
             "guards": [
@@ -23033,8 +23033,8 @@
           "Q"
         ],
         "loomMotion": {
-          "minX": 8.609599999999988,
-          "maxX": 10.169599999999997,
+          "minX": 8.621199999999979,
+          "maxX": 10.181199999999988,
           "left": 13,
           "right": 0,
           "idle": 0,
@@ -23044,13 +23044,14 @@
           "turns": 0,
           "firstTurns": [
             {
-              "tick": 9950,
-              "x": 10.17,
+              "tick": 9985,
+              "x": 10.181,
               "axis": -1,
               "from": "reed_turn",
               "step": {
-                "LandX": 40.7,
+                "To": 21,
                 "LaunchX": 40.7,
+                "LandX": 40.7,
                 "WalkOff": 0
               }
             }
@@ -23066,14 +23067,14 @@
         ],
         "stop": "first return",
         "end": {
-          "tick": 12575,
-          "fixedTick": 12576,
+          "tick": 12587,
+          "fixedTick": 12588,
           "frameSeconds": 0.02,
           "room": "velvet_04_arena",
           "uses": 80,
           "hp": 6,
           "feet": [
-            34.626,
+            34.636,
             10
           ],
           "support": "pennants_5",
@@ -23081,11 +23082,12 @@
           "keys": [
             "F"
           ],
-          "activations": 190,
-          "idleSeconds": 0.08,
+          "activations": 191,
+          "idleSeconds": 0.06,
           "step": {
-            "LandX": 39.7,
+            "To": 15,
             "LaunchX": 39.7,
+            "LandX": 39.7,
             "WalkOff": 0
           },
           "lastSewn": "velvet_04_arena:seam_3:support"
@@ -23727,8 +23729,9 @@
               "axis": -1,
               "from": "reed_0",
               "step": {
-                "LandX": 10.669999999999998,
+                "To": 11,
                 "LaunchX": 9.219999999999999,
+                "LandX": 10.669999999999998,
                 "WalkOff": 1
               }
             }
@@ -23770,8 +23773,9 @@
           "activations": 36,
           "idleSeconds": 0,
           "step": {
-            "LandX": 39.7,
+            "To": 15,
             "LaunchX": 39.7,
+            "LandX": 39.7,
             "WalkOff": 0
           },
           "lastSewn": "velvet_04_arena:seam_3:support"
@@ -24451,8 +24455,9 @@
           "activations": 36,
           "idleSeconds": 0.04,
           "step": {
-            "LandX": 39.7,
+            "To": 15,
             "LaunchX": 39.7,
+            "LandX": 39.7,
             "WalkOff": 0
           },
           "lastSewn": "velvet_04_arena:seam_3:support"
@@ -25156,19 +25161,19 @@
             "outcome": "parry"
           },
           {
-            "tick": 4368,
+            "tick": 4369,
             "target": "velvet_01_entry:notary_guard_2",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 10297,
+            "tick": 10309,
             "target": "velvet_02_loom:notary_guard_2",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 10640,
+            "tick": 10652,
             "target": "velvet_03_gallery:reflection_statue_4",
             "outcome": "hit",
             "hp": 5
@@ -25421,20 +25426,20 @@
             "tick": 4409,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "setup",
-            "x": 4.023
+            "x": 4.08
           },
           {
             "tick": 4443,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "open",
-            "x": 4.023
+            "x": 4.08
           },
           {
             "tick": 4452,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "cut",
             "remaining": 0,
-            "x": 4.023,
+            "x": 4.08,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -25442,20 +25447,20 @@
             "tick": 4494,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "setup",
-            "x": 9.353
+            "x": 9.41
           },
           {
             "tick": 4528,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "open",
-            "x": 9.353
+            "x": 9.41
           },
           {
             "tick": 4538,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 9.353,
+            "x": 9.41,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -25463,20 +25468,20 @@
             "tick": 4601,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "setup",
-            "x": 17.413
+            "x": 17.47
           },
           {
             "tick": 4635,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "open",
-            "x": 17.413
+            "x": 17.47
           },
           {
             "tick": 4645,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 17.413,
+            "x": 17.47,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -25484,20 +25489,20 @@
             "tick": 4711,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "setup",
-            "x": 25.863
+            "x": 25.92
           },
           {
             "tick": 4745,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "open",
-            "x": 25.863
+            "x": 25.92
           },
           {
             "tick": 4755,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "cut",
             "remaining": 0,
-            "x": 25.863,
+            "x": 25.92,
             "y": 13.35,
             "support": "wardrobe_loft"
           }
@@ -25589,37 +25594,37 @@
             "target": "velvet_01_entry:seam_0"
           },
           {
-            "tick": 2468,
+            "tick": 2466,
             "use": 38,
             "target": "velvet_01_entry:seam_1"
           },
           {
-            "tick": 2714,
+            "tick": 2713,
             "use": 39,
             "target": "velvet_01_entry:seam_2"
           },
           {
-            "tick": 2926,
+            "tick": 2925,
             "use": 43,
             "target": "velvet_01_entry:seam_3"
           },
           {
-            "tick": 3142,
+            "tick": 3140,
             "use": 49,
             "target": "velvet_01_entry:seam_4"
           },
           {
-            "tick": 3347,
+            "tick": 3346,
             "use": 54,
             "target": "velvet_01_entry:seam_5"
           },
           {
-            "tick": 3565,
+            "tick": 3564,
             "use": 58,
             "target": "velvet_01_entry:seam_6"
           },
           {
-            "tick": 3797,
+            "tick": 3796,
             "use": 63,
             "target": "velvet_01_entry:seam_7"
           },
@@ -25664,22 +25669,22 @@
             "target": "velvet_01_entry:notary_guard_4:posture"
           },
           {
-            "tick": 5392,
+            "tick": 5393,
             "use": 72,
             "target": "velvet_01_entry:seam_8:support"
           },
           {
-            "tick": 5602,
+            "tick": 5603,
             "use": 77,
             "target": "velvet_01_entry:seam_9:support"
           },
           {
-            "tick": 5808,
+            "tick": 5809,
             "use": 82,
             "target": "velvet_01_entry:seam_10:support"
           },
           {
-            "tick": 6018,
+            "tick": 6019,
             "use": 87,
             "target": "velvet_01_entry:seam_11:support"
           },
@@ -25704,203 +25709,203 @@
             "target": "velvet_01_entry:seam_15:support"
           },
           {
-            "tick": 7549,
+            "tick": 7550,
             "use": 106,
             "target": "velvet_02_loom:seam_0:support"
           },
           {
-            "tick": 7749,
-            "use": 109,
+            "tick": 7785,
+            "use": 110,
             "target": "velvet_02_loom:seam_1:support"
           },
           {
-            "tick": 7967,
-            "use": 113,
+            "tick": 8003,
+            "use": 114,
             "target": "velvet_02_loom:seam_2:support"
           },
           {
-            "tick": 8185,
-            "use": 116,
+            "tick": 8221,
+            "use": 117,
             "target": "velvet_02_loom:seam_3:support"
           },
           {
-            "tick": 8389,
-            "use": 121,
+            "tick": 8425,
+            "use": 122,
             "target": "velvet_02_loom:seam_4:support"
           },
           {
-            "tick": 8606,
-            "use": 126,
+            "tick": 8642,
+            "use": 127,
             "target": "velvet_02_loom:seam_5:support"
           },
           {
-            "tick": 8824,
-            "use": 131,
+            "tick": 8860,
+            "use": 132,
             "target": "velvet_02_loom:seam_6:support"
           },
           {
-            "tick": 9039,
-            "use": 136,
+            "tick": 9075,
+            "use": 137,
             "target": "velvet_02_loom:seam_7:support"
           },
           {
-            "tick": 9271,
-            "use": 139,
+            "tick": 9306,
+            "use": 140,
             "target": "velvet_02_loom:seam_8:support"
           },
           {
-            "tick": 9492,
-            "use": 144,
+            "tick": 9527,
+            "use": 145,
             "target": "velvet_02_loom:seam_9:support"
           },
           {
-            "tick": 9725,
-            "use": 149,
+            "tick": 9760,
+            "use": 150,
             "target": "velvet_02_loom:seam_10:support"
           },
           {
-            "tick": 9950,
-            "use": 154,
+            "tick": 9985,
+            "use": 155,
             "target": "velvet_02_loom:seam_11:support"
           },
           {
-            "tick": 10966,
-            "use": 155,
+            "tick": 10977,
+            "use": 156,
             "target": "velvet_03_gallery:seam_0:support"
           },
           {
-            "tick": 11180,
-            "use": 160,
+            "tick": 11191,
+            "use": 161,
             "target": "velvet_03_gallery:seam_1:support"
           },
           {
-            "tick": 11394,
-            "use": 165,
+            "tick": 11405,
+            "use": 166,
             "target": "velvet_03_gallery:seam_2:support"
           },
           {
-            "tick": 11600,
-            "use": 170,
+            "tick": 11611,
+            "use": 171,
             "target": "velvet_03_gallery:seam_3:support"
           },
           {
-            "tick": 11814,
-            "use": 175,
+            "tick": 11824,
+            "use": 176,
             "target": "velvet_03_gallery:seam_4:support"
           },
           {
-            "tick": 12047,
-            "use": 178,
+            "tick": 12058,
+            "use": 179,
             "target": "velvet_03_gallery:seam_5:support"
           },
           {
-            "tick": 12258,
-            "use": 182,
+            "tick": 12269,
+            "use": 183,
             "target": "velvet_03_gallery:seam_6:support"
           },
           {
-            "tick": 12491,
-            "use": 186,
+            "tick": 12502,
+            "use": 187,
             "target": "velvet_03_gallery:seam_7:support"
           },
           {
-            "tick": 12709,
-            "use": 188,
+            "tick": 12720,
+            "use": 189,
             "target": "velvet_03_gallery:seam_8:support"
           },
           {
-            "tick": 12942,
-            "use": 193,
+            "tick": 12953,
+            "use": 194,
             "target": "velvet_03_gallery:seam_9:support"
           },
           {
-            "tick": 13174,
-            "use": 198,
+            "tick": 13185,
+            "use": 199,
             "target": "velvet_03_gallery:seam_10:support"
           },
           {
-            "tick": 13406,
-            "use": 203,
+            "tick": 13417,
+            "use": 204,
             "target": "velvet_03_gallery:seam_11:support"
           },
           {
-            "tick": 14018,
-            "use": 204,
+            "tick": 14029,
+            "use": 205,
             "target": "velvet_04_arena:seam_0:support"
           },
           {
-            "tick": 14248,
-            "use": 208,
+            "tick": 14259,
+            "use": 209,
             "target": "velvet_04_arena:seam_1:support"
           },
           {
-            "tick": 14481,
-            "use": 212,
+            "tick": 14492,
+            "use": 213,
             "target": "velvet_04_arena:seam_2:support"
           },
           {
-            "tick": 14701,
-            "use": 215,
+            "tick": 14712,
+            "use": 216,
             "target": "velvet_04_arena:seam_3:support"
           },
           {
-            "tick": 14904,
-            "use": 220,
+            "tick": 14915,
+            "use": 221,
             "target": "velvet_04_arena:seam_4:support"
           },
           {
-            "tick": 15106,
-            "use": 225,
+            "tick": 15117,
+            "use": 226,
             "target": "velvet_04_arena:seam_5:support"
           },
           {
-            "tick": 15310,
-            "use": 230,
+            "tick": 15321,
+            "use": 231,
             "target": "velvet_04_arena:seam_6:support"
           },
           {
-            "tick": 15514,
-            "use": 235,
+            "tick": 15526,
+            "use": 236,
             "target": "velvet_04_arena:seam_7:support"
           },
           {
-            "tick": 15715,
-            "use": 240,
+            "tick": 15727,
+            "use": 241,
             "target": "velvet_04_arena:seam_8:support"
           },
           {
-            "tick": 15918,
-            "use": 242,
+            "tick": 15930,
+            "use": 243,
             "target": "velvet_04_arena:seam_9:support"
           },
           {
-            "tick": 16130,
-            "use": 247,
+            "tick": 16142,
+            "use": 248,
             "target": "velvet_04_arena:seam_10:support"
           },
           {
-            "tick": 16337,
-            "use": 252,
+            "tick": 16349,
+            "use": 253,
             "target": "velvet_04_arena:seam_11:support"
           },
           {
-            "tick": 16551,
-            "use": 257,
+            "tick": 16563,
+            "use": 258,
             "target": "velvet_04_arena:seam_12:support"
           },
           {
-            "tick": 16761,
-            "use": 262,
+            "tick": 16773,
+            "use": 263,
             "target": "velvet_04_arena:seam_13:support"
           },
           {
-            "tick": 16979,
-            "use": 264,
+            "tick": 16990,
+            "use": 265,
             "target": "velvet_04_arena:seam_14:support"
           },
           {
-            "tick": 17189,
-            "use": 265,
+            "tick": 17201,
+            "use": 266,
             "target": "velvet_04_arena:seam_15:support"
           }
         ],
@@ -25959,7 +25964,7 @@
             "to": "velvet_02_loom",
             "support": "balcony",
             "feet": [
-              28.377,
+              28.339,
               3.85
             ],
             "guards": [
@@ -25986,7 +25991,7 @@
             "to": "velvet_03_gallery",
             "support": "east",
             "feet": [
-              36.849,
+              36.858,
               0
             ],
             "guards": [
@@ -26009,7 +26014,7 @@
             "to": "velvet_04_arena",
             "support": "balcony",
             "feet": [
-              36.846,
+              36.79,
               4.25
             ],
             "guards": [
@@ -26040,8 +26045,8 @@
           "Q"
         ],
         "loomMotion": {
-          "minX": 8.609599999999988,
-          "maxX": 10.169599999999997,
+          "minX": 8.621199999999979,
+          "maxX": 10.181199999999988,
           "left": 13,
           "right": 0,
           "idle": 0,
@@ -26051,13 +26056,14 @@
           "turns": 0,
           "firstTurns": [
             {
-              "tick": 9950,
-              "x": 10.17,
+              "tick": 9985,
+              "x": 10.181,
               "axis": -1,
               "from": "reed_turn",
               "step": {
-                "LandX": 40.7,
+                "To": 21,
                 "LaunchX": 40.7,
+                "LandX": 40.7,
                 "WalkOff": 0
               }
             }
@@ -26073,14 +26079,14 @@
         ],
         "stop": "first return",
         "end": {
-          "tick": 17209,
-          "fixedTick": 17210,
+          "tick": 17221,
+          "fixedTick": 17222,
           "frameSeconds": 0.02,
           "room": "velvet_04_arena",
           "uses": 80,
           "hp": 6,
           "feet": [
-            7.015,
+            7.033,
             17.6
           ],
           "support": "crown_0",
@@ -26088,11 +26094,12 @@
           "keys": [
             "F"
           ],
-          "activations": 265,
-          "idleSeconds": 0.2,
+          "activations": 266,
+          "idleSeconds": 0.18,
           "step": {
-            "LandX": 39.7,
+            "To": 26,
             "LaunchX": 39.7,
+            "LandX": 39.7,
             "WalkOff": 0
           },
           "lastSewn": "velvet_04_arena:seam_15:support"
@@ -26508,6 +26515,1761 @@
           "lastSewn": "velvet_02_loom:seam_11:support"
         }
       },
+      "afterInvestigation": {
+        "threatContacts": [],
+        "waterLandings": [
+          {
+            "tick": 53,
+            "face": "mikhail_reunion_plank",
+            "x": 18.554,
+            "y": 0.32
+          },
+          {
+            "tick": 79,
+            "face": "inspection_dock",
+            "x": 21.804,
+            "y": 0
+          },
+          {
+            "tick": 132,
+            "face": "tailrace",
+            "x": 28.279,
+            "y": -1.55
+          },
+          {
+            "tick": 193,
+            "face": "outfall_quay",
+            "x": 33.827,
+            "y": 0
+          }
+        ],
+        "combat": [],
+        "credits": [],
+        "totals": [
+          [
+            "velvet_05_return",
+            80
+          ]
+        ],
+        "departures": [
+          {
+            "room": "velvet_05_return",
+            "to": "velvet_01_entry",
+            "support": "outfall_quay",
+            "feet": [
+              37.857,
+              0
+            ],
+            "guards": [
+              [
+                "velvet_05_return:notary_guard_0",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_1",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_2",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_3",
+                1
+              ]
+            ]
+          }
+        ],
+        "waterSave": false,
+        "waterExit": "velvet_01_entry",
+        "safeCall": false,
+        "start": {
+          "feet": [
+            17.003019332885742,
+            -1.6950013637542725
+          ],
+          "support": "silt_bed",
+          "uses": 80,
+          "remaining": 7,
+          "active": 0,
+          "target": null,
+          "door": "velvet_01_entry"
+        },
+        "lip": {
+          "top": 0.32,
+          "contacts": 12,
+          "headContacts": 0,
+          "takeoffs": [
+            15.32
+          ],
+          "peakFeet": 0.7778800000000018
+        },
+        "firstKeys": [
+          "D"
+        ],
+        "destination": [
+          "velvet_01_entry",
+          "velvet_entry_floor"
+        ],
+        "stop": "waterway exit",
+        "end": {
+          "tick": 226,
+          "fixedTick": 227,
+          "frameSeconds": 0.02,
+          "room": "velvet_05_return",
+          "uses": 80,
+          "hp": 6,
+          "feet": [
+            37.857,
+            0
+          ],
+          "support": "outfall_quay",
+          "seam": 0,
+          "keys": [
+            "F"
+          ],
+          "activations": 0,
+          "idleSeconds": 0.1,
+          "step": {
+            "To": 7,
+            "LaunchX": 31.95,
+            "LandX": 33.85,
+            "WalkOff": 0
+          },
+          "lastSewn": null
+        }
+      },
+      "manualAfterInvestigation": {
+        "threatContacts": [],
+        "waterLandings": [
+          {
+            "tick": 40,
+            "face": "mikhail_reunion_plank",
+            "x": 18.545,
+            "y": 0.32
+          },
+          {
+            "tick": 70,
+            "face": "inspection_dock",
+            "x": 21.795,
+            "y": 0
+          },
+          {
+            "tick": 124,
+            "face": "tailrace",
+            "x": 28.685,
+            "y": -1.55
+          },
+          {
+            "tick": 167,
+            "face": "outfall_quay",
+            "x": 33.739,
+            "y": 0
+          }
+        ],
+        "combat": [],
+        "credits": [],
+        "totals": [
+          [
+            "velvet_05_return",
+            80
+          ]
+        ],
+        "departures": [
+          {
+            "room": "velvet_05_return",
+            "to": "velvet_01_entry",
+            "support": "outfall_quay",
+            "feet": [
+              37.899,
+              0
+            ],
+            "guards": [
+              [
+                "velvet_05_return:notary_guard_0",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_1",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_2",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_3",
+                1
+              ]
+            ]
+          }
+        ],
+        "waterSave": false,
+        "waterExit": "velvet_01_entry",
+        "safeCall": false,
+        "start": {
+          "feet": [
+            17.003019332885742,
+            -1.6950013637542725
+          ],
+          "support": "silt_bed",
+          "uses": 80,
+          "remaining": 7,
+          "active": 0,
+          "target": null,
+          "door": "velvet_01_entry"
+        },
+        "lip": {
+          "top": 0.32,
+          "contacts": 0,
+          "headContacts": 0,
+          "takeoffs": [
+            15.443
+          ],
+          "peakFeet": 0.7778800000000018
+        },
+        "firstKeys": [
+          "A"
+        ],
+        "destination": [
+          "velvet_01_entry",
+          "velvet_entry_floor"
+        ],
+        "stop": "waterway exit",
+        "end": {
+          "tick": 202,
+          "fixedTick": 203,
+          "frameSeconds": 0.02,
+          "room": "velvet_05_return",
+          "uses": 80,
+          "hp": 6,
+          "feet": [
+            37.899,
+            0
+          ],
+          "support": "outfall_quay",
+          "seam": 0,
+          "keys": [
+            "F"
+          ],
+          "activations": 0,
+          "idleSeconds": 0.14,
+          "step": null,
+          "lastSewn": null
+        }
+      },
+      "cornerJump": {
+        "threatContacts": [],
+        "waterLandings": [],
+        "combat": [],
+        "credits": [],
+        "totals": [],
+        "departures": [],
+        "waterSave": false,
+        "waterExit": null,
+        "safeCall": false,
+        "start": {
+          "feet": [
+            17.003019332885742,
+            -1.6950013637542725
+          ],
+          "support": "silt_bed",
+          "uses": 80,
+          "remaining": 7,
+          "active": 0,
+          "target": null,
+          "door": "velvet_01_entry"
+        },
+        "lip": {
+          "top": 0.32,
+          "contacts": 11,
+          "headContacts": 1,
+          "takeoffs": [
+            17.01
+          ],
+          "peakFeet": -0.1259970941616917
+        },
+        "firstKeys": [
+          "D"
+        ],
+        "stop": "first landing",
+        "end": {
+          "tick": 41,
+          "fixedTick": 42,
+          "frameSeconds": 0.02,
+          "room": "velvet_05_return",
+          "uses": 80,
+          "hp": 6,
+          "feet": [
+            16.99,
+            -1.7
+          ],
+          "support": "silt_bed",
+          "seam": 0,
+          "keys": [
+            "D"
+          ],
+          "activations": 0,
+          "idleSeconds": 0.04,
+          "step": null,
+          "lastSewn": null
+        }
+      },
+      "unreachableLip": {
+        "threatContacts": [],
+        "waterLandings": [],
+        "combat": [],
+        "credits": [],
+        "totals": [],
+        "departures": [],
+        "waterSave": false,
+        "waterExit": null,
+        "safeCall": false,
+        "start": {
+          "feet": [
+            17.003019332885742,
+            -1.6950013637542725
+          ],
+          "support": "silt_bed",
+          "uses": 80,
+          "remaining": 7,
+          "active": 0,
+          "target": null,
+          "door": "velvet_01_entry"
+        },
+        "lip": {
+          "top": 1.061481816673862,
+          "contacts": 909,
+          "headContacts": 0,
+          "takeoffs": [],
+          "peakFeet": -1.6950013637542725
+        },
+        "firstKeys": [
+          "D"
+        ],
+        "stop": "no progress",
+        "end": {
+          "tick": 910,
+          "fixedTick": 910,
+          "frameSeconds": 0.02,
+          "room": "velvet_05_return",
+          "uses": 80,
+          "hp": 6,
+          "feet": [
+            17.01,
+            -1.7
+          ],
+          "support": "silt_bed",
+          "seam": 0,
+          "keys": [
+            "D"
+          ],
+          "activations": 0,
+          "idleSeconds": 18.2,
+          "step": {
+            "To": 5,
+            "LaunchX": 17.200000000000003,
+            "LandX": 17.200000000000003,
+            "WalkOff": 0
+          },
+          "lastSewn": null
+        }
+      },
+      "district": {
+        "threatContacts": [
+          {
+            "tick": 113,
+            "target": "velvet_01_entry:z1_w01:0",
+            "outcome": "parry"
+          },
+          {
+            "tick": 229,
+            "target": "velvet_01_entry:z1_w01:1",
+            "outcome": "parry"
+          },
+          {
+            "tick": 342,
+            "target": "velvet_01_entry:z1_w01:1",
+            "outcome": "parry"
+          },
+          {
+            "tick": 455,
+            "target": "velvet_01_entry:z1_w01:1",
+            "outcome": "parry"
+          },
+          {
+            "tick": 1156,
+            "target": "velvet_03_gallery:reflection_statue_4",
+            "outcome": "hit",
+            "hp": 5
+          },
+          {
+            "tick": 3337,
+            "target": "velvet_05_return:notary_guard_3",
+            "outcome": "parry"
+          },
+          {
+            "tick": 5891,
+            "target": "velvet_01_entry:notary_guard_2",
+            "outcome": "hit",
+            "hp": 5
+          },
+          {
+            "tick": 11857,
+            "target": "velvet_02_loom:notary_guard_2",
+            "outcome": "hit",
+            "hp": 5
+          },
+          {
+            "tick": 12201,
+            "target": "velvet_03_gallery:reflection_statue_4",
+            "outcome": "hit",
+            "hp": 5
+          }
+        ],
+        "waterLandings": [
+          {
+            "tick": 1564,
+            "face": "velvet_05_return:seam_0",
+            "x": 3.341,
+            "y": 0.31
+          },
+          {
+            "tick": 1580,
+            "face": "intake_quay",
+            "x": 5.186,
+            "y": 0
+          },
+          {
+            "tick": 1768,
+            "face": "velvet_05_return:seam_1",
+            "x": 8.086,
+            "y": 0.31
+          },
+          {
+            "tick": 1784,
+            "face": "intake_quay",
+            "x": 9.931,
+            "y": 0
+          },
+          {
+            "tick": 1863,
+            "face": "silt_bed",
+            "x": 13.834,
+            "y": -1.7
+          },
+          {
+            "tick": 1968,
+            "face": "inspection_dock",
+            "x": 16.564,
+            "y": 0
+          },
+          {
+            "tick": 2002,
+            "face": "mikhail_reunion_plank",
+            "x": 17.192,
+            "y": 0.32
+          },
+          {
+            "tick": 2038,
+            "face": "inspection_dock",
+            "x": 21.637,
+            "y": 0
+          },
+          {
+            "tick": 2194,
+            "face": "tailrace",
+            "x": 28.208,
+            "y": -1.55
+          },
+          {
+            "tick": 2397,
+            "face": "outfall_quay",
+            "x": 31.718,
+            "y": 0
+          },
+          {
+            "tick": 2627,
+            "face": "outfall_quay",
+            "x": 32.168,
+            "y": 0
+          },
+          {
+            "tick": 2681,
+            "face": "outfall_quay",
+            "x": 32.098,
+            "y": 0
+          },
+          {
+            "tick": 2736,
+            "face": "outfall_quay",
+            "x": 32.158,
+            "y": 0
+          },
+          {
+            "tick": 2791,
+            "face": "outfall_quay",
+            "x": 31.97,
+            "y": 0
+          },
+          {
+            "tick": 2885,
+            "face": "velvet_05_return:seam_6",
+            "x": 40.46,
+            "y": 0.31
+          },
+          {
+            "tick": 2901,
+            "face": "outfall_quay",
+            "x": 42.305,
+            "y": 0
+          },
+          {
+            "tick": 2993,
+            "face": "lock_bed",
+            "x": 47.869,
+            "y": -1.8
+          },
+          {
+            "tick": 2994,
+            "face": "counterfloat",
+            "x": 47.999,
+            "y": -1.756
+          },
+          {
+            "tick": 3079,
+            "face": "wheel_gallery",
+            "x": 53.624,
+            "y": 2.1
+          },
+          {
+            "tick": 3147,
+            "face": "dry_dock",
+            "x": 56.889,
+            "y": 0
+          },
+          {
+            "tick": 3245,
+            "face": "tread_1",
+            "x": 59.489,
+            "y": 1.35
+          },
+          {
+            "tick": 3288,
+            "face": "tread_2",
+            "x": 62.359,
+            "y": 2.7
+          },
+          {
+            "tick": 3331,
+            "face": "balcony",
+            "x": 65.349,
+            "y": 4.05
+          },
+          {
+            "tick": 3443,
+            "face": "tread_1",
+            "x": 60.824,
+            "y": 1.35
+          },
+          {
+            "tick": 3500,
+            "face": "wheel_gallery",
+            "x": 54.212,
+            "y": 2.1
+          },
+          {
+            "tick": 3574,
+            "face": "outfall_quay",
+            "x": 45.138,
+            "y": 0
+          },
+          {
+            "tick": 19157,
+            "face": "silt_bed",
+            "x": 13.833,
+            "y": -1.7
+          },
+          {
+            "tick": 19236,
+            "face": "mikhail_reunion_plank",
+            "x": 18.554,
+            "y": 0.32
+          },
+          {
+            "tick": 19262,
+            "face": "inspection_dock",
+            "x": 21.804,
+            "y": 0
+          },
+          {
+            "tick": 19315,
+            "face": "tailrace",
+            "x": 28.279,
+            "y": -1.55
+          },
+          {
+            "tick": 19376,
+            "face": "outfall_quay",
+            "x": 33.827,
+            "y": 0
+          }
+        ],
+        "combat": [
+          {
+            "tick": 101,
+            "target": "velvet_01_entry:z1_w01:0",
+            "action": "cut",
+            "remaining": 2,
+            "x": 13.96,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 131,
+            "target": "velvet_01_entry:z1_w01:0",
+            "action": "cut",
+            "remaining": 1,
+            "x": 13.96,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 162,
+            "target": "velvet_01_entry:z1_w01:0",
+            "action": "cut",
+            "remaining": 0,
+            "x": 13.96,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 239,
+            "target": "velvet_01_entry:z1_w01:1",
+            "action": "cut",
+            "remaining": 2,
+            "x": 16.95,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 351,
+            "target": "velvet_01_entry:z1_w01:1",
+            "action": "cut",
+            "remaining": 1,
+            "x": 16.95,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 465,
+            "target": "velvet_01_entry:z1_w01:1",
+            "action": "cut",
+            "remaining": 0,
+            "x": 16.95,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 495,
+            "target": "velvet_01_entry:z1_w01:2",
+            "action": "cut",
+            "remaining": 0,
+            "x": 16.95,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 664,
+            "target": "velvet_02_loom:sword_latch_0",
+            "action": "cut",
+            "remaining": 0,
+            "x": 4.86,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 691,
+            "target": "velvet_02_loom:sword_latch_1",
+            "action": "cut",
+            "remaining": 0,
+            "x": 7.33,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 691,
+            "target": "velvet_02_loom:notary_guard_2",
+            "action": "cut",
+            "remaining": 3,
+            "x": 7.33,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 1276,
+            "target": "velvet_03_gallery:sword_latch_0",
+            "action": "cut",
+            "remaining": 0,
+            "x": 28.53,
+            "y": 0,
+            "support": "floor"
+          },
+          {
+            "tick": 1785,
+            "target": "velvet_05_return:notary_guard_0",
+            "action": "setup",
+            "x": 9.931
+          },
+          {
+            "tick": 1819,
+            "target": "velvet_05_return:notary_guard_0",
+            "action": "open",
+            "x": 9.931
+          },
+          {
+            "tick": 1828,
+            "target": "velvet_05_return:notary_guard_0",
+            "action": "cut",
+            "remaining": 0,
+            "x": 9.931,
+            "y": 0,
+            "support": "intake_quay"
+          },
+          {
+            "tick": 2914,
+            "target": "velvet_05_return:notary_guard_1",
+            "action": "setup",
+            "x": 43.865
+          },
+          {
+            "tick": 2948,
+            "target": "velvet_05_return:notary_guard_1",
+            "action": "open",
+            "x": 43.865
+          },
+          {
+            "tick": 2958,
+            "target": "velvet_05_return:notary_guard_1",
+            "action": "cut",
+            "remaining": 0,
+            "x": 43.865,
+            "y": 0,
+            "support": "outfall_quay"
+          },
+          {
+            "tick": 3160,
+            "target": "velvet_05_return:notary_guard_2",
+            "action": "setup",
+            "x": 58.449
+          },
+          {
+            "tick": 3194,
+            "target": "velvet_05_return:notary_guard_2",
+            "action": "open",
+            "x": 58.449
+          },
+          {
+            "tick": 3203,
+            "target": "velvet_05_return:notary_guard_2",
+            "action": "cut",
+            "remaining": 0,
+            "x": 58.449,
+            "y": 0,
+            "support": "dry_dock"
+          },
+          {
+            "tick": 3338,
+            "target": "velvet_05_return:notary_guard_3",
+            "action": "setup",
+            "x": 65.479
+          },
+          {
+            "tick": 3372,
+            "target": "velvet_05_return:notary_guard_3",
+            "action": "open",
+            "x": 65.479
+          },
+          {
+            "tick": 3382,
+            "target": "velvet_05_return:notary_guard_3",
+            "action": "cut",
+            "remaining": 0,
+            "x": 65.479,
+            "y": 4.05,
+            "support": "balcony"
+          },
+          {
+            "tick": 5931,
+            "target": "velvet_01_entry:notary_guard_1",
+            "action": "setup",
+            "x": 4.108
+          },
+          {
+            "tick": 5965,
+            "target": "velvet_01_entry:notary_guard_1",
+            "action": "open",
+            "x": 4.108
+          },
+          {
+            "tick": 5975,
+            "target": "velvet_01_entry:notary_guard_1",
+            "action": "cut",
+            "remaining": 0,
+            "x": 4.108,
+            "y": 13.35,
+            "support": "wardrobe_loft"
+          },
+          {
+            "tick": 6017,
+            "target": "velvet_01_entry:notary_guard_2",
+            "action": "setup",
+            "x": 9.438
+          },
+          {
+            "tick": 6051,
+            "target": "velvet_01_entry:notary_guard_2",
+            "action": "open",
+            "x": 9.438
+          },
+          {
+            "tick": 6061,
+            "target": "velvet_01_entry:notary_guard_2",
+            "action": "cut",
+            "remaining": 0,
+            "x": 9.438,
+            "y": 13.35,
+            "support": "wardrobe_loft"
+          },
+          {
+            "tick": 6123,
+            "target": "velvet_01_entry:notary_guard_3",
+            "action": "setup",
+            "x": 17.368
+          },
+          {
+            "tick": 6157,
+            "target": "velvet_01_entry:notary_guard_3",
+            "action": "open",
+            "x": 17.368
+          },
+          {
+            "tick": 6166,
+            "target": "velvet_01_entry:notary_guard_3",
+            "action": "cut",
+            "remaining": 0,
+            "x": 17.368,
+            "y": 13.35,
+            "support": "wardrobe_loft"
+          },
+          {
+            "tick": 6233,
+            "target": "velvet_01_entry:notary_guard_4",
+            "action": "setup",
+            "x": 25.948
+          },
+          {
+            "tick": 6267,
+            "target": "velvet_01_entry:notary_guard_4",
+            "action": "open",
+            "x": 25.948
+          },
+          {
+            "tick": 6277,
+            "target": "velvet_01_entry:notary_guard_4",
+            "action": "cut",
+            "remaining": 0,
+            "x": 25.948,
+            "y": 13.35,
+            "support": "wardrobe_loft"
+          }
+        ],
+        "credits": [
+          {
+            "tick": 1526,
+            "use": 1,
+            "target": "velvet_05_return:seam_0"
+          },
+          {
+            "tick": 1730,
+            "use": 6,
+            "target": "velvet_05_return:seam_1"
+          },
+          {
+            "tick": 1785,
+            "use": 7,
+            "target": "velvet_05_return:notary_guard_0:posture"
+          },
+          {
+            "tick": 1819,
+            "use": 8,
+            "target": "velvet_05_return:notary_guard_0:posture"
+          },
+          {
+            "tick": 1940,
+            "use": 11,
+            "target": "velvet_05_return:seam_2"
+          },
+          {
+            "tick": 2149,
+            "use": 15,
+            "target": "velvet_05_return:seam_3"
+          },
+          {
+            "tick": 2368,
+            "use": 21,
+            "target": "velvet_05_return:seam_4"
+          },
+          {
+            "tick": 2587,
+            "use": 27,
+            "target": "velvet_05_return:seam_5"
+          },
+          {
+            "tick": 2848,
+            "use": 28,
+            "target": "velvet_05_return:seam_6"
+          },
+          {
+            "tick": 2914,
+            "use": 29,
+            "target": "velvet_05_return:notary_guard_1:posture"
+          },
+          {
+            "tick": 2948,
+            "use": 30,
+            "target": "velvet_05_return:notary_guard_1:posture"
+          },
+          {
+            "tick": 3100,
+            "use": 31,
+            "target": "velvet_05_return:seam_7"
+          },
+          {
+            "tick": 3160,
+            "use": 32,
+            "target": "velvet_05_return:notary_guard_2:posture"
+          },
+          {
+            "tick": 3194,
+            "use": 33,
+            "target": "velvet_05_return:notary_guard_2:posture"
+          },
+          {
+            "tick": 3338,
+            "use": 34,
+            "target": "velvet_05_return:notary_guard_3:posture"
+          },
+          {
+            "tick": 3372,
+            "use": 35,
+            "target": "velvet_05_return:notary_guard_3:posture"
+          },
+          {
+            "tick": 3762,
+            "use": 36,
+            "target": "velvet_01_entry:seam_0"
+          },
+          {
+            "tick": 3991,
+            "use": 38,
+            "target": "velvet_01_entry:seam_1"
+          },
+          {
+            "tick": 4237,
+            "use": 39,
+            "target": "velvet_01_entry:seam_2"
+          },
+          {
+            "tick": 4449,
+            "use": 43,
+            "target": "velvet_01_entry:seam_3"
+          },
+          {
+            "tick": 4665,
+            "use": 49,
+            "target": "velvet_01_entry:seam_4"
+          },
+          {
+            "tick": 4870,
+            "use": 54,
+            "target": "velvet_01_entry:seam_5"
+          },
+          {
+            "tick": 5088,
+            "use": 58,
+            "target": "velvet_01_entry:seam_6"
+          },
+          {
+            "tick": 5320,
+            "use": 63,
+            "target": "velvet_01_entry:seam_7"
+          },
+          {
+            "tick": 5931,
+            "use": 64,
+            "target": "velvet_01_entry:notary_guard_1:posture"
+          },
+          {
+            "tick": 5965,
+            "use": 65,
+            "target": "velvet_01_entry:notary_guard_1:posture"
+          },
+          {
+            "tick": 6017,
+            "use": 66,
+            "target": "velvet_01_entry:notary_guard_2:posture"
+          },
+          {
+            "tick": 6051,
+            "use": 67,
+            "target": "velvet_01_entry:notary_guard_2:posture"
+          },
+          {
+            "tick": 6123,
+            "use": 68,
+            "target": "velvet_01_entry:notary_guard_3:posture"
+          },
+          {
+            "tick": 6157,
+            "use": 69,
+            "target": "velvet_01_entry:notary_guard_3:posture"
+          },
+          {
+            "tick": 6233,
+            "use": 70,
+            "target": "velvet_01_entry:notary_guard_4:posture"
+          },
+          {
+            "tick": 6267,
+            "use": 71,
+            "target": "velvet_01_entry:notary_guard_4:posture"
+          },
+          {
+            "tick": 6917,
+            "use": 72,
+            "target": "velvet_01_entry:seam_8:support"
+          },
+          {
+            "tick": 7127,
+            "use": 77,
+            "target": "velvet_01_entry:seam_9:support"
+          },
+          {
+            "tick": 7333,
+            "use": 82,
+            "target": "velvet_01_entry:seam_10:support"
+          },
+          {
+            "tick": 7544,
+            "use": 87,
+            "target": "velvet_01_entry:seam_11:support"
+          },
+          {
+            "tick": 7755,
+            "use": 90,
+            "target": "velvet_01_entry:seam_12:support"
+          },
+          {
+            "tick": 7964,
+            "use": 95,
+            "target": "velvet_01_entry:seam_13:support"
+          },
+          {
+            "tick": 8186,
+            "use": 100,
+            "target": "velvet_01_entry:seam_14:support"
+          },
+          {
+            "tick": 8400,
+            "use": 105,
+            "target": "velvet_01_entry:seam_15:support"
+          },
+          {
+            "tick": 9074,
+            "use": 106,
+            "target": "velvet_02_loom:seam_0:support"
+          },
+          {
+            "tick": 9308,
+            "use": 110,
+            "target": "velvet_02_loom:seam_1:support"
+          },
+          {
+            "tick": 9527,
+            "use": 114,
+            "target": "velvet_02_loom:seam_2:support"
+          },
+          {
+            "tick": 9744,
+            "use": 117,
+            "target": "velvet_02_loom:seam_3:support"
+          },
+          {
+            "tick": 9949,
+            "use": 122,
+            "target": "velvet_02_loom:seam_4:support"
+          },
+          {
+            "tick": 10166,
+            "use": 127,
+            "target": "velvet_02_loom:seam_5:support"
+          },
+          {
+            "tick": 10383,
+            "use": 132,
+            "target": "velvet_02_loom:seam_6:support"
+          },
+          {
+            "tick": 10599,
+            "use": 137,
+            "target": "velvet_02_loom:seam_7:support"
+          },
+          {
+            "tick": 10830,
+            "use": 140,
+            "target": "velvet_02_loom:seam_8:support"
+          },
+          {
+            "tick": 11052,
+            "use": 145,
+            "target": "velvet_02_loom:seam_9:support"
+          },
+          {
+            "tick": 11285,
+            "use": 150,
+            "target": "velvet_02_loom:seam_10:support"
+          },
+          {
+            "tick": 11510,
+            "use": 155,
+            "target": "velvet_02_loom:seam_11:support"
+          },
+          {
+            "tick": 12527,
+            "use": 156,
+            "target": "velvet_03_gallery:seam_0:support"
+          },
+          {
+            "tick": 12741,
+            "use": 161,
+            "target": "velvet_03_gallery:seam_1:support"
+          },
+          {
+            "tick": 12955,
+            "use": 166,
+            "target": "velvet_03_gallery:seam_2:support"
+          },
+          {
+            "tick": 13161,
+            "use": 171,
+            "target": "velvet_03_gallery:seam_3:support"
+          },
+          {
+            "tick": 13376,
+            "use": 176,
+            "target": "velvet_03_gallery:seam_4:support"
+          },
+          {
+            "tick": 13609,
+            "use": 179,
+            "target": "velvet_03_gallery:seam_5:support"
+          },
+          {
+            "tick": 13820,
+            "use": 183,
+            "target": "velvet_03_gallery:seam_6:support"
+          },
+          {
+            "tick": 14054,
+            "use": 187,
+            "target": "velvet_03_gallery:seam_7:support"
+          },
+          {
+            "tick": 14273,
+            "use": 189,
+            "target": "velvet_03_gallery:seam_8:support"
+          },
+          {
+            "tick": 14506,
+            "use": 194,
+            "target": "velvet_03_gallery:seam_9:support"
+          },
+          {
+            "tick": 14738,
+            "use": 199,
+            "target": "velvet_03_gallery:seam_10:support"
+          },
+          {
+            "tick": 14970,
+            "use": 204,
+            "target": "velvet_03_gallery:seam_11:support"
+          },
+          {
+            "tick": 15582,
+            "use": 205,
+            "target": "velvet_04_arena:seam_0:support"
+          },
+          {
+            "tick": 15812,
+            "use": 209,
+            "target": "velvet_04_arena:seam_1:support"
+          },
+          {
+            "tick": 16045,
+            "use": 213,
+            "target": "velvet_04_arena:seam_2:support"
+          },
+          {
+            "tick": 16265,
+            "use": 216,
+            "target": "velvet_04_arena:seam_3:support"
+          },
+          {
+            "tick": 16468,
+            "use": 221,
+            "target": "velvet_04_arena:seam_4:support"
+          },
+          {
+            "tick": 16670,
+            "use": 226,
+            "target": "velvet_04_arena:seam_5:support"
+          },
+          {
+            "tick": 16874,
+            "use": 231,
+            "target": "velvet_04_arena:seam_6:support"
+          },
+          {
+            "tick": 17079,
+            "use": 236,
+            "target": "velvet_04_arena:seam_7:support"
+          },
+          {
+            "tick": 17280,
+            "use": 241,
+            "target": "velvet_04_arena:seam_8:support"
+          },
+          {
+            "tick": 17483,
+            "use": 243,
+            "target": "velvet_04_arena:seam_9:support"
+          },
+          {
+            "tick": 17695,
+            "use": 248,
+            "target": "velvet_04_arena:seam_10:support"
+          },
+          {
+            "tick": 17902,
+            "use": 253,
+            "target": "velvet_04_arena:seam_11:support"
+          },
+          {
+            "tick": 18116,
+            "use": 258,
+            "target": "velvet_04_arena:seam_12:support"
+          },
+          {
+            "tick": 18326,
+            "use": 263,
+            "target": "velvet_04_arena:seam_13:support"
+          },
+          {
+            "tick": 18543,
+            "use": 265,
+            "target": "velvet_04_arena:seam_14:support"
+          },
+          {
+            "tick": 18754,
+            "use": 266,
+            "target": "velvet_04_arena:seam_15:support"
+          }
+        ],
+        "totals": [
+          [
+            "velvet_01_entry",
+            0
+          ],
+          [
+            "velvet_02_loom",
+            0
+          ],
+          [
+            "velvet_03_gallery",
+            0
+          ],
+          [
+            "velvet_05_return",
+            16
+          ],
+          [
+            "velvet_01_entry",
+            40
+          ],
+          [
+            "velvet_02_loom",
+            52
+          ],
+          [
+            "velvet_03_gallery",
+            64
+          ],
+          [
+            "velvet_04_arena",
+            80
+          ],
+          [
+            "velvet_04_arena",
+            80
+          ],
+          [
+            "velvet_05_return",
+            80
+          ],
+          [
+            "velvet_01_entry",
+            80
+          ],
+          [
+            "velvet_02_loom",
+            80
+          ],
+          [
+            "velvet_06_shortcut",
+            80
+          ]
+        ],
+        "departures": [
+          {
+            "room": "velvet_01_entry",
+            "to": "velvet_02_loom",
+            "support": "balcony",
+            "feet": [
+              28.09,
+              3.85
+            ],
+            "guards": []
+          },
+          {
+            "room": "velvet_02_loom",
+            "to": "velvet_03_gallery",
+            "support": "east",
+            "feet": [
+              37.023,
+              0
+            ],
+            "guards": []
+          },
+          {
+            "room": "velvet_03_gallery",
+            "to": "velvet_04_arena",
+            "support": "balcony",
+            "feet": [
+              36.624,
+              4.25
+            ],
+            "guards": []
+          },
+          {
+            "room": "velvet_05_return",
+            "to": "velvet_01_entry",
+            "support": "outfall_quay",
+            "feet": [
+              38.118,
+              0
+            ],
+            "guards": [
+              [
+                "velvet_05_return:notary_guard_0",
+                0
+              ],
+              [
+                "velvet_05_return:notary_guard_1",
+                0
+              ],
+              [
+                "velvet_05_return:notary_guard_2",
+                0
+              ],
+              [
+                "velvet_05_return:notary_guard_3",
+                0
+              ]
+            ]
+          },
+          {
+            "room": "velvet_01_entry",
+            "to": "velvet_02_loom",
+            "support": "balcony",
+            "feet": [
+              28.371,
+              3.85
+            ],
+            "guards": [
+              [
+                "velvet_01_entry:notary_guard_1",
+                0
+              ],
+              [
+                "velvet_01_entry:notary_guard_2",
+                0
+              ],
+              [
+                "velvet_01_entry:notary_guard_3",
+                0
+              ],
+              [
+                "velvet_01_entry:notary_guard_4",
+                0
+              ]
+            ]
+          },
+          {
+            "room": "velvet_02_loom",
+            "to": "velvet_03_gallery",
+            "support": "east",
+            "feet": [
+              36.808,
+              0
+            ],
+            "guards": [
+              [
+                "velvet_02_loom:notary_guard_2",
+                4
+              ],
+              [
+                "velvet_02_loom:notary_guard_3",
+                4
+              ],
+              [
+                "velvet_02_loom:notary_guard_4",
+                4
+              ]
+            ]
+          },
+          {
+            "room": "velvet_03_gallery",
+            "to": "velvet_04_arena",
+            "support": "balcony",
+            "feet": [
+              36.787,
+              4.25
+            ],
+            "guards": [
+              [
+                "velvet_03_gallery:notary_guard_1",
+                4
+              ],
+              [
+                "velvet_03_gallery:notary_guard_2",
+                4
+              ],
+              [
+                "velvet_03_gallery:notary_guard_3",
+                4
+              ]
+            ]
+          },
+          {
+            "room": "velvet_04_arena",
+            "to": "velvet_05_return",
+            "support": "floor",
+            "feet": [
+              31.834,
+              0
+            ],
+            "guards": []
+          },
+          {
+            "room": "velvet_05_return",
+            "to": "velvet_01_entry",
+            "support": "outfall_quay",
+            "feet": [
+              37.857,
+              0
+            ],
+            "guards": [
+              [
+                "velvet_05_return:notary_guard_0",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_1",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_2",
+                1
+              ],
+              [
+                "velvet_05_return:notary_guard_3",
+                1
+              ]
+            ]
+          },
+          {
+            "room": "velvet_01_entry",
+            "to": "velvet_02_loom",
+            "support": "balcony",
+            "feet": [
+              28.079,
+              3.85
+            ],
+            "guards": []
+          },
+          {
+            "room": "velvet_02_loom",
+            "to": "velvet_06_shortcut",
+            "support": "balcony",
+            "feet": [
+              36.955,
+              3.9
+            ],
+            "guards": [
+              [
+                "velvet_02_loom:notary_guard_2",
+                4
+              ],
+              [
+                "velvet_02_loom:notary_guard_3",
+                4
+              ],
+              [
+                "velvet_02_loom:notary_guard_4",
+                4
+              ]
+            ]
+          },
+          {
+            "room": "velvet_06_shortcut",
+            "to": "velvet_04_arena",
+            "support": "balcony",
+            "feet": [
+              9.67,
+              4
+            ],
+            "guards": [
+              [
+                "velvet_06_shortcut:notary_guard_0",
+                1
+              ],
+              [
+                "velvet_06_shortcut:notary_guard_1",
+                1
+              ],
+              [
+                "velvet_06_shortcut:notary_guard_2",
+                1
+              ],
+              [
+                "velvet_06_shortcut:notary_guard_3",
+                1
+              ],
+              [
+                "velvet_06_shortcut:notary_guard_4",
+                1
+              ],
+              [
+                "velvet_06_shortcut:notary_guard_5",
+                1
+              ]
+            ]
+          }
+        ],
+        "waterSave": false,
+        "waterExit": "velvet_01_entry",
+        "safeCall": true,
+        "probe": {
+          "contacts": [
+            {
+              "room": "velvet_01_entry",
+              "floor": "wardrobe_cutting_rail",
+              "from": "velvet_01_entry",
+              "feetX": 26.91999999999999,
+              "feetY": 3.85,
+              "roomEntryToContactSeconds": 12.48,
+              "segmentSeconds": 12.48,
+              "fromEntrySeconds": 12.48,
+              "outsideVelvetSeconds": 0,
+              "districtSeconds": 12.48,
+              "targetBand": "below-target"
+            },
+            {
+              "room": "velvet_02_loom",
+              "floor": "loom_balcony_floor",
+              "from": "wardrobe_cutting_rail",
+              "feetX": 36.04520000000004,
+              "feetY": 3.9,
+              "roomEntryToContactSeconds": 6.140000000000001,
+              "segmentSeconds": 6.34,
+              "fromEntrySeconds": 18.82,
+              "outsideVelvetSeconds": 0,
+              "districtSeconds": 6.34,
+              "targetBand": "below-target"
+            },
+            {
+              "room": "velvet_03_gallery",
+              "floor": "gallery_balcony_floor",
+              "from": "loom_balcony_floor",
+              "feetX": 36.10360000000002,
+              "feetY": 4.25,
+              "roomEntryToContactSeconds": 9.720000000000002,
+              "segmentSeconds": 11.580000000000002,
+              "fromEntrySeconds": 30.400000000000002,
+              "outsideVelvetSeconds": 0,
+              "districtSeconds": 11.580000000000002,
+              "targetBand": "below-target"
+            },
+            {
+              "room": "velvet_04_arena",
+              "floor": "mikhail_arena_west",
+              "from": "gallery_balcony_floor",
+              "feetX": 4,
+              "feetY": 4.05,
+              "roomEntryToContactSeconds": 0,
+              "segmentSeconds": 0.09999999999999787,
+              "fromEntrySeconds": 30.5,
+              "outsideVelvetSeconds": 0,
+              "districtSeconds": 0.09999999999999787,
+              "targetBand": "below-target"
+            },
+            {
+              "room": "velvet_05_return",
+              "floor": "waterway_splice_floor",
+              "from": "mikhail_arena_west",
+              "feetX": 64.6992000000005,
+              "feetY": 4.05,
+              "roomEntryToContactSeconds": 37.26,
+              "segmentSeconds": 37.28,
+              "fromEntrySeconds": 67.78,
+              "outsideVelvetSeconds": 0,
+              "districtSeconds": 37.28,
+              "targetBand": "below-target"
+            },
+            {
+              "room": "velvet_06_shortcut",
+              "floor": "suspension_clasp_floor",
+              "from": "waterway_splice_floor",
+              "feetX": 6.809999999999996,
+              "feetY": 4,
+              "roomEntryToContactSeconds": 0.7400000000000091,
+              "segmentSeconds": 331.71999999999997,
+              "fromEntrySeconds": 399.5,
+              "outsideVelvetSeconds": 0,
+              "districtSeconds": 331.71999999999997,
+              "targetBand": "above-target"
+            }
+          ],
+          "silverRooms": [
+            "velvet_05_return",
+            "velvet_01_entry",
+            "velvet_02_loom",
+            "velvet_03_gallery",
+            "velvet_04_arena"
+          ],
+          "returnDoors": [
+            "velvet_02_loom",
+            "velvet_06_shortcut",
+            "velvet_04_arena"
+          ],
+          "targetMinSeconds": 180,
+          "targetMaxSeconds": 300,
+          "returnUses": 80,
+          "guardPreparations": 16,
+          "shortSeams": 16,
+          "upperSupports": 48,
+          "outboundViaGallerySeconds": 9.84,
+          "shortcutSeconds": 1.2200000000000273,
+          "arrivedAtUpperBridge": true,
+          "arrivedAtArena": true,
+          "closedOnFirstVisit": true,
+          "firstSilverTarget": "velvet_05_return:seam_0"
+        },
+        "rooms": [
+          "velvet_01_entry",
+          "velvet_02_loom",
+          "velvet_03_gallery",
+          "velvet_04_arena",
+          "velvet_05_return",
+          "velvet_01_entry",
+          "velvet_02_loom",
+          "velvet_03_gallery",
+          "velvet_04_arena",
+          "hub_workroom",
+          "velvet_04_arena",
+          "velvet_05_return",
+          "velvet_01_entry",
+          "velvet_02_loom",
+          "velvet_06_shortcut",
+          "velvet_04_arena"
+        ],
+        "firstKeys": [
+          "D"
+        ],
+        "loomMotion": {
+          "minX": 8.607599999999985,
+          "maxX": 10.167599999999995,
+          "left": 13,
+          "right": 0,
+          "idle": 0,
+          "swings": 0,
+          "jumps": 0,
+          "sides": 0,
+          "turns": 0,
+          "firstTurns": [
+            {
+              "tick": 11510,
+              "x": 10.168,
+              "axis": -1,
+              "from": "reed_turn",
+              "step": {
+                "To": 21,
+                "LaunchX": 40.7,
+                "LandX": 40.7,
+                "WalkOff": 0
+              }
+            }
+          ]
+        },
+        "returnCheckpoint": [
+          "velvet_04_arena",
+          "mikhail_arena_west"
+        ],
+        "transferFlags": [
+          "first_transfer_seen",
+          "returned_for_mid_invest"
+        ],
+        "destination": [
+          "hub_workroom",
+          "workroom_safe_floor"
+        ],
+        "stop": "district complete",
+        "end": {
+          "tick": 19998,
+          "fixedTick": 19998,
+          "frameSeconds": 0.02,
+          "room": "velvet_04_arena",
+          "uses": 80,
+          "hp": 6,
+          "feet": [
+            4,
+            4.05
+          ],
+          "support": "balcony",
+          "seam": 15,
+          "keys": [],
+          "activations": 266,
+          "idleSeconds": 0.08,
+          "step": {
+            "To": 7,
+            "LaunchX": 31.95,
+            "LandX": 33.85,
+            "WalkOff": 0
+          },
+          "lastSewn": "velvet_04_arena:seam_15:support"
+        }
+      },
       "campaign60": {
         "threatContacts": [
           {
@@ -26522,31 +28284,31 @@
             "hp": 5
           },
           {
-            "tick": 12450,
+            "tick": 12457,
             "target": "velvet_02_loom:notary_guard_4",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 13358,
+            "tick": 13369,
             "target": "velvet_03_gallery:reflection_statue_5",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 13542,
+            "tick": 13555,
             "target": "velvet_03_gallery:reflection_statue_5",
             "outcome": "hit",
             "hp": 4
           },
           {
-            "tick": 13610,
+            "tick": 13624,
             "target": "velvet_03_gallery:reflection_statue_4",
             "outcome": "hit",
             "hp": 3
           },
           {
-            "tick": 13745,
+            "tick": 13759,
             "target": "velvet_03_gallery:reflection_statue_4",
             "outcome": "hit",
             "hp": 2
@@ -26799,20 +28561,20 @@
             "tick": 5262,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "setup",
-            "x": 4.063
+            "x": 4.062
           },
           {
             "tick": 5302,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "open",
-            "x": 4.063
+            "x": 4.062
           },
           {
             "tick": 5313,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "cut",
             "remaining": 0,
-            "x": 4.063,
+            "x": 4.062,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -26820,20 +28582,20 @@
             "tick": 5363,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "setup",
-            "x": 9.393
+            "x": 9.392
           },
           {
             "tick": 5403,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "open",
-            "x": 9.393
+            "x": 9.392
           },
           {
             "tick": 5414,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 9.393,
+            "x": 9.392,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -26841,20 +28603,20 @@
             "tick": 5489,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "setup",
-            "x": 17.453
+            "x": 17.452
           },
           {
             "tick": 5529,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "open",
-            "x": 17.453
+            "x": 17.452
           },
           {
             "tick": 5540,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 17.453,
+            "x": 17.452,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -26862,211 +28624,211 @@
             "tick": 5619,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "setup",
-            "x": 25.903
+            "x": 25.902
           },
           {
             "tick": 5659,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "open",
-            "x": 25.903
+            "x": 25.902
           },
           {
             "tick": 5670,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "cut",
             "remaining": 0,
-            "x": 25.903,
+            "x": 25.902,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
           {
-            "tick": 12267,
+            "tick": 12273,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.168
+            "x": 8.167
           },
           {
-            "tick": 12278,
+            "tick": 12284,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 3,
-            "x": 8.168,
+            "x": 8.167,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12306,
+            "tick": 12314,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.168
+            "x": 8.167
           },
           {
-            "tick": 12317,
+            "tick": 12325,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 2,
-            "x": 8.168,
+            "x": 8.167,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12345,
+            "tick": 12353,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.168
+            "x": 8.167
           },
           {
-            "tick": 12356,
+            "tick": 12364,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 1,
-            "x": 8.168,
+            "x": 8.167,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12384,
+            "tick": 12392,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.168
+            "x": 8.167
           },
           {
-            "tick": 12395,
+            "tick": 12403,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 8.168,
+            "x": 8.167,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12466,
+            "tick": 12472,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.13
+            "x": 1.214
           },
           {
-            "tick": 12477,
+            "tick": 12483,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 3,
-            "x": 1.13,
+            "x": 1.214,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12505,
+            "tick": 12513,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.13
+            "x": 1.214
           },
           {
-            "tick": 12516,
+            "tick": 12524,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 2,
-            "x": 1.13,
+            "x": 1.214,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12544,
+            "tick": 12552,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.13
+            "x": 1.214
           },
           {
-            "tick": 12555,
+            "tick": 12563,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 1,
-            "x": 1.13,
+            "x": 1.214,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12583,
+            "tick": 12591,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.13
+            "x": 1.214
           },
           {
-            "tick": 12594,
+            "tick": 12602,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 1.13,
+            "x": 1.214,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12623,
+            "tick": 12630,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 2.95
+            "x": 2.904
           },
           {
-            "tick": 12634,
+            "tick": 12641,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 3,
-            "x": 2.95,
+            "x": 2.904,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12662,
+            "tick": 12669,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 2.95
+            "x": 2.904
           },
           {
-            "tick": 12673,
+            "tick": 12680,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 2,
-            "x": 3.2,
+            "x": 3.204,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 12701,
+            "tick": 12710,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 3.2
+            "x": 3.204
           },
           {
-            "tick": 12712,
+            "tick": 12721,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 1,
-            "x": 3.45,
+            "x": 3.504,
             "y": 0,
             "support": "floor"
-          },
-          {
-            "tick": 12740,
-            "target": "velvet_02_loom:notary_guard_4",
-            "action": "open",
-            "x": 3.45
           },
           {
             "tick": 12751,
             "target": "velvet_02_loom:notary_guard_4",
+            "action": "open",
+            "x": 3.504
+          },
+          {
+            "tick": 12762,
+            "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 0,
-            "x": 3.75,
+            "x": 3.804,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 13174,
+            "tick": 13186,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 8.882
           },
           {
-            "tick": 13185,
+            "tick": 13197,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 3,
@@ -27075,43 +28837,43 @@
             "support": "floor"
           },
           {
-            "tick": 13213,
+            "tick": 13225,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 9.182
           },
           {
-            "tick": 13224,
+            "tick": 13236,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 2,
-            "x": 9.432,
+            "x": 9.482,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 13252,
+            "tick": 13264,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
-            "x": 9.432
+            "x": 9.482
           },
           {
-            "tick": 13263,
+            "tick": 13275,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 1,
-            "x": 9.732,
+            "x": 9.782,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 13293,
+            "tick": 13303,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
-            "x": 9.732
+            "x": 9.782
           },
           {
-            "tick": 13304,
+            "tick": 13314,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 0,
@@ -27120,122 +28882,122 @@
             "support": "floor"
           },
           {
-            "tick": 13373,
+            "tick": 13384,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
-            "x": 3.124
+            "x": 2.95
           },
           {
-            "tick": 13384,
+            "tick": 13395,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 3,
-            "x": 3.054,
+            "x": 3.01,
             "y": 0,
             "support": "floor"
-          },
-          {
-            "tick": 13412,
-            "target": "velvet_03_gallery:notary_guard_2",
-            "action": "open",
-            "x": 3.054
           },
           {
             "tick": 13423,
             "target": "velvet_03_gallery:notary_guard_2",
-            "action": "cut",
-            "remaining": 2,
-            "x": 2.984,
-            "y": 0,
-            "support": "floor"
+            "action": "open",
+            "x": 3.01
           },
           {
-            "tick": 13451,
+            "tick": 13434,
             "target": "velvet_03_gallery:notary_guard_2",
-            "action": "open",
-            "x": 2.984
+            "action": "cut",
+            "remaining": 2,
+            "x": 3.07,
+            "y": 0,
+            "support": "floor"
           },
           {
             "tick": 13462,
             "target": "velvet_03_gallery:notary_guard_2",
+            "action": "open",
+            "x": 3.07
+          },
+          {
+            "tick": 13473,
+            "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 1,
-            "x": 3.044,
+            "x": 2.95,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 13490,
+            "tick": 13503,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
-            "x": 3.044
+            "x": 2.95
           },
           {
-            "tick": 13501,
+            "tick": 13514,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 3.054,
+            "x": 3.01,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 13602,
+            "tick": 13616,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 13.472
           },
           {
-            "tick": 13636,
+            "tick": 13651,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 3,
-            "x": 14.58,
+            "x": 14.53,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 13662,
+            "tick": 13677,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
-            "x": 14.58
+            "x": 14.53
           },
           {
-            "tick": 13673,
+            "tick": 13688,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 2,
-            "x": 14.46,
+            "x": 14.54,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 13701,
+            "tick": 13716,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
-            "x": 14.46
+            "x": 14.54
           },
           {
-            "tick": 13712,
+            "tick": 13727,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 1,
-            "x": 14.52,
+            "x": 14.55,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 13740,
+            "tick": 13755,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
-            "x": 14.52
+            "x": 14.55
           },
           {
-            "tick": 13772,
+            "tick": 13785,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 15.258,
+            "x": 15.253,
             "y": 0,
             "support": "floor"
           }
@@ -27327,37 +29089,37 @@
             "target": "velvet_01_entry:seam_0"
           },
           {
-            "tick": 2954,
+            "tick": 2952,
             "use": 38,
             "target": "velvet_01_entry:seam_1"
           },
           {
-            "tick": 3251,
+            "tick": 3245,
             "use": 39,
             "target": "velvet_01_entry:seam_2"
           },
           {
-            "tick": 3502,
+            "tick": 3497,
             "use": 43,
             "target": "velvet_01_entry:seam_3"
           },
           {
-            "tick": 3756,
+            "tick": 3751,
             "use": 49,
             "target": "velvet_01_entry:seam_4"
           },
           {
-            "tick": 3997,
+            "tick": 3994,
             "use": 54,
             "target": "velvet_01_entry:seam_5"
           },
           {
-            "tick": 4256,
+            "tick": 4253,
             "use": 58,
             "target": "velvet_01_entry:seam_6"
           },
           {
-            "tick": 4530,
+            "tick": 4527,
             "use": 63,
             "target": "velvet_01_entry:seam_7"
           },
@@ -27442,202 +29204,202 @@
             "target": "velvet_01_entry:seam_15:support"
           },
           {
-            "tick": 8993,
+            "tick": 8997,
             "use": 106,
             "target": "velvet_02_loom:seam_0:support"
           },
           {
-            "tick": 9272,
+            "tick": 9275,
             "use": 110,
             "target": "velvet_02_loom:seam_1:support"
           },
           {
-            "tick": 9530,
+            "tick": 9536,
             "use": 114,
             "target": "velvet_02_loom:seam_2:support"
           },
           {
-            "tick": 9788,
+            "tick": 9794,
             "use": 117,
             "target": "velvet_02_loom:seam_3:support"
           },
           {
-            "tick": 10028,
+            "tick": 10034,
             "use": 122,
             "target": "velvet_02_loom:seam_4:support"
           },
           {
-            "tick": 10284,
+            "tick": 10290,
             "use": 127,
             "target": "velvet_02_loom:seam_5:support"
           },
           {
-            "tick": 10542,
+            "tick": 10548,
             "use": 132,
             "target": "velvet_02_loom:seam_6:support"
           },
           {
-            "tick": 10797,
+            "tick": 10803,
             "use": 137,
             "target": "velvet_02_loom:seam_7:support"
           },
           {
-            "tick": 11070,
+            "tick": 11076,
             "use": 140,
             "target": "velvet_02_loom:seam_8:support"
           },
           {
-            "tick": 11333,
+            "tick": 11339,
             "use": 145,
             "target": "velvet_02_loom:seam_9:support"
           },
           {
-            "tick": 11610,
+            "tick": 11616,
             "use": 150,
             "target": "velvet_02_loom:seam_10:support"
           },
           {
-            "tick": 11877,
+            "tick": 11883,
             "use": 155,
             "target": "velvet_02_loom:seam_11:support"
           },
           {
-            "tick": 12267,
+            "tick": 12273,
             "use": 156,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 12306,
+            "tick": 12314,
             "use": 157,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 12345,
+            "tick": 12353,
             "use": 158,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 12384,
+            "tick": 12392,
             "use": 159,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 12466,
+            "tick": 12472,
             "use": 160,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 12505,
+            "tick": 12513,
             "use": 161,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 12544,
+            "tick": 12552,
             "use": 162,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 12583,
+            "tick": 12591,
             "use": 163,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 12623,
+            "tick": 12630,
             "use": 164,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 12662,
+            "tick": 12669,
             "use": 165,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 12701,
+            "tick": 12710,
             "use": 166,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 12740,
+            "tick": 12751,
             "use": 167,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 13174,
+            "tick": 13186,
             "use": 168,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 13213,
+            "tick": 13225,
             "use": 169,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 13252,
+            "tick": 13264,
             "use": 170,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 13293,
+            "tick": 13303,
             "use": 171,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 13373,
+            "tick": 13384,
             "use": 172,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 13412,
+            "tick": 13423,
             "use": 173,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 13451,
+            "tick": 13462,
             "use": 174,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 13490,
+            "tick": 13503,
             "use": 175,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 13602,
+            "tick": 13616,
             "use": 176,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 13662,
+            "tick": 13677,
             "use": 177,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 13701,
+            "tick": 13716,
             "use": 178,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 13740,
+            "tick": 13755,
             "use": 179,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 14147,
+            "tick": 14162,
             "use": 180,
             "target": "velvet_04_arena:seam_0:support"
           },
           {
-            "tick": 14423,
+            "tick": 14435,
             "use": 184,
             "target": "velvet_04_arena:seam_1:support"
           },
           {
-            "tick": 14702,
+            "tick": 14714,
             "use": 188,
             "target": "velvet_04_arena:seam_2:support"
           },
           {
-            "tick": 14963,
+            "tick": 14975,
             "use": 191,
             "target": "velvet_04_arena:seam_3:support"
           }
@@ -27697,7 +29459,7 @@
             "to": "velvet_02_loom",
             "support": "balcony",
             "feet": [
-              28.37,
+              28.338,
               3.85
             ],
             "guards": [
@@ -27724,7 +29486,7 @@
             "to": "velvet_03_gallery",
             "support": "east",
             "feet": [
-              36.868,
+              36.783,
               0
             ],
             "guards": [
@@ -27747,7 +29509,7 @@
             "to": "velvet_04_arena",
             "support": "balcony",
             "feet": [
-              36.848,
+              36.843,
               4.25
             ],
             "guards": [
@@ -27778,8 +29540,8 @@
           "Q"
         ],
         "loomMotion": {
-          "minX": 8.604400000000014,
-          "maxX": 10.164400000000024,
+          "minX": 8.603600000000009,
+          "maxX": 10.163600000000018,
           "left": 15,
           "right": 0,
           "idle": 0,
@@ -27789,13 +29551,14 @@
           "turns": 0,
           "firstTurns": [
             {
-              "tick": 11877,
+              "tick": 11883,
               "x": 10.164,
               "axis": -1,
               "from": "reed_turn",
               "step": {
-                "LandX": 40.7,
+                "To": 21,
                 "LaunchX": 40.7,
+                "LandX": 40.7,
                 "WalkOff": 0
               }
             }
@@ -27811,14 +29574,14 @@
         ],
         "stop": "first return",
         "end": {
-          "tick": 14987,
-          "fixedTick": 12490,
+          "tick": 14999,
+          "fixedTick": 12500,
           "frameSeconds": 0.016666666666666666,
           "room": "velvet_04_arena",
           "uses": 80,
           "hp": 6,
           "feet": [
-            34.569,
+            34.554,
             10
           ],
           "support": "pennants_5",
@@ -27827,10 +29590,11 @@
             "F"
           ],
           "activations": 191,
-          "idleSeconds": 0.033,
+          "idleSeconds": 0.233,
           "step": {
-            "LandX": 39.7,
+            "To": 15,
             "LaunchX": 39.7,
+            "LandX": 39.7,
             "WalkOff": 0
           },
           "lastSewn": "velvet_04_arena:seam_3:support"
@@ -27844,37 +29608,37 @@
             "outcome": "parry"
           },
           {
-            "tick": 4368,
+            "tick": 4369,
             "target": "velvet_01_entry:notary_guard_2",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 10434,
+            "tick": 10445,
             "target": "velvet_02_loom:notary_guard_4",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 11205,
+            "tick": 11216,
             "target": "velvet_03_gallery:reflection_statue_5",
             "outcome": "hit",
             "hp": 5
           },
           {
-            "tick": 11365,
+            "tick": 11376,
             "target": "velvet_03_gallery:reflection_statue_5",
             "outcome": "hit",
             "hp": 4
           },
           {
-            "tick": 11423,
+            "tick": 11434,
             "target": "velvet_03_gallery:reflection_statue_4",
             "outcome": "hit",
             "hp": 3
           },
           {
-            "tick": 11536,
+            "tick": 11547,
             "target": "velvet_03_gallery:reflection_statue_4",
             "outcome": "hit",
             "hp": 2
@@ -28127,20 +29891,20 @@
             "tick": 4409,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "setup",
-            "x": 4.023
+            "x": 4.08
           },
           {
             "tick": 4443,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "open",
-            "x": 4.023
+            "x": 4.08
           },
           {
             "tick": 4452,
             "target": "velvet_01_entry:notary_guard_1",
             "action": "cut",
             "remaining": 0,
-            "x": 4.023,
+            "x": 4.08,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -28148,20 +29912,20 @@
             "tick": 4494,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "setup",
-            "x": 9.353
+            "x": 9.41
           },
           {
             "tick": 4528,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "open",
-            "x": 9.353
+            "x": 9.41
           },
           {
             "tick": 4538,
             "target": "velvet_01_entry:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 9.353,
+            "x": 9.41,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -28169,20 +29933,20 @@
             "tick": 4601,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "setup",
-            "x": 17.413
+            "x": 17.47
           },
           {
             "tick": 4635,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "open",
-            "x": 17.413
+            "x": 17.47
           },
           {
             "tick": 4645,
             "target": "velvet_01_entry:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 17.413,
+            "x": 17.47,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
@@ -28190,211 +29954,211 @@
             "tick": 4711,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "setup",
-            "x": 25.863
+            "x": 25.92
           },
           {
             "tick": 4745,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "open",
-            "x": 25.863
+            "x": 25.92
           },
           {
             "tick": 4755,
             "target": "velvet_01_entry:notary_guard_4",
             "action": "cut",
             "remaining": 0,
-            "x": 25.863,
+            "x": 25.92,
             "y": 13.35,
             "support": "wardrobe_loft"
           },
           {
-            "tick": 10276,
+            "tick": 10288,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.173
+            "x": 8.182
           },
           {
-            "tick": 10285,
+            "tick": 10298,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 3,
-            "x": 8.173,
+            "x": 8.182,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10310,
+            "tick": 10322,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.173
+            "x": 8.182
           },
           {
-            "tick": 10320,
+            "tick": 10332,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 2,
-            "x": 8.173,
+            "x": 8.182,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10344,
+            "tick": 10356,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.173
+            "x": 8.182
           },
           {
-            "tick": 10354,
+            "tick": 10366,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 1,
-            "x": 8.173,
+            "x": 8.182,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10378,
+            "tick": 10390,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "open",
-            "x": 8.173
+            "x": 8.182
           },
           {
-            "tick": 10388,
+            "tick": 10399,
             "target": "velvet_02_loom:notary_guard_2",
             "action": "cut",
             "remaining": 0,
-            "x": 8.173,
+            "x": 8.182,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10447,
+            "tick": 10458,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.135
+            "x": 1.144
           },
           {
-            "tick": 10457,
+            "tick": 10468,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 3,
-            "x": 1.135,
+            "x": 1.144,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10481,
+            "tick": 10492,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.135
+            "x": 1.144
           },
           {
-            "tick": 10491,
+            "tick": 10502,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 2,
-            "x": 1.135,
+            "x": 1.144,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10515,
+            "tick": 10526,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.135
+            "x": 1.144
           },
           {
-            "tick": 10524,
+            "tick": 10535,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 1,
-            "x": 1.135,
+            "x": 1.144,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10549,
+            "tick": 10560,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "open",
-            "x": 1.135
+            "x": 1.144
           },
           {
-            "tick": 10559,
+            "tick": 10570,
             "target": "velvet_02_loom:notary_guard_3",
             "action": "cut",
             "remaining": 0,
-            "x": 1.135,
+            "x": 1.144,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10582,
+            "tick": 10593,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 2.955
+            "x": 2.964
           },
           {
-            "tick": 10592,
+            "tick": 10603,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 3,
-            "x": 2.955,
+            "x": 2.964,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10616,
+            "tick": 10627,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 2.955
+            "x": 2.964
           },
           {
-            "tick": 10626,
+            "tick": 10637,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 2,
-            "x": 3.255,
+            "x": 3.264,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10650,
+            "tick": 10661,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 3.255
+            "x": 3.264
           },
           {
-            "tick": 10660,
+            "tick": 10671,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 1,
-            "x": 3.555,
+            "x": 3.564,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 10684,
+            "tick": 10695,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "open",
-            "x": 3.555
+            "x": 3.564
           },
           {
-            "tick": 10694,
+            "tick": 10705,
             "target": "velvet_02_loom:notary_guard_4",
             "action": "cut",
             "remaining": 0,
-            "x": 3.855,
+            "x": 3.864,
             "y": 0,
             "support": "floor"
           },
           {
-            "tick": 11047,
+            "tick": 11058,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 8.882
           },
           {
-            "tick": 11057,
+            "tick": 11068,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 3,
@@ -28403,13 +30167,13 @@
             "support": "floor"
           },
           {
-            "tick": 11081,
+            "tick": 11092,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 9.182
           },
           {
-            "tick": 11091,
+            "tick": 11102,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 2,
@@ -28418,13 +30182,13 @@
             "support": "floor"
           },
           {
-            "tick": 11115,
+            "tick": 11126,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 9.482
           },
           {
-            "tick": 11124,
+            "tick": 11135,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 1,
@@ -28433,13 +30197,13 @@
             "support": "floor"
           },
           {
-            "tick": 11149,
+            "tick": 11160,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "open",
             "x": 9.732
           },
           {
-            "tick": 11159,
+            "tick": 11170,
             "target": "velvet_03_gallery:notary_guard_1",
             "action": "cut",
             "remaining": 0,
@@ -28448,13 +30212,13 @@
             "support": "floor"
           },
           {
-            "tick": 11218,
+            "tick": 11229,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
             "x": 2.994
           },
           {
-            "tick": 11228,
+            "tick": 11239,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 3,
@@ -28463,13 +30227,13 @@
             "support": "floor"
           },
           {
-            "tick": 11252,
+            "tick": 11263,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
             "x": 3.054
           },
           {
-            "tick": 11262,
+            "tick": 11273,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 2,
@@ -28478,13 +30242,13 @@
             "support": "floor"
           },
           {
-            "tick": 11286,
+            "tick": 11297,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
             "x": 3.064
           },
           {
-            "tick": 11296,
+            "tick": 11307,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 1,
@@ -28493,13 +30257,13 @@
             "support": "floor"
           },
           {
-            "tick": 11320,
+            "tick": 11331,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "open",
             "x": 2.944
           },
           {
-            "tick": 11330,
+            "tick": 11341,
             "target": "velvet_03_gallery:notary_guard_2",
             "action": "cut",
             "remaining": 0,
@@ -28508,13 +30272,13 @@
             "support": "floor"
           },
           {
-            "tick": 11415,
+            "tick": 11426,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 13.422
           },
           {
-            "tick": 11446,
+            "tick": 11457,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 3,
@@ -28523,13 +30287,13 @@
             "support": "floor"
           },
           {
-            "tick": 11468,
+            "tick": 11479,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 14.56
           },
           {
-            "tick": 11478,
+            "tick": 11489,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 2,
@@ -28538,13 +30302,13 @@
             "support": "floor"
           },
           {
-            "tick": 11502,
+            "tick": 11513,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 14.49
           },
           {
-            "tick": 11512,
+            "tick": 11523,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 1,
@@ -28553,13 +30317,13 @@
             "support": "floor"
           },
           {
-            "tick": 11536,
+            "tick": 11547,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "open",
             "x": 14.55
           },
           {
-            "tick": 11559,
+            "tick": 11570,
             "target": "velvet_03_gallery:notary_guard_3",
             "action": "cut",
             "remaining": 0,
@@ -28655,37 +30419,37 @@
             "target": "velvet_01_entry:seam_0"
           },
           {
-            "tick": 2468,
+            "tick": 2466,
             "use": 38,
             "target": "velvet_01_entry:seam_1"
           },
           {
-            "tick": 2714,
+            "tick": 2713,
             "use": 39,
             "target": "velvet_01_entry:seam_2"
           },
           {
-            "tick": 2926,
+            "tick": 2925,
             "use": 43,
             "target": "velvet_01_entry:seam_3"
           },
           {
-            "tick": 3142,
+            "tick": 3140,
             "use": 49,
             "target": "velvet_01_entry:seam_4"
           },
           {
-            "tick": 3347,
+            "tick": 3346,
             "use": 54,
             "target": "velvet_01_entry:seam_5"
           },
           {
-            "tick": 3565,
+            "tick": 3564,
             "use": 58,
             "target": "velvet_01_entry:seam_6"
           },
           {
-            "tick": 3797,
+            "tick": 3796,
             "use": 63,
             "target": "velvet_01_entry:seam_7"
           },
@@ -28730,22 +30494,22 @@
             "target": "velvet_01_entry:notary_guard_4:posture"
           },
           {
-            "tick": 5392,
+            "tick": 5393,
             "use": 72,
             "target": "velvet_01_entry:seam_8:support"
           },
           {
-            "tick": 5602,
+            "tick": 5603,
             "use": 77,
             "target": "velvet_01_entry:seam_9:support"
           },
           {
-            "tick": 5808,
+            "tick": 5809,
             "use": 82,
             "target": "velvet_01_entry:seam_10:support"
           },
           {
-            "tick": 6018,
+            "tick": 6019,
             "use": 87,
             "target": "velvet_01_entry:seam_11:support"
           },
@@ -28770,203 +30534,203 @@
             "target": "velvet_01_entry:seam_15:support"
           },
           {
-            "tick": 7549,
+            "tick": 7550,
             "use": 106,
             "target": "velvet_02_loom:seam_0:support"
           },
           {
-            "tick": 7749,
-            "use": 109,
+            "tick": 7785,
+            "use": 110,
             "target": "velvet_02_loom:seam_1:support"
           },
           {
-            "tick": 7967,
-            "use": 113,
+            "tick": 8003,
+            "use": 114,
             "target": "velvet_02_loom:seam_2:support"
           },
           {
-            "tick": 8185,
-            "use": 116,
+            "tick": 8221,
+            "use": 117,
             "target": "velvet_02_loom:seam_3:support"
           },
           {
-            "tick": 8389,
-            "use": 121,
+            "tick": 8425,
+            "use": 122,
             "target": "velvet_02_loom:seam_4:support"
           },
           {
-            "tick": 8606,
-            "use": 126,
+            "tick": 8642,
+            "use": 127,
             "target": "velvet_02_loom:seam_5:support"
           },
           {
-            "tick": 8824,
-            "use": 131,
+            "tick": 8860,
+            "use": 132,
             "target": "velvet_02_loom:seam_6:support"
           },
           {
-            "tick": 9039,
-            "use": 136,
+            "tick": 9075,
+            "use": 137,
             "target": "velvet_02_loom:seam_7:support"
           },
           {
-            "tick": 9271,
-            "use": 139,
+            "tick": 9306,
+            "use": 140,
             "target": "velvet_02_loom:seam_8:support"
           },
           {
-            "tick": 9492,
-            "use": 144,
+            "tick": 9527,
+            "use": 145,
             "target": "velvet_02_loom:seam_9:support"
           },
           {
-            "tick": 9725,
-            "use": 149,
+            "tick": 9760,
+            "use": 150,
             "target": "velvet_02_loom:seam_10:support"
           },
           {
-            "tick": 9950,
-            "use": 154,
+            "tick": 9985,
+            "use": 155,
             "target": "velvet_02_loom:seam_11:support"
           },
           {
-            "tick": 10276,
-            "use": 155,
-            "target": "velvet_02_loom:notary_guard_2:posture"
-          },
-          {
-            "tick": 10310,
+            "tick": 10288,
             "use": 156,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 10344,
+            "tick": 10322,
             "use": 157,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 10378,
+            "tick": 10356,
             "use": 158,
             "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 10447,
+            "tick": 10390,
             "use": 159,
-            "target": "velvet_02_loom:notary_guard_3:posture"
+            "target": "velvet_02_loom:notary_guard_2:posture"
           },
           {
-            "tick": 10481,
+            "tick": 10458,
             "use": 160,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 10515,
+            "tick": 10492,
             "use": 161,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 10549,
+            "tick": 10526,
             "use": 162,
             "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 10582,
+            "tick": 10560,
             "use": 163,
-            "target": "velvet_02_loom:notary_guard_4:posture"
+            "target": "velvet_02_loom:notary_guard_3:posture"
           },
           {
-            "tick": 10616,
+            "tick": 10593,
             "use": 164,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 10650,
+            "tick": 10627,
             "use": 165,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 10684,
+            "tick": 10661,
             "use": 166,
             "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 11047,
+            "tick": 10695,
             "use": 167,
-            "target": "velvet_03_gallery:notary_guard_1:posture"
+            "target": "velvet_02_loom:notary_guard_4:posture"
           },
           {
-            "tick": 11081,
+            "tick": 11058,
             "use": 168,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 11115,
+            "tick": 11092,
             "use": 169,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 11149,
+            "tick": 11126,
             "use": 170,
             "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 11218,
+            "tick": 11160,
             "use": 171,
-            "target": "velvet_03_gallery:notary_guard_2:posture"
+            "target": "velvet_03_gallery:notary_guard_1:posture"
           },
           {
-            "tick": 11252,
+            "tick": 11229,
             "use": 172,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 11286,
+            "tick": 11263,
             "use": 173,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 11320,
+            "tick": 11297,
             "use": 174,
             "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 11415,
+            "tick": 11331,
             "use": 175,
-            "target": "velvet_03_gallery:notary_guard_3:posture"
+            "target": "velvet_03_gallery:notary_guard_2:posture"
           },
           {
-            "tick": 11468,
+            "tick": 11426,
             "use": 176,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 11502,
+            "tick": 11479,
             "use": 177,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 11536,
+            "tick": 11513,
             "use": 178,
             "target": "velvet_03_gallery:notary_guard_3:posture"
           },
           {
-            "tick": 11872,
+            "tick": 11547,
             "use": 179,
+            "target": "velvet_03_gallery:notary_guard_3:posture"
+          },
+          {
+            "tick": 11883,
+            "use": 180,
             "target": "velvet_04_arena:seam_0:support"
           },
           {
-            "tick": 12102,
-            "use": 183,
+            "tick": 12113,
+            "use": 184,
             "target": "velvet_04_arena:seam_1:support"
           },
           {
-            "tick": 12335,
-            "use": 187,
+            "tick": 12347,
+            "use": 188,
             "target": "velvet_04_arena:seam_2:support"
           },
           {
-            "tick": 12555,
-            "use": 190,
+            "tick": 12567,
+            "use": 191,
             "target": "velvet_04_arena:seam_3:support"
           }
         ],
@@ -29025,7 +30789,7 @@
             "to": "velvet_02_loom",
             "support": "balcony",
             "feet": [
-              28.377,
+              28.339,
               3.85
             ],
             "guards": [
@@ -29052,7 +30816,7 @@
             "to": "velvet_03_gallery",
             "support": "east",
             "feet": [
-              36.843,
+              36.852,
               0
             ],
             "guards": [
@@ -29106,8 +30870,8 @@
           "Q"
         ],
         "loomMotion": {
-          "minX": 8.609599999999988,
-          "maxX": 10.169599999999997,
+          "minX": 8.621199999999979,
+          "maxX": 10.181199999999988,
           "left": 13,
           "right": 0,
           "idle": 0,
@@ -29117,13 +30881,14 @@
           "turns": 0,
           "firstTurns": [
             {
-              "tick": 9950,
-              "x": 10.17,
+              "tick": 9985,
+              "x": 10.181,
               "axis": -1,
               "from": "reed_turn",
               "step": {
-                "LandX": 40.7,
+                "To": 21,
                 "LaunchX": 40.7,
+                "LandX": 40.7,
                 "WalkOff": 0
               }
             }
@@ -29139,14 +30904,14 @@
         ],
         "stop": "first return",
         "end": {
-          "tick": 12575,
-          "fixedTick": 12576,
+          "tick": 12587,
+          "fixedTick": 12588,
           "frameSeconds": 0.02,
           "room": "velvet_04_arena",
           "uses": 80,
           "hp": 6,
           "feet": [
-            34.626,
+            34.636,
             10
           ],
           "support": "pennants_5",
@@ -29154,11 +30919,12 @@
           "keys": [
             "F"
           ],
-          "activations": 190,
-          "idleSeconds": 0.06,
+          "activations": 191,
+          "idleSeconds": 0.04,
           "step": {
-            "LandX": 39.7,
+            "To": 15,
             "LaunchX": 39.7,
+            "LandX": 39.7,
             "WalkOff": 0
           },
           "lastSewn": "velvet_04_arena:seam_3:support"
@@ -30984,6 +32750,454 @@
           "fixed": 12,
           "viaArrivalDoor": 0,
           "total": 12
+        }
+      }
+    },
+    "districtSeams": {
+      "anchors": {
+        "opera": [
+          {
+            "id": "opera_synergy_seam_0",
+            "x": 8.9,
+            "y": 5.64,
+            "castFrom": "hem",
+            "launchX": 10,
+            "launchY": 5.4,
+            "linkedSurface": "hem",
+            "landing": "hem",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "opera_synergy_seam_1",
+            "x": 15.9,
+            "y": 5.64,
+            "castFrom": "hem",
+            "launchX": 17,
+            "launchY": 5.4,
+            "linkedSurface": "hem",
+            "landing": "hem",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "opera_synergy_seam_2",
+            "x": 22.9,
+            "y": 5.64,
+            "castFrom": "hem",
+            "launchX": 24,
+            "launchY": 5.4,
+            "linkedSurface": "hem",
+            "landing": "hem",
+            "reachable": true,
+            "crossReachable": true
+          }
+        ],
+        "bell": [
+          {
+            "id": "bell_synergy_seam_0",
+            "x": 5.9,
+            "y": 8.24,
+            "castFrom": "fracture",
+            "launchX": 7,
+            "launchY": 8.0,
+            "linkedSurface": "fracture",
+            "landing": "fracture",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "bell_synergy_seam_1",
+            "x": 14.9,
+            "y": 10.24,
+            "castFrom": "stitch_lip",
+            "launchX": 16,
+            "launchY": 10.0,
+            "linkedSurface": "stitch_lip",
+            "landing": "stitch_lip",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "bell_synergy_seam_2",
+            "x": 22.9,
+            "y": 12.24,
+            "castFrom": "anvil",
+            "launchX": 24,
+            "launchY": 12.0,
+            "linkedSurface": "anvil",
+            "landing": "anvil",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "bell_synergy_seam_3",
+            "x": 34.9,
+            "y": 14.24,
+            "castFrom": "sound_bridge",
+            "launchX": 36,
+            "launchY": 14.0,
+            "linkedSurface": "sound_bridge",
+            "landing": "sound_bridge",
+            "reachable": true,
+            "crossReachable": true
+          }
+        ],
+        "gallery": [
+          {
+            "id": "gallery_synergy_seam_0",
+            "x": 4.3,
+            "y": 4.06,
+            "castFrom": "terrace_0_0",
+            "launchX": 2.8499999999999996,
+            "launchY": 4.0,
+            "linkedSurface": "seam_lip_0",
+            "landing": "terrace_0_1",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "gallery_synergy_seam_1",
+            "x": 12.3,
+            "y": 4.06,
+            "castFrom": "terrace_0_1",
+            "launchX": 10.850000000000001,
+            "launchY": 4.0,
+            "linkedSurface": "seam_lip_1",
+            "landing": "terrace_0_2",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "gallery_synergy_seam_2",
+            "x": 20.3,
+            "y": 4.06,
+            "castFrom": "terrace_0_2",
+            "launchX": 18.85,
+            "launchY": 4.0,
+            "linkedSurface": "seam_lip_2",
+            "landing": "terrace_0_3",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "gallery_synergy_seam_3",
+            "x": 28.3,
+            "y": 4.06,
+            "castFrom": "terrace_0_3",
+            "launchX": 26.85,
+            "launchY": 4.0,
+            "linkedSurface": "seam_lip_3",
+            "landing": "terrace_0_4",
+            "reachable": true,
+            "crossReachable": true
+          }
+        ],
+        "clock": [
+          {
+            "id": "clock_synergy_seam_0",
+            "x": 5.9,
+            "y": 8.49,
+            "castFrom": "drum_floor",
+            "launchX": 7,
+            "launchY": 8.25,
+            "linkedSurface": "drum_floor",
+            "landing": "drum_floor",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "clock_synergy_seam_1",
+            "x": 14.9,
+            "y": 8.49,
+            "castFrom": "drum_floor",
+            "launchX": 16,
+            "launchY": 8.25,
+            "linkedSurface": "drum_floor",
+            "landing": "drum_floor",
+            "reachable": true,
+            "crossReachable": true
+          },
+          {
+            "id": "clock_synergy_seam_2",
+            "x": 22.9,
+            "y": 8.49,
+            "castFrom": "drum_floor",
+            "launchX": 24,
+            "launchY": 8.25,
+            "linkedSurface": "drum_floor",
+            "landing": "drum_floor",
+            "reachable": true,
+            "crossReachable": true
+          }
+        ]
+      },
+      "contacts": [
+        "opera_01_entry",
+        "opera_02_auditorium",
+        "opera_03_chandelier",
+        "opera_04_rooftop_west",
+        "opera_05_wings",
+        "opera_06_arena",
+        "opera_07_return_roof",
+        "opera_08_return_foyer",
+        "opera_10_sanctuary_stairs",
+        "opera_09_shortcut"
+      ],
+      "visits": [
+        "hub_attic",
+        "hub_forge",
+        "hub_lift",
+        "opera_01_entry",
+        "opera_02_auditorium",
+        "opera_03_chandelier",
+        "opera_04_rooftop_west",
+        "opera_05_wings",
+        "opera_06_arena",
+        "opera_07_return_roof",
+        "opera_08_return_foyer",
+        "hub_workroom",
+        "hub_sanctuary",
+        "opera_10_sanctuary_stairs",
+        "hub_lift",
+        "velvet_01_entry",
+        "velvet_02_loom",
+        "velvet_06_shortcut",
+        "velvet_04_arena",
+        "velvet_05_return",
+        "hub_lift",
+        "opera_01_entry",
+        "opera_02_auditorium",
+        "opera_03_chandelier",
+        "opera_04_rooftop_west",
+        "opera_05_wings",
+        "opera_04_rooftop_west",
+        "opera_03_chandelier",
+        "opera_02_auditorium",
+        "opera_03_chandelier",
+        "opera_04_rooftop_west",
+        "opera_05_wings",
+        "opera_02_auditorium",
+        "opera_09_shortcut",
+        "opera_10_sanctuary_stairs",
+        "opera_09_shortcut"
+      ],
+      "actions": [
+        "sew:seam",
+        "station:curtain_call_waltz",
+        "cross:floor",
+        "advance:opera_10_sanctuary_stairs"
+      ],
+      "cast": [
+        {
+          "id": "opera_synergy_seam_0",
+          "support": "hem",
+          "x": 10.076800000000006,
+          "y": 5.3999999999999995
+        }
+      ],
+      "gates": [
+        [
+          "hub_attic",
+          "hub_forge",
+          true
+        ],
+        [
+          "hub_forge",
+          "hub_lift",
+          true
+        ],
+        [
+          "hub_lift",
+          "opera_01_entry",
+          true
+        ],
+        [
+          "opera_01_entry",
+          "opera_02_auditorium",
+          true
+        ],
+        [
+          "opera_02_auditorium",
+          "opera_03_chandelier",
+          true
+        ],
+        [
+          "opera_03_chandelier",
+          "opera_04_rooftop_west",
+          true
+        ],
+        [
+          "opera_04_rooftop_west",
+          "opera_05_wings",
+          true
+        ],
+        [
+          "opera_05_wings",
+          "opera_02_auditorium",
+          false
+        ],
+        [
+          "opera_05_wings",
+          "opera_06_arena",
+          true
+        ],
+        [
+          "opera_07_return_roof",
+          "opera_08_return_foyer",
+          true
+        ],
+        [
+          "hub_workroom",
+          "hub_sanctuary",
+          true
+        ],
+        [
+          "hub_sanctuary",
+          "opera_10_sanctuary_stairs",
+          true
+        ],
+        [
+          "opera_10_sanctuary_stairs",
+          "hub_lift",
+          true
+        ],
+        [
+          "hub_lift",
+          "velvet_01_entry",
+          true
+        ],
+        [
+          "velvet_01_entry",
+          "velvet_02_loom",
+          true
+        ],
+        [
+          "velvet_02_loom",
+          "velvet_06_shortcut",
+          true
+        ],
+        [
+          "velvet_06_shortcut",
+          "velvet_04_arena",
+          true
+        ],
+        [
+          "velvet_04_arena",
+          "velvet_05_return",
+          true
+        ],
+        [
+          "velvet_05_return",
+          "hub_lift",
+          true
+        ],
+        [
+          "hub_lift",
+          "opera_01_entry",
+          true
+        ],
+        [
+          "opera_01_entry",
+          "opera_02_auditorium",
+          true
+        ],
+        [
+          "opera_02_auditorium",
+          "opera_03_chandelier",
+          true
+        ],
+        [
+          "opera_03_chandelier",
+          "opera_04_rooftop_west",
+          true
+        ],
+        [
+          "opera_04_rooftop_west",
+          "opera_05_wings",
+          true
+        ],
+        [
+          "opera_05_wings",
+          "opera_04_rooftop_west",
+          true
+        ],
+        [
+          "opera_04_rooftop_west",
+          "opera_03_chandelier",
+          true
+        ],
+        [
+          "opera_03_chandelier",
+          "opera_02_auditorium",
+          true
+        ],
+        [
+          "opera_02_auditorium",
+          "opera_03_chandelier",
+          true
+        ],
+        [
+          "opera_03_chandelier",
+          "opera_04_rooftop_west",
+          true
+        ],
+        [
+          "opera_04_rooftop_west",
+          "opera_05_wings",
+          true
+        ],
+        [
+          "opera_05_wings",
+          "opera_02_auditorium",
+          true
+        ],
+        [
+          "opera_02_auditorium",
+          "opera_09_shortcut",
+          true
+        ],
+        [
+          "opera_09_shortcut",
+          "opera_10_sanctuary_stairs",
+          true
+        ]
+      ],
+      "complete": true,
+      "shortcuts": {
+        "bell": {
+          "receipts": [
+            "sew:seam",
+            "station:resonance_forge"
+          ],
+          "stationInput": {
+            "surface": "fracture",
+            "x": 7,
+            "direction": -1
+          },
+          "crossing": {
+            "surface": "fracture",
+            "x": 9.1
+          },
+          "installationWithoutSupport": false,
+          "anchor": "bell_synergy_seam_0"
+        },
+        "gallery": {
+          "receipts": [
+            "sew:seam",
+            "station:canvas_carve"
+          ],
+          "stationInput": {
+            "surface": "seam_lip_0",
+            "x": 8,
+            "id": "gallery_09_shortcut:station_0"
+          },
+          "crossing": {
+            "surface": "terrace_0_1",
+            "x": 10.25
+          },
+          "installationWithoutSupport": true,
+          "anchor": "gallery_synergy_seam_0"
         }
       }
     },
@@ -32929,6 +35143,12 @@
           "floor": "gallery_reunion_safe_floor",
           "targetFace": "terrace_0_4"
         }
+      },
+      "windowEdge": {
+        "released": true,
+        "clearX": 27.36625015258789,
+        "firstDirection": -1,
+        "resumedDirection": 1
       },
       "run27": {
         "qa27": {

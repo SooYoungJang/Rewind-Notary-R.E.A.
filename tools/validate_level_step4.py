@@ -9,6 +9,7 @@ from collections import deque
 from validate_level_step1 import contains, number
 from validate_fixed_surface_route import fixed_edges, link, paths_from, room_faces, simulate_landing
 from validate_opera_wave import validate_opera_wave
+from validate_district_seams import validate_district_seams
 from validate_walk_contact import validate_gallery
 
 
@@ -292,5 +293,5 @@ def validate_level_step4(check,project,scripts):
         verify(all(t in script for t in terms),label)
     return dict(routes=routes,growth=counts,stationOnlyThresholds=[sequenced[i] for i in (29,79)],
                 span=dict(samples=len(at),minSeconds=min(v[0] for v in at),maxSeconds=max(v[0] for v in at)),
-                comparison=tour,run16Wave=wave,run17Gallery=gallery,
+                comparison=tour,run16Wave=wave,run17Gallery=gallery,districtSeams=validate_district_seams(verify,project,scripts,physics),
                 authoredWidths=sum(len(r['terrain']) for r in rooms),unity_executed=False)

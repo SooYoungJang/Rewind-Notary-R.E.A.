@@ -87,7 +87,8 @@ def validate_district_advance(verify, project, scripts, physics):
     left = floor['rect']['x']
     direction = 1 if latch['x'] - left >= left + floor['rect']['width'] - latch['x'] else -1
     fight = scripts['GalleryTraversal'].split('void GalleryFight(')[1]
-    aim = float(re.search(r'GalleryAim\(at\.x - direction \* ([.\d]+)f', fight)[1])
+    aim_call = re.search(r'(\w+)\(at\.x - direction \* ([.\d]+)f, direction\)', fight)
+    aim = float(aim_call[2])
     cast = latch['x'] - direction * aim
     ends = sorted((cast + direction * lead, cast + direction * (lead + profile['reach'])))
     station = qa['lastStation']
@@ -105,7 +106,9 @@ def validate_district_advance(verify, project, scripts, physics):
                                  next(f for f in old_deck if f.name == floor['id']), physics)
     cases['prePass2'] = dict(first, room=before, layout='run27')
     cases['fresh'] = dict(first, life=profile['lifetime'])
-    aim_tolerance = float(re.search(r'MoveTo\(x, ([.\d]+)f\)', scripts['GalleryTraversal'].split('bool GalleryAim(')[1])[1])
+    signature = 'bool ' + aim_call[1] + '('
+    aim_body = next(source.split(signature)[1] for source in scripts.values() if signature in source)
+    aim_tolerance = float(re.search(r'MoveTo\(x, ([.\d]+)f\)', aim_body)[1])
     for name, shift in (('castLeft', -aim_tolerance), ('castRight', aim_tolerance)):
         cases[name] = deepcopy(first)
         for edge in cases[name]['brush'].values():
@@ -123,13 +126,23 @@ def validate_district_advance(verify, project, scripts, physics):
     for stage in stages:
         source_names.update([stage.capitalize() + 'Traversal', stage.capitalize() + 'DistrictProbe'])
     idle = int(re.search(r'now - lastProgress > (\d+)', scripts['AutoTestDriver'])[1])
+    edge = json.loads((directory / 'run31-district-seams.json').read_text(encoding='utf-8'))['gallery']
+    window = rooms[edge['room']]
+    deck = room_faces(window)
+    edge['step'] = door_steps(deck, fixed_edges(deck, physics), next(f for f in deck if f.name == edge['to']), physics)[edge['from']]
+    edge['goalX'] = next(d['x'] for d in window['exits'] if d['room'] == edge['door'])
+    edge['room'] = window
     inputs = dict(sources={k: scripts[k] for k in sorted(source_names)}, stages=sorted(stages), cases=cases, graphs=graphs,
                   dt=dt, speed=physics[3], gravity=physics[1], brake=physics[5], radius=physics[6], aimTolerance=physics[8],
                   doorTolerance=number(scripts['ClockTraversal'], 'tolerance'),
-                  supportTolerance=number(geometry, 'SupportTolerance'), idle=idle)
+                  supportTolerance=number(geometry, 'SupportTolerance'), idle=idle, windowEdge=edge)
     output = subprocess.run(['node', str(directory / 'replay_district_advance.js')], input=json.dumps(inputs),
                             text=True, stdout=subprocess.PIPE, check=True)
     frames = json.loads(output.stdout)
+    release = frames['windowEdge']
+    verify(release['released'] and release['firstDirection'] == -1 and release['resumedDirection'] == 1 and
+           release['clearX'] < edge['brush']['min']['x'] - inputs['supportTolerance'],
+           'QA31 / leave the retired stroke at the sash edge, then resume the hub door route on dry floor')
     for name, result in routes.items():
         start, end = frames[name + '/start'], frames[name + '/end']
         path = result['path']
@@ -176,7 +189,7 @@ def validate_district_advance(verify, project, scripts, physics):
     for name in ('last target alive', 'missing gate flag', 'outside approach', 'during attack'):
         verify(frames[name]['travel'] is None and frames[name]['receipt'] is None,
                'run 27 / inspect leaves the row pending with ' + name)
-    return dict(advanceRows=routes, run27={k: frames[k] for k in ('qa27', 'prePass2', 'fresh', 'castLeft', 'castRight', 'dry', 'human')},
+    return dict(advanceRows=routes, windowEdge=release, run27={k: frames[k] for k in ('qa27', 'prePass2', 'fresh', 'castLeft', 'castRight', 'dry', 'human')},
                 reconstructedPaint=first['brush'], arrivalContact=dict(surface=landed, id=contact['id'], x=spawn['x']),
                 fixedDeltaTime=dt)
 

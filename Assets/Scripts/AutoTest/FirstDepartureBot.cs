@@ -277,6 +277,18 @@ namespace RewindNotary
             }
             return true;
         }
+        internal void SewStationSeam(StoryMark mark)
+        {
+            if (!Area.StandingOn(mark.surface)) { ClockPosition(mark.surface, mark.x); return; }
+            if (AimCastFrom(mark.x, Area.Room.seamRuns[0].x < mark.x ? -1 : 1))
+                keys.Cast();
+        }
+        private bool AimCastFrom(float x, int facing)
+        {
+            float dx = x - Player.Body.position.x;
+            if (Player.Facing != facing && dx * facing < .35f) x -= .7f * facing;
+            return MoveTo(x, .10f) && Player.Facing == facing && Mathf.Abs(Player.Body.linearVelocity.x) < .2f;
+        }
         private void StrikeStoryPoint(float x)
         {
             if (Player.Attacking) return;

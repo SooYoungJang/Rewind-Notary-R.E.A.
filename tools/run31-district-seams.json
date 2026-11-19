@@ -1,0 +1,21 @@
+{
+  "opera": {
+    "room": "opera_09_shortcut",
+    "support": "access_step",
+    "x": 16.46878433227539,
+    "y": 7.204998016357422,
+    "action": "sew:seam"
+  },
+  "gallery": {
+    "room": "gallery_10_sanctuary_window",
+    "from": "sash",
+    "to": "window_door",
+    "door": "hub_lift",
+    "x": 27.49625015258789,
+    "y": 3.206449031829834,
+    "brush": {
+      "min": {"x": 27.84, "y": 3.32},
+      "max": {"x": 30.24, "y": 3.46}
+    }
+  }
+}

@@ -31,6 +31,8 @@ function decision(source) {
 const src = input.sources;
 const fixedFaceAt = decision(block(src.ClockTraversal, "StorySurface FixedFaceAt("));
 const clockPosition = decision(block(src.ClockTraversal, "bool ClockPosition("));
+const backOffPaint = src.GalleryTraversal.includes("bool BackOffRetiredPaint(")
+    ? decision(block(src.GalleryTraversal, "bool BackOffRetiredPaint(")) : null;
 const gate = decision(block(src.RepresentativeRoomLayout, "bool Gate("));
 const advance = decision(block(src.DistrictRoomLayout, 'if (token == "clear:wave" ||'));
 const drivers = new Map();
@@ -84,6 +86,8 @@ function frame(sample, feet, fixed, paints, position, manual = false, grounded =
         plan = {face, x, tolerance};
         return position(plan, env);
     };
+    env.FixedFaceAt = (x, y) => fixedFaceAt({...env, x, y});
+    env.BackOffRetiredPaint = () => backOffPaint && backOffPaint(env);
     env.Gate = door => gate({...env, door});
     env.bot = {Area: area, [driver.name + "Door"]: door => {
         selected = door.room;
@@ -171,6 +175,41 @@ function paintReplay(sample) {
 }
 
 const result = {};
+function leaveWindowStroke(sample) {
+    const {room, brush, step} = sample;
+    const terrain = room.terrain;
+    const feet = {x: sample.x, y: sample.y};
+    const paints = [{Bounds: brush, Wall: false, Live: false}];
+    let direction = 0, released = false, clearX, firstDirection;
+    const env = {
+        Area: {Room: room}, Player: {Body: {position: feet}, Grounded: false},
+        face: sample.to, x: sample.goalX, tolerance: input.doorTolerance, terrain, step,
+        stepFrom: terrain.findIndex(s => s.id === sample.from), stepGoal: terrain.findIndex(s => s.id === sample.to),
+        route: {}, jumpingFrom: null, jumpUntil: 0, Time: {time: 0}, ReadTerrain() {},
+        PaintSurface2D: {All: paints}, Mathf: {Abs: Math.abs}, SkillGeometry: {SupportTolerance: input.supportTolerance},
+        FixedSurfaceRoute: {AimTolerance: input.aimTolerance, IsFloor: s => !s.wallJump && !s.rampRise && !s.travelX && !s.travelY},
+        findIndex: (items, predicate) => items.findIndex(predicate),
+        OnSurface: s => released && s.id === sample.from,
+        KeyCode: {A: -1, D: 1}, keys: {Hold: key => {direction = key;}},
+        MoveTo: x => {direction = Math.sign(x - feet.x);}
+    };
+    env.FixedFaceAt = (x, y) => fixedFaceAt({...env, x, y});
+    env.BackOffRetiredPaint = () => backOffPaint && backOffPaint(env);
+    for (let tick = 0; tick * input.dt <= input.idle; tick++) {
+        direction = 0;
+        clockPosition(env);
+        if (tick === 0) firstDirection = direction;
+        if (released) return {released, clearX, firstDirection, resumedDirection: direction};
+        feet.x = Math.min(brush.min.x - input.radius, feet.x + direction * input.speed * input.dt);
+        if (feet.x < brush.min.x - input.supportTolerance) {
+            clearX = feet.x;
+            paints.length = 0;
+            released = env.Player.Grounded = true;
+        }
+    }
+    return {released, firstDirection};
+}
+result.windowEdge = leaveWindowStroke(input.windowEdge);
 for (const [name, sample] of Object.entries(input.cases)) {
     if (sample.floor) result[name] = paintReplay(sample);
     else {

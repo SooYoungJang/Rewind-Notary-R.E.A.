@@ -214,7 +214,7 @@ namespace RewindNotary
                     return false;
                 }
             }
-            if (Contact(bot, now)) return false;
+            if ((room != Seam || bot.Record.storyFlags.Contains("bell_synergy_complete")) && Contact(bot, now)) return false;
             if (room == Seam && result.contacts.Count == Route.Length)
             {
                 if (result.firstForgeTarget != Chime + ":station_0:guard_break" || result.stageTwoRoom != Chime ||
@@ -261,7 +261,18 @@ namespace RewindNotary
             { bot.BellFight(area.DistrictWaveTarget); return false; }
             if (action != null)
             {
-                if (action.StartsWith("advance:", StringComparison.Ordinal)) Door(bot, keys, area.ActiveRow.alternateRoom);
+                if (room == Seam && action == "sew:seam") bot.SewStationSeam(area.Room.stationMarks[0]);
+                else if (room == Seam && action == "station:resonance_forge")
+                {
+                    var mark = area.Room.stationMarks[0];
+                    bot.BellStrike(mark.surface, mark.x, -1);
+                }
+                else if (room == Seam && action == "cross:floor")
+                {
+                    var mark = area.Room.stationMarks[0];
+                    bot.ClockPosition(mark.surface, mark.x + 2.1f);
+                }
+                else if (action.StartsWith("advance:", StringComparison.Ordinal)) Door(bot, keys, area.ActiveRow.alternateRoom);
                 else if (action == "clear:wave") bot.BellDoor(area.Room.exits[1]);
                 return false;
             }

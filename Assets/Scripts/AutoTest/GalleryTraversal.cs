@@ -4,6 +4,27 @@ namespace RewindNotary
 {
     internal sealed partial class FirstDepartureBot
     {
+        private bool BackOffRetiredPaint()
+        {
+            var feet = Player.Body.position;
+            foreach (var paint in PaintSurface2D.All)
+            {
+                var brush = paint.Bounds;
+                if (paint.Live || paint.Wall || feet.y >= brush.min.y ||
+                    brush.max.y - feet.y > SkillGeometry.SupportTolerance) continue;
+                int direction = feet.x < brush.min.x ? -1 : feet.x > brush.max.x ? 1 : 0;
+                float edge = direction < 0 ? brush.min.x : brush.max.x;
+                if (direction == 0 || Mathf.Abs(feet.x - edge) > SkillGeometry.SupportTolerance) continue;
+
+                var floor = FixedFaceAt(feet.x, feet.y);
+                float clearX = edge + direction * (SkillGeometry.SupportTolerance + FixedSurfaceRoute.AimTolerance);
+                if (floor == null || clearX < floor.rect.x || clearX > floor.rect.x + floor.rect.width) continue;
+                keys.Hold(direction < 0 ? KeyCode.A : KeyCode.D);
+                return true;
+            }
+            return false;
+        }
+
         internal bool GalleryDoor(StoryDoor door)
         {
             if (Area.Room.stage != "gallery") return ClockDoor(door);
@@ -28,13 +49,6 @@ namespace RewindNotary
             return ClockPosition(face.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position);
         }
 
-        private bool GalleryAim(float x, int facing)
-        {
-            float dx = x - Player.Body.position.x;
-            if (Player.Facing != facing && dx * facing < .35f) x -= .7f * facing;
-            return MoveTo(x, .10f) && Player.Facing == facing && Mathf.Abs(Player.Body.linearVelocity.x) < .2f;
-        }
-
         internal void PaintGap(StoryMark mark, string station)
         {
             var stroke = PaintSurface2D.All.Find(p => p.StationId == station && p.Live);
@@ -53,7 +67,7 @@ namespace RewindNotary
                 else ClockPosition(mark.surface, launch);
                 return;
             }
-            if (GalleryAim(launch, mark.direction) && !Player.GetComponent<CanvasCarveSkill>().Active)
+            if (AimCastFrom(launch, mark.direction) && !Player.GetComponent<CanvasCarveSkill>().Active)
                 keys.Cast(0, -1);
         }
 
@@ -76,7 +90,7 @@ namespace RewindNotary
             var seam = room.seamRuns[0];
             float launch = seam.x - 1.45f;
             if (!Area.StandingOn("terrace_0_0")) { ClockPosition("terrace_0_0", launch); return; }
-            if (GalleryAim(launch, 1)) keys.Cast();
+            if (AimCastFrom(launch, 1)) keys.Cast();
         }
 
         private double? pendingBridgeTick;
@@ -109,7 +123,7 @@ namespace RewindNotary
                 MoveTo(at.x - direction * 2.4f);
                 return;
             }
-            if (GalleryAim(at.x - direction * 1.45f, direction) && Player.Grounded && !Player.GetComponent<CanvasCarveSkill>().Active)
+            if (AimCastFrom(at.x - direction * 1.45f, direction) && Player.Grounded && !Player.GetComponent<CanvasCarveSkill>().Active)
                 keys.Cast(0, -1);
         }
     }

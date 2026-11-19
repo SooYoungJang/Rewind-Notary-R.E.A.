@@ -45,6 +45,7 @@ namespace RewindNotary
             if (Time.time < jumpUntil) keys.Hold(KeyCode.Space);
             var room = Area.Room;
             ReadTerrain();
+            if (room.stage == "gallery" && BackOffRetiredPaint()) return false;
             int goal = Array.FindIndex(terrain, s => s.id == face);
             if (goal < 0) return FailRoute("Missing fixed face " + face + " in " + room.id);
             if (route == null)

@@ -124,7 +124,7 @@ namespace RewindNotary
             previousRoom = room;
         }
 
-        private bool Contact(FirstDepartureBot bot, double now)
+        private bool Contact(FirstDepartureBot bot, double now, bool playing)
         {
             var area = bot.Area;
             int i = result.contacts.Count;
@@ -134,7 +134,8 @@ namespace RewindNotary
             if (!area.StandingOn(f.surface) || Mathf.Abs(feet.x - f.x) > .8f || !bot.Session.LastSaveSucceeded ||
                 !bot.Record.storyFlags.Contains("scene_floor:opera:" + f.id))
             {
-                if (area.ActiveRow == null || area.PendingAction != null)
+                if (playing && area.BoutOpponent == null &&
+                    (area.ActiveRow == null || area.PendingAction != null))
                 { bot.OperaPosition(f.surface, f.x); return true; }
                 return false;
             }
@@ -217,9 +218,12 @@ namespace RewindNotary
             Observe(bot, now);
             var area = bot.Area;
             if (page == ShellPage.Stages) { bot.Select(Array.FindIndex(StageCatalog.All, s => s.Id == "velvet")); return false; }
-            if (page != ShellPage.Playing || area == null || !GameInput.CanPlay) { bot.Drive(PlaytestStep.Velvet); return false; }
-            if (area.Rea.Health.Dead) throw new InvalidOperationException("Opera traversal interrupted by death");
-            if (bot.TryDistrictHeal()) return false;
+            bool playing = page == ShellPage.Playing && area != null && GameInput.CanPlay;
+            if (playing && area.Rea.Health.Dead) throw new InvalidOperationException("Opera traversal interrupted by death");
+            if (playing && bot.TryDistrictHeal()) return false;
+            if (area?.Room.stage == "opera" && (area.Room.id != Seam || bot.Record.storyFlags.Contains("opera_synergy_complete")) &&
+                Contact(bot, now, playing)) return false;
+            if (!playing) { bot.Drive(PlaytestStep.Velvet); return false; }
             string room = area.Room.id, action = area.PendingAction;
             bool investigated = bot.Record.storyFlags.Contains("investigation_complete");
             if (area.Room.stage != "opera")
@@ -236,7 +240,6 @@ namespace RewindNotary
                 else bot.FightBoss();
                 return false;
             }
-            if (Contact(bot, now)) return false;
             if (room == Seam && result.contacts.Count == Route.Length)
             {
                 if (result.firstWaltzTarget != Upper + ":station_0" || result.stageTwoRoom != Upper || result.masteryRoom != Lower ||
@@ -275,7 +278,18 @@ namespace RewindNotary
             if (target != null) { bot.OperaFight(target); return false; }
             if (action != null)
             {
-                if (action.StartsWith("advance:")) Door(bot, keys, area.ActiveRow.alternateRoom);
+                if (room == Seam && action == "sew:seam") bot.SewStationSeam(area.Room.stationMarks[0]);
+                else if (room == Seam && action == "station:curtain_call_waltz")
+                {
+                    var mark = area.Room.stationMarks[0];
+                    if (bot.OperaPosition(mark.surface, mark.x) && area.StandingOn(mark.surface)) keys.Cast(0, 1);
+                }
+                else if (room == Seam && action == "cross:floor")
+                {
+                    var mark = area.Room.stationMarks[0];
+                    bot.OperaPosition(mark.surface, mark.x + 2.1f);
+                }
+                else if (action.StartsWith("advance:")) Door(bot, keys, area.ActiveRow.alternateRoom);
                 else if (action == "clear:wave")
                 {
                     if (room == Roof) bot.OperaPosition("gutter", 36);
