@@ -49,7 +49,7 @@ namespace RewindNotary
         public string id, setupSkill;
         public string[] placementIds;
         public int count, segments, setupHits;
-        public bool skillOnly;
+        public bool skillOnly, silverReturnOnly;
     }
     [Serializable] public sealed class StorySeamRun
     {
@@ -93,6 +93,16 @@ namespace RewindNotary
         public StoryDoor[] exits;
         public StoryRoster[] roster;
         public int stitchAnchors, singleSeams, releaseKnots, stations, boutHealth, interludeHealth;
+        public StorySeamRun SeamRun(int index, out int offset)
+        {
+            offset = index;
+            foreach (var run in seamRuns)
+            {
+                if (offset < run.count) return run;
+                offset -= run.count;
+            }
+            throw new InvalidOperationException(id + " has no seam run for anchor " + index);
+        }
         public string Label => Loc.Get("area.room." + id);
         public StoryMark Point(string key) => Array.Find(points, p => p.id == key);
         public StoryMark Floor(string key) => Array.Find(floors, p => p.id == key);

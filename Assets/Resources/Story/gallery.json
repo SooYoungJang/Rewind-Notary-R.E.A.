@@ -1204,7 +1204,17 @@
           "rect": {
             "x": 25,
             "y": 24.82,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_3_step",
+          "rect": {
+            "x": 28.1,
+            "y": 26.27,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -1213,7 +1223,7 @@
           "id": "atelier_0_4",
           "rect": {
             "x": 33,
-            "y": 24.82,
+            "y": 26.27,
             "width": 6,
             "height": 0.38
           },
@@ -1223,7 +1233,7 @@
           "id": "atelier_0_5",
           "rect": {
             "x": 41,
-            "y": 24.82,
+            "y": 26.27,
             "width": 6,
             "height": 0.38
           },
@@ -1233,8 +1243,18 @@
           "id": "atelier_0_6",
           "rect": {
             "x": 49,
+            "y": 26.27,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_6_step",
+          "rect": {
+            "x": 52.1,
             "y": 24.82,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -1324,7 +1344,17 @@
           "rect": {
             "x": 17,
             "y": 19.42,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_2_step",
+          "rect": {
+            "x": 20.1,
+            "y": 18.17,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -1333,7 +1363,7 @@
           "id": "atelier_1_3",
           "rect": {
             "x": 25,
-            "y": 19.42,
+            "y": 18.17,
             "width": 6,
             "height": 0.38
           },
@@ -1343,7 +1373,7 @@
           "id": "atelier_1_4",
           "rect": {
             "x": 33,
-            "y": 19.42,
+            "y": 18.17,
             "width": 6,
             "height": 0.38
           },
@@ -1353,8 +1383,18 @@
           "id": "atelier_1_5",
           "rect": {
             "x": 41,
+            "y": 18.17,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_5_step",
+          "rect": {
+            "x": 44.1,
             "y": 19.42,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -1464,7 +1504,17 @@
           "rect": {
             "x": 25,
             "y": 14.02,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_3_step",
+          "rect": {
+            "x": 28.1,
+            "y": 15.47,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -1473,7 +1523,7 @@
           "id": "atelier_2_4",
           "rect": {
             "x": 33,
-            "y": 14.02,
+            "y": 15.47,
             "width": 6,
             "height": 0.38
           },
@@ -1483,7 +1533,7 @@
           "id": "atelier_2_5",
           "rect": {
             "x": 41,
-            "y": 14.02,
+            "y": 15.47,
             "width": 6,
             "height": 0.38
           },
@@ -1493,8 +1543,18 @@
           "id": "atelier_2_6",
           "rect": {
             "x": 49,
+            "y": 15.47,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_6_step",
+          "rect": {
+            "x": 52.1,
             "y": 14.02,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -1584,7 +1644,17 @@
           "rect": {
             "x": 17,
             "y": 8.62,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_2_step",
+          "rect": {
+            "x": 20.1,
+            "y": 7.37,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -1593,7 +1663,7 @@
           "id": "atelier_3_3",
           "rect": {
             "x": 25,
-            "y": 8.62,
+            "y": 7.37,
             "width": 6,
             "height": 0.38
           },
@@ -1603,7 +1673,7 @@
           "id": "atelier_3_4",
           "rect": {
             "x": 33,
-            "y": 8.62,
+            "y": 7.37,
             "width": 6,
             "height": 0.38
           },
@@ -1613,8 +1683,18 @@
           "id": "atelier_3_5",
           "rect": {
             "x": 41,
+            "y": 7.37,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_5_step",
+          "rect": {
+            "x": 44.1,
             "y": 8.62,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -1742,7 +1822,7 @@
         {
           "id": "gap_04",
           "x": 32,
-          "surface": "atelier_0_3",
+          "surface": "atelier_0_3_step",
           "landingSurface": "atelier_0_4",
           "direction": 1
         },
@@ -1763,7 +1843,7 @@
         {
           "id": "gap_07",
           "x": 56,
-          "surface": "atelier_0_6",
+          "surface": "atelier_0_6_step",
           "landingSurface": "atelier_0_7",
           "direction": 1
         },
@@ -1820,7 +1900,7 @@
           "id": "gap_15",
           "x": 48,
           "surface": "atelier_1_6",
-          "landingSurface": "atelier_1_5",
+          "landingSurface": "atelier_1_5_step",
           "direction": -1
         },
         {
@@ -1841,7 +1921,7 @@
           "id": "gap_18",
           "x": 24,
           "surface": "atelier_1_3",
-          "landingSurface": "atelier_1_2",
+          "landingSurface": "atelier_1_2_step",
           "direction": -1
         },
         {
@@ -1882,7 +1962,7 @@
         {
           "id": "gap_24",
           "x": 32,
-          "surface": "atelier_2_3",
+          "surface": "atelier_2_3_step",
           "landingSurface": "atelier_2_4",
           "direction": 1
         },
@@ -1903,7 +1983,7 @@
         {
           "id": "gap_27",
           "x": 56,
-          "surface": "atelier_2_6",
+          "surface": "atelier_2_6_step",
           "landingSurface": "atelier_2_7",
           "direction": 1
         },
@@ -1960,7 +2040,7 @@
           "id": "gap_35",
           "x": 48,
           "surface": "atelier_3_6",
-          "landingSurface": "atelier_3_5",
+          "landingSurface": "atelier_3_5_step",
           "direction": -1
         },
         {
@@ -1981,7 +2061,7 @@
           "id": "gap_38",
           "x": 24,
           "surface": "atelier_3_3",
-          "landingSurface": "atelier_3_2",
+          "landingSurface": "atelier_3_2_step",
           "direction": -1
         },
         {
@@ -2003,9 +2083,9 @@
       "fallLine": 2.0,
       "cameraBounds": {
         "x": 0,
-        "y": 10.0,
+        "y": 9,
         "width": 99,
-        "height": 20.4
+        "height": 21.4
       },
       "backgroundSet": "gallery_07_return_atelier"
     },
@@ -2142,7 +2222,17 @@
           "rect": {
             "x": 25,
             "y": 21.22,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_3_step",
+          "rect": {
+            "x": 28.1,
+            "y": 22.67,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2151,7 +2241,7 @@
           "id": "vault_0_4",
           "rect": {
             "x": 33,
-            "y": 21.22,
+            "y": 22.67,
             "width": 6,
             "height": 0.38
           },
@@ -2161,7 +2251,7 @@
           "id": "vault_0_5",
           "rect": {
             "x": 41,
-            "y": 21.22,
+            "y": 22.67,
             "width": 6,
             "height": 0.38
           },
@@ -2171,8 +2261,18 @@
           "id": "vault_0_6",
           "rect": {
             "x": 49,
+            "y": 22.67,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_6_step",
+          "rect": {
+            "x": 52.1,
             "y": 21.22,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2242,7 +2342,17 @@
           "rect": {
             "x": 17,
             "y": 15.82,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_2_step",
+          "rect": {
+            "x": 20.1,
+            "y": 14.57,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2251,7 +2361,7 @@
           "id": "vault_1_3",
           "rect": {
             "x": 25,
-            "y": 15.82,
+            "y": 14.57,
             "width": 6,
             "height": 0.38
           },
@@ -2261,7 +2371,7 @@
           "id": "vault_1_4",
           "rect": {
             "x": 33,
-            "y": 15.82,
+            "y": 14.57,
             "width": 6,
             "height": 0.38
           },
@@ -2271,8 +2381,18 @@
           "id": "vault_1_5",
           "rect": {
             "x": 41,
+            "y": 14.57,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_5_step",
+          "rect": {
+            "x": 44.1,
             "y": 15.82,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2362,7 +2482,17 @@
           "rect": {
             "x": 25,
             "y": 10.42,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_3_step",
+          "rect": {
+            "x": 28.1,
+            "y": 11.87,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2371,7 +2501,7 @@
           "id": "vault_2_4",
           "rect": {
             "x": 33,
-            "y": 10.42,
+            "y": 11.87,
             "width": 6,
             "height": 0.38
           },
@@ -2381,7 +2511,7 @@
           "id": "vault_2_5",
           "rect": {
             "x": 41,
-            "y": 10.42,
+            "y": 11.87,
             "width": 6,
             "height": 0.38
           },
@@ -2391,8 +2521,18 @@
           "id": "vault_2_6",
           "rect": {
             "x": 49,
+            "y": 11.87,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_6_step",
+          "rect": {
+            "x": 52.1,
             "y": 10.42,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2462,7 +2602,17 @@
           "rect": {
             "x": 17,
             "y": 5.02,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_2_step",
+          "rect": {
+            "x": 20.1,
+            "y": 3.77,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2471,7 +2621,7 @@
           "id": "vault_3_3",
           "rect": {
             "x": 25,
-            "y": 5.02,
+            "y": 3.77,
             "width": 6,
             "height": 0.38
           },
@@ -2481,7 +2631,7 @@
           "id": "vault_3_4",
           "rect": {
             "x": 33,
-            "y": 5.02,
+            "y": 3.77,
             "width": 6,
             "height": 0.38
           },
@@ -2491,8 +2641,18 @@
           "id": "vault_3_5",
           "rect": {
             "x": 41,
+            "y": 3.77,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_5_step",
+          "rect": {
+            "x": 44.1,
             "y": 5.02,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2582,7 +2742,17 @@
           "rect": {
             "x": 25,
             "y": -0.38,
-            "width": 6,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_3_step",
+          "rect": {
+            "x": 28.1,
+            "y": 1.07,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2591,7 +2761,7 @@
           "id": "vault_4_4",
           "rect": {
             "x": 33,
-            "y": -0.38,
+            "y": 1.07,
             "width": 6,
             "height": 0.38
           },
@@ -2601,7 +2771,7 @@
           "id": "vault_4_5",
           "rect": {
             "x": 41,
-            "y": -0.38,
+            "y": 1.07,
             "width": 6,
             "height": 0.38
           },
@@ -2611,8 +2781,18 @@
           "id": "vault_4_6",
           "rect": {
             "x": 49,
+            "y": 1.07,
+            "width": 3.1,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_6_step",
+          "rect": {
+            "x": 52.1,
             "y": -0.38,
-            "width": 6,
+            "width": 2.9,
             "height": 0.38
           },
           "oneWay": true
@@ -2710,7 +2890,7 @@
         {
           "id": "gap_04",
           "x": 32,
-          "surface": "vault_0_3",
+          "surface": "vault_0_3_step",
           "landingSurface": "vault_0_4",
           "direction": 1
         },
@@ -2731,7 +2911,7 @@
         {
           "id": "gap_07",
           "x": 56,
-          "surface": "vault_0_6",
+          "surface": "vault_0_6_step",
           "landingSurface": "vault_0_7",
           "direction": 1
         },
@@ -2760,7 +2940,7 @@
           "id": "gap_11",
           "x": 48,
           "surface": "vault_1_6",
-          "landingSurface": "vault_1_5",
+          "landingSurface": "vault_1_5_step",
           "direction": -1
         },
         {
@@ -2781,7 +2961,7 @@
           "id": "gap_14",
           "x": 24,
           "surface": "vault_1_3",
-          "landingSurface": "vault_1_2",
+          "landingSurface": "vault_1_2_step",
           "direction": -1
         },
         {
@@ -2822,7 +3002,7 @@
         {
           "id": "gap_20",
           "x": 32,
-          "surface": "vault_2_3",
+          "surface": "vault_2_3_step",
           "landingSurface": "vault_2_4",
           "direction": 1
         },
@@ -2843,7 +3023,7 @@
         {
           "id": "gap_23",
           "x": 56,
-          "surface": "vault_2_6",
+          "surface": "vault_2_6_step",
           "landingSurface": "vault_2_7",
           "direction": 1
         },
@@ -2872,7 +3052,7 @@
           "id": "gap_27",
           "x": 48,
           "surface": "vault_3_6",
-          "landingSurface": "vault_3_5",
+          "landingSurface": "vault_3_5_step",
           "direction": -1
         },
         {
@@ -2893,7 +3073,7 @@
           "id": "gap_30",
           "x": 24,
           "surface": "vault_3_3",
-          "landingSurface": "vault_3_2",
+          "landingSurface": "vault_3_2_step",
           "direction": -1
         },
         {
@@ -2934,7 +3114,7 @@
         {
           "id": "gap_36",
           "x": 32,
-          "surface": "vault_4_3",
+          "surface": "vault_4_3_step",
           "landingSurface": "vault_4_4",
           "direction": 1
         },
@@ -2955,7 +3135,7 @@
         {
           "id": "gap_39",
           "x": 56,
-          "surface": "vault_4_6",
+          "surface": "vault_4_6_step",
           "landingSurface": "vault_4_7",
           "direction": 1
         },
@@ -3162,6 +3342,16 @@
             "height": 0.38
           },
           "oneWay": true
+        },
+        {
+          "id": "portrait_balcony",
+          "rect": {
+            "x": 41.8,
+            "y": 5.67,
+            "width": 9.1,
+            "height": 0.38
+          },
+          "oneWay": true
         }
       ],
       "placements": [
@@ -3179,10 +3369,10 @@
         {
           "id": "notary_guard_1",
           "x": 46,
-          "y": 4.05,
+          "y": 6.1,
           "active": {
             "x": 43,
-            "y": 3.76,
+            "y": 5.81,
             "width": 6,
             "height": 1.55
           }
@@ -3212,10 +3402,10 @@
         {
           "id": "reflection_statue_4",
           "x": 48,
-          "y": 4.05,
+          "y": 6.1,
           "active": {
             "x": 45,
-            "y": 3.76,
+            "y": 5.81,
             "width": 6,
             "height": 1.55
           }
@@ -3266,7 +3456,7 @@
         "x": 0,
         "y": 5.0,
         "width": 66,
-        "height": 4.2
+        "height": 6
       },
       "backgroundSet": "gallery_09_shortcut"
     },

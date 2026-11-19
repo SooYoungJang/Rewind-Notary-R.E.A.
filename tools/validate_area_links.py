@@ -293,14 +293,14 @@ def validate_area_links(check, project, scripts):
     supply = {}
     cumulative = read('Waves/test-stage.json')['initialSwordUses']
 
-    def sword(r):
-        return r.get('boutHealth', 0) + sum(g['count'] * g['segments'] for g in r['roster'] if not g.get('skillOnly'))
+    def sword(r, first_visit=False):
+        return r.get('boutHealth', 0) + sum(g['count'] * g['segments'] for g in r['roster'] if not g.get('skillOnly') and not (first_visit and g.get('silverReturnOnly')))
 
     def technique(r):
         return r.get('stations', 0) + sum(g['count'] * g['segments'] * g.get('setupHits', 1) for g in r['roster'] if g.get('setupSkill'))
 
     velvet = [r for r in base['rooms'] if r['stage'] == 'velvet']
-    first_path = cumulative + sum(map(sword, velvet[:3]))
+    first_path = cumulative + sum(sword(r, first_visit=True) for r in velvet[:3])
     cumulative += sum(map(sword, velvet))
     verify((first_path, cumulative) == (162, 196), 'representative finite room supplies +42/+14/+20 from 120')
     clock_path = 'Assets/Resources/Story/clock.json'

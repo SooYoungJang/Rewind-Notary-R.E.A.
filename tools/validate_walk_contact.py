@@ -54,6 +54,8 @@ def velvet_deck(room, layout, bridge_open):
     boundary = room.get('eastBoundary')
     walls = boundary or int(re.search(r'Room.eastBoundary > 0 \? Room.eastBoundary : (\d+)', layout)[1])
     deck = room_faces(dict(room, eastBoundary=walls))
+    if any(s['id'] == 'intake_quay' for s in room['terrain']):
+        return deck
     if boundary:
         return deck + [Face('floor', -4, boundary, -2, 0, False)]
 

@@ -200,8 +200,8 @@ def validate_probe_doors(verify, hub, links, clock_rooms, scripts):
         deck = faces(room) if room.get('terrain') else {}
         conditions = {'box == null': box is None,
                       '!box.Defined': None if box is None else box.get('width', 0) <= 0 or box.get('height', 0) <= 0,
-                      'Area.Room.Surface("drum_floor") == null':
-                          not any(s['id'] == 'drum_floor' for s in room.get('terrain') or [])}
+                      'Area.Room.Surface("drum_floor") == null && Area.Room.Surface("intake_quay") == null':
+                          not any(s['id'] in ('drum_floor','intake_quay') for s in room.get('terrain') or [])}
         if not terms or any(term not in conditions for term in terms):
             return 'unrecognized walk guard'
         for term in terms:
@@ -256,7 +256,7 @@ def validate_probe_doors(verify, hub, links, clock_rooms, scripts):
            'if (door == null || !bot.ClockDoor(door)) return false; keys.Tap(KeyCode.F);' in probe,
            'first hub departure selects its destination and only taps F when the door is ready')
     drive = ' '.join(scripts['FirstDepartureBot'].split())
-    verify('if (Area.Room.stage == "clock") { if (ClockDoor(door)) keys.Tap(KeyCode.F); return; }' in drive and
+    verify('if (Area.Room.stage == "clock" || Area.Room.id == "velvet_05_return") { if (ClockDoor(door)) keys.Tap(KeyCode.F); return; }' in drive and
            'Area.Room.stage == "velvet" && door.approach?.Defined == true && door.approach.y > 1 && !ReachBalcony()' in drive,
            'generic door navigation confines the balcony stairs to defined high velvet doors')
 

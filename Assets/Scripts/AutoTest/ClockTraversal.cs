@@ -212,7 +212,7 @@ namespace RewindNotary
         {
             var box = door.approach;
             bool positioned;
-            if (box == null || !box.Defined || Area.Room.Surface("drum_floor") == null)
+            if (box == null || !box.Defined || Area.Room.Surface("drum_floor") == null && Area.Room.Surface("intake_quay") == null)
                 positioned = Walk(door.x, .35f);
             else
                 positioned = TryFaceAt(door.x, box.y + box.height * .5f, out var face) && ClockPosition(face.id, door.x);

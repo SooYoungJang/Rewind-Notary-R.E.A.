@@ -4,8 +4,11 @@ import json
 from pathlib import Path
 import re
 
-from story_link_baseline import reverse_exact
+from story_link_baseline import prior_pass2_source, reverse_exact
 from validate_level_step1 import contains, digest, number
+from validate_fixed_surface_route import Face, fixed_edges, link, simulate_landing
+from validate_level_step5 import physics_from_project
+from validate_walk_contact import velvet_deck
 
 IDS = ('velvet_01_entry', 'velvet_02_loom', 'velvet_03_gallery', 'velvet_04_arena',
        'velvet_05_return', 'velvet_06_shortcut')
@@ -62,7 +65,9 @@ def physical_config(room):
     terrain = room['terrain']
     surfaces = {s['id']: s['rect'] for s in terrain if not s.get('travelX') and not s.get('travelY')}
     checkpoints = [f for f in room['floors'] if f.get('contactSave')]
-    if len(checkpoints) != 1 or len(surfaces) != len(terrain):
+    if len(checkpoints) != 1 or len({s['id'] for s in terrain}) != len(terrain):
+        return False
+    if any((s.get('travelX') or s.get('travelY')) and s.get('period',0) <= 0 for s in terrain):
         return False
     f = checkpoints[0]
     r = surfaces.get(f.get('surface'))
@@ -71,8 +76,8 @@ def physical_config(room):
     return (0 <= room.get('eastBoundary', 46) - room['cameraBounds']['width'] <= 5 and
             room.get('hasFallLine') and room['fallLine'] < -7) and all(
         box['width'] > 0 and box['height'] > 0 and box['x'] >= -4 and
-        box['x'] + box['width'] <= room.get('eastBoundary', 46) for box in surfaces.values()) and all(
-        contains(room['cameraBounds'], k['x'], top(surfaces[k['surface']]) + 1.2)
+        box['x'] + box['width'] <= room.get('eastBoundary', 46) for box in (s['rect'] for s in terrain)) and all(
+        k['surface'] in surfaces and contains(room['cameraBounds'], k['x'], top(surfaces[k['surface']]) + 1.2)
         for k in room['floors'] if k.get('surface'))
 
 
@@ -104,41 +109,6 @@ def shortcut(rooms):
             gate(bridge, loom, landed['id'], 'loom_balcony_floor', 'investigation_complete'))
 
 
-def waterway(room, skill):
-    """Disjoint first casts on short seams, finite guard segments and one real support per upper seam."""
-    short, upper = room['seamRuns']
-    guards = [g for g in room['roster'] if g['id'] == 'notary_guard' and not g.get('skillOnly')]
-    points = {p['id']: p for p in room['placements']}
-    bodies = sorted(points[id]['x'] for g in guards for id in g['placementIds'])
-    n = short['count']
-    if n != room['singleSeams'] or n + upper['count'] != room['stitchAnchors'] or not bodies:
-        return
-    stage1, stage2 = skill['stages'][:2]
-    xs = [short['x'] + i * short['stepX'] for i in range(n)]
-    entry = room['floors'][0]['x']
-    if not (0 < xs[0] - entry <= stage1['reach'] and short['stepX'] > stage1['reach'] and
-            abs(short['y'] - .24) < .01 and bodies[0] - xs[-1] > stage1['reach'] + .4 and
-            all(b - a > stage1['reach'] + .8 for a, b in zip(bodies, bodies[1:]))):
-        return
-    if not (.9 <= stage1['maxSpan'] < 2.2 <= stage2['maxSpan']):
-        return
-    joints = sum(g['count'] * g['segments'] * max(1, g.get('setupHits', 0)) for g in guards)
-    if n + joints < skill['stage2At']:
-        return
-    deck = [s['rect'] for s in room['terrain'] if s.get('oneWay') and abs(top(s['rect']) + .24 - upper['y']) < .005]
-    def fixed(x):
-        return any(r['x'] <= x <= r['x'] + r['width'] for r in deck)
-    for i in range(upper['count']):
-        x = upper['x'] + i * upper['stepX']
-        # Both edges of a 2.2-wide installation overlap fixed cloth; the centre spans an actual gap.
-        if fixed(x) or not all(fixed(x + off) for off in (-1.1, 1.1, 1.7)) or abs(upper['stepX']) <= 2.2:
-            return
-    total = n + joints + upper['count']
-    if total >= skill['stage3At']:
-        return dict(short=n, preparations=joints, stageTwoSupports=upper['count'], distinctUses=total,
-                    supportsToMastery=skill['stage3At'] - n - joints)
-
-
 def cast_position(x, facing, seam, direction, half_span, max_lead, stride):
     """Replay grounded A/D inputs until the bot stops to issue neutral Q."""
     for _ in range(80):
@@ -153,63 +123,71 @@ def cast_position(x, facing, seam, direction, half_span, max_lead, stride):
     return None
 
 
-def return_cast_positions(room, skill, motion, max_lead, ticks_per_frame):
-    deck = [s['rect'] for s in room['terrain'] if s.get('oneWay')]
-    balcony = next(s['rect'] for s in room['terrain'] if s['id'] == 'balcony')
-    stride = motion[0] * motion[-1] * ticks_per_frame
-    for stage, run in enumerate(room['seamRuns']):
-        direction = 1 if run['stepX'] > 0 else -1
-        half_span = 1.1 if stage else .45
-        arrival = next(f['x'] for f in room['floors'] if f.get('contactSave')) if stage else room['floors'][0]['x']
-        height = top(balcony) if stage else 0
-        reach = skill['stages'][stage]['reach']
-        centers = [run['x'] + i * run['stepX'] for i in range(run['count'])]
-        for i, center in enumerate(centers):
-            start = centers[i - 1] if i else arrival
-            # Include an overshoot and a landing at the old stand-off facing away.
-            for x in (start, center + direction * .25, center - direction * 1.70):
-                for facing in (-1, 1):
-                    cast = cast_position(x, facing, center, direction, half_span, max_lead, stride)
-                    if cast is None:
-                        return False
-                    lead = (center - cast) * direction
-                    if lead <= half_span or lead**2 + (run['y'] - height)**2 > reach**2:
-                        return False
-                    if stage and not any(abs(top(r) - height) < .01 and r['x'] <= cast <= r['x'] + r['width'] for r in deck):
-                        return False
-                    # An expired installation still occupies the only slot while PlayerOnFloor is true.
-                    if i and abs(cast - centers[i - 1]) <= half_span + .4:
-                        return False
-    return True
-
-
-def jump_unstitched(room, motion):
-    # Start at rest on each right lip and land on the next left island with one ordinary jump.
-    run = room['seamRuns'][1]
-    height = run['y'] - .24
-    fixed = [s['rect'] for s in room['terrain'] if s.get('oneWay') and abs(top(s['rect']) - height) < .01]
-    def supported(x):
-        return any(r['x'] <= x <= r['x'] + r['width'] for r in fixed)
-    speed, jump, accel, brake, gravity, dt = motion
-    for i in range(run['count']):
-        center = run['x'] + i * run['stepX']
-        x, y, vx, vy = center + 1.7, height, 0., jump
-        if not supported(x):
-            return False
-        for _ in range(100):
-            target = center - 1.7
-            desired = 0 if abs(target - x) <= .14 else speed if target > x else -speed
-            change = (accel if desired else brake) * dt
-            vx += max(-change, min(change, desired - vx))
-            vy -= gravity * dt
-            x, y = x + vx * dt, y + vy * dt
-            if y <= height:
-                if x >= center or not supported(x):
-                    return False
-                break
-        else:
-            return False
-    return True
+def silver_supply(room, skill, physics, layout, max_lead, max_ticks):
+    deck = velvet_deck(room, layout, True)
+    edges = fixed_edges(deck, physics)
+    marks = [(run['x'] + i * run['stepX'], run['y'], 1 if run['stepX'] > 0 else -1)
+             for run in room['seamRuns'] for i in range(run['count'])]
+    short = room['singleSeams']
+    if len(set(marks)) != len(marks) or len(marks) != room['stitchAnchors'] or short > len(marks):
+        return
+    first = room['floors'][0]
+    if room['id'] == IDS[4] and not 0 < marks[0][0] - first['x'] <= skill['stages'][0]['reach']:
+        return
+    def floor(x, y):
+        return next((f for f in edges if f.left <= x <= f.right and abs(f.top-y)<.005), None)
+    for index, (center, y, direction) in enumerate(marks):
+        long = index >= short
+        profile = skill['stages'][int(long)]
+        span = 2.2 if long else .9
+        if span > profile['maxSpan'] or long and span <= skill['stages'][0]['maxSpan']:
+            return
+        bank = floor(center - 1.7 * direction, y-.24)
+        if not bank:
+            return
+        if long:
+            lip = floor(center + 1.85 * direction, y-.24)
+            sewn = Face('installed', center-1.1, center+1.1, y-.07, y+.07, False)
+            landing = simulate_landing([*deck,sewn], bank, sewn, center-1.7*direction, center, 0, physics)
+            if not landing or landing[1]*physics[2] >= profile['lifetime']:
+                return
+            if (not lip or bank == lip or floor(center, y-.24) or not link(deck, bank, lip, physics) or
+                floor(center-direction*1.1, y-.24) != bank or floor(center+direction*1.1, y-.24) != lip):
+                return
+        for ticks in range(1, max_ticks + 1):
+            for facing in (-1, 1):
+                stride = physics[2] * physics[3] * ticks
+                for lead in (1.70, -.25, 2.70):
+                    cast = cast_position(center-direction*lead, facing, center, direction, span/2, max_lead, stride)
+                    if cast is None or floor(cast, y-.24) != bank:
+                        return
+                    if index:
+                        px, py, _ = marks[index-1]
+                        half = .45 if index-1 < short else 1.1
+                        if -.35 <= y-.24-py <= .4 and abs(cast-px) <= half+.4:
+                            return
+                    distance = (cast-center)**2 + .24**2
+                    if distance > profile['reach']**2:
+                        return
+                    for j,(other, height, _) in enumerate(marks):
+                        if j == index or height-.15 > y-.24+2 or height+1.45 < y-.24: continue
+                        half = .45 if j < short else 1.1
+                        if (other-cast)*direction >= -half and (other-cast)*direction <= profile['reach']+half and (
+                            (other-cast)**2+(height-y+.24)**2 <= distance):
+                            return
+    groups = [g for g in room['roster'] if g['id']=='notary_guard' and not g.get('skillOnly')]
+    actors = {p['id']:p for p in room.get('placements',[])}
+    guards = [actors[id] for g in groups for id in g['placementIds']]
+    reach = skill['stages'][1]['reach']
+    for p in guards:
+        def isolated(direction):
+            x, y = p['x'] - direction*1.1, p['y']
+            return floor(x, y-.05) and contains(p['active'],x,y) and not any(
+                other != p and contains(other['active'],x,y) and -.4 <= direction*(other['x']-x) <= reach+.4
+                for other in guards)
+        if not any(isolated(d) for d in (-1,1)): return
+    setups = sum(g['count']*g['segments']*g.get('setupHits',1) for g in groups)
+    return dict(short=short, supports=len(marks)-short, preparations=setups, total=len(marks)+setups)
 
 
 def elite_pocket(room):
@@ -231,7 +209,7 @@ def validate_level_step2(check, project, scripts):
     rooms = {r['id']: r for r in doc['rooms']}
     audit = json.loads(Path(__file__).with_name('level-step2-extensions.json').read_text())
     src = (res/'Story/representative.json').read_text()
-    previous = json.loads(reverse_exact(audit, src))
+    previous = json.loads(reverse_exact(audit, prior_pass2_source('Assets/Resources/Story/representative.json', src)))
     before = {r['id']: r for r in previous['rooms']}
     skill = next(s for s in read('Skills/catalog.json')['skills'] if s['skillId'] == 'silver_stitch')
     grades, counts, traces = [], {}, {}
@@ -282,22 +260,6 @@ def validate_level_step2(check, project, scripts):
     bad = deepcopy(rooms[IDS[5]])
     bad['placements'][0]['active']['height'] += 5
     mutation(not elite_pocket(bad), 'lower ambush spills onto the upper bridge')
-    verify(jump_unstitched(rooms[IDS[4]], motion), 'all upper tears crossable without skill or wall')
-    bad = deepcopy(rooms[IDS[4]])
-    bad['terrain'].pop(4)
-    mutation(not jump_unstitched(bad, motion), 'missing island on the unstitched route')
-    supply = waterway(rooms[IDS[4]], skill)
-    verify(supply, 'distinct short seams, separated guard casts and physical upper supports reach 80 in one visit')
-    for label, change in [
-            ('first seam beyond reach', lambda r: r['seamRuns'][0].update(x=9)),
-            ('combined cast on two guards', lambda r: r['placements'][1].update(x=r['placements'][0]['x'] + .8)),
-            ('inaccessible long anchors', lambda r: r['seamRuns'][1].update(y=9)),
-            ('missing second guard preparation', lambda r: r['roster'][0].update(setupHits=1)),
-            ('removed landing cloth', lambda r: r['terrain'].pop(4))]:
-        bad = deepcopy(rooms[IDS[4]])
-        change(bad)
-        mutation(not waterway(bad, skill), label)
-
     room = rooms[IDS[4]]
     short = room['seamRuns'][0]
     second = short['x'] + short['stepX']
@@ -314,14 +276,37 @@ def validate_level_step2(check, project, scripts):
            'run 7 / reverse facing at failure position converges to neutral Q on seam_1')
     timing = (project/'ProjectSettings/TimeManager.asset').read_text()
     max_ticks = round(float(re.search(r'Maximum Allowed Timestep: ([.\d]+)', timing)[1]) / motion[-1])
-    def approaches(source):
-        limit = number(source, 'maxCastLead')
-        return max_ticks >= 1 and all(return_cast_positions(room, skill, motion, limit, ticks)
-                                      for ticks in range(1, max_ticks + 1))
-    verify(approaches(traversal), 'both seam runs / cast from fixed cloth outside prior support at every frame stride')
-    for label, limit in [('turn skips the upper cast window', 1.11), ('waiting on previous support', 2.35)]:
-        bad = re.sub(r'maxCastLead = [.\d]+f', f'maxCastLead = {limit}f', traversal)
-        mutation(bad != traversal and not approaches(bad), label)
+    physics = physics_from_project(project, scripts)
+    layout = scripts['RepresentativeRoomLayout']
+    def audit(r, limit=max_lead):
+        return silver_supply(r, skill, physics, layout, limit, max_ticks)
+
+    supply = {}
+    for key in (IDS[4], *IDS[:4]):
+        result = audit(rooms[key])
+        verify(result is not None, key + ' / separate casts, supported stance, fixed crossing and finite setup opportunities')
+        if result: supply[key] = result
+    total = sum(row['total'] for row in supply.values())
+    verify(total >= skill['stage3At'] * 1.15 and all(2 * row['total'] <= total for row in supply.values()),
+           'pre-investigation supply exceeds 15 percent reserve and each room supplies at most half')
+    training = [supply.get(key,{}) for key in (IDS[4], IDS[0])]
+    verify(sum(r.get('short',0) for r in training) == 16 and sum(r.get('preparations',0) for r in training)==16 and
+           sum(r.get('supports',0) for r in supply.values()) >= 48,
+           'first 16 short seams and 16 setups unlock 48 separate support contacts')
+    verify(all(any(d['room']==b and d['gate'] in ('','velvet_entry_complete','loom_bridge','gallery_bridge') for d in rooms[a]['exits'])
+               for a,b in zip((IDS[4],*IDS[:3]),IDS[:4])) and
+           all(d['gate']=='investigation_complete' for r in rooms.values() for d in r['exits'] if d['room']==IDS[5]),
+           'return circuit follows earned doors and excludes the locked upper bridge')
+    for label,key,mutate in (
+        ('unreachable first cast',IDS[4],lambda r:r['seamRuns'][0].update(x=9)),
+        ('two guards share an activation',IDS[4],lambda r:r['placements'].__setitem__(1,dict(r['placements'][0],id=r['placements'][1]['id']))),
+        ('long anchor above the launch bank',IDS[1],lambda r:r['seamRuns'][0].update(y=24)),
+        ('missing receiving bank',IDS[1],lambda r:r['terrain'].__setitem__(-1,dict(r['terrain'][-1],rect=dict(r['terrain'][-1]['rect'],y=32))))):
+        bad = deepcopy(rooms[key])
+        mutate(bad)
+        mutation(not audit(bad),label)
+    for limit in (1.11, 3.5):
+        mutation(not audit(rooms[IDS[1]],limit), 'cast window misses fixed bank at lead '+str(limit))
 
     def walk_goals(source):
         approach = source.partition('if (seam.Installed)')[2].partition('keys.Cast();')[0]

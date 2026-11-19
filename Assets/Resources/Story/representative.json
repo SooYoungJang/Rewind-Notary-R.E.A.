@@ -314,7 +314,7 @@
           "destinationFloor": "velvet_loom_west"
         }
       ],
-      "stitchAnchors": 0,
+      "stitchAnchors": 16,
       "roster": [
         {
           "id": "sword_latch",
@@ -323,16 +323,29 @@
           "placementIds": [
             "sword_latch_1"
           ]
+        },
+        {
+          "id": "notary_guard",
+          "count": 4,
+          "segments": 1,
+          "setupHits": 2,
+          "silverReturnOnly": true,
+          "placementIds": [
+            "wardrobe_guard_0",
+            "wardrobe_guard_1",
+            "wardrobe_guard_2",
+            "wardrobe_guard_3"
+          ]
         }
       ],
-      "singleSeams": 0,
-      "releaseKnots": 0,
+      "singleSeams": 8,
+      "releaseKnots": 1,
       "backgroundSet": "velvet_wardrobe",
       "cameraBounds": {
         "x": 0,
         "y": 1.5,
         "width": 32,
-        "height": 6
+        "height": 15
       },
       "hasFallLine": true,
       "fallLine": -8,
@@ -376,6 +389,166 @@
             "height": 6
           },
           "wallJump": true
+        },
+        {
+          "id": "cutting_table",
+          "rect": {
+            "x": 2,
+            "y": 1.13,
+            "width": 13,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pattern_shelf",
+          "rect": {
+            "x": 0.4,
+            "y": 2.93,
+            "width": 15.5,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "bias_rail",
+          "rect": {
+            "x": 14.5,
+            "y": 4.53,
+            "width": 6.3,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "wardrobe_loft",
+          "rect": {
+            "x": 0.3,
+            "y": 13.03,
+            "width": 31.5,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shears_rest",
+          "rect": {
+            "x": 15.2,
+            "y": 11.18,
+            "width": 2.8,
+            "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pattern_bridge_0",
+          "rect": {
+            "x": 1,
+            "y": 5.39,
+            "width": 4.72,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pattern_bridge_1",
+          "rect": {
+            "x": 7.28,
+            "y": 5.39,
+            "width": 4.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pattern_bridge_2",
+          "rect": {
+            "x": 13.78,
+            "y": 5.39,
+            "width": 4.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pattern_bridge_3",
+          "rect": {
+            "x": 19.78,
+            "y": 5.39,
+            "width": 4.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pattern_bridge_4",
+          "rect": {
+            "x": 26.28,
+            "y": 5.39,
+            "width": 5.72,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drying_rail_turn",
+          "rect": {
+            "x": 1,
+            "y": 7.27,
+            "width": 2.6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drying_rail_0",
+          "rect": {
+            "x": 1,
+            "y": 9.19,
+            "width": 4.02,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drying_rail_1",
+          "rect": {
+            "x": 6.58,
+            "y": 9.19,
+            "width": 4.84,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drying_rail_2",
+          "rect": {
+            "x": 12.98,
+            "y": 9.19,
+            "width": 6.54,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drying_rail_3",
+          "rect": {
+            "x": 21.08,
+            "y": 9.19,
+            "width": 5.54,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drying_rail_4",
+          "rect": {
+            "x": 28.18,
+            "y": 9.19,
+            "width": 3.82,
+            "height": 0.36
+          },
+          "oneWay": true
         }
       ],
       "placements": [
@@ -389,9 +562,127 @@
             "width": 5.8,
             "height": 2.65
           }
+        },
+        {
+          "id": "wardrobe_guard_0",
+          "x": 3,
+          "y": 13.4,
+          "active": {
+            "x": 0.35,
+            "y": 13.0,
+            "width": 5.3,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "wardrobe_guard_1",
+          "x": 10.5,
+          "y": 13.4,
+          "active": {
+            "x": 7.85,
+            "y": 13.0,
+            "width": 5.3,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "wardrobe_guard_2",
+          "x": 18.5,
+          "y": 13.4,
+          "active": {
+            "x": 15.85,
+            "y": 13.0,
+            "width": 5.3,
+            "height": 2.65
+          }
+        },
+        {
+          "id": "wardrobe_guard_3",
+          "x": 27,
+          "y": 13.4,
+          "active": {
+            "x": 24.35,
+            "y": 13.0,
+            "width": 5.3,
+            "height": 2.65
+          }
         }
       ],
-      "eastBoundary": 36.5
+      "eastBoundary": 36.5,
+      "seamRuns": [
+        {
+          "count": 3,
+          "x": 4,
+          "y": 1.69,
+          "stepX": 4.8
+        },
+        {
+          "count": 3,
+          "x": 13.3,
+          "y": 3.49,
+          "stepX": -5
+        },
+        {
+          "count": 1,
+          "x": 17.4,
+          "y": 5.09,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 28.8,
+          "y": 4.09,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 25.5,
+          "y": 5.99,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 19,
+          "y": 5.99,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 13,
+          "y": 5.99,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 6.5,
+          "y": 5.99,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 5.8,
+          "y": 9.79,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 12.2,
+          "y": 9.79,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 20.3,
+          "y": 9.79,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 27.4,
+          "y": 9.79,
+          "stepX": 1
+        }
+      ]
     },
     {
       "id": "velvet_02_loom",
@@ -450,7 +741,7 @@
           "destinationFloor": "velvet_upper_safe"
         }
       ],
-      "stitchAnchors": 5,
+      "stitchAnchors": 12,
       "roster": [
         {
           "id": "sword_latch",
@@ -481,14 +772,14 @@
           ]
         }
       ],
-      "singleSeams": 3,
-      "releaseKnots": 0,
+      "singleSeams": 0,
+      "releaseKnots": 1,
       "backgroundSet": "velvet_loom",
       "cameraBounds": {
         "x": 0,
         "y": 1.5,
         "width": 44,
-        "height": 7.5
+        "height": 15.55
       },
       "fallLine": -10,
       "terrain": [
@@ -539,6 +830,176 @@
             "y": 1.03,
             "width": 6,
             "height": 0.32
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shuttle_0",
+          "rect": {
+            "x": 1,
+            "y": 5.59,
+            "width": 4.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shuttle_1",
+          "rect": {
+            "x": 6.78,
+            "y": 5.59,
+            "width": 10.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shuttle_2",
+          "rect": {
+            "x": 18.78,
+            "y": 5.59,
+            "width": 12.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shuttle_3",
+          "rect": {
+            "x": 32.78,
+            "y": 5.59,
+            "width": 9.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "warp_turn",
+          "rect": {
+            "x": 1,
+            "y": 7.47,
+            "width": 2.6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "warp_0",
+          "rect": {
+            "x": 1,
+            "y": 9.39,
+            "width": 5.42,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "warp_1",
+          "rect": {
+            "x": 7.98,
+            "y": 9.39,
+            "width": 4.24,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "warp_2",
+          "rect": {
+            "x": 13.78,
+            "y": 9.39,
+            "width": 5.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "warp_3",
+          "rect": {
+            "x": 21.28,
+            "y": 9.39,
+            "width": 5.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "warp_4",
+          "rect": {
+            "x": 28.78,
+            "y": 9.39,
+            "width": 5.64,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "warp_5",
+          "rect": {
+            "x": 35.98,
+            "y": 9.39,
+            "width": 5.02,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "reed_turn",
+          "rect": {
+            "x": 39.4,
+            "y": 11.27,
+            "width": 2.6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "reed_0",
+          "rect": {
+            "x": 3,
+            "y": 13.19,
+            "width": 6.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "reed_1",
+          "rect": {
+            "x": 10.78,
+            "y": 13.19,
+            "width": 6.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "reed_2",
+          "rect": {
+            "x": 19.28,
+            "y": 13.19,
+            "width": 7.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "reed_3",
+          "rect": {
+            "x": 28.78,
+            "y": 13.19,
+            "width": 6.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "reed_4",
+          "rect": {
+            "x": 36.78,
+            "y": 13.19,
+            "width": 5.22,
+            "height": 0.36
           },
           "oneWay": true
         }
@@ -622,7 +1083,81 @@
           }
         }
       ],
-      "hasFallLine": true
+      "hasFallLine": true,
+      "seamRuns": [
+        {
+          "count": 1,
+          "x": 32,
+          "y": 6.19,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 18,
+          "y": 6.19,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 6,
+          "y": 6.19,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 7.2,
+          "y": 9.99,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 13,
+          "y": 9.99,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 20.5,
+          "y": 9.99,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 28,
+          "y": 9.99,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 35.2,
+          "y": 9.99,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 36,
+          "y": 13.79,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 28,
+          "y": 13.79,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 18.5,
+          "y": 13.79,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 10,
+          "y": 13.79,
+          "stepX": -1
+        }
+      ]
     },
     {
       "id": "velvet_03_gallery",
@@ -687,7 +1222,7 @@
           "destinationFloor": "velvet_return_start"
         }
       ],
-      "stitchAnchors": 3,
+      "stitchAnchors": 12,
       "roster": [
         {
           "id": "sword_latch",
@@ -717,14 +1252,14 @@
           ]
         }
       ],
-      "singleSeams": 3,
+      "singleSeams": 0,
       "releaseKnots": 0,
       "backgroundSet": "velvet_gallery",
       "cameraBounds": {
         "x": 0,
         "y": 1.5,
         "width": 44,
-        "height": 7.5
+        "height": 15.95
       },
       "fallLine": -10,
       "terrain": [
@@ -775,6 +1310,176 @@
             "y": 3.5,
             "width": 3.8,
             "height": 0.4
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drape_0",
+          "rect": {
+            "x": 2,
+            "y": 5.99,
+            "width": 5.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drape_1",
+          "rect": {
+            "x": 8.78,
+            "y": 5.99,
+            "width": 5.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drape_2",
+          "rect": {
+            "x": 15.78,
+            "y": 5.99,
+            "width": 4.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drape_3",
+          "rect": {
+            "x": 21.78,
+            "y": 5.99,
+            "width": 5.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drape_4",
+          "rect": {
+            "x": 28.78,
+            "y": 5.99,
+            "width": 5.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drape_5",
+          "rect": {
+            "x": 35.78,
+            "y": 5.99,
+            "width": 6.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "cornice_turn",
+          "rect": {
+            "x": 1,
+            "y": 7.87,
+            "width": 2.6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "cornice_0",
+          "rect": {
+            "x": 1,
+            "y": 9.79,
+            "width": 5.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "cornice_1",
+          "rect": {
+            "x": 7.78,
+            "y": 9.79,
+            "width": 9.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "cornice_2",
+          "rect": {
+            "x": 18.78,
+            "y": 9.79,
+            "width": 12.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "cornice_3",
+          "rect": {
+            "x": 32.78,
+            "y": 9.79,
+            "width": 7.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "clerestory_turn",
+          "rect": {
+            "x": 39.4,
+            "y": 11.67,
+            "width": 2.6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "clerestory_0",
+          "rect": {
+            "x": 2,
+            "y": 13.59,
+            "width": 5.42,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "clerestory_1",
+          "rect": {
+            "x": 8.98,
+            "y": 13.59,
+            "width": 7.84,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "clerestory_2",
+          "rect": {
+            "x": 18.38,
+            "y": 13.59,
+            "width": 7.84,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "clerestory_3",
+          "rect": {
+            "x": 27.78,
+            "y": 13.59,
+            "width": 7.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "clerestory_4",
+          "rect": {
+            "x": 37.28,
+            "y": 13.59,
+            "width": 4.72,
+            "height": 0.36
           },
           "oneWay": true
         }
@@ -847,7 +1552,81 @@
           }
         }
       ],
-      "hasFallLine": true
+      "hasFallLine": true,
+      "seamRuns": [
+        {
+          "count": 1,
+          "x": 35,
+          "y": 6.59,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 28,
+          "y": 6.59,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 21,
+          "y": 6.59,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 15,
+          "y": 6.59,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 8,
+          "y": 6.59,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 7,
+          "y": 10.39,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 18,
+          "y": 10.39,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 32,
+          "y": 10.39,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 36.5,
+          "y": 14.19,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 27,
+          "y": 14.19,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 17.6,
+          "y": 14.19,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 8.2,
+          "y": 14.19,
+          "stepX": -1
+        }
+      ]
     },
     {
       "id": "velvet_04_arena",
@@ -920,10 +1699,10 @@
           "destinationFloor": "velvet_upper_safe"
         }
       ],
-      "stitchAnchors": 0,
+      "stitchAnchors": 16,
       "roster": [],
       "singleSeams": 0,
-      "releaseKnots": 0,
+      "releaseKnots": 1,
       "boutHealth": 14,
       "interludeHealth": 7,
       "backgroundSet": "velvet_duel",
@@ -931,7 +1710,7 @@
         "x": 0,
         "y": 1.5,
         "width": 42,
-        "height": 7
+        "height": 19.6
       },
       "hasFallLine": true,
       "fallLine": -10,
@@ -975,9 +1754,337 @@
             "height": 6
           },
           "wallJump": true
+        },
+        {
+          "id": "west_gallery_0",
+          "rect": {
+            "x": 1,
+            "y": 5.84,
+            "width": 4.62,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "west_gallery_1",
+          "rect": {
+            "x": 7.18,
+            "y": 5.84,
+            "width": 12.04,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "west_gallery_2",
+          "rect": {
+            "x": 20.78,
+            "y": 5.84,
+            "width": 12.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "west_gallery_3",
+          "rect": {
+            "x": 34.78,
+            "y": 5.84,
+            "width": 6.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pennants_turn",
+          "rect": {
+            "x": 38.4,
+            "y": 7.72,
+            "width": 2.6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pennants_0",
+          "rect": {
+            "x": 2,
+            "y": 9.64,
+            "width": 5.82,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pennants_1",
+          "rect": {
+            "x": 9.38,
+            "y": 9.64,
+            "width": 3.84,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pennants_2",
+          "rect": {
+            "x": 14.78,
+            "y": 9.64,
+            "width": 4.24,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pennants_3",
+          "rect": {
+            "x": 20.58,
+            "y": 9.64,
+            "width": 4.14,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pennants_4",
+          "rect": {
+            "x": 26.28,
+            "y": 9.64,
+            "width": 3.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pennants_5",
+          "rect": {
+            "x": 31.78,
+            "y": 9.64,
+            "width": 4.04,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pennants_6",
+          "rect": {
+            "x": 37.38,
+            "y": 9.64,
+            "width": 3.62,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rigging_turn",
+          "rect": {
+            "x": 1,
+            "y": 11.52,
+            "width": 2.6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rigging_0",
+          "rect": {
+            "x": 1,
+            "y": 13.44,
+            "width": 5.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rigging_1",
+          "rect": {
+            "x": 7.78,
+            "y": 13.44,
+            "width": 5.24,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rigging_2",
+          "rect": {
+            "x": 14.58,
+            "y": 13.44,
+            "width": 4.64,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rigging_3",
+          "rect": {
+            "x": 20.78,
+            "y": 13.44,
+            "width": 5.44,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rigging_4",
+          "rect": {
+            "x": 27.78,
+            "y": 13.44,
+            "width": 4.94,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "rigging_5",
+          "rect": {
+            "x": 34.28,
+            "y": 13.44,
+            "width": 5.72,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "crown_turn",
+          "rect": {
+            "x": 38.4,
+            "y": 15.32,
+            "width": 2.6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "crown_0",
+          "rect": {
+            "x": 2,
+            "y": 17.24,
+            "width": 6.22,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "crown_1",
+          "rect": {
+            "x": 9.78,
+            "y": 17.24,
+            "width": 22.64,
+            "height": 0.36
+          },
+          "oneWay": true
+        },
+        {
+          "id": "crown_2",
+          "rect": {
+            "x": 33.98,
+            "y": 17.24,
+            "width": 7.02,
+            "height": 0.36
+          },
+          "oneWay": true
         }
       ],
-      "eastBoundary": 44
+      "eastBoundary": 44,
+      "seamRuns": [
+        {
+          "count": 1,
+          "x": 6.4,
+          "y": 6.44,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 20,
+          "y": 6.44,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 34,
+          "y": 6.44,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 36.6,
+          "y": 10.24,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 31,
+          "y": 10.24,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 25.5,
+          "y": 10.24,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 19.8,
+          "y": 10.24,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 14,
+          "y": 10.24,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 8.6,
+          "y": 10.24,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 7,
+          "y": 14.04,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 13.8,
+          "y": 14.04,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 20,
+          "y": 14.04,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 27,
+          "y": 14.04,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 33.5,
+          "y": 14.04,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 33.2,
+          "y": 17.84,
+          "stepX": -1
+        },
+        {
+          "count": 1,
+          "x": 9,
+          "y": 17.84,
+          "stepX": -1
+        }
+      ]
     },
     {
       "id": "velvet_05_return",
@@ -993,7 +2100,7 @@
         },
         {
           "id": "waterway_splice_floor",
-          "x": 174.2,
+          "x": 64,
           "surface": "balcony",
           "contactSave": true
         }
@@ -1058,22 +2165,18 @@
           "destinationFloor": "velvet_pre_boss_floor"
         }
       ],
-      "stitchAnchors": 66,
+      "stitchAnchors": 8,
       "roster": [
         {
           "id": "notary_guard",
-          "count": 8,
+          "count": 4,
           "segments": 1,
           "setupHits": 2,
           "placementIds": [
             "notary_guard_1",
             "notary_guard_2",
             "notary_guard_3",
-            "notary_guard_4",
-            "notary_guard_5",
-            "notary_guard_6",
-            "notary_guard_7",
-            "notary_guard_8"
+            "notary_guard_4"
           ]
         },
         {
@@ -1087,14 +2190,14 @@
           ]
         }
       ],
-      "singleSeams": 16,
-      "releaseKnots": 3,
+      "singleSeams": 8,
+      "releaseKnots": 0,
       "backgroundSet": "velvet_waterway",
       "cameraBounds": {
         "x": 0,
-        "y": 1.5,
-        "width": 182,
-        "height": 7.5
+        "y": -2,
+        "width": 70,
+        "height": 12
       },
       "hasFallLine": true,
       "fallLine": -11,
@@ -1102,7 +2205,7 @@
         {
           "id": "tread_1",
           "rect": {
-            "x": 179,
+            "x": 58,
             "y": 1.03,
             "width": 3,
             "height": 0.32
@@ -1112,7 +2215,7 @@
         {
           "id": "tread_2",
           "rect": {
-            "x": 175.6,
+            "x": 60.9,
             "y": 2.38,
             "width": 3,
             "height": 0.32
@@ -1122,658 +2225,260 @@
         {
           "id": "balcony",
           "rect": {
-            "x": 172.75,
+            "x": 63.7,
             "y": 3.73,
-            "width": 2.55,
+            "width": 7.1,
             "height": 0.32
           },
           "oneWay": true
         },
         {
-          "id": "hem_1",
+          "id": "intake_quay",
           "rect": {
-            "x": 169.35,
-            "y": 3.73,
-            "width": 1.9,
+            "x": -4,
+            "y": -0.8,
+            "width": 16,
+            "height": 0.8
+          },
+          "oneWay": true
+        },
+        {
+          "id": "silt_bed",
+          "rect": {
+            "x": 11,
+            "y": -2.2,
+            "width": 6.8,
+            "height": 0.5
+          },
+          "oneWay": true
+        },
+        {
+          "id": "inspection_dock",
+          "rect": {
+            "x": 16.6,
+            "y": -0.58,
+            "width": 9.8,
+            "height": 0.58
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tailrace",
+          "rect": {
+            "x": 26,
+            "y": -2.2,
+            "width": 6.4,
+            "height": 0.65
+          },
+          "oneWay": true
+        },
+        {
+          "id": "outfall_quay",
+          "rect": {
+            "x": 32,
+            "y": -0.7,
+            "width": 14,
+            "height": 0.7
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lock_bed",
+          "rect": {
+            "x": 45,
+            "y": -2.36,
+            "width": 12.6,
+            "height": 0.56
+          },
+          "oneWay": true
+        },
+        {
+          "id": "dry_dock",
+          "rect": {
+            "x": 55.8,
+            "y": -0.8,
+            "width": 17.2,
+            "height": 0.8
+          },
+          "oneWay": true
+        },
+        {
+          "id": "counterfloat",
+          "rect": {
+            "x": 48.2,
+            "y": -2.74,
+            "width": 3.5,
+            "height": 0.34
+          },
+          "oneWay": true,
+          "travelY": 4.4,
+          "period": 4.8
+        },
+        {
+          "id": "wheel_gallery",
+          "rect": {
+            "x": 47.5,
+            "y": 1.68,
+            "width": 7.5,
+            "height": 0.42
+          },
+          "oneWay": true
+        },
+        {
+          "id": "spill_lip",
+          "rect": {
+            "x": 42.1,
+            "y": 0.98,
+            "width": 3.2,
             "height": 0.32
           },
           "oneWay": true
         },
         {
-          "id": "hem_2",
+          "id": "sluice_cap",
           "rect": {
-            "x": 165.95,
-            "y": 3.73,
-            "width": 1.9,
+            "x": 64.5,
+            "y": 7.2,
+            "width": 4.5,
+            "height": 0.5
+          },
+          "oneWay": true
+        },
+        {
+          "id": "gauge_rung",
+          "rect": {
+            "x": 62.2,
+            "y": 5.58,
+            "width": 3,
             "height": 0.32
           },
           "oneWay": true
         },
         {
-          "id": "hem_3",
+          "id": "sluice_pier",
           "rect": {
-            "x": 162.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
+            "x": 69.6,
+            "y": 4.06,
+            "width": 0.65,
+            "height": 4.5
           },
-          "oneWay": true
-        },
-        {
-          "id": "hem_4",
-          "rect": {
-            "x": 159.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_5",
-          "rect": {
-            "x": 155.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_6",
-          "rect": {
-            "x": 152.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_7",
-          "rect": {
-            "x": 148.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_8",
-          "rect": {
-            "x": 145.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_9",
-          "rect": {
-            "x": 142.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_10",
-          "rect": {
-            "x": 138.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_11",
-          "rect": {
-            "x": 135.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_12",
-          "rect": {
-            "x": 131.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_13",
-          "rect": {
-            "x": 128.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_14",
-          "rect": {
-            "x": 125.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_15",
-          "rect": {
-            "x": 121.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_16",
-          "rect": {
-            "x": 118.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_17",
-          "rect": {
-            "x": 114.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_18",
-          "rect": {
-            "x": 111.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_19",
-          "rect": {
-            "x": 108.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_20",
-          "rect": {
-            "x": 104.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_21",
-          "rect": {
-            "x": 101.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_22",
-          "rect": {
-            "x": 97.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_23",
-          "rect": {
-            "x": 94.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_24",
-          "rect": {
-            "x": 91.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_25",
-          "rect": {
-            "x": 87.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_26",
-          "rect": {
-            "x": 84.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_27",
-          "rect": {
-            "x": 80.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_28",
-          "rect": {
-            "x": 77.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_29",
-          "rect": {
-            "x": 74.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_30",
-          "rect": {
-            "x": 70.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_31",
-          "rect": {
-            "x": 67.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_32",
-          "rect": {
-            "x": 63.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_33",
-          "rect": {
-            "x": 60.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_34",
-          "rect": {
-            "x": 57.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_35",
-          "rect": {
-            "x": 53.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_36",
-          "rect": {
-            "x": 50.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_37",
-          "rect": {
-            "x": 46.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_38",
-          "rect": {
-            "x": 43.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_39",
-          "rect": {
-            "x": 40.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_40",
-          "rect": {
-            "x": 36.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_41",
-          "rect": {
-            "x": 33.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_42",
-          "rect": {
-            "x": 29.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_43",
-          "rect": {
-            "x": 26.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_44",
-          "rect": {
-            "x": 23.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_45",
-          "rect": {
-            "x": 19.75,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_46",
-          "rect": {
-            "x": 16.35,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_47",
-          "rect": {
-            "x": 12.95,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_48",
-          "rect": {
-            "x": 9.55,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_49",
-          "rect": {
-            "x": 6.15,
-            "y": 3.73,
-            "width": 1.9,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "hem_50",
-          "rect": {
-            "x": 1,
-            "y": 3.73,
-            "width": 3.65,
-            "height": 0.32
-          },
-          "oneWay": true
-        },
-        {
-          "id": "inspection_rack",
-          "rect": {
-            "x": 141.5,
-            "y": 1.03,
-            "width": 13,
-            "height": 0.32
-          },
-          "oneWay": true
+          "wallJump": true
         }
       ],
-      "eastBoundary": 185,
+      "eastBoundary": 73,
       "seamRuns": [
         {
-          "count": 16,
+          "count": 2,
           "x": 3.8,
           "y": 0.24,
           "stepX": 4.8
         },
         {
-          "count": 50,
-          "x": 172,
-          "y": 4.29,
-          "stepX": -3.4
+          "count": 1,
+          "x": 14.8,
+          "y": -1.46,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 24.4,
+          "y": 0.24,
+          "stepX": 1
+        },
+        {
+          "count": 1,
+          "x": 29.8,
+          "y": -1.31,
+          "stepX": 1
+        },
+        {
+          "count": 2,
+          "x": 36,
+          "y": 0.24,
+          "stepX": 5
+        },
+        {
+          "count": 1,
+          "x": 53.2,
+          "y": 2.34,
+          "stepX": 1
         }
       ],
       "placements": [
         {
           "id": "notary_guard_1",
-          "x": 83,
+          "x": 10.8,
           "y": 0.05,
           "active": {
-            "x": 80.1,
+            "x": 8.15,
             "y": -0.35,
-            "width": 5.8,
+            "width": 5.3,
             "height": 2.65
           }
         },
         {
           "id": "notary_guard_2",
-          "x": 90,
+          "x": 45,
           "y": 0.05,
           "active": {
-            "x": 87.1,
+            "x": 42.35,
             "y": -0.35,
-            "width": 5.8,
+            "width": 5.3,
             "height": 2.65
           }
         },
         {
           "id": "notary_guard_3",
-          "x": 97,
+          "x": 59.5,
           "y": 0.05,
           "active": {
-            "x": 94.1,
+            "x": 56.85,
             "y": -0.35,
-            "width": 5.8,
+            "width": 5.3,
             "height": 2.65
           }
         },
         {
           "id": "notary_guard_4",
-          "x": 104,
-          "y": 0.05,
+          "x": 66.1,
+          "y": 4.1,
           "active": {
-            "x": 101.1,
-            "y": -0.35,
-            "width": 5.8,
-            "height": 2.65
-          }
-        },
-        {
-          "id": "notary_guard_5",
-          "x": 111,
-          "y": 0.05,
-          "active": {
-            "x": 108.1,
-            "y": -0.35,
-            "width": 5.8,
-            "height": 2.65
-          }
-        },
-        {
-          "id": "notary_guard_6",
-          "x": 118,
-          "y": 0.05,
-          "active": {
-            "x": 115.1,
-            "y": -0.35,
-            "width": 5.8,
-            "height": 2.65
-          }
-        },
-        {
-          "id": "notary_guard_7",
-          "x": 125,
-          "y": 0.05,
-          "active": {
-            "x": 122.1,
-            "y": -0.35,
-            "width": 5.8,
-            "height": 2.65
-          }
-        },
-        {
-          "id": "notary_guard_8",
-          "x": 132,
-          "y": 0.05,
-          "active": {
-            "x": 129.1,
-            "y": -0.35,
-            "width": 5.8,
+            "x": 63.45,
+            "y": 3.7,
+            "width": 5.3,
             "height": 2.65
           }
         },
         {
           "id": "reflection_statue_9",
-          "x": 143,
-          "y": 1.4,
+          "x": 55,
+          "y": -1.75,
           "active": {
-            "x": 140.1,
-            "y": 1,
-            "width": 5.8,
+            "x": 52.35,
+            "y": -2.15,
+            "width": 5.3,
             "height": 2.65
           }
         },
         {
           "id": "reflection_statue_10",
-          "x": 148,
-          "y": 1.4,
+          "x": 67.7,
+          "y": 7.75,
           "active": {
-            "x": 145.1,
-            "y": 1,
-            "width": 5.8,
+            "x": 65.05,
+            "y": 7.35,
+            "width": 5.3,
             "height": 2.65
           }
         },
         {
           "id": "reflection_statue_11",
-          "x": 153,
-          "y": 1.4,
+          "x": 43.8,
+          "y": 1.35,
           "active": {
-            "x": 150.1,
-            "y": 1,
-            "width": 5.8,
+            "x": 41.15,
+            "y": 0.95,
+            "width": 5.3,
             "height": 2.65
           }
         }

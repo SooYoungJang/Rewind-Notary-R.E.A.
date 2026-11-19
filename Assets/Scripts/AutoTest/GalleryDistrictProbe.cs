@@ -26,7 +26,7 @@ namespace RewindNotary
         public List<string> branchContacts = new List<string>();
         public List<PaintWitness> paintContacts = new List<PaintWitness>();
         public string viewingRoute;
-        public bool firstStrokeExpiredOnPermanentFloor, eliteCleared;
+        public bool firstStrokeExpiredOnPermanentFloor, eliteCleared, portraitBalconyReached;
         public int slot, combatUses, priorTerrainCount, combinedTerrainCount;
         public string firstPaintTarget, stageTwoRoom, masteryRoom;
         public string[] previousSlotsBefore, previousSlotsAfter;
@@ -67,6 +67,7 @@ namespace RewindNotary
             if (e.after == 80) result.masteryRoom = room;
             if (e.targetId.StartsWith(room + ":station_", StringComparison.Ordinal) && e.targetId.EndsWith(":support", StringComparison.Ordinal))
             {
+                if (e.targetId != room + ":station_" + station + ":support") throw new InvalidOperationException("Out-of-order painted support " + e.targetId);
                 if (!stations.Add(e.targetId)) throw new InvalidOperationException("Repeated paint station " + e.targetId);
                 var paint = MeasurePaint(e, area);
                 if (uses.Count == 1) firstStroke = paint;
@@ -291,6 +292,7 @@ namespace RewindNotary
             }
             if (room == Terrace)
             {
+                if (area.StandingOn("portrait_balcony")) result.portraitBalconyReached = true;
                 var first = area.Room.stationMarks[0];
                 if (action == "sew:seam") { bot.SewGallerySeam(); return false; }
                 if (action == "station:canvas_carve") { bot.PaintGap(first, room + ":station_0"); return false; }
@@ -300,9 +302,9 @@ namespace RewindNotary
                 result.priorTerrainCount = AutoTestRuntime.Report.operaDistrict.widths.Count + AutoTestRuntime.Report.bellDistrict.widths.Count;
                 result.combinedTerrainCount = result.priorTerrainCount + result.widths.Count;
                 result.eliteCleared = area.ClearedWaveTargets == area.WaveTargetCount && area.WaveTargetCount > 0;
-                if (result.priorTerrainCount != 140 || result.contacts.Count != Route.Length || result.firstPaintTarget != Atelier + ":station_0:support" ||
+                if (result.priorTerrainCount != 142 || result.contacts.Count != Route.Length || result.firstPaintTarget != Atelier + ":station_0:support" ||
                     result.stageTwoRoom != Atelier || result.masteryRoom != Vault || uses.Count < 80 || surveyed.Count != Route.Length ||
-                    !result.firstStrokeExpiredOnPermanentFloor || result.viewingRoute == null || !result.eliteCleared ||
+                    !result.firstStrokeExpiredOnPermanentFloor || result.viewingRoute == null || !result.portraitBalconyReached || !result.eliteCleared ||
                     !bot.Record.storyFlags.Contains("gallery_synergy_crossed") || !investigated || !silver ||
                     !result.closedBeforeInvestigation || !result.shortcutLanded || string.Join("/", result.longRooms) != string.Join("/", Foyer, Garden, Bridge, White) ||
                     string.Join("/", result.shortcutRooms) != Foyer + "/" + White)

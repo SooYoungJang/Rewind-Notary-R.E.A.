@@ -9,7 +9,9 @@ namespace RewindNotary
         private int nextTread;
         private bool jumping;
         private int seamIndex;
-        private string lastSewn;
+        private string lastSewn, sewingRoom;
+        private bool rodeFloat, leavingFloat;
+
 
         internal bool MoveTo(float x, float tolerance = .14f)
         {
@@ -65,19 +67,62 @@ namespace RewindNotary
         private bool SewReturnRoute()
         {
             var room = Area.Room;
-            bool upper = seamIndex >= room.singleSeams;
-            if (upper && Area.RouteTarget != null) return false; // Bind, bind, then cut each guard.
-            if (seamIndex >= room.stitchAnchors)
-                throw new InvalidOperationException("Return waterway exhausted before mastery");
-            if (upper && (Player.Body.position.y < room.Surface("balcony").rect.y - .1f || stairRoom == room.id))
+            if (room.id != sewingRoom)
             {
-                if (!ReachBalcony()) return true;
+                sewingRoom = room.id;
+                seamIndex = 0;
+                lastSewn = null;
+                rodeFloat = leavingFloat = false;
             }
-            var run = room.seamRuns[upper ? 1 : 0];
-            float x = run.x + (upper ? seamIndex - room.singleSeams : seamIndex) * run.stepX;
+            var target = Area.RouteTarget;
+            bool water = room.id == "velvet_05_return";
+            if (seamIndex == room.stitchAnchors)
+            {
+                if (water && target != null) return false;
+                if (water && !Has("scene_floor:velvet:waterway_splice_floor"))
+                {
+                    var mark = Array.Find(room.floors, f => f.contactSave);
+                    ClockPosition(mark.surface, mark.x);
+                    return true;
+                }
+                var door = Area.ForwardDoor;
+                if (door != null && TryFaceAt(door.x, door.approach.y + door.approach.height / 2, out var exit) &&
+                    ClockPosition(exit.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position)) keys.Tap(KeyCode.F);
+                return true;
+            }
+            var run = room.SeamRun(seamIndex, out int offset);
+            float x = run.x + offset * run.stepX;
+            if (target != null && (water && target.transform.position.x < x - 2.2f ||
+                room.singleSeams > 0 && seamIndex >= room.singleSeams)) return false;
+            if (water && seamIndex == room.singleSeams - 1 && !rodeFloat)
+            {
+                if (leavingFloat && Area.StandingOn("wheel_gallery")) rodeFloat = true;
+                else if (leavingFloat)
+                {
+                    MoveTo(x);
+                    keys.Hold(KeyCode.Space);
+                }
+                else if (RideCounterweight("counterfloat", "lock_bed", Area.Room.SurfaceTop("wheel_gallery") - 1.2f))
+                {
+                    leavingFloat = true;
+                    keys.Hold(KeyCode.Space);
+                }
+                return true;
+            }
             string id = room.id + ":seam_" + seamIndex;
-            if (lastSewn == id || lastSewn == id + ":support")
-            { seamIndex++; return true; }
+            int direction = run.stepX > 0f ? 1 : -1;
+            bool support = lastSewn == id + ":support";
+            if (lastSewn == id || support)
+            {
+                if (support)
+                {
+                    float land = x + direction * 1.85f;
+                    if (!TryFaceAt(land, run.y - .24f, out var lip)) return true;
+                    if (!OnSurface(lip)) { MoveTo(land, .10f); return true; }
+                }
+                seamIndex++;
+                return true;
+            }
             var seam = StitchSurface2D.All.Find(s => s.TargetId == id);
             if (seam == null) throw new InvalidOperationException("Missing return seam " + id);
             if (seam.Installed)
@@ -88,7 +133,13 @@ namespace RewindNotary
             }
             // Approach from the fixed cloth, clear of the previous installation's retirement area.
             const float maxCastLead = 1.85f;
-            int direction = run.stepX > 0f ? 1 : -1;
+            float stance = x - direction * 1.70f;
+            if (!TryFaceAt(stance, run.y - .24f, out var face)) return true;
+            if (!OnSurface(face))
+            {
+                ClockPosition(face.id, stance);
+                return true;
+            }
             float lead = (x - Player.Body.position.x) * direction;
             if (lead >= maxCastLead)
                 Walk(x, 0f);
@@ -98,6 +149,19 @@ namespace RewindNotary
             else if (Player.Grounded)
                 keys.Cast();
             return true;
+        }
+        internal bool RideCounterweight(string carrierId, string bank, float dismountHeight)
+        {
+            var carrier = Area.Room.Surface(carrierId);
+            float x = carrier.rect.x + carrier.rect.width / 2;
+            var deck = Area.ProbeSurfaceBounds(carrier);
+            if (Area.RidingSurface(carrier) && Player.Grounded && Mathf.Abs(Player.Body.position.y - deck.max.y) <= .12f)
+            {
+                MoveTo(x);
+                return deck.max.y >= dismountHeight;
+            }
+            ClockPosition(bank, x);
+            return false;
         }
     }
 }

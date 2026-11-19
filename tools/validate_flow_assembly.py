@@ -172,14 +172,12 @@ def validate_flow_assembly(check, project, scripts, body):
                     put('loom_bridge' if room['id'] == 'velvet_02_loom' else 'gallery_bridge')
                 gathering = 'mikhail_i0_complete' in flags and not record['firstTransferPending']
                 if gathering:
-                    # Count separately aimed preparations. In the waterway the short run precedes
-                    # the guards, then each new upper installation needs a real support contact.
-                    supply = sum(g['count'] * g['segments'] * g.get('setupHits', 1)
-                                 for g in room['roster'] if kinds[g['id']]['gate'] == 'skill')
-                    if room.get('seamRuns'):
-                        supply += room['singleSeams']
-                        if stitch['validUseCount'] + supply >= thresholds[0]:
-                            supply += room['stitchAnchors'] - room['singleSeams']
+                    supply = room['singleSeams']
+                    if supply:
+                        supply += sum(g['count'] * g['segments'] * g.get('setupHits', 1)
+                                      for g in room['roster'] if kinds[g['id']]['gate'] == 'skill')
+                    if stitch['validUseCount'] + supply >= thresholds[0]:
+                        supply += room['stitchAnchors'] - room['singleSeams']
                     for _ in range(supply):
                         stitch['validUseCount'] += 1
                         count = stitch['validUseCount']
@@ -190,7 +188,7 @@ def validate_flow_assembly(check, project, scripts, body):
                             record['firstTransferPending'] = True
                             put('first_mastery:silver_stitch')
                             break
-                    if room['id'] == 'velvet_05_return': uses_at_returns.append(stitch['validUseCount'])
+                    uses_at_returns.append((room['id'],stitch['validUseCount']))
                     if record['firstTransferPending']:
                         room = save_floor(floor)
                         continue
@@ -212,9 +210,10 @@ def validate_flow_assembly(check, project, scripts, body):
                 room = save_floor(floor)
             verify(seen == milestones and room['id'] == 'hub_lift' and floor == 'lift_arrival_exit',
                    'ordered new-game path on a v4 slot reloaded at every row and doorway')
-            verify(uses_at_returns and stitch['validUseCount'] == 80 and thresholds == (30, 80)
+            verify(uses_at_returns == [('velvet_05_return',16),('velvet_01_entry',40),('velvet_02_loom',52),
+                                       ('velvet_03_gallery',64),('velvet_04_arena',80)] and stitch['validUseCount'] == 80 and thresholds == (30, 80)
                    and record['completedEncounters'].count('story:mikhail_bout') == 1,
-                   'repeatable authored guard supply reaches first mastery through single effects and one story reward')
+                   'five distinct return rooms reach first mastery through single effects and one story reward')
         except (KeyError, StopIteration, ValueError, IndexError) as error:
             verify(False, 'new-game path blocked: ' + repr(error))
 

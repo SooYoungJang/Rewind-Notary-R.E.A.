@@ -15,6 +15,7 @@ namespace RewindNotary
     {
         public StepResult run = new StepResult { id = "BellDistrict", expected = "Slot 5, ten saved landings, first-return forge mastery and inspected descent" };
         public List<BellContact> contacts = new List<BellContact>();
+        public List<string> counterweightRides = new List<string>();
         public List<TerrainWidth> widths = new List<TerrainWidth>();
         public List<string> stationTargets = new List<string>(), longRooms = new List<string>(), dropRooms = new List<string>();
         public List<string> waveRooms = new List<string>();
@@ -53,6 +54,7 @@ namespace RewindNotary
             if (e.after == 80) result.masteryRoom = room;
             if (e.targetId.StartsWith(room + ":station_", StringComparison.Ordinal) && e.targetId.EndsWith(":guard_break", StringComparison.Ordinal))
             {
+                if (e.targetId != room + ":station_" + station + ":guard_break") throw new InvalidOperationException("Out-of-order forge plate " + e.targetId);
                 if (!stations.Add(e.targetId)) throw new InvalidOperationException("Repeated forge station " + e.targetId);
                 result.stationTargets.Add(e.targetId);
             }
@@ -216,7 +218,7 @@ namespace RewindNotary
             if (room == Seam && result.contacts.Count == Route.Length)
             {
                 if (result.firstForgeTarget != Chime + ":station_0:guard_break" || result.stageTwoRoom != Chime ||
-                    result.masteryRoom != Under || uses.Count < 80 || result.waveRooms.Count != 3 || surveyed.Count != Route.Length || !investigated || !silver ||
+                    result.masteryRoom != Under || uses.Count < 80 || result.counterweightRides.Count != 2 || result.waveRooms.Count != 3 || surveyed.Count != Route.Length || !investigated || !silver ||
                     !result.closedBeforeInvestigation || !result.dropLanding || string.Join("/", result.longRooms) != string.Join("/", Landing, Shaft, Hall, Tunnels) ||
                     string.Join("/", result.dropRooms) != Landing + "/" + Tunnels)
                     throw new InvalidOperationException("Missing bell route, forge or descent evidence");
@@ -234,6 +236,11 @@ namespace RewindNotary
                     {
                         var guard = area.BellTargetOnTurn(station / 7 - 1);
                         if (guard != null) { bot.BellFight(guard); return false; }
+                    }
+                    if (station == 8 && !result.counterweightRides.Contains(room))
+                    {
+                        if (bot.RideCounterweight("counterweight_cradle", marks[7].surface, area.Room.SurfaceTop(marks[7].surface) + 1.2f)) result.counterweightRides.Add(room);
+                        return false;
                     }
                     var m = marks[station];
                     if (stations.Contains(room + ":station_" + station + ":guard_break")) station++;

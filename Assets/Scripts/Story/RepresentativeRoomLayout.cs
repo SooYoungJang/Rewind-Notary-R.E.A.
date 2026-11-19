@@ -89,6 +89,7 @@ namespace RewindNotary
             if (layout != null) { layout.SetActive(false); Destroy(layout); }
             layout = new GameObject(Room.id); layout.transform.SetParent(transform, false);
             entryWave.Clear(); entryMember = 0;
+            returnSeams.Clear();
             movingSpan = null; raisedLift = null; emitters.Clear();
             fixedFloors.Clear(); fixtures.Clear(); latches.Clear(); roomTargets.Clear(); stationHit = false;
             var stone = Room.stage == "hub" ? new Color(.36f,.35f,.31f) : new Color(.37f,.22f,.30f);
@@ -114,6 +115,8 @@ namespace RewindNotary
             }
             else if (!string.IsNullOrEmpty(Room.crossing)) BuildCrossing(stone);
             else if (Room.stations > 0 && Room.skill == BenefactorIds.Canvas) BuildPaintLedges(stone);
+            else if (Room.Surface("intake_quay") != null)
+                DrawWaterway();
             else if (Room.eastBoundary > 0)
                 Block("floor", (Room.eastBoundary - 4) / 2, -1, Room.eastBoundary + 4, 2, stone, true);
             else Block("floor", HasBridge ? 14 : InFieldTrial ? 29 : 21, -1, HasBridge ? 36 : InFieldTrial ? 66 : 50, 2, stone, true);
@@ -122,7 +125,8 @@ namespace RewindNotary
                 Block("east", 40, -1, 12, 2, stone, true);
                 fixtures["bridge"] = Block("latch_bridge", 33, -.14f, 2.2f, .28f, Color.gray, true);
             }
-            bool tall = Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell" || Room.stage == "gallery";
+            bool tall = Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell" || Room.stage == "gallery" ||
+                Room.stage == "velvet" && Room.cameraBounds.y + Room.cameraBounds.height >= 10;
             float wallHeight = tall ? Room.cameraBounds.y + Room.cameraBounds.height + 5 : 10;
             float wallY = tall ? wallHeight / 2 - 1 : 3;
             Block("west_wall", echoArena ? 32 : -4, wallY, .4f, wallHeight, stone, true);
@@ -164,17 +168,15 @@ namespace RewindNotary
             if (Room.Point("resonant_crucible") != null)
                 for (int i = 0; i < 5; i++) Place("crucible_" + i, 10 + i, 1).AddComponent<DestructibleTarget2D>();
 
-            int runIndex = 0, inRun = 0;
             for (int i = 0; i < Room.stitchAnchors; i++)
             {
                 float x = string.IsNullOrEmpty(Room.seamId) ? 5 + 25f * i / Mathf.Max(1, Room.stitchAnchors - 1) : StationX(i) - 1.1f;
                 float y = .24f;
                 if (Room.seamRuns != null && Room.seamRuns.Length > 0)
                 {
-                    var run = Room.seamRuns[runIndex];
+                    var run = Room.SeamRun(i, out int inRun);
                     x = run.x + inRun * run.stepX;
                     y = run.y;
-                    if (++inRun == run.count) { runIndex++; inRun = 0; }
                 }
                 Place("seam_" + i, x, y).AddComponent<StitchSurface2D>()
                     .Initialize((Room.seamId ?? Room.id + ":seam") + "_" + i, i < Room.singleSeams ? .9f : 2.2f, i >= Room.stitchAnchors - Room.releaseKnots, player, opponent);
@@ -191,6 +193,7 @@ namespace RewindNotary
             foreach (var group in Room.roster)
                 for (int i = 0; i < group.count; i++, index++)
                 {
+                    if (group.silverReturnOnly && !GatheringSilver) continue;
                     var kind = waves.Archetype(group.id);
                     bool latch = group.id == "sword_latch";
                     if (latch && HasBridge && Has(BridgeFlag)) continue;
@@ -217,6 +220,22 @@ namespace RewindNotary
                 fixtures["placed_candy"] = Block("placed_candy", Room.Point("mint_candy_tray").x, 1.42f, .35f, .16f, Color.white);
             RefreshFixtures();
         }
+        private void DrawWaterway()
+        {
+            var iron = new Color(.28f, .47f, .49f);
+            var brass = new Color(.87f, .66f, .35f);
+            Block("gauge_body", 50, 2.4f, 1.05f, 8.4f, iron).GetComponent<SpriteRenderer>().sortingOrder = -3;
+            for (int i = 0; i < 8; i++)
+                Block("gauge_mark_" + i, 50, -1f + i, i % 2 == 0 ? .9f : .5f, .09f, brass).GetComponent<SpriteRenderer>().sortingOrder = -2;
+            Block("sluice_lintel", 52, 6.6f, 6, .5f, brass).GetComponent<SpriteRenderer>().sortingOrder = -2;
+            foreach (var name in new[] { "silt_bed", "tailrace", "lock_bed" })
+            {
+                var bed = Room.Surface(name).rect;
+                Block(name + "_water", bed.x + bed.width / 2, bed.y + bed.height + .38f,
+                    bed.width, .76f, new Color(.17f, .58f, .67f, .7f)).GetComponent<SpriteRenderer>().sortingOrder = -1;
+            }
+        }
+
         private void RefreshFixtures()
         {
             if (fixtures.TryGetValue("mint_candy_pickup", out var candy)) candy.SetActive(!Has("mint_candy_placed"));

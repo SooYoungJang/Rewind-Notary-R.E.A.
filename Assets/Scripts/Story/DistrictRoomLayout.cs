@@ -247,6 +247,9 @@ namespace RewindNotary
 
         private void OnDistrictEffect(ProgressionEvent e)
         {
+            if (Room?.stage == "velvet" && e.kind == "valid_use" && e.skillId == SkillRules.SilverStitch &&
+                e.targetId.StartsWith(Room.id + ":seam_", StringComparison.Ordinal))
+                returnSeams.Add(e.targetId.Replace(":support", ""));
             if (Room == null || Room.stations == 0 || e.skillId != Room.skill || e.targetId == null) return;
             // A later contact in the same activation can operate a switch after an earlier enemy earned the use.
             if (e.kind != "valid_use" && !(e.kind == "use_rejected" && e.reason == "same_activation")) return;

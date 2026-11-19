@@ -44,6 +44,8 @@ namespace RewindNotary
             }
         }
 
+        private readonly HashSet<string> returnSeams = new HashSet<string>();
+
         private bool GatheringSilver => Has("mikhail_i0_complete") && !Record.firstTransferPending;
         private string NextDoorId()
         {
@@ -60,7 +62,7 @@ namespace RewindNotary
                 case "velvet_01_entry": return "velvet_02_loom";
                 case "velvet_02_loom": return Has("investigation_complete") ? "velvet_06_shortcut" : "velvet_03_gallery";
                 case "velvet_06_shortcut": return "velvet_04_arena";
-                case "velvet_03_gallery": return GatheringSilver ? "velvet_05_return" : "velvet_04_arena";
+                case "velvet_03_gallery": return "velvet_04_arena";
                 case "velvet_04_arena": return "velvet_05_return";
                 case "velvet_05_return": return "velvet_01_entry";
                 default: return null;
@@ -83,30 +85,22 @@ namespace RewindNotary
                     return Loc.Get("wave.progress", StageCatalog.Find("velvet").Name, Room.id == "velvet_02_loom" ? 2 : 3, 3)
                         + "\n" + Loc.Get("area.latch") + Arrow(latch.transform.position.x);
             }
-            if (GatheringSilver && Room.seamRuns != null && Room.seamRuns.Length == 2)
-            {
-                var silver = Record.Get(SkillRules.SilverStitch);
-                var run = Room.seamRuns[0];
-                float next = run.x + Mathf.Min(silver.validUseCount, run.count - 1) * run.stepX;
-                if (silver.validUseCount < run.count)
-                    return Loc.Get("input.skill_mapping_row", Loc.Get("input.direction_neutral"),
-                        session.Progression.Catalog.Get(SkillRules.SilverStitch).DisplayName) + Arrow(next);
-                if (!roomTargets.Exists(t => !t.State.Cleared && t.State.NeedsSetup))
-                {
-                    var upper = Room.seamRuns[1];
-                    int ahead = Mathf.CeilToInt((player.Body.position.x - upper.x - .2f) / upper.stepX);
-                    float target = upper.x + Mathf.Clamp(ahead, 0, upper.count - 1) * upper.stepX;
-                    return Loc.Get("input.skill_mapping_row", Loc.Get("input.direction_neutral"),
-                        session.Progression.Catalog.Get(SkillRules.SilverStitch).DisplayName) +
-                        (player.Body.position.y < upper.y - .5f ? Arrow(Room.Surface("tread_1").rect.x) + " ▲" : Arrow(target));
-                }
-            }
             if (GatheringSilver && Room.stage == "velvet")
             {
                 var guard = roomTargets.Find(t => !t.State.Cleared && t.State.NeedsSetup);
-                if (guard != null)
-                    return guard.Hint + Arrow(guard.transform.position.x) + "\n" +
-                        Loc.Get("input.skill_mapping_row", Loc.Get("input.direction_neutral"), session.Progression.Catalog.Get(SkillRules.SilverStitch).DisplayName);
+                int index = 0;
+                foreach (var run in Room.seamRuns ?? Array.Empty<StorySeamRun>())
+                    for (int i = 0; i < run.count; i++, index++)
+                    {
+                        if (returnSeams.Contains(Room.id + ":seam_" + index)) continue;
+                        float x = run.x + i * run.stepX;
+                        if (guard != null && ((Room.singleSeams > 0 || Record.Get(SkillRules.SilverStitch).stage < 2) && index >= Room.singleSeams ||
+                            Room.id == "velvet_05_return" && guard.transform.position.x < x - 2.2f)) return guard.Hint + Arrow(guard.transform.position.x);
+                        return Loc.Get("input.skill_mapping_row", Loc.Get("input.direction_neutral"),
+                            session.Progression.Catalog.Get(SkillRules.SilverStitch).DisplayName) + Arrow(x) +
+                            (player.Body.position.y < run.y - 1 ? " ▲" : player.Body.position.y > run.y + 1 ? " ▼" : "");
+                    }
+                if (guard != null && Room.singleSeams > 0) return guard.Hint + Arrow(guard.transform.position.x);
             }
             string id = NextDoorId();
             var door = Array.Find(Room.exits, e => e.room == id && Gate(e));

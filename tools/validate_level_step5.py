@@ -157,7 +157,7 @@ def validate_level_step5(check, project, scripts):
             verify(len(linked)==len(edges), rid+' / ordinary jump and walk to every face from '+f.name)
             pairs += len(linked)-1
         total_widths += len(r['terrain'])
-        verify(len(faces)==len(r['terrain']),rid+' all authored terrain participates in fixed contact and width checks')
+        verify(len(faces)==sum(not (s.get('travelX') or s.get('travelY')) for s in r['terrain']),rid+' all authored terrain participates in fixed contact and width checks')
         verify({m['id'] for m in previous['floors']}<={m['id'] for m in r['floors']} and
                sum(bool(m.get('contactSave')) for m in r['floors'])==1,rid+' original restore IDs and one contact save')
         for m in r['floors']+r['points']+r.get('stationMarks',[]):

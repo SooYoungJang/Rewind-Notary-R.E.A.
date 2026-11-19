@@ -399,6 +399,9 @@ autotest_metrics = validate_autotest(check, PROJECT, scripts, body)
 from validate_feel_pass import validate_feel_pass
 feel_metrics = validate_feel_pass(check, PROJECT, scripts, body)
 
+from validate_level_design import validate_level_design
+level_design_metrics = validate_level_design(check, PROJECT, scripts)
+
 from validate_level_step1 import validate_level_step1
 level_step1_metrics = validate_level_step1(check, PROJECT, scripts)
 from validate_level_step2 import validate_level_step2
@@ -476,7 +479,7 @@ report = {"passed": len(checks), "errors": errors, "warnings": warnings, "checks
           "flow_assembly_metrics": flow_assembly_metrics,
           "autotest_metrics": autotest_metrics,
           "feel_metrics": feel_metrics, "level_step1_metrics": level_step1_metrics,
-          "level_step2_metrics": level_step2_metrics, "level_step3_metrics": level_step3_metrics,
+          "level_design_pass2": level_design_metrics, "level_step2_metrics": level_step2_metrics, "level_step3_metrics": level_step3_metrics,
           "level_step4_metrics": level_step4_metrics, "level_step5_metrics": level_step5_metrics, "level_step6_metrics": level_step6_metrics, "unity_executed": False, "csharp_compiled": False}
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, help='Write UTF-8 JSON atomically and print a short summary.')

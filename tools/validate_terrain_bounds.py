@@ -12,6 +12,8 @@ import tempfile
 from PIL import Image
 import yaml
 
+from story_link_baseline import prior_pass2_source
+
 
 def aligned(a, b):
     # The playtest compares XY size and center as vectors, not each axis separately.
@@ -153,41 +155,46 @@ def validate_terrain_bounds(verify, project, scripts):
     before, after = Counter(), Counter()
     rooms = {}
     for path in sorted((project / 'Assets/Resources/Story').glob('*.json')):
-        for room in json.loads(path.read_text()).get('rooms', []):
-            stage = room['stage']
-            for face in room.get('terrain', []):
-                r = face['rect']
-                w, h = r['width'], r['height']
-                rise = face.get('rampRise', 0)
-                length = math.hypot(w, rise)
-                c, s = w / length, rise / length
-                center = (r['x'] + (w + s*h) / 2, r['y'] + h + (rise - c*h) / 2)
-                size = (length, h)
-                collision = world_rect(center, size, (c, s))
-                plated = stage not in ('hub', 'velvet')
-                pitch = units[stage]
-                # QA24's assigned scale reveals the bounds read inside Block, before
-                # ramp rotation. At audit time localBounds is the requested tiled size.
-                initial = (w * pitch[0], h * pitch[1])
-                local = (1., 1.) if stage == 'hub' else size
-                if plated:
-                    old_scale = (w / initial[0], h / initial[1])
-                    scale = child_scale(formula, w, h, initial)
-                else:
-                    scale = old_scale = (w, h) if stage == 'hub' else (1., 1.)
-                previous = world_rect(center, (local[0]*old_scale[0], local[1]*old_scale[1]), (c, s))
-                drawn = world_rect(center, (local[0]*scale[0], local[1]*scale[1]), (c, s))
-                key = room['id'], face['id']
-                if key in readings:
-                    seen[key] += 1
-                    verify(agrees_with_reading(readings[key], local, old_scale, pitch, previous, collision, plated),
-                           'QA24 measured sprite, scale, local and world rectangles and verdict: ' + '/'.join(key))
-                    before[stage] += int(not same_rect(previous, collision))
-                ok = same_rect(drawn, collision)
-                verify(ok, room['id'] + '/' + face['id'] + ' rendered surface agrees with collision in world XY')
-                after[stage] += int(not ok)
-                rooms.setdefault(room['id'], {})[face['id']] = [
-                    [round(v, 6) for v in rect] for rect in (previous, drawn, collision)]
+        raw = path.read_text()
+        old = prior_pass2_source(path.relative_to(project), raw)
+        for historical, source in ((True, old), (False, raw)):
+            for room in json.loads(source).get('rooms', []):
+                stage = room['stage']
+                for face in room.get('terrain', []):
+                    r = face['rect']
+                    w, h = r['width'], r['height']
+                    rise = face.get('rampRise', 0)
+                    length = math.hypot(w, rise)
+                    c, s = w / length, rise / length
+                    center = (r['x'] + (w + s*h) / 2, r['y'] + h + (rise - c*h) / 2)
+                    size = (length, h)
+                    collision = world_rect(center, size, (c, s))
+                    plated = stage not in ('hub', 'velvet')
+                    pitch = units[stage]
+                    # QA24's assigned scale reveals the bounds read inside Block, before
+                    # ramp rotation. At audit time localBounds is the requested tiled size.
+                    initial = (w * pitch[0], h * pitch[1])
+                    local = (1., 1.) if stage == 'hub' else size
+                    if plated:
+                        old_scale = (w / initial[0], h / initial[1])
+                        scale = child_scale(formula, w, h, initial)
+                    else:
+                        scale = old_scale = (w, h) if stage == 'hub' else (1., 1.)
+                    previous = world_rect(center, (local[0]*old_scale[0], local[1]*old_scale[1]), (c, s))
+                    drawn = world_rect(center, (local[0]*scale[0], local[1]*scale[1]), (c, s))
+                    key = room['id'], face['id']
+                    if historical:
+                        if key in readings:
+                            seen[key] += 1
+                            verify(agrees_with_reading(readings[key], local, old_scale, pitch, previous, collision, plated),
+                                   'QA24 measured sprite, scale, local and world rectangles and verdict: ' + '/'.join(key))
+                            before[stage] += int(not same_rect(previous, collision))
+                        continue
+                    ok = same_rect(drawn, collision)
+                    verify(ok, room['id'] + '/' + face['id'] + ' rendered surface agrees with collision in world XY')
+                    after[stage] += int(not ok)
+                    rooms.setdefault(room['id'], {})[face['id']] = [
+                        [round(v, 6) for v in rect] for rect in (previous, drawn, collision)]
 
     verify(seen == Counter(readings.keys()), 'every archived QA24 surface was replayed exactly once')
     verify(sum(before.values()) == 357, 'QA24 replay reproduces 357 failed surfaces')

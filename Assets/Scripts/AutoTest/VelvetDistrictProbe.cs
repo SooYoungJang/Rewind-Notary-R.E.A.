@@ -16,6 +16,7 @@ namespace RewindNotary
         public StepResult run = new StepResult { id = "VelvetDistrict", expected = "Six physical checkpoints and the investigated upper return" };
         public int targetMinSeconds = 180, targetMaxSeconds = 300;
         public List<VelvetContact> contacts = new List<VelvetContact>();
+        public List<string> silverRooms = new List<string>();
         public List<string> returnDoors = new List<string>();
         public bool closedOnFirstVisit, arrivedAtUpperBridge, arrivedAtArena;
         public string firstSilverTarget;
@@ -42,18 +43,21 @@ namespace RewindNotary
 
         internal void ObserveUse(ProgressionEvent e, string room)
         {
-            if (room != Waterway || e.skillId != SkillRules.SilverStitch || e.kind != "valid_use") return;
-            if (uses.Add(e.useId))
+            if (Array.IndexOf(Rooms, room) < 0 || e.skillId != SkillRules.SilverStitch || e.kind != "valid_use") return;
+            if (!uses.Add(e.useId)) throw new InvalidOperationException("Repeated silver activation " + e.useId);
+            if (e.after == 30 && room != Entry || e.after == 80 && room != Arena)
+                throw new InvalidOperationException("Silver threshold " + e.after + " reached in " + room);
+            if (!result.silverRooms.Contains(room)) result.silverRooms.Add(room);
+            if (uses.Count == 1) result.firstSilverTarget = e.targetId;
+            result.returnUses = uses.Count;
+            if (e.targetId.StartsWith(room + ":seam_", StringComparison.Ordinal))
             {
-                if (uses.Count == 1) result.firstSilverTarget = e.targetId;
-                result.returnUses = uses.Count;
-                if (e.targetId.StartsWith(Waterway + ":seam_", StringComparison.Ordinal) && seams.Add(e.targetId))
-                {
-                    if (e.targetId.EndsWith(":support", StringComparison.Ordinal)) result.upperSupports++;
-                    else result.shortSeams++;
-                }
-                else if (e.targetId.EndsWith(":posture", StringComparison.Ordinal)) result.guardPreparations++;
+                if (!seams.Add(e.targetId)) throw new InvalidOperationException("Repeated return seam " + e.targetId);
+                if (e.targetId.EndsWith(":support", StringComparison.Ordinal)) result.upperSupports++;
+                else result.shortSeams++;
             }
+            else if (e.targetId.EndsWith(":posture", StringComparison.Ordinal)) result.guardPreparations++;
+            else throw new InvalidOperationException("Unexpected silver target " + e.targetId);
         }
 
         private void Contact(FirstDepartureBot bot, double now)
@@ -117,14 +121,14 @@ namespace RewindNotary
                         !bot.Record.storyFlags.Contains("scene_floor:velvet:velvet_upper_safe"))
                         throw new InvalidOperationException("Wrong bridge arrival");
                 }
-                if (room == Arena && previousRoom == Gallery) result.outboundViaGallerySeconds = now - lowerDoorTime;
+                if (room == Arena && previousRoom == Gallery && result.outboundViaGallerySeconds == 0) result.outboundViaGallerySeconds = now - lowerDoorTime;
                 if (room == Arena && previousRoom == Bridge)
                 {
                     result.arrivedAtArena = bot.Record.storyFlags.Contains("scene_floor:velvet:mikhail_arena_west");
                     result.shortcutSeconds = now - upperDoorTime;
                 }
-                if (previousRoom == Waterway && !investigated && result.returnUses < 80)
-                    throw new InvalidOperationException("Left the first waterway visit below 80 valid uses");
+                if (previousRoom == Waterway && !investigated && (room != Entry || result.returnUses != 16 || result.contacts.Count != 5))
+                    throw new InvalidOperationException("Incomplete waterway return");
                 previousRoom = room;
             }
             if (room == Bridge && !result.arrivedAtUpperBridge)
@@ -141,6 +145,7 @@ namespace RewindNotary
                     upperDoorTime <= 0 || lowerDoorTime <= 0 ||
                     string.Join("/", result.returnDoors) != Loom + "/" + Bridge + "/" + Arena ||
                     result.firstSilverTarget != Waterway + ":seam_0" || result.returnUses < 80 ||
+                    string.Join("/", result.silverRooms) != Waterway + "/" + Entry + "/" + Loom + "/" + Gallery + "/" + Arena ||
                     result.shortSeams < 16 || result.guardPreparations < 16 || result.upperSupports < 48)
                     throw new InvalidOperationException("Incomplete district route, seam or contact evidence");
                 return true;
@@ -161,7 +166,7 @@ namespace RewindNotary
                 return false; // Let the saved ingress physically settle before leaving for the bout.
             if (page == ShellPage.Playing && area != null && !area.Rea.Health.Dead && area.ActiveRow == null)
             {
-                if (room == Loom && area.RouteTarget == null)
+                if (room == Loom && area.RouteTarget == null && (investigated || !bot.Record.Get(SkillRules.SilverStitch).acquired))
                 {
                     var upper = Array.Find(area.Room.exits, d => d.room == Bridge);
                     if (!investigated && !result.closedOnFirstVisit)

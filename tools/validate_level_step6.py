@@ -315,7 +315,7 @@ def validate_level_step6(check,project,scripts):
            'five isolated files, sixth slot disk receipt and unchanged failure deadlines')
     base=sum(len(r['terrain']) for area in ('opera','bell') for r in json.loads((project/f'Assets/Resources/Story/{area}.json').read_text())['rooms'])
     count=sum(a['authored'] for a in route_metrics.values())
-    verify(base==140 and count==sum(len(r['terrain']) for r in rooms) and dynamic_count==84,'existing 140 plus all authored gallery rectangles, separately counted dynamic placements')
+    verify(base==142 and count==sum(len(r['terrain']) for r in rooms) and dynamic_count==84,'142 opera and bell surfaces plus all authored gallery rectangles, separately counted dynamic placements')
     return dict(rowsAndLinksSha256=hashlib.sha256(rows.encode()).hexdigest(),rooms=route_metrics,branches=branches,
                 contactCameraSaturation=saturation,firstReturnStations=station_order,stationOnlyThresholds=[station_order[29],station_order[79]],
                 firstReturnSupply=[supply(r) for r in rooms[6:8]],resetWitness=reset_witness,

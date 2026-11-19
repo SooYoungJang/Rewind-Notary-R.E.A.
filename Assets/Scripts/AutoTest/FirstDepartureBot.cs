@@ -125,6 +125,12 @@ namespace RewindNotary
                 if (split < 0) return;
                 var point = Area.Room.Point(action.Substring(split + 1));
                 if (point == null) return;
+                if (Area.Room.id == "velvet_05_return" && !Area.StandingOn("inspection_dock") &&
+                    (Mathf.Abs(Player.Body.position.y) > .5f || Mathf.Abs(Player.Body.position.x - point.x) > 2f))
+                {
+                    ClockPosition("inspection_dock", point.x);
+                    return;
+                }
                 if (action.StartsWith("strike:", StringComparison.Ordinal)) StrikeStoryPoint(point.x);
                 else if (action.StartsWith("walk:", StringComparison.Ordinal)) Walk(point.x, .38f);
                 else if (action.StartsWith("use:", StringComparison.Ordinal) && Walk(point.x, .38f)) keys.Tap(KeyCode.F);
@@ -135,7 +141,7 @@ namespace RewindNotary
                 if (!Area.OnReturnFloor) SeekFloor();
                 return;
             }
-            if (Area.Room.seamRuns != null && Area.Room.seamRuns.Length > 0 &&
+            if (Area.Room.stage == "velvet" && Has("mikhail_i0_complete") && Area.Room.seamRuns?.Length > 0 &&
                 Record.Get(SkillRules.SilverStitch).acquired && !Record.firstTransferPending && SewReturnRoute()) return;
             var target = Area.RouteTarget;
             if (target != null)
@@ -147,7 +153,7 @@ namespace RewindNotary
             }
             var door = Area.ForwardDoor;
             if (door == null) return;
-            if (Area.Room.stage == "clock")
+            if (Area.Room.stage == "clock" || Area.Room.id == "velvet_05_return")
             {
                 if (ClockDoor(door)) keys.Tap(KeyCode.F);
                 return;

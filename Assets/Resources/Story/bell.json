@@ -1378,7 +1378,7 @@
           "rect": {
             "x": 35,
             "y": 54.05,
-            "width": 8,
+            "width": 9.6,
             "height": 0.35
           },
           "oneWay": true
@@ -1438,7 +1438,7 @@
           "rect": {
             "x": 35,
             "y": 43.25,
-            "width": 8,
+            "width": 9.6,
             "height": 0.35
           },
           "oneWay": true
@@ -1498,7 +1498,7 @@
           "rect": {
             "x": 35,
             "y": 32.45,
-            "width": 8,
+            "width": 9.6,
             "height": 0.35
           },
           "oneWay": true
@@ -1512,6 +1512,18 @@
             "height": 0.35
           },
           "oneWay": true
+        },
+        {
+          "id": "counterweight_cradle",
+          "rect": {
+            "x": 29.5,
+            "y": 51.63,
+            "width": 3.2,
+            "height": 0.32
+          },
+          "oneWay": true,
+          "travelY": 2.8,
+          "period": 4.4
         }
       ],
       "eastBoundary": 46,
@@ -1550,8 +1562,8 @@
           "x": 33.0
         },
         {
-          "surface": "chime_0",
-          "x": 38.2
+          "surface": "heel_0",
+          "x": 43.5
         },
         {
           "surface": "chime_1",
@@ -1606,8 +1618,8 @@
           "x": 33.0
         },
         {
-          "surface": "chime_2",
-          "x": 38.2
+          "surface": "heel_2",
+          "x": 43.5
         },
         {
           "surface": "chime_3",
@@ -1662,8 +1674,8 @@
           "x": 33.0
         },
         {
-          "surface": "chime_4",
-          "x": 38.2
+          "surface": "heel_4",
+          "x": 43.5
         },
         {
           "surface": "chime_5",
@@ -1864,7 +1876,7 @@
           "rect": {
             "x": 35,
             "y": 27.05,
-            "width": 8,
+            "width": 9.6,
             "height": 0.35
           },
           "oneWay": true
@@ -1924,7 +1936,7 @@
           "rect": {
             "x": 35,
             "y": 16.25,
-            "width": 8,
+            "width": 9.6,
             "height": 0.35
           },
           "oneWay": true
@@ -1984,7 +1996,7 @@
           "rect": {
             "x": 35,
             "y": 5.45,
-            "width": 8,
+            "width": 9.6,
             "height": 0.35
           },
           "oneWay": true
@@ -1998,6 +2010,18 @@
             "height": 0.35
           },
           "oneWay": true
+        },
+        {
+          "id": "counterweight_cradle",
+          "rect": {
+            "x": 29.5,
+            "y": 24.63,
+            "width": 3.2,
+            "height": 0.32
+          },
+          "oneWay": true,
+          "travelY": 2.8,
+          "period": 4.4
         }
       ],
       "eastBoundary": 46,
@@ -2036,8 +2060,8 @@
           "x": 33.0
         },
         {
-          "surface": "channel_0",
-          "x": 38.2
+          "surface": "heel_0",
+          "x": 43.5
         },
         {
           "surface": "channel_1",
@@ -2092,8 +2116,8 @@
           "x": 33.0
         },
         {
-          "surface": "channel_2",
-          "x": 38.2
+          "surface": "heel_2",
+          "x": 43.5
         },
         {
           "surface": "channel_3",
@@ -2148,8 +2172,8 @@
           "x": 33.0
         },
         {
-          "surface": "channel_4",
-          "x": 38.2
+          "surface": "heel_4",
+          "x": 43.5
         },
         {
           "surface": "channel_5",
