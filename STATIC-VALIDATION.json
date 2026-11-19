@@ -1,5 +1,5 @@
 {
-  "passed": 8536,
+  "passed": 8557,
   "errors": [],
   "warnings": [
     "Opera step 4: fixed-tick paths and station opportunities are checked offline. Actual collider widths, slot-4 contacts, shortcut time and Game view require Unity.",
@@ -8418,11 +8418,32 @@
     "Level step 4: opera_10_sanctuary_stairs / individual painting and depth",
     "Level step 4: run 16 / row-independent wave dispatch routes to the target support before setup or sword",
     "Level step 4: run 16 / a grounded side contact ahead can trigger the ordinary obstacle jump",
+    "Level step 4: run 17 / the raised lift permits one escape after a sustained stop at the launch approach",
     "Level step 4: run 16 / old door objective stays against the raised deck for twenty seconds",
     "Level step 4: run 16 / target dispatch alone stays against the raised deck for twenty seconds",
     "Level step 4: run 16 / nine separate waltz setups and three sword cuts clear the active roster in order",
     "Level step 4: run 16 / ordinary jumps cross the raised lift and land on all three guards’ fixed supports",
     "Level step 4: run 16 / dismount toward the graph launch even with only the guard across the lift remaining",
+    "Level step 4: run 17 / one active gallery mechanism segment takes the first ordinary sword contact",
+    "Level step 4: run 17 / ordinary wave selection and Aim walk through the one-way gallery terrain",
+    "Level step 4: run 17 / side escape requires continuous physics-time blockage on the route to a launch",
+    "Level step 4: run 17 / ray-only bot passes the first tread on the floor and cuts the active latch",
+    "Level step 4: run 17 / immediate side jumps repeatedly land on the tread and descend before final aim",
+    "Level step 4: run 17 / current shared Walk reaches the grounded latch and cuts on the historical tick",
+    "Level step 4: run 17 / airborne failure position reaches the latch after narrowing the rule at vy=-2",
+    "Level step 4: run 17 / airborne failure position reaches the latch after narrowing the rule at vy=2",
+    "Level step 4: run 17 / a held direction must stop advancing before side escape -1",
+    "Level step 4: run 17 / final positioning and disabled contacts never arm side escape -1",
+    "Level step 4: run 17 / release, reversal and changed obstacle restart the wait -1",
+    "Level step 4: run 17 / a held direction must stop advancing before side escape 1",
+    "Level step 4: run 17 / final positioning and disabled contacts never arm side escape 1",
+    "Level step 4: run 17 / release, reversal and changed obstacle restart the wait 1",
+    "Level step 4: velvet_01_entry / every directed fixed-face pair including authored door arrivals",
+    "Level step 4: velvet_02_loom / every directed fixed-face pair including authored door arrivals",
+    "Level step 4: velvet_03_gallery / every directed fixed-face pair including authored door arrivals",
+    "Level step 4: velvet_04_arena / every directed fixed-face pair including authored door arrivals",
+    "Level step 4: velvet_05_return / every directed fixed-face pair including authored door arrivals",
+    "Level step 4: velvet_06_shortcut / every directed fixed-face pair including authored door arrivals",
     "Level step 4: unchanged mastery thresholds",
     "Level step 4: opera_07_return_roof independent contacts for stage 1",
     "Level step 4: opera_07_return_roof independent contacts for stage 2",
@@ -18065,6 +18086,7 @@
           0.0
         ],
         "landings": [],
+        "sideJumpTicks": [],
         "setups": 0,
         "swordInputs": 0,
         "cuts": [],
@@ -18079,6 +18101,7 @@
           0.0
         ],
         "landings": [],
+        "sideJumpTicks": [],
         "setups": 0,
         "swordInputs": 0,
         "cuts": [],
@@ -18087,7 +18110,7 @@
       "after": {
         "objective": "notary_guard_0",
         "firstLaunchX": 34.5,
-        "seconds": 14.92,
+        "seconds": 15.16,
         "endFeet": [
           10.87,
           5.4
@@ -18097,32 +18120,35 @@
             "surface": "valeria_reunion_lift",
             "x": 18.4,
             "top": 1.72,
-            "seconds": 0.48
+            "seconds": 0.68
           },
           {
             "surface": "landing",
             "x": 23.21,
             "top": 0.0,
-            "seconds": 1.22
+            "seconds": 1.42
           },
           {
             "surface": "newel",
             "x": 34.39,
             "top": 1.8,
-            "seconds": 3.56
+            "seconds": 3.76
           },
           {
             "surface": "window",
             "x": 30.09,
             "top": 3.6,
-            "seconds": 7.16
+            "seconds": 7.36
           },
           {
             "surface": "shelter_stair",
             "x": 14.11,
             "top": 5.4,
-            "seconds": 12.46
+            "seconds": 12.68
           }
+        ],
+        "sideJumpTicks": [
+          10
         ],
         "setups": 9,
         "swordInputs": 3,
@@ -18131,19 +18157,19 @@
             "target": "notary_guard_0",
             "surface": "newel",
             "setups": 3,
-            "seconds": 5.56
+            "seconds": 5.78
           },
           {
             "target": "notary_guard_1",
             "surface": "window",
             "setups": 3,
-            "seconds": 10.08
+            "seconds": 10.3
           },
           {
             "target": "notary_guard_2",
             "surface": "shelter_stair",
             "setups": 3,
-            "seconds": 14.92
+            "seconds": 15.16
           }
         ],
         "remaining": 0
@@ -18151,7 +18177,7 @@
       "lastGuardOnly": {
         "objective": "notary_guard_2",
         "firstLaunchX": 34.5,
-        "seconds": 10.38,
+        "seconds": 10.58,
         "endFeet": [
           10.87,
           5.4
@@ -18161,32 +18187,35 @@
             "surface": "valeria_reunion_lift",
             "x": 18.4,
             "top": 1.72,
-            "seconds": 0.48
+            "seconds": 0.68
           },
           {
             "surface": "landing",
             "x": 23.21,
             "top": 0.0,
-            "seconds": 1.22
+            "seconds": 1.42
           },
           {
             "surface": "newel",
             "x": 34.39,
             "top": 1.8,
-            "seconds": 3.56
+            "seconds": 3.76
           },
           {
             "surface": "window",
             "x": 30.1,
             "top": 3.6,
-            "seconds": 4.84
+            "seconds": 5.04
           },
           {
             "surface": "shelter_stair",
             "x": 14.11,
             "top": 5.4,
-            "seconds": 7.92
+            "seconds": 8.12
           }
+        ],
+        "sideJumpTicks": [
+          10
         ],
         "setups": 3,
         "swordInputs": 1,
@@ -18195,10 +18224,444 @@
             "target": "notary_guard_2",
             "surface": "shelter_stair",
             "setups": 3,
-            "seconds": 10.38
+            "seconds": 10.58
           }
         ],
         "remaining": 0
+      }
+    },
+    "run17Gallery": {
+      "fixedDt": 0.02,
+      "limitSeconds": 240,
+      "beforeSideRule": {
+        "startFeet": [
+          17.71,
+          0
+        ],
+        "startVelocity": [
+          6.5,
+          0
+        ],
+        "seconds": 1.82,
+        "endFeet": [
+          28.5,
+          0
+        ],
+        "targetSupport": "floor",
+        "firstSide": {
+          "tick": 13,
+          "collider": "tread_1",
+          "x": 19.4,
+          "vx": 6.5,
+          "enabled": false
+        },
+        "sideSamples": 2,
+        "sideJumpTicks": [],
+        "rayJumps": 0,
+        "firstLandings": [],
+        "landings": 0,
+        "swordTick": 83,
+        "cutTick": 91,
+        "remaining": 0
+      },
+      "immediateSideRule": {
+        "startFeet": [
+          17.71,
+          0
+        ],
+        "startVelocity": [
+          6.5,
+          0
+        ],
+        "seconds": 240,
+        "endFeet": [
+          20.198,
+          1.962
+        ],
+        "targetSupport": "floor",
+        "firstSide": {
+          "tick": 13,
+          "collider": "tread_1",
+          "x": 19.4,
+          "vx": 6.5,
+          "enabled": false
+        },
+        "sideSamples": 197,
+        "sideJumpTicks": [
+          13,
+          74,
+          135,
+          198,
+          259,
+          320,
+          382,
+          443,
+          504,
+          565,
+          626,
+          687,
+          748,
+          810,
+          870,
+          931,
+          993,
+          1054,
+          1115,
+          1176,
+          1237,
+          1298,
+          1359,
+          1419,
+          1480,
+          1541,
+          1602,
+          1662,
+          1724,
+          1786,
+          1847,
+          1908,
+          1969,
+          2031,
+          2092,
+          2154,
+          2214,
+          2275,
+          2336,
+          2397,
+          2457,
+          2518,
+          2580,
+          2641,
+          2702,
+          2763,
+          2824,
+          2885,
+          2947,
+          3007,
+          3068,
+          3130,
+          3192,
+          3252,
+          3313,
+          3375,
+          3436,
+          3497,
+          3558,
+          3619,
+          3680,
+          3741,
+          3801,
+          3862,
+          3924,
+          3986,
+          4046,
+          4107,
+          4169,
+          4230,
+          4291,
+          4352,
+          4413,
+          4474,
+          4535,
+          4595,
+          4656,
+          4718,
+          4779,
+          4840,
+          4901,
+          4962,
+          5023,
+          5084,
+          5144,
+          5205,
+          5266,
+          5327,
+          5387,
+          5448,
+          5510,
+          5571,
+          5632,
+          5693,
+          5754,
+          5815,
+          5876,
+          5936,
+          5997,
+          6058,
+          6119,
+          6179,
+          6240,
+          6302,
+          6363,
+          6424,
+          6485,
+          6546,
+          6607,
+          6668,
+          6729,
+          6791,
+          6852,
+          6913,
+          6973,
+          7035,
+          7097,
+          7158,
+          7219,
+          7280,
+          7341,
+          7402,
+          7463,
+          7523,
+          7585,
+          7646,
+          7707,
+          7767,
+          7828,
+          7890,
+          7952,
+          8013,
+          8074,
+          8135,
+          8196,
+          8257,
+          8317,
+          8378,
+          8440,
+          8503,
+          8563,
+          8624,
+          8686,
+          8747,
+          8808,
+          8869,
+          8930,
+          8991,
+          9052,
+          9112,
+          9174,
+          9236,
+          9298,
+          9359,
+          9421,
+          9483,
+          9544,
+          9605,
+          9666,
+          9727,
+          9788,
+          9849,
+          9909,
+          9971,
+          10033,
+          10094,
+          10155,
+          10216,
+          10277,
+          10338,
+          10399,
+          10459,
+          10521,
+          10582,
+          10643,
+          10704,
+          10766,
+          10828,
+          10889,
+          10950,
+          11011,
+          11072,
+          11133,
+          11194,
+          11254,
+          11316,
+          11377,
+          11438,
+          11498,
+          11560,
+          11622,
+          11683,
+          11744,
+          11805,
+          11866,
+          11927,
+          11988
+        ],
+        "rayJumps": 0,
+        "firstLandings": [
+          [
+            40,
+            "tread_1"
+          ],
+          [
+            62,
+            "floor"
+          ],
+          [
+            101,
+            "tread_1"
+          ],
+          [
+            122,
+            "floor"
+          ]
+        ],
+        "landings": 392,
+        "swordTick": null,
+        "cutTick": null,
+        "remaining": 1
+      },
+      "after": {
+        "startFeet": [
+          17.71,
+          0
+        ],
+        "startVelocity": [
+          6.5,
+          0
+        ],
+        "seconds": 1.82,
+        "endFeet": [
+          28.5,
+          0
+        ],
+        "targetSupport": "floor",
+        "firstSide": {
+          "tick": 13,
+          "collider": "tread_1",
+          "x": 19.4,
+          "vx": 6.5,
+          "enabled": false
+        },
+        "sideSamples": 2,
+        "sideJumpTicks": [],
+        "rayJumps": 0,
+        "firstLandings": [],
+        "landings": 0,
+        "swordTick": 83,
+        "cutTick": 91,
+        "remaining": 0
+      },
+      "recoveryFromSnapshot": [
+        {
+          "startVy": -2,
+          "immediateJumps": 196,
+          "after": {
+            "startFeet": [
+              20.138,
+              1.813
+            ],
+            "startVelocity": [
+              0,
+              -2
+            ],
+            "seconds": 2.36,
+            "endFeet": [
+              28.501,
+              0
+            ],
+            "targetSupport": "floor",
+            "firstSide": {
+              "tick": 40,
+              "collider": "tread_1",
+              "x": 19.401,
+              "vx": 6.5,
+              "enabled": false
+            },
+            "sideSamples": 2,
+            "sideJumpTicks": [],
+            "rayJumps": 0,
+            "firstLandings": [
+              [
+                6,
+                "tread_1"
+              ],
+              [
+                27,
+                "floor"
+              ]
+            ],
+            "landings": 2,
+            "swordTick": 110,
+            "cutTick": 118,
+            "remaining": 0
+          }
+        },
+        {
+          "startVy": 2,
+          "immediateJumps": 196,
+          "after": {
+            "startFeet": [
+              20.138,
+              1.813
+            ],
+            "startVelocity": [
+              0,
+              2
+            ],
+            "seconds": 2.48,
+            "endFeet": [
+              28.501,
+              0
+            ],
+            "targetSupport": "floor",
+            "firstSide": {
+              "tick": 46,
+              "collider": "tread_1",
+              "x": 19.401,
+              "vx": 6.5,
+              "enabled": false
+            },
+            "sideSamples": 2,
+            "sideJumpTicks": [],
+            "rayJumps": 0,
+            "firstLandings": [
+              [
+                12,
+                "tread_1"
+              ],
+              [
+                33,
+                "floor"
+              ]
+            ],
+            "landings": 2,
+            "swordTick": 116,
+            "cutTick": 124,
+            "remaining": 0
+          }
+        }
+      ],
+      "velvetOrderedPairs": {
+        "velvet_01_entry": {
+          "fixed": 12,
+          "viaArrivalDoor": 0,
+          "total": 12
+        },
+        "velvet_02_loom": {
+          "fixed": 42,
+          "viaArrivalDoor": 0,
+          "total": 42
+        },
+        "velvet_03_gallery": {
+          "fixed": 36,
+          "viaArrivalDoor": 6,
+          "total": 42
+        },
+        "velvet_04_arena": {
+          "fixed": 12,
+          "viaArrivalDoor": 0,
+          "total": 12
+        },
+        "velvet_05_return": {
+          "fixed": 2970,
+          "viaArrivalDoor": 0,
+          "total": 2970
+        },
+        "velvet_06_shortcut": {
+          "fixed": 12,
+          "viaArrivalDoor": 0,
+          "total": 12
+        }
       }
     },
     "authoredWidths": 55,

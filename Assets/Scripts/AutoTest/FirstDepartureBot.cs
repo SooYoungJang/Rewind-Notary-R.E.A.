@@ -31,6 +31,10 @@ namespace RewindNotary
         private bool sawEmpty, sawSafeCall;
         private float jumpUntil;
         private readonly List<ContactPoint2D> walkContacts = new List<ContactPoint2D>();
+        private const float BlockedWalkSeconds = .2f, BlockedWalkSlop = .01f;
+        private Collider2D blockedBy;
+        private int blockedFrame = -1, blockedDirection;
+        private float blockedX, blockedSince;
         private readonly int clockIndex = Array.FindIndex(StageCatalog.All, s => s.Id == "clock");
 
         internal FirstDepartureBot(BotKeyboard keyboard, Action<string> stop)
@@ -160,7 +164,7 @@ namespace RewindNotary
             else keys.Tap(Shell.MenuIndex < index ? KeyCode.DownArrow : KeyCode.UpArrow);
         }
 
-        private bool Walk(float to, float tolerance)
+        private bool Walk(float to, float tolerance, bool approachingLaunch = false)
         {
             float dx = to - Player.Body.position.x;
             if (Mathf.Abs(dx) <= tolerance) return true;
@@ -169,7 +173,7 @@ namespace RewindNotary
             // A low solid plank can also lie between Rea and a door, without a walk row.
             var feet = Player.Body.position + Vector2.up * .18f;
             if (Player.Grounded && (Physics2D.Raycast(feet, Vector2.right * facing, .95f, 1 << LevelBuilder.GroundLayer)
-                || TouchingStepAhead(facing)))
+                || (approachingLaunch && BlockedAtStep(facing))))
             {
                 jumpUntil = Time.time + .24f;
                 keys.Hold(KeyCode.Space);
@@ -177,18 +181,31 @@ namespace RewindNotary
             return false;
         }
 
-        private bool TouchingStepAhead(int facing)
+        private bool BlockedAtStep(int facing)
         {
-            // A raised solid deck can block the capsule above the low plank ray.
+            // A solid deck can stop a walk to the next launch above the low plank ray.
             var actor = Player.GetComponent<CapsuleCollider2D>();
             var body = actor.bounds;
             actor.GetContacts(walkContacts);
             foreach (var hit in walkContacts)
             {
                 var other = hit.collider == actor ? hit.otherCollider : hit.collider;
-                if (other != null && other.gameObject.layer == LevelBuilder.GroundLayer &&
+                if (hit.enabled && other != null && other.gameObject.layer == LevelBuilder.GroundLayer &&
                     Mathf.Abs(hit.normal.x) >= .9f && (hit.point.x - body.center.x) * facing > 0 &&
-                    other.bounds.max.y <= body.max.y) return true;
+                    other.bounds.max.y <= body.max.y)
+                {
+                    float x = Player.Body.position.x;
+                    if (other != blockedBy || facing != blockedDirection || blockedFrame != Time.frameCount - 1 ||
+                        Mathf.Abs(x - blockedX) > BlockedWalkSlop)
+                    {
+                        blockedBy = other;
+                        blockedDirection = facing;
+                        blockedX = x;
+                        blockedSince = Time.fixedTime;
+                    }
+                    blockedFrame = Time.frameCount;
+                    return Time.fixedTime - blockedSince >= BlockedWalkSeconds;
+                }
             }
             return false;
         }

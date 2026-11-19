@@ -121,7 +121,8 @@ namespace RewindNotary
                 keys.Hold(KeyCode.Space);
                 MoveTo(step.LandX, FixedSurfaceRoute.AimTolerance);
             }
-            else if (Walk(step.LaunchX, FixedSurfaceRoute.AimTolerance) && Mathf.Abs(Player.Body.linearVelocity.x) < .2f)
+            else if (Walk(step.LaunchX, FixedSurfaceRoute.AimTolerance, approachingLaunch: true) &&
+                Mathf.Abs(Player.Body.linearVelocity.x) < .2f)
             {
                 jumpingFrom = terrain[here].id;
                 jumpStarted = Time.time;

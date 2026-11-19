@@ -5,6 +5,7 @@ import re
 from validate_fixed_surface_route import Face, fixed_edges, link, paths_from, room_faces, steer
 from validate_level_step1 import contains, number
 from validate_story_bout import Actor
+from validate_walk_contact import RAY_ONLY, WalkContact, read_side_rule
 
 
 def support_at(edges, x, y):
@@ -12,8 +13,8 @@ def support_at(edges, x, y):
                key=lambda f: abs(f.top - y))
 
 
-def replay(room, physics, lift, waltz, sword, swing, guard, aim, wave_first, hop_at_contact,
-           route_on_lift=False, cleared=0):
+def replay(room, physics, lift, waltz, sword, swing, guard, aim, wave_first, rule,
+           route_on_lift=False, cleared=0, launch_recovery=False):
     jump, gravity, dt, speed, _, _, radius, height, tolerance = physics
     deck = room_faces(room)
     edges = fixed_edges(deck, physics)
@@ -30,6 +31,8 @@ def replay(room, physics, lift, waltz, sword, swing, guard, aim, wave_first, hop
     sword_pending = False
     hold_until = spin_end = swing_start = strike_at = None
     next_cast = next_enemy = 0
+    contact = WalkContact(rule)
+    side_jump_ticks = []
     for tick in range(round(20 / dt)):
         now = tick * dt
         point, group = wave[len(cuts)]
@@ -110,8 +113,12 @@ def replay(room, physics, lift, waltz, sword, swing, guard, aim, wave_first, hop
                 gap = lift.left - actor.x if axis > 0 else actor.x - lift.right
                 low_ray_hits = 0 < gap <= .95 and lift.bottom <= actor.y + .18 <= lift.top
                 side_contact = (abs(gap - radius) < 1e-5 and actor.y < lift.top <= actor.y + height)
-                if low_ray_hits or (hop_at_contact and side_contact):
+                hop = contact.jump(tick, dt, actor.x, axis, lift if side_contact else None,
+                                   launch=step is not None and launch_recovery, enabled=True)
+                if low_ray_hits or hop:
                     takeoff, hold_until = True, now + .24
+                    if not low_ray_hits:
+                        side_jump_ticks.append(tick)
             elif step and abs(actor.vx) < .2:
                 takeoff, hold_until = True, None  # full Space until the fixed surface catches Rea
         elif step:
@@ -150,7 +157,7 @@ def replay(room, physics, lift, waltz, sword, swing, guard, aim, wave_first, hop
     return dict(objective=wave[0][0]['id'] if wave_first else door['room'], firstLaunchX=first_launch,
                 seconds=round(now if len(cuts) == len(wave) else now + dt, 2),
                 endFeet=[round(actor.x, 2), round(actor.y, 2)], landings=landings,
-                setups=len(casts), swordInputs=swings, cuts=cuts, remaining=len(wave) - len(cuts))
+                sideJumpTicks=side_jump_ticks, setups=len(casts), swordInputs=swings, cuts=cuts, remaining=len(wave) - len(cuts))
 
 
 def validate_opera_wave(verify, room, physics, scripts, waltz, sword, guard):
@@ -165,9 +172,8 @@ def validate_opera_wave(verify, room, physics, scripts, waltz, sword, guard):
                   'if (target != null) { bot.OperaFight(target); return false; }' in drive and
                   'bool timingTrip = action == null && (longStart > 0 && result.longSeconds == 0 || dropStart > 0 && !result.dropLanding);' in drive)
     bot = scripts['FirstDepartureBot']
-    contact = all(s in bot for s in ('|| TouchingStepAhead(facing)', 'actor.GetContacts(walkContacts)',
-                                      'Mathf.Abs(hit.normal.x) >= .9f', '(hit.point.x - body.center.x) * facing > 0',
-                                      'other.bounds.max.y <= body.max.y'))
+    rule = read_side_rule(bot)
+    launch_recovery = 'Walk(step.LaunchX, FixedSurfaceRoute.AimTolerance, approachingLaunch: true)' in scripts['ClockTraversal']
     navigation = ' '.join(scripts['OperaTraversal'].split())
     verify(wave_first and 'roomTargets.Find(t => !t.State.Cleared)' in scripts['PlaytestObservations'] and
            all(s in navigation for s in ('if (!TryFaceAt(at.x, at.y, out var face)) return;',
@@ -175,8 +181,11 @@ def validate_opera_wave(verify, room, physics, scripts, waltz, sword, guard):
                                          'return ClockPosition(face, x);',
                                          'if (Aim(at.x) && Player.Grounded) keys.Cast(0, 1);')),
            'run 16 / row-independent wave dispatch routes to the target support before setup or sword')
-    verify(contact and '|| TouchingStepAhead(facing))) { jumpUntil = Time.time + .24f; keys.Hold(KeyCode.Space);' in
-           ' '.join(bot.split()), 'run 16 / a grounded side contact ahead can trigger the ordinary obstacle jump')
+    verify(launch_recovery and 'if (Player.Grounded && (Physics2D.Raycast(feet,' in bot and all(s in bot for s in
+           ('actor.GetContacts(walkContacts)', 'other.gameObject.layer == LevelBuilder.GroundLayer',
+            'Mathf.Abs(hit.normal.x) >= .9f', '(hit.point.x - body.center.x) * facing > 0',
+            'other.bounds.max.y <= body.max.y', 'jumpUntil = Time.time + .24f;')),
+           'run 16 / a grounded side contact ahead can trigger the ordinary obstacle jump')
     layout = scripts['RepresentativeRoomLayout']
     plank = layout.split('fixtures[p.id] = Block(p.id, p.x,')[1].split('plank);')[0]
     center_y, width, thickness = map(float, re.findall(r'plank \? ([.\d]+)f', plank))
@@ -188,9 +197,12 @@ def validate_opera_wave(verify, room, physics, scripts, waltz, sword, guard):
     swing = [float(v.strip().rstrip('f')) for v in re.search(r'new AttackSpec\(([^)]+)\)', scripts['CombatMotor2D'])[1].split(',')]
     follow_step = ('toward = jumpingFrom == null && step.WalkOff == 0 ? step.LaunchX : step.LandX;' in scripts['OperaTraversal']
                    and 'MoveTo(toward < lift.center.x' in scripts['OperaTraversal'])
-    def run(dispatch_wave, hop, follow=False, cleared=0):
-        return replay(room, physics, lift, waltz, sword, swing, guard, aim, dispatch_wave, hop, follow, cleared)
-    old, targeting_only, current = run(False, False), run(True, False), run(wave_first, contact, follow_step)
+    def run(dispatch_wave, policy, follow=False, cleared=0):
+        return replay(room, physics, lift, waltz, sword, swing, guard, aim, dispatch_wave, policy,
+                      follow, cleared, launch_recovery)
+    old, targeting_only, current = run(False, RAY_ONLY), run(True, RAY_ONLY), run(wave_first, rule, follow_step)
+    verify(len(current['sideJumpTicks']) == 1 and 0 < rule.delay <= current['sideJumpTicks'][0] * physics[2],
+           'run 17 / the raised lift permits one escape after a sustained stop at the launch approach')
     for label, result in [('old door objective', old), ('target dispatch alone', targeting_only)]:
         verify(result['seconds'] == 20 and result['endFeet'][0] == 16.99 and not result['landings'] and
                not result['setups'] and not result['swordInputs'] and result['remaining'] == 3,
@@ -204,7 +216,7 @@ def validate_opera_wave(verify, room, physics, scripts, waltz, sword, guard):
                for c in current['cuts']) and len({c['surface'] for c in current['cuts']}) == 3 and
            any(l['surface'] == lift.name for l in current['landings']),
            'run 16 / ordinary jumps cross the raised lift and land on all three guards’ fixed supports')
-    last_only = run(wave_first, contact, follow_step, cleared=2)
+    last_only = run(wave_first, rule, follow_step, cleared=2)
     last_guard = next(p for p in room['placements'] if p['id'] == expected[-1])
     verify(current['firstLaunchX'] == old['firstLaunchX'] == targeting_only['firstLaunchX'] and
            last_only['firstLaunchX'] > lift.right and last_guard['x'] < lift.left and
