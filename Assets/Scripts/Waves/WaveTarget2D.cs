@@ -38,15 +38,11 @@ namespace RewindNotary
             definition = kind; player = actor; State = new WaveTargetState(kind, spawn, setupHits, skillOnly);
             setupNameKey = string.IsNullOrEmpty(spawn.setupSkill) ? "" : player.Skills.Progression.Catalog.Get(spawn.setupSkill).displayName;
             var picture = new GameObject("Target silhouette"); picture.transform.SetParent(transform, false);
-            picture.transform.localPosition = Vector3.up * 0.9f;
-            picture.transform.localScale = new Vector3(0.8f, 1.8f, 1);
+            float scale = Mathf.Min(1.6f / sprite.bounds.size.x, 1.8f / sprite.bounds.size.y);
+            picture.transform.localScale = Vector3.one * scale;
+            picture.transform.localPosition = Vector3.up * (sprite.bounds.extents.y * scale);
             visual = picture.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 8;
             nextAttack = Time.time + definition.attackInterval;
-        }
-        internal void SetPicture(Sprite art)
-        {
-            visual.sprite = art;
-            visual.transform.localScale = new Vector3(.95f / art.bounds.size.x, 1.8f / art.bounds.size.y, 1);
         }
         public bool Setup(UseContext use)
         {

@@ -89,7 +89,8 @@ namespace RewindNotary
                 {
                     if (trainingTarget != null) Destroy(trainingTarget.gameObject);
                     trainingTarget = Place("crucible_wave_" + ++trainingWave, 18, .05f).AddComponent<WaveTarget2D>();
-                    trainingTarget.Initialize(waves.Archetype("reflection_statue"), new WaveSpawn { segments = 3 }, player, square);
+                    trainingTarget.Initialize(waves.Archetype("reflection_statue"), new WaveSpawn { segments = 3 }, player,
+                        RoomArt.Enemy(Room.stage, "reflection_statue"));
                 }
                 return true;
             }

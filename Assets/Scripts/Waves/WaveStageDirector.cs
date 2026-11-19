@@ -10,7 +10,6 @@ namespace RewindNotary
         private CombatMotor2D player;
         private SkillSession session;
         private Font font;
-        private Sprite square;
         private readonly GameObject[] barriers = new GameObject[3];
         private WaveTarget2D target;
         private int zoneIndex, waveIndex, groupIndex, memberIndex, attempt;
@@ -24,7 +23,6 @@ namespace RewindNotary
         public void BuildWorld()
         {
             data = WaveCatalog.Load();
-            square = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
             float left = data.zones[0].left, right = data.zones[2].right;
             Box("Wave ground", new Vector2((left + right) * 0.5f, -1), new Vector2(right - left, 2), new Color(0.24f, 0.32f, 0.40f), true);
             Box("Left boundary", new Vector2(left, 5), new Vector2(0.5f, 16), Color.gray, true);
@@ -41,7 +39,7 @@ namespace RewindNotary
             var go = new GameObject(id); go.transform.SetParent(transform, false); go.transform.position = at;
             if (solid) { go.layer = LevelBuilder.GroundLayer; go.AddComponent<BoxCollider2D>().size = size; }
             var image = new GameObject("Visual"); image.transform.SetParent(go.transform, false); image.transform.localScale = size;
-            var render = image.AddComponent<SpriteRenderer>(); render.sprite = square; render.color = color;
+            var render = image.AddComponent<SpriteRenderer>(); render.sprite = RoomArt.Tile("velvet", false); render.color = color;
             return go;
         }
         public void Initialize(CombatMotor2D actor, SkillSession skills, Font hudFont)
@@ -88,7 +86,7 @@ namespace RewindNotary
             var go = new GameObject(session.EncounterId + ":" + groupIndex + ":" + memberIndex);
             go.transform.SetParent(transform, false); go.transform.position = new Vector3(spawn.x, 0, 0);
             target = go.AddComponent<WaveTarget2D>();
-            target.Initialize(data.Archetype(spawn.archetypeId), spawn, player, square);
+            target.Initialize(data.Archetype(spawn.archetypeId), spawn, player, RoomArt.Enemy("velvet", spawn.archetypeId));
         }
         private void AdvanceRoster()
         {
@@ -126,6 +124,5 @@ namespace RewindNotary
             GUI.matrix = previous;
         }
         private void OnDisable() { RetireTarget(); }
-        private void OnDestroy() { if (square != null) Destroy(square); }
     }
 }

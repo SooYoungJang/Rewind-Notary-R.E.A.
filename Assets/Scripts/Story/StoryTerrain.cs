@@ -11,65 +11,7 @@ namespace RewindNotary
         internal string LastContactFloor { get; private set; }
         internal double LastContactTime { get; private set; }
         private string touchingCheckpoint;
-        private Sprite weave, brass;
-        private Sprite BrassSprite()
-        {
-            if (brass == null)
-            {
-                var plate = Resources.Load<Texture2D>("GameArt/backgrounds/brass-plate");
-                brass = Sprite.Create(plate, new Rect(0, 0, plate.width, plate.height), Vector2.one * .5f,
-                    plate.width / 1.6f, 0, SpriteMeshType.FullRect);
-            }
-            return brass;
-        }
         private readonly Dictionary<string, Sprite> rosterArt = new Dictionary<string, Sprite>();
-
-        private Sprite RosterPicture(string id)
-        {
-            if (rosterArt.TryGetValue(id, out var sprite)) return sprite;
-            if (id == "clock_switch")
-            {
-                var dial = Resources.Load<Texture2D>("GameArt/sprites/clock-switch");
-                sprite = Sprite.Create(dial, new Rect(0, 0, dial.width, dial.height), Vector2.one * .5f, dial.height);
-                rosterArt.Add(id, sprite);
-                return sprite;
-            }
-            var atlas = Resources.Load<Texture2D>("GameArt/sprites/velvet-roster");
-            // The four poses have different widths. Keep each silhouette inside its own UV window.
-            float left, right;
-            switch (id)
-            {
-                case "sword_latch": left = 0; right = .291f; break;
-                case "notary_guard": left = .291f; right = .495f; break;
-                case "shell_sentry": left = .51f; right = .735f; break;
-                case "reflection_statue": left = .76f; right = 1; break;
-                default: return square;
-            }
-            var r = new Rect(left * atlas.width, 0, (right - left) * atlas.width, atlas.height);
-            sprite = Sprite.Create(atlas, r, Vector2.one * .5f, atlas.height, 0, SpriteMeshType.FullRect);
-            rosterArt.Add(id, sprite);
-            return sprite;
-        }
-
-        private Sprite WeaveSprite()
-        {
-            if (weave != null) return weave;
-            const int size = 32;
-            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false);
-            texture.filterMode = FilterMode.Point;
-            for (int y = 0; y < size; y++)
-                for (int x = 0; x < size; x++)
-                {
-                    bool hem = y == 30 || (y == 28 && x % 8 < 5);
-                    int diamond = Mathf.Abs(x % 16 - 8) + Mathf.Abs(y % 16 - 8);
-                    var color = hem ? new Color(1f,.85f,.56f) : diamond == 7 ? new Color(.94f,.70f,.62f) :
-                        (x + y) % 4 < 2 ? new Color(.76f,.57f,.66f) : new Color(.52f,.35f,.45f);
-                    texture.SetPixel(x, y, color);
-                }
-            texture.Apply(false, true);
-            weave = Sprite.Create(texture, new Rect(0, 0, size, size), Vector2.one * .5f, size, 0, SpriteMeshType.FullRect);
-            return weave;
-        }
 
         private void BuildSurfaces()
         {

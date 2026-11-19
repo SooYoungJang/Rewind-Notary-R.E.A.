@@ -417,6 +417,8 @@ from validate_level_step5 import validate_level_step5
 level_step5_metrics = validate_level_step5(check, PROJECT, scripts)
 from validate_level_step6 import validate_level_step6
 level_step6_metrics = validate_level_step6(check, PROJECT, scripts)
+from validate_art_integration import validate_art_integration
+art_integration_metrics = validate_art_integration(check, PROJECT, scripts)
 
 # A lexical delimiter check catches accidental patch truncation, NOT C# compilation.
 for path in ASSETS.rglob("*.cs"):
@@ -459,6 +461,7 @@ warnings.extend([
     "Korean HUD uses OS font fallback; glyph coverage, binding/floor contacts, save permissions and presentation require Unity Play Mode on target OS.",
 ])
 report = {"passed": len(checks), "errors": errors, "warnings": warnings, "checks": checks,
+          "art_integration": art_integration_metrics,
           "audio_metrics": audio_metrics, "sound_character": sound_character, "combat_metrics": combat_metrics,
           "skill_metrics": skill_metrics, "skeleton_metrics": skeleton_metrics, "dash_parry_metrics": dash_parry_metrics,
           "remaining_skill_metrics": remaining_skill_metrics,

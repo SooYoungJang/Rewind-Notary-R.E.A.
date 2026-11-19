@@ -60,8 +60,12 @@ def validate_flow_assembly(check, project, scripts, body):
                  '!Has("mikhail_defeated")', '!Has("investigation_complete")')
            and 'door.room == "velvet_02_loom" && NeedsEntryWave' in body(layout, 'private bool Gate('),
            'first wave gates forward exit while keeping previously opened passages')
-    verify(wired(layout, 'entryWave.Clear(); entryMember = 0;', 'FirstDepartureHint()', 'e.room == nextDoor ? Color.yellow'),
-           'room rebuild resets wave cursor and HUD and door identify next action')
+    door_art = body(scripts['RoomArt'], 'internal sealed class RoomDoorView')
+    verify(wired(layout, 'entryWave.Clear(); entryMember = 0;', 'FirstDepartureHint()')
+           and 'doorViews[e].Show(Gate(e))' in body(layout, 'private void RefreshDoors()')
+           and not re.search(r'e\.room\s*==\s*nextDoor\s*\?\s*Color\.yellow\b', layout)
+           and 'canPass ? open : locked' in door_art and not re.search(r'\.\s*color\s*=', door_art),
+           'room rebuild resets wave cursor, HUD guides the next action and gates select untinted door art')
     verify(wired(area, 'Room.id == "velvet_04_arena"', 'mikhailBout.StartStoryBout', 'AudioManager.Music.Boss',
                  'if (mikhailBout != null) return', 'AudioManager.Sfx.BossDefeat')
            and 'GameBootstrap.Bar(' in layout, 'story duel is visible, owns one attack driver and ends with boss cue')

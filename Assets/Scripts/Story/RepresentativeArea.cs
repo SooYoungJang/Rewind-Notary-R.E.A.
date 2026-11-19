@@ -347,9 +347,7 @@ namespace RewindNotary
             }
             if (session != null) session.Progression.Event -= OnDistrictEffect;
             foreach (var sprite in rosterArt.Values) Destroy(sprite);
-            if (square != null) Destroy(square);
-            if (brass != null) Destroy(brass);
-            if (weave != null) { Destroy(weave.texture); Destroy(weave); }
+            if (waveInk != null) Destroy(waveInk);
         }
     }
 }

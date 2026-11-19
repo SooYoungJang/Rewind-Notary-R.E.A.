@@ -6,6 +6,7 @@ namespace RewindNotary
     public sealed partial class RepresentativeArea
     {
         private readonly List<BelfryWave> bellWaves = new List<BelfryWave>();
+        private Sprite waveInk;
 
         private sealed class BellPlate
         {
@@ -61,6 +62,8 @@ namespace RewindNotary
                     bellPlates.Add(new BellPlate { face = s, box = box, picture = picture, ring = ring });
                 }
             if (Room.bellWaves == null || InFieldTrial) return;
+            if (waveInk == null)
+                waveInk = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * .5f, 2);
             foreach (var definition in Room.bellWaves)
                 bellWaves.Add(new BelfryWave(this, definition));
         }
@@ -99,7 +102,7 @@ namespace RewindNotary
                     stroke.transform.SetParent(outline.transform, true);
                     var ink = stroke.AddComponent<SpriteRenderer>();
                     ink.color = color;
-                    ink.sprite = area.square;
+                    ink.sprite = area.waveInk;
                     stroke.transform.localScale = new Vector3(w, h, 1);
                     ink.sortingOrder = 5;
                 }
@@ -110,7 +113,7 @@ namespace RewindNotary
                 Edge("refuge_lip", data.atX, area.Room.SurfaceTop(data.refuge) + .07f, 2.2f, .09f, Color.white);
                 outline.SetActive(false);
                 front = area.Place("wave_front_" + data.surface, left, floor).AddComponent<SpriteRenderer>();
-                front.sprite = area.square;
+                front.sprite = area.waveInk;
                 front.transform.localScale = new Vector3(.32f, data.height, 1);
                 front.color = new Color(.88f, 1f, .97f);
                 front.sortingOrder = 7;

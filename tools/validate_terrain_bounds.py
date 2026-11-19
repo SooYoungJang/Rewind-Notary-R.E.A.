@@ -35,31 +35,32 @@ def same_rect(a, b):
 
 def tile_units(project, scripts, verify):
     art = project / 'Assets/Resources/GameArt/backgrounds'
-    layout = scripts['RepresentativeRoomLayout']
     importer = (project / 'Assets/Editor/PrototypeProjectSetup.cs').read_text()
     verify(all(line in importer for line in ('assetPath.StartsWith("Assets/Resources/GameArt/")',
            'importer.textureType = TextureImporterType.Default;', 'importer.npotScale = TextureImporterNPOTScale.None;')),
            'terrain PNGs use the GameArt default texture importer without NPOT scaling')
     import_limit = int(re.search(r'importer\.maxTextureSize = (\d+);', importer)[1])
-    terrain = scripts['StoryTerrain']
-    units = {'hub': (1., 1.), 'velvet': (1., 1.)}
-    for stage, resource in (('clock', 'brass-plate'), ('opera', 'opera-inlay'), ('gallery', 'gallery-gesso')):
-        pitch = (re.search(r'plate\.width / ([.\d]+)f', terrain) if stage == 'clock' else
-                 re.search(r'OperaSprite\("' + re.escape(resource) + r'", ([.\d]+)f\)', layout))
+    def native_size(resource, pitch):
         asset = art / (resource + '.png')
         meta = yaml.safe_load(asset.with_suffix('.png.meta').read_text())['TextureImporter']
         with Image.open(asset) as im:
             width, height = im.size
-        # Resources.Load<Texture2D> uses the full imported image. Sprite.Create supplies
-        # its own PPU, so the inactive Sprite importer PPU does not determine native units.
         verify(meta['textureType'] == meta['spriteMode'] == meta['nPOTScale'] == 0 and
                max(width, height) <= min(import_limit, meta['maxTextureSize']) and
                all(not p['overridden'] for p in meta['platformSettings']),
                resource + ' imports at source dimensions for runtime Sprite.Create')
-        ppu = width / float(pitch[1])
-        units[stage] = (width / ppu, height / ppu)
-    units['bell'] = units['clock']
-    return units
+        ppu = width / pitch
+        return width / ppu, height / ppu
+
+    previous = {'hub': (1., 1.), 'velvet': (1., 1.)}
+    for stage, resource in (('clock', 'brass-plate'), ('opera', 'opera-inlay'), ('gallery', 'gallery-gesso')):
+        previous[stage] = native_size(resource, 1.6)
+    previous['bell'] = previous['clock']
+    pitch = re.search(r'plated \? ([.\d]+)f : ([.\d]+)f', scripts['RoomArt'])
+    current = {stage: native_size('tile-' + stage, float(pitch[2 if stage == 'velvet' else 1]))
+               for stage in ('clock', 'opera', 'gallery', 'bell', 'velvet')}
+    current['hub'] = native_size('tile-opera', float(pitch[2]))
+    return previous, current
 
 
 def child_scale(formula, width, height, drawn):
@@ -104,16 +105,14 @@ def validate_terrain_bounds(verify, project, scripts):
     formula = fit.groups() if fit else None
     draw_mode = 'visual.drawMode = SpriteDrawMode.Tiled;'
     tile_size = 'visual.size = new Vector2(width, height);'
-    sprite = re.search(r'visual\.sprite = Room\.stage == "gallery" \? OperaSprite\("gallery-gesso", [\d.]+f\) : '
-                       r'Room\.stage == "opera" \? OperaSprite\("opera-inlay", [\d.]+f\) : '
-                       r'plated \? BrassSprite\(\) : WeaveSprite\(\);', block)
+    sprite = re.search(r'visual\.sprite = RoomArt\.Tile\(Room\.stage, plated\);', block)
     # Constrain the inputs to the numeric replay. Unexpected changes fail closed and the
     # editor preflight independently instantiates the production hierarchy.
     # The QA24 source fitted the child after configuring the renderer. The production
     # path initializes the final sprite directly in Tiled mode before setting its size.
     verify(sprite and ('if (woven || plated) { ' + ' '.join(
                (sprite[0], draw_mode, tile_size) if fit else (draw_mode, sprite[0], tile_size))) in block and
-           (fit or ('else visual.sprite = square;' in block and block.count('visual.sprite = ') == 2)) and
+           (fit or ('else visual.sprite = RoomArt.Tile(Room.stage, false);' in block and block.count('visual.sprite = ') == 2)) and
            block.count('visual.size') == 1 and block.count('visual.drawMode') == 1 and
            'var visual = art.AddComponent<SpriteRenderer>();' in block and
            'if (!woven && !plated) go.transform.localScale = new Vector3(width, height, 1);' in block and
@@ -124,13 +123,10 @@ def validate_terrain_bounds(verify, project, scripts):
            'tile replay uses the production draw mode, size, child transform and independent box')
     terrain = ' '.join(scripts['StoryTerrain'].split())
     build = terrain.split('private void BuildSurfaces()')[1].split('internal bool StandingOn(')[0]
-    opera = ' '.join(scripts['OperaFixtures'].split())
-    verify('new Rect(0, 0, 2, 2), Vector2.one * .5f, 2)' in layout and
-           'Resources.Load<Texture2D>("GameArt/backgrounds/brass-plate")' in terrain and
-           'Resources.Load<Texture2D>("GameArt/backgrounds/" + resource)' in opera and
-           'plate.height), Vector2.one * .5f, plate.width /' in terrain and
-           'size, size), Vector2.one * .5f, size, 0, SpriteMeshType.FullRect)' in terrain and
-           'art.height), Vector2.one * .5f, art.width / width, 0, SpriteMeshType.FullRect)' in opera and
+    room_art = ' '.join(scripts['RoomArt'].split())
+    verify('Load("GameArt/backgrounds/tile-" + District(stage), plated ? 1.6f : 1f)' in room_art and
+           'Resources.Load<Texture2D>(path)' in room_art and
+           'new Rect(0, 0, art.width, art.height), Vector2.one * .5f, art.width / width, 0, SpriteMeshType.FullRect)' in room_art and
            'r.x + r.width / 2, r.y + r.height / 2, r.width, r.height' in terrain and
            'box.size = new Vector2(tangent.magnitude, r.height);' in terrain and
            'go.GetComponentInChildren<SpriteRenderer>().size = box.size;' in build and
@@ -146,7 +142,7 @@ def validate_terrain_bounds(verify, project, scripts):
            scripts['PlaytestObservations'].count('sqrMagnitude > .000025f') >= 3,
            'editor preflight reads live XY bounds and calls the slot-six verifier')
 
-    units = tile_units(project, scripts, verify)
+    previous_units, units = tile_units(project, scripts, verify)
     with gzip.open(project / 'tools/run24-terrain-bounds.json.gz', 'rt', encoding='utf-8-sig') as f:
         qa24 = json.load(f)
     readings = {(t['room'], t['surface']): t for t in qa24['tiles']}
@@ -156,7 +152,7 @@ def validate_terrain_bounds(verify, project, scripts):
     rooms = {}
     for path in sorted((project / 'Assets/Resources/Story').glob('*.json')):
         raw = path.read_text()
-        old = prior_pass2_source(path.relative_to(project), raw)
+        old = prior_pass2_source(path.relative_to(project).as_posix(), raw)
         for historical, source in ((True, old), (False, raw)):
             for room in json.loads(source).get('rooms', []):
                 stage = room['stage']
@@ -170,14 +166,14 @@ def validate_terrain_bounds(verify, project, scripts):
                     size = (length, h)
                     collision = world_rect(center, size, (c, s))
                     plated = stage not in ('hub', 'velvet')
-                    pitch = units[stage]
+                    pitch = previous_units[stage]
                     # QA24's assigned scale reveals the bounds read inside Block, before
                     # ramp rotation. At audit time localBounds is the requested tiled size.
                     initial = (w * pitch[0], h * pitch[1])
                     local = (1., 1.) if stage == 'hub' else size
                     if plated:
                         old_scale = (w / initial[0], h / initial[1])
-                        scale = child_scale(formula, w, h, initial)
+                        scale = child_scale(formula, w, h, (w * units[stage][0], h * units[stage][1]))
                     else:
                         scale = old_scale = (w, h) if stage == 'hub' else (1., 1.)
                     previous = world_rect(center, (local[0]*old_scale[0], local[1]*old_scale[1]), (c, s))
@@ -203,7 +199,7 @@ def validate_terrain_bounds(verify, project, scripts):
     # Keep raster rounding (one pixel) separate from the 0.005-unit geometry tolerance.
     for stage, thickness, pixels in (('gallery', .38, 11), ('opera', .35, 8), ('bell', .35, 36),
                                      ('clock', .35, 37), ('velvet', .44, 29)):
-        verify(abs(thickness * units[stage][1] * 720/11 - pixels) <= 1,
+        verify(abs(thickness * previous_units[stage][1] * 720/11 - pixels) <= 1,
                'run23 ' + stage + ' visible tile thickness reproduced to one screen pixel')
     # Frame 041: centers of the marks at x=15 and 28 lie at pixels 493.5 and 1343.5.
     # Use these to locate the three visible platform ends on the independently calibrated X axis.
@@ -211,14 +207,14 @@ def validate_terrain_bounds(verify, project, scripts):
     # Use the historical room positions for the screenshot witness.
     for face, center, width, side, pixel in (('paper', 7, 14, 1, 702), ('folio', 17.5, 13, 1, 1337),
                                              ('studio_door', 38.5, 13, -1, 1350)):
-        edge = center + side * width * units['gallery'][0] / 2
+        edge = center + side * width * previous_units['gallery'][0] / 2
         verify(abs(493.5 + (edge - 15)*pixels_per_unit - pixel) <= 1,
                'run23 gallery_01_entry/' + face + ' observed screen edge reproduced to one pixel')
     verify(not same_rect((-4.2, -.272333, 22.4, .164667), (0., -.38, 14., .38)) and
            not aligned((.004, .004), (0., 0.)) and not aligned((.0051, 0.), (0., 0.)) and
            aligned((.005, 0.), (0., 0.)), 'reject original paper and combined XY drift at the probe threshold')
     return dict(rectangles='At spawn, [x,y,width,height]. QA24 render replay, current render model, authored collision.',
-                qa24UnityVersion=qa24['unityVersion'], nativeTileUnits=units,
+                qa24UnityVersion=qa24['unityVersion'], qa24NativeTileUnits=previous_units, nativeTileUnits=units,
                 previousMismatches=before, currentMismatches=after, rooms=rooms)
 
 

@@ -1,0 +1,20 @@
+{
+  "Assets/Scripts/Story/RepresentativeRoomLayout.cs": {
+    "original": "4275b1995f42c3afad9910b3906b9d47039d631ac2be2001776baf7860100605",
+    "updated": "d40349a790da6ff035c6db01efc595b3d65c1264510d95c96dc7f2c10be4c6aa",
+    "edits": [
+      [
+        145,
+        146,
+        []
+      ],
+      [
+        147,
+        148,
+        [
+          "                Block(f.id + \"_mark\", f.x, y, 1.6f, .05f, f.contactSave ? new Color(1f,.77f,.32f) : Color.cyan);\n"
+        ]
+      ]
+    ]
+  }
+}

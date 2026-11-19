@@ -114,8 +114,6 @@ namespace RewindNotary
             {
                 roofSpot.color = !roofLampLit ? new Color(.43f,.53f,.75f,.18f) :
                     shade ? new Color(.54f,.65f,.91f,.10f) : warning ? Color.yellow : Color.white;
-                if (doorViews.TryGetValue(roofCue, out var sign))
-                    sign.color = Gate(roofCue) ? Color.cyan : Color.gray;
             }
             if (lightShutter == null) return;
             // A walker already inside the portiere can finish clearing its edge.

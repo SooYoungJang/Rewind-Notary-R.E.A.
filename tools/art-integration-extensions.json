@@ -1,0 +1,675 @@
+{
+  "Assets/Scripts/AutoTest/AuthoredTerrainAudit.cs": {
+    "original": "6f99b756dcc27b84ce88b9cb893bc54b66d458a97390d505d3b8ce460fde6935",
+    "updated": "8f73bdbcdefda19f71a0391731ec2e21f5f0957e5b99865d96efeb0b8875f5b1",
+    "edits": [
+      [
+        61,
+        61,
+        [
+          "                if (area.weave != null)\n",
+          "                {\n",
+          "                    DestroyImmediate(area.weave.texture);\n",
+          "                    DestroyImmediate(area.weave);\n",
+          "                }\n",
+          "                if (area.brass != null) DestroyImmediate(area.brass);\n",
+          "                if (area.square != null) DestroyImmediate(area.square);\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Finale/CasselArena.cs": {
+    "original": "cd8080c552c626b3783cc752d0a269e5ad0d70ff2f094cb5811caf880cf13486",
+    "updated": "f9b20231d4daeadab930528a5a0244ed0450de4466d57172daa06270599f303b",
+    "edits": [
+      [
+        9,
+        10,
+        []
+      ],
+      [
+        15,
+        16,
+        [
+          "            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n"
+        ]
+      ],
+      [
+        22,
+        31,
+        []
+      ],
+      [
+        43,
+        46,
+        [
+          "            visual.color = new Color(.13f, .22f, .28f); visual.gameObject.layer = LevelBuilder.GroundLayer;\n"
+        ]
+      ],
+      [
+        51,
+        52,
+        []
+      ],
+      [
+        59,
+        65,
+        [
+          "        private void OnDestroy() { if (sprite != null) Destroy(sprite); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Investigation/InvestigationWorld.cs": {
+    "original": "5985b482eb65675e2c72ab294c74b73ec00f8ead2262b4963b1c9be39e65ce1c",
+    "updated": "2e405e4084c24cf6f69d893f1850318e2b0b50a04911c91b7a52f33adac02c04",
+    "edits": [
+      [
+        13,
+        13,
+        [
+          "        private Sprite sprite;\n"
+        ]
+      ],
+      [
+        19,
+        19,
+        [
+          "            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n"
+        ]
+      ],
+      [
+        27,
+        30,
+        [
+          "                var renderer = go.AddComponent<SpriteRenderer>(); renderer.sprite = sprite; renderer.sortingOrder = 3;\n"
+        ]
+      ],
+      [
+        66,
+        66,
+        [
+          "        private void OnDestroy() { if (sprite != null) Destroy(sprite); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/LevelBuilder.cs": {
+    "original": "172275421e46674d9aaec21878a27e1d1bdc99ea070509160cdaf04a7033b97c",
+    "updated": "fd717fe5d0acf348840b51b16c448d8ec667918071ec9f50d02b5ee475e1d50f",
+    "edits": [
+      [
+        13,
+        14,
+        [
+          "        private Sprite stone, white;\n"
+        ]
+      ],
+      [
+        20,
+        21,
+        [
+          "            white = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n",
+          "            sprites.Add(stone); sprites.Add(white);\n"
+        ]
+      ],
+      [
+        68,
+        69,
+        [
+          "            var render = mark.AddComponent<SpriteRenderer>(); render.sprite = white;\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/DestructibleTarget2D.cs": {
+    "original": "74a26b7274e1c2c7c6923ade1fd63a404b5c2db65078dc35d74b4c9f86c70ee4",
+    "updated": "520a02e1d1af9c22110a98a3e8fef22a2e4acfd9e8939b49e3a9cb597bfbf036",
+    "edits": [
+      [
+        12,
+        12,
+        [
+          "        private Sprite sprite;\n"
+        ]
+      ],
+      [
+        15,
+        17,
+        [
+          "            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n",
+          "            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite;\n",
+          "            visual.color = new Color(0.65f, 0.45f, 0.2f); visual.sortingOrder = 5;\n"
+        ]
+      ],
+      [
+        27,
+        27,
+        [
+          "        private void OnDestroy() { if (sprite != null) Destroy(sprite); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/PaintSurface2D.cs": {
+    "original": "f955494c3769173050c232086d61eb7a271d00df77f2567a85d60337162b036d",
+    "updated": "b74eb32a525ce8f8165a17246e148b7ab0f4726c59a0b6c70184395896f2d848",
+    "edits": [
+      [
+        17,
+        17,
+        [
+          "        private Sprite sprite;\n"
+        ]
+      ],
+      [
+        39,
+        39,
+        [
+          "            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n"
+        ]
+      ],
+      [
+        40,
+        41,
+        [
+          "            visual = art.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 6;\n"
+        ]
+      ],
+      [
+        90,
+        90,
+        [
+          "        private void OnDestroy() { if (sprite != null) Destroy(sprite); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/PracticeLamp2D.cs": {
+    "original": "bd61eaecadbe2714501fdfbd6058b561459a41dc573e5d813fc21694ef360908",
+    "updated": "32b241ca32b54f60d271988cf08be3a2a056610372b9aa0c96fc4b625c1263cd",
+    "edits": [
+      [
+        11,
+        11,
+        [
+          "        private Sprite sprite;\n"
+        ]
+      ],
+      [
+        14,
+        15,
+        [
+          "            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n",
+          "            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 5;\n"
+        ]
+      ],
+      [
+        29,
+        29,
+        [
+          "        private void OnDestroy() { if (sprite != null) Destroy(sprite); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/PracticeTemporalHazard2D.cs": {
+    "original": "fe9ad8fc9d3037cfe69cbbb94c958bb01540e2897ec97ccb8e08f768ef756fd0",
+    "updated": "af8e86a354c078c481e25916497808cf9a51298880f5f234638ae3633baba1e8",
+    "edits": [
+      [
+        12,
+        12,
+        [
+          "        private Sprite sprite;\n"
+        ]
+      ],
+      [
+        15,
+        16,
+        [
+          "            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n",
+          "            var visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.color = Color.red; visual.sortingOrder = 5;\n"
+        ]
+      ],
+      [
+        29,
+        29,
+        [
+          "        private void OnDestroy() { if (sprite != null) Destroy(sprite); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/ResonanceTarget2D.cs": {
+    "original": "666a3c554827075ba78bad8abfdfc7aea55dda85fdecdf57a1dcb449964bfe06",
+    "updated": "8ecbc5851decca54de4247793adda878b8543b16ac7c9e3cb8a1ab9db71b69a6",
+    "edits": [
+      [
+        13,
+        13,
+        [
+          "        private Sprite sprite;\n"
+        ]
+      ],
+      [
+        20,
+        21,
+        [
+          "            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n",
+          "            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 4;\n"
+        ]
+      ],
+      [
+        64,
+        64,
+        [
+          "        private void OnDestroy() { if (sprite != null) Destroy(sprite); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/StitchSurface2D.cs": {
+    "original": "87254c7627d3136ae0f32ebfa189e9d607034efcb1800eefe6bc042ea8035626",
+    "updated": "9d589659a60d19c78a4880b2f24761ea095157712b6920bf9dd68c44c4da02b5",
+    "edits": [
+      [
+        19,
+        20,
+        [
+          "        private Sprite sprite;\n"
+        ]
+      ],
+      [
+        30,
+        35,
+        [
+          "            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n",
+          "            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 4;\n",
+          "            visual.drawMode = SpriteDrawMode.Sliced; visual.size = new Vector2(span, 0.08f);\n"
+        ]
+      ],
+      [
+        46,
+        47,
+        [
+          "            if (stage >= 2)\n",
+          "            {\n",
+          "                SkillStroke.Show(transform.position + new Vector3(-span / 2, 0), transform.position + new Vector3(span / 2, 0.8f), Color.white, profile.lifetime);\n",
+          "                SkillStroke.Show(transform.position + new Vector3(-span / 2, 0.8f), transform.position + new Vector3(span / 2, 0), Color.white, profile.lifetime);\n",
+          "            }\n",
+          "            else\n"
+        ]
+      ],
+      [
+        122,
+        126,
+        [
+          "            if (visual != null) visual.color = releasedBridge ? new Color(0.8f, 0.65f, 0.3f)\n",
+          "                : Installed || retiring ? Color.white : new Color(0.4f, 0.8f, 0.9f, 0.28f);\n"
+        ]
+      ],
+      [
+        127,
+        128,
+        [
+          "        private void OnDestroy() { progression?.EndUse(use); if (sprite != null) Destroy(sprite); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/BellWaves.cs": {
+    "original": "02466795ce722de04446f2487665d64b0174a243677124cfb57d83cdaf6656d9",
+    "updated": "566221f117792c7c09e931db9d7ed0c7909eddc71a5cedfc2303343528e83e8b",
+    "edits": [
+      [
+        8,
+        9,
+        []
+      ],
+      [
+        64,
+        66,
+        []
+      ],
+      [
+        104,
+        105,
+        [
+          "                    ink.sprite = area.square;\n"
+        ]
+      ],
+      [
+        115,
+        116,
+        [
+          "                front.sprite = area.square;\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/DistrictRoomLayout.cs": {
+    "original": "952991b49c83b1b03856d1eb7823daa0bbe1d1df5a98fd713ee846334700aef6",
+    "updated": "1eb4f50880557b8a9bb5cbbf85196478a86395fef58dbd32de110c588256a4ac",
+    "edits": [
+      [
+        164,
+        166,
+        []
+      ],
+      [
+        199,
+        200,
+        [
+          "                            new WaveSpawn { setupSkill = Room.skill, segments = 1 }, player, square, 1, true);\n",
+          "                        if (Room.stage == \"clock\") target.SetPicture(RosterPicture(\"clock_switch\"));\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/FinaleRoomLayout.cs": {
+    "original": "d3e6c9234340de8ca59bfdb7de0f4b1d3905b5f9af779656f6840e4aa81b653c",
+    "updated": "c154c8a313f8cbf8c03492f8f43ab58e9a36cab1e3cc41f2c817f72ff250147c",
+    "edits": [
+      [
+        91,
+        93,
+        [
+          "                    trainingTarget.Initialize(waves.Archetype(\"reflection_statue\"), new WaveSpawn { segments = 3 }, player, square);\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/FirstDeparture.cs": {
+    "original": "b6dd61bc1e3405060d7b289918ef07c4c82dc47e1ac1a976e5a32f11c4f6eed4",
+    "updated": "90ef4f41653a06ce85f7caa8ef0dabf0ed5baf91243119e1f2862beeb04c2224",
+    "edits": [
+      [
+        28,
+        29,
+        [
+          "                        target.Initialize(waves.Archetype(spawn.archetypeId), spawn, player, square);\n",
+          "                        target.SetPicture(RosterPicture(spawn.archetypeId));\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/GalleryPaint.cs": {
+    "original": "b44cfdee4b807bdca472169cd9bf89a9a50c054e1907219ca638156b584d0390",
+    "updated": "c63dbca094b45f9c95a97435e24deee80a68270c0927cc294ed27963532e19fd",
+    "edits": [
+      [
+        55,
+        57,
+        []
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/OperaFixtures.cs": {
+    "original": "7147c38a361ec54e239568cdb648cdf4351148e2e40151ad2386a9c8e9b7fa6f",
+    "updated": "0be49d5ad5d27fa36b382bc37bc4458d78184b065965adbe6e28bcbf8badb37f",
+    "edits": [
+      [
+        116,
+        116,
+        [
+          "                if (doorViews.TryGetValue(roofCue, out var sign))\n",
+          "                    sign.color = Gate(roofCue) ? Color.cyan : Color.gray;\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/RepresentativeArea.cs": {
+    "original": "0af5fe739e289ecf611db015b3be69651c50cf3d0b7f08e25ce1a7a78b4b58ec",
+    "updated": "34e80bc0ae6d859e7f1f0631fb560194a7e03ea2b34c5ef8f76c706422ec4807",
+    "edits": [
+      [
+        349,
+        350,
+        [
+          "            if (square != null) Destroy(square);\n",
+          "            if (brass != null) Destroy(brass);\n",
+          "            if (weave != null) { Destroy(weave.texture); Destroy(weave); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/RepresentativeRoomLayout.cs": {
+    "original": "a9e983c246619b6116243ac21024d37cf76fae863dca2a05143ae9ea80bcdcf0",
+    "updated": "4275b1995f42c3afad9910b3906b9d47039d631ac2be2001776baf7860100605",
+    "edits": [
+      [
+        7,
+        8,
+        [
+          "        private Sprite square;\n",
+          "        private readonly Dictionary<StoryDoor, SpriteRenderer> doorViews = new Dictionary<StoryDoor, SpriteRenderer>();\n"
+        ]
+      ],
+      [
+        16,
+        16,
+        [
+          "            square = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * .5f, 2);\n"
+        ]
+      ],
+      [
+        34,
+        34,
+        [
+          "                // Keep the 1.6-unit brass tile off the object that owns the authored box.\n"
+        ]
+      ],
+      [
+        42,
+        43,
+        [
+          "                visual.sprite = Room.stage == \"gallery\" ? OperaSprite(\"gallery-gesso\", 1.6f) : Room.stage == \"opera\" ? OperaSprite(\"opera-inlay\", 1.6f) : plated ? BrassSprite() : WeaveSprite();\n"
+        ]
+      ],
+      [
+        48,
+        49,
+        [
+          "            else visual.sprite = square;\n"
+        ]
+      ],
+      [
+        60,
+        68,
+        []
+      ],
+      [
+        164,
+        165,
+        [
+          "                doorViews[e] = Block(e.room, x, y, .38f, 2.6f, new Color(.30f,.57f,.58f)).GetComponent<SpriteRenderer>();\n"
+        ]
+      ],
+      [
+        169,
+        178,
+        [
+          "                fixtures[p.id] = Block(p.id, p.x, Room.SurfaceTop(p.surface) + (plank ? .16f : .65f), plank ? 3.4f : .68f, plank ? .32f : 1.3f,\n"
+        ]
+      ],
+      [
+        195,
+        197,
+        []
+      ],
+      [
+        227,
+        228,
+        [
+          "                    target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly);\n",
+          "                    if (point != null && (Room.stage == \"velvet\" || Room.stage == \"clock\" || Room.stage == \"opera\" || Room.stage == \"bell\" || Room.stage == \"gallery\")) target.SetPicture(RosterPicture(group.id));\n"
+        ]
+      ],
+      [
+        263,
+        267,
+        [
+          "            string nextDoor = NextDoorId();\n"
+        ]
+      ],
+      [
+        268,
+        269,
+        [
+          "                doorViews[e].color = !Gate(e) ? Color.gray :\n",
+          "                    e.room == nextDoor ? Color.yellow : Color.cyan;\n"
+        ]
+      ],
+      [
+        294,
+        295,
+        [
+          "            if (shell.Playing) UpdateActivationZones();\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/StoryTerrain.cs": {
+    "original": "6cad211f6f181d46b7b68564f3c8afc53510a40dc3281433b2afd880f65708ee",
+    "updated": "4dbfc13ed58b87d9cdd3fa958c7cb9a6002fd44a17e2f70f1c86a4434afcf3e9",
+    "edits": [
+      [
+        13,
+        13,
+        [
+          "        private Sprite weave, brass;\n",
+          "        private Sprite BrassSprite()\n",
+          "        {\n",
+          "            if (brass == null)\n",
+          "            {\n",
+          "                var plate = Resources.Load<Texture2D>(\"GameArt/backgrounds/brass-plate\");\n",
+          "                brass = Sprite.Create(plate, new Rect(0, 0, plate.width, plate.height), Vector2.one * .5f,\n",
+          "                    plate.width / 1.6f, 0, SpriteMeshType.FullRect);\n",
+          "            }\n",
+          "            return brass;\n",
+          "        }\n"
+        ]
+      ],
+      [
+        14,
+        14,
+        [
+          "\n",
+          "        private Sprite RosterPicture(string id)\n",
+          "        {\n",
+          "            if (rosterArt.TryGetValue(id, out var sprite)) return sprite;\n",
+          "            if (id == \"clock_switch\")\n",
+          "            {\n",
+          "                var dial = Resources.Load<Texture2D>(\"GameArt/sprites/clock-switch\");\n",
+          "                sprite = Sprite.Create(dial, new Rect(0, 0, dial.width, dial.height), Vector2.one * .5f, dial.height);\n",
+          "                rosterArt.Add(id, sprite);\n",
+          "                return sprite;\n",
+          "            }\n",
+          "            var atlas = Resources.Load<Texture2D>(\"GameArt/sprites/velvet-roster\");\n",
+          "            // The four poses have different widths. Keep each silhouette inside its own UV window.\n",
+          "            float left, right;\n",
+          "            switch (id)\n",
+          "            {\n",
+          "                case \"sword_latch\": left = 0; right = .291f; break;\n",
+          "                case \"notary_guard\": left = .291f; right = .495f; break;\n",
+          "                case \"shell_sentry\": left = .51f; right = .735f; break;\n",
+          "                case \"reflection_statue\": left = .76f; right = 1; break;\n",
+          "                default: return square;\n",
+          "            }\n",
+          "            var r = new Rect(left * atlas.width, 0, (right - left) * atlas.width, atlas.height);\n",
+          "            sprite = Sprite.Create(atlas, r, Vector2.one * .5f, atlas.height, 0, SpriteMeshType.FullRect);\n",
+          "            rosterArt.Add(id, sprite);\n",
+          "            return sprite;\n",
+          "        }\n",
+          "\n",
+          "        private Sprite WeaveSprite()\n",
+          "        {\n",
+          "            if (weave != null) return weave;\n",
+          "            const int size = 32;\n",
+          "            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false);\n",
+          "            texture.filterMode = FilterMode.Point;\n",
+          "            for (int y = 0; y < size; y++)\n",
+          "                for (int x = 0; x < size; x++)\n",
+          "                {\n",
+          "                    bool hem = y == 30 || (y == 28 && x % 8 < 5);\n",
+          "                    int diamond = Mathf.Abs(x % 16 - 8) + Mathf.Abs(y % 16 - 8);\n",
+          "                    var color = hem ? new Color(1f,.85f,.56f) : diamond == 7 ? new Color(.94f,.70f,.62f) :\n",
+          "                        (x + y) % 4 < 2 ? new Color(.76f,.57f,.66f) : new Color(.52f,.35f,.45f);\n",
+          "                    texture.SetPixel(x, y, color);\n",
+          "                }\n",
+          "            texture.Apply(false, true);\n",
+          "            weave = Sprite.Create(texture, new Rect(0, 0, size, size), Vector2.one * .5f, size, 0, SpriteMeshType.FullRect);\n",
+          "            return weave;\n",
+          "        }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Waves/WaveStageDirector.cs": {
+    "original": "680c68a0de30609d4967cef2aa72ba8949350fb7ce770c21d462a4003535fbb8",
+    "updated": "b6c857261bbae35a0d683197421db7993be9b17657a76855a497fa3a00627a49",
+    "edits": [
+      [
+        12,
+        12,
+        [
+          "        private Sprite square;\n"
+        ]
+      ],
+      [
+        25,
+        25,
+        [
+          "            square = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);\n"
+        ]
+      ],
+      [
+        41,
+        42,
+        [
+          "            var render = image.AddComponent<SpriteRenderer>(); render.sprite = square; render.color = color;\n"
+        ]
+      ],
+      [
+        88,
+        89,
+        [
+          "            target.Initialize(data.Archetype(spawn.archetypeId), spawn, player, square);\n"
+        ]
+      ],
+      [
+        126,
+        126,
+        [
+          "        private void OnDestroy() { if (square != null) Destroy(square); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Waves/WaveTarget2D.cs": {
+    "original": "73209eaf1a308a56ef914050fd69fa7967fe66fb040bc697f8cfb4db9a71b38d",
+    "updated": "a624f56e4046f7097b44697c8042f1856d56f1be07b43da6b2e05fe21f628a69",
+    "edits": [
+      [
+        40,
+        43,
+        [
+          "            picture.transform.localPosition = Vector3.up * 0.9f;\n",
+          "            picture.transform.localScale = new Vector3(0.8f, 1.8f, 1);\n"
+        ]
+      ],
+      [
+        45,
+        45,
+        [
+          "        }\n",
+          "        internal void SetPicture(Sprite art)\n",
+          "        {\n",
+          "            visual.sprite = art;\n",
+          "            visual.transform.localScale = new Vector3(.95f / art.bounds.size.x, 1.8f / art.bounds.size.y, 1);\n"
+        ]
+      ]
+    ]
+  }
+}

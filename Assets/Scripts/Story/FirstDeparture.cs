@@ -26,8 +26,7 @@ namespace RewindNotary
                         var go = Place(Room.id + ":" + wave.id + ":" + entryWave.Count,
                             8f + spawn.x + entryWave.Count * 2, .05f);
                         var target = go.AddComponent<WaveTarget2D>();
-                        target.Initialize(waves.Archetype(spawn.archetypeId), spawn, player, square);
-                        target.SetPicture(RosterPicture(spawn.archetypeId));
+                        target.Initialize(waves.Archetype(spawn.archetypeId), spawn, player, RoomArt.Enemy(Room.stage, spawn.archetypeId));
                         go.SetActive(entryWave.Count == 0);
                         entryWave.Add(target);
                     }

@@ -296,7 +296,8 @@ def validate_level_step6(check,project,scripts):
            'framed passage shrinks the same return from three doors to one')
     layout,paint,canvas=(scripts[k] for k in ('RepresentativeRoomLayout','PaintSurface2D','CanvasCarveSkill'))
     verify('art.transform.SetParent(go.transform, false)' in layout and 'box.autoTiling = false' in layout and
-           'box.size = new Vector2(width, height)' in layout and 'OperaSprite("gallery-gesso", 1.6f)' in layout,'gallery terrain collider owns authored size independently of tile pitch')
+           'box.size = new Vector2(width, height)' in layout and 'RoomArt.Tile(Room.stage, plated)' in layout and
+           'plated ? 1.6f : 1f' in scripts['RoomArt'],'gallery terrain collider owns authored size independently of tile pitch')
     verify('art.transform.SetParent(transform, false)' in paint and 'visual = art.AddComponent<SpriteRenderer>()' in paint and
            'floor.autoTiling = false' in paint and 'floor.size = size' in paint and 'OperaSprite("gallery-oil", 2.4f)' in scripts['GalleryPaint'],
            'separate paint collision and bristle art')

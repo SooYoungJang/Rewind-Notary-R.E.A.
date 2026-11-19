@@ -354,7 +354,7 @@ def validate_area_links(check, project, scripts):
            'wave handoffs retain intermediate progress; both live rooms require cleared targets')
     verify(all(k in actions for k in ('OnPlank(', 'ReturnWindowOpen', 'LastReturnUse', 'raisedLift.MovePosition', 'DrawHandSignal',
                                      'StitchSurface2D.All.Find', 'OnDistrictEffect', 'TryTrialBell', 'd.requiredSuccesses'))
-           and 'target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly)' in layout
+           and 'target.Initialize(kind, spawn, player, RoomArt.Enemy(Room.stage, group.id), group.setupHits, group.skillOnly)' in layout
            and 'segments = group.segments' in layout and 'opponent.Health.Initialize(finale ? Room.interludeHealth : Room.boutHealth' in area,
            'physical contact, qualified skill callbacks, declared segments and bout health consumed in room runtime')
     verify('ConfirmStoryRecharge(DistrictTrial)' in area and 'Configure(InFieldTrial ? DistrictTrial.stageId : Room.stage, InFieldTrial, resume: InFieldTrial)' in area

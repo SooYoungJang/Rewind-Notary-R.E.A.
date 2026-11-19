@@ -5,8 +5,7 @@ namespace RewindNotary
 {
     public sealed partial class RepresentativeArea
     {
-        private Sprite square;
-        private readonly Dictionary<StoryDoor, SpriteRenderer> doorViews = new Dictionary<StoryDoor, SpriteRenderer>();
+        private readonly Dictionary<StoryDoor, RoomDoorView> doorViews = new Dictionary<StoryDoor, RoomDoorView>();
         private WaveCatalog waves;
         private BenefactorTrialDefinition mikhailTrial;
         private GameObject layout;
@@ -15,7 +14,6 @@ namespace RewindNotary
         private readonly Dictionary<string, GameObject> fixtures = new Dictionary<string, GameObject>();
         private void InitArt()
         {
-            square = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * .5f, 2);
             waves = WaveCatalog.Load();
             mikhailTrial = BenefactorTrialCatalog.Load().ForSkill(SkillRules.SilverStitch);
         }
@@ -34,7 +32,6 @@ namespace RewindNotary
             var art = go;
             if (plated && solid)
             {
-                // Keep the 1.6-unit brass tile off the object that owns the authored box.
                 art = new GameObject("Plate") { layer = LevelBuilder.GroundLayer };
                 art.transform.SetParent(go.transform, false);
             }
@@ -43,13 +40,13 @@ namespace RewindNotary
             if (woven || plated)
             {
                 visual.drawMode = SpriteDrawMode.Tiled;
-                visual.sprite = Room.stage == "gallery" ? OperaSprite("gallery-gesso", 1.6f) : Room.stage == "opera" ? OperaSprite("opera-inlay", 1.6f) : plated ? BrassSprite() : WeaveSprite();
+                visual.sprite = RoomArt.Tile(Room.stage, plated);
                 // Tiled size is already in local units. The sprite pitch only sets the repeat interval.
                 visual.size = new Vector2(width, height);
                 if (plated && solid && (visual.sprite == null || !(width > 0 && height > 0)))
                     throw new System.InvalidOperationException(Room.id + "/" + id + " has empty tile bounds");
             }
-            else visual.sprite = square;
+            else visual.sprite = RoomArt.Tile(Room.stage, false);
             if (!woven && !plated) go.transform.localScale = new Vector3(width, height, 1);
             if (solid)
             {
@@ -61,6 +58,14 @@ namespace RewindNotary
             }
             return go;
         }
+        private void PlaceMarker(string id, float x, float floorY, Sprite sprite, float height)
+        {
+            var view = Place(id, x, floorY + height * .5f).AddComponent<SpriteRenderer>();
+            view.sprite = sprite;
+            view.transform.localScale = Vector3.one * (height / sprite.bounds.size.y);
+            view.sortingOrder = 2;
+        }
+
         private bool OnFixedFloor()
         {
             var actor = player.GetComponent<Collider2D>();
@@ -138,8 +143,9 @@ namespace RewindNotary
             BuildGallery();
             foreach (var f in Room.floors)
             {
+                if (!f.contactSave) continue;
                 float y = Room.Surface(f.surface) == null ? .025f : LandingY(f.id) - .025f;
-                Block(f.id + "_mark", f.x, y, 1.6f, .05f, f.contactSave ? new Color(1f,.77f,.32f) : Color.cyan);
+                Block(f.id + "_mark", f.x, y, 1.6f, .05f, new Color(1f,.77f,.32f));
             }
             doorViews.Clear();
             foreach (var e in Room.exits)
@@ -157,12 +163,20 @@ namespace RewindNotary
                     Block("cage_right", x + 1.23f, y, .16f, 2.95f, brassFrame);
                     Block("cage_cable", x, y + 3.5f, .12f, 4, brassFrame);
                 }
-                doorViews[e] = Block(e.room, x, y, .38f, 2.6f, new Color(.30f,.57f,.58f)).GetComponent<SpriteRenderer>();
+                doorViews.Add(e, new RoomDoorView(Place(e.room, x, y), Room.stage));
             }
             foreach (var p in Room.points)
             {
                 bool plank = p.platform || p.id == "mikhail_escape_plank" || p.id == "luka_freight_platform" || p.id == "mikhail_reunion_plank";
-                fixtures[p.id] = Block(p.id, p.x, Room.SurfaceTop(p.surface) + (plank ? .16f : .65f), plank ? 3.4f : .68f, plank ? .32f : 1.3f,
+                if (p.id == "core_terminal" || p.id == "marta_ledger" || p.id == "basic_ending_ledger")
+                {
+                    var desk = Place(p.id, p.x, Room.SurfaceTop(p.surface) + .65f);
+                    var view = desk.AddComponent<SpriteRenderer>();
+                    view.sprite = RoomArt.Picture("notary-desk-props");
+                    view.transform.localScale = Vector3.one * (1.3f / view.sprite.bounds.size.y);
+                    fixtures[p.id] = desk;
+                }
+                else fixtures[p.id] = Block(p.id, p.x, Room.SurfaceTop(p.surface) + (plank ? .16f : .65f), plank ? 3.4f : .68f, plank ? .32f : 1.3f,
                     plank ? new Color(.68f,.43f,.24f) : new Color(.92f,.70f,.24f), plank);
             }
             if (Room.Point("resonant_crucible") != null)
@@ -180,6 +194,8 @@ namespace RewindNotary
                 }
                 Place("seam_" + i, x, y).AddComponent<StitchSurface2D>()
                     .Initialize((Room.seamId ?? Room.id + ":seam") + "_" + i, i < Room.singleSeams ? .9f : 2.2f, i >= Room.stitchAnchors - Room.releaseKnots, player, opponent);
+                var marker = Room.stage == "velvet" ? RoomArt.Station(Room.stage) : RoomArt.Picture("seam-marker");
+                PlaceMarker("seam_marker_" + i, x - (i < Room.singleSeams ? .45f : 1.1f), y, marker, .68f);
             }
             if (Room.id == "velvet_06_shortcut")
             {
@@ -210,8 +226,7 @@ namespace RewindNotary
                     if (kind.gate == "skill" && string.IsNullOrEmpty(group.setupSkill) &&
                         (!string.IsNullOrEmpty(Room.benefactor) || !Record.Get(SkillRules.SilverStitch).acquired))
                     { kind = waves.Archetype("shell_sentry"); spawn.setupSkill = null; }
-                    target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly);
-                    if (point != null && (Room.stage == "velvet" || Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell" || Room.stage == "gallery")) target.SetPicture(RosterPicture(group.id));
+                    target.Initialize(kind, spawn, player, RoomArt.Enemy(Room.stage, group.id), group.setupHits, group.skillOnly);
                     roomTargets.Add(target);
                     if (point?.active != null && point.active.Defined) activationZones.Add((go, point.active));
                     if (latch) latches.Add(target);
@@ -247,10 +262,12 @@ namespace RewindNotary
             if (fixtures.TryGetValue("echo_side_knot", out var knot)) knot.SetActive(!Has("echo_phase2_shifted"));
             if (HasBridge) fixtures["bridge"].SetActive(Has(BridgeFlag));
             if (framedLandscape != null) framedLandscape.enabled = Has("investigation_complete");
-            string nextDoor = NextDoorId();
+            RefreshDoors();
+        }
+        private void RefreshDoors()
+        {
             foreach (var e in Room.exits)
-                doorViews[e].color = !Gate(e) ? Color.gray :
-                    e.room == nextDoor ? Color.yellow : Color.cyan;
+                doorViews[e].Show(Gate(e));
         }
         private bool Gate(StoryDoor door)
         {
@@ -276,7 +293,7 @@ namespace RewindNotary
         private void LateUpdate()
         {
             if (shell.Playing) UpdateEntryWave();
-            if (shell.Playing) UpdateActivationZones();
+            if (shell.Playing) { UpdateActivationZones(); RefreshDoors(); }
             UpdateDistrictFixtures();
             FlushVictory();
             if (!shell.Playing || !HasBridge || Has(BridgeFlag) || !session.LastSaveSucceeded) return;

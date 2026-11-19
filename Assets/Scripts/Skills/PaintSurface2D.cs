@@ -15,7 +15,6 @@ namespace RewindNotary
         private float until;
         private float returnFadeUntil;
         private bool supported, credit, retiring;
-        private Sprite sprite;
         private SpriteRenderer visual;
         internal string StationId { get; private set; }
         private float stationX;
@@ -38,9 +37,8 @@ namespace RewindNotary
                 var effector = gameObject.AddComponent<PlatformEffector2D>(); effector.useOneWay = true;
                 floor.usedByEffector = true;
             }
-            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
             var art = new GameObject("Brush"); art.transform.SetParent(transform, false);
-            visual = art.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 6;
+            visual = art.AddComponent<SpriteRenderer>(); visual.sprite = RoomArt.PaintBrush(); visual.sortingOrder = 6;
             visual.drawMode = SpriteDrawMode.Sliced; visual.size = size; visual.color = Color.cyan;
         }
         private void OnEnable() { All.Add(this); }
@@ -90,6 +88,5 @@ namespace RewindNotary
             else Remove();
         }
         public void Remove() { Live = credit = false; gameObject.SetActive(false); Destroy(gameObject); }
-        private void OnDestroy() { if (sprite != null) Destroy(sprite); }
     }
 }

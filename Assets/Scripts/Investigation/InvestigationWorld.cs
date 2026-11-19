@@ -11,14 +11,12 @@ namespace RewindNotary
         private SkillSession session;
         private GameShell shell;
         private Font font;
-        private Sprite sprite;
         private readonly List<InvestigationPointDefinition> points = new List<InvestigationPointDefinition>();
         private readonly List<SpriteRenderer> markers = new List<SpriteRenderer>();
         private InvestigationPointDefinition nearest;
         public void Initialize(CombatMotor2D actor, SkillSession skills, GameShell owner, Font uiFont)
         {
             player = actor; session = skills; shell = owner; font = uiFont;
-            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
             foreach (var p in session.Investigation.Catalog.points)
             {
                 if (p.stageId != session.Progression.Record.lastStageId) continue;
@@ -27,7 +25,9 @@ namespace RewindNotary
                 go.transform.localScale = p.kind == "document" ? new Vector3(.55f, .35f, 1)
                     : p.kind == "imprint" ? new Vector3(.32f, .65f, 1) : new Vector3(.65f, 1f, 1);
                 if (p.kind == "imprint") go.transform.rotation = Quaternion.Euler(0, 0, 45);
-                var renderer = go.AddComponent<SpriteRenderer>(); renderer.sprite = sprite; renderer.sortingOrder = 3;
+                var renderer = go.AddComponent<SpriteRenderer>();
+                renderer.sprite = RoomArt.Picture(p.kind == "imprint" ? "seam-marker" : "notary-desk-props");
+                renderer.sortingOrder = 3;
                 points.Add(p); markers.Add(renderer);
             }
         }
@@ -64,6 +64,5 @@ namespace RewindNotary
                 : nearest.Label + "\n" + (CanInspect ? Loc.Get("input.inspect_action", (nearest.kind == "core" ? Loc.Get("investigation.read_core") : session.Investigation.HasClue(nearest.clueId) ? Loc.Get("investigation.reread") : Loc.Get("investigation.inspect"))) : Loc.Get("investigation.wait_for_action")), style);
             GUI.matrix = previous;
         }
-        private void OnDestroy() { if (sprite != null) Destroy(sprite); }
     }
 }

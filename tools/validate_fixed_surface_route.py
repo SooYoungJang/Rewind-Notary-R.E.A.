@@ -194,7 +194,8 @@ def validate_return_descent(verify, rooms, scripts, physics):
         'if (!woven && !plated) go.transform.localScale = new Vector3(width, height, 1);',
         'var box = go.AddComponent<BoxCollider2D>(); if (plated) box.autoTiling = false;',
         'if (woven || plated) box.size = new Vector2(width, height);'))
-    verify(own_box and 'plate.width / 1.6f' in scripts['StoryTerrain'] and
+    verify(own_box and 'RoomArt.Tile(Room.stage, plated)' in block and
+           'plated ? 1.6f : 1f' in scripts['RoomArt'] and
            'plated = (Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell" || Room.stage == "gallery") && Room.terrain != null;' in block,
            'run 13 / brass tile pitch belongs to the visual child and the unscaled root owns the sized collider')
     verify('go.GetComponentInChildren<SpriteRenderer>().size = box.size;' in scripts['StoryTerrain'] and

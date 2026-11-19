@@ -10,12 +10,10 @@ namespace RewindNotary
         private TemporalActor2D temporal;
         private Vector2 origin;
         private float phase;
-        private Sprite sprite;
         public void Initialize(CombatMotor2D actor)
         {
             player = actor; origin = transform.position; temporal = gameObject.AddComponent<TemporalActor2D>();
-            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
-            var visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.color = Color.red; visual.sortingOrder = 5;
+            var visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = RoomArt.Picture("clock-switch"); visual.sortingOrder = 5;
             transform.localScale = Vector3.one * SkillGeometry.LampRadius;
         }
         private void OnEnable() { All.Add(this); }
@@ -29,6 +27,5 @@ namespace RewindNotary
                 player.Health.Hit(SkillGeometry.ProjectileDamage, transform.position);
         }
         public void ResetAttempt() { temporal.Release(); phase = 0; transform.position = origin; }
-        private void OnDestroy() { if (sprite != null) Destroy(sprite); }
     }
 }

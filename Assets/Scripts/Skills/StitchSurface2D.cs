@@ -17,7 +17,7 @@ namespace RewindNotary
         private int stage;
         private BoxCollider2D floor;
         private SpriteRenderer visual;
-        private Sprite sprite;
+        private Sprite installedArt, looseArt;
         private CombatMotor2D player, enemy;
         private StitchBinding binding;
         private SkillProgressionService progression;
@@ -28,9 +28,11 @@ namespace RewindNotary
             binding = enemy.GetComponent<StitchBinding>();
             gameObject.layer = LevelBuilder.GroundLayer;
             floor = gameObject.AddComponent<BoxCollider2D>(); floor.size = new Vector2(span, 0.14f); floor.enabled = false;
-            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
-            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 4;
-            visual.drawMode = SpriteDrawMode.Sliced; visual.size = new Vector2(span, 0.08f);
+            installedArt = RoomArt.Picture("stitch-platform-installed");
+            looseArt = RoomArt.Picture("stitch-platform-uninstalled-v2");
+            var threads = new GameObject("Silver stitch");
+            threads.transform.SetParent(transform, false);
+            visual = threads.AddComponent<SpriteRenderer>(); visual.sortingOrder = 4;
             RestoreVisual();
         }
         private void OnEnable() { All.Add(this); }
@@ -42,12 +44,7 @@ namespace RewindNotary
             Installed = true; supportReported = false; until = Time.time + profile.lifetime;
             floor.enabled = stage >= 2;
             RestoreVisual();
-            if (stage >= 2)
-            {
-                SkillStroke.Show(transform.position + new Vector3(-span / 2, 0), transform.position + new Vector3(span / 2, 0.8f), Color.white, profile.lifetime);
-                SkillStroke.Show(transform.position + new Vector3(-span / 2, 0.8f), transform.position + new Vector3(span / 2, 0), Color.white, profile.lifetime);
-            }
-            else
+            if (stage < 2)
             {
                 // A cracked support becomes physically stable, even without HP damage.
                 floor.enabled = true;
@@ -123,9 +120,11 @@ namespace RewindNotary
         }
         private void RestoreVisual()
         {
-            if (visual != null) visual.color = releasedBridge ? new Color(0.8f, 0.65f, 0.3f)
-                : Installed || retiring ? Color.white : new Color(0.4f, 0.8f, 0.9f, 0.28f);
+            bool taut = Installed || retiring || releasedBridge;
+            visual.sprite = taut ? installedArt : looseArt;
+            visual.transform.localScale = Vector3.one * (span / visual.sprite.bounds.size.x);
+            visual.color = releasedBridge ? new Color(0.8f, 0.65f, 0.3f) : Color.white;
         }
-        private void OnDestroy() { progression?.EndUse(use); if (sprite != null) Destroy(sprite); }
+        private void OnDestroy() { progression?.EndUse(use); }
     }
 }

@@ -59,13 +59,6 @@ namespace RewindNotary
                 // Edit Mode has no end-of-frame Destroy queue.
                 foreach (var sprite in area.rosterArt.Values) DestroyImmediate(sprite);
                 area.rosterArt.Clear();
-                if (area.weave != null)
-                {
-                    DestroyImmediate(area.weave.texture);
-                    DestroyImmediate(area.weave);
-                }
-                if (area.brass != null) DestroyImmediate(area.brass);
-                if (area.square != null) DestroyImmediate(area.square);
                 DestroyImmediate(host);
                 File.WriteAllText(output, JsonUtility.ToJson(readings, true));
             }

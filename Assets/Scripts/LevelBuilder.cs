@@ -11,15 +11,14 @@ namespace RewindNotary
         public static readonly Vector2 ArenaStart = new Vector2(36f, 0.15f);
         public static readonly Vector2 BossStart = new Vector2(46f, 0.15f);
         private readonly List<Sprite> sprites = new List<Sprite>();
-        private Sprite stone, white;
+        private Sprite stone;
         public void Build()
         {
             Texture2D texture = Resources.Load<Texture2D>("GameArt/backgrounds/stage1-ground");
             if (texture == null) throw new InvalidOperationException("Missing stage1-ground");
             stone = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f,
                 texture.height, 0, SpriteMeshType.FullRect);
-            white = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
-            sprites.Add(stone); sprites.Add(white);
+            sprites.Add(stone);
             Platform("Start ground", -8, 16, 0, 2);
             Platform("Main ground and arena", 20, 61, 0, 2);
             Platform("Step 1", 5, 8, 1.6f, 0.55f);
@@ -67,7 +66,7 @@ namespace RewindNotary
             var mark = new GameObject(label); mark.transform.SetParent(transform, false);
             mark.transform.position = new Vector3(x, 0.04f, 0);
             mark.transform.localScale = new Vector3(1.4f, 0.08f, 1);
-            var render = mark.AddComponent<SpriteRenderer>(); render.sprite = white;
+            var render = mark.AddComponent<SpriteRenderer>(); render.sprite = RoomArt.Picture("seam-marker");
             render.color = color; render.sortingOrder = 2;
         }
         private void OnDestroy() { foreach (var sprite in sprites) if (sprite != null) Destroy(sprite); }

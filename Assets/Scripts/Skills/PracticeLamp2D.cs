@@ -9,12 +9,10 @@ namespace RewindNotary
         public Bounds Bounds => SkillGeometry.Area(transform.position, SkillGeometry.LampRadius);
         private bool spent;
         private Color readyColor = Color.cyan, spentColor = Color.gray;
-        private Sprite sprite;
         private SpriteRenderer visual;
         private void Awake()
         {
-            sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
-            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 5;
+            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = RoomArt.Station("opera"); visual.sortingOrder = 5;
             transform.localScale = Vector3.one * SkillGeometry.LampRadius * 2; ResetAttempt();
         }
         internal void SetPicture(Sprite picture)
@@ -29,6 +27,5 @@ namespace RewindNotary
         public bool Trigger()
         { if (spent) return false; spent = true; visual.color = spentColor; return true; }
         public void ResetAttempt() { spent = false; visual.color = readyColor; }
-        private void OnDestroy() { if (sprite != null) Destroy(sprite); }
     }
 }

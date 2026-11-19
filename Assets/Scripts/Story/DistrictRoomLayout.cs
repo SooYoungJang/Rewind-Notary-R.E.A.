@@ -162,6 +162,8 @@ namespace RewindNotary
             {
                 float x = StationX(i);
                 string id = Room.id + ":station_" + i;
+                float markerX = x - (Room.skill == BenefactorIds.Canvas ? 1.16f : .7f);
+                PlaceMarker(id + "_marker", markerX, StationTop(i), RoomArt.Station(Room.stage), 1.15f);
                 if (Room.skill == BenefactorIds.Canvas) continue; // Gallery gaps exist between independently authored permanent lips.
                 if (Room.projectileStations && (Room.stationMarks == null || Room.stationMarks.Length == 0 || Room.stationMarks[i].projectile))
                 {
@@ -195,8 +197,7 @@ namespace RewindNotary
                     {
                         var target = station.AddComponent<WaveTarget2D>();
                         target.Initialize(waves.Archetype("sword_latch"),
-                            new WaveSpawn { setupSkill = Room.skill, segments = 1 }, player, square, 1, true);
-                        if (Room.stage == "clock") target.SetPicture(RosterPicture("clock_switch"));
+                            new WaveSpawn { setupSkill = Room.skill, segments = 1 }, player, RoomArt.Picture("clock-switch"), 1, true);
                     }
                 }
             }

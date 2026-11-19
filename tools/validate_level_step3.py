@@ -512,7 +512,7 @@ def validate_level_step3(check, project, scripts):
            'station-only first visit clears 30 and 80 without a repeated target')
     wires=[
         ('RepresentativeRoomLayout','!string.IsNullOrEmpty(door.requiresFlag) && !Has(door.requiresFlag)','BuildSurfaces();',
-         'Room.Placement(group.placementIds[i])','target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly)'),
+         'Room.Placement(group.placementIds[i])','target.Initialize(kind, spawn, player, RoomArt.Enemy(Room.stage, group.id), group.setupHits, group.skillOnly)'),
         ('DistrictRoomLayout','Room.stationMarks[i].x','Room.SurfaceTop(Room.stationMarks[i].surface)','StationTop(i) +',
          'LastReturnUse == switchUse','ReturnWindowOpen && Safe && OnPlank'),
         ('ClockDistrictProbe','bot.Session?.ActiveSlot == 3','area.StandingOn(f.surface)','scene_floor:clock:', 'segmentSeconds = now - lastContact',

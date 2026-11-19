@@ -53,6 +53,8 @@ namespace RewindNotary
             if (Room.stationMarks == null) return;
             foreach (var m in Room.stationMarks)
             {
+                PlaceMarker(m.id + "_support_mark", m.x + 1.16f, Room.SurfaceTop(m.surface),
+                    RoomArt.Picture("paint-support-marker"), .50f);
                 // Two small pigment dabs mark the banks; the opening stays empty until painted.
                 foreach (int side in new[] { -1, 1 })
                 {
