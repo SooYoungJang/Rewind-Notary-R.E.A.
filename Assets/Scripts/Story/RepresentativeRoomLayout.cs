@@ -30,7 +30,7 @@ namespace RewindNotary
         {
             var go = Place(id, x, y);
             bool woven = Room.stage == "velvet" && Room.terrain != null && Room.terrain.Length > 0;
-            bool plated = (Room.stage == "clock" || Room.stage == "opera") && Room.terrain != null;
+            bool plated = (Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell") && Room.terrain != null;
             var art = go;
             if (plated && solid)
             {
@@ -100,6 +100,10 @@ namespace RewindNotary
                     new Color(.57f,.65f,.62f)).GetComponent<SpriteRenderer>();
                 spindle.sortingOrder = -4;
             }
+            else if (Room.stage == "bell" && Room.terrain != null)
+            {
+                if (InFieldTrial) Block("trial_floor", 52.5f, Room.SurfaceTop("refuge") - 1, 15, 2, stone, true);
+            }
             else if (Room.stage == "opera" && Room.terrain != null)
             {
                 if (InFieldTrial) Block("trial_floor", 29, -1, 66, 2, stone, true);
@@ -114,7 +118,7 @@ namespace RewindNotary
                 Block("east", 40, -1, 12, 2, stone, true);
                 fixtures["bridge"] = Block("latch_bridge", 33, -.14f, 2.2f, .28f, Color.gray, true);
             }
-            bool tall = Room.stage == "clock" || Room.stage == "opera";
+            bool tall = Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell";
             float wallHeight = tall ? Room.cameraBounds.y + Room.cameraBounds.height + 5 : 10;
             float wallY = tall ? wallHeight / 2 - 1 : 3;
             Block("west_wall", echoArena ? 32 : -4, wallY, .4f, wallHeight, stone, true);
@@ -122,6 +126,7 @@ namespace RewindNotary
                 wallY, .4f, wallHeight, stone, true);
             BuildSurfaces();
             BuildOperaFixtures();
+            BuildBellWaves();
             foreach (var f in Room.floors)
             {
                 float y = Room.Surface(f.surface) == null ? .025f : LandingY(f.id) - .025f;
@@ -133,7 +138,7 @@ namespace RewindNotary
                 bool bounded = e.approach != null && e.approach.Defined;
                 float x = bounded ? e.approach.x + e.approach.width * .5f : e.x;
                 float y = bounded ? e.approach.y + 1.6f : 1.3f;
-                if (e.destinationFloor == "opera_drop_landing") DrawDropHatch(x, y);
+                if (e.destinationFloor == "opera_drop_landing" || e.destinationFloor == "bell_drop_landing") DrawDropHatch(x, y);
                 if (e.requiresFlag == "clock_04_cleared")
                 {
                     var brassFrame = new Color(.88f,.78f,.54f);
@@ -197,7 +202,7 @@ namespace RewindNotary
                         (!string.IsNullOrEmpty(Room.benefactor) || !Record.Get(SkillRules.SilverStitch).acquired))
                     { kind = waves.Archetype("shell_sentry"); spawn.setupSkill = null; }
                     target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly);
-                    if (point != null && (Room.stage == "velvet" || Room.stage == "clock" || Room.stage == "opera")) target.SetPicture(RosterPicture(group.id));
+                    if (point != null && (Room.stage == "velvet" || Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell")) target.SetPicture(RosterPicture(group.id));
                     roomTargets.Add(target);
                     if (point?.active != null && point.active.Defined) activationZones.Add((go, point.active));
                     if (latch) latches.Add(target);
@@ -267,7 +272,7 @@ namespace RewindNotary
             if (mikhailBout != null)
             {
                 GUI.Box(new Rect(215, 138, 850, 78), "");
-                GUI.Label(new Rect(235, 144, 810, 36), Loc.Get("area.bout", Loc.Get("area.target.mikhail")) + "   " +
+                GUI.Label(new Rect(235, 144, 810, 36), Loc.Get("area.bout", DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail")) + "   " +
                     opponent.Health.Current + " / " + opponent.Health.Maximum + "   " + mikhailBout.PatternLabel, style);
                 GameBootstrap.Bar(new Rect(235, 190, 810, 12), opponent.Health, new Color(.90f, .48f, .40f));
             }
@@ -287,7 +292,7 @@ namespace RewindNotary
                 else if (DistrictHint(action, out string districtHint)) hint = districtHint;
                 else hint = Loc.Get(key, Loc.Get("area.target." + action[1])) + (p != null ? Arrow(p.x) : "");
             }
-            else if (FightNeeded()) hint = Loc.Get("area.bout", Loc.Get("area.target.mikhail"));
+            else if (FightNeeded()) hint = Loc.Get("area.bout", DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail"));
             else if (FirstDepartureHint() is string next) hint = next;
             else
             {

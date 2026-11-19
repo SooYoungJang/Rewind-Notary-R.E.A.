@@ -11,17 +11,35 @@ namespace RewindNotary
         public double segmentSeconds, districtSeconds, outsideOperaSeconds, roomEntryToContactSeconds, fromEntrySeconds;
     }
 
-    [Serializable] public sealed class OperaWidth
+    [Serializable] public sealed class TerrainWidth
     {
         public string room, surface;
-        public float authored, measured;
+        public float authored, measured, left, bottom, height;
+
+        internal static void Measure(RepresentativeArea area, List<TerrainWidth> widths)
+        {
+            string room = area.Room.id;
+            Physics2D.SyncTransforms();
+            foreach (var s in area.Room.terrain)
+            {
+                var actual = area.ProbeSurfaceBounds(s);
+                float measured = actual.size.x;
+                widths.Add(new TerrainWidth { room = room, surface = s.id, authored = s.rect.width, measured = measured,
+                    left = actual.min.x, bottom = actual.min.y, height = actual.size.y });
+                if (!s.Moving && s.rampRise == 0 && (Mathf.Abs(actual.min.x - s.rect.x) > .005f ||
+                    Mathf.Abs(actual.min.y - s.rect.y) > .005f || Mathf.Abs(actual.size.y - s.rect.height) > .005f))
+                    throw new InvalidOperationException(room + "/" + s.id + " fixed collider rectangle mismatch");
+                if (Mathf.Abs(measured - s.rect.width) > .005f)
+                    throw new InvalidOperationException(room + "/" + s.id + " collider width " + measured + " expected " + s.rect.width);
+            }
+        }
     }
 
     [Serializable] public sealed class OperaDistrictResult
     {
         public StepResult run = new StepResult { id = "OperaDistrict", expected = "Slot 4: ten contacts, shaded chandelier, first-return waltz and investigated drop" };
         public List<OperaContact> contacts = new List<OperaContact>();
-        public List<OperaWidth> widths = new List<OperaWidth>();
+        public List<TerrainWidth> widths = new List<TerrainWidth>();
         public List<string> stationTargets = new List<string>(), longRooms = new List<string>(), dropRooms = new List<string>();
         public string firstWaltzTarget, stageTwoRoom, masteryRoom;
         public int slot, combatUses;
@@ -93,14 +111,7 @@ namespace RewindNotary
             }
             if (opera && surveyed.Add(room))
             {
-                Physics2D.SyncTransforms();
-                foreach (var s in area.Room.terrain)
-                {
-                    float measured = area.ProbeSurfaceBounds(s).size.x;
-                    result.widths.Add(new OperaWidth { room = room, surface = s.id, authored = s.rect.width, measured = measured });
-                    if (Mathf.Abs(measured - s.rect.width) > .005f)
-                        throw new InvalidOperationException(room + "/" + s.id + " collider width " + measured + " expected " + s.rect.width);
-                }
+                TerrainWidth.Measure(area, result.widths);
             }
             if (leg >= 0 && leg + 1 < Comparison.Length && room == Comparison[leg + 1])
             {

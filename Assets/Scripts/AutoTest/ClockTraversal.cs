@@ -8,6 +8,7 @@ namespace RewindNotary
         private string jumpingFrom;
         private float jumpStarted;
         private GameObject plannedLayout;
+        private int plannedPlateRevision;
         private StorySurface[] terrain;
         private FixedSurfaceRoute route;
         private FixedSurfaceRoute.Step step;
@@ -31,7 +32,8 @@ namespace RewindNotary
 
         private void ReadTerrain()
         {
-            if (plannedLayout == Area.ProbeLayout) return;
+            if (plannedLayout == Area.ProbeLayout && plannedPlateRevision == Area.BellPlateRevision) return;
+            plannedPlateRevision = Area.BellPlateRevision;
             ClearStep();
             terrain = Area.ProbeTerrain();
             route = null;

@@ -21,8 +21,9 @@ namespace RewindNotary
         private VelvetDistrictProbe district;
         private ClockDistrictProbe clock;
         private OperaDistrictProbe opera;
-        private int capturedOperaContacts;
-        private bool DrivingDistrict => district != null || clock != null || opera != null;
+        private BellDistrictProbe bell;
+        private int capturedOperaContacts, capturedBellContacts;
+        private bool DrivingDistrict => district != null || clock != null || opera != null || bell != null;
         private BoutAttempt attempt;
         private BenefactorTrialOpponent observedBout;
         private int index, lastShotFrame = -1;
@@ -87,7 +88,23 @@ namespace RewindNotary
                 {
                     if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
                     if (now - entered > 1500) { Stop("Opera district deadline"); return; }
-                    if (opera.Drive(bot, keyboard, now)) { EndStep("pass", ""); StartDrain(true); }
+                    if (opera.Drive(bot, keyboard, now))
+                    {
+                        EndStep("pass", "");
+                        Detach();
+                        opera = null;
+                        bot = new FirstDepartureBot(keyboard, Stop);
+                        bell = new BellDistrictProbe(report.bellDistrict, PublishBell);
+                        step = report.bellDistrict.run;
+                        StartMeasurement();
+                    }
+                    return;
+                }
+                if (bell != null)
+                {
+                    if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
+                    if (now - entered > 1500) { Stop("Bell district deadline"); return; }
+                    if (bell.Drive(bot, keyboard, now)) { EndStep("pass", ""); StartDrain(true); }
                     return;
                 }
                 if (district != null)
@@ -135,6 +152,17 @@ namespace RewindNotary
                 if (finishing) { Exit(); return; }
                 Stop("exception in scenario driver: " + e.Message);
             }
+        }
+
+        private void PublishBell()
+        {
+            var contacts = report.bellDistrict.contacts;
+            if (capturedBellContacts < contacts.Count)
+            {
+                Capture(contacts[contacts.Count - 1].room);
+                capturedBellContacts = contacts.Count;
+            }
+            report.Write(AutoTestRuntime.DirectoryPath);
         }
 
         private void PublishOpera()
@@ -189,8 +217,9 @@ namespace RewindNotary
                 area?.PendingAction, bot.Record?.storyFlags.Count, bot.Record?.Get(SkillRules.SilverStitch)?.validUseCount,
                 target?.TargetId, target?.State.Remaining, area?.BoutOpponent?.Health.Current,
                 clock != null ? bot.Record?.Get(BenefactorIds.Pendulum)?.validUseCount : null,
+                bell != null ? bot.Record?.Get(BenefactorIds.Forge)?.validUseCount : null,
                 opera != null ? bot.Record?.Get(BenefactorIds.Waltz)?.validUseCount : null,
-                (clock != null || opera != null) ? area?.UnclearedClockTarget?.State.Remaining : null);
+                (clock != null || opera != null || bell != null) ? area?.UnclearedClockTarget?.State.Remaining : null);
             if (state != progress || (position - lastPosition).sqrMagnitude >= .25f)
             {
                 lastProgress = now;
@@ -199,7 +228,7 @@ namespace RewindNotary
             }
         }
 
-        private int DistrictContacts => opera != null ? report.operaDistrict.contacts.Count : clock != null ? report.clockDistrict.contacts.Count : report.velvetDistrict.contacts.Count;
+        private int DistrictContacts => bell != null ? report.bellDistrict.contacts.Count : opera != null ? report.operaDistrict.contacts.Count : clock != null ? report.clockDistrict.contacts.Count : report.velvetDistrict.contacts.Count;
 
         private bool CheckDistrictProgress(double now)
         {
@@ -228,7 +257,7 @@ namespace RewindNotary
             var foe = area?.BoutOpponent;
             var feet = player == null ? "-" : player.Body.position.ToString("F2");
             int remaining = area == null ? 0 : area.WaveTargetCount - area.ClearedWaveTargets;
-            string support = (clock != null || opera != null) && area != null ? " support=" + area.ClockSupportDescription() : "";
+            string support = (clock != null || opera != null || bell != null) && area != null ? " support=" + area.ClockSupportDescription() : "";
             return $"{step.id} elapsed={now - entered:F1}s idle={now - lastDistrictProgress:F1}s room={area?.Room?.id ?? "-"} " +
                 $"feet={feet} grounded={player?.Grounded} row={area?.ActiveRow?.textKey ?? "-"} action={area?.PendingAction ?? "-"} " +
                 $"remainingTargets={remaining} waveTarget={target?.TargetId ?? "-"} segments={target?.State.Remaining ?? 0} contacts={DistrictContacts}" + support +
@@ -279,6 +308,7 @@ namespace RewindNotary
         {
             step.Count(use.SkillId).activations++;
             if (clock != null) bot.ObserveClockCast(use);
+            if (bell != null) bot.ObserveBellCast(use);
             pilot.ObserveUse();
         }
         private void ProgressionEvent(ProgressionEvent e)
@@ -287,6 +317,9 @@ namespace RewindNotary
             district?.ObserveUse(e, bot.Area.Room.id);
             clock?.ObserveUse(e, bot.Area.Room.id);
             opera?.ObserveUse(e, bot.Area.Room.id);
+            bell?.ObserveUse(e, bot.Area.Room.id);
+            if (bell != null && e.kind == "attempt_reset")
+                report.Error("bellDistrict", "Attempt reset during continuous bell traversal");
             if (opera != null && e.kind == "attempt_reset")
                 report.Error("operaDistrict", "Attempt reset during continuous opera traversal");
             if (clock != null && e.kind == "attempt_reset")

@@ -22,7 +22,7 @@ namespace RewindNotary
         internal static AutoTestReport Report { get; private set; }
         internal static double Now => Time.realtimeSinceStartupAsDouble;
         internal static string DirectoryPath => directory;
-        internal static int SlotCount => requested && sandbox != null ? 4 : 3;
+        internal static int SlotCount => requested && sandbox != null ? 5 : 3;
 
         // Never fall back to the real root if test setup throws before creating the sandbox.
         internal static string SaveRoot => requested
@@ -189,9 +189,9 @@ namespace RewindNotary
             }
         }
 
-        internal static string[] ReadPreviousSlotHashes()
+        internal static string[] ReadPreviousSlotHashes(int count = 3)
         {
-            var hashes = new string[3];
+            var hashes = new string[count];
             using (var sha = SHA256.Create())
                 for (int i = 0; i < hashes.Length; i++)
                 {
@@ -228,6 +228,14 @@ namespace RewindNotary
                 {
                     string slot = Path.Combine(sandbox, "SkillSystem", "slot-1.json");
                     audit.observedSlotWrite = File.Exists(slot);
+                    var bell = Report.bellDistrict;
+                    if (completed || bell.previousSlotsBefore?.Length == 4)
+                    {
+                        bell.previousSlotsAfter = ReadPreviousSlotHashes(4);
+                        bell.previousSlotsUnchanged = bell.previousSlotsBefore?.Length == 4 &&
+                            string.Join("/", bell.previousSlotsBefore) == string.Join("/", bell.previousSlotsAfter);
+                        if (!bell.previousSlotsUnchanged) Report.Error("bellDistrict", "Earlier slot contents changed during slot 5 traversal");
+                    }
                     if (completed)
                     {
                         audit.verifiedFinalSlot = audit.observedSlotWrite && SavedArrival(slot);
@@ -246,6 +254,17 @@ namespace RewindNotary
                         opera.previousSlotsUnchanged = opera.previousSlotsBefore?.Length == 3 &&
                             string.Join("/", opera.previousSlotsBefore) == string.Join("/", opera.previousSlotsAfter);
                         if (!opera.previousSlotsUnchanged) Report.Error("operaDistrict", "Earlier slot contents changed during slot 4 traversal");
+                        var fifth = Path.Combine(sandbox, "SkillSystem", "slot-5.json");
+                        if (File.Exists(fifth))
+                        {
+                            var save = JsonUtility.FromJson<CoreRecord>(File.ReadAllText(fifth));
+                            bell.slotReadback = save != null && save.schemaVersion == CoreRecord.SchemaVersion && !save.testData &&
+                                save.slotId == "slot-5" && save.lastStageId == "bell" && save.Get(BenefactorIds.Forge).stage == 3 &&
+                                save.Get(BenefactorIds.Forge).validUseCount >= 80 && save.Get(SkillRules.SilverStitch).acquired &&
+                                save.completedEncounters.Contains("story:gabriel_bout") && save.storyFlags.Contains("investigation_complete") &&
+                                save.storyFlags.Contains("scene_floor:bell:bell_rest_09");
+                        }
+                        if (!bell.slotReadback) Report.Error("bellDistrict", "Missing fifth-slot bell checkpoint on disk.");
                         var fourth = Path.Combine(sandbox, "SkillSystem", "slot-4.json");
                         if (File.Exists(fourth))
                         {
@@ -278,6 +297,7 @@ namespace RewindNotary
                 DrainLogs();
                 if (completed && !Report.pilot.Passed) Report.Error("pilot", "Incomplete pilot route or contact save");
                 if (completed && Report.velvetDistrict.run.status != "pass") Report.Error("velvetDistrict", "Incomplete district traversal");
+                if (completed && Report.bellDistrict.run.status != "pass") Report.Error("bellDistrict", "Incomplete bell traversal");
                 if (completed && Report.operaDistrict.run.status != "pass") Report.Error("operaDistrict", "Incomplete opera traversal");
                 if (completed && Report.clockDistrict.run.status != "pass") Report.Error("clockDistrict", "Incomplete clock traversal");
                 if (completed && !Report.feel.Passed) Report.Error("feel", "Required input measurements are incomplete.");

@@ -14,10 +14,15 @@ namespace RewindNotary
         internal float StrikeIn => phase == 0 && remaining < Pattern.windup ? remaining : float.PositiveInfinity;
         private bool contacted;
         private int storyHalfHealth;
+        private float trialTop;
+        private Bounds bellLanding;
+        private Bounds? storyDeck;
+        private bool StoryBell => storyHalfHealth > 0 && Pattern.action == "bell";
         private TrialPattern Pattern => Definition.patterns[pattern];
         public string PatternLabel => rest > 0 ? Loc.Get("trial.resting") : Pattern.Label + (phase == 0 ? Loc.Get("trial.windup_suffix") : phase == 1 ? Loc.Get("trial.action_suffix") : Loc.Get("trial.opening_suffix"));
-        public void Initialize(CombatMotor2D actor, SkillSession skills, BenefactorTrialDefinition definition)
+        public void Initialize(CombatMotor2D actor, SkillSession skills, BenefactorTrialDefinition definition, float floorY = 0)
         {
+            trialTop = floorY;
             motor = GetComponent<CombatMotor2D>(); player = actor; session = skills; Definition = definition;
             binding = GetComponent<StitchBinding>();
             motor.Health.Initialize(definition.health, definition.hitImmunity);
@@ -26,12 +31,13 @@ namespace RewindNotary
             ResetAttempt();
         }
         // The story room owns HP, interlude, victory and reward. Reuse only the two authored attacks.
-        internal void StartStoryBout(CombatMotor2D actor, BenefactorTrialDefinition definition, int halfHealth)
+        internal void StartStoryBout(CombatMotor2D actor, BenefactorTrialDefinition definition, int halfHealth, Bounds? deck = null)
         {
             motor = GetComponent<CombatMotor2D>(); player = actor; Definition = definition;
             binding = GetComponent<StitchBinding>();
             binding.Break();
             storyHalfHealth = halfHealth;
+            storyDeck = deck;
             remaining = Pattern.windup;
             motor.Face(player.Body.position.x - motor.Body.position.x);
             motor.Animation.Tint(new Color(.96f, .72f, .68f));
@@ -39,7 +45,7 @@ namespace RewindNotary
         private void Rest() { rest = Definition.restSeconds; motor.Move(0); motor.Animation.SetTelegraph(false); }
         public void ResetAttempt()
         {
-            motor.ResetAt(new Vector2(Definition.spawnX, 0.15f)); motor.Face(-1);
+            motor.ResetAt(new Vector2(Definition.spawnX, trialTop + 0.15f)); motor.Face(-1);
             pattern = phase = 0; remaining = Pattern.windup; rest = 0; contacted = false;
             binding.Break(); motor.Animation.SetTelegraph(false);
         }
@@ -53,9 +59,17 @@ namespace RewindNotary
                 return;
             }
             if (motor.Health.Dead) return;
-            if (storyHalfHealth == 0 && motor.transform.position.y < -7) { Rest(); return; }
+            if (storyHalfHealth == 0 && motor.transform.position.y < trialTop - 7) { Rest(); return; }
             if (motor.Temporal.Frozen || motor.Stunned || binding.Bound)
             { motor.Animation.SetTelegraph(false); if (!motor.Temporal.Frozen) motor.Move(0); return; }
+            if (storyDeck.HasValue)
+            {
+                var deck = storyDeck.Value;
+                var pos = motor.Body.position;
+                float x = Mathf.Clamp(pos.x, deck.min.x + .6f, deck.max.x - .6f);
+                if (x != pos.x || pos.y < deck.max.y - .2f)
+                    motor.Body.position = new Vector2(x, Mathf.Max(pos.y, deck.max.y + .05f));
+            }
             motor.RefreshGround();
             float delta = player.Body.position.x - motor.Body.position.x;
             bool pressing = storyHalfHealth > 0 && motor.Health.Current <= storyHalfHealth;
@@ -70,8 +84,20 @@ namespace RewindNotary
                     direction = delta < 0 ? -1 : 1; motor.Face(direction);
                     if (storyHalfHealth > 0)
                     {
-                        var danger = Threat();
-                        SkillStroke.Show(danger.min, danger.max, Color.yellow, Pattern.windup);
+                        if (StoryBell)
+                        {
+                            // Low radial strike at the hammer, then a tall strike at the landing marked under Rea.
+                            float height = pattern == 0 ? .75f : 2.8f;
+                            float center = pattern == 0 ? motor.Body.position.x : player.Body.position.x;
+                            bellLanding = new Bounds(new Vector3(center, motor.Body.position.y + height / 2, 0),
+                                new Vector3(pattern == 0 ? Pattern.reach * 2 : Pattern.reach, height, 2));
+                            BellOutline(bellLanding, Pattern.windup);
+                        }
+                        else
+                        {
+                            var danger = Threat();
+                            SkillStroke.Show(danger.min, danger.max, Color.yellow, Pattern.windup);
+                        }
                         AudioManager.Play(AudioManager.Sfx.BossWarning);
                     }
                 }
@@ -104,8 +130,19 @@ namespace RewindNotary
             if (storyHalfHealth > 0 && phase == 1 && !motor.Health.Dead && !motor.Stunned && !motor.Temporal.Frozen && !binding.Bound)
                 motor.Animation.PlayAttack(Pattern.duration - remaining, 0, Pattern.duration);
         }
+        private static void BellOutline(Bounds b, float seconds)
+        {
+            Vector2 lo = b.min, hi = b.max;
+            var left = new Vector2(lo.x, hi.y);
+            var right = new Vector2(hi.x, lo.y);
+            SkillStroke.Show(lo, right, Color.yellow, seconds);
+            SkillStroke.Show(right, hi, Color.yellow, seconds);
+            SkillStroke.Show(hi, left, Color.yellow, seconds);
+            SkillStroke.Show(left, lo, Color.yellow, seconds);
+        }
         private Bounds Threat()
         {
+            if (StoryBell) return bellLanding;
             float height = Pattern.action == "paint_line" ? 0.5f : Pattern.action == "thread_cross" ? 3f : 2f;
             bool radial = Pattern.action == "bell" || Pattern.action == "waltz";
             return new Bounds(motor.transform.position + new Vector3(radial ? 0 : direction * Pattern.reach * 0.5f, height * 0.5f, 0),

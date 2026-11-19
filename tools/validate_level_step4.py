@@ -284,11 +284,11 @@ def validate_level_step4(check,project,scripts):
         ('three lighting phases and physical shutter',scripts['OperaFixtures'],['Mathf.Repeat(Time.fixedTime - cueStart, 6f)','CueBeat < 1f','CueBeat >= 2.8f','lightShutter.enabled = !shade','fixedFloors.Remove(lightShutter)']),
         ('single-cast station and downward shot logic',scripts['DistrictRoomLayout'],['Room.stationMarks[i].projectile','3.45f','Vector2.down * 2','emitter.spent = true','station.AddComponent<PracticeLamp2D>()']),
         ('posture and lamp events',probe,['e.kind != "valid_use"','!uses.Add(e.useId)','!stations.Add(e.targetId)','e.after == 30','e.after == 80','station < 42','uses.Count < 80']),
-        ('all collider widths measured on entry',probe,['Physics2D.SyncTransforms();','area.Room.terrain','area.ProbeSurfaceBounds(s).size.x','Mathf.Abs(measured - s.rect.width) > .005f']),
+        ('all collider widths measured on entry',probe,['Physics2D.SyncTransforms();','area.Room.terrain','var actual = area.ProbeSurfaceBounds(s);','float measured = actual.size.x;','Mathf.Abs(measured - s.rect.width) > .005f']),
         ('normal and shortened return timed between common marks',probe,['"opera_drop_landing"','"opera_drop_head"','result.shortcutSeconds >= result.longSeconds','Time.frameCount > closedFrame + 1','!result.closedBeforeInvestigation']),
         ('physical ordered checkpoints',probe,['Entry, Hall, Chandelier, Roof, Wings, Arena, Upper, Lower, Stairs, Seam','!area.StandingOn(f.surface)','Mathf.Abs(feet.x - f.x) > .8f','"scene_floor:opera:" + f.id']),
         ('existing and new watchdogs and input',driver,['DrivingDistrict && !CheckDistrictProgress(now)','DistrictIdleLimit = 120','now - lastProgress > 18','opera.Drive(bot, keyboard, now)','opera?.ObserveUse(e, bot.Area.Room.id)','opera != null && e.kind == "attempt_reset"']),
-        ('slot readback and other files',runtime,['requested && sandbox != null ? 4 : 3','"slot-4.json"','save.slotId == "slot-4"','"scene_floor:opera:opera_rest_09"','save.Get(BenefactorIds.Waltz).validUseCount >= 80','if (!opera.previousSlotsUnchanged)','completed && Report.operaDistrict.run.status != "pass"'])]:
+        ('slot readback and other files',runtime,['requested && sandbox != null ? 5 : 3','"slot-4.json"','save.slotId == "slot-4"','"scene_floor:opera:opera_rest_09"','save.Get(BenefactorIds.Waltz).validUseCount >= 80','if (!opera.previousSlotsUnchanged)','completed && Report.operaDistrict.run.status != "pass"'])]:
         verify(all(t in script for t in terms),label)
     return dict(routes=routes,growth=counts,stationOnlyThresholds=[sequenced[i] for i in (29,79)],
                 span=dict(samples=len(at),minSeconds=min(v[0] for v in at),maxSeconds=max(v[0] for v in at)),

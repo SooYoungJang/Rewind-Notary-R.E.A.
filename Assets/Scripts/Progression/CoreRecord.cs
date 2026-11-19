@@ -55,7 +55,7 @@ namespace RewindNotary
             if (skills == null || skills.Count != 6 || ledger == null || ledger.Count != 5 || completedEncounters == null)
                 throw new InvalidOperationException("Incomplete core record");
             if (testData != (slotId == "debug") || (!testData && slotId != "slot-1" && slotId != "slot-2" && slotId != "slot-3" &&
-                !(slotId == "slot-4" && AutoTestRuntime.SlotCount == 4)))
+                !((slotId == "slot-4" || slotId == "slot-5") && AutoTestRuntime.SlotCount == 5)))
                 throw new InvalidOperationException("Invalid save slot");
             if (storyFlags == null || string.IsNullOrEmpty(lastStageId))
                 throw new InvalidOperationException("Incomplete story state");

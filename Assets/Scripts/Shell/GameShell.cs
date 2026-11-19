@@ -395,13 +395,14 @@ namespace RewindNotary
             ShellPage renderedPage = Page;
             if (Page == ShellPage.Slots)
             {
+                int pitch = records.Length > 4 ? 98 : 122;
                 for (int i = 0; i < records.Length; i++)
                 {
-                    Row(i, SlotLabel(i), new Rect(200, 148 + i * 122, 760, 110));
+                    Row(i, SlotLabel(i), new Rect(200, 148 + i * pitch, 760, pitch - 12));
                     if (Page != renderedPage) break;
-                    if (GUI.Button(new Rect(978, 175 + i * 122, 100, 52), Loc.Get("ui.delete"), buttonStyle)) RequestDelete(i + 1);
+                    if (GUI.Button(new Rect(978, 175 + i * pitch, 100, 52), Loc.Get("ui.delete"), buttonStyle)) RequestDelete(i + 1);
                 }
-                if (Page == renderedPage) Row(records.Length, Loc.Get("ui.back"), new Rect(200, 154 + records.Length * 122, 880, 46));
+                if (Page == renderedPage) Row(records.Length, Loc.Get("ui.back"), new Rect(200, 154 + records.Length * pitch, 880, 46));
             }
             else if (Page == ShellPage.StorySaving)
             {

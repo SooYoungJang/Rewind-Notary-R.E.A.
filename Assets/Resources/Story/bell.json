@@ -8,46 +8,138 @@
       "floors": [
         {
           "id": "bell_entry_floor",
-          "x": 3
+          "x": 4,
+          "surface": "quay"
         },
         {
           "id": "bell_desk_floor",
-          "x": 19
+          "x": 14,
+          "surface": "clerk_desk"
         },
         {
           "id": "bell_entry_east",
-          "x": 41
+          "x": 40,
+          "surface": "weir"
+        },
+        {
+          "id": "bell_rest_01",
+          "x": 5,
+          "surface": "quay",
+          "contactSave": true
         }
       ],
       "points": [
         {
           "id": "gabriel_score_desk",
-          "x": 12,
-          "platform": false
+          "x": 14,
+          "platform": false,
+          "surface": "clerk_desk"
         },
         {
           "id": "bell_entry_latch",
-          "x": 24,
-          "platform": false
+          "x": 27,
+          "platform": false,
+          "surface": "drain"
         }
       ],
       "exits": [
         {
           "room": "hub_lift",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 15.84,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "bell_02_tunnels",
-          "x": 42,
-          "gate": "bell_entry_complete"
+          "x": 41,
+          "gate": "bell_entry_complete",
+          "approach": {
+            "x": 40,
+            "y": 9.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_tunnel_west"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_0"
+          ]
+        }
+      ],
+      "terrain": [
+        {
+          "id": "quay",
+          "rect": {
+            "x": 0,
+            "y": 15.65,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "clerk_desk",
+          "rect": {
+            "x": 8,
+            "y": 13.65,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "drain",
+          "rect": {
+            "x": 18,
+            "y": 11.65,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "weir",
+          "rect": {
+            "x": 27,
+            "y": 9.65,
+            "width": 18,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 3.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 11.0,
+        "width": 46,
+        "height": 10.2
+      },
+      "backgroundSet": "bell_01_entry",
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 27,
+          "y": 12.05,
+          "active": {
+            "x": 24,
+            "y": 11.75,
+            "width": 6,
+            "height": 1.45
+          }
         }
       ]
     },
@@ -59,49 +151,244 @@
       "floors": [
         {
           "id": "bell_tunnel_west",
-          "x": 3
+          "x": 4,
+          "surface": "grille"
         },
         {
           "id": "bell_tunnel_east",
-          "x": 39
+          "x": 39,
+          "surface": "culvert"
+        },
+        {
+          "id": "bell_rest_02",
+          "x": 16,
+          "surface": "pipe_crown",
+          "contactSave": true
+        },
+        {
+          "id": "bell_drop_landing",
+          "x": 16,
+          "surface": "fork_rack"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "bell_01_entry",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 9.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_entry_east"
         },
         {
           "room": "bell_03_acoustic_hall",
           "x": 42,
-          "gate": "bell_02_cleared"
+          "gate": "bell_02_cleared",
+          "approach": {
+            "x": 41,
+            "y": -0.16,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_acoustic_west"
         },
         {
           "room": "bell_09_shortcut",
-          "x": 37,
-          "gate": "synergy"
+          "x": 17,
+          "gate": "synergy",
+          "approach": {
+            "x": 16,
+            "y": 7.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_shortcut_safe"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 2,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "shell_sentry_2",
+            "shell_sentry_3"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "reflection_statue_4"
+          ]
         }
       ],
-      "crossing": "latches"
+      "terrain": [
+        {
+          "id": "grille",
+          "rect": {
+            "x": 0,
+            "y": 9.65,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "fork_rack",
+          "rect": {
+            "x": 8,
+            "y": 7.65,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pipe_crown",
+          "rect": {
+            "x": 15,
+            "y": 5.65,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "sluice_chain",
+          "rect": {
+            "x": 22,
+            "y": 3.65,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "sump_lip",
+          "rect": {
+            "x": 29,
+            "y": 1.65,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "culvert",
+          "rect": {
+            "x": 34,
+            "y": -0.35,
+            "width": 11,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "fork_echo",
+          "rect": {
+            "x": 23,
+            "y": 7.65,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true,
+          "bellLatch": 1
+        },
+        {
+          "id": "sump_echo",
+          "rect": {
+            "x": 31,
+            "y": 5.65,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true,
+          "bellLatch": 2
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -7.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.0,
+        "width": 46,
+        "height": 14.2
+      },
+      "backgroundSet": "bell_02_tunnels",
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 12,
+          "y": 8.05,
+          "active": {
+            "x": 9,
+            "y": 7.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 27,
+          "y": 8.05,
+          "active": {
+            "x": 24,
+            "y": 7.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "shell_sentry_2",
+          "x": 20,
+          "y": 6.05,
+          "active": {
+            "x": 17,
+            "y": 5.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "shell_sentry_3",
+          "x": 34,
+          "y": 2.05,
+          "active": {
+            "x": 31,
+            "y": 1.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "reflection_statue_4",
+          "x": 38,
+          "y": 0.05,
+          "active": {
+            "x": 35,
+            "y": -0.25,
+            "width": 6,
+            "height": 1.45
+          }
+        }
+      ]
     },
     {
       "id": "bell_03_acoustic_hall",
@@ -111,49 +398,215 @@
       "floors": [
         {
           "id": "bell_acoustic_west",
-          "x": 3
+          "x": 4,
+          "surface": "echo_pool"
         },
         {
           "id": "bell_acoustic_east",
-          "x": 39
+          "x": 39,
+          "surface": "gallery"
+        },
+        {
+          "id": "bell_rest_03",
+          "x": 7,
+          "surface": "echo_pool",
+          "contactSave": true
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "bell_02_tunnels",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": -0.16,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_tunnel_east"
         },
         {
           "room": "bell_04_belfry_shaft",
-          "x": 42,
-          "gate": "bell_03_cleared"
+          "x": 41,
+          "gate": "bell_03_cleared",
+          "approach": {
+            "x": 40,
+            "y": 7.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_shaft_foot"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 2,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "shell_sentry_2",
+            "shell_sentry_3"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "reflection_statue_4"
+          ]
         },
         {
           "id": "notary_guard",
           "count": 1,
-          "segments": 2
+          "segments": 2,
+          "placementIds": [
+            "notary_guard_5"
+          ]
         }
       ],
-      "crossing": "cycle"
+      "terrain": [
+        {
+          "id": "echo_pool",
+          "rect": {
+            "x": 0,
+            "y": -0.35,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "dais",
+          "rect": {
+            "x": 8,
+            "y": 1.65,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "choir_step",
+          "rect": {
+            "x": 15,
+            "y": 3.65,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true,
+          "bellBeat": true
+        },
+        {
+          "id": "resonator",
+          "rect": {
+            "x": 22,
+            "y": 5.65,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "gallery",
+          "rect": {
+            "x": 30,
+            "y": 7.65,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -7.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.0,
+        "width": 46,
+        "height": 12.2
+      },
+      "backgroundSet": "bell_03_acoustic_hall",
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 13,
+          "y": 2.05,
+          "active": {
+            "x": 10,
+            "y": 1.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 35,
+          "y": 6.05,
+          "active": {
+            "x": 32,
+            "y": 5.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "shell_sentry_2",
+          "x": 20,
+          "y": 4.05,
+          "active": {
+            "x": 17,
+            "y": 3.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "shell_sentry_3",
+          "x": 37,
+          "y": 8.05,
+          "active": {
+            "x": 34,
+            "y": 7.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "reflection_statue_4",
+          "x": 32,
+          "y": 6.05,
+          "active": {
+            "x": 29,
+            "y": 5.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "notary_guard_5",
+          "x": 40,
+          "y": 8.05,
+          "active": {
+            "x": 37,
+            "y": 7.75,
+            "width": 6,
+            "height": 1.45
+          }
+        }
+      ]
     },
     {
       "id": "bell_04_belfry_shaft",
@@ -163,45 +616,344 @@
       "floors": [
         {
           "id": "bell_shaft_center",
-          "x": 3
+          "x": 19,
+          "surface": "shaft_9"
+        },
+        {
+          "id": "bell_rest_04",
+          "x": 19,
+          "surface": "shaft_9",
+          "contactSave": true
+        },
+        {
+          "id": "bell_shaft_foot",
+          "x": 5,
+          "surface": "shaft_0"
+        },
+        {
+          "id": "bell_crown_exit",
+          "x": 38,
+          "surface": "crown"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "bell_03_acoustic_hall",
-          "x": 1,
-          "gate": ""
+          "x": 4,
+          "gate": "",
+          "approach": {
+            "x": 3,
+            "y": 7.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_acoustic_east"
         },
         {
           "room": "bell_05_silence_landing",
-          "x": 42,
-          "gate": "bell_04_cleared"
+          "x": 39,
+          "gate": "bell_04_cleared",
+          "approach": {
+            "x": 38,
+            "y": 41.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_pre_boss_floor"
         },
         {
           "room": "bell_08_return_undercroft",
-          "x": 37,
-          "gate": "gabriel_defeated"
+          "x": 20,
+          "gate": "gabriel_defeated",
+          "approach": {
+            "x": 19,
+            "y": 33.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_under_exit"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_0"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "shell_sentry_1"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "reflection_statue_2"
+          ]
         }
       ],
-      "crossing": "steps"
+      "terrain": [
+        {
+          "id": "shaft_0",
+          "rect": {
+            "x": 2,
+            "y": 7.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_1",
+          "rect": {
+            "x": 12,
+            "y": 9.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_2",
+          "rect": {
+            "x": 22,
+            "y": 11.65,
+            "width": 21,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_3",
+          "rect": {
+            "x": 14,
+            "y": 13.65,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_4",
+          "rect": {
+            "x": 3,
+            "y": 15.65,
+            "width": 19,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_5",
+          "rect": {
+            "x": 0,
+            "y": 17.65,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_6",
+          "rect": {
+            "x": 2,
+            "y": 19.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_7",
+          "rect": {
+            "x": 12,
+            "y": 21.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_8",
+          "rect": {
+            "x": 22,
+            "y": 23.65,
+            "width": 21,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_9",
+          "rect": {
+            "x": 14,
+            "y": 25.65,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_10",
+          "rect": {
+            "x": 3,
+            "y": 27.65,
+            "width": 19,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_11",
+          "rect": {
+            "x": 0,
+            "y": 29.65,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_12",
+          "rect": {
+            "x": 2,
+            "y": 31.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_13",
+          "rect": {
+            "x": 12,
+            "y": 33.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_14",
+          "rect": {
+            "x": 22,
+            "y": 35.65,
+            "width": 21,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_15",
+          "rect": {
+            "x": 14,
+            "y": 37.65,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shaft_16",
+          "rect": {
+            "x": 3,
+            "y": 39.65,
+            "width": 19,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "crown",
+          "rect": {
+            "x": 12,
+            "y": 41.65,
+            "width": 32,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 1.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 9.0,
+        "width": 46,
+        "height": 38.2
+      },
+      "backgroundSet": "bell_04_belfry_shaft",
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 18,
+          "y": 10.05,
+          "active": {
+            "x": 15,
+            "y": 9.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "shell_sentry_1",
+          "x": 14,
+          "y": 20.05,
+          "active": {
+            "x": 11,
+            "y": 19.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "reflection_statue_2",
+          "x": 15,
+          "y": 32.05,
+          "active": {
+            "x": 12,
+            "y": 31.75,
+            "width": 6,
+            "height": 1.45
+          }
+        }
+      ],
+      "bellWaves": [
+        {
+          "surface": "shaft_0",
+          "refuge": "shaft_1",
+          "atX": 13,
+          "windup": 1.35,
+          "speed": 9,
+          "height": 0.8
+        },
+        {
+          "surface": "shaft_6",
+          "refuge": "shaft_7",
+          "atX": 13,
+          "windup": 1.35,
+          "speed": 9,
+          "height": 0.8
+        },
+        {
+          "surface": "shaft_12",
+          "refuge": "shaft_13",
+          "atX": 13,
+          "windup": 1.35,
+          "speed": 9,
+          "height": 0.8
+        }
+      ]
     },
     {
       "id": "bell_05_silence_landing",
@@ -211,39 +963,192 @@
       "floors": [
         {
           "id": "bell_pre_boss_floor",
-          "x": 3
+          "x": 5,
+          "surface": "lower_arch"
+        },
+        {
+          "id": "bell_rest_05",
+          "x": 12,
+          "surface": "canopy",
+          "contactSave": true
+        },
+        {
+          "id": "bell_drop_head",
+          "x": 27,
+          "surface": "hammer_beam"
+        },
+        {
+          "id": "bell_threshold_exit",
+          "x": 39,
+          "surface": "threshold"
         }
       ],
       "points": [
         {
           "id": "bell_arena_gate",
-          "x": 34,
-          "platform": false
+          "x": 37,
+          "platform": false,
+          "surface": "threshold"
         },
         {
           "id": "gabriel_trial_bell",
-          "x": 16,
-          "platform": false
+          "x": 24,
+          "platform": false,
+          "surface": "canopy"
         }
       ],
       "exits": [
         {
           "room": "bell_04_belfry_shaft",
-          "x": 1,
-          "gate": ""
+          "x": 3,
+          "gate": "",
+          "approach": {
+            "x": 2,
+            "y": 41.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_crown_exit"
         },
         {
           "room": "bell_06_arena",
-          "x": 42,
-          "gate": "bell_route_complete"
+          "x": 40,
+          "gate": "bell_route_complete",
+          "approach": {
+            "x": 39,
+            "y": 53.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "gabriel_arena_west"
         },
         {
           "room": "bell_07_return_chime",
-          "x": 37,
-          "gate": "gabriel_defeated"
+          "x": 21,
+          "gate": "gabriel_defeated",
+          "approach": {
+            "x": 20,
+            "y": 53.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_return_chime_safe"
+        },
+        {
+          "room": "bell_02_tunnels",
+          "gate": "investigation_complete",
+          "x": 27,
+          "approach": {
+            "x": 26,
+            "y": 49.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_drop_landing"
         }
       ],
-      "roster": []
+      "roster": [],
+      "terrain": [
+        {
+          "id": "lower_arch",
+          "rect": {
+            "x": 0,
+            "y": 41.65,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "yoke",
+          "rect": {
+            "x": 8,
+            "y": 43.65,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "milk_shelf",
+          "rect": {
+            "x": 16,
+            "y": 45.65,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "bell_stair",
+          "rect": {
+            "x": 24,
+            "y": 47.65,
+            "width": 19,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "hammer_beam",
+          "rect": {
+            "x": 18,
+            "y": 49.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "canopy",
+          "rect": {
+            "x": 10,
+            "y": 51.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "threshold",
+          "rect": {
+            "x": 18,
+            "y": 53.65,
+            "width": 25,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 35.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 43.0,
+        "width": 46,
+        "height": 16.2
+      },
+      "backgroundSet": "bell_05_silence_landing",
+      "placements": [],
+      "bellWaves": [
+        {
+          "surface": "lower_arch",
+          "refuge": "yoke",
+          "atX": 11,
+          "windup": 1.35,
+          "speed": 9,
+          "height": 0.8
+        },
+        {
+          "surface": "bell_stair",
+          "refuge": "hammer_beam",
+          "atX": 29,
+          "windup": 1.35,
+          "speed": 9,
+          "height": 0.8
+        }
+      ]
     },
     {
       "id": "bell_06_arena",
@@ -253,39 +1158,121 @@
       "floors": [
         {
           "id": "gabriel_arena_west",
-          "x": 3
+          "x": 4,
+          "surface": "portal"
         },
         {
           "id": "gabriel_arena_center",
-          "x": 19
+          "x": 23,
+          "surface": "refuge"
         },
         {
           "id": "gabriel_signal_floor",
-          "x": 31
+          "x": 32,
+          "surface": "refuge"
+        },
+        {
+          "id": "bell_rest_06",
+          "x": 11,
+          "surface": "ear",
+          "contactSave": true
+        },
+        {
+          "id": "bell_arena_east",
+          "x": 39,
+          "surface": "refuge"
         }
       ],
       "points": [
         {
           "id": "gabriel_request_stop",
-          "x": 31,
-          "platform": false
+          "x": 32,
+          "platform": false,
+          "surface": "refuge"
         }
       ],
       "exits": [
         {
           "room": "bell_05_silence_landing",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 53.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_threshold_exit"
         },
         {
           "room": "bell_07_return_chime",
-          "x": 42,
-          "gate": "gabriel_defeated"
+          "x": 40,
+          "gate": "gabriel_defeated",
+          "approach": {
+            "x": 39,
+            "y": 57.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_return_chime_safe"
         }
       ],
       "roster": [],
       "boutHealth": 14,
-      "interludeHealth": 7
+      "interludeHealth": 7,
+      "terrain": [
+        {
+          "id": "portal",
+          "rect": {
+            "x": 0,
+            "y": 53.65,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "ear",
+          "rect": {
+            "x": 8,
+            "y": 55.65,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "refuge",
+          "rect": {
+            "x": 12,
+            "y": 57.65,
+            "width": 33,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 47,
+      "cameraBounds": {
+        "x": 0,
+        "y": 55,
+        "width": 60,
+        "height": 8.2
+      },
+      "backgroundSet": "bell_06_arena",
+      "placements": [],
+      "bellWaves": [
+        {
+          "surface": "portal",
+          "refuge": "ear",
+          "atX": 11,
+          "windup": 1.35,
+          "speed": 9,
+          "height": 0.8
+        }
+      ]
     },
     {
       "id": "bell_07_return_chime",
@@ -295,24 +1282,51 @@
       "floors": [
         {
           "id": "bell_return_chime_safe",
-          "x": 3
+          "x": 5.5,
+          "surface": "chime_0"
         },
         {
           "id": "bell_return_chime_mid",
-          "x": 19
+          "x": 10,
+          "surface": "chime_0"
+        },
+        {
+          "id": "bell_rest_07",
+          "x": 5.5,
+          "surface": "chime_0",
+          "contactSave": true
+        },
+        {
+          "id": "bell_return_chime_exit",
+          "x": 7,
+          "surface": "chime_5"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "bell_06_arena",
-          "x": 1,
-          "gate": ""
+          "x": 3,
+          "gate": "",
+          "approach": {
+            "x": 2,
+            "y": 57.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_arena_east"
         },
         {
           "room": "bell_08_return_undercroft",
-          "x": 42,
-          "gate": "gabriel_defeated"
+          "x": 7,
+          "gate": "gabriel_defeated",
+          "approach": {
+            "x": 6,
+            "y": 30.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_return_under_safe"
         }
       ],
       "roster": [
@@ -320,16 +1334,412 @@
           "id": "notary_guard",
           "count": 2,
           "segments": 3,
-          "setupSkill": "resonance_forge"
+          "setupSkill": "resonance_forge",
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ]
         },
         {
           "id": "sword_latch",
           "count": 2,
           "segments": 1,
-          "setupSkill": "resonance_forge"
+          "setupSkill": "resonance_forge",
+          "placementIds": [
+            "sword_latch_2",
+            "sword_latch_3"
+          ]
         }
       ],
-      "stations": 4
+      "stations": 42,
+      "terrain": [
+        {
+          "id": "chime_0",
+          "rect": {
+            "x": 1,
+            "y": 57.65,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_0",
+          "rect": {
+            "x": 38,
+            "y": 55.85,
+            "width": 7,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_0",
+          "rect": {
+            "x": 35,
+            "y": 54.05,
+            "width": 8,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "chime_1",
+          "rect": {
+            "x": 5,
+            "y": 52.25,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_1",
+          "rect": {
+            "x": -2,
+            "y": 50.45,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_1",
+          "rect": {
+            "x": 0,
+            "y": 48.65,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "chime_2",
+          "rect": {
+            "x": 1,
+            "y": 46.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_2",
+          "rect": {
+            "x": 38,
+            "y": 45.05,
+            "width": 7,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_2",
+          "rect": {
+            "x": 35,
+            "y": 43.25,
+            "width": 8,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "chime_3",
+          "rect": {
+            "x": 5,
+            "y": 41.45,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_3",
+          "rect": {
+            "x": -2,
+            "y": 39.65,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_3",
+          "rect": {
+            "x": 0,
+            "y": 37.85,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "chime_4",
+          "rect": {
+            "x": 1,
+            "y": 36.05,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_4",
+          "rect": {
+            "x": 38,
+            "y": 34.25,
+            "width": 7,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_4",
+          "rect": {
+            "x": 35,
+            "y": 32.45,
+            "width": 8,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "chime_5",
+          "rect": {
+            "x": 1,
+            "y": 30.65,
+            "width": 44,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 24.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 32.0,
+        "width": 46,
+        "height": 31.2
+      },
+      "backgroundSet": "bell_07_return_chime",
+      "stationMarks": [
+        {
+          "surface": "chime_0",
+          "x": 6.6
+        },
+        {
+          "surface": "chime_0",
+          "x": 12.2
+        },
+        {
+          "surface": "chime_0",
+          "x": 17.4
+        },
+        {
+          "surface": "chime_0",
+          "x": 22.6
+        },
+        {
+          "surface": "chime_0",
+          "x": 27.8
+        },
+        {
+          "surface": "chime_0",
+          "x": 33.0
+        },
+        {
+          "surface": "chime_0",
+          "x": 38.2
+        },
+        {
+          "surface": "chime_1",
+          "x": 38.2
+        },
+        {
+          "surface": "chime_1",
+          "x": 33.0
+        },
+        {
+          "surface": "chime_1",
+          "x": 27.8
+        },
+        {
+          "surface": "chime_1",
+          "x": 22.6
+        },
+        {
+          "surface": "chime_1",
+          "x": 17.4
+        },
+        {
+          "surface": "chime_1",
+          "x": 12.2
+        },
+        {
+          "surface": "chime_1",
+          "x": 7.0
+        },
+        {
+          "surface": "chime_2",
+          "x": 7.0
+        },
+        {
+          "surface": "chime_2",
+          "x": 12.2
+        },
+        {
+          "surface": "chime_2",
+          "x": 17.4
+        },
+        {
+          "surface": "chime_2",
+          "x": 22.6
+        },
+        {
+          "surface": "chime_2",
+          "x": 27.8
+        },
+        {
+          "surface": "chime_2",
+          "x": 33.0
+        },
+        {
+          "surface": "chime_2",
+          "x": 38.2
+        },
+        {
+          "surface": "chime_3",
+          "x": 38.2
+        },
+        {
+          "surface": "chime_3",
+          "x": 33.0
+        },
+        {
+          "surface": "chime_3",
+          "x": 27.8
+        },
+        {
+          "surface": "chime_3",
+          "x": 22.6
+        },
+        {
+          "surface": "chime_3",
+          "x": 17.4
+        },
+        {
+          "surface": "chime_3",
+          "x": 12.2
+        },
+        {
+          "surface": "chime_3",
+          "x": 7.0
+        },
+        {
+          "surface": "chime_4",
+          "x": 7.0
+        },
+        {
+          "surface": "chime_4",
+          "x": 12.2
+        },
+        {
+          "surface": "chime_4",
+          "x": 17.4
+        },
+        {
+          "surface": "chime_4",
+          "x": 22.6
+        },
+        {
+          "surface": "chime_4",
+          "x": 27.8
+        },
+        {
+          "surface": "chime_4",
+          "x": 33.0
+        },
+        {
+          "surface": "chime_4",
+          "x": 38.2
+        },
+        {
+          "surface": "chime_5",
+          "x": 38.2
+        },
+        {
+          "surface": "chime_5",
+          "x": 33.0
+        },
+        {
+          "surface": "chime_5",
+          "x": 27.8
+        },
+        {
+          "surface": "chime_5",
+          "x": 22.6
+        },
+        {
+          "surface": "chime_5",
+          "x": 17.4
+        },
+        {
+          "surface": "chime_5",
+          "x": 12.2
+        },
+        {
+          "surface": "chime_5",
+          "x": 7.0
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 43,
+          "y": 56.25,
+          "active": {
+            "x": 40,
+            "y": 55.95,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 43,
+          "y": 45.45,
+          "active": {
+            "x": 40,
+            "y": 45.15,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "sword_latch_2",
+          "x": 1,
+          "y": 50.85,
+          "active": {
+            "x": -2,
+            "y": 50.55,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "sword_latch_3",
+          "x": 1,
+          "y": 40.05,
+          "active": {
+            "x": -2,
+            "y": 39.75,
+            "width": 6,
+            "height": 1.45
+          }
+        }
+      ]
     },
     {
       "id": "bell_08_return_undercroft",
@@ -339,48 +1749,483 @@
       "floors": [
         {
           "id": "bell_return_under_safe",
-          "x": 3
+          "x": 5.9,
+          "surface": "channel_0"
+        },
+        {
+          "id": "bell_rest_08",
+          "x": 5.9,
+          "surface": "channel_0",
+          "contactSave": true
+        },
+        {
+          "id": "bell_under_exit",
+          "x": 9,
+          "surface": "channel_5"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "bell_07_return_chime",
-          "x": 1,
-          "gate": "gabriel_defeated"
+          "x": 3,
+          "gate": "gabriel_defeated",
+          "approach": {
+            "x": 2,
+            "y": 30.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_return_chime_exit"
         },
         {
           "room": "bell_04_belfry_shaft",
-          "x": 42,
-          "gate": ""
+          "x": 39,
+          "gate": "",
+          "approach": {
+            "x": 38,
+            "y": 3.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_shaft_foot"
         },
         {
           "room": "bell_01_entry",
-          "x": 37,
-          "gate": ""
+          "x": 16,
+          "gate": "",
+          "approach": {
+            "x": 15,
+            "y": 3.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_entry_floor"
         },
         {
           "room": "hub_lift",
-          "x": 32,
-          "gate": ""
+          "x": 8,
+          "gate": "",
+          "approach": {
+            "x": 7,
+            "y": 3.84,
+            "width": 2,
+            "height": 0.9
+          }
         }
       ],
       "roster": [
         {
-          "id": "notary_guard",
-          "count": 2,
-          "segments": 3,
-          "setupSkill": "resonance_forge"
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 2,
+          "setupSkill": "resonance_forge",
+          "placementIds": [
+            "reflection_statue_0"
+          ]
         },
         {
-          "id": "sword_latch",
-          "count": 2,
-          "segments": 1,
-          "setupSkill": "resonance_forge"
+          "id": "notary_guard",
+          "count": 3,
+          "segments": 2,
+          "setupSkill": "resonance_forge",
+          "placementIds": [
+            "notary_guard_1",
+            "notary_guard_2",
+            "notary_guard_3"
+          ]
         }
       ],
-      "stations": 4,
-      "projectileStations": false
+      "stations": 42,
+      "projectileStations": false,
+      "terrain": [
+        {
+          "id": "channel_0",
+          "rect": {
+            "x": 1,
+            "y": 30.65,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_0",
+          "rect": {
+            "x": 38,
+            "y": 28.85,
+            "width": 7,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_0",
+          "rect": {
+            "x": 35,
+            "y": 27.05,
+            "width": 8,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "channel_1",
+          "rect": {
+            "x": 5,
+            "y": 25.25,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_1",
+          "rect": {
+            "x": -2,
+            "y": 23.45,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_1",
+          "rect": {
+            "x": 0,
+            "y": 21.65,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "channel_2",
+          "rect": {
+            "x": 1,
+            "y": 19.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_2",
+          "rect": {
+            "x": 38,
+            "y": 18.05,
+            "width": 7,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_2",
+          "rect": {
+            "x": 35,
+            "y": 16.25,
+            "width": 8,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "channel_3",
+          "rect": {
+            "x": 5,
+            "y": 14.45,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_3",
+          "rect": {
+            "x": -2,
+            "y": 12.65,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_3",
+          "rect": {
+            "x": 0,
+            "y": 10.85,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "channel_4",
+          "rect": {
+            "x": 1,
+            "y": 9.05,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lower_4",
+          "rect": {
+            "x": 38,
+            "y": 7.25,
+            "width": 7,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "heel_4",
+          "rect": {
+            "x": 35,
+            "y": 5.45,
+            "width": 8,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "channel_5",
+          "rect": {
+            "x": 1,
+            "y": 3.65,
+            "width": 44,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -3.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 5.0,
+        "width": 46,
+        "height": 31.2
+      },
+      "backgroundSet": "bell_08_return_undercroft",
+      "stationMarks": [
+        {
+          "surface": "channel_0",
+          "x": 7.0
+        },
+        {
+          "surface": "channel_0",
+          "x": 12.2
+        },
+        {
+          "surface": "channel_0",
+          "x": 17.4
+        },
+        {
+          "surface": "channel_0",
+          "x": 22.6
+        },
+        {
+          "surface": "channel_0",
+          "x": 27.8
+        },
+        {
+          "surface": "channel_0",
+          "x": 33.0
+        },
+        {
+          "surface": "channel_0",
+          "x": 38.2
+        },
+        {
+          "surface": "channel_1",
+          "x": 38.2
+        },
+        {
+          "surface": "channel_1",
+          "x": 33.0
+        },
+        {
+          "surface": "channel_1",
+          "x": 27.8
+        },
+        {
+          "surface": "channel_1",
+          "x": 22.6
+        },
+        {
+          "surface": "channel_1",
+          "x": 17.4
+        },
+        {
+          "surface": "channel_1",
+          "x": 12.2
+        },
+        {
+          "surface": "channel_1",
+          "x": 7.0
+        },
+        {
+          "surface": "channel_2",
+          "x": 7.0
+        },
+        {
+          "surface": "channel_2",
+          "x": 12.2
+        },
+        {
+          "surface": "channel_2",
+          "x": 17.4
+        },
+        {
+          "surface": "channel_2",
+          "x": 22.6
+        },
+        {
+          "surface": "channel_2",
+          "x": 27.8
+        },
+        {
+          "surface": "channel_2",
+          "x": 33.0
+        },
+        {
+          "surface": "channel_2",
+          "x": 38.2
+        },
+        {
+          "surface": "channel_3",
+          "x": 38.2
+        },
+        {
+          "surface": "channel_3",
+          "x": 33.0
+        },
+        {
+          "surface": "channel_3",
+          "x": 27.8
+        },
+        {
+          "surface": "channel_3",
+          "x": 22.6
+        },
+        {
+          "surface": "channel_3",
+          "x": 17.4
+        },
+        {
+          "surface": "channel_3",
+          "x": 12.2
+        },
+        {
+          "surface": "channel_3",
+          "x": 7.0
+        },
+        {
+          "surface": "channel_4",
+          "x": 7.0
+        },
+        {
+          "surface": "channel_4",
+          "x": 12.2
+        },
+        {
+          "surface": "channel_4",
+          "x": 17.4
+        },
+        {
+          "surface": "channel_4",
+          "x": 22.6
+        },
+        {
+          "surface": "channel_4",
+          "x": 27.8
+        },
+        {
+          "surface": "channel_4",
+          "x": 33.0
+        },
+        {
+          "surface": "channel_4",
+          "x": 38.2
+        },
+        {
+          "surface": "channel_5",
+          "x": 38.2
+        },
+        {
+          "surface": "channel_5",
+          "x": 33.0
+        },
+        {
+          "surface": "channel_5",
+          "x": 27.8
+        },
+        {
+          "surface": "channel_5",
+          "x": 22.6
+        },
+        {
+          "surface": "channel_5",
+          "x": 17.4
+        },
+        {
+          "surface": "channel_5",
+          "x": 12.2
+        },
+        {
+          "surface": "channel_5",
+          "x": 7.0
+        }
+      ],
+      "placements": [
+        {
+          "id": "reflection_statue_0",
+          "x": 43,
+          "y": 29.25,
+          "active": {
+            "x": 40,
+            "y": 28.95,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 1,
+          "y": 23.85,
+          "active": {
+            "x": -2,
+            "y": 23.55,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 43,
+          "y": 18.45,
+          "active": {
+            "x": 40,
+            "y": 18.15,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "notary_guard_3",
+          "x": 1,
+          "y": 13.05,
+          "active": {
+            "x": -2,
+            "y": 12.75,
+            "width": 6,
+            "height": 1.45
+          }
+        }
+      ]
     },
     {
       "id": "bell_09_shortcut",
@@ -390,25 +2235,53 @@
       "floors": [
         {
           "id": "bell_shortcut_safe",
-          "x": 3
+          "x": 4,
+          "surface": "fracture"
+        },
+        {
+          "id": "bell_rest_09",
+          "x": 4,
+          "surface": "fracture",
+          "contactSave": true
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "bell_02_tunnels",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 7.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_drop_landing"
         },
         {
           "room": "bell_05_silence_landing",
-          "x": 42,
-          "gate": ""
+          "x": 41,
+          "gate": "",
+          "approach": {
+            "x": 40,
+            "y": 13.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_threshold_exit"
         },
         {
           "room": "bell_10_sanctuary_table",
           "x": 32,
-          "gate": "synergy"
+          "gate": "synergy",
+          "approach": {
+            "x": 31,
+            "y": 13.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_reunion_safe_floor"
         }
       ],
       "roster": [
@@ -416,23 +2289,187 @@
           "id": "notary_guard",
           "count": 2,
           "segments": 3,
-          "setupSkill": "resonance_forge"
+          "setupSkill": "resonance_forge",
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ]
         },
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_2",
+            "sword_latch_3"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "reflection_statue_4"
+          ]
         }
       ],
       "stations": 4,
       "stitchAnchors": 4,
       "singleSeams": 4,
-      "seamId": "bell_synergy_seam"
+      "seamId": "bell_synergy_seam",
+      "terrain": [
+        {
+          "id": "fracture",
+          "rect": {
+            "x": 0,
+            "y": 7.65,
+            "width": 18,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "stitch_lip",
+          "rect": {
+            "x": 9,
+            "y": 9.65,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "anvil",
+          "rect": {
+            "x": 18,
+            "y": 11.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "sound_bridge",
+          "rect": {
+            "x": 27,
+            "y": 13.65,
+            "width": 18,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 1.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 9.0,
+        "width": 46,
+        "height": 10.2
+      },
+      "backgroundSet": "bell_09_shortcut",
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 27,
+          "y": 12.05,
+          "active": {
+            "x": 24,
+            "y": 11.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 37,
+          "y": 14.05,
+          "active": {
+            "x": 34,
+            "y": 13.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "sword_latch_2",
+          "x": 9,
+          "y": 8.05,
+          "active": {
+            "x": 6,
+            "y": 7.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "sword_latch_3",
+          "x": 15,
+          "y": 10.05,
+          "active": {
+            "x": 12,
+            "y": 9.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "reflection_statue_4",
+          "x": 29,
+          "y": 12.05,
+          "active": {
+            "x": 26,
+            "y": 11.75,
+            "width": 6,
+            "height": 1.45
+          }
+        }
+      ],
+      "stationMarks": [
+        {
+          "surface": "fracture",
+          "x": 7
+        },
+        {
+          "surface": "stitch_lip",
+          "x": 16
+        },
+        {
+          "surface": "anvil",
+          "x": 24
+        },
+        {
+          "surface": "sound_bridge",
+          "x": 36
+        }
+      ],
+      "seamRuns": [
+        {
+          "count": 1,
+          "x": 5.9,
+          "y": 8.24,
+          "stepX": 0
+        },
+        {
+          "count": 1,
+          "x": 14.9,
+          "y": 10.24,
+          "stepX": 0
+        },
+        {
+          "count": 1,
+          "x": 22.9,
+          "y": 12.24,
+          "stepX": 0
+        },
+        {
+          "count": 1,
+          "x": 34.9,
+          "y": 14.24,
+          "stepX": 0
+        }
+      ]
     },
     {
       "id": "bell_10_sanctuary_table",
@@ -442,36 +2479,70 @@
       "floors": [
         {
           "id": "bell_reunion_safe_floor",
-          "x": 3
+          "x": 4,
+          "surface": "hearth"
+        },
+        {
+          "id": "bell_rest_10",
+          "x": 4,
+          "surface": "hearth",
+          "contactSave": true
         }
       ],
       "points": [
         {
           "id": "gabriel_reunion_table",
-          "x": 18,
-          "platform": false
+          "x": 19,
+          "platform": false,
+          "surface": "table"
         }
       ],
       "exits": [
         {
           "room": "hub_sanctuary",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 9.84,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "hub_lift",
-          "x": 42,
-          "gate": ""
+          "x": 41,
+          "gate": "",
+          "approach": {
+            "x": 40,
+            "y": 15.84,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "bell_01_entry",
-          "x": 37,
-          "gate": "depart"
+          "x": 32,
+          "gate": "depart",
+          "approach": {
+            "x": 31,
+            "y": 15.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_entry_floor"
         },
         {
           "room": "bell_09_shortcut",
-          "x": 28,
-          "gate": "synergy"
+          "x": 26,
+          "gate": "synergy",
+          "approach": {
+            "x": 25,
+            "y": 13.84,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "bell_shortcut_safe"
         }
       ],
       "roster": [
@@ -480,14 +2551,108 @@
           "count": 2,
           "segments": 1,
           "setupSkill": "resonance_forge",
-          "setupHits": 3
+          "setupHits": 3,
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ]
         },
         {
           "id": "notary_guard",
           "count": 1,
           "segments": 3,
           "setupSkill": "resonance_forge",
-          "skillOnly": true
+          "skillOnly": true,
+          "placementIds": [
+            "notary_guard_2"
+          ]
+        }
+      ],
+      "terrain": [
+        {
+          "id": "hearth",
+          "rect": {
+            "x": 0,
+            "y": 9.65,
+            "width": 19,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "table",
+          "rect": {
+            "x": 10,
+            "y": 11.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "window",
+          "rect": {
+            "x": 18,
+            "y": 13.65,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "ambulatory",
+          "rect": {
+            "x": 27,
+            "y": 15.65,
+            "width": 18,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": 3.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 11.0,
+        "width": 46,
+        "height": 10.2
+      },
+      "backgroundSet": "bell_10_sanctuary_table",
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 9,
+          "y": 10.05,
+          "active": {
+            "x": 6,
+            "y": 9.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 21,
+          "y": 12.05,
+          "active": {
+            "x": 18,
+            "y": 11.75,
+            "width": 6,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 29,
+          "y": 14.05,
+          "active": {
+            "x": 26,
+            "y": 13.75,
+            "width": 6,
+            "height": 1.45
+          }
         }
       ]
     }

@@ -1,0 +1,761 @@
+{
+  "Assets/Resources/Story/bell.json": {
+    "original": "7bab0f95f1aeda8d4feeb6799530cf03e6712272147960117b348238d2bdee2e",
+    "updated": "91868feb42a1ee098a5d38fa867f68a40e1cf0b90066f74ecb50e190786136c2",
+    "edits": [
+      [
+        10,
+        12,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        15,
+        17,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        20,
+        28,
+        [
+          "          \"x\": 41\n"
+        ]
+      ],
+      [
+        33,
+        36,
+        [
+          "          \"x\": 12,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        39,
+        42,
+        [
+          "          \"x\": 24,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        47,
+        55,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        58,
+        67,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"bell_entry_complete\"\n"
+        ]
+      ],
+      [
+        73,
+        142,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        153,
+        155,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        158,
+        171,
+        [
+          "          \"x\": 39\n"
+        ]
+      ],
+      [
+        177,
+        186,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        190,
+        198,
+        [
+          "          \"gate\": \"bell_02_cleared\"\n"
+        ]
+      ],
+      [
+        201,
+        210,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        216,
+        221,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        225,
+        230,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        234,
+        238,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        240,
+        391,
+        [
+          "      \"crossing\": \"latches\"\n"
+        ]
+      ],
+      [
+        400,
+        402,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        405,
+        413,
+        [
+          "          \"x\": 39\n"
+        ]
+      ],
+      [
+        419,
+        428,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        431,
+        440,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"bell_03_cleared\"\n"
+        ]
+      ],
+      [
+        446,
+        451,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        455,
+        460,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        464,
+        468,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        472,
+        476,
+        [
+          "          \"segments\": 2\n"
+        ]
+      ],
+      [
+        478,
+        609,
+        [
+          "      \"crossing\": \"cycle\"\n"
+        ]
+      ],
+      [
+        618,
+        636,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        642,
+        651,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        654,
+        663,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"bell_04_cleared\"\n"
+        ]
+      ],
+      [
+        666,
+        675,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"gabriel_defeated\"\n"
+        ]
+      ],
+      [
+        681,
+        685,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        689,
+        693,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        697,
+        701,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        703,
+        956,
+        [
+          "      \"crossing\": \"steps\"\n"
+        ]
+      ],
+      [
+        965,
+        983,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        988,
+        991,
+        [
+          "          \"x\": 34,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        994,
+        997,
+        [
+          "          \"x\": 16,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        1002,
+        1011,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1014,
+        1023,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"bell_route_complete\"\n"
+        ]
+      ],
+      [
+        1026,
+        1047,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"gabriel_defeated\"\n"
+        ]
+      ],
+      [
+        1049,
+        1151,
+        [
+          "      \"roster\": []\n"
+        ]
+      ],
+      [
+        1160,
+        1162,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1165,
+        1167,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        1170,
+        1183,
+        [
+          "          \"x\": 31\n"
+        ]
+      ],
+      [
+        1188,
+        1191,
+        [
+          "          \"x\": 31,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        1196,
+        1205,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1208,
+        1217,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"gabriel_defeated\"\n"
+        ]
+      ],
+      [
+        1221,
+        1275,
+        [
+          "      \"interludeHealth\": 7\n"
+        ]
+      ],
+      [
+        1284,
+        1286,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1289,
+        1302,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        1308,
+        1317,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1320,
+        1329,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"gabriel_defeated\"\n"
+        ]
+      ],
+      [
+        1336,
+        1341,
+        [
+          "          \"setupSkill\": \"resonance_forge\"\n"
+        ]
+      ],
+      [
+        1346,
+        1351,
+        [
+          "          \"setupSkill\": \"resonance_forge\"\n"
+        ]
+      ],
+      [
+        1353,
+        1742,
+        [
+          "      \"stations\": 4\n"
+        ]
+      ],
+      [
+        1751,
+        1764,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1770,
+        1779,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"gabriel_defeated\"\n"
+        ]
+      ],
+      [
+        1782,
+        1791,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1794,
+        1803,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1806,
+        1814,
+        [
+          "          \"x\": 32,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1818,
+        1825,
+        [
+          "          \"id\": \"notary_guard\",\n",
+          "          \"count\": 2,\n",
+          "          \"segments\": 3,\n",
+          "          \"setupSkill\": \"resonance_forge\"\n"
+        ]
+      ],
+      [
+        1827,
+        1836,
+        [
+          "          \"id\": \"sword_latch\",\n",
+          "          \"count\": 2,\n",
+          "          \"segments\": 1,\n",
+          "          \"setupSkill\": \"resonance_forge\"\n"
+        ]
+      ],
+      [
+        1838,
+        2228,
+        [
+          "      \"stations\": 4,\n",
+          "      \"projectileStations\": false\n"
+        ]
+      ],
+      [
+        2237,
+        2245,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        2251,
+        2260,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2263,
+        2272,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2276,
+        2284,
+        [
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        2291,
+        2296,
+        [
+          "          \"setupSkill\": \"resonance_forge\"\n"
+        ]
+      ],
+      [
+        2300,
+        2305,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        2309,
+        2313,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        2318,
+        2472,
+        [
+          "      \"seamId\": \"bell_synergy_seam\"\n"
+        ]
+      ],
+      [
+        2481,
+        2489,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        2494,
+        2497,
+        [
+          "          \"x\": 18,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        2502,
+        2510,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2513,
+        2521,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2524,
+        2533,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"depart\"\n"
+        ]
+      ],
+      [
+        2536,
+        2545,
+        [
+          "          \"x\": 28,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        2553,
+        2558,
+        [
+          "          \"setupHits\": 3\n"
+        ]
+      ],
+      [
+        2564,
+        2655,
+        [
+          "          \"skillOnly\": true\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/RepresentativeArea.cs": {
+    "original": "91778837fa228db5d493c347efae8605c8a034c1c223e9974de398f5d89df6a8",
+    "updated": "40d3b1493c56182a9b77e5c0810142ee9e6b4a13528ad66bdceae3f6d9a580d0",
+    "edits": [
+      [
+        195,
+        196,
+        [
+          "            else if ((ActiveRow == null || ((Room.stage == \"clock\" || Room.stage == \"opera\") && worldAction && !opponent.gameObject.activeSelf))\n"
+        ]
+      ],
+      [
+        274,
+        276,
+        []
+      ],
+      [
+        285,
+        287,
+        [
+          "                opponent.ResetAt(new Vector2(spawnX, (Room.Surface(\"stage_floor\") != null ? Room.SurfaceTop(\"stage_floor\") : Room.SurfaceTop(\"drum_floor\")) + .1f));\n",
+          "                if (mikhail)\n"
+        ]
+      ],
+      [
+        289,
+        291,
+        [
+          "                    mikhailBout.StartStoryBout(player, mikhailTrial, Room.interludeHealth);\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Progression/CoreRecord.cs": {
+    "original": "56b6938d11d6d74aabeaaedd1461e40e5ddbcb150c7effed4bfa1250fb2bb8cc",
+    "updated": "50755121c6d5781c8fb8509aa1d44fb3a093cc83aa5fd70b426efd4c04b7a58a",
+    "edits": [
+      [
+        57,
+        58,
+        [
+          "                !(slotId == \"slot-4\" && AutoTestRuntime.SlotCount == 4)))\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Shell/GameShell.cs": {
+    "original": "0d5c08ec44d79a960e98a477d06bafd9f86cb73d84dc27e09b72aece246baca2",
+    "updated": "86b9a07156cabe3c90a466a11673c59a1d1618b19d9a10d37fbe5de5944b697f",
+    "edits": [
+      [
+        397,
+        398,
+        []
+      ],
+      [
+        400,
+        401,
+        [
+          "                    Row(i, SlotLabel(i), new Rect(200, 148 + i * 122, 760, 110));\n"
+        ]
+      ],
+      [
+        402,
+        403,
+        [
+          "                    if (GUI.Button(new Rect(978, 175 + i * 122, 100, 52), Loc.Get(\"ui.delete\"), buttonStyle)) RequestDelete(i + 1);\n"
+        ]
+      ],
+      [
+        404,
+        405,
+        [
+          "                if (Page == renderedPage) Row(records.Length, Loc.Get(\"ui.back\"), new Rect(200, 154 + records.Length * 122, 880, 46));\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Trials/BenefactorTrialOpponent.cs": {
+    "original": "c70cc832edac81afeeedd536def104081b17ff2ef1f587442e94d86dbcbc0072",
+    "updated": "0b9c5316ef5fd25a4bf21ae40d9f8fbfe15ffe532cb5d7fffc3af4bfe5c43cab",
+    "edits": [
+      [
+        16,
+        20,
+        []
+      ],
+      [
+        22,
+        23,
+        [
+          "        public void Initialize(CombatMotor2D actor, SkillSession skills, BenefactorTrialDefinition definition)\n"
+        ]
+      ],
+      [
+        24,
+        25,
+        []
+      ],
+      [
+        33,
+        34,
+        [
+          "        internal void StartStoryBout(CombatMotor2D actor, BenefactorTrialDefinition definition, int halfHealth)\n"
+        ]
+      ],
+      [
+        39,
+        40,
+        []
+      ],
+      [
+        47,
+        48,
+        [
+          "            motor.ResetAt(new Vector2(Definition.spawnX, 0.15f)); motor.Face(-1);\n"
+        ]
+      ],
+      [
+        61,
+        62,
+        [
+          "            if (storyHalfHealth == 0 && motor.transform.position.y < -7) { Rest(); return; }\n"
+        ]
+      ],
+      [
+        64,
+        72,
+        []
+      ],
+      [
+        86,
+        100,
+        [
+          "                        var danger = Threat();\n",
+          "                        SkillStroke.Show(danger.min, danger.max, Color.yellow, Pattern.windup);\n"
+        ]
+      ],
+      [
+        132,
+        142,
+        []
+      ],
+      [
+        144,
+        145,
+        []
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/ResonanceTarget2D.cs": {
+    "original": "0ff2bf3659076e112e9e6755be4c290e9dfbee9ca83c2eb45e35a59200727f68",
+    "updated": "666a3c554827075ba78bad8abfdfc7aea55dda85fdecdf57a1dcb449964bfe06",
+    "edits": [
+      [
+        24,
+        43,
+        []
+      ]
+    ]
+  }
+}

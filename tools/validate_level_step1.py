@@ -224,7 +224,9 @@ def validate_level_step1(check, project, scripts):
     original_clock = json.loads(reverse_exact(clock_patch, (resources/'Story/clock.json').read_text()))
     opera_path = 'Assets/Resources/Story/opera.json'
     original_opera = json.loads(prior_level4_source(opera_path, (project/opera_path).read_text()))
-    verify(digest([original_clock, original_opera, *docs[3:]]) == '20aaae8ffd385c67a53e7cd0a55a4b7619ef15f8a46abc5fb238402ce92367ee',
+    bell_path = 'Assets/Resources/Story/bell.json'
+    original_bell = json.loads(prior_level4_source(bell_path, (project/bell_path).read_text()))
+    verify(digest([original_clock, original_opera, original_bell, *docs[4:]]) == '20aaae8ffd385c67a53e7cd0a55a4b7619ef15f8a46abc5fb238402ce92367ee',
            'all four other districts and finale match the original data')
     patch = json.loads(Path(__file__).with_name('level-step2-extensions.json').read_text())
     old = json.loads(reverse_exact(patch, (resources/'Story/representative.json').read_text()))

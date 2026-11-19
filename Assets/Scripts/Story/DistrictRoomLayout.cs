@@ -31,7 +31,7 @@ namespace RewindNotary
         {
             if (!BellReady) return false;
             var bell = Room.Point(Benefactor + "_trial_bell");
-            if (Distance(bell.x) > 1.25f || Room.stage == "opera" && !StandingOn(bell.surface)) return false;
+            if (Distance(bell.x) > 1.25f || !string.IsNullOrEmpty(bell.surface) && !StandingOn(bell.surface)) return false;
             var arena = Array.Find(script.rooms, r => r.stage == Room.stage && r.boutHealth > 0);
             if (!session.CommitScene(() =>
             {
@@ -116,6 +116,8 @@ namespace RewindNotary
         {
             if (Room == null || !GameInput.GameplayEnabled) return;
             UpdateOperaShutter();
+            UpdateBellPlates();
+            foreach (var wave in bellWaves) wave.Tick(this, player);
             if (movingSpan != null)
             {
                 if (Room.crossing == "swing")
@@ -137,7 +139,7 @@ namespace RewindNotary
                 !(Has("gabriel_signals_agreed") || fieldTrial != null)) return;
             var trial = DistrictTrial;
             string signal = fieldTrial != null ? fieldTrial.PatternLabel :
-                trial.patterns[Time.time + .6f >= attackAt ? 0 : 1].Label;
+                mikhailBout != null ? mikhailBout.PatternLabel : trial.patterns[0].Label;
             var screen = Camera.main.WorldToScreenPoint(opponent.transform.position + Vector3.up * 2.7f);
             var position = GUI.matrix.inverse.MultiplyPoint3x4(new Vector3(screen.x, Screen.height - screen.y, 0));
             GUI.Box(new Rect(position.x - 160, position.y - 14, 320, 30), signal);
@@ -177,7 +179,18 @@ namespace RewindNotary
                         var lamp = station.AddComponent<PracticeLamp2D>();
                         if (Room.stage == "opera") lamp.SetPicture(OperaSprite("opera-lamp", 1.4f));
                     }
-                    else if (Room.skill == BenefactorIds.Forge) station.AddComponent<ResonanceTarget2D>().InitializeMechanism();
+                    else if (Room.skill == BenefactorIds.Forge)
+                    {
+                        var target = station.AddComponent<ResonanceTarget2D>();
+                        if (Room.stage == "bell")
+                        {
+                            bool seal = Room.id == "bell_07_return_chime" && i == 0 && !Has("bell_return_01_done");
+                            string art = Room.stitchAnchors > 0 ? "bell-bronze" :
+                                Room.id == "bell_08_return_undercroft" ? "bell-pillar" : i % 2 == 0 ? "bell-slab" : "bell-fork";
+                            target.InitializeBell(OperaSprite(art, 1.1f), seal);
+                        }
+                        else target.InitializeMechanism();
+                    }
                     else
                     {
                         var target = station.AddComponent<WaveTarget2D>();
@@ -267,8 +280,9 @@ namespace RewindNotary
                 {
                     opponent.gameObject.SetActive(true); opponent.name = d.opponentId;
                     fieldTrial = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
-                    fieldTrial.Initialize(player, session, d);
-                    player.ResetAt(new Vector2(d.playerX, .1f));
+                    float trialTop = Room.SurfaceTop("refuge");
+                    fieldTrial.Initialize(player, session, d, trialTop);
+                    player.ResetAt(new Vector2(d.playerX, trialTop + .1f));
                 }
                 return true;
             }
@@ -347,7 +361,11 @@ namespace RewindNotary
             }
             switch (action[0])
             {
-                case "win": case "interlude": hint = Loc.Get("area.bout", DistrictTrial.DisplayName); return true;
+                case "win": case "interlude":
+                    hint = Loc.Get("area.bout", DistrictTrial.DisplayName);
+                    if (Room.id == "bell_06_arena" && !opponent.gameObject.activeSelf && !StandingOn("refuge"))
+                        hint += "  " + Arrow(Room.Floor("gabriel_arena_center").x);
+                    return true;
                 case "verify": hint = DistrictTrial.ObjectiveLabel + "  " + session.Progression.Trials.SessionStatus; return true;
                 case "advance": case "clear":
                     var target = roomTargets.Find(t => !t.State.Cleared);

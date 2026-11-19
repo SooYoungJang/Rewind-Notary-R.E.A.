@@ -1642,6 +1642,536 @@
           "offset": 11.700000000000001
         }
       ]
+    },
+    {
+      "id": "bell_01_entry",
+      "layers": [
+        {
+          "resource": "bell-quay",
+          "height": 17,
+          "bottom": -7.9,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": 0
+        },
+        {
+          "resource": "bell-bronze",
+          "height": 7,
+          "bottom": 1.6,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 3,
+          "offset": 6.8
+        },
+        {
+          "resource": "bell-dust",
+          "height": 2.8,
+          "bottom": -0.8,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": 6.6
+        }
+      ]
+    },
+    {
+      "id": "bell_02_tunnels",
+      "layers": [
+        {
+          "resource": "bell-aqueduct",
+          "height": 17,
+          "bottom": -8.22,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": 4
+        },
+        {
+          "resource": "bell-weight",
+          "height": 9,
+          "bottom": 0.8,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 6.4,
+          "offset": -2.04
+        },
+        {
+          "resource": "bell-dust",
+          "height": 3.0999999999999996,
+          "bottom": -1.92,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": 4.92
+        }
+      ]
+    },
+    {
+      "id": "bell_03_acoustic_hall",
+      "layers": [
+        {
+          "resource": "bell-resonator",
+          "height": 17,
+          "bottom": -8.26,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": -4
+        },
+        {
+          "resource": "bell-bronze",
+          "height": 7,
+          "bottom": 0.7,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 5,
+          "offset": 8.52
+        },
+        {
+          "resource": "bell-dust",
+          "height": 3.4,
+          "bottom": -2.06,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": 8.04
+        }
+      ]
+    },
+    {
+      "id": "bell_04_belfry_shaft",
+      "layers": [
+        {
+          "resource": "bell-shaft",
+          "height": 17,
+          "bottom": -7.42,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": 2
+        },
+        {
+          "resource": "bell-weight",
+          "height": 10,
+          "bottom": 2.8,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 6.4,
+          "offset": -3.2
+        },
+        {
+          "resource": "bell-dust",
+          "height": 2.8,
+          "bottom": 0.88,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": 0.6
+        }
+      ]
+    },
+    {
+      "id": "bell_05_silence_landing",
+      "layers": [
+        {
+          "resource": "bell-canopy",
+          "height": 17,
+          "bottom": -6.5,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": -1
+        },
+        {
+          "resource": "bell-bronze",
+          "height": 7.5,
+          "bottom": 5.1,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 4,
+          "offset": 7.8
+        },
+        {
+          "resource": "bell-dust",
+          "height": 3.0999999999999996,
+          "bottom": 4.1,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": 6.6
+        }
+      ]
+    },
+    {
+      "id": "bell_06_arena",
+      "layers": [
+        {
+          "resource": "bell-mouth",
+          "height": 17,
+          "bottom": -6.18,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": 0
+        },
+        {
+          "resource": "bell-bronze",
+          "height": 8,
+          "bottom": 5.9,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 5,
+          "offset": -4.56
+        },
+        {
+          "resource": "bell-dust",
+          "height": 3.4,
+          "bottom": 5.22,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": -0.12
+        }
+      ]
+    },
+    {
+      "id": "bell_07_return_chime",
+      "layers": [
+        {
+          "resource": "bell-reliefs",
+          "height": 17,
+          "bottom": -6.64,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": 3
+        },
+        {
+          "resource": "bell-weight",
+          "height": 11,
+          "bottom": 4.75,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 6.4,
+          "offset": -3.88
+        },
+        {
+          "resource": "bell-dust",
+          "height": 2.8,
+          "bottom": 3.61,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": 7.25
+        }
+      ]
+    },
+    {
+      "id": "bell_08_return_undercroft",
+      "layers": [
+        {
+          "resource": "bell-waterwheel",
+          "height": 17,
+          "bottom": -7.72,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": 6
+        },
+        {
+          "resource": "bell-weight",
+          "height": 8,
+          "bottom": 2.05,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 6.4,
+          "offset": 8.12
+        },
+        {
+          "resource": "bell-dust",
+          "height": 3.0999999999999996,
+          "bottom": -0.17,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": 1.25
+        }
+      ]
+    },
+    {
+      "id": "bell_09_shortcut",
+      "layers": [
+        {
+          "resource": "bell-fracture",
+          "height": 17,
+          "bottom": -7.98,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": -2
+        },
+        {
+          "resource": "bell-bronze",
+          "height": 6,
+          "bottom": 1.4,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 5,
+          "offset": 6.44
+        },
+        {
+          "resource": "bell-dust",
+          "height": 3.4,
+          "bottom": -1.08,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": 5.88
+        }
+      ]
+    },
+    {
+      "id": "bell_10_sanctuary_table",
+      "layers": [
+        {
+          "resource": "bell-sanctuary",
+          "height": 17,
+          "bottom": -7.9,
+          "factor": 0.12,
+          "vertical": 0.96,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#999aa3",
+          "spacing": 1,
+          "offset": 5
+        },
+        {
+          "resource": "bell-bronze",
+          "height": 4,
+          "bottom": 1.6,
+          "factor": 0.36,
+          "vertical": 0.9,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#8a827b",
+          "spacing": 3,
+          "offset": -3.56
+        },
+        {
+          "resource": "bell-dust",
+          "height": 2.8,
+          "bottom": -0.8,
+          "factor": 0.72,
+          "vertical": 0.86,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          "tint": "#ffe6a9",
+          "spacing": 2.6,
+          "offset": -0.12
+        }
+      ]
     }
   ]
 }

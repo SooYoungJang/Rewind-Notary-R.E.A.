@@ -193,7 +193,7 @@ namespace RewindNotary
             }
             bool safeFloor = Safe && OnFixedFloor();
             if (!safeFloor) touchingCheckpoint = null;
-            else if ((ActiveRow == null || ((Room.stage == "clock" || Room.stage == "opera") && worldAction && !opponent.gameObject.activeSelf))
+            else if ((ActiveRow == null || ((Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell") && worldAction && !opponent.gameObject.activeSelf))
                 && !SaveContactFloor()) return;
             var finaleRow = ActiveRow == null ? script.NextFinale(Room, session.Investigation) : null;
             var cut = Room.stage == "janhyang" || InEnding || finaleRow != null || ActiveRow?.sceneId.StartsWith("post_", StringComparison.Ordinal) == true
@@ -272,6 +272,8 @@ namespace RewindNotary
         {
             if (!opponent.gameObject.activeSelf)
             {
+                bool belfry = Room.id == "bell_06_arena";
+                if (belfry && !StandingOn("refuge")) return;
                 opponent.gameObject.SetActive(true);
                 bool finale = string.IsNullOrEmpty(Room.benefactor) ? Has("mikhail_retreat_plank_down") :
                     ActiveRow.sceneId == Benefactor + "_bout_i1" && ActionToken.StartsWith("win:", StringComparison.Ordinal);
@@ -281,11 +283,12 @@ namespace RewindNotary
                     ? Room.interludeHealth : 0;
                 bool mikhail = Room.id == "velvet_04_arena";
                 float spawnX = mikhail ? Mathf.Clamp(player.Body.position.x + 5f, 3f, 38f) : 17f;
-                opponent.ResetAt(new Vector2(spawnX, (Room.Surface("stage_floor") != null ? Room.SurfaceTop("stage_floor") : Room.SurfaceTop("drum_floor")) + .1f));
-                if (mikhail)
+                opponent.ResetAt(new Vector2(spawnX, (belfry ? Room.SurfaceTop("refuge") : Room.Surface("stage_floor") != null ? Room.SurfaceTop("stage_floor") : Room.SurfaceTop("drum_floor")) + .1f));
+                if (mikhail || belfry)
                 {
                     mikhailBout = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
-                    mikhailBout.StartStoryBout(player, mikhailTrial, Room.interludeHealth);
+                    mikhailBout.StartStoryBout(player, belfry ? DistrictTrial : mikhailTrial, Room.interludeHealth,
+                        belfry ? surfaces["refuge"].bounds : (Bounds?)null);
                     AudioManager.SetMusic(AudioManager.Music.Boss);
                 }
                 attackAt = Time.time + .8f;

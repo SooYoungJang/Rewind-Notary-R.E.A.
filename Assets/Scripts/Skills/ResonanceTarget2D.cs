@@ -23,6 +23,25 @@ namespace RewindNotary
             visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 4;
             visual.drawMode = SpriteDrawMode.Sliced; visual.size = box.size; visual.color = Color.yellow;
         }
+        internal const float SealHeight = 2.8f, SealWidth = 1.4f;
+        internal void InitializeBell(Sprite picture, bool seal)
+        {
+            mechanism = Guarded = true;
+            gameObject.layer = seal ? LevelBuilder.GroundLayer : 0;
+            var box = gameObject.AddComponent<BoxCollider2D>();
+            box.autoTiling = false;
+            box.isTrigger = !seal;
+            float height = seal ? SealHeight : SkillGeometry.GuardHeight;
+            box.size = new Vector2(seal ? SealWidth : SkillGeometry.GuardWidth, height);
+            box.offset = Vector2.up * ((height - SkillGeometry.GuardHeight) / 2);
+            var face = new GameObject("Striking face");
+            face.transform.SetParent(transform, false);
+            face.transform.localPosition = box.offset;
+            face.transform.localScale = new Vector3(box.size.x / picture.bounds.size.x, height / picture.bounds.size.y, 1);
+            visual = face.AddComponent<SpriteRenderer>();
+            visual.sprite = picture;
+            visual.sortingOrder = 4;
+        }
         public bool BreakGuard()
         {
             if (!Guarded) return false;

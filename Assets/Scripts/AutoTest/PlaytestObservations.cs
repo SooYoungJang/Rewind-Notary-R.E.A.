@@ -50,6 +50,7 @@ namespace RewindNotary
         internal StorySurface[] ProbeTerrain()
         {
             var faces = new List<StorySurface>(Room.terrain ?? System.Array.Empty<StorySurface>());
+            faces.RemoveAll(s => s.bellLatch > 0 && ProbeCollider(s).isTrigger);
             foreach (var box in fixedFloors)
             {
                 if (!box.isActiveAndEnabled || box.attachedRigidbody != null || surfaces.ContainsKey(box.name)) continue;
@@ -75,11 +76,24 @@ namespace RewindNotary
 
         internal bool RidingSurface(StorySurface surface) => surface.Moving &&
             surfaces[surface.id].IsTouching(player.GetComponent<Collider2D>());
+        internal bool BellPlatePending(Vector2 feet)
+        {
+            foreach (var p in bellPlates)
+                if (p.face.bellLatch > 0 && p.box.isTrigger && p.box.bounds.min.x <= feet.x && feet.x <= p.box.bounds.max.x &&
+                    Mathf.Abs(p.box.bounds.max.y - feet.y) < .1f) return true;
+            return false;
+        }
+
+        internal WaveTarget2D BellTargetOnTurn(int turn)
+        {
+            float top = Room.SurfaceTop("lower_" + turn);
+            return roomTargets.Find(t => !t.State.Cleared && Mathf.Abs(t.transform.position.y - top) < .2f);
+        }
         internal WaveTarget2D ClockTargetOnTier => roomTargets.Find(t => !t.State.Cleared &&
             Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f);
         internal WaveTarget2D UnclearedClockTarget => roomTargets.Find(t => !t.State.Cleared);
         internal WaveTarget2D DistrictWaveTarget => Room == null ? null :
-            (Room.stage == "clock" || Room.stage == "opera") ? UnclearedClockTarget : RouteTarget;
+            (Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell") ? UnclearedClockTarget : RouteTarget;
         // Inactive targets still belong to the wave, including queued velvet entry enemies.
         internal int WaveTargetCount => roomTargets.Count + entryWave.Count;
         internal int ClearedWaveTargets

@@ -15,7 +15,8 @@ namespace RewindNotary
     {
         public string id;
         public StoryRect rect;
-        public bool wallJump, oneWay;
+        public bool wallJump, oneWay, bellBeat;
+        public int bellLatch;
         // Nonzero travel uses a kinematic body. Static marks never bind to it.
         public float travelX, travelY, period, rampRise;
         public bool Moving => travelX != 0 || travelY != 0;
@@ -53,6 +54,11 @@ namespace RewindNotary
         public int count;
         public float x, y, stepX;
     }
+    [Serializable] public sealed class BellWaveDefinition
+    {
+        public string surface, refuge;
+        public float atX, windup, speed, height;
+    }
     [Serializable] public sealed class StoryRoom
     {
         public string id, stage, skill, benefactor, crossing, seamId;
@@ -69,6 +75,7 @@ namespace RewindNotary
         public bool hasFallLine;
         public float FallY => hasFallLine ? fallLine : -7f;
         public StorySurface[] terrain;
+        public BellWaveDefinition[] bellWaves;
         public StoryPlacement[] placements;
         public StorySeamRun[] seamRuns;
         public float eastBoundary;
