@@ -9,14 +9,28 @@ from validate_level_step1 import contains
 from validate_story_bout import Actor
 
 
-def replay(deck, edges, physics, start, placement, segments, door, fight, sword, manual=False):
+def sword_parameters(project, scripts, valid_uses):
+    motor = scripts['CombatMotor2D']
+    swing = [float(s.strip().rstrip('f')) for s in re.search(r'new AttackSpec\(([^)]+)\)', motor)[1].split(',')]
+    aim = float(re.search(r'if \(range > ([.\d]+)f\) \{ Walk', scripts['FirstDepartureBot'])[1])
+    size = re.search(r'public Bounds Bounds => .*?new Vector3\(([.\d]+)f, ([.\d]+)f, 2\)', scripts['WaveTarget2D'])
+    catalog = json.loads((project / 'Assets/Resources/Skills/catalog.json').read_text())
+    skill = next(s for s in catalog['skills'] if s['skillId'] == 'basic_sword')
+    initial = int(re.search(r'InitialSwordUses = (\d+)', scripts['SkillDefinition'])[1])
+    uses = initial + valid_uses
+    profile = next(p for p in skill['stages'] if p['stage'] == 1 + (uses >= skill['stage2At']) + (uses >= skill['stage3At']))
+    return aim, swing, profile, float(size[1]), float(size[2])
+
+
+def replay(deck, edges, physics, start, placement, segments, door, fight, sword, manual=False,
+           recovery_ticks=0, landings=None):
     """Stop on first sword contact or inspect input. Recompute support on each physics tick."""
     jump, gravity, dt, speed, _, _, radius, _, tolerance = physics
     aim_range, swing, profile, target_width, target_height = sword
     if manual:
         aim_range = swing[3]  # Stand one blade reach away for the independent human-input control.
     source = next(f for f in edges if f.name == start['support'])
-    actor = Actor(start['x'], start['y'], 6, floor=source)
+    actor = Actor(start['x'], start['y'], start.get('hp', 6), floor=source)
     if fight:
         goal_x = placement['x']
         goal = next((f for f in edges if f.left <= goal_x <= f.right and abs(f.top - placement['y']) < .5), None)
@@ -38,7 +52,10 @@ def replay(deck, edges, physics, start, placement, segments, door, fight, sword,
     release_jump = False
     swing_tick = cut_tick = door_tick = None
     direction = 1
-    for tick in range(round(120 / dt)):
+    # A cut can hand off mid-swing, after the grounded forward step has ended.
+    for _ in range(recovery_ticks):
+        actor.advance(deck, radius, gravity, dt)
+    for tick in range(recovery_ticks, round(120 / dt)):
         axis = 0
         if release_jump:
             release_jump = False  # ClockPosition clears jumpingFrom on the first grounded frame.
@@ -89,6 +106,8 @@ def replay(deck, edges, physics, start, placement, segments, door, fight, sword,
         actor.advance(deck, radius, gravity, dt)
         if hops < len(path) and actor.floor == path[hops][1]:
             landed.append(actor.floor.name)
+            if landings is not None:
+                landings.append(dict(surface=actor.floor.name, tick=tick+1, x=round(actor.x, 4), y=round(actor.y, 4)))
             release_jump = path[hops][2][2] == 0
             hops += 1
     return dict(supports=landed, swordTick=swing_tick, cutTick=cut_tick, inspectTick=door_tick,
@@ -134,18 +153,9 @@ def validate_bell_reentry(verify, project, rooms, scripts, physics):
            'contacts > lastContacts || (room == lastWaveRoom && cleared > lastCleared)' in scripts['AutoTestDriver'],
            'run 21 / rooms changed while the last contact, kill or valid use stayed at 384 seconds')
 
-    motor = scripts['CombatMotor2D']
-    swing = [float(s.strip().rstrip('f')) for s in re.search(r'new AttackSpec\(([^)]+)\)', motor)[1].split(',')]
-    aim = float(re.search(r'if \(range > ([.\d]+)f\) \{ Walk', scripts['FirstDepartureBot'])[1])
-    size = re.search(r'public Bounds Bounds => .*?new Vector3\(([.\d]+)f, ([.\d]+)f, 2\)', scripts['WaveTarget2D'])
-    catalog = json.loads((project / 'Assets/Resources/Skills/catalog.json').read_text())
-    skill = next(s for s in catalog['skills'] if s['skillId'] == 'basic_sword')
     archetypes = json.loads((project / 'Assets/Resources/Waves/test-stage.json').read_text())['archetypes']
     latch = next(g for g in archetypes if g['id'] == 'sword_latch')
-    initial = int(re.search(r'InitialSwordUses = (\d+)', scripts['SkillDefinition'])[1])
-    uses = initial + qa['validSwordUses']
-    profile = next(p for p in skill['stages'] if p['stage'] == 1 + (uses >= skill['stage2At']) + (uses >= skill['stage3At']))
-    sword = aim, swing, profile, float(size[1]), float(size[2])
+    sword = sword_parameters(project, scripts, qa['validSwordUses'])
     by_id = {r['id']: r for r in rooms}
     results = {}
     for room_id, measured in qa['bounds'].items():

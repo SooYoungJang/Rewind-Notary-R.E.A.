@@ -1,5 +1,5 @@
 {
-  "passed": 10974,
+  "passed": 10984,
   "errors": [],
   "warnings": [
     "Bell step 5: fixed-tick mobility, silent refuge margins and per-station opportunities are offline checks. Slot-5 contact and width measurements require Unity.",
@@ -9996,6 +9996,16 @@
     "Level step 6: slot six records feet, both clocks, real paint contacts, actual branch and mixed encounter",
     "Level step 6: five isolated files, sixth slot disk receipt and unchanged failure deadlines",
     "Level step 6: existing 140 plus all authored gallery rectangles, separately counted dynamic placements",
+    "Level step 6: run 25 / five live room boxes match authored geometry",
+    "Level step 6: run 25 / grounded crossbar, both latches cut, same three-segment sentry on glass_sill",
+    "Level step 6: run 25 / only the open canvas connects crossbar to the east sill",
+    "Level step 6: run 25 / ordinary direct lip jump misses the first possible sill contact",
+    "Level step 6: run 25 / render-frame cut and fixed-tick collider revision feed distinct live snapshots",
+    "Level step 6: run 25 / same target survives repeated render polls and routes on the next solid physics tick",
+    "Level step 6: run 25 / solid on first poll, missing latch and stuck trigger keep distinct outcomes",
+    "Level step 6: run 25 / the last uncleared latch can still be approached on the closed layout",
+    "Level step 6: run 25 / opened collider twelve units too high still records a disconnected route",
+    "Level step 6: run 25 / continuous keyboard approach from saved feet lands and hits the sentry",
     "Level step 6: tile replay uses the production draw mode, size, child transform and independent box",
     "Level step 6: full textures, centered pivots, tile PPU and rotated ramp sizes drive the replay",
     "Level step 6: editor preflight reads live XY bounds and calls the slot-six verifier",
@@ -22851,6 +22861,91 @@
     "combinedTerrain": 285,
     "paintGaps": 84,
     "unityMeasured": false,
+    "run25Bridge": {
+      "tickSeconds": 0.02,
+      "start": {
+        "x": 19.967994689941406,
+        "y": 7.60493278503418,
+        "hp": 5,
+        "support": "crossbar"
+      },
+      "target": "shell_sentry_2",
+      "targetFeet": [
+        38,
+        6.05
+      ],
+      "cuts": 2,
+      "closedReachable": [
+        "crossbar",
+        "tripod",
+        "easel_bank"
+      ],
+      "openReachable": [
+        "crossbar",
+        "folding_canvas",
+        "tripod",
+        "glass_sill",
+        "easel_bank"
+      ],
+      "directJump": {
+        "launchX": 25.55,
+        "ticks": 46,
+        "endX": 31.124,
+        "shortBy": 1.566
+      },
+      "pollTicks": [
+        0,
+        0,
+        0,
+        1,
+        2
+      ],
+      "legacy": [
+        "no fixed route"
+      ],
+      "current": [
+        "wait",
+        "wait",
+        "wait",
+        "route"
+      ],
+      "stuckTrigger": [
+        "wait",
+        "wait",
+        "wait",
+        "no fixed route"
+      ],
+      "recoveryTicks": 12,
+      "landings": [
+        {
+          "surface": "folding_canvas",
+          "tick": 95,
+          "x": 27.2156,
+          "y": 7.6
+        },
+        {
+          "surface": "glass_sill",
+          "tick": 166,
+          "x": 35.9,
+          "y": 6.0
+        }
+      ],
+      "approach": {
+        "supports": [
+          "crossbar",
+          "folding_canvas",
+          "glass_sill"
+        ],
+        "swordTick": 174,
+        "cutTick": 182,
+        "inspectTick": null,
+        "remaining": 2,
+        "feet": [
+          36.94,
+          6.0
+        ]
+      }
+    },
     "terrainBounds": {
       "rectangles": "At spawn, [x,y,width,height]. QA24 render replay, current render model, authored collision.",
       "qa24UnityVersion": "6000.6.9f1",

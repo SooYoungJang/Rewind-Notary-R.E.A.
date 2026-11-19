@@ -1,0 +1,68 @@
+{
+  "seconds": 44.46328829999993,
+  "reason": "No fixed route in gallery_03_easel_bridge from crossbar to glass_sill | GalleryDistrict elapsed=44.5s idle=0.0s room=gallery_03_easel_bridge feet=(19.97, 7.60) grounded=True row=story.gallery.route.04 action=clear:wave remainingTargets=4 waveTarget=gallery_03_easel_bridge:shell_sentry_2 segments=3 contacts=3 support=crossbar[18.00,26.00]@7.60 authoredWidth=8.00 boxLocalWidth=8.00 worldScaleX=1.00 autoTiling=False hp=5/6 bossHp=/ bossFeet=-",
+  "endState": {
+    "room": "gallery_03_easel_bridge",
+    "action": "clear:wave",
+    "target": "gallery_03_easel_bridge:shell_sentry_2",
+    "targetSegments": 3,
+    "hp": 5,
+    "x": 19.967994689941406,
+    "y": 7.60493278503418,
+    "grounded": true
+  },
+  "skills": [
+    {
+      "id": "basic_sword",
+      "activations": 13,
+      "validUses": 13
+    }
+  ],
+  "widths": [
+    {
+      "room": "gallery_03_easel_bridge",
+      "surface": "easel_bank",
+      "authored": 14.0,
+      "measured": 14.0,
+      "left": 0.0,
+      "bottom": 3.619999885559082,
+      "height": 0.38000011444091797
+    },
+    {
+      "room": "gallery_03_easel_bridge",
+      "surface": "tripod",
+      "authored": 12.0,
+      "measured": 12.0,
+      "left": 10.0,
+      "bottom": 5.420000076293945,
+      "height": 0.38000011444091797
+    },
+    {
+      "room": "gallery_03_easel_bridge",
+      "surface": "crossbar",
+      "authored": 8.0,
+      "measured": 8.0,
+      "left": 18.0,
+      "bottom": 7.21999979019165,
+      "height": 0.38000011444091797
+    },
+    {
+      "room": "gallery_03_easel_bridge",
+      "surface": "folding_canvas",
+      "authored": 9.0,
+      "measured": 9.0,
+      "left": 25.0,
+      "bottom": 7.21999979019165,
+      "height": 0.38000011444091797
+    },
+    {
+      "room": "gallery_03_easel_bridge",
+      "surface": "glass_sill",
+      "authored": 12.0,
+      "measured": 12.0,
+      "left": 33.0,
+      "bottom": 5.619999885559082,
+      "height": 0.38000011444091797
+    }
+  ]
+}

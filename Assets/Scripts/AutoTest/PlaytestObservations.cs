@@ -95,6 +95,18 @@ namespace RewindNotary
             return false;
         }
 
+        internal bool GalleryBridgeOpening()
+        {
+            foreach (var plate in bellPlates)
+            {
+                if (plate.face.latchCuts <= 0 || !plate.box.isTrigger) continue;
+                int cuts = 0;
+                foreach (var latch in latches) if (latch.State.Cleared) cuts++;
+                if (cuts >= plate.face.latchCuts || Has("gallery_03_cleared")) return true;
+            }
+            return false;
+        }
+
         internal WaveTarget2D BellTargetOnTurn(int turn)
         {
             float top = Room.SurfaceTop("lower_" + turn);

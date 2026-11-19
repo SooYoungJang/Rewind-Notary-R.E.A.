@@ -63,8 +63,18 @@ namespace RewindNotary
             if (GalleryAim(launch, 1)) keys.Cast();
         }
 
+        private double? pendingBridgeTick;
+
         internal void GalleryFight(WaveTarget2D target)
         {
+            // A sword cut changes the wave in Update. FixedUpdate publishes the solid bridge.
+            if (Area.GalleryBridgeOpening())
+            {
+                pendingBridgeTick ??= Time.fixedTimeAsDouble;
+                if (pendingBridgeTick == Time.fixedTimeAsDouble) return;
+            }
+            else pendingBridgeTick = null;
+
             var at = target.transform.position;
             if (!TryFaceAt(at.x, at.y, out var face)) return;
             bool setup = target.State.NeedsSetup && !target.State.Ready(Time.time);
