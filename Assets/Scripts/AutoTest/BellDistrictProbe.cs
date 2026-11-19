@@ -114,9 +114,16 @@ namespace RewindNotary
             return false;
         }
 
-        private static bool Door(FirstDepartureBot bot, BotKeyboard keys, string destination)
+        private bool Door(FirstDepartureBot bot, BotKeyboard keys, string destination)
         {
-            var room = bot.Area.Room;
+            var area = bot.Area;
+            var room = area.Room;
+            // After the sanctuary visit the story rows are complete, but reloading a room rebuilds its wave.
+            if (room.stage == "bell" && surveyed.Contains(Table) && area.DistrictWaveTarget is WaveTarget2D target)
+            {
+                bot.BellFight(target);
+                return false;
+            }
             var door = Array.Find(room.exits, d => d.room == destination);
             if (door == null || !bot.BellDoor(door)) return false;
             keys.Tap(KeyCode.F);

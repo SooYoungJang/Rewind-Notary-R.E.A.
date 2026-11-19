@@ -8,6 +8,7 @@ import re
 from PIL import Image
 
 from story_link_baseline import prior_level5_source
+from validate_bell_reentry import validate_bell_reentry
 from validate_fixed_surface_route import fixed_edges, paths_from, room_faces, simulate_landing
 from validate_level_step1 import contains, number
 from validate_level_step4 import fixed_walk, shortest_return
@@ -316,6 +317,7 @@ def validate_level_step5(check, project, scripts):
            for name in ('OperaDistrictProbe','BellDistrictProbe')) and 'ProbeCollider(s).bounds' in scripts['PlaytestObservations'] and
            'Mathf.Abs(measured - s.rect.width) > .005f' in scripts['OperaDistrictProbe'],
            'both probes measure every authored root collider at the 0.005 world-unit tolerance')
-    return dict(routes=routes, waves=waves, tunnelFacesByLatchCount=gate_decks, timedHall=dict(samples=len(crossing_times),seconds=max(crossing_times,default=None)), boss=boss, before=before, stationOnlyThresholds=[seq[29],seq[79]],
+    reentry = validate_bell_reentry(verify, project, rooms, scripts, physics)
+    return dict(run21Reentry=reentry, routes=routes, waves=waves, tunnelFacesByLatchCount=gate_decks, timedHall=dict(samples=len(crossing_times),seconds=max(crossing_times,default=None)), boss=boss, before=before, stationOnlyThresholds=[seq[29],seq[79]],
                 stationSupply=len(seq), totalSupply=total, shortcut=comparison, operaWidths=55,bellWidths=total_widths,
                 unity_executed=False)

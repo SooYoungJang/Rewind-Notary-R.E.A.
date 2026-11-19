@@ -1,0 +1,49 @@
+{
+  "source": "run21 cfc7c4f8, report.json bellDistrict.widths and run.log, grounded, nine contacts, no row or action",
+  "boundsOrder": ["left", "bottom", "measured", "height"],
+  "bounds": {
+    "bell_03_acoustic_hall": {
+      "echo_pool": [0.0, -0.3499999940395355, 15.0, 0.3499999940395355],
+      "dais": [8.0, 1.649999976158142, 14.0, 0.34999990463256836],
+      "choir_step": [15.0, 3.6500000953674316, 15.0, 0.34999990463256836],
+      "resonator": [22.0, 5.650000095367432, 15.0, 0.35000038146972656],
+      "gallery": [30.0, 7.649999618530273, 15.0, 0.34999990463256836]
+    },
+    "bell_04_belfry_shaft": {
+      "shaft_0": [2.0, 7.649999618530273, 17.0, 0.34999990463256836],
+      "shaft_1": [12.0, 9.649999618530273, 17.0, 0.35000038146972656],
+      "shaft_2": [22.0, 11.649999618530273, 21.0, 0.35000038146972656],
+      "shaft_3": [14.0, 13.649999618530273, 20.0, 0.35000038146972656],
+      "shaft_4": [3.0, 15.649999618530273, 19.0, 0.35000038146972656],
+      "shaft_5": [0.0, 17.649999618530273, 14.0, 0.34999847412109375],
+      "shaft_6": [2.0, 19.649999618530273, 17.0, 0.34999847412109375],
+      "shaft_7": [12.0, 21.649999618530273, 17.0, 0.34999847412109375],
+      "shaft_8": [22.0, 23.649999618530273, 21.0, 0.34999847412109375],
+      "shaft_9": [14.0, 25.649999618530273, 20.0, 0.34999847412109375],
+      "shaft_10": [3.0, 27.649999618530273, 19.0, 0.34999847412109375],
+      "shaft_11": [0.0, 29.649999618530273, 14.0, 0.34999847412109375],
+      "shaft_12": [2.0, 31.649999618530273, 17.0, 0.34999847412109375],
+      "shaft_13": [12.0, 33.650001525878906, 17.0, 0.34999847412109375],
+      "shaft_14": [22.0, 35.650001525878906, 21.0, 0.34999847412109375],
+      "shaft_15": [14.0, 37.650001525878906, 20.0, 0.34999847412109375],
+      "shaft_16": [3.0, 39.650001525878906, 19.0, 0.34999847412109375],
+      "crown": [12.0, 41.650001525878906, 32.0, 0.34999847412109375]
+    }
+  },
+  "validSwordUses": 56,
+  "contactRooms": ["bell_01_entry", "bell_02_tunnels", "bell_03_acoustic_hall", "bell_04_belfry_shaft", "bell_05_silence_landing", "bell_06_arena", "bell_07_return_chime", "bell_08_return_undercroft", "bell_10_sanctuary_table"],
+  "roomLoads": ["bell_01_entry", "bell_02_tunnels", "bell_03_acoustic_hall", "bell_04_belfry_shaft", "bell_05_silence_landing", "bell_04_belfry_shaft", "bell_03_acoustic_hall", "bell_02_tunnels", "bell_03_acoustic_hall"],
+  "longRooms": ["bell_05_silence_landing", "bell_04_belfry_shaft", "bell_03_acoustic_hall", "bell_02_tunnels"],
+  "longSeconds": 37.283627700000125,
+  "samples": [
+    {"visit": 2, "elapsed": 413.4, "idle": 29.3, "room": "bell_03_acoustic_hall", "x": 20.12, "y": 4.0, "support": "choir_step", "target": "bell_03_acoustic_hall:sword_latch_0", "segments": 1, "remainingTargets": 6},
+    {"visit": 2, "elapsed": 416.2, "idle": 32.1, "room": "bell_03_acoustic_hall", "x": 33.49, "y": 6.01, "support": "resonator", "target": "bell_03_acoustic_hall:sword_latch_0", "segments": 1, "remainingTargets": 6},
+    {"visit": 2, "elapsed": 418.6, "idle": 34.5, "room": "bell_03_acoustic_hall", "x": 38.51, "y": 8.0, "support": "gallery", "target": "bell_03_acoustic_hall:sword_latch_0", "segments": 1, "remainingTargets": 6},
+    {"visit": 3, "elapsed": 421.4, "idle": 37.3, "room": "bell_04_belfry_shaft", "x": 15.53, "y": 10.0, "support": "shaft_1", "target": "bell_04_belfry_shaft:sword_latch_0", "segments": 1, "remainingTargets": 3},
+    {"visit": 3, "elapsed": 430.6, "idle": 46.5, "room": "bell_04_belfry_shaft", "x": 15.4, "y": 20.01, "support": "shaft_6", "target": "bell_04_belfry_shaft:sword_latch_0", "segments": 1, "remainingTargets": 3},
+    {"visit": 5, "elapsed": 471.7, "idle": 87.6, "room": "bell_04_belfry_shaft", "x": 16.81, "y": 32.0, "support": "shaft_12", "target": "bell_04_belfry_shaft:sword_latch_0", "segments": 1, "remainingTargets": 3},
+    {"visit": 5, "elapsed": 478.2, "idle": 94.0, "room": "bell_04_belfry_shaft", "x": 15.57, "y": 20.01, "support": "shaft_6", "target": "bell_04_belfry_shaft:sword_latch_0", "segments": 1, "remainingTargets": 3},
+    {"visit": 5, "elapsed": 481.7, "idle": 97.6, "room": "bell_04_belfry_shaft", "x": 4.78, "y": 16.01, "support": "shaft_4", "target": "bell_04_belfry_shaft:sword_latch_0", "segments": 1, "remainingTargets": 3},
+    {"visit": 8, "elapsed": 504.3, "idle": 120.1, "room": "bell_03_acoustic_hall", "x": 18.559993743896484, "y": 4.004680156707764, "support": "choir_step", "target": "bell_03_acoustic_hall:sword_latch_0", "segments": 1, "remainingTargets": 6}
+  ]
+}

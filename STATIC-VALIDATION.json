@@ -1,5 +1,5 @@
 {
-  "passed": 9329,
+  "passed": 9395,
   "errors": [],
   "warnings": [
     "Bell step 5: fixed-tick mobility, silent refuge margins and per-station opportunities are offline checks. Slot-5 contact and width measurements require Unity.",
@@ -9244,6 +9244,72 @@
     "Level step 5: probe rejects duplicate growth and measures closed and opened journeys",
     "Level step 5: sandbox fifth slot, four SHA-256 comparisons, disk readback and unchanged watchdogs",
     "Level step 5: both probes measure every authored root collider at the 0.005 world-unit tolerance",
+    "Level step 5: run 21 / return and both comparison routes use the inspected door",
+    "Level step 5: run 21 / record the common destination floor before engaging the next room departure",
+    "Level step 5: run 21 / live wave state hands off to a real aimed sword input on its support",
+    "Level step 5: run 21 / observed hub re-entry, ordinary descent, climb back and shortcut to 09",
+    "Level step 5: run 21 / rooms changed while the last contact, kill or valid use stayed at 384 seconds",
+    "Level step 5: bell_03_acoustic_hall / all run-21 collider edges match authored rectangles",
+    "Level step 5: bell_03_acoustic_hall / recorded feet agree with measured support",
+    "Level step 5: bell_03_acoustic_hall / reloaded first live segment",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from echo_pool at 4.00 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from echo_pool at 4.00 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from echo_pool at 4.00 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from choir_step at 20.12 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from choir_step at 20.12 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from choir_step at 20.12 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from choir_step at 20.12 cuts within the time remaining on the run-21 watchdog",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from resonator at 33.49 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from resonator at 33.49 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from resonator at 33.49 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from resonator at 33.49 cuts within the time remaining on the run-21 watchdog",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from gallery at 38.51 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from gallery at 38.51 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from gallery at 38.51 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_03_acoustic_hall / return visit 2 from gallery at 38.51 cuts within the time remaining on the run-21 watchdog",
+    "Level step 5: bell_03_acoustic_hall / return visit 6 from gallery at 39.00 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_03_acoustic_hall / return visit 6 from gallery at 39.00 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_03_acoustic_hall / return visit 6 from gallery at 39.00 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_03_acoustic_hall / return visit 8 from echo_pool at 4.00 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_03_acoustic_hall / return visit 8 from echo_pool at 4.00 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_03_acoustic_hall / return visit 8 from echo_pool at 4.00 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_03_acoustic_hall / return visit 8 from choir_step at 18.56 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_03_acoustic_hall / return visit 8 from choir_step at 18.56 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_03_acoustic_hall / return visit 8 from choir_step at 18.56 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_03_acoustic_hall / missing the activation zone leaves the live segment intact",
+    "Level step 5: bell_04_belfry_shaft / all run-21 collider edges match authored rectangles",
+    "Level step 5: bell_04_belfry_shaft / recorded feet agree with measured support",
+    "Level step 5: bell_04_belfry_shaft / reloaded first live segment",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_0 at 5.00 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_0 at 5.00 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_0 at 5.00 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_1 at 15.53 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_1 at 15.53 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_1 at 15.53 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_1 at 15.53 cuts within the time remaining on the run-21 watchdog",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_6 at 15.40 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_6 at 15.40 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_6 at 15.40 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_04_belfry_shaft / return visit 3 from shaft_6 at 15.40 cuts within the time remaining on the run-21 watchdog",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from crown at 38.00 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from crown at 38.00 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from crown at 38.00 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_12 at 16.81 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_12 at 16.81 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_12 at 16.81 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_12 at 16.81 cuts within the time remaining on the run-21 watchdog",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_6 at 15.57 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_6 at 15.57 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_6 at 15.57 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_6 at 15.57 cuts within the time remaining on the run-21 watchdog",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_4 at 4.78 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_4 at 4.78 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_4 at 4.78 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_04_belfry_shaft / return visit 5 from shaft_4 at 4.78 cuts within the time remaining on the run-21 watchdog",
+    "Level step 5: bell_04_belfry_shaft / return visit 9 from shaft_0 at 5.00 uses F with the latch intact under the run-21 rule",
+    "Level step 5: bell_04_belfry_shaft / return visit 9 from shaft_0 at 5.00 reachable on authored terrain with an ordinary sword strike",
+    "Level step 5: bell_04_belfry_shaft / return visit 9 from shaft_0 at 5.00 cuts the live segment before the bot can inspect the exit",
+    "Level step 5: bell_04_belfry_shaft / missing the activation zone leaves the live segment intact",
     "C# delimiters balanced (not compile): SpriteAnimator.cs",
     "C# delimiters balanced (not compile): Health.cs",
     "C# delimiters balanced (not compile): CombatMotor2D.cs",
@@ -19441,6 +19507,909 @@
     "unity_executed": false
   },
   "level_step5_metrics": {
+    "run21Reentry": {
+      "tickSeconds": 0.02,
+      "visits": [
+        "bell_01_entry",
+        "bell_02_tunnels",
+        "bell_03_acoustic_hall",
+        "bell_04_belfry_shaft",
+        "bell_05_silence_landing",
+        "bell_04_belfry_shaft",
+        "bell_03_acoustic_hall",
+        "bell_02_tunnels",
+        "bell_03_acoustic_hall",
+        "bell_04_belfry_shaft",
+        "bell_05_silence_landing",
+        "bell_02_tunnels",
+        "bell_09_shortcut"
+      ],
+      "rooms": {
+        "bell_03_acoustic_hall": [
+          {
+            "visit": 2,
+            "destination": "bell_04_belfry_shaft",
+            "qaElapsed": null,
+            "start": [
+              4,
+              0.0
+            ],
+            "legacy": {
+              "supports": [
+                "echo_pool",
+                "dais",
+                "choir_step",
+                "resonator",
+                "gallery"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 403,
+              "remaining": 1,
+              "feet": [
+                40.79,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "echo_pool",
+                "dais"
+              ],
+              "swordTick": 93,
+              "cutTick": 101,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.44,
+                2.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "echo_pool",
+                "dais"
+              ],
+              "swordTick": 91,
+              "cutTick": 99,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.18,
+                2.0
+              ]
+            }
+          },
+          {
+            "visit": 2,
+            "destination": "bell_04_belfry_shaft",
+            "qaElapsed": 413.4,
+            "start": [
+              20.12,
+              4.0
+            ],
+            "legacy": {
+              "supports": [
+                "choir_step",
+                "resonator",
+                "gallery"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 219,
+              "remaining": 1,
+              "feet": [
+                40.79,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 60,
+              "cutTick": 68,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.764,
+                2.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 60,
+              "cutTick": 68,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.764,
+                2.0
+              ]
+            }
+          },
+          {
+            "visit": 2,
+            "destination": "bell_04_belfry_shaft",
+            "qaElapsed": 416.2,
+            "start": [
+              33.49,
+              6.01
+            ],
+            "legacy": {
+              "supports": [
+                "resonator",
+                "gallery"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 85,
+              "remaining": 1,
+              "feet": [
+                40.77,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "resonator",
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 168,
+              "cutTick": 176,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.741,
+                2.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "resonator",
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 168,
+              "cutTick": 176,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.741,
+                2.0
+              ]
+            }
+          },
+          {
+            "visit": 2,
+            "destination": "bell_04_belfry_shaft",
+            "qaElapsed": 418.6,
+            "start": [
+              38.51,
+              8.0
+            ],
+            "legacy": {
+              "supports": [
+                "gallery"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 18,
+              "remaining": 1,
+              "feet": [
+                40.85,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "gallery",
+                "resonator",
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 212,
+              "cutTick": 220,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.736,
+                2.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "gallery",
+                "resonator",
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 212,
+              "cutTick": 220,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.736,
+                2.0
+              ]
+            }
+          },
+          {
+            "visit": 6,
+            "destination": "bell_02_tunnels",
+            "qaElapsed": null,
+            "start": [
+              39,
+              7.999999523162842
+            ],
+            "legacy": {
+              "supports": [
+                "gallery",
+                "resonator",
+                "choir_step",
+                "dais",
+                "echo_pool"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 305,
+              "remaining": 1,
+              "feet": [
+                2.128,
+                0.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "gallery",
+                "resonator",
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 216,
+              "cutTick": 224,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.753,
+                2.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "gallery",
+                "resonator",
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 216,
+              "cutTick": 224,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.753,
+                2.0
+              ]
+            }
+          },
+          {
+            "visit": 8,
+            "destination": "bell_04_belfry_shaft",
+            "qaElapsed": null,
+            "start": [
+              4,
+              0.0
+            ],
+            "legacy": {
+              "supports": [
+                "echo_pool",
+                "dais",
+                "choir_step",
+                "resonator",
+                "gallery"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 403,
+              "remaining": 1,
+              "feet": [
+                40.79,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "echo_pool",
+                "dais"
+              ],
+              "swordTick": 93,
+              "cutTick": 101,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.44,
+                2.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "echo_pool",
+                "dais"
+              ],
+              "swordTick": 91,
+              "cutTick": 99,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.18,
+                2.0
+              ]
+            }
+          },
+          {
+            "visit": 8,
+            "destination": "bell_04_belfry_shaft",
+            "qaElapsed": 504.3,
+            "start": [
+              18.559993743896484,
+              4.004680156707764
+            ],
+            "legacy": {
+              "supports": [
+                "choir_step",
+                "resonator",
+                "gallery"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 231,
+              "remaining": 1,
+              "feet": [
+                40.79,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 48,
+              "cutTick": 56,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.764,
+                2.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "choir_step",
+                "dais"
+              ],
+              "swordTick": 48,
+              "cutTick": 56,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                12.764,
+                2.0
+              ]
+            }
+          }
+        ],
+        "bell_04_belfry_shaft": [
+          {
+            "visit": 3,
+            "destination": "bell_05_silence_landing",
+            "qaElapsed": null,
+            "start": [
+              5,
+              7.999999523162842
+            ],
+            "legacy": {
+              "supports": [
+                "shaft_0",
+                "shaft_1",
+                "shaft_2",
+                "shaft_3",
+                "shaft_4",
+                "shaft_5",
+                "shaft_6",
+                "shaft_7",
+                "shaft_8",
+                "shaft_9",
+                "shaft_10",
+                "shaft_11",
+                "shaft_12",
+                "shaft_13",
+                "shaft_14",
+                "shaft_15",
+                "shaft_16",
+                "crown"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 1544,
+              "remaining": 1,
+              "feet": [
+                38.8,
+                42.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "shaft_0",
+                "shaft_1"
+              ],
+              "swordTick": 124,
+              "cutTick": 132,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.47,
+                10.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "shaft_0",
+                "shaft_1"
+              ],
+              "swordTick": 122,
+              "cutTick": 130,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.21,
+                10.0
+              ]
+            }
+          },
+          {
+            "visit": 3,
+            "destination": "bell_05_silence_landing",
+            "qaElapsed": 421.4,
+            "start": [
+              15.53,
+              10.0
+            ],
+            "legacy": {
+              "supports": [
+                "shaft_1",
+                "shaft_2",
+                "shaft_3",
+                "shaft_4",
+                "shaft_5",
+                "shaft_6",
+                "shaft_7",
+                "shaft_8",
+                "shaft_9",
+                "shaft_10",
+                "shaft_11",
+                "shaft_12",
+                "shaft_13",
+                "shaft_14",
+                "shaft_15",
+                "shaft_16",
+                "crown"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 1433,
+              "remaining": 1,
+              "feet": [
+                38.8,
+                42.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "shaft_1"
+              ],
+              "swordTick": 13,
+              "cutTick": 21,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.47,
+                10.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "shaft_1"
+              ],
+              "swordTick": 11,
+              "cutTick": 19,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.21,
+                10.0
+              ]
+            }
+          },
+          {
+            "visit": 3,
+            "destination": "bell_05_silence_landing",
+            "qaElapsed": 430.6,
+            "start": [
+              15.4,
+              20.01
+            ],
+            "legacy": {
+              "supports": [
+                "shaft_6",
+                "shaft_7",
+                "shaft_8",
+                "shaft_9",
+                "shaft_10",
+                "shaft_11",
+                "shaft_12",
+                "shaft_13",
+                "shaft_14",
+                "shaft_15",
+                "shaft_16",
+                "crown"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 979,
+              "remaining": 1,
+              "feet": [
+                38.8,
+                42.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "shaft_6",
+                "shaft_7",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 361,
+              "cutTick": 369,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.36,
+                10.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "shaft_6",
+                "shaft_7",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 360,
+              "cutTick": 368,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.23,
+                10.0
+              ]
+            }
+          },
+          {
+            "visit": 5,
+            "destination": "bell_03_acoustic_hall",
+            "qaElapsed": null,
+            "start": [
+              38,
+              42.0
+            ],
+            "legacy": {
+              "supports": [
+                "crown",
+                "shaft_16",
+                "shaft_12",
+                "shaft_10",
+                "shaft_6",
+                "shaft_4",
+                "shaft_0"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 977,
+              "remaining": 1,
+              "feet": [
+                3.763,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "crown",
+                "shaft_16",
+                "shaft_15",
+                "shaft_13",
+                "shaft_9",
+                "shaft_7",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 1106,
+              "cutTick": 1114,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.358,
+                10.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "crown",
+                "shaft_16",
+                "shaft_15",
+                "shaft_13",
+                "shaft_9",
+                "shaft_7",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 1105,
+              "cutTick": 1113,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.228,
+                10.0
+              ]
+            }
+          },
+          {
+            "visit": 5,
+            "destination": "bell_03_acoustic_hall",
+            "qaElapsed": 471.7,
+            "start": [
+              16.81,
+              32.0
+            ],
+            "legacy": {
+              "supports": [
+                "shaft_12",
+                "shaft_10",
+                "shaft_6",
+                "shaft_4",
+                "shaft_0"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 555,
+              "remaining": 1,
+              "feet": [
+                3.821,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "shaft_12",
+                "shaft_13",
+                "shaft_9",
+                "shaft_7",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 690,
+              "cutTick": 698,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.436,
+                10.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "shaft_12",
+                "shaft_13",
+                "shaft_9",
+                "shaft_7",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 688,
+              "cutTick": 696,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.176,
+                10.0
+              ]
+            }
+          },
+          {
+            "visit": 5,
+            "destination": "bell_03_acoustic_hall",
+            "qaElapsed": 478.2,
+            "start": [
+              15.57,
+              20.01
+            ],
+            "legacy": {
+              "supports": [
+                "shaft_6",
+                "shaft_4",
+                "shaft_0"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 236,
+              "remaining": 1,
+              "feet": [
+                3.878,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "shaft_6",
+                "shaft_7",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 360,
+              "cutTick": 368,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.398,
+                10.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "shaft_6",
+                "shaft_7",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 358,
+              "cutTick": 366,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.138,
+                10.0
+              ]
+            }
+          },
+          {
+            "visit": 5,
+            "destination": "bell_03_acoustic_hall",
+            "qaElapsed": 481.7,
+            "start": [
+              4.78,
+              16.01
+            ],
+            "legacy": {
+              "supports": [
+                "shaft_4",
+                "shaft_0"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 63,
+              "remaining": 1,
+              "feet": [
+                3.762,
+                8.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "shaft_4",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 290,
+              "cutTick": 298,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.428,
+                10.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "shaft_4",
+                "shaft_3",
+                "shaft_1"
+              ],
+              "swordTick": 288,
+              "cutTick": 296,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.168,
+                10.0
+              ]
+            }
+          },
+          {
+            "visit": 9,
+            "destination": "bell_05_silence_landing",
+            "qaElapsed": null,
+            "start": [
+              5,
+              7.999999523162842
+            ],
+            "legacy": {
+              "supports": [
+                "shaft_0",
+                "shaft_1",
+                "shaft_2",
+                "shaft_3",
+                "shaft_4",
+                "shaft_5",
+                "shaft_6",
+                "shaft_7",
+                "shaft_8",
+                "shaft_9",
+                "shaft_10",
+                "shaft_11",
+                "shaft_12",
+                "shaft_13",
+                "shaft_14",
+                "shaft_15",
+                "shaft_16",
+                "crown"
+              ],
+              "swordTick": null,
+              "cutTick": null,
+              "inspectTick": 1544,
+              "remaining": 1,
+              "feet": [
+                38.8,
+                42.0
+              ]
+            },
+            "human": {
+              "supports": [
+                "shaft_0",
+                "shaft_1"
+              ],
+              "swordTick": 124,
+              "cutTick": 132,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.47,
+                10.0
+              ]
+            },
+            "current": {
+              "supports": [
+                "shaft_0",
+                "shaft_1"
+              ],
+              "swordTick": 122,
+              "cutTick": 130,
+              "inspectTick": null,
+              "remaining": 0,
+              "feet": [
+                17.21,
+                10.0
+              ]
+            }
+          }
+        ]
+      }
+    },
     "routes": {
       "bell_01_entry": {
         "faces": 4,
