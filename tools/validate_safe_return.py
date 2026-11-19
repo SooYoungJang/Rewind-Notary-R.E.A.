@@ -42,7 +42,7 @@ def replay_safe_return(project, scripts):
     catalog = json.loads((project / 'Assets/Resources/Skills/catalog.json').read_text())
     rooms = {}
     for room in doc['rooms']:
-        if not room.get('seamRuns'):
+        if room['stage'] != 'velvet':
             continue
         deck = velvet_deck(room, scripts['RepresentativeRoomLayout'], True)
         room['faces'] = [vars(f) for f in deck]
@@ -54,11 +54,19 @@ def replay_safe_return(project, scripts):
     swings = [[float(n.strip().rstrip('f')) for n in spec.split(',')]
               for spec in re.findall(r'new AttackSpec\(([^)]+)\)', combo)]
     names = ['FirstDepartureBot', 'VelvetTraversal', 'ClockTraversal', 'WaveTargetState', 'PlaytestObservations',
-             'FirstDeparture', 'StitchSurface2D', 'CombatMotor2D']
+             'FirstDeparture', 'StitchSurface2D', 'CombatMotor2D', 'VelvetDistrictProbe', 'RepresentativeArea',
+             'RepresentativeRoomLayout']
     rows = [row for row in doc['rows'] if row['sceneId'] == 'first_transfer']
     resume = {floor['id']: r['id'] for r in doc['rooms'] for floor in r['floors']}
     waves = json.loads((project / 'Assets/Resources/Waves/test-stage.json').read_text())
-    data = dict(rooms=rooms, transferRows=rows, resume=resume,
+    release = next(row for row in doc['rows'] if row['completionFlag'] == 'mikhail_i0_complete')
+    plank = re.search(r'Room\.SurfaceTop\(p\.surface\) \+ \(plank \? ([\d.]+)f : [^)]+\), '
+                      r'plank \? ([\d.]+)f : [^,]+, plank \? ([\d.]+)f :', scripts['RepresentativeRoomLayout'])
+    data = dict(rooms=rooms, transferRows=rows, resume=resume, entryWave=waves['zones'][0]['waves'][0], boutExit=release,
+                plank=list(map(float, plank.groups())), gravityScale=number(scripts['CombatMotor2D'], 'Body.gravityScale'),
+                dashDistance=number(scripts['DefenseTuning'], 'DashDistance'),
+                stepJumpHold=float(re.search(r'jumpUntil = Time.time \+ ([.\d]+)f', scripts['FirstDepartureBot'])[1]),
+                district=json.loads((project / 'tools/run30-velvet-probe.json').read_text()),
                 kinds={a['id']: a for a in waves['archetypes']},
                 parry={k: number(scripts['DefenseTuning'], k) for k in
                        ('ParryWindowSeconds', 'ParryRecoverySeconds', 'ParrySuccessGuardSeconds')},
@@ -73,6 +81,8 @@ def replay_safe_return(project, scripts):
                 jumpBuffer=number(scripts['PlayerController2D'], 'JumpBuffer'),
                 coyote=number(scripts['PlayerController2D'], 'CoyoteTime'),
                 swings=swings, targetSize=[width, height],
+                districtIdle=int(re.search(r'\bDistrictIdleLimit = (\d+)', scripts['AutoTestDriver'])[1]),
+                districtDeadline=int(re.search(r'now - entered > (\d+)\)\s+\{ Stop\("District probe', scripts['AutoTestDriver'])[1]),
                 idle=int(re.search(r'now - lastProgress > (\d+)', scripts['AutoTestDriver'])[1]))
     output = subprocess.run(['node', str(project / 'tools/replay_safe_return.js')], input=json.dumps(data),
                             check=True, stdout=subprocess.PIPE, text=True)
@@ -173,6 +183,36 @@ def validate_safe_return(check, project, scripts):
           still['end']['support'] == still['start']['support'] and all(s['vx'] == 0 for s in still['swingTrace']) and
           not held['combat'] and not still['combat'],
           'QA29 / held and released direction during the same swing at the captured position')
+    for key in ('afterInvestigation', 'manualAfterInvestigation'):
+        route = result[key]
+        check(route['start']['remaining'] == 7 and route['start']['active'] == 0 and route['start']['target'] is None and
+              route['start']['support'] == 'silt_bed' and route['start']['uses'] == 80 and
+              route.get('destination') == ['velvet_01_entry', 'velvet_entry_floor'] and
+              route['departures'][0]['support'] == 'outfall_quay' and route['end']['uses'] == 80 and
+              route['end']['activations'] == 0,
+              'QA30 / ' + key + ' leaves the captured silt bed and takes the entry door on fixed ground')
+    low, high = result['afterInvestigation'], result['unreachableLip']
+    check(low['start'] == high['start'] and high['lip']['top'] > low['lip']['top'] and
+          low['lip']['contacts'] > 0 and any(x < low['start']['feet'][0] for x in low['lip']['takeoffs']) and
+          high['lip']['contacts'] > 0 and not high['lip']['takeoffs'],
+          'QA30 / the blocked launch gets a run-up for a reachable plank and no jump for a lip above the apex')
+    standing = result['cornerJump']
+    check(standing['lip']['headContacts'] > 0 and standing['lip']['peakFeet'] < 0 and
+          standing['stop'] == 'first landing' and standing['end']['support'] == 'silt_bed',
+          'QA30 / jumping at the captured lip hits the lower corner of the plank and returns to the silt bed')
+    district = result['district']
+    probe = district['probe']
+    entry, bridge = 'velvet_01_entry', 'velvet_06_shortcut'
+    check(district['stop'] == 'district complete' and probe['closedOnFirstVisit'] and
+          probe['arrivedAtUpperBridge'] and probe['arrivedAtArena'] and probe['returnDoors'] == [loom, bridge, arena] and
+          [c['room'] for c in probe['contacts']] == [entry, loom, gallery, arena, water, bridge] and
+          district['rooms'] == [entry, loom, gallery, arena, water, entry, loom, gallery, arena, 'hub_workroom',
+                                arena, water, entry, loom, bridge, arena] and district['end']['support'] == 'balcony',
+          'QA30 / the slot-2 probe earns all six floor contacts, opens the investigated upper return and lands in the arena')
+    check(probe['silverRooms'] == itinerary and probe['firstSilverTarget'] == water + ':seam_0' and
+          len({e['use'] for e in district['credits']}) == len(district['credits']) == probe['returnUses'] == 80 and
+          (probe['shortSeams'], probe['guardPreparations'], probe['upperSupports']) == (16, 16, 48),
+          'QA30 / 80 distinct slot-2 casts include the 16 short seams, 16 guard preparations and 48 upper supports')
     return result
 
 
@@ -185,7 +225,7 @@ if __name__ == '__main__':
         project = project / 'unity/RewindNotary'
     scripts = {p.stem: p.read_text() for p in (project / 'Assets/Scripts').rglob('*.cs')}
     if args.bot_dir:
-        for name in ('FirstDepartureBot', 'ClockTraversal', 'VelvetTraversal', 'PlaytestObservations'):
+        for name in ('FirstDepartureBot', 'ClockTraversal', 'VelvetTraversal', 'PlaytestObservations', 'VelvetDistrictProbe'):
             scripts[name] = (args.bot_dir / (name + '.cs')).read_text()
     failed = []
     metrics = validate_safe_return(lambda ok, label: None if ok else failed.append(label), project, scripts)

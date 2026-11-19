@@ -6,7 +6,6 @@ import re
 from copy import deepcopy
 from collections import deque
 
-from story_link_baseline import prior_level4_source
 from validate_level_step1 import contains, number
 from validate_fixed_surface_route import fixed_edges, link, paths_from, room_faces, simulate_landing
 from validate_opera_wave import validate_opera_wave
@@ -153,6 +152,7 @@ def walk_comparison(rooms, physics):
 
 
 def validate_level_step4(check,project,scripts):
+    from story_link_baseline import prior_level4_source
     def verify(ok,label): check(bool(ok),'Level step 4: '+label)
     path='Assets/Resources/Story/opera.json'
     raw=(project/path).read_text()

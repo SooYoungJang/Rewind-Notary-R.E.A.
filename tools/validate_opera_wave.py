@@ -16,6 +16,8 @@ def support_at(edges, x, y):
 def replay(room, physics, lift, waltz, sword, swing, guard, aim, wave_first, rule,
            route_on_lift=False, cleared=0, launch_recovery=False):
     jump, gravity, dt, speed, _, _, radius, height, tolerance = physics
+    rising_ticks = int(jump / (gravity * dt))
+    jump_rise = rising_ticks * dt * (jump - (rising_ticks + 1) * gravity * dt / 2)
     deck = room_faces(room)
     edges = fixed_edges(deck, physics)
     # The kinematic lift is absent from the fixed graph but present in physical contacts.
@@ -112,7 +114,8 @@ def replay(room, physics, lift, waltz, sword, swing, guard, aim, wave_first, rul
                 axis = math.copysign(1, waypoint - actor.x)
                 gap = lift.left - actor.x if axis > 0 else actor.x - lift.right
                 low_ray_hits = 0 < gap <= .95 and lift.bottom <= actor.y + .18 <= lift.top
-                side_contact = (abs(gap - radius) < 1e-5 and actor.y < lift.top <= actor.y + height)
+                side_contact = (abs(gap - radius) < 1e-5 and actor.y + height > lift.bottom
+                                and actor.y < lift.top <= actor.y + jump_rise)
                 hop = contact.jump(tick, dt, actor.x, axis, lift if side_contact else None,
                                    launch=step is not None and launch_recovery, enabled=True)
                 if low_ray_hits or hop:
@@ -181,11 +184,6 @@ def validate_opera_wave(verify, room, physics, scripts, waltz, sword, guard):
                                          'return ClockPosition(face, x);',
                                          'if (Aim(at.x) && Player.Grounded) keys.Cast(0, 1);')),
            'run 16 / row-independent wave dispatch routes to the target support before setup or sword')
-    verify(launch_recovery and 'if (Player.Grounded && (Physics2D.Raycast(feet,' in bot and all(s in bot for s in
-           ('actor.GetContacts(walkContacts)', 'other.gameObject.layer == LevelBuilder.GroundLayer',
-            'Mathf.Abs(hit.normal.x) >= .9f', '(hit.point.x - body.center.x) * facing > 0',
-            'other.bounds.max.y <= body.max.y', 'jumpUntil = Time.time + .24f;')),
-           'run 16 / a grounded side contact ahead can trigger the ordinary obstacle jump')
     layout = scripts['RepresentativeRoomLayout']
     plank = layout.split('fixtures[p.id] = Block(p.id, p.x,')[1].split('plank);')[0]
     center_y, width, thickness = map(float, re.findall(r'plank \? ([.\d]+)f', plank))
@@ -201,6 +199,12 @@ def validate_opera_wave(verify, room, physics, scripts, waltz, sword, guard):
         return replay(room, physics, lift, waltz, sword, swing, guard, aim, dispatch_wave, policy,
                       follow, cleared, launch_recovery)
     old, targeting_only, current = run(False, RAY_ONLY), run(True, RAY_ONLY), run(wave_first, rule, follow_step)
+    verify(launch_recovery and 'if (Player.Grounded && (Physics2D.Raycast(feet,' in bot and all(s in bot for s in
+           ('actor.GetContacts(walkContacts)', 'other.gameObject.layer == LevelBuilder.GroundLayer',
+            'Mathf.Abs(hit.normal.x) >= .9f', '(hit.point.x - body.center.x) * facing > 0',
+            'jumpUntil = Time.time + .24f;')) and current['sideJumpTicks'] and
+           any(landing['surface'] == lift.name for landing in current['landings']),
+           'run 16 / a grounded side contact ahead can trigger the ordinary obstacle jump')
     verify(len(current['sideJumpTicks']) == 1 and 0 < rule.delay <= current['sideJumpTicks'][0] * physics[2],
            'run 17 / the raised lift permits one escape after a sustained stop at the launch approach')
     for label, result in [('old door objective', old), ('target dispatch alone', targeting_only)]:

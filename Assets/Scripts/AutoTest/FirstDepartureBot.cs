@@ -77,7 +77,7 @@ namespace RewindNotary
             }
         }
 
-        internal void Drive(PlaytestStep step)
+        internal void Drive(PlaytestStep step, bool collectUpperSupports = false)
         {
             if (Shell == null) return;
             switch (Shell.Page)
@@ -142,13 +142,18 @@ namespace RewindNotary
                 return;
             }
             if (Area.Room.stage == "velvet" && Has("mikhail_i0_complete") && Area.Room.seamRuns?.Length > 0 &&
-                Record.Get(SkillRules.SilverStitch).acquired && !Record.firstTransferPending && SewReturnRoute()) return;
+                Record.Get(SkillRules.SilverStitch).acquired && !Record.firstTransferPending && SewReturnRoute(collectUpperSupports)) return;
             var target = Area.RouteTarget;
             if (target != null)
             {
                 var at = target.transform.position;
                 var face = FixedFaceAt(at.x, at.y);
                 if (face == null || ReachedCombatSurface(face, at.x)) FightTarget(target);
+                return;
+            }
+            if (Area.Room.id == "velvet_04_arena" && Has("investigation_complete"))
+            {
+                TakeReturnDoor();
                 return;
             }
             var door = Area.ForwardDoor;
@@ -197,13 +202,19 @@ namespace RewindNotary
             // A solid deck can stop a walk to the next launch above the low plank ray.
             var actor = Player.GetComponent<CapsuleCollider2D>();
             var body = actor.bounds;
+            float gravityStep = -Physics2D.gravity.y * Player.Body.gravityScale * Time.fixedDeltaTime;
+            if (gravityStep <= 0f) return false;
+            float jumpSpeed = PlayerController2D.JumpSpeed;
+            int risingTicks = Mathf.FloorToInt(jumpSpeed / gravityStep);
+            float highestFeet = body.min.y + risingTicks * Time.fixedDeltaTime *
+                (jumpSpeed - (risingTicks + 1) * gravityStep * .5f);
             actor.GetContacts(walkContacts);
             foreach (var hit in walkContacts)
             {
                 var other = hit.collider == actor ? hit.otherCollider : hit.collider;
                 if (hit.enabled && other != null && other.gameObject.layer == LevelBuilder.GroundLayer &&
                     Mathf.Abs(hit.normal.x) >= .9f && (hit.point.x - body.center.x) * facing > 0 &&
-                    other.bounds.max.y <= body.max.y)
+                    other.bounds.max.y <= highestFeet)
                 {
                     float x = Player.Body.position.x;
                     if (other != blockedBy || facing != blockedDirection || blockedFrame != Time.frameCount - 1 ||
@@ -215,11 +226,39 @@ namespace RewindNotary
                         blockedSince = Time.fixedTime;
                     }
                     blockedFrame = Time.frameCount;
-                    return Time.fixedTime - blockedSince >= BlockedWalkSeconds;
+                    if (other.bounds.max.y <= body.max.y)
+                        return Time.fixedTime - blockedSince >= BlockedWalkSeconds;
+                    if (Time.fixedTime - blockedSince >= BlockedWalkSeconds && step.LaunchX == step.LandX)
+                        ApproachRaisedLip(other.bounds, body, facing, gravityStep);
+                    return false;
                 }
             }
             return false;
         }
+
+        private void ApproachRaisedLip(Bounds lip, Bounds body, int facing, float gravityStep)
+        {
+            var from = terrain[stepFrom].rect;
+            var deck = terrain[step.To];
+            float deckTop = deck.rect.y + deck.rect.height;
+            if (!deck.oneWay || lip.max.y < deckTop || lip.max.y > deckTop + .5f ||
+                lip.center.x < deck.rect.x || lip.center.x > deck.rect.x + deck.rect.width) return;
+
+            float y = body.min.y;
+            float speed = PlayerController2D.JumpSpeed;
+            int ticks = 0;
+            while (y < lip.max.y && speed > gravityStep)
+            {
+                speed -= gravityStep;
+                y += speed * Time.fixedDeltaTime;
+                ticks++;
+            }
+            float edge = facing > 0 ? lip.min.x : lip.max.x;
+            float launch = edge - facing * (body.extents.x + ticks * Time.fixedDeltaTime * PlayerController2D.MoveSpeed);
+            if (launch < from.x + body.extents.x || launch > from.x + from.width - body.extents.x) return;
+            step = new FixedSurfaceRoute.Step(step.To, launch, lip.center.x);
+        }
+
         private void SeekFloor()
         {
             // Leave a temporary stitched platform. Fixed room floors span the west side.

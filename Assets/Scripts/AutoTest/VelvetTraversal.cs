@@ -64,7 +64,7 @@ namespace RewindNotary
                 lastSewn = e.targetId;
         }
 
-        private bool SewReturnRoute()
+        private bool SewReturnRoute(bool collectUpperSupports)
         {
             var room = Area.Room;
             if (room.id != sewingRoom)
@@ -76,10 +76,11 @@ namespace RewindNotary
             }
             var target = Area.RouteTarget;
             bool water = room.id == "velvet_05_return";
-            if (seamIndex == room.stitchAnchors || room.id == "velvet_03_gallery")
+            bool upperRoute = collectUpperSupports && room.singleSeams == 0;
+            if (seamIndex == room.stitchAnchors || room.id == "velvet_03_gallery" && !upperRoute)
             {
                 if (!ReturnBankReady(room)) return true;
-                if (target != null) return false;
+                if (target != null && !upperRoute) return false;
                 if (water && !Has("scene_floor:velvet:waterway_splice_floor"))
                 {
                     var mark = Array.Find(room.floors, f => f.contactSave);

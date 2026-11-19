@@ -207,7 +207,7 @@ namespace RewindNotary
                 if (room == Bridge && result.contacts.Count == 5)
                 { bot.MoveTo(Array.Find(area.Room.floors, f => f.contactSave).x); return false; }
             }
-            bot.Drive(PlaytestStep.Velvet);
+            bot.Drive(PlaytestStep.Velvet, collectUpperSupports: true);
             return false;
         }
     }

@@ -1,0 +1,19 @@
+{
+  "slot": "slot-2",
+  "room": "velvet_05_return",
+  "x": 17.003019332885742,
+  "y": -1.6950013637542725,
+  "grounded": true,
+  "safeFloor": true,
+  "hp": 6,
+  "silverUses": 80,
+  "remainingTargets": 7,
+  "contacts": 5,
+  "flags": [
+    "intro_complete", "velvet_entry_complete", "velvet_entry_wave_cleared",
+    "loom_bridge", "gallery_bridge", "mikhail_defeated", "mikhail_i0_complete",
+    "first_mastery:silver_stitch", "first_transfer_seen", "returned_for_mid_invest",
+    "investigation_complete", "mikhail_support_first_granted", "luka_lift_complete",
+    "scene_floor:velvet:velvet_return_start"
+  ]
+}

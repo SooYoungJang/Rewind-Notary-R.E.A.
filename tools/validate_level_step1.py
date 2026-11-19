@@ -7,7 +7,6 @@ import math
 import re
 
 from pathlib import Path
-from story_link_baseline import prior_level4_source, prior_pass2_source, reverse_exact
 from PIL import Image
 
 PILOTS = ('velvet_02_loom', 'velvet_03_gallery')
@@ -206,6 +205,7 @@ WIRES = {
 
 
 def validate_level_step1(check, project, scripts):
+    from story_link_baseline import prior_level4_source, prior_pass2_source, reverse_exact
     resources = project/'Assets/Resources'
     docs = [json.loads((resources/'Story'/(name+'.json')).read_text()) for name in DOCUMENTS]
     rooms = {r['id']:r for doc in docs for r in doc['rooms']}

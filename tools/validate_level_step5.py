@@ -7,7 +7,6 @@ import math
 import re
 from PIL import Image
 
-from story_link_baseline import prior_level5_source
 from validate_bell_reentry import validate_bell_reentry
 from validate_fixed_surface_route import fixed_edges, paths_from, room_faces, simulate_landing
 from validate_level_step1 import contains, number
@@ -126,6 +125,7 @@ def trip(rooms, physics):
 
 
 def validate_level_step5(check, project, scripts):
+    from story_link_baseline import prior_level5_source
     def verify(ok, label): check(bool(ok), 'Level step 5: '+label)
     path = 'Assets/Resources/Story/bell.json'
     raw = (project/path).read_text()
