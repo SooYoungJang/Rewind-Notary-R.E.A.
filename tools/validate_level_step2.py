@@ -9,6 +9,7 @@ from validate_level_step1 import contains, digest, number
 from validate_fixed_surface_route import Face, fixed_edges, link, simulate_landing
 from validate_level_step5 import physics_from_project
 from validate_walk_contact import velvet_deck
+from validate_safe_return import validate_safe_return
 
 IDS = ('velvet_01_entry', 'velvet_02_loom', 'velvet_03_gallery', 'velvet_04_arena',
        'velvet_05_return', 'velvet_06_shortcut')
@@ -342,5 +343,6 @@ def validate_level_step2(check, project, scripts):
         for t in tokens:
             mutation(all(x in source for x in tokens) and
                      not all(x in source.replace(t, '') for x in tokens), script + ' / ' + t)
-    return dict(fixedRoutes=traces, seamCountsBeforeAfter=counts, firstVisit=supply,
+    safe_return = validate_safe_return(check, project, scripts)
+    return dict(fixedRoutes=traces, seamCountsBeforeAfter=counts, firstVisit=supply, safeReturn=safe_return,
                 mutations=len(grades), detected=sum(grades), unity_executed=False)

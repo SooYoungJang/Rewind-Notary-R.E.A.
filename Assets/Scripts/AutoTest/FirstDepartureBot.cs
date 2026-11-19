@@ -176,6 +176,12 @@ namespace RewindNotary
             if (Mathf.Abs(dx) <= tolerance) return true;
             int facing = dx < 0 ? -1 : 1;
             keys.Hold(facing < 0 ? KeyCode.A : KeyCode.D);
+            JumpOverStep(facing, approachingLaunch);
+            return false;
+        }
+
+        private void JumpOverStep(int facing, bool approachingLaunch = false)
+        {
             // A low solid plank can also lie between Rea and a door, without a walk row.
             var feet = Player.Body.position + Vector2.up * .18f;
             if (Player.Grounded && (Physics2D.Raycast(feet, Vector2.right * facing, .95f, 1 << LevelBuilder.GroundLayer)
@@ -184,7 +190,6 @@ namespace RewindNotary
                 jumpUntil = Time.time + .24f;
                 keys.Hold(KeyCode.Space);
             }
-            return false;
         }
 
         private bool BlockedAtStep(int facing)

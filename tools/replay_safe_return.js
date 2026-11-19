@@ -1,0 +1,465 @@
+const fs = require('node:fs');
+const input = JSON.parse(fs.readFileSync(0, 'utf8'));
+const {rooms, sources, silver, fixture} = input;
+const [jump, gravity, dt, speed, accel, brake, radius, bodyHeight, aimTolerance] = input.physics;
+
+function body(source, signature) {
+    const start = source.indexOf(signature);
+    if (start < 0) throw Error('Missing replay method ' + signature);
+    const open = source.indexOf('{', start);
+    let depth = 1;
+    for (let i = open + 1; i < source.length; i++) {
+        if (source[i] === '{') depth++;
+        if (source[i] === '}' && --depth === 0) return source.slice(open + 1, i);
+    }
+    throw Error('Unclosed method ' + signature);
+}
+
+function compile(source, args = '') {
+    const js = source.replace(/\/\/[^\n]*/g, '')
+        .replace(/foreach \(var (\w+) in ([^)]+)\)/g, 'for (const $1 of $2)')
+        .replace(/\b(?:const float|float|int|bool|string|var|StorySurface) (\w+)/g, 'let $1')
+        .replace(/(\d*\.?\d+)f\b/g, '$1').replace(/approachingLaunch: /g, '')
+        .replace(/out (?:let )?(\w+)/g, '"$1"')
+        .replace(/Array\.FindIndex\((\w+), /g, '$1.findIndex(')
+        .replace(/Array\.Find\(([\w.]+), /g, '$1.find(')
+        .replace(/\.Exists\(/g, '.some(').replace(/\.Find\(/g, '.find(').replace(/\.Length/g, '.length')
+        .replace(/\.GetComponent<CapsuleCollider2D>\(\)/g, '.collider')
+        .replace(/new InvalidOperationException/g, 'new Error')
+        .replace(/Player.Body.position \+ Vector2.up \* ([.\d]+)/g, 'raised($1)')
+        .replace(/Vector2.right \* (\w+(?:\.\w+)?)/g, '$1');
+    return new Function('env', '...params', 'with (env) {return ((' + args + ') => {' + js + '})(...params)}');
+}
+
+const methods = {};
+function method(file, signature, args) {
+    const name = signature.slice(signature.lastIndexOf(' ') + 1, -1);
+    methods[name] = compile(body(sources[file], signature), args);
+}
+method('VelvetTraversal', 'bool SewReturnRoute(');
+method('VelvetTraversal', 'bool RideCounterweight(', 'carrierId, bank, dismountHeight');
+method('VelvetTraversal', 'bool MoveTo(', 'x, tolerance = .14');
+method('VelvetTraversal', 'void ObserveSilver(', 'e');
+method('ClockTraversal', 'bool ClockPosition(', 'face, x, tolerance = .24');
+method('ClockTraversal', 'StorySurface FixedFaceAt(', 'x, y');
+method('ClockTraversal', 'bool ReachedCombatSurface(', 'support, targetX');
+method('ClockTraversal', 'void ClearStep(');
+method('FirstDepartureBot', 'bool Walk(', 'to, tolerance, approachingLaunch = false');
+if (sources.FirstDepartureBot.includes('void JumpOverStep('))
+    method('FirstDepartureBot', 'void JumpOverStep(', 'facing, approachingLaunch = false');
+method('FirstDepartureBot', 'bool Aim(', 'x');
+method('FirstDepartureBot', 'void FightTarget(', 'target');
+method('FirstDepartureBot', 'bool ReserveWaveParry(', 'target');
+method('FirstDepartureBot', 'void SeekFloor(');
+const drive = body(sources.FirstDepartureBot, 'void Drive(');
+const gather = compile(drive.slice(drive.indexOf('if (Area.Room.stage == "velvet"'), drive.indexOf('var door = Area.ForwardDoor')));
+const transfer = compile(body(drive, 'if (action == "use:return_call")'));
+const routeTarget = compile(body(body(sources.PlaytestObservations, 'WaveTarget2D RouteTarget'), 'get'));
+const nextDoor = compile(body(sources.FirstDeparture, 'string NextDoorId()'));
+const retire = compile(body(sources.StitchSurface2D, 'void Retire()'));
+const ready = compile('return ' + sources.WaveTargetState.match(/bool Ready\(float now\) => ([^;]+)/)[1], 'now');
+const setup = compile(body(sources.WaveTargetState, 'bool Setup('), 'use');
+const cut = compile(body(sources.WaveTargetState, 'bool Cut('), 'use, now');
+const onFloor = compile(body(sources.StitchSurface2D, 'bool PlayerOnFloor()')
+    .replace('Vector3 delta = player.transform.position - transform.position;', 'let delta = separation;'));
+const controls = ['A', 'D', 'Space', 'F', 'J', 'L', 'Q', 'Return'];
+const KeyCode = Object.fromEntries(controls.map(k => [k, k]));
+const SkillRules = {SilverStitch: 'silver_stitch', BasicSword: 'basic_sword'};
+const round = n => Math.round(n * 1000) / 1000;
+const inside = (r, p) => r.x <= p.x && p.x <= r.x + r.width && r.y <= p.y && p.y <= r.y + r.height;
+
+function simulate(mode) {
+    const saved = mode !== 'campaign';
+    const pos = {x: 0, y: 0}, vel = {x: 0, y: 0};
+    const result = {threatContacts: [], waterLandings: [], combat: [], credits: [], totals: [], waterSave: false, waterExit: null, safeCall: false};
+    let parryUntil = 0, defenseUntil = 0, guardUntil = 0, stunUntil = 0, immuneUntil = 0;
+    let room, deck, support, seams, guards, carrier, tick = 0, uses = saved ? fixture.silverUses : 0;
+    let down = new Set(), previous = new Set(), nextCast = 0, swingAt = -Infinity, delivered = true, serial = 0;
+    const now = () => tick * dt;
+    const player = {Body: {position: pos, linearVelocity: vel}, Facing: 1, Health: {get Dead() { return this.Current <= 0; }, Current: fixture.hp, Maximum: fixture.hp},
+        get Stunned() { return now() < stunUntil; },
+        get Grounded() { return !!support; }, get Attacking() { return now() < swingAt + input.swing[0]; }};
+    const flags = new Set(fixture.flags);
+    const keys = {Hold: k => down.add(k), Tap: k => { if (!previous.has(k)) down.add(k); },
+        Cast: () => keys.Tap('Q'), GetKeyDown: k => down.has(k) && !previous.has(k)};
+    const area = {get Room() { return room; }, get RouteTarget() { return routeTarget(env); },
+        get ForwardDoor() { return room.exits.find(d => d.room === nextDoor(env) && (!d.gate || flags.has(d.gate))); },
+        get OnReturnFloor() { return support && !support.temporary && support !== carrier && !player.Attacking && !player.Stunned && now() >= defenseUntil; },
+        StandingOn: id => support?.name === id, RidingSurface: s => carrier && support === carrier && carrier.name === s.id,
+        StandingOnRamp: () => false, ProbeSurfaceBounds: s => ({max: {y: s.id === carrier?.name ? carrier.top : s.top}})};
+    const env = {KeyCode, SkillRules, Player: player, Area: area, keys, Time: {get time() { return now(); }},
+        Mathf: {Abs: Math.abs, Sign: Math.sign}, FixedSurfaceRoute: {AimTolerance: aimTolerance, IsFloor: s => !s.wall && !s.travelY},
+        LevelBuilder: {GroundLayer: 1}, Physics2D: {Raycast: ray}, raised: h => ({x: pos.x, y: pos.y + h}),
+        OnSurface: s => s === support, ReadTerrain() {}, BlockedAtStep: () => false,
+        Has: flag => flags.has(flag), SafeSwingLead: .65, NeedsEntryWave: false, HasBridge: false, GatheringSilver: true,
+        InEnding: false, get Room() { return room; }, get roomTargets() { return guards; },
+        Record: {Get: () => ({acquired: true}), get firstTransferPending() { return uses >= silver.stage3At; }},
+        get StitchSurface2D() { return {All: seams}; }, get terrain() { return deck; },
+        jumpingFrom: null, jumpUntil: -1, jumpStarted: -1, stepFrom: -1, stepGoal: -1, step: null,
+        sewingRoom: null, lastSewn: null, seamIndex: 0, rodeFloat: false, leavingFloat: false, sawSafeCall: false,
+        TryFaceAt(x, y, dest) {
+            env[dest] = env.FixedFaceAt(x, y);
+            if (!env[dest]) throw Error('No support at ' + [room.id, x, y]);
+            return true;
+        },
+        FailRoute(reason) { throw Error(reason); },
+        route: {Next(from, goal) {
+            const queue = [[deck[from].id, null]], seen = new Set([deck[from].id]);
+            for (const [id, first] of queue) {
+                for (const edge of room.edges[id]) {
+                    if (seen.has(edge.to)) continue;
+                    const step = first ?? {LandX: edge.land, LaunchX: edge.launch, WalkOff: edge.direction};
+                    if (edge.to === deck[goal].id) { env.step = step; return true; }
+                    seen.add(edge.to);
+                    queue.push([edge.to, step]);
+                }
+            }
+            return false;
+        }}};
+    for (const [name, fn] of Object.entries(methods)) env[name] = (...args) => fn(env, ...args);
+
+    function enter(id, floorId) {
+        room = rooms[id];
+        deck = room.faces.map(f => ({...f, id: f.name,
+            rect: {x: f.left, y: f.bottom, width: f.right - f.left, height: f.top - f.bottom}}));
+        env.ClearStep();
+        const floor = room.floors.find(f => f.id === floorId);
+        pos.x = floor.x;
+        support = floor.surface ? deck.find(f => f.id === floor.surface) : env.FixedFaceAt(pos.x, 0);
+        pos.y = support.top;
+        vel.x = vel.y = 0;
+        previous = new Set();
+        parryUntil = defenseUntil = guardUntil = stunUntil = 0;
+        player.Health.Current = player.Health.Maximum;
+        immuneUntil = now() + .8;
+        carrier = room.terrain.find(s => s.travelY);
+        if (carrier) {
+            const r = carrier.rect;
+            carrier = {...carrier, name: carrier.id, left: r.x, right: r.x + r.width, top: r.y + r.height,
+                bottom: r.y, base: r.y + r.height, entered: now(), one_way: true};
+        }
+        room.Surface = id => room.terrain.find(f => f.id === id);
+        room.SurfaceTop = id => deck.find(f => f.id === id).top;
+        for (const door of room.exits) door.InReach = p => inside(door.approach, p);
+        seams = room.seamRuns.flatMap(run => Array.from({length: run.count}, (_, i) => ({run, offset: i,
+            x: run.x + run.stepX * i, y: run.y}))).map((s, i) => {
+            const id = room.id + ':seam_' + i;
+            const half = i < room.singleSeams ? .45 : 1.1;
+            return {...s, floor: {enabled: false}, releasedBridge: false, TargetId: id, Bounds: {extents: {x: half}}, Installed: false, retiring: false,
+                get Available() { return !this.Installed && !this.retiring; },
+                name: id, left: s.x - half, right: s.x + half, top: s.y + .07, bottom: s.y - .07, temporary: true,
+                progression: {EndUse(use) { use.Closed = true; }}, RestoreVisual() {},
+                PlayerOnFloor() { return onFloor({player, separation: {x: pos.x - s.x, y: pos.y - s.y}, span: 2 * half, Mathf: env.Mathf}); }};
+        });
+        room.SeamRun = (i, dest) => { env[dest] = seams[i].offset; return seams[i].run; };
+        guards = [];
+        let index = 0;
+        for (const group of room.roster) {
+            for (const placement of group.placementIds) {
+                const p = room.placements.find(p => p.id === placement);
+                const kind = input.kinds[group.id];
+                if (!kind.mechanism) {
+                    const state = {archetype: kind, Remaining: group.segments, prepared: false, hits: 0, setupHits: group.setupHits ?? 1,
+                        NeedsSetup: kind.gate === 'skill', setupSkill: SkillRules.SilverStitch, lastSetup: null, LastSword: null,
+                        skillOnly: false, float: {NegativeInfinity: -Infinity}, SkillRules, CrossLoopFinish: false, openUntil: -Infinity,
+                        get Cleared() { return this.Remaining === 0; }, Ready(t) { return ready(state, t); }};
+                    guards.push({id: room.id + ':' + group.id + '_' + index, kind, placement, transform: {position: p},
+                        State: state, nextAttack: now() + kind.attackInterval, strikeAt: Infinity,
+                        get StrikeIn() { return this.strikeAt - now(); }});
+                }
+                index++;
+            }
+        }
+    }
+
+    function geometry() {
+        const fixed = [...deck];
+        const plank = room.points.find(p => p.id === 'mikhail_reunion_plank');
+        if (plank) fixed.push({name: plank.id, left: plank.x - 1.7, right: plank.x + 1.7, bottom: 0, top: .32});
+        if (carrier) fixed.push(carrier);
+        return fixed.concat(seams.filter(s => s.floor.enabled));
+    }
+    function ray(origin, dir, length) {
+        return geometry().find(f => {
+            const gap = dir > 0 ? f.left - origin.x : origin.x - f.right;
+            return gap >= 0 && gap <= length && f.bottom <= origin.y && origin.y <= f.top;
+        });
+    }
+    function credit(use, target) {
+        if (use.counted || use.Closed) return;
+        use.counted = true;
+        uses++;
+        result.credits.push({tick, use: use.id, target});
+        env.ObserveSilver({kind: 'valid_use', skillId: SkillRules.SilverStitch, targetId: target});
+    }
+    function hit(target, center, y, width, height) {
+        const p = target.transform.position;
+        return inside(p.active, pos) && Math.abs(p.x - center) <= (width + input.targetSize[0]) / 2 &&
+            Math.abs(p.y + .9 - y) <= (height + input.targetSize[1]) / 2;
+    }
+    function effects() {
+        const face = player.Facing;
+        const defend = input.parry;
+        if (keys.GetKeyDown('L') && !player.Attacking && !player.Stunned && now() >= defenseUntil && now() >= guardUntil) {
+            parryUntil = now() + defend.ParryWindowSeconds;
+            defenseUntil = parryUntil + defend.ParryRecoverySeconds;
+        }
+        const canAct = !player.Stunned && now() >= defenseUntil;
+        if (canAct && keys.GetKeyDown('Q') && now() >= nextCast && !player.Attacking) {
+            const stage = uses < silver.stage2At ? 1 : 2;
+            const profile = silver.stages[stage - 1];
+            nextCast = now() + profile.cooldown;
+            const use = {id: ++serial, SkillId: SkillRules.SilverStitch, Closed: false};
+            for (const g of guards) {
+                if (hit(g, pos.x + face * profile.reach / 2, pos.y + 1, profile.reach, 2) && setup(g.State, use)) {
+                    g.strikeAt = Infinity;
+                    g.nextAttack = now() + g.kind.attackInterval;
+                    credit(use, g.id + ':posture');
+                    result.combat.push({tick, target: g.id, action: g.State.prepared ? 'open' : 'setup', x: round(pos.x)});
+                }
+            }
+            const candidates = seams.filter(s => {
+                const lead = (s.x - pos.x) * face;
+                return !s.Installed && !s.retiring && lead >= -s.Bounds.extents.x && lead <= profile.reach + s.Bounds.extents.x &&
+                    s.y - .15 <= pos.y + 2 && s.y + 1.45 >= pos.y && Math.hypot(s.x - pos.x, s.y - pos.y) <= profile.reach;
+            }).sort((a, b) => Math.hypot(a.x - pos.x, a.y - pos.y) - Math.hypot(b.x - pos.x, b.y - pos.y));
+            const s = candidates[0];
+            if (seams.filter(s => !s.Available).length < profile.installationLimit && s && 2 * s.Bounds.extents.x <= profile.maxSpan) {
+                Object.assign(s, {Installed: true, stage, use, until: now() + profile.lifetime});
+                s.floor.enabled = true;
+                if (stage === 1) credit(use, s.TargetId);
+            } else use.Closed = true;
+        }
+        if (canAct && keys.GetKeyDown('J') && !player.Attacking) { swingAt = now(); delivered = false; }
+        if (!delivered && now() - swingAt >= input.swing[1]) {
+            delivered = true;
+            const latch = room.points.find(p => p.id === 'reunion_latch');
+            if (mode === 'manual' && latch && Math.abs(latch.x - pos.x - face * input.swing[3]) <= input.swing[4] / 2 &&
+                Math.abs(pos.y) <= input.swing[5] / 2) result.latchHit = {tick, feet: [round(pos.x), round(pos.y)]};
+            const sword = {SkillId: SkillRules.BasicSword, Closed: false};
+            for (const g of guards) {
+                if (hit(g, pos.x + face * input.swing[3], pos.y + 1, input.swing[4], input.swing[5]) && cut(g.State, sword, now()))
+                    result.combat.push({tick, target: g.id, action: 'cut', x: round(pos.x)});
+            }
+        }
+        for (const g of guards) {
+            const p = g.transform.position;
+            if (g.State.LastSword && !player.Attacking) g.State.LastSword.Closed = true;
+            if (!inside(p.active, pos) || g.State.Cleared || g.State.prepared) { g.strikeAt = Infinity; continue; }
+            const threat = Math.abs(p.x - pos.x) <= g.kind.attackReach + radius &&
+                Math.abs(p.y + 1 - pos.y - bodyHeight / 2) <= 1.1 + bodyHeight / 2;
+            if (threat && !Number.isFinite(g.strikeAt) && now() >= g.nextAttack) g.strikeAt = now() + g.kind.telegraphSeconds;
+            if (now() >= g.strikeAt) {
+                if (threat && now() >= immuneUntil && now() >= guardUntil) {
+                    if (now() < parryUntil) {
+                        defenseUntil = parryUntil = now();
+                        guardUntil = now() + defend.ParrySuccessGuardSeconds;
+                        player.Facing = Math.sign(p.x - pos.x) || player.Facing;
+                        result.threatContacts.push({tick, target: g.id, outcome: 'parry'});
+                    } else {
+                        player.Health.Current -= g.kind.attackDamage;
+                        result.threatContacts.push({tick, target: g.id, outcome: 'hit', hp: player.Health.Current});
+                        stunUntil = now() + .18;
+                        immuneUntil = now() + input.immunity;
+                        nextCast = defenseUntil = 0;
+                        swingAt = -Infinity;
+                        delivered = true;
+                        for (const s of seams) if (s.Installed) s.use.Closed = true;
+                        vel.x = pos.x >= p.x ? 5 : -5;
+                        vel.y = 4;
+                        support = null;
+                    }
+                }
+                g.strikeAt = Infinity; g.nextAttack = now() + g.kind.attackInterval;
+            }
+        }
+        for (const s of seams) {
+            if (s.retiring && !s.PlayerOnFloor()) { s.retiring = false; s.floor.enabled = false; }
+            if (!s.Installed) continue;
+            if (now() >= s.until) retire(s);
+            else if (s.stage >= 2 && support === s && s.PlayerOnFloor()) credit(s.use, s.TargetId + ':support');
+        }
+    }
+
+    function physics() {
+        const axis = +down.has('D') - +down.has('A');
+        if (carrier) {
+            const old = carrier.top;
+            carrier.top = carrier.base + carrier.travelY * (.5 - .5 * Math.cos((now() + dt - carrier.entered) * 2 * Math.PI / carrier.period));
+            carrier.bottom = carrier.top - carrier.rect.height;
+            if (support === carrier) pos.y += carrier.top - old;
+        }
+        if (support && !player.Stunned && now() >= defenseUntil && keys.GetKeyDown('Space')) { support = null; vel.y = jump; }
+        const desired = axis * speed;
+        if (now() < defenseUntil) vel.x = 0;
+        else if (!player.Stunned) {
+            if (axis && (!support || !player.Attacking)) player.Facing = axis;
+            if (support) vel.x = !axis && now() - swingAt < input.sword.stepSeconds ? player.Facing * input.sword.stepSpeed : desired;
+            else {
+                const rate = (axis ? accel : brake) * dt;
+                vel.x += Math.max(-rate, Math.min(rate, desired - vel.x));
+            }
+        }
+        if (!down.has('Space') && previous.has('Space') && vel.y > 0) vel.y *= .5;
+        const faces = geometry();
+        let nx = pos.x + vel.x * dt;
+        for (const f of faces) {
+            if (f.one_way || f === support || f.bottom >= pos.y + bodyHeight || f.top <= pos.y + .001) continue;
+            if (vel.x > 0 && pos.x <= f.left - radius + .001 && nx > f.left - radius) nx = f.left - radius;
+            if (vel.x < 0 && pos.x >= f.right + radius - .001 && nx < f.right + radius) nx = f.right + radius;
+        }
+        if (Math.abs(nx - pos.x - vel.x * dt) > .00001) vel.x = 0;
+        pos.x = nx;
+        vel.y = Math.max(vel.y, -18) - gravity * dt;
+        const ny = pos.y + vel.y * dt;
+        const overlap = f => pos.x + radius > f.left && pos.x - radius < f.right;
+        const land = faces.filter(f => overlap(f) && vel.y < 0 && ny <= f.top && (pos.y + .00001 >= f.top ||
+            f === carrier && pos.y >= f.top - .065 && (!support || support.top <= f.top)));
+        support = land.sort((a, b) => b.top - a.top)[0];
+        if (support) { pos.y = support.top; vel.y = 0; }
+        else {
+            const ceiling = faces.find(f => !f.one_way && overlap(f) && vel.y > 0 &&
+                pos.y + bodyHeight <= f.bottom && ny + bodyHeight >= f.bottom);
+            pos.y = ceiling ? ceiling.bottom - bodyHeight : ny;
+            if (ceiling) vel.y = 0;
+        }
+    }
+
+    enter(fixture.room, rooms[fixture.room].floors[0].id);
+    if (saved) {
+        Object.assign(pos, {x: fixture.x, y: fixture.y});
+        support = env.FixedFaceAt(pos.x, pos.y);
+        const target = guards.findIndex(g => g.id === fixture.target);
+        guards[target].State.Remaining = fixture.targetSegments;
+        if (!fixture.grounded || !fixture.safeFloor || !area.OnReturnFloor)
+            throw Error('The QA28 recovery requires the reported fixed ground contact');
+        for (const g of guards.slice(0, target)) g.State.Remaining = 0;
+        const done = guards.slice(0, target).reduce((n, g) => n + g.State.setupHits, 0);
+        env.sewingRoom = room.id;
+        env.seamIndex = uses - done;
+        const obstacle = seams[env.seamIndex - 1];
+        obstacle.Installed = true;
+        obstacle.use = {Closed: false};
+        retire(obstacle);
+        result.obstacle = {id: obstacle.TargetId, left: obstacle.left, right: obstacle.right,
+            bottom: round(obstacle.bottom), top: round(obstacle.top), actorRight: round(pos.x + radius)};
+        env.lastSewn = obstacle.TargetId;
+    }
+    let instruction = 0, began = 0;
+    function steerTo(x) {
+        if (Math.abs(pos.x - x) <= .12) return true;
+        keys.Hold(pos.x < x ? 'D' : 'A');
+        return false;
+    }
+    function walkTo(x, floor) {
+        return () => steerTo(x) && support?.name === floor;
+    }
+    function jumpTo(x, floor) {
+        return () => {
+            if (tick === began || !support) keys.Hold('Space');
+            const there = steerTo(x);
+            return tick > began && there && support?.name === floor;
+        };
+    }
+    function sew(index) {
+        return () => {
+            if (player.Facing * (seams[index].x - pos.x) < 0) keys.Hold(seams[index].x > pos.x ? 'D' : 'A');
+            else if (!seams[index].Installed) keys.Cast();
+            return seams[index].Installed;
+        };
+    }
+    function waitForThread(index) { return () => seams[index].Available; }
+    function fight(index) {
+        return () => {
+            const state = guards[index].State;
+            if (state.Cleared) return !player.Attacking;
+            const dx = guards[index].transform.position.x - pos.x;
+            if (player.Facing * dx < 0) keys.Hold(dx > 0 ? 'D' : 'A');
+            else if (!player.Attacking) {
+                if (state.prepared) keys.Tap('J');
+                else keys.Cast();
+            }
+            return false;
+        };
+    }
+    const manualRoute = [
+        () => { keys.Hold('A'); return player.Facing === -1; },
+        () => { if (!player.Attacking) keys.Tap('J'); return player.Attacking; },
+        () => !player.Attacking,
+        jumpTo(28.1, 'tailrace'), () => { keys.Hold('D'); return player.Facing === 1; },
+        sew(4), waitForThread(4), walkTo(31.8, 'tailrace'), jumpTo(34.4, 'outfall_quay'),
+        sew(5), waitForThread(5), walkTo(39.4, 'outfall_quay'), sew(6), waitForThread(6),
+        walkTo(43.9, 'outfall_quay'), fight(1),
+        () => steerTo(49.95) && support === carrier && carrier.top >= .95,
+        jumpTo(51.55, 'wheel_gallery'), sew(7), waitForThread(7),
+        walkTo(58.4, 'dry_dock'), fight(2), jumpTo(59.1, 'tread_1'), jumpTo(61.6, 'tread_2'),
+        jumpTo(65, 'balcony'), fight(3), walkTo(64, 'balcony'), walkTo(46.3, 'lock_bed'),
+        jumpTo(43.5, 'outfall_quay'), walkTo(38, 'outfall_quay'), () => { keys.Tap('F'); return false; }
+    ];
+    let lastProgress = 0, sample = {...pos}, lastState = '', nextProbe = 0;
+    for (; now() <= 600; tick++) {
+        previous = down; down = new Set();
+        if (now() < env.jumpUntil) keys.Hold('Space');
+        if (mode === 'manual') {
+            if (manualRoute[instruction]()) { instruction++; began = tick + 1; }
+        }
+        else if (uses >= silver.stage3At) {
+            const row = input.transferRows.find(r => !flags.has(r.completionFlag) && r.entryCondition.every(flag =>
+                flag === 'transferred' || (flag.startsWith('!') ? !flags.has(flag.slice(1)) : flags.has(flag))));
+            if (!area.OnReturnFloor) env.SeekFloor();
+            else if (row.requiredPlayerAction.includes('confirm')) {
+                keys.Tap('Return');
+                if (keys.GetKeyDown('Return')) flags.add(row.completionFlag);
+            }
+            else if (row.requiredPlayerAction.includes('use:return_call')) transfer(env);
+        }
+        else gather(env);
+        if (tick === 0) result.firstKeys = [...down];
+        effects();
+        const previousSupport = support?.name;
+        physics();
+        if (room.id === fixture.room) {
+            if (previousSupport !== support?.name && support)
+                result.waterLandings.push({tick, face: support.name, x: round(pos.x), y: round(pos.y)});
+            const mark = room.floors.find(f => f.contactSave);
+            if (area.OnReturnFloor && support.id === mark.surface && Math.abs(pos.x - mark.x) <= .8) {
+                flags.add('scene_floor:velvet:' + mark.id);
+                if (!result.waterSave) result.waterSave = {tick, x: round(pos.x), y: round(pos.y), floor: mark.id};
+            }
+        }
+        if (keys.GetKeyDown('F') && area.OnReturnFloor) {
+            if (env.sawSafeCall) {
+                const row = input.transferRows.find(r => r.requiredPlayerAction.includes('use:return_call'));
+                result.safeCall = true;
+                result.totals.push([room.id, uses]);
+                result.destination = [input.resume[row.resumePoint], row.resumePoint];
+                break;
+            }
+            const door = room.exits.filter(d => (!d.gate || flags.has(d.gate)) && d.InReach(pos))
+                .sort((a, b) => Math.abs(a.x - pos.x) - Math.abs(b.x - pos.x))[0];
+            if (door) {
+                result.totals.push([room.id, uses]);
+                if (room.id === fixture.room) result.waterExit = door.room;
+                if (mode !== 'campaign') {
+                    result.destination = [door.room, door.destinationFloor];
+                    break;
+                }
+                enter(door.room, door.destinationFloor);
+            }
+        }
+        if (now() >= nextProbe) {
+            const state = [room.id, uses, area.RouteTarget?.id, area.RouteTarget?.State.Remaining].join('/');
+            if (state !== lastState || Math.hypot(pos.x - sample.x, pos.y - sample.y) >= .5) {
+                sample = {...pos}; lastProgress = now(); lastState = state;
+            }
+            nextProbe = now() + .25;
+        }
+        if (player.Health.Dead || now() - lastProgress > input.idle || pos.y < room.fallLine) break;
+    }
+    result.end = {tick, room: room.id, uses, hp: player.Health.Current, feet: [round(pos.x), round(pos.y)], support: support?.name,
+        target: area.RouteTarget?.id, segments: area.RouteTarget?.State.Remaining, seam: env.seamIndex, keys: [...down],
+        activations: serial, idleSeconds: round(now() - lastProgress), step: env.step, lastSewn: env.lastSewn};
+    return result;
+}
+
+process.stdout.write(JSON.stringify(Object.fromEntries(['recovery', 'manual', 'campaign'].map(k => [k, simulate(k)]))));

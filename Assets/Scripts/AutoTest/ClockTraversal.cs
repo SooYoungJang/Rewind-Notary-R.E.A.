@@ -58,10 +58,16 @@ namespace RewindNotary
 
             var feet = Player.Body.position;
             int here = Array.FindIndex(terrain, s => FixedSurfaceRoute.IsFloor(s) && OnSurface(s));
+            bool sewing = room.stage == "velvet" && room.id == sewingRoom && !Record.firstTransferPending;
             if (here < 0 && !Player.Grounded)
             {
                 if (jumpingFrom != null) keys.Hold(KeyCode.Space);
-                if (stepFrom >= 0) MoveTo(step.LandX, FixedSurfaceRoute.AimTolerance);
+                if (stepFrom >= 0)
+                {
+                    float aim = sewing && jumpingFrom == null && step.WalkOff == 0
+                        ? step.LaunchX : step.LandX;
+                    MoveTo(aim, FixedSurfaceRoute.AimTolerance);
+                }
                 return false;
             }
             if (here < 0)
@@ -117,6 +123,7 @@ namespace RewindNotary
             {
                 // A walk-off ends when support changes, even if the nominal landing x is underfoot.
                 keys.Hold(step.WalkOff < 0 ? KeyCode.A : KeyCode.D);
+                if (sewing && StitchSurface2D.All.Exists(s => !s.Available)) JumpOverStep(step.WalkOff);
             }
             else if (jumpingFrom != null)
             {
