@@ -1,5 +1,5 @@
 {
-  "passed": 8529,
+  "passed": 8536,
   "errors": [],
   "warnings": [
     "Opera step 4: fixed-tick paths and station opportunities are checked offline. Actual collider widths, slot-4 contacts, shortcut time and Game view require Unity.",
@@ -8416,6 +8416,13 @@
     "Level step 4: opera_10_sanctuary_stairs / active fighting floor notary_guard_2",
     "Level step 4: opera_10_sanctuary_stairs / distinct encounter",
     "Level step 4: opera_10_sanctuary_stairs / individual painting and depth",
+    "Level step 4: run 16 / row-independent wave dispatch routes to the target support before setup or sword",
+    "Level step 4: run 16 / a grounded side contact ahead can trigger the ordinary obstacle jump",
+    "Level step 4: run 16 / old door objective stays against the raised deck for twenty seconds",
+    "Level step 4: run 16 / target dispatch alone stays against the raised deck for twenty seconds",
+    "Level step 4: run 16 / nine separate waltz setups and three sword cuts clear the active roster in order",
+    "Level step 4: run 16 / ordinary jumps cross the raised lift and land on all three guards’ fixed supports",
+    "Level step 4: run 16 / dismount toward the graph launch even with only the guard across the lift remaining",
     "Level step 4: unchanged mastery thresholds",
     "Level step 4: opera_07_return_roof independent contacts for stage 1",
     "Level step 4: opera_07_return_roof independent contacts for stage 2",
@@ -18037,6 +18044,162 @@
       "normalDoors": 3,
       "dropDoors": 1,
       "unitySeconds": null
+    },
+    "run16Wave": {
+      "startFeet": [
+        16.99,
+        0.01
+      ],
+      "liftBounds": [
+        17.3,
+        20.7,
+        1.4,
+        1.72
+      ],
+      "before": {
+        "objective": "hub_lift",
+        "firstLaunchX": 34.5,
+        "seconds": 20.0,
+        "endFeet": [
+          16.99,
+          0.0
+        ],
+        "landings": [],
+        "setups": 0,
+        "swordInputs": 0,
+        "cuts": [],
+        "remaining": 3
+      },
+      "dispatchOnly": {
+        "objective": "notary_guard_0",
+        "firstLaunchX": 34.5,
+        "seconds": 20.0,
+        "endFeet": [
+          16.99,
+          0.0
+        ],
+        "landings": [],
+        "setups": 0,
+        "swordInputs": 0,
+        "cuts": [],
+        "remaining": 3
+      },
+      "after": {
+        "objective": "notary_guard_0",
+        "firstLaunchX": 34.5,
+        "seconds": 14.92,
+        "endFeet": [
+          10.87,
+          5.4
+        ],
+        "landings": [
+          {
+            "surface": "valeria_reunion_lift",
+            "x": 18.4,
+            "top": 1.72,
+            "seconds": 0.48
+          },
+          {
+            "surface": "landing",
+            "x": 23.21,
+            "top": 0.0,
+            "seconds": 1.22
+          },
+          {
+            "surface": "newel",
+            "x": 34.39,
+            "top": 1.8,
+            "seconds": 3.56
+          },
+          {
+            "surface": "window",
+            "x": 30.09,
+            "top": 3.6,
+            "seconds": 7.16
+          },
+          {
+            "surface": "shelter_stair",
+            "x": 14.11,
+            "top": 5.4,
+            "seconds": 12.46
+          }
+        ],
+        "setups": 9,
+        "swordInputs": 3,
+        "cuts": [
+          {
+            "target": "notary_guard_0",
+            "surface": "newel",
+            "setups": 3,
+            "seconds": 5.56
+          },
+          {
+            "target": "notary_guard_1",
+            "surface": "window",
+            "setups": 3,
+            "seconds": 10.08
+          },
+          {
+            "target": "notary_guard_2",
+            "surface": "shelter_stair",
+            "setups": 3,
+            "seconds": 14.92
+          }
+        ],
+        "remaining": 0
+      },
+      "lastGuardOnly": {
+        "objective": "notary_guard_2",
+        "firstLaunchX": 34.5,
+        "seconds": 10.38,
+        "endFeet": [
+          10.87,
+          5.4
+        ],
+        "landings": [
+          {
+            "surface": "valeria_reunion_lift",
+            "x": 18.4,
+            "top": 1.72,
+            "seconds": 0.48
+          },
+          {
+            "surface": "landing",
+            "x": 23.21,
+            "top": 0.0,
+            "seconds": 1.22
+          },
+          {
+            "surface": "newel",
+            "x": 34.39,
+            "top": 1.8,
+            "seconds": 3.56
+          },
+          {
+            "surface": "window",
+            "x": 30.1,
+            "top": 3.6,
+            "seconds": 4.84
+          },
+          {
+            "surface": "shelter_stair",
+            "x": 14.11,
+            "top": 5.4,
+            "seconds": 7.92
+          }
+        ],
+        "setups": 3,
+        "swordInputs": 1,
+        "cuts": [
+          {
+            "target": "notary_guard_2",
+            "surface": "shelter_stair",
+            "setups": 3,
+            "seconds": 10.38
+          }
+        ],
+        "remaining": 0
+      }
     },
     "authoredWidths": 55,
     "unity_executed": false

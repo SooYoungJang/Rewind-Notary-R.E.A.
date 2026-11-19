@@ -77,9 +77,6 @@ namespace RewindNotary
             surfaces[surface.id].IsTouching(player.GetComponent<Collider2D>());
         internal WaveTarget2D ClockTargetOnTier => roomTargets.Find(t => !t.State.Cleared &&
             Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f);
-        internal WaveTarget2D OperaNearbyTarget => roomTargets.Find(t => t.isActiveAndEnabled && !t.State.Cleared &&
-            Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f &&
-            Mathf.Abs(t.transform.position.x - player.Body.position.x) <= 1.8f);
         internal WaveTarget2D UnclearedClockTarget => roomTargets.Find(t => !t.State.Cleared);
         internal WaveTarget2D DistrictWaveTarget => Room == null ? null :
             (Room.stage == "clock" || Room.stage == "opera") ? UnclearedClockTarget : RouteTarget;

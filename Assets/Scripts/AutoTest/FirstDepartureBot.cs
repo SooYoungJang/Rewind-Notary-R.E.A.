@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RewindNotary
@@ -29,6 +30,7 @@ namespace RewindNotary
         private CombatMotor2D Player => Area.Rea;
         private bool sawEmpty, sawSafeCall;
         private float jumpUntil;
+        private readonly List<ContactPoint2D> walkContacts = new List<ContactPoint2D>();
         private readonly int clockIndex = Array.FindIndex(StageCatalog.All, s => s.Id == "clock");
 
         internal FirstDepartureBot(BotKeyboard keyboard, Action<string> stop)
@@ -166,10 +168,27 @@ namespace RewindNotary
             keys.Hold(facing < 0 ? KeyCode.A : KeyCode.D);
             // A low solid plank can also lie between Rea and a door, without a walk row.
             var feet = Player.Body.position + Vector2.up * .18f;
-            if (Player.Grounded && Physics2D.Raycast(feet, Vector2.right * facing, .95f, 1 << LevelBuilder.GroundLayer))
+            if (Player.Grounded && (Physics2D.Raycast(feet, Vector2.right * facing, .95f, 1 << LevelBuilder.GroundLayer)
+                || TouchingStepAhead(facing)))
             {
                 jumpUntil = Time.time + .24f;
                 keys.Hold(KeyCode.Space);
+            }
+            return false;
+        }
+
+        private bool TouchingStepAhead(int facing)
+        {
+            // A raised solid deck can block the capsule above the low plank ray.
+            var actor = Player.GetComponent<CapsuleCollider2D>();
+            var body = actor.bounds;
+            actor.GetContacts(walkContacts);
+            foreach (var hit in walkContacts)
+            {
+                var other = hit.collider == actor ? hit.otherCollider : hit.collider;
+                if (other != null && other.gameObject.layer == LevelBuilder.GroundLayer &&
+                    Mathf.Abs(hit.normal.x) >= .9f && (hit.point.x - body.center.x) * facing > 0 &&
+                    other.bounds.max.y <= body.max.y) return true;
             }
             return false;
         }

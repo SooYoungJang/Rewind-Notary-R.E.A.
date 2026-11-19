@@ -14,7 +14,11 @@ namespace RewindNotary
             if (Area.OnOperaLift(out var lift))
             {
                 if (Area.PendingAction?.StartsWith("ride:") == true) return true;
-                MoveTo(x < lift.center.x ? lift.min.x - 1f : lift.max.x + 1f);
+                // The next stair can start on the opposite side from the final destination.
+                float toward = x;
+                if (plannedLayout == Area.ProbeLayout && stepFrom >= 0 && terrain[stepGoal].id == face)
+                    toward = jumpingFrom == null && step.WalkOff == 0 ? step.LaunchX : step.LandX;
+                MoveTo(toward < lift.center.x ? lift.min.x - 1f : lift.max.x + 1f);
                 return false;
             }
             if (crossingRoom != Area.ProbeLayout)
@@ -67,6 +71,7 @@ namespace RewindNotary
                 OperaPosition(face.id, at.x);
                 return;
             }
+            ClearStep();
             if (ReserveWaveParry(target)) return;
             if (target.State.NeedsSetup && !target.State.Ready(Time.time))
             {

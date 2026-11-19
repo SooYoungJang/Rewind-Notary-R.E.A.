@@ -9,6 +9,7 @@ from collections import deque
 from story_link_baseline import prior_level4_source
 from validate_level_step1 import contains, number
 from validate_fixed_surface_route import fixed_edges, link, paths_from, room_faces, simulate_landing
+from validate_opera_wave import validate_opera_wave
 
 
 def top(surface):
@@ -214,7 +215,11 @@ def validate_level_step4(check,project,scripts):
         hashes.add(h)
         counts[rid]=dict(oldStations=before.get('stations',0),stations=r.get('stations',0),oldPreparations=joint(before),preparations=joint(r),
                          projectiles=sum(bool(m.get('projectile')) for m in r.get('stationMarks',[])))
-    skill=next(s for s in json.loads((res/'Skills/catalog.json').read_text())['skills'] if s['skillId']=='curtain_call_waltz')
+    skills={s['skillId']:s for s in json.loads((res/'Skills/catalog.json').read_text())['skills']}
+    skill=skills['curtain_call_waltz']
+    guards=json.loads((res/'Waves/test-stage.json').read_text())['archetypes']
+    wave=validate_opera_wave(verify,rooms[-1],physics,scripts,skill['stages'][-1],skills['basic_sword']['stages'][1],
+                             next(g for g in guards if g['id']==rooms[-1]['roster'][0]['id']))
     verify((skill['stage2At'],skill['stage3At'])==(30,80),'unchanged mastery thresholds')
     def casts(r,profile):return waltz_stations(r,profile,number(scripts['BenefactorSkill'],'LampRadius'),
                                                number(scripts['BenefactorSkill'],'ProjectileRadius'),physics[1],dt)
@@ -283,4 +288,4 @@ def validate_level_step4(check,project,scripts):
         verify(all(t in script for t in terms),label)
     return dict(routes=routes,growth=counts,stationOnlyThresholds=[sequenced[i] for i in (29,79)],
                 span=dict(samples=len(at),minSeconds=min(v[0] for v in at),maxSeconds=max(v[0] for v in at)),
-                comparison=tour,authoredWidths=sum(len(r['terrain']) for r in rooms),unity_executed=False)
+                comparison=tour,run16Wave=wave,authoredWidths=sum(len(r['terrain']) for r in rooms),unity_executed=False)

@@ -253,9 +253,17 @@ namespace RewindNotary
                 if (point != null && (action.StartsWith("use:") || action.StartsWith("ride:") || action.StartsWith("walk:")))
                 {
                     if (bot.OperaPosition(point.surface, point.x) && action.StartsWith("use:")) keys.Tap(KeyCode.F);
+                    return false;
                 }
-                else if (bot.ClockTarget != null) bot.OperaFight(bot.ClockTarget);
-                else if (action.StartsWith("advance:")) Door(bot, keys, area.ActiveRow.alternateRoom);
+            }
+            // While a stopwatch runs the destination is the comparison landing. Otherwise
+            // follow the outstanding roster target, including one outside its activation zone.
+            bool timingTrip = action == null && (longStart > 0 && result.longSeconds == 0 || dropStart > 0 && !result.dropLanding);
+            var target = timingTrip ? null : area.DistrictWaveTarget;
+            if (target != null) { bot.OperaFight(target); return false; }
+            if (action != null)
+            {
+                if (action.StartsWith("advance:")) Door(bot, keys, area.ActiveRow.alternateRoom);
                 else if (action == "clear:wave")
                 {
                     if (room == Roof) bot.OperaPosition("gutter", 36);
@@ -278,10 +286,6 @@ namespace RewindNotary
             if (room == Stairs) { Door(bot, keys, "hub_lift"); return false; }
             if (investigated && bot.Record.Get(SkillRules.SilverStitch).acquired)
             {
-                // Meet enemies on the approach to the hatch. Keep both timed trips on their direct route.
-                bool approaching = leg < 0 || leg >= 3 && leg <= 6 && result.longSeconds > 0 && dropStart == 0;
-                var nearby = approaching ? area.OperaNearbyTarget : null;
-                if (nearby != null) { bot.OperaFight(nearby); return false; }
                 if (Compare(bot, keys, now)) return false;
                 if (room == Hall && result.dropLanding) { Door(bot, keys, Seam); return false; }
             }
