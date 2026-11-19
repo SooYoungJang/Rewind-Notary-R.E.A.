@@ -46,8 +46,15 @@ STEP4_EDITS = json.loads(Path(__file__).with_name('level-step4-extensions.json')
 STEP5_EDITS = json.loads(Path(__file__).with_name('level-step5-extensions.json').read_text())
 
 
+STEP6_EDITS = json.loads(Path(__file__).with_name('level-step6-extensions.json').read_text())
+
+
+def prior_level6_source(path, source):
+    return reverse_exact(STEP6_EDITS.get(str(path)), source)
+
+
 def prior_level5_source(path, source):
-    return reverse_exact(STEP5_EDITS.get(str(path)), source)
+    return reverse_exact(STEP5_EDITS.get(str(path)), prior_level6_source(path, source))
 
 
 def prior_level4_source(path, source):

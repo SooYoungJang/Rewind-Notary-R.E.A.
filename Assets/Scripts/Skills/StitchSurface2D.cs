@@ -55,6 +55,8 @@ namespace RewindNotary
             }
             return true;
         }
+        internal bool SupportingPlayer => Installed && player.Grounded && PlayerOnFloor() &&
+            Mathf.Abs(player.Body.position.y - floor.bounds.max.y) <= .10f && floor.IsTouching(player.GetComponent<Collider2D>());
         private bool PlayerOnFloor()
         {
             if (player == null || player.Health.Dead) return false;

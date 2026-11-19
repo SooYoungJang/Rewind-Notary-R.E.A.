@@ -64,7 +64,7 @@ def validate_area_links(check, project, scripts):
         listed = set(re.findall(r'`([a-z]\w+)`', table_row[2])) & rooms.keys()
         verify(listed <= {e['room'] for e in doors} and all(e['room'] in rooms for e in doors) and
                set(re.findall(r'`([a-z]\w+)`', table_row[3])) <= {f['id'] for f in room['floors']} and
-               all(-3 < m['x'] < 46 for m in [*doors, *room['floors'], *room['points']]) and
+               all(-3 < m['x'] < room.get('eastBoundary', 46) for m in [*doors, *room['floors'], *room['points']]) and
                all(g['id'] in archetypes and min(g['count'], g['segments']) > 0 for g in room['roster']),
                'authored doors, safe floors and finite combat roster ' + room['id'])
 
@@ -312,6 +312,11 @@ def validate_area_links(check, project, scripts):
         cuts = list(map(sword, rs))
         returns, elite = sum(map(technique, rs[6:8])), sum(map(technique, rs[8:]))
         previous_returns = sum(map(technique, original_clock['rooms'][6:8])) if a == 'clock' else returns
+        if a == 'gallery':
+            path = 'Assets/Resources/Story/gallery.json'
+            previous = json.loads(prior_level5_source(path, (project / path).read_text()))
+            previous_returns = sum(map(technique, previous['rooms'][6:8]))
+            verify(returns == 96, 'live gallery returns provide 80 distinct paint stations and 16 finite preparations')
         if a == 'bell':
             path = 'Assets/Resources/Story/bell.json'
             previous = json.loads(prior_level5_source(path, (project / path).read_text()))

@@ -64,6 +64,8 @@ public static class AutoTestRunner
             { result.velvetDistrict.run.status = "fail"; result.velvetDistrict.run.reason = e.Message; }
             if (result.clockDistrict.run.status == "running")
             { result.clockDistrict.run.status = "fail"; result.clockDistrict.run.reason = e.Message; }
+            if (result.galleryDistrict.run.status == "running")
+            { result.galleryDistrict.run.status = "fail"; result.galleryDistrict.run.reason = e.Message; }
             if (result.bellDistrict.run.status == "running")
             { result.bellDistrict.run.status = "fail"; result.bellDistrict.run.reason = e.Message; }
             if (result.operaDistrict.run.status == "running")

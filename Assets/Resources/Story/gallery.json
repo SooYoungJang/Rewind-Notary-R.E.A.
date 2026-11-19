@@ -8,48 +8,145 @@
       "floors": [
         {
           "id": "gallery_entry_floor",
-          "x": 3
+          "x": 4,
+          "surface": "paper"
         },
         {
           "id": "gallery_easel_floor",
-          "x": 19
+          "x": 15,
+          "surface": "folio"
         },
         {
           "id": "gallery_entry_east",
-          "x": 41
+          "x": 39,
+          "surface": "studio_door"
+        },
+        {
+          "id": "gallery_rest_01",
+          "x": 5,
+          "surface": "paper",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_01",
+          "x": 42,
+          "surface": "studio_door"
         }
       ],
       "points": [
         {
           "id": "irina_sketchbook_stand",
-          "x": 12,
-          "platform": false
+          "x": 15,
+          "platform": false,
+          "surface": "folio"
         },
         {
           "id": "gallery_entry_latch",
-          "x": 24,
-          "platform": false
+          "x": 28,
+          "platform": false,
+          "surface": "pigment_table"
         }
       ],
       "exits": [
         {
           "room": "hub_lift",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": -0.16,
+            "width": 1.8,
+            "height": 0.9
+          }
         },
         {
           "room": "gallery_02_white_hall",
           "x": 42,
-          "gate": "gallery_entry_complete"
+          "gate": "gallery_entry_complete",
+          "approach": {
+            "x": 41.1,
+            "y": 1.44,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_hall_west"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_0"
+          ]
         }
-      ]
+      ],
+      "terrain": [
+        {
+          "id": "paper",
+          "rect": {
+            "x": 0,
+            "y": -0.38,
+            "width": 14,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "folio",
+          "rect": {
+            "x": 11,
+            "y": 1.22,
+            "width": 13,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pigment_table",
+          "rect": {
+            "x": 22,
+            "y": 2.82,
+            "width": 13,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "studio_door",
+          "rect": {
+            "x": 32,
+            "y": 1.22,
+            "width": 13,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 28,
+          "y": 3.25,
+          "active": {
+            "x": 25,
+            "y": 2.96,
+            "width": 6,
+            "height": 1.55
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -7.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.0,
+        "width": 46,
+        "height": 7.4
+      },
+      "backgroundSet": "gallery_01_entry"
     },
     {
       "id": "gallery_02_white_hall",
@@ -59,49 +156,269 @@
       "floors": [
         {
           "id": "gallery_hall_west",
-          "x": 3
+          "x": 4,
+          "surface": "vestibule"
         },
         {
           "id": "gallery_hall_east",
-          "x": 39
+          "x": 41,
+          "surface": "landing"
+        },
+        {
+          "id": "gallery_rest_02",
+          "x": 6,
+          "surface": "vestibule",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_02",
+          "x": 50,
+          "surface": "landing"
+        },
+        {
+          "id": "gallery_frame_landing",
+          "x": 39,
+          "surface": "landing"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "gallery_01_entry",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": 3.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_exit_01"
         },
         {
           "room": "gallery_03_easel_bridge",
-          "x": 42,
-          "gate": "gallery_02_cleared"
+          "x": 50,
+          "gate": "gallery_02_cleared",
+          "approach": {
+            "x": 49.1,
+            "y": 3.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_easel_west"
         },
         {
           "room": "gallery_09_shortcut",
-          "x": 37,
-          "gate": "synergy"
+          "x": 44,
+          "gate": "synergy",
+          "approach": {
+            "x": 43.1,
+            "y": 3.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_shortcut_safe"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 2,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "shell_sentry_2",
+            "shell_sentry_3"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "reflection_statue_4"
+          ]
         }
       ],
-      "crossing": "steps"
+      "terrain": [
+        {
+          "id": "vestibule",
+          "rect": {
+            "x": 0,
+            "y": 3.62,
+            "width": 12,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "frame_stair",
+          "rect": {
+            "x": 8,
+            "y": 5.42,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "gold_frames",
+          "rect": {
+            "x": 15,
+            "y": 7.22,
+            "width": 11,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "frame_balcony",
+          "rect": {
+            "x": 25,
+            "y": 5.62,
+            "width": 10,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "busts",
+          "rect": {
+            "x": 11,
+            "y": 1.82,
+            "width": 8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "plinths",
+          "rect": {
+            "x": 20,
+            "y": 1.82,
+            "width": 8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "statue_stair",
+          "rect": {
+            "x": 27,
+            "y": 2.62,
+            "width": 8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "landing",
+          "rect": {
+            "x": 32,
+            "y": 3.62,
+            "width": 23,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 8,
+          "y": 4.05,
+          "active": {
+            "x": 5,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 38,
+          "y": 4.05,
+          "active": {
+            "x": 35,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "shell_sentry_2",
+          "x": 41,
+          "y": 4.05,
+          "active": {
+            "x": 38,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "shell_sentry_3",
+          "x": 46,
+          "y": 4.05,
+          "active": {
+            "x": 43,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "reflection_statue_4",
+          "x": 50,
+          "y": 4.05,
+          "active": {
+            "x": 47,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        }
+      ],
+      "eastBoundary": 56,
+      "viewingRoutes": [
+        {
+          "id": "upper_frames",
+          "surfaces": [
+            "vestibule",
+            "frame_stair",
+            "gold_frames",
+            "frame_balcony",
+            "landing"
+          ]
+        },
+        {
+          "id": "lower_sculptures",
+          "surfaces": [
+            "vestibule",
+            "busts",
+            "plinths",
+            "statue_stair",
+            "landing"
+          ]
+        }
+      ],
+      "hasFallLine": true,
+      "fallLine": -4.8,
+      "cameraBounds": {
+        "x": 0,
+        "y": 3.2,
+        "width": 56,
+        "height": 9.6
+      },
+      "backgroundSet": "gallery_02_white_hall"
     },
     {
       "id": "gallery_03_easel_bridge",
@@ -111,49 +428,220 @@
       "floors": [
         {
           "id": "gallery_easel_west",
-          "x": 3
+          "x": 4,
+          "surface": "easel_bank"
         },
         {
           "id": "gallery_easel_east",
-          "x": 39
+          "x": 39,
+          "surface": "glass_sill"
+        },
+        {
+          "id": "gallery_rest_03",
+          "x": 5,
+          "surface": "easel_bank",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_03",
+          "x": 42,
+          "surface": "glass_sill"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "gallery_02_white_hall",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": 3.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_exit_02"
         },
         {
           "room": "gallery_04_greenhouse_path",
           "x": 42,
-          "gate": "gallery_03_cleared"
+          "gate": "gallery_03_cleared",
+          "approach": {
+            "x": 41.1,
+            "y": 5.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_green_center"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 2,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "shell_sentry_2",
+            "shell_sentry_3"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "reflection_statue_4"
+          ]
         },
         {
           "id": "notary_guard",
           "count": 1,
-          "segments": 2
+          "segments": 2,
+          "placementIds": [
+            "notary_guard_5"
+          ]
         }
       ],
-      "crossing": "latches"
+      "terrain": [
+        {
+          "id": "easel_bank",
+          "rect": {
+            "x": 0,
+            "y": 3.62,
+            "width": 14,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tripod",
+          "rect": {
+            "x": 10,
+            "y": 5.42,
+            "width": 12,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "crossbar",
+          "rect": {
+            "x": 18,
+            "y": 7.22,
+            "width": 8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "folding_canvas",
+          "rect": {
+            "x": 25,
+            "y": 7.22,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true,
+          "latchCuts": 2
+        },
+        {
+          "id": "glass_sill",
+          "rect": {
+            "x": 33,
+            "y": 5.62,
+            "width": 12,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 15,
+          "y": 5.85,
+          "active": {
+            "x": 12,
+            "y": 5.56,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 21,
+          "y": 7.65,
+          "active": {
+            "x": 18,
+            "y": 7.36,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "shell_sentry_2",
+          "x": 38,
+          "y": 6.05,
+          "active": {
+            "x": 35,
+            "y": 5.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "shell_sentry_3",
+          "x": 17,
+          "y": 5.85,
+          "active": {
+            "x": 14,
+            "y": 5.56,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "reflection_statue_4",
+          "x": 41,
+          "y": 6.05,
+          "active": {
+            "x": 38,
+            "y": 5.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "notary_guard_5",
+          "x": 24,
+          "y": 7.65,
+          "active": {
+            "x": 21,
+            "y": 7.36,
+            "width": 6,
+            "height": 1.55
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -3.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 5.0,
+        "width": 46,
+        "height": 7.8
+      },
+      "backgroundSet": "gallery_03_easel_bridge"
     },
     {
       "id": "gallery_04_greenhouse_path",
@@ -163,45 +651,183 @@
       "floors": [
         {
           "id": "gallery_green_center",
-          "x": 3
+          "x": 5,
+          "surface": "fountain"
+        },
+        {
+          "id": "gallery_rest_04",
+          "x": 5,
+          "surface": "fountain",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_04",
+          "x": 42,
+          "surface": "orchid_door"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "gallery_03_easel_bridge",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": 5.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_exit_03"
         },
         {
           "room": "gallery_05_frame_foyer",
           "x": 42,
-          "gate": "gallery_04_cleared"
+          "gate": "gallery_04_cleared",
+          "approach": {
+            "x": 41.1,
+            "y": 5.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_pre_boss_floor"
         },
         {
           "room": "gallery_08_return_gallery",
-          "x": 37,
-          "gate": "irina_defeated"
+          "x": 26,
+          "gate": "irina_defeated",
+          "approach": {
+            "x": 25.1,
+            "y": 2.24,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_return_lower_safe"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_0"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "shell_sentry_1"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "reflection_statue_2"
+          ]
         }
       ],
-      "crossing": "arch"
+      "terrain": [
+        {
+          "id": "fountain",
+          "rect": {
+            "x": 0,
+            "y": 5.62,
+            "width": 15,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "seedbed",
+          "rect": {
+            "x": 12,
+            "y": 3.82,
+            "width": 11,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "watercourse",
+          "rect": {
+            "x": 21,
+            "y": 2.02,
+            "width": 11,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vine_trellis",
+          "rect": {
+            "x": 29,
+            "y": 3.82,
+            "width": 10,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "orchid_door",
+          "rect": {
+            "x": 36,
+            "y": 5.62,
+            "width": 10,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 18,
+          "y": 4.25,
+          "active": {
+            "x": 15,
+            "y": 3.96,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "shell_sentry_1",
+          "x": 27,
+          "y": 2.45,
+          "active": {
+            "x": 24,
+            "y": 2.16,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "reflection_statue_2",
+          "x": 34,
+          "y": 4.25,
+          "active": {
+            "x": 31,
+            "y": 3.96,
+            "width": 6,
+            "height": 1.55
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -4.6,
+      "cameraBounds": {
+        "x": 0,
+        "y": 3.4,
+        "width": 46,
+        "height": 7.8
+      },
+      "backgroundSet": "gallery_04_greenhouse_path"
     },
     {
       "id": "gallery_05_frame_foyer",
@@ -211,39 +837,144 @@
       "floors": [
         {
           "id": "gallery_pre_boss_floor",
-          "x": 3
+          "x": 4,
+          "surface": "gesso"
+        },
+        {
+          "id": "gallery_rest_05",
+          "x": 5,
+          "surface": "gesso",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_05",
+          "x": 41,
+          "surface": "lintel"
+        },
+        {
+          "id": "gallery_frame_head",
+          "x": 26,
+          "surface": "palette"
         }
       ],
       "points": [
         {
           "id": "gallery_arena_gate",
-          "x": 34,
-          "platform": false
+          "x": 37,
+          "platform": false,
+          "surface": "lintel"
         },
         {
           "id": "irina_trial_bell",
-          "x": 16,
-          "platform": false
+          "x": 17,
+          "platform": false,
+          "surface": "frame_rack"
         }
       ],
       "exits": [
         {
           "room": "gallery_04_greenhouse_path",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": 5.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_exit_04"
         },
         {
           "room": "gallery_06_arena",
-          "x": 42,
-          "gate": "gallery_route_complete"
+          "x": 41,
+          "gate": "gallery_route_complete",
+          "approach": {
+            "x": 40.1,
+            "y": 11.24,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "irina_arena_west"
         },
         {
           "room": "gallery_07_return_atelier",
-          "x": 37,
-          "gate": "irina_defeated"
+          "x": 21,
+          "gate": "irina_defeated",
+          "approach": {
+            "x": 20.1,
+            "y": 7.64,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_return_atelier_safe"
+        },
+        {
+          "room": "gallery_02_white_hall",
+          "gate": "investigation_complete",
+          "destinationFloor": "gallery_frame_landing",
+          "x": 26,
+          "approach": {
+            "x": 25.1,
+            "y": 9.44,
+            "width": 1.8,
+            "height": 0.9
+          }
         }
       ],
-      "roster": []
+      "roster": [],
+      "terrain": [
+        {
+          "id": "gesso",
+          "rect": {
+            "x": 0,
+            "y": 5.62,
+            "width": 15,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "frame_rack",
+          "rect": {
+            "x": 11,
+            "y": 7.42,
+            "width": 12,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "palette",
+          "rect": {
+            "x": 20,
+            "y": 9.22,
+            "width": 13,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lintel",
+          "rect": {
+            "x": 29,
+            "y": 11.02,
+            "width": 16,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -1.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 7.0,
+        "width": 46,
+        "height": 9.6
+      },
+      "backgroundSet": "gallery_05_frame_foyer"
     },
     {
       "id": "gallery_06_arena",
@@ -253,39 +984,111 @@
       "floors": [
         {
           "id": "irina_arena_west",
-          "x": 3
+          "x": 4,
+          "surface": "arena_entry"
         },
         {
           "id": "irina_arena_center",
-          "x": 19
+          "x": 20,
+          "surface": "sun_deck"
         },
         {
           "id": "irina_sunlight_floor",
-          "x": 31
+          "x": 38,
+          "surface": "skylight"
+        },
+        {
+          "id": "gallery_rest_06",
+          "x": 4.5,
+          "surface": "arena_entry",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_06",
+          "x": 44,
+          "surface": "sun_deck"
         }
       ],
       "points": [
         {
           "id": "irina_confess_fear",
-          "x": 31,
-          "platform": false
+          "x": 38,
+          "platform": false,
+          "surface": "skylight"
         }
       ],
       "exits": [
         {
           "room": "gallery_05_frame_foyer",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": 1.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_exit_05"
         },
         {
           "room": "gallery_07_return_atelier",
-          "x": 42,
-          "gate": "irina_defeated"
+          "x": 44,
+          "gate": "irina_defeated",
+          "approach": {
+            "x": 43.1,
+            "y": -0.16,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_return_atelier_safe"
         }
       ],
       "roster": [],
       "boutHealth": 14,
-      "interludeHealth": 7
+      "interludeHealth": 7,
+      "terrain": [
+        {
+          "id": "arena_entry",
+          "rect": {
+            "x": 0,
+            "y": 1.62,
+            "width": 13,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "sun_deck",
+          "rect": {
+            "x": 9,
+            "y": -0.38,
+            "width": 37,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "skylight",
+          "rect": {
+            "x": 32,
+            "y": 1.42,
+            "width": 12,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [],
+      "eastBoundary": 60,
+      "hasFallLine": true,
+      "fallLine": -7.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.0,
+        "width": 60,
+        "height": 6.2
+      },
+      "backgroundSet": "gallery_06_arena"
     },
     {
       "id": "gallery_07_return_atelier",
@@ -295,24 +1098,51 @@
       "floors": [
         {
           "id": "gallery_return_atelier_safe",
-          "x": 3
+          "x": 6.45,
+          "surface": "atelier_0_0"
         },
         {
           "id": "gallery_return_atelier_mid",
-          "x": 19
+          "x": 11,
+          "surface": "atelier_0_1"
+        },
+        {
+          "id": "gallery_rest_07",
+          "x": 6.45,
+          "surface": "atelier_0_0",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_07",
+          "x": 4,
+          "surface": "atelier_3_0"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "gallery_06_arena",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": 25.04,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_exit_06"
         },
         {
           "room": "gallery_08_return_gallery",
-          "x": 42,
-          "gate": "irina_defeated"
+          "x": 4,
+          "gate": "irina_defeated",
+          "approach": {
+            "x": 3.1,
+            "y": 8.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_return_lower_safe"
         }
       ],
       "roster": [
@@ -320,16 +1150,864 @@
           "id": "notary_guard",
           "count": 2,
           "segments": 3,
-          "setupSkill": "canvas_carve"
+          "setupSkill": "canvas_carve",
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ]
         },
         {
           "id": "sword_latch",
           "count": 2,
           "segments": 1,
-          "setupSkill": "canvas_carve"
+          "setupSkill": "canvas_carve",
+          "placementIds": [
+            "sword_latch_2",
+            "sword_latch_3"
+          ]
         }
       ],
-      "stations": 5
+      "stations": 40,
+      "terrain": [
+        {
+          "id": "atelier_0_0",
+          "rect": {
+            "x": 1,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_1",
+          "rect": {
+            "x": 9,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_2",
+          "rect": {
+            "x": 17,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_3",
+          "rect": {
+            "x": 25,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_4",
+          "rect": {
+            "x": 33,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_5",
+          "rect": {
+            "x": 41,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_6",
+          "rect": {
+            "x": 49,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_7",
+          "rect": {
+            "x": 57,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_8",
+          "rect": {
+            "x": 65,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_9",
+          "rect": {
+            "x": 73,
+            "y": 24.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_0_10",
+          "rect": {
+            "x": 81,
+            "y": 24.82,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shelf_0",
+          "rect": {
+            "x": 88,
+            "y": 23.02,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_0",
+          "rect": {
+            "x": 86,
+            "y": 21.22,
+            "width": 8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_0",
+          "rect": {
+            "x": 1,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_1",
+          "rect": {
+            "x": 9,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_2",
+          "rect": {
+            "x": 17,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_3",
+          "rect": {
+            "x": 25,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_4",
+          "rect": {
+            "x": 33,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_5",
+          "rect": {
+            "x": 41,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_6",
+          "rect": {
+            "x": 49,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_7",
+          "rect": {
+            "x": 57,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_8",
+          "rect": {
+            "x": 65,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_9",
+          "rect": {
+            "x": 73,
+            "y": 19.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_1_10",
+          "rect": {
+            "x": 81,
+            "y": 19.42,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shelf_1",
+          "rect": {
+            "x": -2,
+            "y": 17.62,
+            "width": 7,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_1",
+          "rect": {
+            "x": -1,
+            "y": 15.82,
+            "width": 5,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_0",
+          "rect": {
+            "x": 1,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_1",
+          "rect": {
+            "x": 9,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_2",
+          "rect": {
+            "x": 17,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_3",
+          "rect": {
+            "x": 25,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_4",
+          "rect": {
+            "x": 33,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_5",
+          "rect": {
+            "x": 41,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_6",
+          "rect": {
+            "x": 49,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_7",
+          "rect": {
+            "x": 57,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_8",
+          "rect": {
+            "x": 65,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_9",
+          "rect": {
+            "x": 73,
+            "y": 14.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_2_10",
+          "rect": {
+            "x": 81,
+            "y": 14.02,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shelf_2",
+          "rect": {
+            "x": 88,
+            "y": 12.22,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_2",
+          "rect": {
+            "x": 86,
+            "y": 10.42,
+            "width": 8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_0",
+          "rect": {
+            "x": 1,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_1",
+          "rect": {
+            "x": 9,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_2",
+          "rect": {
+            "x": 17,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_3",
+          "rect": {
+            "x": 25,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_4",
+          "rect": {
+            "x": 33,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_5",
+          "rect": {
+            "x": 41,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_6",
+          "rect": {
+            "x": 49,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_7",
+          "rect": {
+            "x": 57,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_8",
+          "rect": {
+            "x": 65,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_9",
+          "rect": {
+            "x": 73,
+            "y": 8.62,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "atelier_3_10",
+          "rect": {
+            "x": 81,
+            "y": 8.62,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 85,
+          "y": 25.25,
+          "active": {
+            "x": 82,
+            "y": 24.96,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 3.5,
+          "y": 19.85,
+          "active": {
+            "x": 0.5,
+            "y": 19.56,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "sword_latch_2",
+          "x": 85,
+          "y": 14.45,
+          "active": {
+            "x": 82,
+            "y": 14.16,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "sword_latch_3",
+          "x": 3.5,
+          "y": 9.05,
+          "active": {
+            "x": 0.5,
+            "y": 8.76,
+            "width": 6,
+            "height": 1.55
+          }
+        }
+      ],
+      "eastBoundary": 99,
+      "stationMarks": [
+        {
+          "id": "gap_01",
+          "x": 8,
+          "surface": "atelier_0_0",
+          "landingSurface": "atelier_0_1",
+          "direction": 1
+        },
+        {
+          "id": "gap_02",
+          "x": 16,
+          "surface": "atelier_0_1",
+          "landingSurface": "atelier_0_2",
+          "direction": 1
+        },
+        {
+          "id": "gap_03",
+          "x": 24,
+          "surface": "atelier_0_2",
+          "landingSurface": "atelier_0_3",
+          "direction": 1
+        },
+        {
+          "id": "gap_04",
+          "x": 32,
+          "surface": "atelier_0_3",
+          "landingSurface": "atelier_0_4",
+          "direction": 1
+        },
+        {
+          "id": "gap_05",
+          "x": 40,
+          "surface": "atelier_0_4",
+          "landingSurface": "atelier_0_5",
+          "direction": 1
+        },
+        {
+          "id": "gap_06",
+          "x": 48,
+          "surface": "atelier_0_5",
+          "landingSurface": "atelier_0_6",
+          "direction": 1
+        },
+        {
+          "id": "gap_07",
+          "x": 56,
+          "surface": "atelier_0_6",
+          "landingSurface": "atelier_0_7",
+          "direction": 1
+        },
+        {
+          "id": "gap_08",
+          "x": 64,
+          "surface": "atelier_0_7",
+          "landingSurface": "atelier_0_8",
+          "direction": 1
+        },
+        {
+          "id": "gap_09",
+          "x": 72,
+          "surface": "atelier_0_8",
+          "landingSurface": "atelier_0_9",
+          "direction": 1
+        },
+        {
+          "id": "gap_10",
+          "x": 80,
+          "surface": "atelier_0_9",
+          "landingSurface": "atelier_0_10",
+          "direction": 1
+        },
+        {
+          "id": "gap_11",
+          "x": 80,
+          "surface": "atelier_1_10",
+          "landingSurface": "atelier_1_9",
+          "direction": -1
+        },
+        {
+          "id": "gap_12",
+          "x": 72,
+          "surface": "atelier_1_9",
+          "landingSurface": "atelier_1_8",
+          "direction": -1
+        },
+        {
+          "id": "gap_13",
+          "x": 64,
+          "surface": "atelier_1_8",
+          "landingSurface": "atelier_1_7",
+          "direction": -1
+        },
+        {
+          "id": "gap_14",
+          "x": 56,
+          "surface": "atelier_1_7",
+          "landingSurface": "atelier_1_6",
+          "direction": -1
+        },
+        {
+          "id": "gap_15",
+          "x": 48,
+          "surface": "atelier_1_6",
+          "landingSurface": "atelier_1_5",
+          "direction": -1
+        },
+        {
+          "id": "gap_16",
+          "x": 40,
+          "surface": "atelier_1_5",
+          "landingSurface": "atelier_1_4",
+          "direction": -1
+        },
+        {
+          "id": "gap_17",
+          "x": 32,
+          "surface": "atelier_1_4",
+          "landingSurface": "atelier_1_3",
+          "direction": -1
+        },
+        {
+          "id": "gap_18",
+          "x": 24,
+          "surface": "atelier_1_3",
+          "landingSurface": "atelier_1_2",
+          "direction": -1
+        },
+        {
+          "id": "gap_19",
+          "x": 16,
+          "surface": "atelier_1_2",
+          "landingSurface": "atelier_1_1",
+          "direction": -1
+        },
+        {
+          "id": "gap_20",
+          "x": 8,
+          "surface": "atelier_1_1",
+          "landingSurface": "atelier_1_0",
+          "direction": -1
+        },
+        {
+          "id": "gap_21",
+          "x": 8,
+          "surface": "atelier_2_0",
+          "landingSurface": "atelier_2_1",
+          "direction": 1
+        },
+        {
+          "id": "gap_22",
+          "x": 16,
+          "surface": "atelier_2_1",
+          "landingSurface": "atelier_2_2",
+          "direction": 1
+        },
+        {
+          "id": "gap_23",
+          "x": 24,
+          "surface": "atelier_2_2",
+          "landingSurface": "atelier_2_3",
+          "direction": 1
+        },
+        {
+          "id": "gap_24",
+          "x": 32,
+          "surface": "atelier_2_3",
+          "landingSurface": "atelier_2_4",
+          "direction": 1
+        },
+        {
+          "id": "gap_25",
+          "x": 40,
+          "surface": "atelier_2_4",
+          "landingSurface": "atelier_2_5",
+          "direction": 1
+        },
+        {
+          "id": "gap_26",
+          "x": 48,
+          "surface": "atelier_2_5",
+          "landingSurface": "atelier_2_6",
+          "direction": 1
+        },
+        {
+          "id": "gap_27",
+          "x": 56,
+          "surface": "atelier_2_6",
+          "landingSurface": "atelier_2_7",
+          "direction": 1
+        },
+        {
+          "id": "gap_28",
+          "x": 64,
+          "surface": "atelier_2_7",
+          "landingSurface": "atelier_2_8",
+          "direction": 1
+        },
+        {
+          "id": "gap_29",
+          "x": 72,
+          "surface": "atelier_2_8",
+          "landingSurface": "atelier_2_9",
+          "direction": 1
+        },
+        {
+          "id": "gap_30",
+          "x": 80,
+          "surface": "atelier_2_9",
+          "landingSurface": "atelier_2_10",
+          "direction": 1
+        },
+        {
+          "id": "gap_31",
+          "x": 80,
+          "surface": "atelier_3_10",
+          "landingSurface": "atelier_3_9",
+          "direction": -1
+        },
+        {
+          "id": "gap_32",
+          "x": 72,
+          "surface": "atelier_3_9",
+          "landingSurface": "atelier_3_8",
+          "direction": -1
+        },
+        {
+          "id": "gap_33",
+          "x": 64,
+          "surface": "atelier_3_8",
+          "landingSurface": "atelier_3_7",
+          "direction": -1
+        },
+        {
+          "id": "gap_34",
+          "x": 56,
+          "surface": "atelier_3_7",
+          "landingSurface": "atelier_3_6",
+          "direction": -1
+        },
+        {
+          "id": "gap_35",
+          "x": 48,
+          "surface": "atelier_3_6",
+          "landingSurface": "atelier_3_5",
+          "direction": -1
+        },
+        {
+          "id": "gap_36",
+          "x": 40,
+          "surface": "atelier_3_5",
+          "landingSurface": "atelier_3_4",
+          "direction": -1
+        },
+        {
+          "id": "gap_37",
+          "x": 32,
+          "surface": "atelier_3_4",
+          "landingSurface": "atelier_3_3",
+          "direction": -1
+        },
+        {
+          "id": "gap_38",
+          "x": 24,
+          "surface": "atelier_3_3",
+          "landingSurface": "atelier_3_2",
+          "direction": -1
+        },
+        {
+          "id": "gap_39",
+          "x": 16,
+          "surface": "atelier_3_2",
+          "landingSurface": "atelier_3_1",
+          "direction": -1
+        },
+        {
+          "id": "gap_40",
+          "x": 8,
+          "surface": "atelier_3_1",
+          "landingSurface": "atelier_3_0",
+          "direction": -1
+        }
+      ],
+      "hasFallLine": true,
+      "fallLine": 2.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 10.0,
+        "width": 99,
+        "height": 20.4
+      },
+      "backgroundSet": "gallery_07_return_atelier"
     },
     {
       "id": "gallery_08_return_gallery",
@@ -339,48 +2017,965 @@
       "floors": [
         {
           "id": "gallery_return_lower_safe",
-          "x": 3
+          "x": 6.45,
+          "surface": "vault_0_0"
+        },
+        {
+          "id": "gallery_rest_08",
+          "x": 6.45,
+          "surface": "vault_0_0",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_08",
+          "x": 71,
+          "surface": "vault_4_8"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "gallery_07_return_atelier",
-          "x": 1,
-          "gate": "irina_defeated"
+          "x": 2,
+          "gate": "irina_defeated",
+          "approach": {
+            "x": 1.1,
+            "y": 21.44,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_return_atelier_safe"
         },
         {
           "room": "gallery_04_greenhouse_path",
-          "x": 42,
-          "gate": ""
+          "x": 71,
+          "gate": "",
+          "approach": {
+            "x": 70.1,
+            "y": -0.16,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_green_center"
         },
         {
           "room": "gallery_01_entry",
-          "x": 37,
-          "gate": ""
+          "x": 66,
+          "gate": "",
+          "approach": {
+            "x": 65.1,
+            "y": -0.16,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_entry_floor"
         },
         {
           "room": "hub_lift",
-          "x": 32,
-          "gate": ""
+          "x": 59,
+          "gate": "",
+          "approach": {
+            "x": 58.1,
+            "y": -0.16,
+            "width": 1.8,
+            "height": 0.9
+          }
         }
       ],
       "roster": [
         {
-          "id": "notary_guard",
-          "count": 2,
-          "segments": 3,
-          "setupSkill": "canvas_carve"
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 2,
+          "setupSkill": "canvas_carve",
+          "placementIds": [
+            "reflection_statue_0"
+          ]
         },
         {
-          "id": "sword_latch",
-          "count": 2,
-          "segments": 1,
-          "setupSkill": "canvas_carve"
+          "id": "notary_guard",
+          "count": 3,
+          "segments": 2,
+          "setupSkill": "canvas_carve",
+          "placementIds": [
+            "notary_guard_1",
+            "notary_guard_2",
+            "notary_guard_3"
+          ]
         }
       ],
-      "stations": 4,
-      "projectileStations": false
+      "stations": 40,
+      "projectileStations": false,
+      "terrain": [
+        {
+          "id": "vault_0_0",
+          "rect": {
+            "x": 1,
+            "y": 21.22,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_1",
+          "rect": {
+            "x": 9,
+            "y": 21.22,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_2",
+          "rect": {
+            "x": 17,
+            "y": 21.22,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_3",
+          "rect": {
+            "x": 25,
+            "y": 21.22,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_4",
+          "rect": {
+            "x": 33,
+            "y": 21.22,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_5",
+          "rect": {
+            "x": 41,
+            "y": 21.22,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_6",
+          "rect": {
+            "x": 49,
+            "y": 21.22,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_7",
+          "rect": {
+            "x": 57,
+            "y": 21.22,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_0_8",
+          "rect": {
+            "x": 65,
+            "y": 21.22,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shelf_0",
+          "rect": {
+            "x": 72,
+            "y": 19.42,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_0",
+          "rect": {
+            "x": 70,
+            "y": 17.62,
+            "width": 8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_0",
+          "rect": {
+            "x": 1,
+            "y": 15.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_1",
+          "rect": {
+            "x": 9,
+            "y": 15.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_2",
+          "rect": {
+            "x": 17,
+            "y": 15.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_3",
+          "rect": {
+            "x": 25,
+            "y": 15.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_4",
+          "rect": {
+            "x": 33,
+            "y": 15.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_5",
+          "rect": {
+            "x": 41,
+            "y": 15.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_6",
+          "rect": {
+            "x": 49,
+            "y": 15.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_7",
+          "rect": {
+            "x": 57,
+            "y": 15.82,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_1_8",
+          "rect": {
+            "x": 65,
+            "y": 15.82,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shelf_1",
+          "rect": {
+            "x": -2,
+            "y": 14.02,
+            "width": 7,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_1",
+          "rect": {
+            "x": -1,
+            "y": 12.22,
+            "width": 5,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_0",
+          "rect": {
+            "x": 1,
+            "y": 10.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_1",
+          "rect": {
+            "x": 9,
+            "y": 10.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_2",
+          "rect": {
+            "x": 17,
+            "y": 10.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_3",
+          "rect": {
+            "x": 25,
+            "y": 10.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_4",
+          "rect": {
+            "x": 33,
+            "y": 10.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_5",
+          "rect": {
+            "x": 41,
+            "y": 10.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_6",
+          "rect": {
+            "x": 49,
+            "y": 10.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_7",
+          "rect": {
+            "x": 57,
+            "y": 10.42,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_2_8",
+          "rect": {
+            "x": 65,
+            "y": 10.42,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shelf_2",
+          "rect": {
+            "x": 72,
+            "y": 8.62,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_2",
+          "rect": {
+            "x": 70,
+            "y": 6.82,
+            "width": 8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_0",
+          "rect": {
+            "x": 1,
+            "y": 5.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_1",
+          "rect": {
+            "x": 9,
+            "y": 5.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_2",
+          "rect": {
+            "x": 17,
+            "y": 5.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_3",
+          "rect": {
+            "x": 25,
+            "y": 5.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_4",
+          "rect": {
+            "x": 33,
+            "y": 5.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_5",
+          "rect": {
+            "x": 41,
+            "y": 5.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_6",
+          "rect": {
+            "x": 49,
+            "y": 5.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_7",
+          "rect": {
+            "x": 57,
+            "y": 5.02,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_3_8",
+          "rect": {
+            "x": 65,
+            "y": 5.02,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shelf_3",
+          "rect": {
+            "x": -2,
+            "y": 3.22,
+            "width": 7,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_3",
+          "rect": {
+            "x": -1,
+            "y": 1.42,
+            "width": 5,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_0",
+          "rect": {
+            "x": 1,
+            "y": -0.38,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_1",
+          "rect": {
+            "x": 9,
+            "y": -0.38,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_2",
+          "rect": {
+            "x": 17,
+            "y": -0.38,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_3",
+          "rect": {
+            "x": 25,
+            "y": -0.38,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_4",
+          "rect": {
+            "x": 33,
+            "y": -0.38,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_5",
+          "rect": {
+            "x": 41,
+            "y": -0.38,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_6",
+          "rect": {
+            "x": 49,
+            "y": -0.38,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_7",
+          "rect": {
+            "x": 57,
+            "y": -0.38,
+            "width": 6,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "vault_4_8",
+          "rect": {
+            "x": 65,
+            "y": -0.38,
+            "width": 9,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "reflection_statue_0",
+          "x": 69,
+          "y": 21.65,
+          "active": {
+            "x": 66,
+            "y": 21.36,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 3.5,
+          "y": 16.25,
+          "active": {
+            "x": 0.5,
+            "y": 15.96,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 69,
+          "y": 10.85,
+          "active": {
+            "x": 66,
+            "y": 10.56,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "notary_guard_3",
+          "x": 3.5,
+          "y": 5.45,
+          "active": {
+            "x": 0.5,
+            "y": 5.16,
+            "width": 6,
+            "height": 1.55
+          }
+        }
+      ],
+      "eastBoundary": 83,
+      "stationMarks": [
+        {
+          "id": "gap_01",
+          "x": 8,
+          "surface": "vault_0_0",
+          "landingSurface": "vault_0_1",
+          "direction": 1
+        },
+        {
+          "id": "gap_02",
+          "x": 16,
+          "surface": "vault_0_1",
+          "landingSurface": "vault_0_2",
+          "direction": 1
+        },
+        {
+          "id": "gap_03",
+          "x": 24,
+          "surface": "vault_0_2",
+          "landingSurface": "vault_0_3",
+          "direction": 1
+        },
+        {
+          "id": "gap_04",
+          "x": 32,
+          "surface": "vault_0_3",
+          "landingSurface": "vault_0_4",
+          "direction": 1
+        },
+        {
+          "id": "gap_05",
+          "x": 40,
+          "surface": "vault_0_4",
+          "landingSurface": "vault_0_5",
+          "direction": 1
+        },
+        {
+          "id": "gap_06",
+          "x": 48,
+          "surface": "vault_0_5",
+          "landingSurface": "vault_0_6",
+          "direction": 1
+        },
+        {
+          "id": "gap_07",
+          "x": 56,
+          "surface": "vault_0_6",
+          "landingSurface": "vault_0_7",
+          "direction": 1
+        },
+        {
+          "id": "gap_08",
+          "x": 64,
+          "surface": "vault_0_7",
+          "landingSurface": "vault_0_8",
+          "direction": 1
+        },
+        {
+          "id": "gap_09",
+          "x": 64,
+          "surface": "vault_1_8",
+          "landingSurface": "vault_1_7",
+          "direction": -1
+        },
+        {
+          "id": "gap_10",
+          "x": 56,
+          "surface": "vault_1_7",
+          "landingSurface": "vault_1_6",
+          "direction": -1
+        },
+        {
+          "id": "gap_11",
+          "x": 48,
+          "surface": "vault_1_6",
+          "landingSurface": "vault_1_5",
+          "direction": -1
+        },
+        {
+          "id": "gap_12",
+          "x": 40,
+          "surface": "vault_1_5",
+          "landingSurface": "vault_1_4",
+          "direction": -1
+        },
+        {
+          "id": "gap_13",
+          "x": 32,
+          "surface": "vault_1_4",
+          "landingSurface": "vault_1_3",
+          "direction": -1
+        },
+        {
+          "id": "gap_14",
+          "x": 24,
+          "surface": "vault_1_3",
+          "landingSurface": "vault_1_2",
+          "direction": -1
+        },
+        {
+          "id": "gap_15",
+          "x": 16,
+          "surface": "vault_1_2",
+          "landingSurface": "vault_1_1",
+          "direction": -1
+        },
+        {
+          "id": "gap_16",
+          "x": 8,
+          "surface": "vault_1_1",
+          "landingSurface": "vault_1_0",
+          "direction": -1
+        },
+        {
+          "id": "gap_17",
+          "x": 8,
+          "surface": "vault_2_0",
+          "landingSurface": "vault_2_1",
+          "direction": 1
+        },
+        {
+          "id": "gap_18",
+          "x": 16,
+          "surface": "vault_2_1",
+          "landingSurface": "vault_2_2",
+          "direction": 1
+        },
+        {
+          "id": "gap_19",
+          "x": 24,
+          "surface": "vault_2_2",
+          "landingSurface": "vault_2_3",
+          "direction": 1
+        },
+        {
+          "id": "gap_20",
+          "x": 32,
+          "surface": "vault_2_3",
+          "landingSurface": "vault_2_4",
+          "direction": 1
+        },
+        {
+          "id": "gap_21",
+          "x": 40,
+          "surface": "vault_2_4",
+          "landingSurface": "vault_2_5",
+          "direction": 1
+        },
+        {
+          "id": "gap_22",
+          "x": 48,
+          "surface": "vault_2_5",
+          "landingSurface": "vault_2_6",
+          "direction": 1
+        },
+        {
+          "id": "gap_23",
+          "x": 56,
+          "surface": "vault_2_6",
+          "landingSurface": "vault_2_7",
+          "direction": 1
+        },
+        {
+          "id": "gap_24",
+          "x": 64,
+          "surface": "vault_2_7",
+          "landingSurface": "vault_2_8",
+          "direction": 1
+        },
+        {
+          "id": "gap_25",
+          "x": 64,
+          "surface": "vault_3_8",
+          "landingSurface": "vault_3_7",
+          "direction": -1
+        },
+        {
+          "id": "gap_26",
+          "x": 56,
+          "surface": "vault_3_7",
+          "landingSurface": "vault_3_6",
+          "direction": -1
+        },
+        {
+          "id": "gap_27",
+          "x": 48,
+          "surface": "vault_3_6",
+          "landingSurface": "vault_3_5",
+          "direction": -1
+        },
+        {
+          "id": "gap_28",
+          "x": 40,
+          "surface": "vault_3_5",
+          "landingSurface": "vault_3_4",
+          "direction": -1
+        },
+        {
+          "id": "gap_29",
+          "x": 32,
+          "surface": "vault_3_4",
+          "landingSurface": "vault_3_3",
+          "direction": -1
+        },
+        {
+          "id": "gap_30",
+          "x": 24,
+          "surface": "vault_3_3",
+          "landingSurface": "vault_3_2",
+          "direction": -1
+        },
+        {
+          "id": "gap_31",
+          "x": 16,
+          "surface": "vault_3_2",
+          "landingSurface": "vault_3_1",
+          "direction": -1
+        },
+        {
+          "id": "gap_32",
+          "x": 8,
+          "surface": "vault_3_1",
+          "landingSurface": "vault_3_0",
+          "direction": -1
+        },
+        {
+          "id": "gap_33",
+          "x": 8,
+          "surface": "vault_4_0",
+          "landingSurface": "vault_4_1",
+          "direction": 1
+        },
+        {
+          "id": "gap_34",
+          "x": 16,
+          "surface": "vault_4_1",
+          "landingSurface": "vault_4_2",
+          "direction": 1
+        },
+        {
+          "id": "gap_35",
+          "x": 24,
+          "surface": "vault_4_2",
+          "landingSurface": "vault_4_3",
+          "direction": 1
+        },
+        {
+          "id": "gap_36",
+          "x": 32,
+          "surface": "vault_4_3",
+          "landingSurface": "vault_4_4",
+          "direction": 1
+        },
+        {
+          "id": "gap_37",
+          "x": 40,
+          "surface": "vault_4_4",
+          "landingSurface": "vault_4_5",
+          "direction": 1
+        },
+        {
+          "id": "gap_38",
+          "x": 48,
+          "surface": "vault_4_5",
+          "landingSurface": "vault_4_6",
+          "direction": 1
+        },
+        {
+          "id": "gap_39",
+          "x": 56,
+          "surface": "vault_4_6",
+          "landingSurface": "vault_4_7",
+          "direction": 1
+        },
+        {
+          "id": "gap_40",
+          "x": 64,
+          "surface": "vault_4_7",
+          "landingSurface": "vault_4_8",
+          "direction": 1
+        }
+      ],
+      "hasFallLine": true,
+      "fallLine": -7.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.0,
+        "width": 83,
+        "height": 25.8
+      },
+      "backgroundSet": "gallery_08_return_gallery"
     },
     {
       "id": "gallery_09_shortcut",
@@ -390,25 +2985,58 @@
       "floors": [
         {
           "id": "gallery_shortcut_safe",
-          "x": 3
+          "x": 3,
+          "surface": "terrace_0_0"
+        },
+        {
+          "id": "gallery_rest_09",
+          "x": 51,
+          "surface": "terrace_0_4",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_09",
+          "x": 50,
+          "surface": "terrace_0_4"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "gallery_02_white_hall",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": 3.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_hall_west"
         },
         {
           "room": "gallery_05_frame_foyer",
-          "x": 42,
-          "gate": ""
+          "x": 50,
+          "gate": "",
+          "approach": {
+            "x": 49.1,
+            "y": 3.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_pre_boss_floor"
         },
         {
           "room": "gallery_10_sanctuary_window",
-          "x": 32,
-          "gate": "synergy"
+          "x": 43,
+          "gate": "synergy",
+          "approach": {
+            "x": 42.1,
+            "y": 3.84,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_reunion_safe_floor"
         }
       ],
       "roster": [
@@ -416,23 +3044,231 @@
           "id": "notary_guard",
           "count": 2,
           "segments": 3,
-          "setupSkill": "canvas_carve"
+          "setupSkill": "canvas_carve",
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ]
         },
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "placementIds": [
+            "sword_latch_2",
+            "sword_latch_3"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "placementIds": [
+            "reflection_statue_4"
+          ]
         }
       ],
       "stations": 4,
       "stitchAnchors": 4,
       "singleSeams": 4,
-      "seamId": "gallery_synergy_seam"
+      "seamId": "gallery_synergy_seam",
+      "terrain": [
+        {
+          "id": "terrace_0_0",
+          "rect": {
+            "x": 1,
+            "y": 3.62,
+            "width": 2.8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "terrace_0_1",
+          "rect": {
+            "x": 9,
+            "y": 3.62,
+            "width": 2.8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "terrace_0_2",
+          "rect": {
+            "x": 17,
+            "y": 3.62,
+            "width": 2.8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "terrace_0_3",
+          "rect": {
+            "x": 25,
+            "y": 3.62,
+            "width": 2.8,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "terrace_0_4",
+          "rect": {
+            "x": 33,
+            "y": 3.62,
+            "width": 24,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "seam_lip_0",
+          "rect": {
+            "x": 4.8,
+            "y": 3.62,
+            "width": 2.2,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "seam_lip_1",
+          "rect": {
+            "x": 12.8,
+            "y": 3.62,
+            "width": 2.1999999999999993,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "seam_lip_2",
+          "rect": {
+            "x": 20.8,
+            "y": 3.62,
+            "width": 2.1999999999999993,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "seam_lip_3",
+          "rect": {
+            "x": 28.8,
+            "y": 3.62,
+            "width": 2.1999999999999993,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 41,
+          "y": 4.05,
+          "active": {
+            "x": 38,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 46,
+          "y": 4.05,
+          "active": {
+            "x": 43,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "sword_latch_2",
+          "x": 38,
+          "y": 4.05,
+          "active": {
+            "x": 35,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "sword_latch_3",
+          "x": 53,
+          "y": 4.05,
+          "active": {
+            "x": 50,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "reflection_statue_4",
+          "x": 48,
+          "y": 4.05,
+          "active": {
+            "x": 45,
+            "y": 3.76,
+            "width": 6,
+            "height": 1.55
+          }
+        }
+      ],
+      "eastBoundary": 66,
+      "stationMarks": [
+        {
+          "id": "gap_01",
+          "x": 8,
+          "surface": "seam_lip_0",
+          "landingSurface": "terrace_0_1",
+          "direction": 1
+        },
+        {
+          "id": "gap_02",
+          "x": 16,
+          "surface": "seam_lip_1",
+          "landingSurface": "terrace_0_2",
+          "direction": 1
+        },
+        {
+          "id": "gap_03",
+          "x": 24,
+          "surface": "seam_lip_2",
+          "landingSurface": "terrace_0_3",
+          "direction": 1
+        },
+        {
+          "id": "gap_04",
+          "x": 32,
+          "surface": "seam_lip_3",
+          "landingSurface": "terrace_0_4",
+          "direction": 1
+        }
+      ],
+      "seamRuns": [
+        {
+          "count": 4,
+          "x": 4.3,
+          "y": 4.06,
+          "stepX": 8
+        }
+      ],
+      "hasFallLine": true,
+      "fallLine": -3.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 5.0,
+        "width": 66,
+        "height": 4.2
+      },
+      "backgroundSet": "gallery_09_shortcut"
     },
     {
       "id": "gallery_10_sanctuary_window",
@@ -442,36 +3278,75 @@
       "floors": [
         {
           "id": "gallery_reunion_safe_floor",
-          "x": 3
+          "x": 4,
+          "surface": "window_seat"
+        },
+        {
+          "id": "gallery_rest_10",
+          "x": 5,
+          "surface": "window_seat",
+          "contactSave": true
+        },
+        {
+          "id": "gallery_exit_10",
+          "x": 41,
+          "surface": "window_door"
         }
       ],
       "points": [
         {
           "id": "irina_reunion_window",
-          "x": 18,
-          "platform": false
+          "x": 26,
+          "platform": false,
+          "surface": "sash"
         }
       ],
       "exits": [
         {
           "room": "hub_sanctuary",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1.1,
+            "y": -0.16,
+            "width": 1.8,
+            "height": 0.9
+          }
         },
         {
           "room": "hub_lift",
-          "x": 42,
-          "gate": ""
+          "x": 41,
+          "gate": "",
+          "approach": {
+            "x": 40.1,
+            "y": 1.44,
+            "width": 1.8,
+            "height": 0.9
+          }
         },
         {
           "room": "gallery_01_entry",
-          "x": 37,
-          "gate": "depart"
+          "x": 35,
+          "gate": "depart",
+          "approach": {
+            "x": 34.1,
+            "y": 1.44,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_entry_floor"
         },
         {
           "room": "gallery_09_shortcut",
-          "x": 28,
-          "gate": "synergy"
+          "x": 18,
+          "gate": "synergy",
+          "approach": {
+            "x": 17.1,
+            "y": 1.44,
+            "width": 1.8,
+            "height": 0.9
+          },
+          "destinationFloor": "gallery_shortcut_safe"
         }
       ],
       "roster": [
@@ -480,16 +3355,110 @@
           "count": 2,
           "segments": 1,
           "setupSkill": "canvas_carve",
-          "setupHits": 3
+          "setupHits": 3,
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ]
         },
         {
           "id": "notary_guard",
           "count": 1,
           "segments": 3,
           "setupSkill": "canvas_carve",
-          "skillOnly": true
+          "skillOnly": true,
+          "placementIds": [
+            "notary_guard_2"
+          ]
         }
-      ]
+      ],
+      "terrain": [
+        {
+          "id": "window_seat",
+          "rect": {
+            "x": 0,
+            "y": -0.38,
+            "width": 15,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "tea_table",
+          "rect": {
+            "x": 12,
+            "y": 1.22,
+            "width": 13,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "sash",
+          "rect": {
+            "x": 21,
+            "y": 2.82,
+            "width": 13,
+            "height": 0.38
+          },
+          "oneWay": true
+        },
+        {
+          "id": "window_door",
+          "rect": {
+            "x": 31,
+            "y": 1.22,
+            "width": 14,
+            "height": 0.38
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 17,
+          "y": 1.65,
+          "active": {
+            "x": 14,
+            "y": 1.36,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 39,
+          "y": 1.65,
+          "active": {
+            "x": 36,
+            "y": 1.36,
+            "width": 6,
+            "height": 1.55
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 29,
+          "y": 3.25,
+          "active": {
+            "x": 26,
+            "y": 2.96,
+            "width": 6,
+            "height": 1.55
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "hasFallLine": true,
+      "fallLine": -7.0,
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.0,
+        "width": 46,
+        "height": 7.4
+      },
+      "backgroundSet": "gallery_10_sanctuary_window"
     }
   ],
   "rows": [

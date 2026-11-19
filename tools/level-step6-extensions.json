@@ -1,0 +1,754 @@
+{
+  "Assets/Resources/Story/gallery.json": {
+    "original": "86229a9257d8ecb9c8bcbad7c0ba19de62f36123b5e96335a8d2b999bbb2fe22",
+    "updated": "cd2ab99c6c8c82b4f21ca87eac21085aa0def1f7953a64becd0af177a420de01",
+    "edits": [
+      [
+        10,
+        12,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        15,
+        17,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        20,
+        33,
+        [
+          "          \"x\": 41\n"
+        ]
+      ],
+      [
+        38,
+        41,
+        [
+          "          \"x\": 12,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        44,
+        47,
+        [
+          "          \"x\": 24,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        52,
+        60,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        64,
+        72,
+        [
+          "          \"gate\": \"gallery_entry_complete\"\n"
+        ]
+      ],
+      [
+        78,
+        82,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        83,
+        149,
+        [
+          "      ]\n"
+        ]
+      ],
+      [
+        158,
+        160,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        163,
+        181,
+        [
+          "          \"x\": 39\n"
+        ]
+      ],
+      [
+        187,
+        196,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        199,
+        208,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"gallery_02_cleared\"\n"
+        ]
+      ],
+      [
+        211,
+        220,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        226,
+        231,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        235,
+        240,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        244,
+        248,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        250,
+        421,
+        [
+          "      \"crossing\": \"steps\"\n"
+        ]
+      ],
+      [
+        430,
+        432,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        435,
+        448,
+        [
+          "          \"x\": 39\n"
+        ]
+      ],
+      [
+        454,
+        463,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        467,
+        475,
+        [
+          "          \"gate\": \"gallery_03_cleared\"\n"
+        ]
+      ],
+      [
+        481,
+        486,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        490,
+        495,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        499,
+        503,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        507,
+        511,
+        [
+          "          \"segments\": 2\n"
+        ]
+      ],
+      [
+        513,
+        644,
+        [
+          "      \"crossing\": \"latches\"\n"
+        ]
+      ],
+      [
+        653,
+        666,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        672,
+        681,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        685,
+        693,
+        [
+          "          \"gate\": \"gallery_04_cleared\"\n"
+        ]
+      ],
+      [
+        696,
+        705,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"irina_defeated\"\n"
+        ]
+      ],
+      [
+        711,
+        715,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        719,
+        723,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        727,
+        731,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        733,
+        830,
+        [
+          "      \"crossing\": \"arch\"\n"
+        ]
+      ],
+      [
+        839,
+        857,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        862,
+        865,
+        [
+          "          \"x\": 34,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        868,
+        871,
+        [
+          "          \"x\": 16,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        876,
+        885,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        888,
+        897,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"gallery_route_complete\"\n"
+        ]
+      ],
+      [
+        900,
+        921,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"irina_defeated\"\n"
+        ]
+      ],
+      [
+        923,
+        977,
+        [
+          "      \"roster\": []\n"
+        ]
+      ],
+      [
+        986,
+        988,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        991,
+        993,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        996,
+        1009,
+        [
+          "          \"x\": 31\n"
+        ]
+      ],
+      [
+        1014,
+        1017,
+        [
+          "          \"x\": 31,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        1022,
+        1031,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1034,
+        1043,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"irina_defeated\"\n"
+        ]
+      ],
+      [
+        1047,
+        1091,
+        [
+          "      \"interludeHealth\": 7\n"
+        ]
+      ],
+      [
+        1100,
+        1102,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1105,
+        1118,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        1124,
+        1133,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1136,
+        1145,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"irina_defeated\"\n"
+        ]
+      ],
+      [
+        1152,
+        1157,
+        [
+          "          \"setupSkill\": \"canvas_carve\"\n"
+        ]
+      ],
+      [
+        1162,
+        1167,
+        [
+          "          \"setupSkill\": \"canvas_carve\"\n"
+        ]
+      ],
+      [
+        1169,
+        2010,
+        [
+          "      \"stations\": 5\n"
+        ]
+      ],
+      [
+        2019,
+        2032,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        2038,
+        2047,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"irina_defeated\"\n"
+        ]
+      ],
+      [
+        2050,
+        2059,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2062,
+        2071,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2074,
+        2082,
+        [
+          "          \"x\": 32,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2086,
+        2093,
+        [
+          "          \"id\": \"notary_guard\",\n",
+          "          \"count\": 2,\n",
+          "          \"segments\": 3,\n",
+          "          \"setupSkill\": \"canvas_carve\"\n"
+        ]
+      ],
+      [
+        2095,
+        2104,
+        [
+          "          \"id\": \"sword_latch\",\n",
+          "          \"count\": 2,\n",
+          "          \"segments\": 1,\n",
+          "          \"setupSkill\": \"canvas_carve\"\n"
+        ]
+      ],
+      [
+        2106,
+        2978,
+        [
+          "      \"stations\": 4,\n",
+          "      \"projectileStations\": false\n"
+        ]
+      ],
+      [
+        2987,
+        3000,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        3006,
+        3015,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        3018,
+        3027,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        3030,
+        3039,
+        [
+          "          \"x\": 32,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        3046,
+        3051,
+        [
+          "          \"setupSkill\": \"canvas_carve\"\n"
+        ]
+      ],
+      [
+        3055,
+        3060,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        3064,
+        3068,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        3073,
+        3271,
+        [
+          "      \"seamId\": \"gallery_synergy_seam\"\n"
+        ]
+      ],
+      [
+        3280,
+        3293,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        3298,
+        3301,
+        [
+          "          \"x\": 18,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        3306,
+        3314,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        3317,
+        3325,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        3328,
+        3337,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"depart\"\n"
+        ]
+      ],
+      [
+        3340,
+        3349,
+        [
+          "          \"x\": 28,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        3357,
+        3362,
+        [
+          "          \"setupHits\": 3\n"
+        ]
+      ],
+      [
+        3368,
+        3372,
+        [
+          "          \"skillOnly\": true\n"
+        ]
+      ],
+      [
+        3373,
+        3461,
+        [
+          "      ]\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/RepresentativeArea.cs": {
+    "original": "40d3b1493c56182a9b77e5c0810142ee9e6b4a13528ad66bdceae3f6d9a580d0",
+    "updated": "0af5fe739e289ecf611db015b3be69651c50cf3d0b7f08e25ce1a7a78b4b58ec",
+    "edits": [
+      [
+        37,
+        38,
+        []
+      ],
+      [
+        178,
+        179,
+        []
+      ],
+      [
+        197,
+        198,
+        [
+          "            else if ((ActiveRow == null || ((Room.stage == \"clock\" || Room.stage == \"opera\" || Room.stage == \"bell\") && worldAction && !opponent.gameObject.activeSelf))\n"
+        ]
+      ],
+      [
+        278,
+        280,
+        []
+      ],
+      [
+        289,
+        292,
+        [
+          "                opponent.ResetAt(new Vector2(spawnX, (belfry ? Room.SurfaceTop(\"refuge\") : Room.Surface(\"stage_floor\") != null ? Room.SurfaceTop(\"stage_floor\") : Room.SurfaceTop(\"drum_floor\")) + .1f));\n",
+          "                if (mikhail || belfry)\n"
+        ]
+      ],
+      [
+        294,
+        296,
+        [
+          "                    mikhailBout.StartStoryBout(player, belfry ? DistrictTrial : mikhailTrial, Room.interludeHealth,\n",
+          "                        belfry ? surfaces[\"refuge\"].bounds : (Bounds?)null);\n"
+        ]
+      ],
+      [
+        328,
+        329,
+        []
+      ],
+      [
+        341,
+        347,
+        [
+          "            if (player != null) player.BasicStrikeDelivered -= OnStrike;\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Progression/CoreRecord.cs": {
+    "original": "50755121c6d5781c8fb8509aa1d44fb3a093cc83aa5fd70b426efd4c04b7a58a",
+    "updated": "a5c3939be7e654c70210abd1234732a253cf7c2eb61f7cf6efd3ce49593dc4d0",
+    "edits": [
+      [
+        57,
+        58,
+        [
+          "                !((slotId == \"slot-4\" || slotId == \"slot-5\") && AutoTestRuntime.SlotCount == 5)))\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Shell/GameShell.cs": {
+    "original": "86b9a07156cabe3c90a466a11673c59a1d1618b19d9a10d37fbe5de5944b697f",
+    "updated": "0a6778b357758f55a497d519e1dd79e9c846b37a1674ae9971dc5080ba8e48cc",
+    "edits": [
+      [
+        397,
+        398,
+        [
+          "                int pitch = records.Length > 4 ? 98 : 122;\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/CanvasCarveSkill.cs": {
+    "original": "27c607d0875742e40b674bb84f64de94daa45ba49d8a133c15b5f691e2b57c52",
+    "updated": "13638da0ff8c7f33a63a1e98f615340b4274d153ae4079f546152c02f4c72c16",
+    "edits": [
+      [
+        12,
+        14,
+        []
+      ],
+      [
+        38,
+        39,
+        []
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/PaintSurface2D.cs": {
+    "original": "85494a0fa8a54faa34d1bd638d18714ddef05123e009c088339bb94304e3f148",
+    "updated": "f955494c3769173050c232086d61eb7a271d00df77f2567a85d60337162b036d",
+    "edits": [
+      [
+        19,
+        30,
+        []
+      ],
+      [
+        34,
+        35,
+        [
+          "            floor = gameObject.AddComponent<BoxCollider2D>(); floor.size = size;\n"
+        ]
+      ],
+      [
+        41,
+        43,
+        [
+          "            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 6;\n"
+        ]
+      ],
+      [
+        69,
+        74,
+        [
+          "            { supported = true; owner.ReportEffect(name + \":support\"); }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/StitchSurface2D.cs": {
+    "original": "f5f233baca883fb60c6893e15d9f6a2375feef3140169b09034c237b3a1a5f75",
+    "updated": "87254c7627d3136ae0f32ebfa189e9d607034efcb1800eefe6bc042ea8035626",
+    "edits": [
+      [
+        57,
+        59,
+        []
+      ]
+    ]
+  }
+}

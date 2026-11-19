@@ -395,7 +395,7 @@ namespace RewindNotary
             ShellPage renderedPage = Page;
             if (Page == ShellPage.Slots)
             {
-                int pitch = records.Length > 4 ? 98 : 122;
+                int pitch = records.Length > 4 ? 490 / records.Length : 122;
                 for (int i = 0; i < records.Length; i++)
                 {
                     Row(i, SlotLabel(i), new Rect(200, 148 + i * pitch, 760, pitch - 12));

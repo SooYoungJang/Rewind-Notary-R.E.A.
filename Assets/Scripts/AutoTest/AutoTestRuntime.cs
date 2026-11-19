@@ -22,7 +22,7 @@ namespace RewindNotary
         internal static AutoTestReport Report { get; private set; }
         internal static double Now => Time.realtimeSinceStartupAsDouble;
         internal static string DirectoryPath => directory;
-        internal static int SlotCount => requested && sandbox != null ? 5 : 3;
+        internal static int SlotCount => requested && sandbox != null ? 6 : 3;
 
         // Never fall back to the real root if test setup throws before creating the sandbox.
         internal static string SaveRoot => requested
@@ -228,6 +228,14 @@ namespace RewindNotary
                 {
                     string slot = Path.Combine(sandbox, "SkillSystem", "slot-1.json");
                     audit.observedSlotWrite = File.Exists(slot);
+                    var gallery = Report.galleryDistrict;
+                    if (completed || gallery.previousSlotsBefore?.Length == 5)
+                    {
+                        gallery.previousSlotsAfter = ReadPreviousSlotHashes(5);
+                        gallery.previousSlotsUnchanged = gallery.previousSlotsBefore?.Length == 5 &&
+                            string.Join("/", gallery.previousSlotsBefore) == string.Join("/", gallery.previousSlotsAfter);
+                        if (!gallery.previousSlotsUnchanged) Report.Error("galleryDistrict", "Earlier slot contents changed during slot 6 traversal");
+                    }
                     var bell = Report.bellDistrict;
                     if (completed || bell.previousSlotsBefore?.Length == 4)
                     {
@@ -254,6 +262,17 @@ namespace RewindNotary
                         opera.previousSlotsUnchanged = opera.previousSlotsBefore?.Length == 3 &&
                             string.Join("/", opera.previousSlotsBefore) == string.Join("/", opera.previousSlotsAfter);
                         if (!opera.previousSlotsUnchanged) Report.Error("operaDistrict", "Earlier slot contents changed during slot 4 traversal");
+                        var sixth = Path.Combine(sandbox, "SkillSystem", "slot-6.json");
+                        if (File.Exists(sixth))
+                        {
+                            var save = JsonUtility.FromJson<CoreRecord>(File.ReadAllText(sixth));
+                            gallery.slotReadback = save != null && save.schemaVersion == CoreRecord.SchemaVersion && !save.testData &&
+                                save.slotId == "slot-6" && save.lastStageId == "gallery" && save.Get(BenefactorIds.Canvas).stage == 3 &&
+                                save.Get(BenefactorIds.Canvas).validUseCount >= 80 && save.Get(SkillRules.SilverStitch).acquired &&
+                                save.completedEncounters.Contains("story:irina_bout") && save.storyFlags.Contains("investigation_complete") &&
+                                save.storyFlags.Contains("scene_floor:gallery:gallery_rest_09");
+                        }
+                        if (!gallery.slotReadback) Report.Error("galleryDistrict", "Missing sixth-slot gallery checkpoint on disk.");
                         var fifth = Path.Combine(sandbox, "SkillSystem", "slot-5.json");
                         if (File.Exists(fifth))
                         {
@@ -297,6 +316,7 @@ namespace RewindNotary
                 DrainLogs();
                 if (completed && !Report.pilot.Passed) Report.Error("pilot", "Incomplete pilot route or contact save");
                 if (completed && Report.velvetDistrict.run.status != "pass") Report.Error("velvetDistrict", "Incomplete district traversal");
+                if (completed && Report.galleryDistrict.run.status != "pass") Report.Error("galleryDistrict", "Incomplete gallery traversal");
                 if (completed && Report.bellDistrict.run.status != "pass") Report.Error("bellDistrict", "Incomplete bell traversal");
                 if (completed && Report.operaDistrict.run.status != "pass") Report.Error("operaDistrict", "Incomplete opera traversal");
                 if (completed && Report.clockDistrict.run.status != "pass") Report.Error("clockDistrict", "Incomplete clock traversal");

@@ -285,7 +285,7 @@ def validate_level_step5(check, project, scripts):
            target['x']-guard[2]/2 >= first['x']+physics[6] and 'grounded ? BenefactorIds.Canvas : BenefactorIds.Forge' in scripts['GameInput'] and
            'keys.Cast(0, -1)' in scripts['BellTraversal'], 'airborne down-cast shatters the immediate physical seal from clear standing space')
     verify(len(patterns)==2 and all(p['action']=='bell' for p in patterns) and
-           'belfry ? DistrictTrial : mikhailTrial' in scripts['RepresentativeArea'] and
+           'belfry || gallery ? DistrictTrial : mikhailTrial' in scripts['RepresentativeArea'] and
            all(v in scripts['BenefactorTrialOpponent'] for v in ('pattern == 0 ? .75f : 2.8f','BellOutline(bellLanding, Pattern.windup)',
                'if (StoryBell) return bellLanding;', 'Threat().Intersects(player.GetComponent<Collider2D>().bounds)')),
            'two catalog strikes lock their low radial or tall landing outline and use that volume on impact')
@@ -307,7 +307,7 @@ def validate_level_step5(check, project, scripts):
            'ordered physical contact receipts and three visual refuge witnesses')
     verify(all(k in probe for k in ('!uses.Add(e.useId)','!stations.Add(e.targetId)','e.after == 30','e.after == 80','station != 42',
                                   'Time.frameCount > closedFrame + 1','result.shortcutSeconds >= result.longSeconds')),'probe rejects duplicate growth and measures closed and opened journeys')
-    verify(all(k in runtime for k in ('requested && sandbox != null ? 5 : 3','ReadPreviousSlotHashes(4)','save.slotId == "slot-5"',
+    verify(all(k in runtime for k in ('requested && sandbox != null ? 6 : 3','ReadPreviousSlotHashes(4)','save.slotId == "slot-5"',
            'previousSlotsBefore?.Length == 4','if (!bell.previousSlotsUnchanged)','"scene_floor:bell:bell_rest_09"','if (!bell.slotReadback)')) and
            'bot.Select(4)' in probe and 'AutoTestRuntime.ReadPreviousSlotHashes(4)' in probe and
            'bell != null && e.kind == "attempt_reset"' in driver and 'now - entered > 1500) { Stop("Bell district deadline")' in driver,

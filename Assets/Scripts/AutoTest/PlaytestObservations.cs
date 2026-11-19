@@ -18,6 +18,17 @@ namespace RewindNotary
         internal GameObject ProbeLayout => layout;
         private Collider2D ProbeCollider(StorySurface s) =>
             surfaces.TryGetValue(s.id, out var box) ? box : fixedFloors.Find(f => f.name == s.id);
+        internal void VerifyGalleryTile(StorySurface s)
+        {
+            var box = (BoxCollider2D)surfaces[s.id];
+            var tile = box.GetComponentInChildren<SpriteRenderer>();
+            if (tile == null || tile.transform.parent != box.transform || box.autoTiling ||
+                (box.transform.lossyScale - Vector3.one).sqrMagnitude > .000001f ||
+                (tile.size - box.size).sqrMagnitude > .000025f ||
+                (tile.enabled && (((Vector2)(tile.bounds.size - box.bounds.size)).sqrMagnitude > .000025f ||
+                    ((Vector2)(tile.bounds.center - box.bounds.center)).sqrMagnitude > .000025f)))
+                throw new System.InvalidOperationException(Room.id + "/" + s.id + " gallery tile and box diverged");
+        }
         internal Bounds ProbeSurfaceBounds(StorySurface s) => ProbeCollider(s).bounds;
         internal bool StandingOnGeneratedFloor(StorySurface s)
         {
@@ -50,7 +61,7 @@ namespace RewindNotary
         internal StorySurface[] ProbeTerrain()
         {
             var faces = new List<StorySurface>(Room.terrain ?? System.Array.Empty<StorySurface>());
-            faces.RemoveAll(s => s.bellLatch > 0 && ProbeCollider(s).isTrigger);
+            faces.RemoveAll(s => s.RequiredCuts > 0 && ProbeCollider(s).isTrigger);
             foreach (var box in fixedFloors)
             {
                 if (!box.isActiveAndEnabled || box.attachedRigidbody != null || surfaces.ContainsKey(box.name)) continue;
@@ -89,11 +100,18 @@ namespace RewindNotary
             float top = Room.SurfaceTop("lower_" + turn);
             return roomTargets.Find(t => !t.State.Cleared && Mathf.Abs(t.transform.position.y - top) < .2f);
         }
+        internal WaveTarget2D GalleryTurnTarget(string surface)
+        {
+            var r = Room.Surface(surface).rect;
+            float top = r.y + r.height;
+            return roomTargets.Find(t => !t.State.Cleared && Mathf.Abs(t.transform.position.y - top) < .2f &&
+                t.transform.position.x >= r.x && t.transform.position.x <= r.x + r.width);
+        }
         internal WaveTarget2D ClockTargetOnTier => roomTargets.Find(t => !t.State.Cleared &&
             Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f);
         internal WaveTarget2D UnclearedClockTarget => roomTargets.Find(t => !t.State.Cleared);
         internal WaveTarget2D DistrictWaveTarget => Room == null ? null :
-            (Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell") ? UnclearedClockTarget : RouteTarget;
+            (Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell" || Room.stage == "gallery") ? UnclearedClockTarget : RouteTarget;
         // Inactive targets still belong to the wave, including queued velvet entry enemies.
         internal int WaveTargetCount => roomTargets.Count + entryWave.Count;
         internal int ClearedWaveTargets

@@ -288,7 +288,7 @@ def validate_level_step4(check,project,scripts):
         ('normal and shortened return timed between common marks',probe,['"opera_drop_landing"','"opera_drop_head"','result.shortcutSeconds >= result.longSeconds','Time.frameCount > closedFrame + 1','!result.closedBeforeInvestigation']),
         ('physical ordered checkpoints',probe,['Entry, Hall, Chandelier, Roof, Wings, Arena, Upper, Lower, Stairs, Seam','!area.StandingOn(f.surface)','Mathf.Abs(feet.x - f.x) > .8f','"scene_floor:opera:" + f.id']),
         ('existing and new watchdogs and input',driver,['DrivingDistrict && !CheckDistrictProgress(now)','DistrictIdleLimit = 120','now - lastProgress > 18','opera.Drive(bot, keyboard, now)','opera?.ObserveUse(e, bot.Area.Room.id)','opera != null && e.kind == "attempt_reset"']),
-        ('slot readback and other files',runtime,['requested && sandbox != null ? 5 : 3','"slot-4.json"','save.slotId == "slot-4"','"scene_floor:opera:opera_rest_09"','save.Get(BenefactorIds.Waltz).validUseCount >= 80','if (!opera.previousSlotsUnchanged)','completed && Report.operaDistrict.run.status != "pass"'])]:
+        ('slot readback and other files',runtime,['requested && sandbox != null ? 6 : 3','"slot-4.json"','save.slotId == "slot-4"','"scene_floor:opera:opera_rest_09"','save.Get(BenefactorIds.Waltz).validUseCount >= 80','if (!opera.previousSlotsUnchanged)','completed && Report.operaDistrict.run.status != "pass"'])]:
         verify(all(t in script for t in terms),label)
     return dict(routes=routes,growth=counts,stationOnlyThresholds=[sequenced[i] for i in (29,79)],
                 span=dict(samples=len(at),minSeconds=min(v[0] for v in at),maxSeconds=max(v[0] for v in at)),

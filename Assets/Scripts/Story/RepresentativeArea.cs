@@ -35,6 +35,7 @@ namespace RewindNotary
             script = RepresentativeScript.Load();
             if (script.RestoreTransferReceipt(Record)) session.Save();
             InitArt();
+            player.GetComponent<CanvasCarveSkill>().StrokeDrawn += ColorGalleryStroke;
             player.BasicStrikeDelivered += OnStrike;
             session.Progression.Event += OnDistrictEffect;
             Restore();
@@ -175,6 +176,7 @@ namespace RewindNotary
         private float Distance(float x) => Mathf.Abs(player.transform.position.x - x);
         private void OnStrike(Bounds blade, int damage)
         {
+            if (Room.stage == "gallery") RevealGalleryOutline(blade);
             if (!ReadyForAction || !ActionToken.StartsWith("strike:", StringComparison.Ordinal)) return;
             var target = Room.Point(ActionToken.Substring(7));
             if (target != null && blade.Contains(new Vector3(target.x, 1f, 0))) FinishAction();
@@ -193,7 +195,7 @@ namespace RewindNotary
             }
             bool safeFloor = Safe && OnFixedFloor();
             if (!safeFloor) touchingCheckpoint = null;
-            else if ((ActiveRow == null || ((Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell") && worldAction && !opponent.gameObject.activeSelf))
+            else if ((ActiveRow == null || ((Room.stage == "clock" || Room.stage == "opera" || Room.stage == "bell" || Room.stage == "gallery") && worldAction && !opponent.gameObject.activeSelf))
                 && !SaveContactFloor()) return;
             var finaleRow = ActiveRow == null ? script.NextFinale(Room, session.Investigation) : null;
             var cut = Room.stage == "janhyang" || InEnding || finaleRow != null || ActiveRow?.sceneId.StartsWith("post_", StringComparison.Ordinal) == true
@@ -274,6 +276,8 @@ namespace RewindNotary
             {
                 bool belfry = Room.id == "bell_06_arena";
                 if (belfry && !StandingOn("refuge")) return;
+                bool gallery = Room.id == "gallery_06_arena";
+                if (gallery && !StandingOn("sun_deck")) return;
                 opponent.gameObject.SetActive(true);
                 bool finale = string.IsNullOrEmpty(Room.benefactor) ? Has("mikhail_retreat_plank_down") :
                     ActiveRow.sceneId == Benefactor + "_bout_i1" && ActionToken.StartsWith("win:", StringComparison.Ordinal);
@@ -283,12 +287,13 @@ namespace RewindNotary
                     ? Room.interludeHealth : 0;
                 bool mikhail = Room.id == "velvet_04_arena";
                 float spawnX = mikhail ? Mathf.Clamp(player.Body.position.x + 5f, 3f, 38f) : 17f;
-                opponent.ResetAt(new Vector2(spawnX, (belfry ? Room.SurfaceTop("refuge") : Room.Surface("stage_floor") != null ? Room.SurfaceTop("stage_floor") : Room.SurfaceTop("drum_floor")) + .1f));
-                if (mikhail || belfry)
+                float spawnTop = gallery ? Room.SurfaceTop("sun_deck") : belfry ? Room.SurfaceTop("refuge") : Room.Surface("stage_floor") != null ? Room.SurfaceTop("stage_floor") : Room.SurfaceTop("drum_floor");
+                opponent.ResetAt(new Vector2(spawnX, spawnTop + .1f));
+                if (mikhail || belfry || gallery)
                 {
                     mikhailBout = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
-                    mikhailBout.StartStoryBout(player, belfry ? DistrictTrial : mikhailTrial, Room.interludeHealth,
-                        belfry ? surfaces["refuge"].bounds : (Bounds?)null);
+                    mikhailBout.StartStoryBout(player, belfry || gallery ? DistrictTrial : mikhailTrial, Room.interludeHealth,
+                        gallery ? surfaces["sun_deck"].bounds : belfry ? surfaces["refuge"].bounds : (Bounds?)null);
                     AudioManager.SetMusic(AudioManager.Music.Boss);
                 }
                 attackAt = Time.time + .8f;
@@ -321,6 +326,7 @@ namespace RewindNotary
                     AudioManager.Play(AudioManager.Sfx.BossDefeat);
                     ImpactFeedback.BossDefeated();
                 }
+                if (Benefactor == "irina") SkillProjectile2D.ClearAll();
                 AudioManager.SetMusic(AudioManager.Music.Field);
                 mikhailBout.enabled = false;
                 Destroy(mikhailBout);
@@ -333,7 +339,12 @@ namespace RewindNotary
         }
         private void OnDestroy()
         {
-            if (player != null) player.BasicStrikeDelivered -= OnStrike;
+            if (player != null)
+            {
+                player.BasicStrikeDelivered -= OnStrike;
+                var canvas = player.GetComponent<CanvasCarveSkill>();
+                if (canvas != null) canvas.StrokeDrawn -= ColorGalleryStroke;
+            }
             if (session != null) session.Progression.Event -= OnDistrictEffect;
             foreach (var sprite in rosterArt.Values) Destroy(sprite);
             if (square != null) Destroy(square);

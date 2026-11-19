@@ -17,18 +17,30 @@ namespace RewindNotary
         private bool supported, credit, retiring;
         private Sprite sprite;
         private SpriteRenderer visual;
+        internal string StationId { get; private set; }
+        private float stationX;
+        internal void SetBrush(Sprite brush, string station, float center)
+        {
+            visual.sprite = brush;
+            visual.size = Wall ? new Vector2(floor.size.y, floor.size.x) : floor.size;
+            visual.transform.localRotation = Quaternion.Euler(0, 0, Wall ? 90 : 0);
+            visual.color = Color.white;
+            StationId = station;
+            stationX = center;
+        }
         public void Initialize(CanvasCarveSkill skill, CombatMotor2D actor, Vector2 size, bool wall, float seconds)
         {
             owner = skill; player = actor; Wall = wall; Live = credit = true; until = Time.time + seconds;
             gameObject.layer = LevelBuilder.GroundLayer;
-            floor = gameObject.AddComponent<BoxCollider2D>(); floor.size = size;
+            floor = gameObject.AddComponent<BoxCollider2D>(); floor.size = size; floor.autoTiling = false;
             if (!wall)
             {
                 var effector = gameObject.AddComponent<PlatformEffector2D>(); effector.useOneWay = true;
                 floor.usedByEffector = true;
             }
             sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2);
-            visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 6;
+            var art = new GameObject("Brush"); art.transform.SetParent(transform, false);
+            visual = art.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 6;
             visual.drawMode = SpriteDrawMode.Sliced; visual.size = size; visual.color = Color.cyan;
         }
         private void OnEnable() { All.Add(this); }
@@ -55,7 +67,11 @@ namespace RewindNotary
             if (!Live) return;
             if (Time.time >= until) { Retire(); return; }
             if (!supported && credit && Supporting() && player.Grounded && floor.IsTouching(player.GetComponent<Collider2D>()))
-            { supported = true; owner.ReportEffect(name + ":support"); }
+            {
+                if (StationId != null && Mathf.Abs(player.Body.position.x - stationX) > .70f) return;
+                supported = true;
+                owner.ReportEffect((StationId ?? name) + ":support");
+            }
         }
         public bool BlockProjectile(SkillProjectile2D shot)
         {

@@ -10,6 +10,8 @@ namespace RewindNotary
         private readonly Queue<Echo> echoes = new Queue<Echo>();
         private float echoEnd;
         private int drawn;
+        internal float StrokeWidth => profile.reach;
+        internal event System.Action<PaintSurface2D> StrokeDrawn;
         private struct Echo { public float at; public Bounds blade; public int damage; public AttackEcho2D.Pose pose; }
         public override void Initialize(SkillSession skills, CombatMotor2D target)
         { base.Initialize(skills, target); motor.BasicStrikeDelivered += QueueEcho; }
@@ -34,6 +36,7 @@ namespace RewindNotary
             if (!PlacementClear(at, size, first, wall)) { if (fresh) Finish(); return false; }
             var go = new GameObject("paint:" + use.Id + ":" + drawn); go.transform.SetParent(SkillStroke.WorldRoot, false); go.transform.position = at;
             var paint = go.AddComponent<PaintSurface2D>(); paint.Initialize(this, motor, size, wall, profile.lifetime);
+            StrokeDrawn?.Invoke(paint);
             strokes.Add(paint); drawn++; readyAt = Time.time + profile.cooldown;
             if (fresh && use.Stage == 3) echoEnd = Time.time + profile.echoSeconds;
             Damage(new Bounds(at, new Vector3(size.x, size.y, 2)), profile.damage);

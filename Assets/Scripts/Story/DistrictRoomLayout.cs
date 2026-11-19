@@ -162,7 +162,7 @@ namespace RewindNotary
             {
                 float x = StationX(i);
                 string id = Room.id + ":station_" + i;
-                if (Room.skill == BenefactorIds.Canvas) continue; // Each gap supports actual ground-cast paint.
+                if (Room.skill == BenefactorIds.Canvas) continue; // Gallery gaps exist between independently authored permanent lips.
                 if (Room.projectileStations && (Room.stationMarks == null || Room.stationMarks.Length == 0 || Room.stationMarks[i].projectile))
                 {
                     bool overhead = Room.stage == "opera";
@@ -255,16 +255,13 @@ namespace RewindNotary
                 int.TryParse(e.targetId.Substring(prefix.Length).Split(':')[0], out int index))
             {
                 if (roofCue != null && index == Room.stations - 1) roofLampLit = true;
+                if (Room.skill == BenefactorIds.Canvas && !string.IsNullOrEmpty(Room.seamId) &&
+                    (sewn == null || sewn.TargetId != Room.seamId + "_" + index)) return;
                 stationIndex = index;
                 switchUse = e.useId; stationHit = true;
                 var emitter = emitters.Find(item => item.id == e.targetId);
                 if (emitter != null) emitter.spent = true;
             }
-            if (Room.skill == BenefactorIds.Canvas && e.targetId.EndsWith(":support", StringComparison.Ordinal))
-                for (int i = 0; i < Room.stations; i++)
-                    if (Distance(StationX(i)) < 2f && (string.IsNullOrEmpty(Room.seamId) ||
-                        (sewn != null && sewn.TargetId == Room.seamId + "_" + i)))
-                    { stationIndex = i; stationHit = true; }
         }
 
         private bool DistrictAction()
@@ -296,6 +293,7 @@ namespace RewindNotary
                 if (!Safe || !roomTargets.TrueForAll(t => t.State.Cleared)) return true;
                 if (token == "clear:wave")
                 {
+                    if (Room.viewingRoutes != null && Room.viewingRoutes.Length > 0 && !StandingOn("landing")) return true;
                     if (player.Body.position.x >= 35 || ActiveRow.SpansWaves) FinishAction();
                 }
                 else
@@ -324,6 +322,7 @@ namespace RewindNotary
             if (token == "sew:seam")
             {
                 sewn = StitchSurface2D.All.Find(s => s.TargetId.StartsWith(Room.seamId + "_", StringComparison.Ordinal) && s.Installed &&
+                    (Room.stage != "gallery" || s.SupportingPlayer) &&
                     (Room.skill != BenefactorIds.Pendulum || s.TargetId == Room.seamId + "_" + stationIndex));
                 if (sewn != null) { stationHit = false; FinishAction(); }
                 return true;
@@ -332,7 +331,11 @@ namespace RewindNotary
             {
                 int i = Mathf.Max(0, stationIndex);
                 bool correctTier = Room.stationMarks == null || Room.stationMarks.Length == 0 || StandingOn(Room.stationMarks[i].surface);
-                if (correctTier && Safe && OnFixedFloor() && player.Body.position.x > StationX(i) + 1.5f) FinishAction();
+                var mark = Room.stationMarks != null && Room.stationMarks.Length > i ? Room.stationMarks[i] : null;
+                bool crossed = !string.IsNullOrEmpty(mark?.landingSurface)
+                    ? StandingOn(mark.landingSurface) && (player.Body.position.x - mark.x) * mark.direction > 1.5f
+                    : correctTier && player.Body.position.x > StationX(i) + 1.5f;
+                if (crossed && Safe && OnFixedFloor()) FinishAction();
                 return true;
             }
             if (token.StartsWith("ride:", StringComparison.Ordinal))

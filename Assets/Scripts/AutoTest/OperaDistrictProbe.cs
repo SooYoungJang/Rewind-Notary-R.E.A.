@@ -22,6 +22,7 @@ namespace RewindNotary
             Physics2D.SyncTransforms();
             foreach (var s in area.Room.terrain)
             {
+                if (area.Room.stage == "gallery") area.VerifyGalleryTile(s);
                 var actual = area.ProbeSurfaceBounds(s);
                 float measured = actual.size.x;
                 widths.Add(new TerrainWidth { room = room, surface = s.id, authored = s.rect.width, measured = measured,

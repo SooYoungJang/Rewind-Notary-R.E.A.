@@ -26,12 +26,12 @@ namespace RewindNotary
             foreach (var p in bellPlates)
             {
                 bool bolted = p.face.bellBeat ? cuts >= 2 || Has("bell_03_cleared") :
-                    cuts >= p.face.bellLatch || Has("bell_02_cleared");
+                    cuts >= p.face.RequiredCuts || Has(p.face.latchCuts > 0 ? "gallery_03_cleared" : "bell_02_cleared");
                 bool open = bolted || p.face.bellBeat && (beat >= .8f && beat < 3.2f || StandingOn(p.face.id) && !p.box.isTrigger);
                 if (p.box.isTrigger == open)
                 {
                     p.box.isTrigger = !open;
-                    if (p.face.bellLatch > 0) BellPlateRevision++;
+                    if (p.face.RequiredCuts > 0) BellPlateRevision++;
                 }
                 p.picture.enabled = open;
                 p.ring.enabled = open || p.face.bellBeat && beat < .8f;
@@ -45,13 +45,13 @@ namespace RewindNotary
             bellWaves.Clear();
             bellPlates.Clear();
             plateStart = Time.fixedTime;
-            if (Room.stage == "bell" && Room.terrain != null)
+            if ((Room.stage == "bell" || Room.stage == "gallery") && Room.terrain != null)
                 foreach (var s in Room.terrain)
                 {
-                    if (s.bellLatch == 0 && !s.bellBeat) continue;
+                    if (s.RequiredCuts == 0 && !s.bellBeat) continue;
                     var box = (BoxCollider2D)surfaces[s.id];
                     var ring = Place(s.id + "_rings", s.rect.x + s.rect.width / 2, Room.SurfaceTop(s.id) + .12f).AddComponent<SpriteRenderer>();
-                    ring.sprite = OperaSprite("bell-dust", 5f);
+                    ring.sprite = s.latchCuts > 0 ? OperaSprite("gallery-drybrush", 2.8f) : OperaSprite("bell-dust", 5f);
                     ring.sortingOrder = 3;
                     var picture = box.GetComponentInChildren<SpriteRenderer>();
                     // A changing sound bridge can catch a jump but cannot own a return checkpoint.

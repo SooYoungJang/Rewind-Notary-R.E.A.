@@ -411,6 +411,8 @@ level_step4_metrics = validate_level_step4(check, PROJECT, scripts)
 
 from validate_level_step5 import validate_level_step5
 level_step5_metrics = validate_level_step5(check, PROJECT, scripts)
+from validate_level_step6 import validate_level_step6
+level_step6_metrics = validate_level_step6(check, PROJECT, scripts)
 
 # A lexical delimiter check catches accidental patch truncation, NOT C# compilation.
 for path in ASSETS.rglob("*.cs"):
@@ -474,7 +476,7 @@ report = {"passed": len(checks), "errors": errors, "warnings": warnings, "checks
           "autotest_metrics": autotest_metrics,
           "feel_metrics": feel_metrics, "level_step1_metrics": level_step1_metrics,
           "level_step2_metrics": level_step2_metrics, "level_step3_metrics": level_step3_metrics,
-          "level_step4_metrics": level_step4_metrics, "level_step5_metrics": level_step5_metrics, "unity_executed": False, "csharp_compiled": False}
+          "level_step4_metrics": level_step4_metrics, "level_step5_metrics": level_step5_metrics, "level_step6_metrics": level_step6_metrics, "unity_executed": False, "csharp_compiled": False}
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, help='Write UTF-8 JSON atomically and print a short summary.')
 args = parser.parse_args()

@@ -372,10 +372,10 @@ def validate_hall_regression(verify, room, scripts, motion):
            all('foreach (var t in ' + group + ') if (t.State.Cleared) cleared++;' in observations
                for group in ('roomTargets', 'entryWave')),
            'HUD, clock target and wave counts include uncleared objects outside their feet zones')
-    verify('private bool DrivingDistrict => district != null || clock != null || opera != null || bell != null;' in driver and
+    verify('private bool DrivingDistrict => district != null || clock != null || opera != null || bell != null || gallery != null;' in driver and
            'if (DrivingDistrict && !CheckDistrictProgress(now))' in driver and
            'DistrictLogInterval = 30, DistrictIdleLimit = 120' in driver and
-           'if (now - lastProgress > 18)' in driver and driver.count('now - entered > 1500') == 4,
+           'if (now - lastProgress > 18)' in driver and driver.count('now - entered > 1500') == 5,
            'both districts have a separate 120-second idle limit, 18-second motion check and 1500-second cap')
     verify('contacts > lastContacts || (room == lastWaveRoom && cleared > lastCleared)' in driver and
            re.search(r'if \(e.kind == "valid_use"\)\s*\{[^}]*lastDistrictProgress = AutoTestRuntime.Now;', driver) and
