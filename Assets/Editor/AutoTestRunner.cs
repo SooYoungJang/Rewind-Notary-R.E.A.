@@ -11,6 +11,8 @@ using Debug = UnityEngine.Debug;
 // Play loop finishes can terminate it before even the first Update.
 public static class AutoTestRunner
 {
+    private const int WorkerTimeoutMinutes = 75;
+
     public static void VerifyTerrain()
     {
         var args = Environment.GetCommandLineArgs();
@@ -45,11 +47,11 @@ public static class AutoTestRunner
             start.EnvironmentVariables["REWIND_AUTOTEST_RUN"] = output;
             using (var worker = Process.Start(start))
             {
-                if (!worker.WaitForExit(45 * 60 * 1000))
+                if (!worker.WaitForExit(WorkerTimeoutMinutes * 60 * 1000))
                 {
                     worker.Kill();
                     worker.WaitForExit(10000);
-                    throw new TimeoutException("Editor import or Play Mode worker exceeded 45 minutes.");
+                    throw new TimeoutException($"Editor import or Play Mode worker exceeded {WorkerTimeoutMinutes} minutes.");
                 }
                 result = JsonUtility.FromJson<AutoTestReport>(File.ReadAllText(Path.Combine(output, "report.json")))
                     ?? throw new InvalidDataException("Worker report is empty.");

@@ -277,8 +277,11 @@ def validate_autotest(check, project, scripts, body):
            all(t in report for t in ('Math.Ceiling(frames * .01)', 'frameMs.Sort()', 'i >= frames - tail',
            'meanMs = total / frames', 'slowest1PercentMeanMs = slow / tail', '1000 / slowest1PercentMeanMs')),
            'actual scene/room loading and frame-time slowest percentile tail')
-    verify(all(t in runner for t in ('public static void Run()', 'AutoTestRunner.Play -autotest', 'WaitForExit(45',
+    timeout = body(runner, 'if (!worker.WaitForExit(WorkerTimeoutMinutes * 60 * 1000))', braced=True)
+    verify(all(t in runner for t in ('public static void Run()', 'AutoTestRunner.Play -autotest', 'const int WorkerTimeoutMinutes = 75;',
            'EditorApplication.EnterPlaymode()', 'OpenScene("Assets/Scenes/Main.unity")', 'EditorApplication.Exit(code)'))
+           and all(t in timeout for t in ('worker.Kill();', 'worker.WaitForExit(10000);',
+               'throw new TimeoutException($"Editor import or Play Mode worker exceeded {WorkerTimeoutMinutes} minutes.");'))
            and 'worker.ExitCode == 0 && result.exitCode == 0' in runner,
            'batch parent owns -quit until rendered Play Mode worker and durable result complete')
     verify('options = BuildOptions.None' in (project / 'Assets/Editor/StandaloneBuild.cs').read_text()
