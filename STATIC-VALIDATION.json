@@ -1,5 +1,5 @@
 {
-  "passed": 11146,
+  "passed": 11168,
   "errors": [],
   "warnings": [
     "Bell step 5: fixed-tick mobility, silent refuge margins and per-station opportunities are offline checks. Slot-5 contact and width measurements require Unity.",
@@ -10102,6 +10102,28 @@
     "Level step 6: slot six records feet, both clocks, real paint contacts, actual branch and mixed encounter",
     "Level step 6: five isolated files, sixth slot disk receipt and unchanged failure deadlines",
     "Level step 6: 142 opera and bell surfaces plus all authored gallery rectangles, separately counted dynamic placements",
+    "Level step 6: story.clock.return.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
+    "Level step 6: story.clock.synergy.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
+    "Level step 6: story.opera.return.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
+    "Level step 6: story.opera.synergy.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
+    "Level step 6: story.bell.return.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
+    "Level step 6: story.bell.synergy.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
+    "Level step 6: story.gallery.return.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
+    "Level step 6: story.gallery.synergy.02 / after the final wave placement, plan the next door and inspect on its fixed floor",
+    "Level step 6: run 27 / measured exit deck, wave receipts and door approach on both layouts",
+    "Level step 6: run 27 / the setup stroke supports the recorded feet and the last station stroke cannot",
+    "Level step 6: run 27 / 08 arrival falls onto the next physical save contact",
+    "Level step 6: qa27 / walk off the physical paint, land and advance by inspect",
+    "Level step 6: prePass2 / walk off the physical paint, land and advance by inspect",
+    "Level step 6: fresh / walk off the physical paint, land and advance by inspect",
+    "Level step 6: castLeft / walk off the physical paint, land and advance by inspect",
+    "Level step 6: castRight / walk off the physical paint, land and advance by inspect",
+    "Level step 6: run 27 / a dry approach takes inspect immediately",
+    "Level step 6: run 27 / ordinary inspect from the recorded paint-supported feet reaches 08",
+    "Level step 6: run 27 / inspect leaves the row pending with last target alive",
+    "Level step 6: run 27 / inspect leaves the row pending with missing gate flag",
+    "Level step 6: run 27 / inspect leaves the row pending with outside approach",
+    "Level step 6: run 27 / inspect leaves the row pending with during attack",
     "Level step 6: run 25 / five live room boxes match authored geometry",
     "Level step 6: run 25 / grounded crossbar, both latches cut, same three-segment sentry on glass_sill",
     "Level step 6: run 25 / only the open canvas connects crossbar to the east sill",
@@ -23349,6 +23371,497 @@
     "combinedTerrain": 306,
     "paintGaps": 84,
     "unityMeasured": false,
+    "districtAdvance": {
+      "advanceRows": {
+        "story.clock.return.02": {
+          "start": "drum_floor",
+          "lastTarget": "sword_latch_3",
+          "path": {
+            "supports": [
+              "drum_floor"
+            ],
+            "swordTick": null,
+            "cutTick": null,
+            "inspectTick": 68,
+            "remaining": 0,
+            "feet": [
+              34.16,
+              19.8
+            ]
+          },
+          "room": "clock_08_return_lower",
+          "floor": "clock_return_lower_safe",
+          "targetFace": "drum_floor"
+        },
+        "story.clock.synergy.02": {
+          "start": "switchback",
+          "lastTarget": "sword_latch_4",
+          "path": {
+            "supports": [
+              "switchback"
+            ],
+            "swordTick": null,
+            "cutTick": null,
+            "inspectTick": 37,
+            "remaining": 0,
+            "feet": [
+              21.19,
+              14.8
+            ]
+          },
+          "room": "clock_10_sanctuary_rail",
+          "floor": "clock_reunion_safe_floor",
+          "targetFace": "switchback"
+        },
+        "story.opera.return.02": {
+          "start": "turn_3",
+          "lastTarget": "sword_latch_3",
+          "path": {
+            "supports": [
+              "turn_3",
+              "circle_4",
+              "turn_4",
+              "circle_5"
+            ],
+            "swordTick": null,
+            "cutTick": null,
+            "inspectTick": 611,
+            "remaining": 0,
+            "feet": [
+              10.19,
+              36.2
+            ]
+          },
+          "room": "opera_08_return_foyer",
+          "floor": "opera_return_foyer_safe",
+          "targetFace": "circle_5"
+        },
+        "story.opera.synergy.02": {
+          "start": "access_step",
+          "lastTarget": "sword_latch_4",
+          "path": {
+            "supports": [
+              "access_step",
+              "counterweight",
+              "fly_door"
+            ],
+            "swordTick": null,
+            "cutTick": null,
+            "inspectTick": 186,
+            "remaining": 0,
+            "feet": [
+              32.86,
+              10.8
+            ]
+          },
+          "room": "opera_10_sanctuary_stairs",
+          "floor": "opera_reunion_safe_floor",
+          "targetFace": "fly_door"
+        },
+        "story.bell.return.02": {
+          "start": "lower_3",
+          "lastTarget": "sword_latch_3",
+          "path": {
+            "supports": [
+              "lower_3",
+              "chime_3",
+              "lower_4",
+              "heel_4",
+              "chime_5"
+            ],
+            "swordTick": null,
+            "cutTick": null,
+            "inspectTick": 698,
+            "remaining": 0,
+            "feet": [
+              7.128,
+              31.0
+            ]
+          },
+          "room": "bell_08_return_undercroft",
+          "floor": "bell_return_under_safe",
+          "targetFace": "chime_5"
+        },
+        "story.bell.synergy.02": {
+          "start": "anvil",
+          "lastTarget": "reflection_statue_4",
+          "path": {
+            "supports": [
+              "anvil",
+              "sound_bridge"
+            ],
+            "swordTick": null,
+            "cutTick": null,
+            "inspectTick": 52,
+            "remaining": 0,
+            "feet": [
+              31.86,
+              14.0
+            ]
+          },
+          "room": "bell_10_sanctuary_table",
+          "floor": "bell_reunion_safe_floor",
+          "targetFace": "sound_bridge"
+        },
+        "story.gallery.return.02": {
+          "start": "atelier_3_0",
+          "lastTarget": "sword_latch_3",
+          "path": {
+            "supports": [
+              "atelier_3_0"
+            ],
+            "swordTick": null,
+            "cutTick": null,
+            "inspectTick": 3,
+            "remaining": 0,
+            "feet": [
+              3.89,
+              9.0
+            ]
+          },
+          "room": "gallery_08_return_gallery",
+          "floor": "gallery_return_lower_safe",
+          "targetFace": "atelier_3_0"
+        },
+        "story.gallery.synergy.02": {
+          "start": "portrait_balcony",
+          "lastTarget": "reflection_statue_4",
+          "path": {
+            "supports": [
+              "portrait_balcony",
+              "terrace_0_4"
+            ],
+            "swordTick": null,
+            "cutTick": null,
+            "inspectTick": 91,
+            "remaining": 0,
+            "feet": [
+              42.874,
+              4.0
+            ]
+          },
+          "room": "gallery_10_sanctuary_window",
+          "floor": "gallery_reunion_safe_floor",
+          "targetFace": "terrace_0_4"
+        }
+      },
+      "run27": {
+        "qa27": {
+          "first": {
+            "selected": "gallery_08_return_gallery",
+            "plan": {
+              "face": "atelier_3_0",
+              "x": 5.800000000000001,
+              "tolerance": 0.14
+            },
+            "f": false,
+            "receipt": null,
+            "travel": null,
+            "axis": 1,
+            "fixedFaceLookups": [
+              "atelier_3_0",
+              null,
+              "atelier_3_0"
+            ],
+            "nextCalls": 0
+          },
+          "dryTick": 12,
+          "dryFeet": [
+            5.54138706665039,
+            9
+          ],
+          "paintRemovedTick": 7,
+          "tick": 23,
+          "feet": [
+            4.1113870666503916,
+            9
+          ],
+          "support": "atelier_3_0",
+          "selected": "gallery_08_return_gallery",
+          "plan": {
+            "face": "atelier_3_0",
+            "x": 4,
+            "tolerance": 0.24
+          },
+          "f": true,
+          "receipt": "crossed:gallery_return_02_done",
+          "travel": {
+            "room": "gallery_08_return_gallery",
+            "floor": "gallery_return_lower_safe"
+          }
+        },
+        "prePass2": {
+          "first": {
+            "selected": "gallery_08_return_gallery",
+            "plan": {
+              "face": "atelier_3_0",
+              "x": 5.800000000000001,
+              "tolerance": 0.14
+            },
+            "f": false,
+            "receipt": null,
+            "travel": null,
+            "axis": 1,
+            "fixedFaceLookups": [
+              "atelier_3_0",
+              null,
+              "atelier_3_0"
+            ],
+            "nextCalls": 0
+          },
+          "dryTick": 12,
+          "dryFeet": [
+            5.54138706665039,
+            9
+          ],
+          "paintRemovedTick": 7,
+          "tick": 23,
+          "feet": [
+            4.1113870666503916,
+            9
+          ],
+          "support": "atelier_3_0",
+          "selected": "gallery_08_return_gallery",
+          "plan": {
+            "face": "atelier_3_0",
+            "x": 4,
+            "tolerance": 0.24
+          },
+          "f": true,
+          "receipt": "crossed:gallery_return_02_done",
+          "travel": {
+            "room": "gallery_08_return_gallery",
+            "floor": "gallery_return_lower_safe"
+          }
+        },
+        "fresh": {
+          "first": {
+            "selected": "gallery_08_return_gallery",
+            "plan": {
+              "face": "atelier_3_0",
+              "x": 5.800000000000001,
+              "tolerance": 0.14
+            },
+            "f": false,
+            "receipt": null,
+            "travel": null,
+            "axis": 1,
+            "fixedFaceLookups": [
+              "atelier_3_0",
+              null,
+              "atelier_3_0"
+            ],
+            "nextCalls": 0
+          },
+          "dryTick": 12,
+          "dryFeet": [
+            5.54138706665039,
+            9
+          ],
+          "paintRemovedTick": 150,
+          "tick": 162,
+          "feet": [
+            4.1113870666503916,
+            9
+          ],
+          "support": "atelier_3_0",
+          "selected": "gallery_08_return_gallery",
+          "plan": {
+            "face": "atelier_3_0",
+            "x": 4,
+            "tolerance": 0.24
+          },
+          "f": true,
+          "receipt": "crossed:gallery_return_02_done",
+          "travel": {
+            "room": "gallery_08_return_gallery",
+            "floor": "gallery_return_lower_safe"
+          }
+        },
+        "castLeft": {
+          "first": {
+            "selected": "gallery_08_return_gallery",
+            "plan": {
+              "face": "atelier_3_0",
+              "x": 5.75,
+              "tolerance": 0.14
+            },
+            "f": false,
+            "receipt": null,
+            "travel": null,
+            "axis": 1,
+            "fixedFaceLookups": [
+              "atelier_3_0",
+              null,
+              "atelier_3_0"
+            ],
+            "nextCalls": 0
+          },
+          "dryTick": 11,
+          "dryFeet": [
+            5.4113870666503905,
+            9
+          ],
+          "paintRemovedTick": 6,
+          "tick": 21,
+          "feet": [
+            4.1113870666503916,
+            9
+          ],
+          "support": "atelier_3_0",
+          "selected": "gallery_08_return_gallery",
+          "plan": {
+            "face": "atelier_3_0",
+            "x": 4,
+            "tolerance": 0.24
+          },
+          "f": true,
+          "receipt": "crossed:gallery_return_02_done",
+          "travel": {
+            "room": "gallery_08_return_gallery",
+            "floor": "gallery_return_lower_safe"
+          }
+        },
+        "castRight": {
+          "first": {
+            "selected": "gallery_08_return_gallery",
+            "plan": {
+              "face": "atelier_3_0",
+              "x": 5.85,
+              "tolerance": 0.14
+            },
+            "f": false,
+            "receipt": null,
+            "travel": null,
+            "axis": 1,
+            "fixedFaceLookups": [
+              "atelier_3_0",
+              null,
+              "atelier_3_0"
+            ],
+            "nextCalls": 0
+          },
+          "dryTick": 13,
+          "dryFeet": [
+            5.67138706665039,
+            9
+          ],
+          "paintRemovedTick": 7,
+          "tick": 25,
+          "feet": [
+            4.1113870666503916,
+            9
+          ],
+          "support": "atelier_3_0",
+          "selected": "gallery_08_return_gallery",
+          "plan": {
+            "face": "atelier_3_0",
+            "x": 4,
+            "tolerance": 0.24
+          },
+          "f": true,
+          "receipt": "crossed:gallery_return_02_done",
+          "travel": {
+            "room": "gallery_08_return_gallery",
+            "floor": "gallery_return_lower_safe"
+          }
+        },
+        "dry": {
+          "first": {
+            "selected": "gallery_08_return_gallery",
+            "plan": {
+              "face": "atelier_3_0",
+              "x": 4,
+              "tolerance": 0.24
+            },
+            "f": true,
+            "receipt": "crossed:gallery_return_02_done",
+            "travel": {
+              "room": "gallery_08_return_gallery",
+              "floor": "gallery_return_lower_safe"
+            },
+            "axis": 0,
+            "fixedFaceLookups": [
+              "atelier_3_0",
+              "atelier_3_0"
+            ],
+            "nextCalls": 0
+          },
+          "dryTick": 0,
+          "dryFeet": [
+            4,
+            9
+          ],
+          "paintRemovedTick": null,
+          "tick": 0,
+          "feet": [
+            4,
+            9
+          ],
+          "support": "atelier_3_0",
+          "selected": "gallery_08_return_gallery",
+          "plan": {
+            "face": "atelier_3_0",
+            "x": 4,
+            "tolerance": 0.24
+          },
+          "f": true,
+          "receipt": "crossed:gallery_return_02_done",
+          "travel": {
+            "room": "gallery_08_return_gallery",
+            "floor": "gallery_return_lower_safe"
+          }
+        },
+        "human": {
+          "first": {
+            "selected": null,
+            "plan": null,
+            "f": true,
+            "receipt": "crossed:gallery_return_02_done",
+            "travel": {
+              "room": "gallery_08_return_gallery",
+              "floor": "gallery_return_lower_safe"
+            },
+            "axis": 0,
+            "fixedFaceLookups": [],
+            "nextCalls": 0
+          },
+          "dryTick": null,
+          "dryFeet": null,
+          "paintRemovedTick": null,
+          "tick": 0,
+          "feet": [
+            4.216587066650391,
+            9.259993553161621
+          ],
+          "support": "paint",
+          "selected": null,
+          "plan": null,
+          "f": true,
+          "receipt": "crossed:gallery_return_02_done",
+          "travel": {
+            "room": "gallery_08_return_gallery",
+            "floor": "gallery_return_lower_safe"
+          }
+        }
+      },
+      "reconstructedPaint": {
+        "min": {
+          "x": 2.2,
+          "y": 9.114996299743652
+        },
+        "max": {
+          "x": 4.6000000000000005,
+          "y": 9.254996299743652
+        }
+      },
+      "arrivalContact": {
+        "surface": "vault_0_0",
+        "id": "gallery_rest_08",
+        "x": 6.45
+      },
+      "fixedDeltaTime": 0.02
+    },
     "run25Bridge": {
       "tickSeconds": 0.02,
       "start": {

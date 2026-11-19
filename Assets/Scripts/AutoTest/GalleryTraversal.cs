@@ -8,8 +8,24 @@ namespace RewindNotary
         {
             if (Area.Room.stage != "gallery") return ClockDoor(door);
             var reach = door.approach;
-            return TryFaceAt(door.x, reach.y + reach.height / 2, out var face) &&
-                ClockPosition(face.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position);
+            if (!TryFaceAt(door.x, reach.y + reach.height / 2, out var face)) return false;
+            var floor = Area.ProbeSurfaceBounds(face);
+            float radius = Player.GetComponent<CapsuleCollider2D>().bounds.extents.x;
+            float clearance = Mathf.Max(radius, SkillGeometry.SupportTolerance) + FixedSurfaceRoute.AimTolerance;
+            foreach (var paint in PaintSurface2D.All)
+            {
+                var brush = paint.Bounds;
+                if (paint.Wall || brush.min.y <= floor.max.y || brush.max.y > reach.y + reach.height ||
+                    reach.x + reach.width + radius < brush.min.x || reach.x - radius > brush.max.x) continue;
+
+                float left = brush.min.x - floor.min.x;
+                float right = floor.max.x - brush.max.x;
+                if (Mathf.Max(left, right) <= 2 * clearance) continue;
+                float dryX = left > right ? (floor.min.x + brush.min.x) / 2 : (brush.max.x + floor.max.x) / 2;
+                ClockPosition(face.id, dryX, FixedSurfaceRoute.AimTolerance);
+                return false;
+            }
+            return ClockPosition(face.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position);
         }
 
         private bool GalleryAim(float x, int facing)
