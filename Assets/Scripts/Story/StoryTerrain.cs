@@ -81,7 +81,7 @@ namespace RewindNotary
             {
                 var r = surface.rect;
                 var go = Block(surface.id, r.x + r.width / 2, r.y + r.height / 2, r.width, r.height,
-                    surface.wallJump ? new Color(.94f,.70f,.38f) : Room.stage == "clock" ? new Color(.92f,.91f,.79f) : new Color(.85f,.54f,.52f), true);
+                    surface.wallJump ? new Color(.94f,.70f,.38f) : Room.stage == "opera" ? new Color(.83f,.83f,.92f) : Room.stage == "clock" ? new Color(.92f,.91f,.79f) : new Color(.85f,.54f,.52f), true);
                 var box = go.GetComponent<BoxCollider2D>();
                 var face = go.AddComponent<AuthoredSurface>();
                 if (surface.rampRise != 0)

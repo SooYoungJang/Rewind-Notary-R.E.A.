@@ -30,29 +30,29 @@ namespace RewindNotary
         {
             var go = Place(id, x, y);
             bool woven = Room.stage == "velvet" && Room.terrain != null && Room.terrain.Length > 0;
-            bool machined = Room.stage == "clock" && Room.terrain != null;
+            bool plated = (Room.stage == "clock" || Room.stage == "opera") && Room.terrain != null;
             var art = go;
-            if (machined && solid)
+            if (plated && solid)
             {
                 // Keep the 1.6-unit brass tile off the object that owns the authored box.
-                art = new GameObject("Brass") { layer = LevelBuilder.GroundLayer };
+                art = new GameObject("Plate") { layer = LevelBuilder.GroundLayer };
                 art.transform.SetParent(go.transform, false);
             }
             var visual = art.AddComponent<SpriteRenderer>();
             visual.sprite = square; visual.color = color;
-            if (woven || machined)
+            if (woven || plated)
             {
-                visual.sprite = machined ? BrassSprite() : WeaveSprite();
+                visual.sprite = Room.stage == "opera" ? OperaSprite("opera-inlay", 1.6f) : plated ? BrassSprite() : WeaveSprite();
                 visual.drawMode = SpriteDrawMode.Tiled;
                 visual.size = new Vector2(width, height);
             }
-            if (!woven && !machined) go.transform.localScale = new Vector3(width, height, 1);
+            if (!woven && !plated) go.transform.localScale = new Vector3(width, height, 1);
             if (solid)
             {
                 go.layer = LevelBuilder.GroundLayer;
                 var box = go.AddComponent<BoxCollider2D>();
-                if (machined) box.autoTiling = false;
-                if (woven || machined) box.size = new Vector2(width, height);
+                if (plated) box.autoTiling = false;
+                if (woven || plated) box.size = new Vector2(width, height);
                 fixedFloors.Add(box);
             }
             return go;
@@ -67,6 +67,8 @@ namespace RewindNotary
         private float LandingY(string floor)
         {
             var authored = Room.Surface(Room.Floor(floor)?.surface);
+            if (authored != null && (floor == "opera_reunion_lift_floor" || floor == "luka_opera_lift"))
+                return Room.SurfaceTop(authored.id) + .38f + (LiftRaised ? LiftHeight : 0);
             if (authored != null && !authored.Moving)
                 return authored.rect.y + authored.rect.height + .05f + (Room.Point(floor)?.platform == true ? .32f : 0f);
             var point = Room.Point(floor);
@@ -98,6 +100,10 @@ namespace RewindNotary
                     new Color(.57f,.65f,.62f)).GetComponent<SpriteRenderer>();
                 spindle.sortingOrder = -4;
             }
+            else if (Room.stage == "opera" && Room.terrain != null)
+            {
+                if (InFieldTrial) Block("trial_floor", 29, -1, 66, 2, stone, true);
+            }
             else if (!string.IsNullOrEmpty(Room.crossing)) BuildCrossing(stone);
             else if (Room.stations > 0 && Room.skill == BenefactorIds.Canvas) BuildPaintLedges(stone);
             else if (Room.eastBoundary > 0)
@@ -108,12 +114,14 @@ namespace RewindNotary
                 Block("east", 40, -1, 12, 2, stone, true);
                 fixtures["bridge"] = Block("latch_bridge", 33, -.14f, 2.2f, .28f, Color.gray, true);
             }
-            float wallHeight = Room.stage == "clock" ? Room.cameraBounds.y + Room.cameraBounds.height + 5 : 10;
-            float wallY = Room.stage == "clock" ? wallHeight / 2 - 1 : 3;
+            bool tall = Room.stage == "clock" || Room.stage == "opera";
+            float wallHeight = tall ? Room.cameraBounds.y + Room.cameraBounds.height + 5 : 10;
+            float wallY = tall ? wallHeight / 2 - 1 : 3;
             Block("west_wall", echoArena ? 32 : -4, wallY, .4f, wallHeight, stone, true);
             Block("east_wall", echoArena ? 62 : InFieldTrial ? 61 : Room.eastBoundary > 0 ? Room.eastBoundary : 46,
                 wallY, .4f, wallHeight, stone, true);
             BuildSurfaces();
+            BuildOperaFixtures();
             foreach (var f in Room.floors)
             {
                 float y = Room.Surface(f.surface) == null ? .025f : LandingY(f.id) - .025f;
@@ -125,6 +133,7 @@ namespace RewindNotary
                 bool bounded = e.approach != null && e.approach.Defined;
                 float x = bounded ? e.approach.x + e.approach.width * .5f : e.x;
                 float y = bounded ? e.approach.y + 1.6f : 1.3f;
+                if (e.destinationFloor == "opera_drop_landing") DrawDropHatch(x, y);
                 if (e.requiresFlag == "clock_04_cleared")
                 {
                     var brassFrame = new Color(.88f,.78f,.54f);
@@ -188,7 +197,7 @@ namespace RewindNotary
                         (!string.IsNullOrEmpty(Room.benefactor) || !Record.Get(SkillRules.SilverStitch).acquired))
                     { kind = waves.Archetype("shell_sentry"); spawn.setupSkill = null; }
                     target.Initialize(kind, spawn, player, square, group.setupHits, group.skillOnly);
-                    if (point != null && (Room.stage == "velvet" || Room.stage == "clock")) target.SetPicture(RosterPicture(group.id));
+                    if (point != null && (Room.stage == "velvet" || Room.stage == "clock" || Room.stage == "opera")) target.SetPicture(RosterPicture(group.id));
                     roomTargets.Add(target);
                     if (point?.active != null && point.active.Defined) activationZones.Add((go, point.active));
                     if (latch) latches.Add(target);
@@ -214,6 +223,7 @@ namespace RewindNotary
         }
         private bool Gate(StoryDoor door)
         {
+            if (door.waltzCue && !RoofDoorOpen) return false;
             if (!string.IsNullOrEmpty(door.requiresFlag) && !Has(door.requiresFlag)) return false;
             if (door.room == "velvet_02_loom" && NeedsEntryWave) return false;
             if (door.gate == "courtEntry") return RepresentativeScript.CourtEntry(Record);

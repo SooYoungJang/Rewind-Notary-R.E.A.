@@ -189,13 +189,13 @@ def validate_return_descent(verify, rooms, scripts, physics):
     block = scripts['RepresentativeRoomLayout'].split('private GameObject Block(')[1].split('return go;')[0]
     block = ' '.join(re.sub(r'//[^\n]*', '', block).split())
     own_box = all(part in block for part in (
-        'if (machined && solid) { art = new GameObject("Brass") { layer = LevelBuilder.GroundLayer }; art.transform.SetParent(go.transform, false); }',
+        'if (plated && solid) { art = new GameObject("Plate") { layer = LevelBuilder.GroundLayer }; art.transform.SetParent(go.transform, false); }',
         'var visual = art.AddComponent<SpriteRenderer>();', 'visual.size = new Vector2(width, height);',
-        'if (!woven && !machined) go.transform.localScale = new Vector3(width, height, 1);',
-        'var box = go.AddComponent<BoxCollider2D>(); if (machined) box.autoTiling = false;',
-        'if (woven || machined) box.size = new Vector2(width, height);'))
+        'if (!woven && !plated) go.transform.localScale = new Vector3(width, height, 1);',
+        'var box = go.AddComponent<BoxCollider2D>(); if (plated) box.autoTiling = false;',
+        'if (woven || plated) box.size = new Vector2(width, height);'))
     verify(own_box and 'plate.width / 1.6f' in scripts['StoryTerrain'] and
-           'machined = Room.stage == "clock" && Room.terrain != null;' in block,
+           'plated = (Room.stage == "clock" || Room.stage == "opera") && Room.terrain != null;' in block,
            'run 13 / brass tile pitch belongs to the visual child and the unscaled root owns the sized collider')
     verify('go.GetComponentInChildren<SpriteRenderer>().size = box.size;' in scripts['StoryTerrain'] and
            'fixtures[ActionToken.Substring(6)].GetComponentInChildren<SpriteRenderer>().color' in scripts['DistrictRoomLayout'],

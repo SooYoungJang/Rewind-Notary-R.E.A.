@@ -1,0 +1,790 @@
+{
+  "Assets/Resources/Story/opera.json": {
+    "original": "8da4471be4c505a2fa8754cbb8820e412bb88767e79a6aec6d53099600bd3dce",
+    "updated": "691ccff3d96ad5164eec46ab0ca3a9b7d09f745713ee61db2aafe43f278c91c7",
+    "edits": [
+      [
+        10,
+        12,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        15,
+        17,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        20,
+        28,
+        [
+          "          \"x\": 41\n"
+        ]
+      ],
+      [
+        34,
+        36,
+        [
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        39,
+        42,
+        [
+          "          \"x\": 24,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        48,
+        55,
+        [
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        58,
+        67,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"opera_entry_complete\"\n"
+        ]
+      ],
+      [
+        73,
+        78,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        79,
+        145,
+        [
+          "      ]\n"
+        ]
+      ],
+      [
+        154,
+        156,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        159,
+        172,
+        [
+          "          \"x\": 39\n"
+        ]
+      ],
+      [
+        178,
+        187,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        190,
+        199,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"opera_02_cleared\"\n"
+        ]
+      ],
+      [
+        202,
+        211,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        217,
+        223,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        226,
+        247,
+        [
+          "          \"count\": 2,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        249,
+        277,
+        [
+          "          \"id\": \"reflection_statue\",\n",
+          "          \"count\": 1,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        279,
+        346,
+        [
+          "      \"crossing\": \"steps\"\n"
+        ]
+      ],
+      [
+        355,
+        357,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        360,
+        362,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        365,
+        373,
+        [
+          "          \"x\": 39\n"
+        ]
+      ],
+      [
+        379,
+        388,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        391,
+        400,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"opera_03_cleared\"\n"
+        ]
+      ],
+      [
+        406,
+        422,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        425,
+        444,
+        [
+          "          \"count\": 2,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        446,
+        454,
+        [
+          "          \"id\": \"reflection_statue\",\n",
+          "          \"count\": 1,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        456,
+        497,
+        [
+          "          \"id\": \"notary_guard\",\n",
+          "          \"count\": 1,\n",
+          "          \"segments\": 2\n"
+        ]
+      ],
+      [
+        499,
+        566,
+        [
+          "      \"crossing\": \"chandelier\"\n"
+        ]
+      ],
+      [
+        575,
+        583,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        589,
+        598,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        601,
+        610,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"opera_04_cleared\"\n"
+        ]
+      ],
+      [
+        613,
+        622,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"valeria_defeated\"\n"
+        ]
+      ],
+      [
+        628,
+        633,
+        [
+          "          \"segments\": 1\n"
+        ]
+      ],
+      [
+        637,
+        642,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        646,
+        651,
+        [
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        653,
+        741,
+        [
+          "      \"crossing\": \"arch\"\n"
+        ]
+      ],
+      [
+        750,
+        768,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        773,
+        776,
+        [
+          "          \"x\": 34,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        779,
+        782,
+        [
+          "          \"x\": 16,\n",
+          "          \"platform\": false\n"
+        ]
+      ],
+      [
+        787,
+        796,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        799,
+        808,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"opera_route_complete\"\n"
+        ]
+      ],
+      [
+        811,
+        832,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"valeria_defeated\"\n"
+        ]
+      ],
+      [
+        834,
+        888,
+        [
+          "      \"roster\": []\n"
+        ]
+      ],
+      [
+        897,
+        899,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        902,
+        904,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        907,
+        909,
+        [
+          "          \"x\": 31\n"
+        ]
+      ],
+      [
+        912,
+        920,
+        [
+          "          \"x\": 37\n"
+        ]
+      ],
+      [
+        925,
+        928,
+        [
+          "          \"x\": 31,\n",
+          "          \"platform\": true\n"
+        ]
+      ],
+      [
+        931,
+        934,
+        [
+          "          \"x\": 37,\n",
+          "          \"platform\": true\n"
+        ]
+      ],
+      [
+        939,
+        948,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        951,
+        960,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"valeria_defeated\"\n"
+        ]
+      ],
+      [
+        964,
+        1008,
+        [
+          "      \"interludeHealth\": 3\n"
+        ]
+      ],
+      [
+        1017,
+        1019,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1022,
+        1035,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        1041,
+        1050,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1053,
+        1063,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"valeria_defeated\"\n"
+        ]
+      ],
+      [
+        1070,
+        1075,
+        []
+      ],
+      [
+        1081,
+        1086,
+        []
+      ],
+      [
+        1089,
+        1428,
+        [
+          "      \"stations\": 4\n"
+        ]
+      ],
+      [
+        1437,
+        1445,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1451,
+        1460,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"valeria_defeated\"\n"
+        ]
+      ],
+      [
+        1463,
+        1472,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1475,
+        1484,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1487,
+        1495,
+        [
+          "          \"x\": 32,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1499,
+        1506,
+        [
+          "          \"id\": \"notary_guard\",\n",
+          "          \"count\": 2,\n",
+          "          \"segments\": 3,\n"
+        ]
+      ],
+      [
+        1509,
+        1518,
+        [
+          "          \"id\": \"sword_latch\",\n",
+          "          \"count\": 2,\n",
+          "          \"segments\": 1,\n"
+        ]
+      ],
+      [
+        1521,
+        1867,
+        [
+          "      \"stations\": 3,\n",
+          "      \"projectileStations\": true\n"
+        ]
+      ],
+      [
+        1876,
+        1884,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        1890,
+        1899,
+        [
+          "          \"x\": 1,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1902,
+        1911,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        1914,
+        1923,
+        [
+          "          \"x\": 32,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        1930,
+        1935,
+        []
+      ],
+      [
+        1936,
+        1945,
+        []
+      ],
+      [
+        1949,
+        1955,
+        [
+          "          \"segments\": 1\n",
+          "        },\n",
+          "        {\n",
+          "          \"id\": \"reflection_statue\",\n",
+          "          \"count\": 1,\n",
+          "          \"segments\": 3\n"
+        ]
+      ],
+      [
+        1960,
+        2092,
+        [
+          "      \"seamId\": \"opera_synergy_seam\"\n"
+        ]
+      ],
+      [
+        2101,
+        2103,
+        [
+          "          \"x\": 3\n"
+        ]
+      ],
+      [
+        2106,
+        2114,
+        [
+          "          \"x\": 19\n"
+        ]
+      ],
+      [
+        2119,
+        2122,
+        [
+          "          \"x\": 18,\n",
+          "          \"platform\": true\n"
+        ]
+      ],
+      [
+        2128,
+        2135,
+        [
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2138,
+        2146,
+        [
+          "          \"x\": 42,\n",
+          "          \"gate\": \"\"\n"
+        ]
+      ],
+      [
+        2149,
+        2158,
+        [
+          "          \"x\": 37,\n",
+          "          \"gate\": \"depart\"\n"
+        ]
+      ],
+      [
+        2161,
+        2170,
+        [
+          "          \"x\": 28,\n",
+          "          \"gate\": \"synergy\"\n"
+        ]
+      ],
+      [
+        2177,
+        2184,
+        [
+          "          \"setupSkill\": \"curtain_call_waltz\",\n",
+          "          \"setupHits\": 3\n"
+        ]
+      ],
+      [
+        2185,
+        2273,
+        [
+          "      ]\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Story/RepresentativeArea.cs": {
+    "original": "c562420fa0eac8e515740f6491fbeee84a19d6199966fdf04e49471d9c4fcdde",
+    "updated": "91778837fa228db5d493c347efae8605c8a034c1c223e9974de398f5d89df6a8",
+    "edits": [
+      [
+        195,
+        196,
+        [
+          "            else if ((ActiveRow == null || (Room.stage == \"clock\" && worldAction && !opponent.gameObject.activeSelf))\n"
+        ]
+      ],
+      [
+        283,
+        284,
+        [
+          "                opponent.ResetAt(new Vector2(spawnX, Room.SurfaceTop(\"drum_floor\") + .1f));\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Skills/PracticeLamp2D.cs": {
+    "original": "1cf581dbe53ea8750b4cfa75c6f1404fd2e0f7aef15feae032da9b7fababadeb",
+    "updated": "bd61eaecadbe2714501fdfbd6058b561459a41dc573e5d813fc21694ef360908",
+    "edits": [
+      [
+        10,
+        11,
+        []
+      ],
+      [
+        19,
+        26,
+        []
+      ],
+      [
+        29,
+        31,
+        [
+          "        { if (spent) return false; spent = true; visual.color = Color.gray; return true; }\n",
+          "        public void ResetAttempt() { spent = false; visual.color = Color.cyan; }\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Progression/CoreRecord.cs": {
+    "original": "e0b4910568722b318ece1a1457f2bfb76cd02670829502404a90c94a016c1169",
+    "updated": "56b6938d11d6d74aabeaaedd1461e40e5ddbcb150c7effed4bfa1250fb2bb8cc",
+    "edits": [
+      [
+        56,
+        58,
+        [
+          "            if (testData != (slotId == \"debug\") || (!testData && slotId != \"slot-1\" && slotId != \"slot-2\" && slotId != \"slot-3\"))\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Progression/SkillSaveStore.cs": {
+    "original": "688c1c58ae4927e3657d42100c5f5f94c74dd2ffd76f15cfe0f0015aef016378",
+    "updated": "1b1ffcc345ff1925545456dc79e0ac848d7f391344f19e49c96416785da99feb",
+    "edits": [
+      [
+        27,
+        28,
+        [
+          "            if (slot < 1 || slot > 3) throw new ArgumentOutOfRangeException(nameof(slot));\n"
+        ]
+      ]
+    ]
+  },
+  "Assets/Scripts/Shell/GameShell.cs": {
+    "original": "a7a8176171c10d42d3c4884396f524d358ca03b0eaa71806b8f95dd06b86a3ff",
+    "updated": "0d5c08ec44d79a960e98a477d06bafd9f86cb73d84dc27e09b72aece246baca2",
+    "edits": [
+      [
+        20,
+        23,
+        [
+          "        private readonly CoreRecord[] records = new CoreRecord[3];\n",
+          "        private readonly string[] slotErrors = new string[3];\n",
+          "        private readonly SkillSaveStore[] stores = new SkillSaveStore[3];\n"
+        ]
+      ],
+      [
+        46,
+        47,
+        [
+          "            for (int i = 0; i < 3; i++)\n"
+        ]
+      ],
+      [
+        128,
+        129,
+        [
+          "            if (Page == ShellPage.Slots && selected < 3 && GameInput.DeleteDown) { RequestDelete(selected + 1); return; }\n"
+        ]
+      ],
+      [
+        131,
+        132,
+        [
+          "        private int RowCount => Page == ShellPage.StoryDialogue ? (CanSkipLine ? 2 : 1) : Page == ShellPage.CourtLift ? LiftLabels().Length : Page == ShellPage.Main ? 5 : Page == ShellPage.Slots ? 4\n"
+        ]
+      ],
+      [
+        189,
+        190,
+        [
+          "                    if (index == 3) Back(); else SelectSlot(index + 1);\n"
+        ]
+      ],
+      [
+        397,
+        398,
+        [
+          "                for (int i = 0; i < 3; i++)\n"
+        ]
+      ],
+      [
+        403,
+        404,
+        [
+          "                if (Page == renderedPage) Row(3, Loc.Get(\"ui.back\"), new Rect(200, 520, 880, 46));\n"
+        ]
+      ],
+      [
+        453,
+        454,
+        [
+          "                : Page == ShellPage.Slots && selected < 3 ? slotErrors[selected] : null);\n"
+        ]
+      ],
+      [
+        529,
+        532,
+        []
+      ],
+      [
+        534,
+        535,
+        []
+      ],
+      [
+        543,
+        544,
+        [
+          "                case ShellPage.Slots: return Loc.Get(\"heading.three_slots\", (purpose == SlotPurpose.NewGame ? Loc.Get(\"heading.new_game\") : purpose == SlotPurpose.Continue ? Loc.Get(\"heading.continue\") : Loc.Get(\"heading.stage_slot\")));\n"
+        ]
+      ]
+    ]
+  }
+}

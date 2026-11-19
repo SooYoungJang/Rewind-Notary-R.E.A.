@@ -40,12 +40,19 @@ def reverse_exact(item, source):
 STEP3_EDITS = json.loads(Path(__file__).with_name('level-step3-extensions.json').read_text())
 
 
+STEP4_EDITS = json.loads(Path(__file__).with_name('level-step4-extensions.json').read_text())
+
+
+def prior_level4_source(path, source):
+    return reverse_exact(STEP4_EDITS.get(str(path)), source)
+
+
 def prior_level3_source(path, source):
     project = Path('unity/RewindNotary')
     path = Path(path)
     if path.is_relative_to(project):
         path = path.relative_to(project)
-    return reverse_exact(STEP3_EDITS.get(path.as_posix()), source)
+    return reverse_exact(STEP3_EDITS.get(path.as_posix()), prior_level4_source(path, source))
 
 
 def prior_story_source(path, source):

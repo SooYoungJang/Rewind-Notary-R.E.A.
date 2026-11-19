@@ -8,6 +8,7 @@ namespace RewindNotary
         public static readonly List<PracticeLamp2D> All = new List<PracticeLamp2D>();
         public Bounds Bounds => SkillGeometry.Area(transform.position, SkillGeometry.LampRadius);
         private bool spent;
+        private Color readyColor = Color.cyan, spentColor = Color.gray;
         private Sprite sprite;
         private SpriteRenderer visual;
         private void Awake()
@@ -16,11 +17,18 @@ namespace RewindNotary
             visual = gameObject.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 5;
             transform.localScale = Vector3.one * SkillGeometry.LampRadius * 2; ResetAttempt();
         }
+        internal void SetPicture(Sprite picture)
+        {
+            visual.sprite = picture;
+            readyColor = new Color(.51f,.63f,.78f);
+            spentColor = new Color(1f,.88f,.59f);
+            visual.color = spent ? spentColor : readyColor;
+        }
         private void OnEnable() { All.Add(this); }
         private void OnDisable() { All.Remove(this); }
         public bool Trigger()
-        { if (spent) return false; spent = true; visual.color = Color.gray; return true; }
-        public void ResetAttempt() { spent = false; visual.color = Color.cyan; }
+        { if (spent) return false; spent = true; visual.color = spentColor; return true; }
+        public void ResetAttempt() { spent = false; visual.color = readyColor; }
         private void OnDestroy() { if (sprite != null) Destroy(sprite); }
     }
 }

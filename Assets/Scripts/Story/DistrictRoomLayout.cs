@@ -29,7 +29,9 @@ namespace RewindNotary
 
         private bool TryTrialBell()
         {
-            if (!BellReady || Distance(Room.Point(Benefactor + "_trial_bell").x) > 1.25f) return false;
+            if (!BellReady) return false;
+            var bell = Room.Point(Benefactor + "_trial_bell");
+            if (Distance(bell.x) > 1.25f || Room.stage == "opera" && !StandingOn(bell.surface)) return false;
             var arena = Array.Find(script.rooms, r => r.stage == Room.stage && r.boutHealth > 0);
             if (!session.CommitScene(() =>
             {
@@ -83,10 +85,11 @@ namespace RewindNotary
             public string id;
             public SkillProjectile2D shot;
             public float next;
-            public bool spent;
+            public bool spent, overhead;
         }
         private readonly List<Emitter> emitters = new List<Emitter>();
         private Rigidbody2D movingSpan, raisedLift;
+        private float liftBase;
         private const float LiftHeight = 1.4f;
         private bool LiftRaised => Room.id == "opera_06_arena" ? Has("valeria_safe_landed") : Has("valeria_reunion_landed");
 
@@ -112,6 +115,7 @@ namespace RewindNotary
         private void FixedUpdate()
         {
             if (Room == null || !GameInput.GameplayEnabled) return;
+            UpdateOperaShutter();
             if (movingSpan != null)
             {
                 if (Room.crossing == "swing")
@@ -122,7 +126,7 @@ namespace RewindNotary
             if (raisedLift != null && worldAction && ActiveRow != null && ActionToken.StartsWith("ride:", StringComparison.Ordinal))
             {
                 bool aboard = OnPlank(ActionToken.Substring(5));
-                float y = Mathf.MoveTowards(raisedLift.position.y, .16f + (aboard ? LiftHeight : 0), 1.2f * Time.fixedDeltaTime);
+                float y = Mathf.MoveTowards(raisedLift.position.y, liftBase + (aboard ? LiftHeight : 0), 1.2f * Time.fixedDeltaTime);
                 raisedLift.MovePosition(new Vector2(raisedLift.position.x, y));
             }
         }
@@ -148,6 +152,7 @@ namespace RewindNotary
                 {
                     raisedLift = lift.AddComponent<Rigidbody2D>();
                     raisedLift.bodyType = RigidbodyType2D.Kinematic;
+                    liftBase = raisedLift.position.y;
                     if (LiftRaised) raisedLift.position += Vector2.up * LiftHeight;
                     break;
                 }
@@ -156,13 +161,22 @@ namespace RewindNotary
                 float x = StationX(i);
                 string id = Room.id + ":station_" + i;
                 if (Room.skill == BenefactorIds.Canvas) continue; // Each gap supports actual ground-cast paint.
-                if (Room.projectileStations)
-                    emitters.Add(new Emitter { origin = new Vector2(x, 1.3f), id = id });
+                if (Room.projectileStations && (Room.stationMarks == null || Room.stationMarks.Length == 0 || Room.stationMarks[i].projectile))
+                {
+                    bool overhead = Room.stage == "opera";
+                    float y = StationTop(i) + (overhead ? 3.45f : 1.3f);
+                    emitters.Add(new Emitter { origin = new Vector2(x, y), id = id, overhead = overhead });
+                    if (overhead) OperaLampHousing(id, x, y + .22f);
+                }
                 else
                 {
                     var station = Place(id, x, StationTop(i) + (Room.skill == BenefactorIds.Waltz ? 2.4f : Room.skill == BenefactorIds.Forge ? .55f : .05f));
                     stations.Add(station);
-                    if (Room.skill == BenefactorIds.Waltz) station.AddComponent<PracticeLamp2D>();
+                    if (Room.skill == BenefactorIds.Waltz)
+                    {
+                        var lamp = station.AddComponent<PracticeLamp2D>();
+                        if (Room.stage == "opera") lamp.SetPicture(OperaSprite("opera-lamp", 1.4f));
+                    }
                     else if (Room.skill == BenefactorIds.Forge) station.AddComponent<ResonanceTarget2D>().InitializeMechanism();
                     else
                     {
@@ -198,11 +212,13 @@ namespace RewindNotary
             foreach (var emitter in emitters)
             {
                 if (emitter.spent || emitter.shot != null || Distance(emitter.origin.x) > 5f || Time.time < emitter.next) continue;
+                if (emitter.overhead && (Distance(emitter.origin.x) > 1.15f ||
+                    Mathf.Abs(player.Body.position.y - (emitter.origin.y - 3.45f)) > .65f)) continue;
                 var go = Place(emitter.id, emitter.origin.x, emitter.origin.y);
                 emitter.shot = go.AddComponent<SkillProjectile2D>();
                 emitter.shot.Initialize(player, opponent);
                 float direction = player.Body.position.x < emitter.origin.x ? -1 : 1;
-                emitter.shot.ConfigureTrialShot(Vector2.right * direction * 3, 1, 2);
+                emitter.shot.ConfigureTrialShot(emitter.overhead ? Vector2.down * 2 : Vector2.right * direction * 3, 1, 2);
                 emitter.next = Time.time + 2.5f;
             }
             if (!worldAction || ActiveRow == null) return;
@@ -225,6 +241,7 @@ namespace RewindNotary
             if (e.targetId.StartsWith(prefix, StringComparison.Ordinal) &&
                 int.TryParse(e.targetId.Substring(prefix.Length).Split(':')[0], out int index))
             {
+                if (roofCue != null && index == Room.stations - 1) roofLampLit = true;
                 stationIndex = index;
                 switchUse = e.useId; stationHit = true;
                 var emitter = emitters.Find(item => item.id == e.targetId);
@@ -306,7 +323,7 @@ namespace RewindNotary
             }
             if (token.StartsWith("ride:", StringComparison.Ordinal))
             {
-                if (raisedLift != null && raisedLift.position.y >= .16f + LiftHeight - .01f && OnPlank(token.Substring(5)))
+                if (raisedLift != null && raisedLift.position.y >= liftBase + LiftHeight - .01f && OnPlank(token.Substring(5)))
                     FinishAction();
                 return true;
             }

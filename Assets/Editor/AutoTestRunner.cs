@@ -64,6 +64,8 @@ public static class AutoTestRunner
             { result.velvetDistrict.run.status = "fail"; result.velvetDistrict.run.reason = e.Message; }
             if (result.clockDistrict.run.status == "running")
             { result.clockDistrict.run.status = "fail"; result.clockDistrict.run.reason = e.Message; }
+            if (result.operaDistrict.run.status == "running")
+            { result.operaDistrict.run.status = "fail"; result.operaDistrict.run.reason = e.Message; }
             result.status = "fail";
             result.exitCode = 1;
             result.endedUtc = DateTime.UtcNow.ToString("O");

@@ -22,6 +22,7 @@ namespace RewindNotary
         internal static AutoTestReport Report { get; private set; }
         internal static double Now => Time.realtimeSinceStartupAsDouble;
         internal static string DirectoryPath => directory;
+        internal static int SlotCount => requested && sandbox != null ? 4 : 3;
 
         // Never fall back to the real root if test setup throws before creating the sandbox.
         internal static string SaveRoot => requested
@@ -188,6 +189,19 @@ namespace RewindNotary
             }
         }
 
+        internal static string[] ReadPreviousSlotHashes()
+        {
+            var hashes = new string[3];
+            using (var sha = SHA256.Create())
+                for (int i = 0; i < hashes.Length; i++)
+                {
+                    var path = Path.Combine(sandbox, "SkillSystem", "slot-" + (i + 1) + ".json");
+                    using (var file = File.OpenRead(path))
+                        hashes[i] = BitConverter.ToString(sha.ComputeHash(file)).Replace("-", "").ToLowerInvariant();
+                }
+            return hashes;
+        }
+
         private static bool SavedArrival(string path)
         {
             var saved = JsonUtility.FromJson<CoreRecord>(File.ReadAllText(path));
@@ -227,6 +241,22 @@ namespace RewindNotary
                                 save.Get(SkillRules.SilverStitch).acquired && save.storyFlags.Contains("clock_04_cleared") &&
                                 save.storyFlags.Contains("investigation_complete") && save.storyFlags.Contains("scene_floor:clock:clock_rest_09");
                         }
+                        var opera = Report.operaDistrict;
+                        opera.previousSlotsAfter = ReadPreviousSlotHashes();
+                        opera.previousSlotsUnchanged = opera.previousSlotsBefore?.Length == 3 &&
+                            string.Join("/", opera.previousSlotsBefore) == string.Join("/", opera.previousSlotsAfter);
+                        if (!opera.previousSlotsUnchanged) Report.Error("operaDistrict", "Earlier slot contents changed during slot 4 traversal");
+                        var fourth = Path.Combine(sandbox, "SkillSystem", "slot-4.json");
+                        if (File.Exists(fourth))
+                        {
+                            var save = JsonUtility.FromJson<CoreRecord>(File.ReadAllText(fourth));
+                            Report.operaDistrict.slotReadback = save != null && save.schemaVersion == CoreRecord.SchemaVersion &&
+                                !save.testData && save.slotId == "slot-4" && save.lastStageId == "opera" &&
+                                save.Get(BenefactorIds.Waltz).stage == 3 && save.Get(BenefactorIds.Waltz).validUseCount >= 80 &&
+                                save.Get(SkillRules.SilverStitch).acquired && save.completedEncounters.Contains("story:valeria_bout") &&
+                                save.storyFlags.Contains("investigation_complete") && save.storyFlags.Contains("scene_floor:opera:opera_rest_09");
+                        }
+                        if (!Report.operaDistrict.slotReadback) Report.Error("operaDistrict", "Missing fourth-slot opera checkpoint on disk.");
                         if (!Report.clockDistrict.slotReadback) Report.Error("clockDistrict", "Missing third-slot clock checkpoint on disk.");
                         if (!audit.verifiedFinalSlot) Report.Error("save", "Missing final district checkpoint on disk.");
                     }
@@ -248,6 +278,7 @@ namespace RewindNotary
                 DrainLogs();
                 if (completed && !Report.pilot.Passed) Report.Error("pilot", "Incomplete pilot route or contact save");
                 if (completed && Report.velvetDistrict.run.status != "pass") Report.Error("velvetDistrict", "Incomplete district traversal");
+                if (completed && Report.operaDistrict.run.status != "pass") Report.Error("operaDistrict", "Incomplete opera traversal");
                 if (completed && Report.clockDistrict.run.status != "pass") Report.Error("clockDistrict", "Incomplete clock traversal");
                 if (completed && !Report.feel.Passed) Report.Error("feel", "Required input measurements are incomplete.");
                 if (completed && (Report.attackInputs.accepted < 1 || Report.attackInputs.accepted > Report.attackInputs.issued))

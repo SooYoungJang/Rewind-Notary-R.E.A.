@@ -20,6 +20,9 @@ namespace RewindNotary
         private PilotProbe pilot;
         private VelvetDistrictProbe district;
         private ClockDistrictProbe clock;
+        private OperaDistrictProbe opera;
+        private int capturedOperaContacts;
+        private bool DrivingDistrict => district != null || clock != null || opera != null;
         private BoutAttempt attempt;
         private BenefactorTrialOpponent observedBout;
         private int index, lastShotFrame = -1;
@@ -61,14 +64,30 @@ namespace RewindNotary
                 {
                     Probe(now);
                     if (now - lastProgress > 18) { Stop("no position or state progress for 18 seconds"); return; }
-                    if ((clock != null || district != null) && !CheckDistrictProgress(now))
+                    if (DrivingDistrict && !CheckDistrictProgress(now))
                     { Stop("no district contact, kill or target progress for 120 seconds"); return; }
                 }
                 if (clock != null)
                 {
                     if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
                     if (now - entered > 1500) { Stop("Clock district deadline"); return; }
-                    if (clock.Drive(bot, keyboard, now)) { EndStep("pass", ""); StartDrain(true); }
+                    if (clock.Drive(bot, keyboard, now))
+                    {
+                        EndStep("pass", "");
+                        Detach();
+                        clock = null;
+                        bot = new FirstDepartureBot(keyboard, Stop);
+                        opera = new OperaDistrictProbe(report.operaDistrict, PublishOpera);
+                        step = report.operaDistrict.run;
+                        StartMeasurement();
+                    }
+                    return;
+                }
+                if (opera != null)
+                {
+                    if (report.errors.Count != 0) { Stop("Unity or harness error"); return; }
+                    if (now - entered > 1500) { Stop("Opera district deadline"); return; }
+                    if (opera.Drive(bot, keyboard, now)) { EndStep("pass", ""); StartDrain(true); }
                     return;
                 }
                 if (district != null)
@@ -118,6 +137,17 @@ namespace RewindNotary
             }
         }
 
+        private void PublishOpera()
+        {
+            var contacts = report.operaDistrict.contacts;
+            if (capturedOperaContacts < contacts.Count)
+            {
+                Capture(contacts[contacts.Count - 1].room);
+                capturedOperaContacts = contacts.Count;
+            }
+            report.Write(AutoTestRuntime.DirectoryPath);
+        }
+
         private void BeginDistrict()
         {
             Detach();
@@ -159,7 +189,8 @@ namespace RewindNotary
                 area?.PendingAction, bot.Record?.storyFlags.Count, bot.Record?.Get(SkillRules.SilverStitch)?.validUseCount,
                 target?.TargetId, target?.State.Remaining, area?.BoutOpponent?.Health.Current,
                 clock != null ? bot.Record?.Get(BenefactorIds.Pendulum)?.validUseCount : null,
-                clock != null ? area?.UnclearedClockTarget?.State.Remaining : null);
+                opera != null ? bot.Record?.Get(BenefactorIds.Waltz)?.validUseCount : null,
+                (clock != null || opera != null) ? area?.UnclearedClockTarget?.State.Remaining : null);
             if (state != progress || (position - lastPosition).sqrMagnitude >= .25f)
             {
                 lastProgress = now;
@@ -168,7 +199,7 @@ namespace RewindNotary
             }
         }
 
-        private int DistrictContacts => clock != null ? report.clockDistrict.contacts.Count : report.velvetDistrict.contacts.Count;
+        private int DistrictContacts => opera != null ? report.operaDistrict.contacts.Count : clock != null ? report.clockDistrict.contacts.Count : report.velvetDistrict.contacts.Count;
 
         private bool CheckDistrictProgress(double now)
         {
@@ -197,7 +228,7 @@ namespace RewindNotary
             var foe = area?.BoutOpponent;
             var feet = player == null ? "-" : player.Body.position.ToString("F2");
             int remaining = area == null ? 0 : area.WaveTargetCount - area.ClearedWaveTargets;
-            string support = clock != null && area != null ? " support=" + area.ClockSupportDescription() : "";
+            string support = (clock != null || opera != null) && area != null ? " support=" + area.ClockSupportDescription() : "";
             return $"{step.id} elapsed={now - entered:F1}s idle={now - lastDistrictProgress:F1}s room={area?.Room?.id ?? "-"} " +
                 $"feet={feet} grounded={player?.Grounded} row={area?.ActiveRow?.textKey ?? "-"} action={area?.PendingAction ?? "-"} " +
                 $"remainingTargets={remaining} waveTarget={target?.TargetId ?? "-"} segments={target?.State.Remaining ?? 0} contacts={DistrictContacts}" + support +
@@ -217,7 +248,7 @@ namespace RewindNotary
                 throw new IOException("Skill session did not use the isolated directory.");
             health = bot.Area.Rea.Health;
             controller = health.GetComponent<PlayerController2D>();
-            if (district == null && clock == null) controller.AttackInputAccepted += AttackAccepted;
+            if (!DrivingDistrict) controller.AttackInputAccepted += AttackAccepted;
             health.Damaged += Damaged;
             health.Died += Died;
             observed.Progression.UseBegan += UseBegan;
@@ -240,7 +271,7 @@ namespace RewindNotary
         {
             step.hits++;
             pilot.ObserveHit(bot.Area.Rea, report.pilot);
-            if (clock != null || district != null) Debug.Log("AUTOTEST district hit " + DistrictState(AutoTestRuntime.Now));
+            if (DrivingDistrict) Debug.Log("AUTOTEST district hit " + DistrictState(AutoTestRuntime.Now));
         }
         private void AttackAccepted() { report.attackInputs.accepted++; }
         private void Died() { step.deaths++; }
@@ -255,13 +286,16 @@ namespace RewindNotary
             bot.ObserveSilver(e);
             district?.ObserveUse(e, bot.Area.Room.id);
             clock?.ObserveUse(e, bot.Area.Room.id);
+            opera?.ObserveUse(e, bot.Area.Room.id);
+            if (opera != null && e.kind == "attempt_reset")
+                report.Error("operaDistrict", "Attempt reset during continuous opera traversal");
             if (clock != null && e.kind == "attempt_reset")
                 report.Error("clockDistrict", "Attempt reset during continuous clock traversal");
             if (e.kind == "valid_use")
             {
                 step.Count(e.skillId).validUses++;
                 // The progression service emits this only for an applied effect on a named target.
-                if (clock != null || district != null) lastDistrictProgress = AutoTestRuntime.Now;
+                if (DrivingDistrict) lastDistrictProgress = AutoTestRuntime.Now;
             }
             if (district != null && e.kind == "attempt_reset")
                 report.Error("velvetDistrict", "Attempt reset during continuous checkpoint traversal");
@@ -312,7 +346,7 @@ namespace RewindNotary
         }
         private void Stop(string reason)
         {
-            if (clock != null || district != null)
+            if (DrivingDistrict)
             {
                 try { reason += " | " + DistrictState(AutoTestRuntime.Now); }
                 catch (Exception e) { report.Error("district-state", e.Message, e.StackTrace); }

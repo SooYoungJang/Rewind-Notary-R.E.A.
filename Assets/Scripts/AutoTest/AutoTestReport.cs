@@ -23,6 +23,7 @@ namespace RewindNotary
         public FeelResults feel = new FeelResults();
         public PilotResults pilot = new PilotResults();
         public VelvetDistrictResult velvetDistrict = new VelvetDistrictResult();
+        public OperaDistrictResult operaDistrict = new OperaDistrictResult();
         public ClockDistrictResult clockDistrict = new ClockDistrictResult();
         public AttackInputCounts attackInputs = new AttackInputCounts();
 

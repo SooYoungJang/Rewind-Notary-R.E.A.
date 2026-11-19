@@ -24,7 +24,7 @@ namespace RewindNotary
     {
         public string id, surface;
         public float x;
-        public bool platform, contactSave;
+        public bool platform, contactSave, projectile;
     }
     [Serializable] public sealed class StoryPlacement
     {
@@ -37,6 +37,7 @@ namespace RewindNotary
         public string source, room, gate, requiresFlag, destinationFloor;
         public float x;
         public StoryRect approach;
+        public bool waltzCue;
         public bool InReach(Vector2 feet) => approach != null && approach.Defined
             ? approach.Contains(feet) : Mathf.Abs(feet.x - x) <= 1.25f;
     }

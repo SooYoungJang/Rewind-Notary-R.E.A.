@@ -18,9 +18,9 @@ namespace RewindNotary
         private GameBootstrap game;
         private SkillCatalog catalog;
         private string directory, message, legacyError;
-        private readonly CoreRecord[] records = new CoreRecord[3];
-        private readonly string[] slotErrors = new string[3];
-        private readonly SkillSaveStore[] stores = new SkillSaveStore[3];
+        private readonly CoreRecord[] records = new CoreRecord[AutoTestRuntime.SlotCount];
+        private readonly string[] slotErrors = new string[AutoTestRuntime.SlotCount];
+        private readonly SkillSaveStore[] stores = new SkillSaveStore[AutoTestRuntime.SlotCount];
         private CoreRecord selectedRecord;
         private SkillSaveStore selectedStore;
         private SlotPurpose purpose;
@@ -44,7 +44,7 @@ namespace RewindNotary
         private SkillSaveStore Store(int slot) => stores[slot - 1] ?? (stores[slot - 1] = new SkillSaveStore(directory, catalog, slot));
         private void RefreshSlots()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < records.Length; i++)
             {
                 records[i] = null; slotErrors[i] = null;
                 try { var store = Store(i + 1); records[i] = store.Load(); slotErrors[i] = store.LastError ?? store.RecoveryNotice; }
@@ -126,10 +126,10 @@ namespace RewindNotary
                 repeatAt = Time.unscaledTime + (axis != previousAxis ? 0.35f : 0.12f);
             }
             previousAxis = axis;
-            if (Page == ShellPage.Slots && selected < 3 && GameInput.DeleteDown) { RequestDelete(selected + 1); return; }
+            if (Page == ShellPage.Slots && selected < records.Length && GameInput.DeleteDown) { RequestDelete(selected + 1); return; }
             if (GameInput.SubmitDown) Activate(selected);
         }
-        private int RowCount => Page == ShellPage.StoryDialogue ? (CanSkipLine ? 2 : 1) : Page == ShellPage.CourtLift ? LiftLabels().Length : Page == ShellPage.Main ? 5 : Page == ShellPage.Slots ? 4
+        private int RowCount => Page == ShellPage.StoryDialogue ? (CanSkipLine ? 2 : 1) : Page == ShellPage.CourtLift ? LiftLabels().Length : Page == ShellPage.Main ? 5 : Page == ShellPage.Slots ? records.Length + 1
             : Page == ShellPage.Stages ? StageCatalog.All.Length + (EndingCheckpoint.Marker(selectedRecord) == null ? 1 : 2) : Page == ShellPage.Pause ? 5
             : Page == ShellPage.Investigation || Page == ShellPage.CoreReading ? InvestigationRows
             : Page == ShellPage.ReturnSelection ? BenefactorIds.All.Length + 1
@@ -187,7 +187,7 @@ namespace RewindNotary
                     else if (index == 3) OpenSettings(); else RequestQuit();
                     break;
                 case ShellPage.Slots:
-                    if (index == 3) Back(); else SelectSlot(index + 1);
+                    if (index == records.Length) Back(); else SelectSlot(index + 1);
                     break;
                 case ShellPage.Stages:
                     if (index == StageCatalog.All.Length) Back();
@@ -395,13 +395,13 @@ namespace RewindNotary
             ShellPage renderedPage = Page;
             if (Page == ShellPage.Slots)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < records.Length; i++)
                 {
                     Row(i, SlotLabel(i), new Rect(200, 148 + i * 122, 760, 110));
                     if (Page != renderedPage) break;
                     if (GUI.Button(new Rect(978, 175 + i * 122, 100, 52), Loc.Get("ui.delete"), buttonStyle)) RequestDelete(i + 1);
                 }
-                if (Page == renderedPage) Row(3, Loc.Get("ui.back"), new Rect(200, 520, 880, 46));
+                if (Page == renderedPage) Row(records.Length, Loc.Get("ui.back"), new Rect(200, 154 + records.Length * 122, 880, 46));
             }
             else if (Page == ShellPage.StorySaving)
             {
@@ -451,7 +451,7 @@ namespace RewindNotary
             }
             string status = (Page == ShellPage.Investigation || Page == ShellPage.CoreReading)
                 ? game.ActiveSkills.StorageError : message ?? (Page == ShellPage.Settings ? Settings.Error
-                : Page == ShellPage.Slots && selected < 3 ? slotErrors[selected] : null);
+                : Page == ShellPage.Slots && selected < records.Length ? slotErrors[selected] : null);
             if (!string.IsNullOrEmpty(status))
             {
                 bool investigating = Page == ShellPage.Investigation || Page == ShellPage.CoreReading;
@@ -527,8 +527,12 @@ namespace RewindNotary
                 else Activate(index);
             }
         }
+        private string SlotHeading => Loc.Get(purpose == SlotPurpose.NewGame ? "heading.new_game" :
+            purpose == SlotPurpose.Continue ? "heading.continue" : "heading.stage_slot");
+
         private string Heading()
         {
+            if (Page == ShellPage.Slots && records.Length > 3) return SlotHeading;
             switch (Page)
             {
                 case ShellPage.ReturnSelection: return Loc.Get("heading.return_selection");
@@ -537,7 +541,7 @@ namespace RewindNotary
                 case ShellPage.StorySaving:
                 case ShellPage.StoryDialogue: return game.Area != null ? game.Area.Room.Label : Loc.Get("area.room.court_04_tribunal");
                 case ShellPage.Main: return Loc.Get("heading.main");
-                case ShellPage.Slots: return Loc.Get("heading.three_slots", (purpose == SlotPurpose.NewGame ? Loc.Get("heading.new_game") : purpose == SlotPurpose.Continue ? Loc.Get("heading.continue") : Loc.Get("heading.stage_slot")));
+                case ShellPage.Slots: return Loc.Get("heading.three_slots", SlotHeading);
                 case ShellPage.Stages: return Loc.Get("heading.stages", selectedStore.Slot);
                 case ShellPage.Pause: return Loc.Get("heading.pause");
                 case ShellPage.Skills: return Loc.Get("heading.skills");

@@ -8,48 +8,141 @@
       "floors": [
         {
           "id": "opera_entry_floor",
-          "x": 3
+          "x": 4,
+          "surface": "parquet"
         },
         {
           "id": "opera_practice_floor",
-          "x": 19
+          "x": 12,
+          "surface": "parquet"
         },
         {
           "id": "opera_entry_east",
-          "x": 41
+          "x": 38,
+          "surface": "box_door"
+        },
+        {
+          "id": "opera_rest_01",
+          "contactSave": true,
+          "x": 36,
+          "surface": "box_door"
         }
       ],
       "points": [
         {
           "id": "valeria_shoes_rack",
           "x": 12,
-          "platform": false
+          "platform": false,
+          "surface": "parquet"
         },
         {
           "id": "opera_entry_latch",
-          "x": 24,
-          "platform": false
+          "x": 17,
+          "platform": false,
+          "surface": "barre"
         }
       ],
       "exits": [
         {
           "room": "hub_lift",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": 0,
+            "y": -0.16,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "opera_02_auditorium",
-          "x": 42,
-          "gate": "opera_entry_complete"
+          "x": 40,
+          "gate": "opera_entry_complete",
+          "approach": {
+            "x": 39,
+            "y": 5.24,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_audit_west"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "setupHits": 1,
+          "placementIds": [
+            "sword_latch_0"
+          ]
         }
-      ]
+      ],
+      "terrain": [
+        {
+          "id": "parquet",
+          "rect": {
+            "x": -3,
+            "y": -0.35,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "barre",
+          "rect": {
+            "x": 9,
+            "y": 1.45,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "dress_circle",
+          "rect": {
+            "x": 18,
+            "y": 3.25,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "box_door",
+          "rect": {
+            "x": 32,
+            "y": 5.05,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 17,
+          "y": 1.85,
+          "active": {
+            "x": 13,
+            "y": 1.55,
+            "width": 8,
+            "height": 1.2
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_01_entry",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.0,
+        "width": 46,
+        "height": 9.2
+      },
+      "hasFallLine": true,
+      "fallLine": -7.0
     },
     {
       "id": "opera_02_auditorium",
@@ -59,49 +152,198 @@
       "floors": [
         {
           "id": "opera_audit_west",
-          "x": 3
+          "x": 6,
+          "surface": "stalls"
         },
         {
           "id": "opera_audit_east",
-          "x": 39
+          "x": 37,
+          "surface": "lighting_door"
+        },
+        {
+          "id": "opera_rest_02",
+          "contactSave": true,
+          "x": 34,
+          "surface": "lighting_door"
+        },
+        {
+          "id": "opera_drop_landing",
+          "x": 20,
+          "surface": "stalls"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "opera_01_entry",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 5.24,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_entry_east"
         },
         {
           "room": "opera_03_chandelier",
-          "x": 42,
-          "gate": "opera_02_cleared"
+          "x": 40,
+          "gate": "opera_02_cleared",
+          "approach": {
+            "x": 39,
+            "y": 10.64,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_chand_west"
         },
         {
           "room": "opera_09_shortcut",
-          "x": 37,
-          "gate": "synergy"
+          "x": 30,
+          "gate": "synergy",
+          "approach": {
+            "x": 29,
+            "y": 5.24,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_shortcut_safe"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
+          "segments": 1,
+          "setupHits": 1,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "shell_sentry",
-          "count": 2,
-          "segments": 3
-        },
-        {
-          "id": "reflection_statue",
-          "count": 1,
-          "segments": 3
+          "count": 3,
+          "segments": 3,
+          "setupHits": 1,
+          "placementIds": [
+            "shell_sentry_2",
+            "shell_sentry_3",
+            "shell_sentry_4"
+          ]
         }
       ],
-      "crossing": "steps"
+      "crossing": "steps",
+      "terrain": [
+        {
+          "id": "stalls",
+          "rect": {
+            "x": -3,
+            "y": 5.05,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "west_box",
+          "rect": {
+            "x": 2,
+            "y": 6.85,
+            "width": 15,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "balcony",
+          "rect": {
+            "x": 12,
+            "y": 8.65,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lighting_door",
+          "rect": {
+            "x": 28,
+            "y": 10.45,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 10,
+          "y": 5.45,
+          "active": {
+            "x": 6,
+            "y": 5.15,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 24,
+          "y": 9.05,
+          "active": {
+            "x": 20,
+            "y": 8.75,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "shell_sentry_2",
+          "x": 9,
+          "y": 7.25,
+          "active": {
+            "x": 5,
+            "y": 6.95,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "shell_sentry_3",
+          "x": 20,
+          "y": 9.05,
+          "active": {
+            "x": 16,
+            "y": 8.75,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "shell_sentry_4",
+          "x": 38,
+          "y": 10.85,
+          "active": {
+            "x": 34,
+            "y": 10.55,
+            "width": 8,
+            "height": 1.2
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_02_auditorium",
+      "cameraBounds": {
+        "x": 0,
+        "y": 6.4,
+        "width": 46,
+        "height": 9.2
+      },
+      "hasFallLine": true,
+      "fallLine": -1.6
     },
     {
       "id": "opera_03_chandelier",
@@ -111,53 +353,217 @@
       "floors": [
         {
           "id": "opera_chand_west",
-          "x": 3
+          "x": 5,
+          "surface": "west_bank"
         },
         {
           "id": "opera_chand_mid",
-          "x": 19
+          "x": 13,
+          "surface": "west_gallery"
         },
         {
           "id": "opera_chand_east",
-          "x": 39
+          "x": 33,
+          "surface": "fly_grid"
+        },
+        {
+          "id": "opera_rest_03",
+          "contactSave": true,
+          "x": 5,
+          "surface": "west_bank"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "opera_02_auditorium",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 10.64,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_audit_east"
         },
         {
           "room": "opera_04_rooftop_west",
-          "x": 42,
-          "gate": "opera_03_cleared"
+          "x": 36,
+          "gate": "opera_03_cleared",
+          "approach": {
+            "x": 35,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_roof_west_safe"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 2,
-          "segments": 1
-        },
-        {
-          "id": "shell_sentry",
-          "count": 2,
-          "segments": 3
+          "segments": 1,
+          "setupHits": 1,
+          "placementIds": [
+            "sword_latch_0",
+            "sword_latch_1"
+          ]
         },
         {
           "id": "reflection_statue",
-          "count": 1,
-          "segments": 3
+          "count": 2,
+          "segments": 4,
+          "setupHits": 1,
+          "placementIds": [
+            "reflection_statue_2",
+            "reflection_statue_3"
+          ]
         },
         {
-          "id": "notary_guard",
+          "id": "shell_sentry",
           "count": 1,
-          "segments": 2
+          "segments": 3,
+          "setupHits": 1,
+          "placementIds": [
+            "shell_sentry_4"
+          ]
         }
       ],
-      "crossing": "chandelier"
+      "crossing": "chandelier",
+      "terrain": [
+        {
+          "id": "west_bank",
+          "rect": {
+            "x": -3,
+            "y": 10.45,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "west_gallery",
+          "rect": {
+            "x": 8,
+            "y": 12.25,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "pendant",
+          "rect": {
+            "x": 17,
+            "y": 12.25,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true,
+          "travelX": 0.55,
+          "travelY": 0,
+          "period": 4.8
+        },
+        {
+          "id": "east_gallery",
+          "rect": {
+            "x": 29,
+            "y": 12.25,
+            "width": 17,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "lantern_step",
+          "rect": {
+            "x": 35,
+            "y": 14.05,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "fly_grid",
+          "rect": {
+            "x": 26,
+            "y": 15.85,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 9,
+          "y": 10.85,
+          "active": {
+            "x": 5,
+            "y": 10.55,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "sword_latch_1",
+          "x": 35,
+          "y": 12.65,
+          "active": {
+            "x": 31,
+            "y": 12.35,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "reflection_statue_2",
+          "x": 40,
+          "y": 14.45,
+          "active": {
+            "x": 36,
+            "y": 14.15,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "reflection_statue_3",
+          "x": 31,
+          "y": 16.25,
+          "active": {
+            "x": 27,
+            "y": 15.95,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "shell_sentry_4",
+          "x": 11,
+          "y": 12.65,
+          "active": {
+            "x": 7,
+            "y": 12.35,
+            "width": 8,
+            "height": 1.2
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_03_chandelier",
+      "cameraBounds": {
+        "x": 0,
+        "y": 11.8,
+        "width": 46,
+        "height": 9.2
+      },
+      "hasFallLine": true,
+      "fallLine": 3.8
     },
     {
       "id": "opera_04_rooftop_west",
@@ -167,45 +573,172 @@
       "floors": [
         {
           "id": "opera_roof_west_safe",
-          "x": 3
+          "x": 35,
+          "surface": "gutter"
+        },
+        {
+          "id": "opera_rest_04",
+          "contactSave": true,
+          "x": 10,
+          "surface": "glass_arch"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "opera_03_chandelier",
-          "x": 1,
-          "gate": ""
+          "x": 39,
+          "gate": "",
+          "approach": {
+            "x": 38,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_chand_east"
         },
         {
           "room": "opera_05_wings",
-          "x": 42,
-          "gate": "opera_04_cleared"
+          "x": 7,
+          "gate": "opera_04_cleared",
+          "approach": {
+            "x": 6,
+            "y": 21.44,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_pre_boss_floor"
         },
         {
           "room": "opera_08_return_foyer",
-          "x": 37,
-          "gate": "valeria_defeated"
+          "x": 25,
+          "gate": "valeria_defeated",
+          "approach": {
+            "x": 24,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_return_foyer_safe"
         }
       ],
       "roster": [
         {
           "id": "sword_latch",
           "count": 1,
-          "segments": 1
+          "segments": 1,
+          "setupHits": 1,
+          "placementIds": [
+            "sword_latch_0"
+          ]
         },
         {
           "id": "shell_sentry",
           "count": 1,
-          "segments": 3
+          "segments": 2,
+          "setupHits": 1,
+          "placementIds": [
+            "shell_sentry_1"
+          ]
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 4,
+          "setupHits": 1,
+          "placementIds": [
+            "reflection_statue_2"
+          ]
         }
       ],
-      "crossing": "arch"
+      "crossing": "arch",
+      "terrain": [
+        {
+          "id": "gutter",
+          "rect": {
+            "x": -3,
+            "y": 15.85,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "dormer",
+          "rect": {
+            "x": 31,
+            "y": 17.65,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "ridge",
+          "rect": {
+            "x": 12,
+            "y": 19.45,
+            "width": 23,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "glass_arch",
+          "rect": {
+            "x": 3,
+            "y": 21.25,
+            "width": 14,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "sword_latch_0",
+          "x": 35,
+          "y": 18.05,
+          "active": {
+            "x": 31,
+            "y": 17.75,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "shell_sentry_1",
+          "x": 26,
+          "y": 19.85,
+          "active": {
+            "x": 22,
+            "y": 19.55,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "reflection_statue_2",
+          "x": 23,
+          "y": 19.85,
+          "active": {
+            "x": 19,
+            "y": 19.55,
+            "width": 8,
+            "height": 1.2
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_04_rooftop_west",
+      "cameraBounds": {
+        "x": 0,
+        "y": 17.2,
+        "width": 46,
+        "height": 9.2
+      },
+      "hasFallLine": true,
+      "fallLine": 9.2
     },
     {
       "id": "opera_05_wings",
@@ -215,39 +748,144 @@
       "floors": [
         {
           "id": "opera_pre_boss_floor",
-          "x": 3
+          "x": 38,
+          "surface": "loading_door"
+        },
+        {
+          "id": "opera_rest_05",
+          "contactSave": true,
+          "x": 38,
+          "surface": "loading_door"
+        },
+        {
+          "id": "opera_prompt_exit",
+          "x": 14,
+          "surface": "call_desk"
+        },
+        {
+          "id": "opera_drop_head",
+          "x": 28,
+          "surface": "call_desk"
         }
       ],
       "points": [
         {
           "id": "opera_arena_gate",
-          "x": 34,
-          "platform": false
+          "x": 11,
+          "platform": false,
+          "surface": "call_desk"
         },
         {
           "id": "valeria_trial_bell",
-          "x": 16,
-          "platform": false
+          "x": 24,
+          "platform": false,
+          "surface": "fly_bridge"
         }
       ],
       "exits": [
         {
           "room": "opera_04_rooftop_west",
-          "x": 1,
-          "gate": ""
+          "x": 41,
+          "gate": "",
+          "approach": {
+            "x": 40,
+            "y": 21.44,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_rest_04"
         },
         {
           "room": "opera_06_arena",
-          "x": 42,
-          "gate": "opera_route_complete"
+          "x": 14,
+          "gate": "opera_route_complete",
+          "approach": {
+            "x": 13,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "valeria_arena_west"
         },
         {
           "room": "opera_07_return_roof",
-          "x": 37,
-          "gate": "valeria_defeated"
+          "x": 22,
+          "gate": "valeria_defeated",
+          "approach": {
+            "x": 21,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_return_roof_safe"
+        },
+        {
+          "room": "opera_02_auditorium",
+          "gate": "investigation_complete",
+          "x": 28,
+          "approach": {
+            "x": 27,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_drop_landing"
         }
       ],
-      "roster": []
+      "roster": [],
+      "terrain": [
+        {
+          "id": "call_desk",
+          "rect": {
+            "x": -3,
+            "y": 15.85,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "scene_dock",
+          "rect": {
+            "x": 8,
+            "y": 17.65,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "fly_bridge",
+          "rect": {
+            "x": 16,
+            "y": 19.45,
+            "width": 21,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "loading_door",
+          "rect": {
+            "x": 33,
+            "y": 21.25,
+            "width": 11,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_05_wings",
+      "cameraBounds": {
+        "x": 0,
+        "y": 17.2,
+        "width": 46,
+        "height": 9.2
+      },
+      "hasFallLine": true,
+      "fallLine": 9.2
     },
     {
       "id": "opera_06_arena",
@@ -257,48 +895,117 @@
       "floors": [
         {
           "id": "valeria_arena_west",
-          "x": 3
+          "x": 13,
+          "surface": "stage_box"
         },
         {
           "id": "valeria_arena_center",
-          "x": 19
+          "x": 17,
+          "surface": "stage_floor"
         },
         {
           "id": "valeria_safe_stage_ledge",
-          "x": 31
+          "x": 30,
+          "surface": "stage_floor"
         },
         {
           "id": "luka_opera_lift",
-          "x": 37
+          "x": 38,
+          "surface": "stage_floor"
+        },
+        {
+          "id": "opera_rest_06",
+          "contactSave": true,
+          "x": 13,
+          "surface": "stage_box"
         }
       ],
       "points": [
         {
           "id": "valeria_safe_stage_ledge",
-          "x": 31,
-          "platform": true
+          "x": 30,
+          "platform": true,
+          "surface": "stage_floor"
         },
         {
           "id": "luka_opera_lift",
-          "x": 37,
-          "platform": true
+          "x": 38,
+          "platform": true,
+          "surface": "stage_floor"
         }
       ],
       "exits": [
         {
           "room": "opera_05_wings",
-          "x": 1,
-          "gate": ""
+          "x": 10,
+          "gate": "",
+          "approach": {
+            "x": 9,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_prompt_exit"
         },
         {
           "room": "opera_07_return_roof",
-          "x": 42,
-          "gate": "valeria_defeated"
+          "x": 17,
+          "gate": "valeria_defeated",
+          "approach": {
+            "x": 16,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_return_roof_safe"
         }
       ],
       "roster": [],
       "boutHealth": 14,
-      "interludeHealth": 3
+      "interludeHealth": 3,
+      "terrain": [
+        {
+          "id": "stage_floor",
+          "rect": {
+            "x": -3,
+            "y": 12.25,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "prompt_corner",
+          "rect": {
+            "x": 4,
+            "y": 14.05,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "stage_box",
+          "rect": {
+            "x": 8,
+            "y": 15.85,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_06_arena",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 46,
+        "height": 20.0
+      },
+      "hasFallLine": true,
+      "fallLine": -7
     },
     {
       "id": "opera_07_return_roof",
@@ -308,24 +1015,52 @@
       "floors": [
         {
           "id": "opera_return_roof_safe",
-          "x": 3
+          "x": 9,
+          "surface": "circle_0"
         },
         {
           "id": "opera_return_roof_mid",
-          "x": 19
+          "x": 13,
+          "surface": "circle_0"
+        },
+        {
+          "id": "opera_rest_07",
+          "contactSave": true,
+          "x": 9,
+          "surface": "circle_0"
+        },
+        {
+          "id": "opera_return_roof_exit",
+          "x": 10,
+          "surface": "circle_5"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "opera_06_arena",
-          "x": 1,
-          "gate": ""
+          "x": 4,
+          "gate": "",
+          "approach": {
+            "x": 3,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "valeria_arena_west"
         },
         {
           "room": "opera_08_return_foyer",
-          "x": 42,
-          "gate": "valeria_defeated"
+          "x": 10,
+          "gate": "valeria_defeated",
+          "approach": {
+            "x": 9,
+            "y": 36.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_return_foyer_safe",
+          "waltzCue": true
         }
       ],
       "roster": [
@@ -333,16 +1068,364 @@
           "id": "notary_guard",
           "count": 2,
           "segments": 3,
+          "setupHits": 1,
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ],
           "setupSkill": "curtain_call_waltz"
         },
         {
           "id": "sword_latch",
           "count": 2,
           "segments": 1,
+          "setupHits": 1,
+          "placementIds": [
+            "sword_latch_2",
+            "sword_latch_3"
+          ],
           "setupSkill": "curtain_call_waltz"
         }
       ],
-      "stations": 4
+      "stations": 42,
+      "terrain": [
+        {
+          "id": "circle_0",
+          "rect": {
+            "x": -3,
+            "y": 15.85,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "turn_0",
+          "rect": {
+            "x": 36,
+            "y": 17.85,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_1",
+          "rect": {
+            "x": 5,
+            "y": 19.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_1",
+          "rect": {
+            "x": -1,
+            "y": 21.85,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_2",
+          "rect": {
+            "x": 1,
+            "y": 23.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_2",
+          "rect": {
+            "x": 36,
+            "y": 25.85,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_3",
+          "rect": {
+            "x": 5,
+            "y": 27.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_3",
+          "rect": {
+            "x": -1,
+            "y": 29.85,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_4",
+          "rect": {
+            "x": 1,
+            "y": 31.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_4",
+          "rect": {
+            "x": 36,
+            "y": 33.85,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_5",
+          "rect": {
+            "x": 5,
+            "y": 35.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 43,
+          "y": 18.25,
+          "active": {
+            "x": 39,
+            "y": 17.95,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 43,
+          "y": 26.25,
+          "active": {
+            "x": 39,
+            "y": 25.95,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "sword_latch_2",
+          "x": 2,
+          "y": 22.25,
+          "active": {
+            "x": -2,
+            "y": 21.95,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "sword_latch_3",
+          "x": 2,
+          "y": 30.25,
+          "active": {
+            "x": -2,
+            "y": 29.95,
+            "width": 8,
+            "height": 1.2
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_07_return_roof",
+      "cameraBounds": {
+        "x": 0,
+        "y": 17.2,
+        "width": 46,
+        "height": 23.8
+      },
+      "hasFallLine": true,
+      "fallLine": 9.2,
+      "stationMarks": [
+        {
+          "x": 9,
+          "surface": "circle_0"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_0"
+        },
+        {
+          "x": 18,
+          "surface": "circle_0"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_0"
+        },
+        {
+          "x": 27,
+          "surface": "circle_0"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_0"
+        },
+        {
+          "x": 36,
+          "surface": "circle_0"
+        },
+        {
+          "x": 36,
+          "surface": "circle_1"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_1"
+        },
+        {
+          "x": 27,
+          "surface": "circle_1"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_1"
+        },
+        {
+          "x": 18,
+          "surface": "circle_1"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_1"
+        },
+        {
+          "x": 9,
+          "surface": "circle_1"
+        },
+        {
+          "x": 9,
+          "surface": "circle_2"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_2"
+        },
+        {
+          "x": 18,
+          "surface": "circle_2"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_2"
+        },
+        {
+          "x": 27,
+          "surface": "circle_2"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_2"
+        },
+        {
+          "x": 36,
+          "surface": "circle_2"
+        },
+        {
+          "x": 36,
+          "surface": "circle_3"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_3"
+        },
+        {
+          "x": 27,
+          "surface": "circle_3"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_3"
+        },
+        {
+          "x": 18,
+          "surface": "circle_3"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_3"
+        },
+        {
+          "x": 9,
+          "surface": "circle_3"
+        },
+        {
+          "x": 9,
+          "surface": "circle_4"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_4"
+        },
+        {
+          "x": 18,
+          "surface": "circle_4"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_4"
+        },
+        {
+          "x": 27,
+          "surface": "circle_4"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_4"
+        },
+        {
+          "x": 36,
+          "surface": "circle_4"
+        },
+        {
+          "x": 36,
+          "surface": "circle_5"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_5"
+        },
+        {
+          "x": 27,
+          "surface": "circle_5"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_5"
+        },
+        {
+          "x": 18,
+          "surface": "circle_5"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_5"
+        },
+        {
+          "x": 9,
+          "surface": "circle_5"
+        }
+      ]
     },
     {
       "id": "opera_08_return_foyer",
@@ -352,48 +1435,436 @@
       "floors": [
         {
           "id": "opera_return_foyer_safe",
-          "x": 3
+          "x": 9,
+          "surface": "circle_5"
+        },
+        {
+          "id": "opera_rest_08",
+          "contactSave": true,
+          "x": 9,
+          "surface": "circle_5"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "opera_07_return_roof",
-          "x": 1,
-          "gate": "valeria_defeated"
+          "x": 6,
+          "gate": "valeria_defeated",
+          "approach": {
+            "x": 5,
+            "y": 36.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_return_roof_exit"
         },
         {
           "room": "opera_04_rooftop_west",
-          "x": 42,
-          "gate": ""
+          "x": 39,
+          "gate": "",
+          "approach": {
+            "x": 38,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_roof_west_safe"
         },
         {
           "room": "opera_01_entry",
-          "x": 37,
-          "gate": ""
+          "x": 9,
+          "gate": "",
+          "approach": {
+            "x": 8,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_entry_floor"
         },
         {
           "room": "hub_lift",
-          "x": 32,
-          "gate": ""
+          "x": 28,
+          "gate": "",
+          "approach": {
+            "x": 27,
+            "y": 16.04,
+            "width": 2,
+            "height": 0.9
+          }
         }
       ],
       "roster": [
         {
-          "id": "notary_guard",
-          "count": 2,
-          "segments": 3,
+          "id": "reflection_statue",
+          "count": 1,
+          "segments": 2,
+          "setupHits": 1,
+          "placementIds": [
+            "reflection_statue_0"
+          ],
           "setupSkill": "curtain_call_waltz"
         },
         {
-          "id": "sword_latch",
-          "count": 2,
-          "segments": 1,
+          "id": "notary_guard",
+          "count": 3,
+          "segments": 2,
+          "setupHits": 1,
+          "placementIds": [
+            "notary_guard_1",
+            "notary_guard_2",
+            "notary_guard_3"
+          ],
           "setupSkill": "curtain_call_waltz"
         }
       ],
-      "stations": 3,
-      "projectileStations": true
+      "stations": 42,
+      "projectileStations": true,
+      "terrain": [
+        {
+          "id": "circle_0",
+          "rect": {
+            "x": -3,
+            "y": 15.85,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "turn_0",
+          "rect": {
+            "x": 36,
+            "y": 17.85,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_1",
+          "rect": {
+            "x": 5,
+            "y": 19.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_1",
+          "rect": {
+            "x": -1,
+            "y": 21.85,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_2",
+          "rect": {
+            "x": 1,
+            "y": 23.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_2",
+          "rect": {
+            "x": 36,
+            "y": 25.85,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_3",
+          "rect": {
+            "x": 5,
+            "y": 27.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_3",
+          "rect": {
+            "x": -1,
+            "y": 29.85,
+            "width": 10,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_4",
+          "rect": {
+            "x": 1,
+            "y": 31.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "turn_4",
+          "rect": {
+            "x": 36,
+            "y": 33.85,
+            "width": 9,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "circle_5",
+          "rect": {
+            "x": 5,
+            "y": 35.85,
+            "width": 39,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "reflection_statue_0",
+          "x": 2,
+          "y": 30.25,
+          "active": {
+            "x": -2,
+            "y": 29.95,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 43,
+          "y": 34.25,
+          "active": {
+            "x": 39,
+            "y": 33.95,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 2,
+          "y": 22.25,
+          "active": {
+            "x": -2,
+            "y": 21.95,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "notary_guard_3",
+          "x": 43,
+          "y": 18.25,
+          "active": {
+            "x": 39,
+            "y": 17.95,
+            "width": 8,
+            "height": 1.2
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_08_return_foyer",
+      "cameraBounds": {
+        "x": 0,
+        "y": 17.2,
+        "width": 46,
+        "height": 23.8
+      },
+      "hasFallLine": true,
+      "fallLine": 9.2,
+      "stationMarks": [
+        {
+          "x": 9,
+          "surface": "circle_5"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_5"
+        },
+        {
+          "x": 18,
+          "surface": "circle_5"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_5",
+          "projectile": true
+        },
+        {
+          "x": 27,
+          "surface": "circle_5"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_5"
+        },
+        {
+          "x": 36,
+          "surface": "circle_5"
+        },
+        {
+          "x": 36,
+          "surface": "circle_4"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_4"
+        },
+        {
+          "x": 27,
+          "surface": "circle_4"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_4",
+          "projectile": true
+        },
+        {
+          "x": 18,
+          "surface": "circle_4"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_4"
+        },
+        {
+          "x": 9,
+          "surface": "circle_4"
+        },
+        {
+          "x": 9,
+          "surface": "circle_3"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_3"
+        },
+        {
+          "x": 18,
+          "surface": "circle_3"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_3",
+          "projectile": true
+        },
+        {
+          "x": 27,
+          "surface": "circle_3"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_3"
+        },
+        {
+          "x": 36,
+          "surface": "circle_3"
+        },
+        {
+          "x": 36,
+          "surface": "circle_2"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_2"
+        },
+        {
+          "x": 27,
+          "surface": "circle_2"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_2",
+          "projectile": true
+        },
+        {
+          "x": 18,
+          "surface": "circle_2"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_2"
+        },
+        {
+          "x": 9,
+          "surface": "circle_2"
+        },
+        {
+          "x": 9,
+          "surface": "circle_1"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_1"
+        },
+        {
+          "x": 18,
+          "surface": "circle_1"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_1",
+          "projectile": true
+        },
+        {
+          "x": 27,
+          "surface": "circle_1"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_1"
+        },
+        {
+          "x": 36,
+          "surface": "circle_1"
+        },
+        {
+          "x": 36,
+          "surface": "circle_0"
+        },
+        {
+          "x": 31.5,
+          "surface": "circle_0"
+        },
+        {
+          "x": 27,
+          "surface": "circle_0"
+        },
+        {
+          "x": 22.5,
+          "surface": "circle_0",
+          "projectile": true
+        },
+        {
+          "x": 18,
+          "surface": "circle_0"
+        },
+        {
+          "x": 13.5,
+          "surface": "circle_0"
+        },
+        {
+          "x": 9,
+          "surface": "circle_0"
+        }
+      ]
     },
     {
       "id": "opera_09_shortcut",
@@ -403,25 +1874,53 @@
       "floors": [
         {
           "id": "opera_shortcut_safe",
-          "x": 3
+          "x": 8,
+          "surface": "hem"
+        },
+        {
+          "id": "opera_rest_09",
+          "contactSave": true,
+          "x": 8,
+          "surface": "hem"
         }
       ],
       "points": [],
       "exits": [
         {
           "room": "opera_02_auditorium",
-          "x": 1,
-          "gate": ""
+          "x": 2,
+          "gate": "",
+          "approach": {
+            "x": 1,
+            "y": 5.24,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_audit_west"
         },
         {
           "room": "opera_05_wings",
-          "x": 42,
-          "gate": ""
+          "x": 39,
+          "gate": "",
+          "approach": {
+            "x": 38,
+            "y": 10.64,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_pre_boss_floor"
         },
         {
           "room": "opera_10_sanctuary_stairs",
-          "x": 32,
-          "gate": "synergy"
+          "x": 33,
+          "gate": "synergy",
+          "approach": {
+            "x": 32,
+            "y": 10.64,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_reunion_safe_floor"
         }
       ],
       "roster": [
@@ -429,23 +1928,168 @@
           "id": "notary_guard",
           "count": 2,
           "segments": 3,
+          "setupHits": 1,
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1"
+          ],
           "setupSkill": "curtain_call_waltz"
-        },
-        {
-          "id": "sword_latch",
-          "count": 2,
-          "segments": 1
         },
         {
           "id": "reflection_statue",
           "count": 1,
-          "segments": 3
+          "segments": 3,
+          "setupHits": 1,
+          "placementIds": [
+            "reflection_statue_2"
+          ]
+        },
+        {
+          "id": "sword_latch",
+          "count": 2,
+          "segments": 1,
+          "setupHits": 1,
+          "placementIds": [
+            "sword_latch_3",
+            "sword_latch_4"
+          ]
         }
       ],
       "stations": 3,
       "stitchAnchors": 3,
       "singleSeams": 3,
-      "seamId": "opera_synergy_seam"
+      "seamId": "opera_synergy_seam",
+      "terrain": [
+        {
+          "id": "hem",
+          "rect": {
+            "x": -3,
+            "y": 5.05,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "access_step",
+          "rect": {
+            "x": 10,
+            "y": 6.85,
+            "width": 12,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "counterweight",
+          "rect": {
+            "x": 18,
+            "y": 8.65,
+            "width": 16,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "fly_door",
+          "rect": {
+            "x": 30,
+            "y": 10.45,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 27,
+          "y": 9.05,
+          "active": {
+            "x": 23,
+            "y": 8.75,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 36,
+          "y": 10.85,
+          "active": {
+            "x": 32,
+            "y": 10.55,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "reflection_statue_2",
+          "x": 29,
+          "y": 9.05,
+          "active": {
+            "x": 25,
+            "y": 8.75,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "sword_latch_3",
+          "x": 21,
+          "y": 5.45,
+          "active": {
+            "x": 17,
+            "y": 5.15,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "sword_latch_4",
+          "x": 17,
+          "y": 7.25,
+          "active": {
+            "x": 13,
+            "y": 6.95,
+            "width": 8,
+            "height": 1.2
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_09_shortcut",
+      "cameraBounds": {
+        "x": 0,
+        "y": 6.4,
+        "width": 46,
+        "height": 9.2
+      },
+      "hasFallLine": true,
+      "fallLine": -1.6,
+      "stationMarks": [
+        {
+          "x": 10,
+          "surface": "hem"
+        },
+        {
+          "x": 17,
+          "surface": "hem"
+        },
+        {
+          "x": 24,
+          "surface": "hem"
+        }
+      ],
+      "seamRuns": [
+        {
+          "count": 3,
+          "x": 8.9,
+          "y": 5.64,
+          "stepX": 7
+        }
+      ]
     },
     {
       "id": "opera_10_sanctuary_stairs",
@@ -455,40 +2099,75 @@
       "floors": [
         {
           "id": "opera_reunion_safe_floor",
-          "x": 3
+          "x": 4,
+          "surface": "landing"
         },
         {
           "id": "opera_reunion_lift_floor",
-          "x": 19
+          "x": 19,
+          "surface": "landing"
+        },
+        {
+          "id": "opera_rest_10",
+          "contactSave": true,
+          "x": 4,
+          "surface": "landing"
         }
       ],
       "points": [
         {
           "id": "valeria_reunion_lift",
-          "x": 18,
-          "platform": true
+          "x": 19,
+          "platform": true,
+          "surface": "landing"
         }
       ],
       "exits": [
         {
           "room": "hub_sanctuary",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "approach": {
+            "x": 0,
+            "y": -0.16,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "hub_lift",
-          "x": 42,
-          "gate": ""
+          "x": 7,
+          "gate": "",
+          "approach": {
+            "x": 6,
+            "y": 5.24,
+            "width": 2,
+            "height": 0.9
+          }
         },
         {
           "room": "opera_01_entry",
-          "x": 37,
-          "gate": "depart"
+          "x": 12,
+          "gate": "depart",
+          "approach": {
+            "x": 11,
+            "y": 5.24,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_entry_floor"
         },
         {
           "room": "opera_09_shortcut",
-          "x": 28,
-          "gate": "synergy"
+          "x": 27,
+          "gate": "synergy",
+          "approach": {
+            "x": 26,
+            "y": -0.16,
+            "width": 2,
+            "height": 0.9
+          },
+          "destinationFloor": "opera_shortcut_safe"
         }
       ],
       "roster": [
@@ -496,10 +2175,102 @@
           "id": "notary_guard",
           "count": 3,
           "segments": 1,
-          "setupSkill": "curtain_call_waltz",
-          "setupHits": 3
+          "setupHits": 3,
+          "placementIds": [
+            "notary_guard_0",
+            "notary_guard_1",
+            "notary_guard_2"
+          ],
+          "setupSkill": "curtain_call_waltz"
         }
-      ]
+      ],
+      "terrain": [
+        {
+          "id": "landing",
+          "rect": {
+            "x": -3,
+            "y": -0.35,
+            "width": 49,
+            "height": 0.35
+          },
+          "oneWay": false
+        },
+        {
+          "id": "newel",
+          "rect": {
+            "x": 28,
+            "y": 1.45,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "window",
+          "rect": {
+            "x": 12,
+            "y": 3.25,
+            "width": 20,
+            "height": 0.35
+          },
+          "oneWay": true
+        },
+        {
+          "id": "shelter_stair",
+          "rect": {
+            "x": 3,
+            "y": 5.05,
+            "width": 13,
+            "height": 0.35
+          },
+          "oneWay": true
+        }
+      ],
+      "placements": [
+        {
+          "id": "notary_guard_0",
+          "x": 35,
+          "y": 1.85,
+          "active": {
+            "x": 31,
+            "y": 1.55,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "notary_guard_1",
+          "x": 23,
+          "y": 3.65,
+          "active": {
+            "x": 19,
+            "y": 3.35,
+            "width": 8,
+            "height": 1.2
+          }
+        },
+        {
+          "id": "notary_guard_2",
+          "x": 10,
+          "y": 5.45,
+          "active": {
+            "x": 6,
+            "y": 5.15,
+            "width": 8,
+            "height": 1.2
+          }
+        }
+      ],
+      "eastBoundary": 46,
+      "backgroundSet": "opera_10_sanctuary_stairs",
+      "cameraBounds": {
+        "x": 0,
+        "y": 1.0,
+        "width": 46,
+        "height": 9.2
+      },
+      "hasFallLine": true,
+      "fallLine": -7.0
     }
   ],
   "rows": [

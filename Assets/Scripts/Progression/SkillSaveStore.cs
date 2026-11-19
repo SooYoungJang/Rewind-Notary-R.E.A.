@@ -25,7 +25,7 @@ namespace RewindNotary
         private string MigrationMarker => Path.Combine(directory, "legacy-imported");
         public SkillSaveStore(string directory, SkillCatalog catalog, int slot = 1)
         {
-            if (slot < 1 || slot > 3) throw new ArgumentOutOfRangeException(nameof(slot));
+            if (slot < 1 || slot > AutoTestRuntime.SlotCount) throw new ArgumentOutOfRangeException(nameof(slot));
             this.directory = directory; this.catalog = catalog; Slot = slot;
         }
         private string PathFor(bool debug) => Path.Combine(directory, SlotId + (debug ? "-debug.json" : ".json"));

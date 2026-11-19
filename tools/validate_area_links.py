@@ -4,7 +4,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-from story_link_baseline import reverse_exact
+from story_link_baseline import prior_level4_source, reverse_exact
 
 from area_link_source import DISTRICTS, delivery, handoff, room_table, scene_rows
 from localization_followup import approved_table, with_cast_hint
@@ -312,6 +312,11 @@ def validate_area_links(check, project, scripts):
         cuts = list(map(sword, rs))
         returns, elite = sum(map(technique, rs[6:8])), sum(map(technique, rs[8:]))
         previous_returns = sum(map(technique, original_clock['rooms'][6:8])) if a == 'clock' else returns
+        if a == 'opera':
+            path = 'Assets/Resources/Story/opera.json'
+            prior_opera = json.loads(prior_level4_source(path, (project / path).read_text()))
+            previous_returns = sum(map(technique, prior_opera['rooms'][6:8]))
+            verify(returns == 100, 'live opera returns provide 84 distinct stations and 16 finite preparations')
         if a == 'clock':
             verify(returns == 100, 'live clock returns provide 84 first switches and 16 finite preparations')
         after_boss = cumulative + sum(cuts[:6])

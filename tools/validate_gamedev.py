@@ -406,6 +406,9 @@ level_step2_metrics = validate_level_step2(check, PROJECT, scripts)
 from validate_level_step3 import validate_level_step3
 level_step3_metrics = validate_level_step3(check, PROJECT, scripts)
 
+from validate_level_step4 import validate_level_step4
+level_step4_metrics = validate_level_step4(check, PROJECT, scripts)
+
 # A lexical delimiter check catches accidental patch truncation, NOT C# compilation.
 for path in ASSETS.rglob("*.cs"):
     source = path.read_text()
@@ -420,6 +423,7 @@ for path in ASSETS.rglob("*.cs"):
     check(balanced and not stack, "C# delimiters balanced (not compile): " + path.name)
 
 warnings.extend([
+    "Opera step 4: fixed-tick paths and station opportunities are checked offline. Actual collider widths, slot-4 contacts, shortcut time and Game view require Unity.",
     "Clock step 3: fixed routes, first-visit supply and gate conditions checked statically. Third-slot contacts, timed recall and lift trips require Unity.",
     "Velvet step 2: ordinary-jump trajectories, seam budget and shortcut gates are static checks. The six checkpoint intervals and updated playthrough require Unity.",
     "Finale scenes: authored text, source wiring, checkpoint walks and 120 return-order projections are static checks. Hybrid captions, physics, menu input and real save/resume require Unity Play Mode.",
@@ -466,7 +470,7 @@ report = {"passed": len(checks), "errors": errors, "warnings": warnings, "checks
           "autotest_metrics": autotest_metrics,
           "feel_metrics": feel_metrics, "level_step1_metrics": level_step1_metrics,
           "level_step2_metrics": level_step2_metrics, "level_step3_metrics": level_step3_metrics,
-          "unity_executed": False, "csharp_compiled": False}
+          "level_step4_metrics": level_step4_metrics, "unity_executed": False, "csharp_compiled": False}
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, help='Write UTF-8 JSON atomically and print a short summary.')
 args = parser.parse_args()

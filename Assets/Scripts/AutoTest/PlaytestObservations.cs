@@ -63,13 +63,26 @@ namespace RewindNotary
             }
             return faces.ToArray();
         }
+        internal bool OnOperaLift(out Bounds deck)
+        {
+            deck = default;
+            if (raisedLift == null) return false;
+            var lift = raisedLift.GetComponent<Collider2D>();
+            if (!lift.IsTouching(player.GetComponent<Collider2D>())) return false;
+            deck = lift.bounds;
+            return Mathf.Abs(player.Body.position.y - deck.max.y) <= .12f;
+        }
+
         internal bool RidingSurface(StorySurface surface) => surface.Moving &&
             surfaces[surface.id].IsTouching(player.GetComponent<Collider2D>());
         internal WaveTarget2D ClockTargetOnTier => roomTargets.Find(t => !t.State.Cleared &&
             Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f);
+        internal WaveTarget2D OperaNearbyTarget => roomTargets.Find(t => t.isActiveAndEnabled && !t.State.Cleared &&
+            Mathf.Abs(t.transform.position.y - player.Body.position.y) < .2f &&
+            Mathf.Abs(t.transform.position.x - player.Body.position.x) <= 1.8f);
         internal WaveTarget2D UnclearedClockTarget => roomTargets.Find(t => !t.State.Cleared);
         internal WaveTarget2D DistrictWaveTarget => Room == null ? null :
-            Room.stage == "clock" ? UnclearedClockTarget : RouteTarget;
+            (Room.stage == "clock" || Room.stage == "opera") ? UnclearedClockTarget : RouteTarget;
         // Inactive targets still belong to the wave, including queued velvet entry enemies.
         internal int WaveTargetCount => roomTargets.Count + entryWave.Count;
         internal int ClearedWaveTargets
