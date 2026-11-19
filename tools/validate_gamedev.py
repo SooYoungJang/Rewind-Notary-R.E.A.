@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only artifact checks. This does not compile or run Unity/C#.
+"""Artifact checks with an optional isolated Unity terrain audit.
 
 Run from any directory: python3 tools/validate_gamedev.py
 Dependencies already present in the authoring environment: Pillow, PyYAML, NumPy.
@@ -8,6 +8,7 @@ from pathlib import Path
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 import wave
@@ -479,7 +480,18 @@ report = {"passed": len(checks), "errors": errors, "warnings": warnings, "checks
           "level_step4_metrics": level_step4_metrics, "level_step5_metrics": level_step5_metrics, "level_step6_metrics": level_step6_metrics, "unity_executed": False, "csharp_compiled": False}
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, help='Write UTF-8 JSON atomically and print a short summary.')
+parser.add_argument('--unity-editor', default=os.environ.get('UNITY_EDITOR'),
+                    help='Unity executable to compile and measure all authored terrain in Edit Mode (default: UNITY_EDITOR).')
 args = parser.parse_args()
+if args.unity_editor:
+    from validate_terrain_bounds import measure_editor_tiles
+    terrain = level_step6_metrics['terrainBounds']
+    try:
+        terrain['editorReadings'] = measure_editor_tiles(args.unity_editor, PROJECT, terrain, check)
+        report.update(unity_executed=True, csharp_compiled=True)
+    except (OSError, RuntimeError, ValueError) as e:
+        check(False, f'Unity terrain audit failed: {e}')
+    report['passed'] = len(checks)
 serialized = json.dumps(report, ensure_ascii=False, indent=2) + '\n'
 if args.output:
     temporary = args.output.with_name(args.output.name + '.tmp')

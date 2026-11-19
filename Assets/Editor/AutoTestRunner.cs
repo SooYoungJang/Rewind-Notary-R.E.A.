@@ -11,6 +11,15 @@ using Debug = UnityEngine.Debug;
 // Play loop finishes can terminate it before even the first Update.
 public static class AutoTestRunner
 {
+    public static void VerifyTerrain()
+    {
+        var args = Environment.GetCommandLineArgs();
+        int index = Array.IndexOf(args, "-terrainBoundsPath");
+        if (index < 0 || index + 1 == args.Length)
+            throw new ArgumentException("VerifyTerrain requires -terrainBoundsPath <output.json>");
+        RepresentativeArea.AuditAuthoredTerrain(args[index + 1]);
+    }
+
     public static void Run()
     {
         if (!Application.isBatchMode) throw new InvalidOperationException("Use -batchmode for AutoTestRunner.Run.");
@@ -24,6 +33,7 @@ public static class AutoTestRunner
         try
         {
             result.Write(output);
+            RepresentativeArea.AuditAuthoredTerrain(Path.Combine(output, "terrain-bounds.json"));
             foreach (string folder in new[] { "Assets", "Packages", "ProjectSettings" })
                 CopyTree(Path.Combine(project, folder), Path.Combine(clone, folder));
             // Separate project lock and a rendered Game view for IMGUI checkpoints.

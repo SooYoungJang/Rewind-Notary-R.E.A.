@@ -45,6 +45,14 @@ namespace RewindNotary
                 visual.sprite = Room.stage == "gallery" ? OperaSprite("gallery-gesso", 1.6f) : Room.stage == "opera" ? OperaSprite("opera-inlay", 1.6f) : plated ? BrassSprite() : WeaveSprite();
                 visual.drawMode = SpriteDrawMode.Tiled;
                 visual.size = new Vector2(width, height);
+                if (plated && solid)
+                {
+                    // The box root is still unrotated and unit scale here, including during ramp creation.
+                    var drawn = visual.bounds.size;
+                    if (!(drawn.x > 0 && drawn.y > 0))
+                        throw new System.InvalidOperationException(Room.id + "/" + id + " has empty tile bounds");
+                    art.transform.localScale = new Vector3(width / drawn.x, height / drawn.y, 1);
+                }
             }
             if (!woven && !plated) go.transform.localScale = new Vector3(width, height, 1);
             if (solid)

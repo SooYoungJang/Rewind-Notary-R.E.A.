@@ -12,6 +12,7 @@ from validate_fixed_surface_route import Face, fixed_edges, link, paths_from, ro
 from validate_level_step1 import contains, number
 from validate_level_step4 import fixed_walk, shortest_return
 from validate_level_step5 import first_landing, physics_from_project
+from validate_terrain_bounds import validate_terrain_bounds
 
 
 def camera_view(room, layers, art):
@@ -318,7 +319,8 @@ def validate_level_step6(check,project,scripts):
                 contactCameraSaturation=saturation,firstReturnStations=station_order,stationOnlyThresholds=[station_order[29],station_order[79]],
                 firstReturnSupply=[supply(r) for r in rooms[6:8]],resetWitness=reset_witness,
                 probeOrderThresholds=[route_uses[29],route_uses[79]],shortcut=trip,priorTerrain=base,galleryTerrain=count,
-                combinedTerrain=base+count,paintGaps=dynamic_count,unityMeasured=False)
+                combinedTerrain=base+count,paintGaps=dynamic_count,unityMeasured=False,
+                terrainBounds=validate_terrain_bounds(verify,project,scripts))
 
 
 if __name__ == '__main__':
