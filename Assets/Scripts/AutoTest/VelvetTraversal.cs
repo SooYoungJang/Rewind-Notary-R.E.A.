@@ -76,20 +76,37 @@ namespace RewindNotary
             }
             var target = Area.RouteTarget;
             bool water = room.id == "velvet_05_return";
-            if (seamIndex == room.stitchAnchors)
+            if (seamIndex == room.stitchAnchors || room.id == "velvet_03_gallery")
             {
-                if (water && target != null) return false;
+                if (!ReturnBankReady(room)) return true;
+                if (target != null) return false;
                 if (water && !Has("scene_floor:velvet:waterway_splice_floor"))
                 {
                     var mark = Array.Find(room.floors, f => f.contactSave);
                     ClockPosition(mark.surface, mark.x);
                     return true;
                 }
-                var door = Area.ForwardDoor;
-                if (door != null && TryFaceAt(door.x, door.approach.y + door.approach.height / 2, out var exit) &&
-                    ClockPosition(exit.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position)) keys.Tap(KeyCode.F);
+                TakeReturnDoor();
                 return true;
             }
+            return SewReturnSeam(room, target, water);
+        }
+
+        private bool ReturnBankReady(StoryRoom room)
+        {
+            if (seamIndex <= room.singleSeams) return true;
+            int last = seamIndex - 1;
+            string id = room.id + ":seam_" + last;
+            var span = StitchSurface2D.All.Find(s => s.TargetId == id);
+            if (span.Available) return true;
+            var crossing = room.SeamRun(last, out int offset);
+            float bank = crossing.x + crossing.stepX * offset + Mathf.Sign(crossing.stepX) * 1.85f;
+            MoveTo(bank, .10f);
+            return false;
+        }
+
+        private bool SewReturnSeam(StoryRoom room, WaveTarget2D target, bool water)
+        {
             var run = room.SeamRun(seamIndex, out int offset);
             float x = run.x + offset * run.stepX;
             if (target != null && (water && target.transform.position.x < x - 2.2f ||
@@ -149,6 +166,12 @@ namespace RewindNotary
             else if (Player.Grounded)
                 keys.Cast();
             return true;
+        }
+        private void TakeReturnDoor()
+        {
+            var door = Area.ForwardDoor;
+            if (door != null && TryFaceAt(door.x, door.approach.y + door.approach.height / 2, out var exit) &&
+                ClockPosition(exit.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position)) keys.Tap(KeyCode.F);
         }
         internal bool RideCounterweight(string carrierId, string bank, float dismountHeight)
         {

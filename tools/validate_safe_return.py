@@ -6,10 +6,34 @@ import re
 import subprocess
 
 from validate_bell_reentry import sword_parameters
-from validate_fixed_surface_route import fixed_edges, link
+from validate_fixed_surface_route import link
 from validate_level_step1 import number
 from validate_level_step5 import physics_from_project
 from validate_walk_contact import velvet_deck
+
+
+def return_edges(deck, physics):
+    edges = {}
+    for face in deck:
+        if face.wall:
+            continue
+        links = []
+        for target in deck:
+            step = link(deck, face, target, physics)
+            if step:
+                launch, land, direction = step
+                links.append((abs(target.top - face.top),
+                              dict(to=target.name, launch=launch, land=land, direction=direction)))
+        if len(links) == 3:
+            for a, b in ((0, 1), (0, 2), (1, 2)):
+                if links[a][0] > links[b][0]:
+                    links[a], links[b] = links[b], links[a]
+        elif len(links) <= 16:
+            links.sort(key=lambda item: item[0])
+        else:
+            raise ValueError(f'{face.name} requires the large-partition Mono sort')
+        edges[face.name] = [edge for _, edge in links]
+    return edges
 
 
 def replay_safe_return(project, scripts):
@@ -21,16 +45,16 @@ def replay_safe_return(project, scripts):
         if not room.get('seamRuns'):
             continue
         deck = velvet_deck(room, scripts['RepresentativeRoomLayout'], True)
-        edges = fixed_edges(deck, physics)
         room['faces'] = [vars(f) for f in deck]
-        room['edges'] = {a.name: [dict(to=b.name, launch=x, land=y, direction=d)
-                                  for b in bs for x, y, d in [link(deck, a, b, physics)]]
-                         for a, bs in edges.items()}
+        room['edges'] = return_edges(deck, physics)
         rooms[room['id']] = room
     fixture = json.loads((project / 'tools/run28-safe-return.json').read_text())
-    _, swing, profile, width, height = sword_parameters(project, scripts, fixture['swordUses'])
+    _, _, _, width, height = sword_parameters(project, scripts, fixture['swordUses'])
+    combo = scripts['CombatMotor2D'].split('AttackSpec[] PlayerCombo')[1].split('};')[0]
+    swings = [[float(n.strip().rstrip('f')) for n in spec.split(',')]
+              for spec in re.findall(r'new AttackSpec\(([^)]+)\)', combo)]
     names = ['FirstDepartureBot', 'VelvetTraversal', 'ClockTraversal', 'WaveTargetState', 'PlaytestObservations',
-             'FirstDeparture', 'StitchSurface2D']
+             'FirstDeparture', 'StitchSurface2D', 'CombatMotor2D']
     rows = [row for row in doc['rows'] if row['sceneId'] == 'first_transfer']
     resume = {floor['id']: r['id'] for r in doc['rooms'] for floor in r['floors']}
     waves = json.loads((project / 'Assets/Resources/Waves/test-stage.json').read_text())
@@ -40,8 +64,15 @@ def replay_safe_return(project, scripts):
                        ('ParryWindowSeconds', 'ParryRecoverySeconds', 'ParrySuccessGuardSeconds')},
                 immunity=float(re.search(r'CreateActor\("Rea",[^\n]+?, \d+, ([.\d]+)f', scripts['GameBootstrap'])[1]),
                 physics=physics, sources={k: scripts[k] for k in names}, fixture=fixture,
+                loom=json.loads((project / 'tools/run29-safe-return.json').read_text()),
                 silver=next(s for s in catalog['skills'] if s['skillId'] == 'silver_stitch'),
-                swing=swing, sword=profile, targetSize=[width, height],
+                swordSkill=next(s for s in catalog['skills'] if s['skillId'] == 'basic_sword'),
+                initialSwordUses=int(re.search(r'InitialSwordUses = (\d+)', scripts['SkillDefinition'])[1]),
+                grace=number(scripts['CombatMotor2D'], 'ComboGraceSeconds'),
+                airDrag=number(scripts['CombatMotor2D'], 'AirDrag'),
+                jumpBuffer=number(scripts['PlayerController2D'], 'JumpBuffer'),
+                coyote=number(scripts['PlayerController2D'], 'CoyoteTime'),
+                swings=swings, targetSize=[width, height],
                 idle=int(re.search(r'now - lastProgress > (\d+)', scripts['AutoTestDriver'])[1]))
     output = subprocess.run(['node', str(project / 'tools/replay_safe_return.js')], input=json.dumps(data),
                             check=True, stdout=subprocess.PIPE, text=True)
@@ -61,7 +92,7 @@ def validate_safe_return(check, project, scripts):
     manual = result['manual']
     check(bool(manual.get('latchHit')) and manual['totals'] == [['velvet_05_return', 16]],
           'QA28 / independent movement, Q, J and F reach the reunion latch and complete the waterway at 16')
-    run = result['campaign']
+    run = result['allSeams']
     story = json.loads((project / 'Assets/Resources/Story/representative.json').read_text())
     expected = Counter()
     for room in story['rooms']:
@@ -88,6 +119,60 @@ def validate_safe_return(check, project, scripts):
           len(run['credits']) == 80 and run['credits'][29]['target'].startswith('velvet_01_entry:') and
           run['credits'][-1]['target'] == 'velvet_04_arena:seam_15:support',
           'QA28 / ordinary inputs yield 80 distinct activations on the five-room first return and F on fixed ground')
+    loom = 'velvet_02_loom'
+    gallery = 'velvet_03_gallery'
+    arena = 'velvet_04_arena'
+    itinerary = [water, 'velvet_01_entry', loom, gallery, arena]
+    guard_roster = {}
+    for room in story['rooms']:
+        if room['id'] in itinerary:
+            index = 0
+            for group in room['roster']:
+                for _ in range(group['count']):
+                    if group['id'] == 'notary_guard':
+                        guard_roster[f"{room['id']}:notary_guard_{index}"] = (group['segments'], group.get('setupHits', 1))
+                    index += 1
+
+    def cleared_on_route(run, route):
+        receipts = Counter(e['target'] for e in run['credits'])
+        for target, (count, setup_hits) in guard_roster.items():
+            if target.split(':')[0] in route:
+                fight = [e for e in run['combat'] if e['target'] == target]
+                if (receipts[target + ':posture'] != count * setup_hits or
+                        [e['action'] for e in fight] != (['setup'] * (setup_hits - 1) + ['open', 'cut']) * count or
+                        [e['remaining'] for e in fight if e['action'] == 'cut'] != list(reversed(range(count)))):
+                    return False
+        return ([d['room'] for d in run['departures']] == route[:-1] and
+                [d['to'] for d in run['departures']] == route[1:] and
+                all(remaining == 0 for d in run['departures'] for _, remaining in d['guards']) and
+                run['safeCall'] and run.get('transferFlags') == ['first_transfer_seen', 'returned_for_mid_invest'] and
+                run.get('destination') == ['hub_workroom', 'workroom_safe_floor'])
+
+    for key in ('loom', 'loomCrossing', 'manualLoom'):
+        run = result[key]
+        target = run['start']['target']
+        duel = [e for e in run['combat'] if e['target'] == target]
+        check(run['start']['uses'] == 52 and run['start']['remaining'] == 4 and
+              run['start']['fixedFace'] is None and run['start']['support'] == loom + ':seam_11' and
+              run.get('bank', {}).get('face') == 'reed_0' and
+              [e['action'] for e in duel] == ['open', 'cut'] * 4 and
+              all(e['support'] == 'floor' for e in duel if e['action'] == 'cut') and
+              cleared_on_route(run, itinerary[2:]) and run['end']['uses'] == 80,
+              'QA29 / ' + key + ' leaves the captured loom span, clears guard 2 and finishes the return')
+    for key in ('campaign', 'campaign60', 'campaignOffset'):
+        run = result[key]
+        check(cleared_on_route(run, itinerary) and run['end']['uses'] == 80 and
+              len(run['credits']) == len({e['use'] for e in run['credits']}) == 80 and
+              any(e['target'] == loom + ':seam_11:support' for e in run['credits']) and
+              run['credits'][-1]['target'].startswith(arena + ':') and
+              [r for r, _ in run['totals']] == itinerary,
+              'QA29 / ' + key + ' crosses the last loom span, clears every guard before each door and reaches 80 in the arena')
+    held, still = (result[k] for k in ('heldAttack', 'stillAttack'))
+    check(held['swingTrace'][-1]['support'] == 'reed_1' and
+          all(s['vx'] == held['swingTrace'][0]['vx'] > 0 for s in held['swingTrace']) and
+          still['end']['support'] == still['start']['support'] and all(s['vx'] == 0 for s in still['swingTrace']) and
+          not held['combat'] and not still['combat'],
+          'QA29 / held and released direction during the same swing at the captured position')
     return result
 
 

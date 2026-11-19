@@ -37,6 +37,11 @@ function method(file, signature, args) {
     methods[name] = compile(body(sources[file], signature), args);
 }
 method('VelvetTraversal', 'bool SewReturnRoute(');
+if (sources.VelvetTraversal.includes('bool SewReturnSeam(')) {
+    method('VelvetTraversal', 'bool SewReturnSeam(', 'room, target, water');
+    method('VelvetTraversal', 'bool ReturnBankReady(', 'room');
+    method('VelvetTraversal', 'void TakeReturnDoor(');
+}
 method('VelvetTraversal', 'bool RideCounterweight(', 'carrierId, bank, dismountHeight');
 method('VelvetTraversal', 'bool MoveTo(', 'x, tolerance = .14');
 method('VelvetTraversal', 'void ObserveSilver(', 'e');
@@ -45,6 +50,7 @@ method('ClockTraversal', 'StorySurface FixedFaceAt(', 'x, y');
 method('ClockTraversal', 'bool ReachedCombatSurface(', 'support, targetX');
 method('ClockTraversal', 'void ClearStep(');
 method('FirstDepartureBot', 'bool Walk(', 'to, tolerance, approachingLaunch = false');
+method('FirstDepartureBot', 'bool BlockedAtStep(', 'facing');
 if (sources.FirstDepartureBot.includes('void JumpOverStep('))
     method('FirstDepartureBot', 'void JumpOverStep(', 'facing, approachingLaunch = false');
 method('FirstDepartureBot', 'bool Aim(', 'x');
@@ -62,24 +68,40 @@ const setup = compile(body(sources.WaveTargetState, 'bool Setup('), 'use');
 const cut = compile(body(sources.WaveTargetState, 'bool Cut('), 'use, now');
 const onFloor = compile(body(sources.StitchSurface2D, 'bool PlayerOnFloor()')
     .replace('Vector3 delta = player.transform.position - transform.position;', 'let delta = separation;'));
+const move = compile(body(sources.CombatMotor2D, 'void Move(')
+    .replace(' + Vector2.right * carrierSpeed', '.onCarrier(carrierSpeed)'), 'speed');
+class Vector2 {
+    constructor(x, y) { this.x = x; this.y = y; }
+    onCarrier(speed) { return new Vector2(this.x + speed, this.y); }
+}
 const controls = ['A', 'D', 'Space', 'F', 'J', 'L', 'Q', 'Return'];
 const KeyCode = Object.fromEntries(controls.map(k => [k, k]));
 const SkillRules = {SilverStitch: 'silver_stitch', BasicSword: 'basic_sword'};
 const round = n => Math.round(n * 1000) / 1000;
 const inside = (r, p) => r.x <= p.x && p.x <= r.x + r.width && r.y <= p.y && p.y <= r.y + r.height;
 
-function simulate(mode) {
-    const saved = mode !== 'campaign';
+function simulate(mode, frameDt = dt, firstProbe = 0) {
+    const waterStart = mode === 'recovery' || mode === 'manual';
+    const swingProbe = mode === 'heldAttack' || mode === 'stillAttack';
+    const loomStart = mode === 'loom' || mode === 'loomCrossing' || mode === 'manualLoom' || swingProbe;
+    const start = loomStart ? input.loom : fixture;
+    const saved = loomStart || waterStart;
     const pos = {x: 0, y: 0}, vel = {x: 0, y: 0};
-    const result = {threatContacts: [], waterLandings: [], combat: [], credits: [], totals: [], waterSave: false, waterExit: null, safeCall: false};
+    const result = {threatContacts: [], waterLandings: [], combat: [], credits: [], totals: [], departures: [], waterSave: false, waterExit: null, safeCall: false};
     let parryUntil = 0, defenseUntil = 0, guardUntil = 0, stunUntil = 0, immuneUntil = 0;
-    let room, deck, support, seams, guards, carrier, tick = 0, uses = saved ? fixture.silverUses : 0;
+    let room, deck, support, seams, guards, carrier, tick = 0, uses = saved ? start.silverUses : 0;
+    let swordUses = input.initialSwordUses + (saved ? start.swordUses : input.loom.swordUsesAtDeparture);
+    let chainProfile, swordUse, comboStep = 0, swing = input.swings[0];
     let down = new Set(), previous = new Set(), nextCast = 0, swingAt = -Infinity, delivered = true, serial = 0;
-    const now = () => tick * dt;
-    const player = {Body: {position: pos, linearVelocity: vel}, Facing: 1, Health: {get Dead() { return this.Current <= 0; }, Current: fixture.hp, Maximum: fixture.hp},
+    let contacts = new Set(), sides = [];
+    let fixedTick = 0, jumpAt = -Infinity, lastGrounded = -Infinity, cutJump = false;
+    const now = () => tick * frameDt;
+    const player = {Body: {position: pos, linearVelocity: vel}, Facing: 1, Health: {get Dead() { return this.Current <= 0; }, Current: start.hp, Maximum: start.hp},
         get Stunned() { return now() < stunUntil; },
-        get Grounded() { return !!support; }, get Attacking() { return now() < swingAt + input.swing[0]; }};
-    const flags = new Set(fixture.flags);
+        get Grounded() { return !!support; }, get Attacking() { return now() < swingAt + swing[0]; }};
+    player.collider = {get bounds() { return {center: pos, max: {y: pos.y + bodyHeight}}; },
+        GetContacts(list) { list.splice(0, list.length, ...sides); }};
+    const flags = new Set(start.flags);
     const keys = {Hold: k => down.add(k), Tap: k => { if (!previous.has(k)) down.add(k); },
         Cast: () => keys.Tap('Q'), GetKeyDown: k => down.has(k) && !previous.has(k)};
     const area = {get Room() { return room; }, get RouteTarget() { return routeTarget(env); },
@@ -87,10 +109,14 @@ function simulate(mode) {
         get OnReturnFloor() { return support && !support.temporary && support !== carrier && !player.Attacking && !player.Stunned && now() >= defenseUntil; },
         StandingOn: id => support?.name === id, RidingSurface: s => carrier && support === carrier && carrier.name === s.id,
         StandingOnRamp: () => false, ProbeSurfaceBounds: s => ({max: {y: s.id === carrier?.name ? carrier.top : s.top}})};
-    const env = {KeyCode, SkillRules, Player: player, Area: area, keys, Time: {get time() { return now(); }},
+    const env = {KeyCode, SkillRules, Player: player, Area: area, keys,
+        Time: {get time() { return now(); }, get fixedTime() { return fixedTick * dt; }, get frameCount() { return tick; }},
         Mathf: {Abs: Math.abs, Sign: Math.sign}, FixedSurfaceRoute: {AimTolerance: aimTolerance, IsFloor: s => !s.wall && !s.travelY},
         LevelBuilder: {GroundLayer: 1}, Physics2D: {Raycast: ray}, raised: h => ({x: pos.x, y: pos.y + h}),
-        OnSurface: s => s === support, ReadTerrain() {}, BlockedAtStep: () => false,
+        OnSurface: s => player.Grounded && contacts.has(s) && Math.abs(pos.y - s.top) <= .12,
+        ReadTerrain() {}, walkContacts: [], blockedBy: null, blockedFrame: -1, blockedDirection: 0, blockedX: 0, blockedSince: 0,
+        BlockedWalkSeconds: Number(sources.FirstDepartureBot.match(/BlockedWalkSeconds = ([.\d]+)f/)[1]),
+        BlockedWalkSlop: Number(sources.FirstDepartureBot.match(/BlockedWalkSlop = ([.\d]+)f/)[1]),
         Has: flag => flags.has(flag), SafeSwingLead: .65, NeedsEntryWave: false, HasBridge: false, GatheringSilver: true,
         InEnding: false, get Room() { return room; }, get roomTargets() { return guards; },
         Record: {Get: () => ({acquired: true}), get firstTransferPending() { return uses >= silver.stage3At; }},
@@ -117,6 +143,16 @@ function simulate(mode) {
             return false;
         }}};
     for (const [name, fn] of Object.entries(methods)) env[name] = (...args) => fn(env, ...args);
+    const motor = {Vector2, Health: {IsPlayer: true, get Dead() { return player.Health.Dead; }},
+        get Grounded() { return player.Grounded; }, get Stunned() { return player.Stunned; },
+        get Facing() { return player.Facing; }, get Attacking() { return player.Attacking; },
+        get attackStartedAt() { return swingAt; }, get chainProfile() { return chainProfile; },
+        Face(v) { if (Math.abs(v) >= .01) player.Facing = Math.sign(v); },
+        Body: {get linearVelocity() { return vel; }, set linearVelocity(v) { Object.assign(vel, v); }},
+        Temporal: null, Defense: null, BenefactorSkills: null, carrierSpeed: 0,
+        Time: {get time() { return now(); }, fixedDeltaTime: dt},
+        AirDrag: input.airDrag, AirBrake: brake, AirAcceleration: accel,
+        Mathf: {Abs: Math.abs, MoveTowards: (v, goal, by) => v + Math.sign(goal-v) * Math.min(by, Math.abs(goal-v))}};
 
     function enter(id, floorId) {
         room = rooms[id];
@@ -127,7 +163,14 @@ function simulate(mode) {
         pos.x = floor.x;
         support = floor.surface ? deck.find(f => f.id === floor.surface) : env.FixedFaceAt(pos.x, 0);
         pos.y = support.top;
+        contacts = new Set([support]);
+        sides = [];
         vel.x = vel.y = 0;
+        if (swordUse) swordUse.Closed = true;
+        swingAt = -Infinity;
+        delivered = true;
+        jumpAt = lastGrounded = -Infinity;
+        cutJump = false;
         previous = new Set();
         parryUntil = defenseUntil = guardUntil = stunUntil = 0;
         player.Health.Current = player.Health.Maximum;
@@ -230,21 +273,34 @@ function simulate(mode) {
                 if (stage === 1) credit(use, s.TargetId);
             } else use.Closed = true;
         }
-        if (canAct && keys.GetKeyDown('J') && !player.Attacking) { swingAt = now(); delivered = false; }
-        if (!delivered && now() - swingAt >= input.swing[1]) {
+        if (swordUse && !player.Attacking && (comboStep === chainProfile.comboLimit || now() > swingAt + swing[0] + input.grace))
+            swordUse.Closed = true;
+        if (canAct && keys.GetKeyDown('J') && !player.Attacking) {
+            swingAt = now(); delivered = false;
+            if (!swordUse || swordUse.Closed) {
+                const skill = input.swordSkill;
+                chainProfile = skill.stages[Number(swordUses >= skill.stage2At) + Number(swordUses >= skill.stage3At)];
+                swordUse = {SkillId: SkillRules.BasicSword, Closed: false};
+                comboStep = 0;
+            }
+            swing = input.swings[comboStep++];
+        }
+        if (!delivered && now() - swingAt >= swing[1]) {
             delivered = true;
             const latch = room.points.find(p => p.id === 'reunion_latch');
-            if (mode === 'manual' && latch && Math.abs(latch.x - pos.x - face * input.swing[3]) <= input.swing[4] / 2 &&
-                Math.abs(pos.y) <= input.swing[5] / 2) result.latchHit = {tick, feet: [round(pos.x), round(pos.y)]};
-            const sword = {SkillId: SkillRules.BasicSword, Closed: false};
+            if (mode === 'manual' && latch && Math.abs(latch.x - pos.x - face * swing[3]) <= swing[4] / 2 &&
+                Math.abs(pos.y) <= swing[5] / 2) result.latchHit = {tick, feet: [round(pos.x), round(pos.y)]};
+            const wave = comboStep === chainProfile.comboLimit ? chainProfile.waveReach : 0;
             for (const g of guards) {
-                if (hit(g, pos.x + face * input.swing[3], pos.y + 1, input.swing[4], input.swing[5]) && cut(g.State, sword, now()))
-                    result.combat.push({tick, target: g.id, action: 'cut', x: round(pos.x)});
+                if (hit(g, pos.x + face * (swing[3] + wave / 2), pos.y + 1, swing[4] + wave, swing[5]) && cut(g.State, swordUse, now())) {
+                    if (!swordUse.counted) { swordUses++; swordUse.counted = true; }
+                    result.combat.push({tick, target: g.id, action: 'cut', remaining: g.State.Remaining,
+                        x: round(pos.x), y: round(pos.y), support: support?.name});
+                }
             }
         }
         for (const g of guards) {
             const p = g.transform.position;
-            if (g.State.LastSword && !player.Attacking) g.State.LastSword.Closed = true;
             if (!inside(p.active, pos) || g.State.Cleared || g.State.prepared) { g.strikeAt = Infinity; continue; }
             const threat = Math.abs(p.x - pos.x) <= g.kind.attackReach + radius &&
                 Math.abs(p.y + 1 - pos.y - bodyHeight / 2) <= 1.1 + bodyHeight / 2;
@@ -262,6 +318,7 @@ function simulate(mode) {
                         stunUntil = now() + .18;
                         immuneUntil = now() + input.immunity;
                         nextCast = defenseUntil = 0;
+                        if (swordUse) swordUse.Closed = true;
                         swingAt = -Infinity;
                         delivered = true;
                         for (const s of seams) if (s.Installed) s.use.Closed = true;
@@ -277,7 +334,7 @@ function simulate(mode) {
             if (s.retiring && !s.PlayerOnFloor()) { s.retiring = false; s.floor.enabled = false; }
             if (!s.Installed) continue;
             if (now() >= s.until) retire(s);
-            else if (s.stage >= 2 && support === s && s.PlayerOnFloor()) credit(s.use, s.TargetId + ':support');
+            else if (s.stage >= 2 && player.Grounded && contacts.has(s) && s.PlayerOnFloor()) credit(s.use, s.TargetId + ':support');
         }
     }
 
@@ -285,28 +342,33 @@ function simulate(mode) {
         const axis = +down.has('D') - +down.has('A');
         if (carrier) {
             const old = carrier.top;
-            carrier.top = carrier.base + carrier.travelY * (.5 - .5 * Math.cos((now() + dt - carrier.entered) * 2 * Math.PI / carrier.period));
+            carrier.top = carrier.base + carrier.travelY * (.5 - .5 * Math.cos(((fixedTick + 1) * dt - carrier.entered) * 2 * Math.PI / carrier.period));
             carrier.bottom = carrier.top - carrier.rect.height;
             if (support === carrier) pos.y += carrier.top - old;
         }
-        if (support && !player.Stunned && now() >= defenseUntil && keys.GetKeyDown('Space')) { support = null; vel.y = jump; }
-        const desired = axis * speed;
-        if (now() < defenseUntil) vel.x = 0;
-        else if (!player.Stunned) {
-            if (axis && (!support || !player.Attacking)) player.Facing = axis;
-            if (support) vel.x = !axis && now() - swingAt < input.sword.stepSeconds ? player.Facing * input.sword.stepSpeed : desired;
-            else {
-                const rate = (axis ? accel : brake) * dt;
-                vel.x += Math.max(-rate, Math.min(rate, desired - vel.x));
-            }
+        if (player.Grounded) lastGrounded = now();
+        if (now() - lastGrounded <= input.coyote && now() - jumpAt <= input.jumpBuffer && !player.Stunned && now() >= defenseUntil) {
+            support = null; vel.y = jump;
+            lastGrounded = jumpAt = -Infinity;
         }
-        if (!down.has('Space') && previous.has('Space') && vel.y > 0) vel.y *= .5;
+        if (now() < defenseUntil) vel.x = 0;
+        else move(motor, axis * speed);
+        if (cutJump && vel.y > 0) vel.y *= .5;
+        cutJump = false;
         const faces = geometry();
+        contacts = new Set();
+        sides = [];
         let nx = pos.x + vel.x * dt;
         for (const f of faces) {
             if (f.one_way || f === support || f.bottom >= pos.y + bodyHeight || f.top <= pos.y + .001) continue;
-            if (vel.x > 0 && pos.x <= f.left - radius + .001 && nx > f.left - radius) nx = f.left - radius;
-            if (vel.x < 0 && pos.x >= f.right + radius - .001 && nx < f.right + radius) nx = f.right + radius;
+            if (vel.x > 0 && pos.x <= f.left - radius + .001 && nx > f.left - radius) { nx = f.left - radius; contacts.add(f); }
+            if (vel.x < 0 && pos.x >= f.right + radius - .001 && nx < f.right + radius) { nx = f.right + radius; contacts.add(f); }
+        }
+        for (const f of contacts) {
+            f.gameObject = {layer: env.LevelBuilder.GroundLayer};
+            f.bounds = {max: {y: f.top}};
+            sides.push({enabled: true, collider: player.collider, otherCollider: f,
+                normal: {x: -Math.sign(vel.x)}, point: {x: vel.x > 0 ? f.left : f.right}});
         }
         if (Math.abs(nx - pos.x - vel.x * dt) > .00001) vel.x = 0;
         pos.x = nx;
@@ -316,19 +378,47 @@ function simulate(mode) {
         const land = faces.filter(f => overlap(f) && vel.y < 0 && ny <= f.top && (pos.y + .00001 >= f.top ||
             f === carrier && pos.y >= f.top - .065 && (!support || support.top <= f.top)));
         support = land.sort((a, b) => b.top - a.top)[0];
-        if (support) { pos.y = support.top; vel.y = 0; }
+        if (support) { pos.y = support.top; vel.y = 0; contacts.add(support); }
         else {
             const ceiling = faces.find(f => !f.one_way && overlap(f) && vel.y > 0 &&
                 pos.y + bodyHeight <= f.bottom && ny + bodyHeight >= f.bottom);
             pos.y = ceiling ? ceiling.bottom - bodyHeight : ny;
-            if (ceiling) vel.y = 0;
+            if (ceiling) { vel.y = 0; contacts.add(ceiling); }
         }
     }
 
-    enter(fixture.room, rooms[fixture.room].floors[0].id);
-    if (saved) {
+    enter(start.room, rooms[start.room].floors[0].id);
+    if (loomStart) {
+        Object.assign(pos, {x: start.x, y: start.y});
+        support = seams.find(s => pos.x >= s.left && pos.x <= s.right && Math.abs(pos.y - s.top) < .01);
+        support.floor.enabled = support.retiring = true;
+        contacts = new Set([support]);
+        env.sewingRoom = room.id;
+        env.seamIndex = seams.length - Number(mode === 'loomCrossing');
+        env.ObserveSilver({kind: 'valid_use', skillId: SkillRules.SilverStitch, targetId: support.TargetId + ':support'});
+        if (area.RouteTarget?.id !== start.target || area.RouteTarget.State.Remaining !== start.targetSegments ||
+            player.Grounded !== start.grounded || Boolean(area.OnReturnFloor) !== start.safeFloor)
+            throw Error('QA29 ground contact or target differs from the capture');
+        if (mode === 'loom') {
+            const bankX = support.x + Math.sign(support.run.stepX) * 1.85;
+            const from = env.FixedFaceAt(bankX, support.y - .24);
+            const door = area.ForwardDoor;
+            const goal = env.FixedFaceAt(door.x, door.approach.y + door.approach.height / 2);
+            env.stepFrom = deck.indexOf(from);
+            env.stepGoal = deck.indexOf(goal);
+            if (!env.route.Next(env.stepFrom, env.stepGoal)) throw Error('No descending route from the loom bank');
+            player.Facing = env.step.WalkOff;
+            vel.x = player.Facing * speed;
+        }
+        result.start = {feet: [pos.x, pos.y], uses, hp: player.Health.Current, support: support.name,
+            seamTop: support.top, fixedFace: env.FixedFaceAt(pos.x, pos.y)?.id ?? null,
+            target: area.RouteTarget.id, remaining: area.RouteTarget.State.Remaining};
+        if (swingProbe) result.swingTrace = [];
+    }
+    if (waterStart) {
         Object.assign(pos, {x: fixture.x, y: fixture.y});
         support = env.FixedFaceAt(pos.x, pos.y);
+        contacts = new Set([support]);
         const target = guards.findIndex(g => g.id === fixture.target);
         guards[target].State.Remaining = fixture.targetSegments;
         if (!fixture.grounded || !fixture.safeFloor || !area.OnReturnFloor)
@@ -396,12 +486,44 @@ function simulate(mode) {
         jumpTo(65, 'balcony'), fight(3), walkTo(64, 'balcony'), walkTo(46.3, 'lock_bed'),
         jumpTo(43.5, 'outfall_quay'), walkTo(38, 'outfall_quay'), () => { keys.Tap('F'); return false; }
     ];
-    let lastProgress = 0, sample = {...pos}, lastState = '', nextProbe = 0;
+    const useDoor = () => { keys.Tap('F'); return keys.GetKeyDown('F'); };
+    const manualFromLoom = [
+        walkTo(8.15, 'reed_0'), walkTo(-.6, 'floor'),
+        walkTo(8.4, 'floor'), fight(0), walkTo(2, 'floor'), fight(1), walkTo(3.1, 'floor'), fight(2),
+        walkTo(37, 'east'), useDoor,
+        walkTo(4, 'floor'), walkTo(9.1, 'floor'), fight(0), walkTo(4, 'floor'), fight(1),
+        walkTo(13.6, 'floor'), fight(2), walkTo(18.8, 'floor'),
+        jumpTo(21, 'tread_1'), jumpTo(24.2, 'tread_2'), jumpTo(27.6, 'balcony'), walkTo(37, 'balcony'), useDoor,
+        jumpTo(4.7, 'west_gallery_0'), sew(0), jumpTo(6.4, 'velvet_04_arena:seam_0'),
+        walkTo(8.3, 'west_gallery_1'), walkTo(18.3, 'west_gallery_1'), sew(1), jumpTo(20, 'velvet_04_arena:seam_1'),
+        walkTo(21.9, 'west_gallery_2'), walkTo(32.3, 'west_gallery_2'), sew(2), jumpTo(34, 'velvet_04_arena:seam_2'),
+        walkTo(35.9, 'west_gallery_3'), jumpTo(39.7, 'pennants_turn'), jumpTo(39.8, 'pennants_6'),
+        walkTo(38.3, 'pennants_6'), sew(3), jumpTo(36.6, 'velvet_04_arena:seam_3'),
+        walkTo(34.7, 'pennants_5')
+    ];
+    let lastProgress = 0, sample = {...pos}, lastState = '', nextProbe = firstProbe;
+    let lastSpanAxis = 0;
     for (; now() <= 600; tick++) {
+        if (now() >= nextProbe) {
+            const state = [room.id, uses, area.RouteTarget?.id, area.RouteTarget?.State.Remaining].join('/');
+            if (state !== lastState || Math.hypot(pos.x - sample.x, pos.y - sample.y) >= .5) {
+                sample = {...pos}; lastProgress = now(); lastState = state;
+            }
+            nextProbe = now() + .25;
+            if (now() - lastProgress > input.idle) { result.stop = 'no progress'; break; }
+        }
+        let callRow;
         previous = down; down = new Set();
         if (now() < env.jumpUntil) keys.Hold('Space');
-        if (mode === 'manual') {
+        if (swingProbe) {
+            if (tick === 0) keys.Tap('J');
+            if (mode === 'heldAttack') keys.Hold('D');
+        }
+        else if (mode === 'manual') {
             if (manualRoute[instruction]()) { instruction++; began = tick + 1; }
+        }
+        else if (mode === 'manualLoom' && instruction < manualFromLoom.length) {
+            if (manualFromLoom[instruction]()) { instruction++; began = tick + 1; }
         }
         else if (uses >= silver.stage3At) {
             const row = input.transferRows.find(r => !flags.has(r.completionFlag) && r.entryCondition.every(flag =>
@@ -411,13 +533,54 @@ function simulate(mode) {
                 keys.Tap('Return');
                 if (keys.GetKeyDown('Return')) flags.add(row.completionFlag);
             }
-            else if (row.requiredPlayerAction.includes('use:return_call')) transfer(env);
+            else if (row.requiredPlayerAction.includes('use:return_call')) {
+                callRow = row;
+                if (mode === 'manualLoom') keys.Tap('F');
+                else transfer(env);
+            }
+        }
+        else if (mode === 'allSeams' && !room.singleSeams && env.SewReturnSeam && room.roster.length) {
+            if (env.sewingRoom !== room.id) {
+                env.sewingRoom = room.id;
+                env.seamIndex = 0;
+                env.lastSewn = null;
+            }
+            if (env.seamIndex < room.stitchAnchors) env.SewReturnSeam(room, area.RouteTarget, false);
+            else if (env.ReturnBankReady(room)) env.TakeReturnDoor();
         }
         else gather(env);
         if (tick === 0) result.firstKeys = [...down];
         effects();
         const previousSupport = support?.name;
-        physics();
+        if (room.id === input.loom.room && uses === input.loom.silverUses && support === seams[seams.length - 1]) {
+            const trace = result.loomMotion ??= {minX: pos.x, maxX: pos.x, left: 0, right: 0, idle: 0, swings: 0, jumps: 0, sides: 0, turns: 0, firstTurns: []};
+            const axis = +down.has('D') - +down.has('A');
+            trace.minX = Math.min(trace.minX, pos.x);
+            trace.maxX = Math.max(trace.maxX, pos.x);
+            trace[axis < 0 ? 'left' : axis > 0 ? 'right' : 'idle']++;
+            if (player.Attacking) trace.swings++;
+            if (down.has('Space')) trace.jumps++;
+            if (sides.length) trace.sides++;
+            if (axis && lastSpanAxis !== axis) {
+                if (lastSpanAxis) trace.turns++;
+                if (trace.firstTurns.length < 4)
+                    trace.firstTurns.push({tick, x: round(pos.x), axis, from: deck[env.stepFrom]?.id, step: env.step});
+                lastSpanAxis = axis;
+            }
+        }
+        if (keys.GetKeyDown('Q') || now() < defenseUntil) jumpAt = -Infinity;
+        else if (keys.GetKeyDown('Space')) { jumpAt = now(); cutJump = false; }
+        if (!down.has('Space') && previous.has('Space')) cutJump = true;
+        while ((fixedTick + 1) * dt <= (tick + 1) * frameDt + 1e-9) {
+            physics();
+            fixedTick++;
+        }
+        if (swingProbe) {
+            result.swingTrace.push({tick, x: round(pos.x), y: round(pos.y), vx: round(vel.x), support: support?.name});
+            if ((tick + 1) * dt >= swing[0]) { result.stop = 'swing complete'; break; }
+        }
+        if (loomStart && !result.bank && support && area.OnReturnFloor)
+            result.bank = {tick, face: support.name, feet: [round(pos.x), round(pos.y)]};
         if (room.id === fixture.room) {
             if (previousSupport !== support?.name && support)
                 result.waterLandings.push({tick, face: support.name, x: round(pos.x), y: round(pos.y)});
@@ -428,38 +591,42 @@ function simulate(mode) {
             }
         }
         if (keys.GetKeyDown('F') && area.OnReturnFloor) {
-            if (env.sawSafeCall) {
-                const row = input.transferRows.find(r => r.requiredPlayerAction.includes('use:return_call'));
-                result.safeCall = true;
+            if (callRow) {
+                flags.add(callRow.completionFlag);
+                result.safeCall = mode === 'manualLoom' || env.sawSafeCall;
+                result.transferFlags = input.transferRows.map(r => r.completionFlag).filter(f => flags.has(f));
                 result.totals.push([room.id, uses]);
-                result.destination = [input.resume[row.resumePoint], row.resumePoint];
+                result.destination = [input.resume[callRow.resumePoint], callRow.resumePoint];
+                result.stop = 'first return';
                 break;
             }
             const door = room.exits.filter(d => (!d.gate || flags.has(d.gate)) && d.InReach(pos))
                 .sort((a, b) => Math.abs(a.x - pos.x) - Math.abs(b.x - pos.x))[0];
             if (door) {
+                result.departures.push({room: room.id, to: door.room, support: support.name,
+                    feet: [round(pos.x), round(pos.y)], guards: guards.filter(g => g.State.NeedsSetup).map(g => [g.id, g.State.Remaining])});
                 result.totals.push([room.id, uses]);
                 if (room.id === fixture.room) result.waterExit = door.room;
-                if (mode !== 'campaign') {
+                if (waterStart) {
                     result.destination = [door.room, door.destinationFloor];
+                    result.stop = 'waterway exit';
                     break;
                 }
                 enter(door.room, door.destinationFloor);
             }
         }
-        if (now() >= nextProbe) {
-            const state = [room.id, uses, area.RouteTarget?.id, area.RouteTarget?.State.Remaining].join('/');
-            if (state !== lastState || Math.hypot(pos.x - sample.x, pos.y - sample.y) >= .5) {
-                sample = {...pos}; lastProgress = now(); lastState = state;
-            }
-            nextProbe = now() + .25;
-        }
-        if (player.Health.Dead || now() - lastProgress > input.idle || pos.y < room.fallLine) break;
+        if (player.Health.Dead || pos.y < room.fallLine) { result.stop = player.Health.Dead ? 'death' : 'fall'; break; }
     }
-    result.end = {tick, room: room.id, uses, hp: player.Health.Current, feet: [round(pos.x), round(pos.y)], support: support?.name,
+    result.stop ??= 'step deadline';
+    result.end = {tick, fixedTick, frameSeconds: frameDt, room: room.id, uses, hp: player.Health.Current, feet: [round(pos.x), round(pos.y)], support: support?.name,
         target: area.RouteTarget?.id, segments: area.RouteTarget?.State.Remaining, seam: env.seamIndex, keys: [...down],
-        activations: serial, idleSeconds: round(now() - lastProgress), step: env.step, lastSewn: env.lastSewn};
+        activations: serial, idleSeconds: round(now() - lastProgress), step: env.step, lastSewn: env.lastSewn,
+        manualInstruction: mode === 'manualLoom' ? instruction : undefined};
     return result;
 }
 
-process.stdout.write(JSON.stringify(Object.fromEntries(['recovery', 'manual', 'campaign'].map(k => [k, simulate(k)]))));
+const modes = ['recovery', 'manual', 'campaign', 'loom', 'loomCrossing', 'manualLoom', 'allSeams', 'heldAttack', 'stillAttack'];
+const runs = Object.fromEntries(modes.map(k => [k, simulate(k)]));
+runs.campaign60 = simulate('campaign', 1 / 60);
+runs.campaignOffset = simulate('campaign', dt, dt);
+process.stdout.write(JSON.stringify(runs));
