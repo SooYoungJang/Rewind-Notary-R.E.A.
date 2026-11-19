@@ -4,6 +4,7 @@ import json
 import math
 import operator
 import re
+import subprocess
 
 from localization_followup import AUDIT, approved_table, prior_help_source
 from story_link_baseline import prior_level3_source, FEEL_EDITS, LEVEL_EDITS, reverse_exact
@@ -197,6 +198,28 @@ MUTATIONS = (
 )
 
 
+def validate_moving_attack(check, project):
+    replay = json.loads(subprocess.check_output(['node', project/'tools/replay_moving_attack.js'], text=True))
+    speed, dt, duration = (replay[key] for key in ('runSpeed', 'dt', 'duration'))
+    ticks = range(math.ceil(duration / dt))
+    traces, readings = replay['traces'], replay['readings']
+    for name in ('noProfile', 'stage1', 'stage2'):
+        check(traces[name] == [speed] * len(ticks), 'Feel: held forward speed throughout sword attack / ' + name)
+    check(traces['reverse'] == [speed if tick * dt < duration / 2 else -speed for tick in ticks],
+          'Feel: reversed input during sword attack')
+    check(traces['analog'] == [-.5 * speed] * len(ticks), 'Feel: signed analog speed during sword attack')
+    step = [replay['stepSpeed'] if tick * dt < replay['stepSeconds'] else 0 for tick in ticks]
+    check(traces['stationary'] == step, 'Feel: stationary sword step ends at authored time')
+    check(traces['release'] == [speed, speed] + step[2:], 'Feel: released input resumes only remaining sword step')
+    check(traces['nonPlayer'] == [0] * len(ticks), 'Feel: non-player attack retains movement lock')
+    check(readings['forward'] == dict(status='pass', startSpeed=speed, minSpeed=speed, physicsTicks=len(ticks)),
+          'Feel: movingAttack observes full forward swing')
+    check(readings['threshold']['status'] == 'pass', 'Feel: movingAttack accepts exactly 80 percent')
+    for name in ('lateDrop', 'backward', 'empty', 'lostFloor'):
+        check(readings[name]['status'] == 'fail', 'Feel: movingAttack rejects ' + name)
+    return replay
+
+
 def validate_feel_pass(check, project, scripts, body):
     dt = float(re.search(r'Fixed Timestep: ([\d.]+)', (project/'ProjectSettings/TimeManager.asset').read_text())[1])
     base = contracts(scripts, body, dt)
@@ -232,5 +255,6 @@ def validate_feel_pass(check, project, scripts, body):
         check(detected, 'Feel mutation detected: ' + label)
     motor = scripts['CombatMotor2D']
     return dict(contracts=len(base), mutations=len(mutations), detected=sum(mutations.values()),
+                movingAttack=validate_moving_attack(check, project),
                 fixed_dt=dt, release={key: release_trace(number(scripts['PlayerController2D'], 'MoveSpeed'), number(motor, key), dt)
                                       for key in ('AirDrag', 'AirBrake')}, unity_executed=False)

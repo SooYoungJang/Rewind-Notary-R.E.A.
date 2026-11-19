@@ -96,8 +96,10 @@ namespace RewindNotary
     {
         public StopMeasurement groundStop = new StopMeasurement(), airStop = new StopMeasurement();
         public AttackMeasurement stationaryAttack = new AttackMeasurement();
+        public MovingAttackMeasurement movingAttack = new MovingAttackMeasurement();
         public string failure;
-        internal bool Passed => groundStop.status == "pass" && airStop.status == "pass" && stationaryAttack.status == "pass";
+        internal bool Passed => groundStop.status == "pass" && airStop.status == "pass" && stationaryAttack.status == "pass"
+            && movingAttack.status == "pass";
     }
 
     [Serializable] public sealed class StopMeasurement
@@ -112,6 +114,13 @@ namespace RewindNotary
         public string status = "skipped";
         public int framesSinceTap = -1, attackStartedCount;
         public bool attacking;
+    }
+
+    [Serializable] public sealed class MovingAttackMeasurement
+    {
+        public string status = "skipped";
+        public float startSpeed, minSpeed;
+        public int physicsTicks;
     }
 
     [Serializable] public sealed class AttackInputCounts { public int issued, accepted, unaccepted; }

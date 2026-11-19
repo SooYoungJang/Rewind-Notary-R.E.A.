@@ -50,9 +50,11 @@ STEP6_EDITS = json.loads(Path(__file__).with_name('level-step6-extensions.json')
 
 
 PASS2_EDITS = json.loads(Path(__file__).with_name('level-design-pass2-extensions.json').read_text())
+FEEL_FIX2_EDITS = json.loads(Path(__file__).with_name('feel-fix2-extensions.json').read_text())
 
 
 def prior_pass2_source(path, source):
+    source = reverse_exact(FEEL_FIX2_EDITS.get(str(path)), source)
     return reverse_exact(PASS2_EDITS.get(str(path)), source)
 
 

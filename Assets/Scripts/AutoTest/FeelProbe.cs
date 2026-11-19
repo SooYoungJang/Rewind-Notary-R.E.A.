@@ -7,7 +7,7 @@ namespace RewindNotary
     // physics simulation and observe the swing after all input readers have run.
     internal sealed class FeelProbe : MonoBehaviour
     {
-        private enum Phase { Waiting, GroundRun, GroundStop, Tap, Attack, AirRun, Jump, AirStop, Done, Failed }
+        private enum Phase { Waiting, GroundRun, GroundStop, Tap, Attack, AirRun, Jump, AirStop, MovingRun, MovingAttack, Done, Failed }
         private Phase phase;
         private CombatMotor2D player;
         private FeelResults result;
@@ -73,6 +73,23 @@ namespace RewindNotary
                         keys.Hold(KeyCode.Space);
                     }
                     break;
+                case Phase.MovingRun:
+                    if (!player.Grounded || player.Attacking) break;
+                    keys.Hold(KeyCode.D);
+                    if (!AtRunSpeed(speed)) break;
+                    result.movingAttack.startSpeed = speed;
+                    keys.Hold(KeyCode.J);
+                    phase = Phase.MovingAttack;
+                    break;
+                case Phase.MovingAttack:
+                    if (player.Attacking) keys.Hold(KeyCode.D);
+                    else if (result.movingAttack.physicsTicks == 0) Abort("Running J produced no attack physics ticks");
+                    else
+                    {
+                        result.movingAttack.status = "pass";
+                        phase = Phase.Done;
+                    }
+                    break;
             }
             // NextFrame starts with all keys released, including during both stop windows.
             return true;
@@ -89,6 +106,7 @@ namespace RewindNotary
                 if (phase == Phase.GroundRun && player != null)
                     runTicks = player.Grounded && AtRunSpeed(player.Body.linearVelocity.x) ? runTicks + 1 : 0;
                 else if (phase == Phase.GroundStop || phase == Phase.AirStop) SampleStop();
+                else if (phase == Phase.MovingAttack && player.Attacking) SampleMovingAttack();
             }
         }
 
@@ -108,11 +126,24 @@ namespace RewindNotary
             if (inTime && stopped)
             {
                 sample.status = "pass";
-                phase = ground ? Phase.Tap : Phase.Done;
+                phase = ground ? Phase.Tap : Phase.MovingRun;
                 if (ground) result.stationaryAttack.status = "running";
+                else result.movingAttack.status = "running";
             }
             else if (ground ? sample.physicsTicks >= 3 : sample.seconds >= .35f)
                 Abort("Horizontal speed exceeded the " + phase + " deadline");
+        }
+
+        private void SampleMovingAttack()
+        {
+            var sample = result.movingAttack;
+            float speed = player.Body.linearVelocity.x;
+            sample.minSpeed = sample.physicsTicks == 0 ? speed : Mathf.Min(sample.minSpeed, speed);
+            sample.physicsTicks++;
+            if (!player.Grounded || !player.GetComponent<Collider2D>().IsTouchingLayers(1 << LevelBuilder.GroundLayer))
+                Abort("Lost ground contact during moving attack");
+            else if (speed < PlayerController2D.MoveSpeed * .8f)
+                Abort("Moving attack fell below 80% of run speed");
         }
 
         private void OnAttackStarted() { result.stationaryAttack.attackStartedCount++; }
@@ -140,6 +171,7 @@ namespace RewindNotary
             if (result.groundStop.status == "running") result.groundStop.status = "fail";
             if (result.stationaryAttack.status == "running") result.stationaryAttack.status = "fail";
             if (result.airStop.status == "running") result.airStop.status = "fail";
+            if (result.movingAttack.status == "running") result.movingAttack.status = "fail";
             if (player != null) player.AttackStarted -= OnAttackStarted;
             phase = Phase.Failed;
         }

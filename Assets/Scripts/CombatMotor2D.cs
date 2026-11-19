@@ -160,8 +160,10 @@ namespace RewindNotary
                 Face(speed);
                 return;
             }
-            float attackMove = Attacking && chainProfile != null && Time.time - attackStartedAt < chainProfile.stepSeconds
-                ? Facing * chainProfile.stepSpeed : 0f;
+            float attackMove = speed;
+            if (!Health.IsPlayer || Mathf.Abs(speed) <= 0.01f)
+                attackMove = chainProfile != null && Time.time - attackStartedAt < chainProfile.stepSeconds
+                    ? Facing * chainProfile.stepSpeed : 0f;
             Body.linearVelocity = new Vector2(Attacking ? attackMove : speed, Body.linearVelocity.y) + Vector2.right * carrierSpeed;
             if (!Attacking) Face(speed);
         }

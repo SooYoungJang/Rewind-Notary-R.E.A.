@@ -1,0 +1,16 @@
+{
+  "Assets/Scripts/CombatMotor2D.cs": {
+    "original": "066c14b440e7730733e3bcca784ffc9aeba624914ef6e70e15cb0a4c4f21c11d",
+    "updated": "96dfbdec5f48bdf76dc29816346f7f89dca02ed9387c37f75516ceee09fcf5d5",
+    "edits": [
+      [
+        162,
+        166,
+        [
+          "            float attackMove = Attacking && chainProfile != null && Time.time - attackStartedAt < chainProfile.stepSeconds\n",
+          "                ? Facing * chainProfile.stepSpeed : 0f;\n"
+        ]
+      ]
+    ]
+  }
+}
