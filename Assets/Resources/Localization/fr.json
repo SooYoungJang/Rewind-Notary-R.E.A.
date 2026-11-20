@@ -3,19 +3,47 @@
   "entries": [
     {
       "key": "story.prologue.city",
-      "value": "Dans cette ville, même les techniques transmises par un maître peuvent être authentifiées et consignées au registre."
+      "value": "À Lapis, la cité du Notariat, le registre consigne le nom de chacun et les techniques qu’il a apprises."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "Le geste d’un tailleur chevronné comme l’art de l’épée transmis par un maître peuvent être authentifiés à Lapis."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "L’épéiste du Notariat grave une technique dans son épée de consignation, puis prouve sa maîtrise en la reproduisant au palier 3."
     },
     {
       "key": "story.prologue.deadline",
       "value": "Demain, à six heures du matin, cinq condamnés doivent être exécutés."
     },
     {
+      "key": "story.prologue.order",
+      "value": "Un ordre scellé est arrivé du Bureau central du Notariat. Une clause donne aux cinq condamnés une chance de survivre."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Retrouve les cinq condamnés et apprends une technique de chacun. Grave-les dans l’épée et authentifie-les toutes au palier 3."
+    },
+    {
       "key": "story.prologue.pardon",
-      "value": "Si leurs techniques sont gravées dans l’Épée de consignation et authentifiées, tous les cinq seront graciés."
+      "value": "Si les cinq authentifications sont terminées à temps, chaque condamné recevra une grâce spéciale."
     },
     {
       "key": "story.prologue.rea",
-      "value": "Le Bureau du Notariat a confié cette mission à Rea. Il lui reste moins d’un jour."
+      "value": "Le Bureau a confié cette mission à Rea, une épéiste du Notariat tout juste nommée. Il lui reste moins d’un jour."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "Ce matin-là, Marta inscrit sur le tableau du grenier les noms des invités au petit-déjeuner du lendemain."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "Cinq noms figurent au tableau. À côté, une place reste libre."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "Un parfum de thé à la menthe flotte près de la fenêtre. Rea ouvre les yeux dans le grenier, où l’ordre scellé l’attend."
     },
     {
       "key": "finale.ending.true",

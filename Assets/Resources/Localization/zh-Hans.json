@@ -3,19 +3,47 @@
   "entries": [
     {
       "key": "story.prologue.city",
-      "value": "在这座城里，就连师父传下的技艺也能经过公证，载入记录。"
+      "value": "公证之都拉皮斯的记录里，既有一个人的姓名，也有他学会的技艺。"
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "裁缝磨炼一生的手艺、剑士从师父那里学来的剑术，在拉皮斯都可以公证。"
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "公证剑士将招式收录进记录剑，再亲身复现至第三阶，以证明掌握了这门技艺。"
     },
     {
       "key": "story.prologue.deadline",
       "value": "明早六点，五名受刑者将被处决。"
     },
     {
+      "key": "story.prologue.order",
+      "value": "中央公证院送来一份封好的任务书，其中有一项条款，给了五人活下来的机会。"
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "去找到五人，分别向他们学习一门招式。将招式收录进记录剑，并全部公证至第三阶。"
+    },
+    {
       "key": "story.prologue.pardon",
-      "value": "只要把五人的招式收录进记录剑并完成公证，他们就能获得赦免。"
+      "value": "只要按时完成这五项公证，五人便都能获得特别赦免。"
     },
     {
       "key": "story.prologue.rea",
-      "value": "公证院把这项任务交给了蕾娅。留给她的时间已不足一天。"
+      "value": "接下任务的是新任公证剑士蕾娅。留给她的时间已不足一天。"
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "那天早晨，玛尔塔在阁楼的用餐预约板上提前写下了明早客人的名字。"
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "板上写着五个名字。旁边还留着一个空位。"
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "窗边飘来薄荷茶香。封好的任务书静静等在阁楼里，蕾娅睁开了眼睛。"
     },
     {
       "key": "finale.ending.true",

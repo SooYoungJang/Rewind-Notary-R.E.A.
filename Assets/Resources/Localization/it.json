@@ -3,19 +3,47 @@
   "entries": [
     {
       "key": "story.prologue.city",
-      "value": "In questa città persino le tecniche tramandate da un maestro possono essere autenticate e messe a registro."
+      "value": "A Lapis, città del Notariato, il registro conserva il nome di ognuno e le tecniche che ha appreso."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "Tanto i gesti di un sarto esperto quanto la scherma tramandata da un maestro possono essere autenticati a Lapis."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "Uno spadaccino del Notariato imprime una tecnica nella Spada del Registro e la dimostra riproducendola al Livello 3."
     },
     {
       "key": "story.prologue.deadline",
       "value": "Domani, alle sei del mattino, è prevista l’esecuzione di cinque prigionieri."
     },
     {
+      "key": "story.prologue.order",
+      "value": "È giunto un ordine sigillato dell’Ufficio Notarile Centrale. Una clausola offre a tutti e cinque la possibilità di salvarsi."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Trova i cinque prigionieri e impara una tecnica da ciascuno. Imprimile nella Spada del Registro e autenticale tutte al Livello 3."
+    },
+    {
       "key": "story.prologue.pardon",
-      "value": "Se le loro tecniche verranno incise nella Spada del Registro e autenticate, tutti e cinque riceveranno la grazia."
+      "value": "Se tutte e cinque le autenticazioni saranno completate in tempo, a ciascun prigioniero verrà concessa la grazia speciale."
     },
     {
       "key": "story.prologue.rea",
-      "value": "L’Ufficio Notarile ha affidato l’incarico a Rea. Le resta meno di un giorno."
+      "value": "L’Ufficio ha affidato l’incarico a Rea, una spadaccina del Notariato appena nominata. Le resta meno di un giorno."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "Quella mattina Marta scrive sulla lavagna della soffitta i nomi degli ospiti della colazione di domani."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "Sulla lavagna ci sono cinque nomi. Accanto resta ancora un posto vuoto."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "Dalla finestra arriva un profumo di tè alla menta. Rea apre gli occhi in soffitta, dove l’aspetta l’ordine sigillato."
     },
     {
       "key": "finale.ending.true",

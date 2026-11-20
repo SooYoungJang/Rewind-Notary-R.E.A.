@@ -3,19 +3,47 @@
   "entries": [
     {
       "key": "story.prologue.city",
-      "value": "In dieser Stadt werden selbst die von einem Meister erlernten Techniken beglaubigt und ins Register eingetragen."
+      "value": "In der Notariatsstadt Lapis verzeichnet das Register die Namen der Menschen und ihre erlernten Techniken."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "Die Handgriffe eines erfahrenen Schneiders lassen sich ebenso beglaubigen wie die von einem Meister erlernte Schwertkunst."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "Ein Schwertnotar hält eine Technik im Aufzeichnungsschwert fest und beweist sie, indem er sie auf Stufe 3 selbst nachahmt."
     },
     {
       "key": "story.prologue.deadline",
       "value": "Morgen früh um sechs sollen fünf Gefangene hingerichtet werden."
     },
     {
+      "key": "story.prologue.order",
+      "value": "Ein versiegelter Auftrag des Zentralen Notariatsamts ist eingetroffen. Eine Klausel darin bietet allen fünf eine Überlebenschance."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Finde die fünf Gefangenen und lerne von jedem eine Technik. Halte sie im Aufzeichnungsschwert fest und beglaubige alle auf Stufe 3."
+    },
+    {
       "key": "story.prologue.pardon",
-      "value": "Werden ihre Techniken im Aufzeichnungsschwert festgehalten und beglaubigt, erhalten alle fünf eine Begnadigung."
+      "value": "Werden alle fünf Beglaubigungen rechtzeitig abgeschlossen, erhalten die Gefangenen eine Sonderbegnadigung."
     },
     {
       "key": "story.prologue.rea",
-      "value": "Das Notariatsamt hat Rea damit betraut. Ihr bleibt weniger als ein Tag."
+      "value": "Die frisch ernannte Schwertnotarin Rea soll den Auftrag ausführen. Ihr bleibt weniger als ein Tag."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "An diesem Morgen trägt Marta die Namen der morgigen Frühstücksgäste auf die Tafel im Dachboden ein."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "Fünf Namen stehen auf der Tafel. Daneben bleibt noch ein Platz frei."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "Vom Fenster her duftet es nach Minztee. Rea öffnet die Augen im Dachboden, wo der versiegelte Auftrag auf sie wartet."
     },
     {
       "key": "finale.ending.true",

@@ -3,19 +3,47 @@
   "entries": [
     {
       "key": "story.prologue.city",
-      "value": "この街では、師から受け継いだ技も公証を受け、記録に残される。"
+      "value": "公証都市ラピスでは、人の名とともに、その人が身につけた技も記録に残される。"
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "仕立屋が生涯をかけて磨いた手つきも、剣士が師から学んだ剣術も、ラピスでは公証できる。"
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "公証剣士は技を記録剣に採録し、第三段階まで自ら再現することで、その技を証明する。"
     },
     {
       "key": "story.prologue.deadline",
       "value": "明朝六時、五人の受刑者の刑が執行される。"
     },
     {
+      "key": "story.prologue.order",
+      "value": "中央公証院から封をされた任務書が届いた。中には、五人の命を救うための条項が記されている。"
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "五人を訪ね、一人ずつ技を教わること。技を記録剣に採録し、すべて第三段階まで公証すること。"
+    },
+    {
       "key": "story.prologue.pardon",
-      "value": "五人の技を記録剣に採録し、公証を受ければ、全員に赦免状が発布される。"
+      "value": "期限までに五件の公証が済めば、五人全員に特別赦免状が発布される。"
     },
     {
       "key": "story.prologue.rea",
-      "value": "公証院はその任務をレアに託した。残された時間は一日もない。"
+      "value": "任務を託されたのは、新任の公証剣士レア。残された時間は一日もない。"
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "その朝、マルタは屋根裏の食事予約板に、翌朝の客の名を先に書いておいた。"
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "予約板に並んだ名前は五つ。その隣に、まだ一人分の空欄があった。"
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "窓辺にミント茶の香りが広がる。封をした任務書が待つ屋根裏で、レアが目を覚ます。"
     },
     {
       "key": "finale.ending.true",

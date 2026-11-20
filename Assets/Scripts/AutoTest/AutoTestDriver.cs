@@ -29,6 +29,7 @@ namespace RewindNotary
         private BenefactorTrialOpponent observedBout;
         private int index, lastShotFrame = -1;
         private string lastShot, progress;
+        private OpeningScene.PrologueShot? lastOpeningShot;
         private double started, entered, lastFrame, lastProgress, nextProbe, drainStarted;
         private const double DistrictLogInterval = 30, DistrictIdleLimit = 120;
         private double nextDistrictLog, lastDistrictProgress;
@@ -241,7 +242,9 @@ namespace RewindNotary
             var p = area?.Rea;
             var target = area?.RouteTarget;
             var position = p == null ? Vector2.zero : p.Body.position;
-            string state = string.Join("|", bot.Shell?.Page, bot.Shell?.MenuIndex, bot.Shell?.OpeningCaption, bot.Shell?.OpeningPrologue,
+            var openingShot = bot.Shell?.OpeningShot;
+            int openingCaption = bot.Shell?.OpeningCaption ?? -1;
+            string state = string.Join("|", bot.Shell?.Page, bot.Shell?.MenuIndex, openingCaption, openingShot,
                 area?.Room.id, area?.ActiveRow?.textKey,
                 area?.PendingAction, bot.Record?.storyFlags.Count, bot.Record?.Get(SkillRules.SilverStitch)?.validUseCount,
                 target?.TargetId, target?.State.Remaining, area?.BoutOpponent?.Health.Current,
@@ -252,14 +255,21 @@ namespace RewindNotary
                 (clock != null || opera != null || bell != null || gallery != null) ? area?.UnclearedClockTarget?.State.Remaining : null);
             if (state != progress || (position - lastPosition).sqrMagnitude >= .25f)
             {
-                if (bot.Shell?.OpeningPrologue == true)
+                if (openingShot.HasValue)
                 {
-                    if (bot.Shell.OpeningCaption == 0) Capture("prologue-city");
-                    if (bot.Shell.OpeningCaption == 3) Capture("prologue-warrant");
+                    if (openingShot != lastOpeningShot) Capture("prologue-" + openingShot.Value.ToString().ToLowerInvariant());
+                    if (openingShot == OpeningScene.PrologueShot.City && openingCaption == 1) Capture("prologue-city-hold");
                 }
-                else if (bot.Shell?.OpeningCaption == 1 && area?.ActiveRow?.sceneId == "intro_attic" &&
-                    (area.ActiveRow.stepId == "01_wake" || area.ActiveRow.stepId == "02_candy_pickup"))
-                    Capture(area.ActiveRow.stepId);
+                else if (openingCaption >= 0 && area?.ActiveRow?.sceneId == "intro_attic")
+                {
+                    string beat = area.ActiveRow.stepId;
+                    if (openingCaption == 1 && (beat == "01_wake" || beat == "02_candy_pickup" || beat == "04_receive_copy"))
+                        Capture(beat);
+                    if (openingCaption == 2 && beat == "01_wake") Capture("01_wake-hold");
+                }
+                else if (openingCaption == 1 && area?.ActiveRow?.sceneId == "intro_forge" && area.ActiveRow.stepId == "02_three_notches")
+                    Capture("02_three_notches");
+                lastOpeningShot = openingShot;
                 lastProgress = now;
                 progress = state;
                 lastPosition = position;

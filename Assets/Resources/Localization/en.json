@@ -3,19 +3,47 @@
   "entries": [
     {
       "key": "story.prologue.city",
-      "value": "In this city, even the skills handed down by a master can be notarized and entered into the record."
+      "value": "In Lapis, a city of notarization, the register keeps a person's name and the skills they have learned."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "The work of a lifelong tailor and the swordplay passed down by a master can both be notarized in Lapis."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "A notarizing swordsman captures a technique in the Record Sword, then proves it by reproducing it at Stage 3."
     },
     {
       "key": "story.prologue.deadline",
       "value": "At six tomorrow morning, five prisoners are due to be executed."
     },
     {
+      "key": "story.prologue.order",
+      "value": "A sealed order has arrived from the Central Notary Bureau. A clause inside offers all five a chance to live."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Find the five prisoners and learn a technique from each one. Capture them in the Record Sword and notarize all five at Stage 3."
+    },
+    {
       "key": "story.prologue.pardon",
-      "value": "If their skills are captured in the Record Sword and notarized, all five will be pardoned."
+      "value": "If all five notarizations are complete by the deadline, each prisoner will be granted a special pardon."
     },
     {
       "key": "story.prologue.rea",
-      "value": "The Notary Bureau has entrusted the job to Rea. She has less than a day."
+      "value": "The Bureau has entrusted this mission to Rea, a newly appointed notarizing swordsman. She has less than a day."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "That morning, Marta wrote the names of tomorrow's breakfast guests on the board in the attic."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "There were five names on the board. Beside them, one place was still blank."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "The scent of mint tea drifted in from the window. Rea opens her eyes in the attic, where the sealed order awaits."
     },
     {
       "key": "finale.ending.true",

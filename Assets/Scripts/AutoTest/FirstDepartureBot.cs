@@ -19,7 +19,7 @@ namespace RewindNotary
             "Luka signalled and boarded, saved lift_arrival_exit, clock selected",
             "Same slot enters clock_01_entry with investigation and lift receipts"
         };
-        internal static readonly int[] Limits = { 45, 100, 240, 180, 45, 600, 180, 150, 45 };
+        internal static readonly int[] Limits = { 45, 165, 240, 180, 45, 600, 180, 150, 45 };
         private readonly BotKeyboard keys;
         private readonly Action<string> stop;
         internal GameBootstrap Game { get; private set; }
@@ -94,7 +94,9 @@ namespace RewindNotary
                     return;
                 case ShellPage.StoryDialogue:
                     if (Area?.ActiveRow?.sceneId == "intro_attic" &&
-                        (Area.ActiveRow.stepId == "01_wake" || Area.ActiveRow.stepId == "02_candy_pickup")) return;
+                        (Area.ActiveRow.stepId == "01_wake" || Area.ActiveRow.stepId == "02_candy_pickup" ||
+                        Area.ActiveRow.stepId == "04_receive_copy")) return;
+                    if (Area?.ActiveRow?.sceneId == "intro_forge" && Area.ActiveRow.stepId == "02_three_notches") return;
                     Select(0);
                     return;
                 case ShellPage.Pause:

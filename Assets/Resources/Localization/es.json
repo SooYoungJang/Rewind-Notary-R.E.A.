@@ -3,19 +3,47 @@
   "entries": [
     {
       "key": "story.prologue.city",
-      "value": "En esta ciudad, hasta las técnicas que enseña un maestro se certifican y quedan por escrito en el registro."
+      "value": "En Lapis, la ciudad de la certificación, el registro conserva el nombre de cada persona y las técnicas que ha aprendido."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "En Lapis se puede certificar tanto la destreza de un sastre veterano como la esgrima aprendida de un maestro."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "Un espadachín notarial graba una técnica en la Espada de Registro y la demuestra al reproducirla en el nivel 3."
     },
     {
       "key": "story.prologue.deadline",
       "value": "Mañana a las seis de la mañana está prevista la ejecución de cinco reos."
     },
     {
+      "key": "story.prologue.order",
+      "value": "Ha llegado una orden sellada de la Oficina Notarial Central. Una de sus cláusulas les da a los cinco la oportunidad de vivir."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Encuentra a los cinco reos y aprende una técnica de cada uno. Grábalas en la Espada de Registro y certifícalas en el nivel 3."
+    },
+    {
       "key": "story.prologue.pardon",
-      "value": "Si sus técnicas se graban en la Espada de Registro y se certifican, los cinco recibirán el indulto."
+      "value": "Si las cinco certificaciones se completan a tiempo, los cinco reos recibirán un indulto especial."
     },
     {
       "key": "story.prologue.rea",
-      "value": "La Oficina Notarial le ha confiado la misión a Rea. Le queda menos de un día."
+      "value": "La oficina ha confiado la misión a Rea, una espadachina notarial recién nombrada. Le queda menos de un día."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "Esa mañana, Marta escribió en el tablero del ático los nombres de los invitados al desayuno de mañana."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "En el tablero había cinco nombres. Junto a ellos quedaba un sitio en blanco."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "El aroma del té de menta llegó desde la ventana. Rea abre los ojos en el ático, donde la espera la orden sellada."
     },
     {
       "key": "finale.ending.true",
