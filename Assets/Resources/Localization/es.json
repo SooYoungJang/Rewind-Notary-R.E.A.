@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "Registro notarial actualizado · Salud restaurada"
+    },
+    {
+      "key": "combat.parry",
+      "value": "¡PARRY!"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "¡REBOTE!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "¡CONTRA!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "¡ROTURA!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Intensidad de temblor: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "No (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Suave (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Completa (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Pausa de impacto (Hit-Stop): {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Invulnerabilidad extendida (Asistencia): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NUEVA TÉCNICA DE BENEFACTOR"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Teje hilo de plata en plataformas rotas y atraviesa enemigos."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Rebobina y detiene mecanismos y enemigos brevemente."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Salta en arco aéreo para esquivar los focos del escenario."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Rompe muros agrietados y contraataca golpes entrantes."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Traza apoyos temporales en el aire."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Diario Notarial"
+    },
+    {
+      "key": "journal.title",
+      "value": "Diario Notarial y Registro"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Técnicas"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Personajes"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Exploración"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Cambiar pestaña  |  N / Esc Cerrar"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Control: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Salas exploradas: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Técnicas de benefactor: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Pistas de investigación: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Controles activos"
+    },
+    {
+      "key": "journal.met",
+      "value": "Conocido"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Desconocido"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Técnica heredada"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Heredera de la Hoja · Notaria aprendiz"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Cuidadora del Ático del Olvido"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Benefactor de Terciopelo · Puntada de Plata"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Benefactor del Reloj · Retroceso de Péndulo"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Benefactora de la Ópera · Vals de Telón"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Benefactor del Campanario · Forja Resonante"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Benefactora de la Galería · Talla de Lienzo"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Juez Supremo · Tribunal Notarial"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Lugar: {0}"
     }
   ]
 }

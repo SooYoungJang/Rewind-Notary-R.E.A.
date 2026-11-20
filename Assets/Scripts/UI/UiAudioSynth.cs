@@ -6,8 +6,8 @@ namespace RewindNotary
     {
         public static UiAudioSynth Instance { get; private set; }
         private AudioSource source;
-        private AudioClip moveClip, confirmClip, cancelClip, mapOpenClip, mapCloseClip, checkpointClip, voiceClip;
-        private float lastVoiceAt;
+        private AudioClip moveClip, confirmClip, cancelClip, mapOpenClip, mapCloseClip, checkpointClip, voiceClip, heartbeatClip;
+        private float lastVoiceAt, lastHeartAt;
 
         public static void Ensure(Transform parent)
         {
@@ -57,6 +57,13 @@ namespace RewindNotary
             voiceClip = MakeTone("ui_voice", 0.036f, (t, d) =>
                 (Mathf.Sin(2f * Mathf.PI * 440f * t) * 0.42f
                 + Mathf.Sin(2f * Mathf.PI * 880f * t) * 0.16f) * Env(t, d, 0.004f));
+
+            heartbeatClip = MakeTone("ui_heartbeat", 0.34f, (t, d) =>
+            {
+                float b1 = Mathf.Sin(2f * Mathf.PI * 66f * t) * Mathf.Exp(-t * 18f) * 0.58f;
+                float b2 = t > 0.13f ? Mathf.Sin(2f * Mathf.PI * 52f * (t - 0.13f)) * Mathf.Exp(-(t - 0.13f) * 16f) * 0.44f : 0f;
+                return (b1 + b2) * Mathf.Min(1f, t / 0.01f);
+            });
         }
 
         private static float Env(float t, float d, float attack)
@@ -97,6 +104,15 @@ namespace RewindNotary
         public static void PlayMapToggle(bool open) => Instance?.PlayClip(open ? Instance.mapOpenClip : Instance.mapCloseClip, 1f, 0.85f);
         public static void PlayCheckpoint() => Instance?.PlayClip(Instance.checkpointClip, 1f, 1.0f);
 
+        public static void PlayHeartbeat(bool critical)
+        {
+            if (Instance == null || AutoTestRuntime.Report != null) return;
+            float interval = critical ? 0.78f : 1.12f;
+            if (Time.unscaledTime - Instance.lastHeartAt < interval) return;
+            Instance.lastHeartAt = Time.unscaledTime;
+            Instance.PlayClip(Instance.heartbeatClip, critical ? 1.08f : 0.94f, critical ? 0.62f : 0.34f);
+        }
+
         public static void PlayVoiceBlip(string speakerId)
         {
             if (Instance == null || AutoTestRuntime.Report != null) return;
@@ -136,6 +152,7 @@ namespace RewindNotary
             if (mapCloseClip != null) Destroy(mapCloseClip);
             if (checkpointClip != null) Destroy(checkpointClip);
             if (voiceClip != null) Destroy(voiceClip);
+            if (heartbeatClip != null) Destroy(heartbeatClip);
         }
     }
 }

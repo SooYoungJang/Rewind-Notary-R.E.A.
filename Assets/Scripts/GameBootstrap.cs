@@ -29,6 +29,9 @@ namespace RewindNotary
         private GameHudCanvas hudCanvas;
         private CinematicJuiceDirector cinematic;
         private DistrictMinimapCanvas minimap;
+        private NotaryJournalCanvas journal;
+        private readonly bool[] knownOwnedSkills = new bool[5];
+        private bool skillOwnershipSeeded;
         private int lastContactSaves;
         private float currentCameraSize = 5.5f;
         private bool checkpoint, won, initialized, echoDuel;
@@ -52,6 +55,9 @@ namespace RewindNotary
                 cinematic.Initialize(transform);
                 minimap = gameObject.AddComponent<DistrictMinimapCanvas>();
                 minimap.Initialize(transform);
+                journal = gameObject.AddComponent<NotaryJournalCanvas>();
+                journal.Initialize(transform);
+                CombatFloatingText2D.Ensure(transform);
             }
             catch (System.Exception exception) { failure = exception.Message; Debug.LogException(exception); }
         }
@@ -62,6 +68,7 @@ namespace RewindNotary
             world = new GameObject("Playable stage"); world.transform.SetParent(transform, false);
             SkillStroke.WorldRoot = world.transform;
             checkpoint = won = false; deathTimer = 0;
+            skillOwnershipSeeded = false;
             Build(store, record); initialized = true;
             if (GameShell.DebugAvailable && cassel == null) ApplyStageOverride(shell.Settings.Value.stageOverride);
             AutoTestRuntime.LoadEnd("stage", record.lastStageId, loadStarted);
@@ -400,8 +407,10 @@ namespace RewindNotary
                 hudCanvas.Render(default);
                 cinematic?.Observe(false, false, null, null, null);
                 minimap?.Observe(false, null, false);
+                journal?.Observe(false, null, null, 0, false);
                 return;
             }
+            CheckNewlyAcquiredSkills();
             if (Area != null && Area.ContactSaveCount > lastContactSaves)
             {
                 lastContactSaves = Area.ContactSaveCount;
@@ -429,6 +438,7 @@ namespace RewindNotary
                 hudCanvas.Render(snap);
                 cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
                 minimap?.Observe(true, Area, snap.BossVisible);
+                journal?.Observe(true, skills, Area, minimap != null ? minimap.VisitedCount : 0, minimap != null && minimap.FullMapOpen);
                 return;
             }
             if (echoDuel)
@@ -446,6 +456,7 @@ namespace RewindNotary
                 hudCanvas.Render(snap);
                 cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
                 minimap?.Observe(false, null, true);
+                journal?.Observe(true, skills, null, minimap != null ? minimap.VisitedCount : 0, false);
                 return;
             }
             var defense = player.Defense.State;
@@ -499,6 +510,48 @@ namespace RewindNotary
             hudCanvas.Render(snap);
             cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
             minimap?.Observe(false, null, snap.BossVisible);
+            journal?.Observe(true, skills, Area, minimap != null ? minimap.VisitedCount : 0, false);
+        }
+        public void OpenJournal()
+        {
+            if (journal == null || skills == null) return;
+            minimap?.CloseFullMap();
+            journal.Open(skills, Area, minimap != null ? minimap.VisitedCount : 0);
+        }
+        private void CheckNewlyAcquiredSkills()
+        {
+            if (skills?.Progression?.Record == null || hudCanvas == null) return;
+            var rec = skills.Progression.Record;
+            var cat = skills.Progression.Catalog;
+            Color[] accents =
+            {
+                new Color(0.88f, 0.34f, 0.44f),
+                new Color(0.96f, 0.78f, 0.32f),
+                new Color(0.95f, 0.48f, 0.68f),
+                new Color(0.32f, 0.84f, 0.92f),
+                new Color(0.54f, 0.78f, 1.00f)
+            };
+            if (!skillOwnershipSeeded)
+            {
+                for (int i = 0; i < BenefactorIds.All.Length && i < knownOwnedSkills.Length; i++)
+                    knownOwnedSkills[i] = rec.Get(BenefactorIds.All[i])?.acquired == true;
+                skillOwnershipSeeded = true;
+                return;
+            }
+            for (int i = 0; i < BenefactorIds.All.Length && i < knownOwnedSkills.Length; i++)
+            {
+                string id = BenefactorIds.All[i];
+                bool owned = rec.Get(id)?.acquired == true;
+                if (owned && !knownOwnedSkills[i])
+                {
+                    knownOwnedSkills[i] = true;
+                    string name = cat.Get(id).DisplayName;
+                    string formula = NotaryJournalCanvas.FormatSkillFormula(id);
+                    string tip = Loc.Get("skillcard.tip_" + id);
+                    hudCanvas.ShowSkillCard(name, formula, tip, accents[i]);
+                    UiAudioSynth.PlayCheckpoint();
+                }
+            }
         }
         private GameHudCanvas.SkillBadge[] BuildSkillBadges()
         {

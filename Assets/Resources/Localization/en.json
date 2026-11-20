@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "Notary Record Updated · Health Restored"
+    },
+    {
+      "key": "combat.parry",
+      "value": "PARRY!"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "POGO!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "COUNTER!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "BREAK!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Screen Shake Strength: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "Off (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Mild (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Full (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Hit-Stop Impact Freeze: {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Extended Invulnerability (Assist): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NEW BENEFACTOR SKILL"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Weave silver thread across broken ledges and pierce targets."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Rewind and freeze moving clockwork hazards and foes."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Arc through midair and weave past stage spotlights."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Shatter cracked bronze barriers and counter incoming blows."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Carve temporary inked footholds in midair."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Notary Journal"
+    },
+    {
+      "key": "journal.title",
+      "value": "Notary Journal & Ledger"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Skills & Growth"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Characters"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Exploration"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Switch Tab  |  N / Esc Close"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Input: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Rooms Explored: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Benefactor Skills: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Investigation Clues: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Active Keybindings"
+    },
+    {
+      "key": "journal.met",
+      "value": "Encountered"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Unknown"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Technique Inherited"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Record Blade Heir · Apprentice Notary"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Caretaker of the Attic of Oblivion"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Benefactor of Velvet Row · Silver Stitch"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Benefactor of Clocktower · Pendulum Rewind"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Benefactor of Glass Opera · Curtain Call Waltz"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Benefactor of Bell Tower · Resonance Forge"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Benefactor of Gallery · Canvas Carve"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Chief Arbiter · Notary Tribunal"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Location: {0}"
     }
   ]
 }

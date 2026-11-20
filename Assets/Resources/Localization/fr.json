@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "Registre notarial mis à jour · Santé restaurée"
+    },
+    {
+      "key": "combat.parry",
+      "value": "PARADE !"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "REBOND !"
+    },
+    {
+      "key": "combat.counter",
+      "value": "CONTRE !"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "BRISÉ !"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Tremblement d'écran : {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "Non (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Léger (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Complet (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Arrêt d'impact (Hit-Stop) : {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Invulnérabilité prolongée (Aide) : {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NOUVELLE TECHNIQUE"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Tissez du fil d'argent sur les corniches brisées et percez l'ennemi."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Rembobinez et figez brièvement mécanismes et ennemis."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Décrivez un arc aérien pour franchir les projecteurs."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Brisez les parois fissurées et contrez les attaques."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Tracez des appuis temporaires dans les airs."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Journal Notarial"
+    },
+    {
+      "key": "journal.title",
+      "value": "Journal Notarial & Registre"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Techniques"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Personnages"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Exploration"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Changer d'onglet  |  N / Esc Fermer"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Commande : {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Salles explorées : {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Techniques de bienfaiteur : {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Indices d'enquête : {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Touches actives"
+    },
+    {
+      "key": "journal.met",
+      "value": "Rencontré"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Inconnu"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Technique héritée"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Héritière de la Lame · Apprentie notaire"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Gardienne du Grenier de l'Oubli"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Bienfaiteur de Velours · Couture d'Argent"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Bienfaiteur de l'Horloge · Retour du Pendule"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Bienfaitrice de l'Opéra · Valse de Rideau"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Bienfaiteur du Beffroi · Forge Résonante"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Bienfaitrice de la Galerie · Gravure de Toile"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Juge Suprême · Tribunal Notarial"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Lieu : {0}"
     }
   ]
 }

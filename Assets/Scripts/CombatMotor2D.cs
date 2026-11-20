@@ -281,8 +281,10 @@ namespace RewindNotary
                     if (blade.Intersects(destructible.Bounds))
                     {
                         pogoContact = true;
+                        bool hitOk = destructible.Hit(strikeDamage);
+                        if (hitOk) CombatFloatingText2D.SpawnDamage(destructible.Bounds.center + Vector3.up * 0.4f, strikeDamage, false, false);
                         Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Destructible,
-                            destructible.TargetId, destructible.Hit(strikeDamage), strikeDamage));
+                            destructible.TargetId, hitOk, strikeDamage));
                     }
                 foreach (var surface in StitchSurface2D.All)
                     if (blade.Intersects(surface.Bounds))
@@ -316,6 +318,7 @@ namespace RewindNotary
                 Body.linearVelocity = new Vector2(Body.linearVelocity.x, 10.8f);
                 Defense?.State.Land();
                 AtmospherePostEffect.PulseImpact(0.38f);
+                CombatFloatingText2D.SpawnTag(transform.position + Vector3.up * 1.3f, Loc.Get("combat.pogo"), NotaryUiTheme.GoldGlow, 20);
             }
         }
         private void Update()

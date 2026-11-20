@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "公証記録を更新しました・体力回復"
+    },
+    {
+      "key": "combat.parry",
+      "value": "パリィ!"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "ポゴ!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "カウンター!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "ブレイク!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "画面揺れの強さ: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "オフ (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "弱 (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "標準 (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "ヒットストップ演出: {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "被弾無敵延長 (アシスト): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "新たな恩人技を習得"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "途切れた足場や封印の結び目を銀糸で繋ぎ、敵を貫きます。"
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "歯車や敵の時間の流れを一時的に巻き戻して固定します。"
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "空中で旋回跳躍し、劇場の照明区間を突破します。"
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "共鳴の一撃でひび割れた壁を砕き、敵の攻撃を弾き返します。"
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "空中に足場を刻み、新たな跳躍点を作ります。"
+    },
+    {
+      "key": "ui.journal",
+      "value": "公証手帳"
+    },
+    {
+      "key": "journal.title",
+      "value": "公証手帳・記録帳"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "技・進化"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "人物・公証録"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "探索・記録"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D タブ切替  |  N・Esc 閉じる"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "操作: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "探索済みの部屋: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "習得した恩人技: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "調査の手掛かり: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "現在のキー設定"
+    },
+    {
+      "key": "journal.met",
+      "value": "遭遇済み"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "未遭遇"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "技を継承済み"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "記録剣の継承者・見習い公証人"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "忘却の屋根裏部屋の保護者"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "ベルベット裁縫街の恩人・銀糸縫い"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "大時計塔の恩人・振り子巻き戻し"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "硝子歌劇場の恩人・カーテンコールワルツ"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "大鐘楼の恩人・共鳴鍛造"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "採光画廊の恩人・余白刻印"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "最終審判官・公証審判席"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "現在地: {0}"
     }
   ]
 }

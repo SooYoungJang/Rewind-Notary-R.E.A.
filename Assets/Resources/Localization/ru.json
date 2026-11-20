@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "Запись нотариуса обновлена · Здоровье восстановлено"
+    },
+    {
+      "key": "combat.parry",
+      "value": "ПАРИРОВАНИЕ!"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "ПОГО!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "КОНТРАТАКА!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "ПРОБИТИЕ!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Сила тряски экрана: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "Выкл (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Слабо (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Полная (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Замедление при ударе (Hit-Stop): {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Продлённая неуязвимость (Помощь): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "ОТКРЫТ НОВЫЙ НАВЫК"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Сшивайте сломанные уступы серебряной нитью и пронзайте врагов."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "На миг отматывайте и фиксируйте механизмы и противников."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Совершайте воздушный рывок дугой сквозь прожекторы сцены."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Крушите треснувшие стены и отражайте атаки врагов."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Вырезайте временные опоры прямо в воздухе."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Дневник нотариуса"
+    },
+    {
+      "key": "journal.title",
+      "value": "Дневник нотариуса и реестр"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Навыки"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Персонажи"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Исследование"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Сменить вкладку  |  N / Esc Закрыть"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Ввод: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Изучено комнат: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Навыки благодетелей: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Улики расследования: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Текущие клавиши"
+    },
+    {
+      "key": "journal.met",
+      "value": "Встречен"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Неизвестно"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Техника унаследована"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Наследница Клинка · Ученица нотариуса"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Хранительница Чердака забвения"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Благодетель Бархатной улицы · Серебряный стежок"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Благодетель Часовой башни · Откат маятника"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Благодетельница Оперы · Вальс занавеса"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Благодетель Колокольни · Резонансная ковка"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Благодетельница Галереи · Резьба по холсту"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Верховный судья · Трибунал нотариата"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Локация: {0}"
     }
   ]
 }

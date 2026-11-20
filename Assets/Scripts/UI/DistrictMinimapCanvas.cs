@@ -29,6 +29,7 @@ namespace RewindNotary
         private string lastLang;
 
         public bool FullMapOpen => fullOpen;
+        public int VisitedCount => visited.Count;
 
         public void Initialize(Transform parent)
         {
@@ -144,7 +145,7 @@ namespace RewindNotary
                 return;
             }
 
-            if (GameInput.MapDown)
+            if (GameInput.MapDown && !NotaryJournalCanvas.IsOpen)
             {
                 fullOpen = !fullOpen;
                 Time.timeScale = fullOpen ? 0f : 1f;

@@ -69,6 +69,15 @@ namespace RewindNotary
         private Text toastText;
         private float toastAge = 99f;
 
+        private Image lowHpVignette;
+        private Image parryFlashImage;
+        private static float parryFlashAge = 99f;
+
+        private CanvasGroup skillCardGroup;
+        private Image skillCardBorder;
+        private Text skillCardHeader, skillCardTitle, skillCardInput, skillCardTip;
+        private float skillCardAge = 99f;
+
         private Image[] skillSlotBorders;
         private Image[] skillSlotFills;
         private Text[] skillSlotLabels;
@@ -87,10 +96,12 @@ namespace RewindNotary
             rootGroup.blocksRaycasts = false;
             rootGroup.interactable = false;
 
+            BuildScreenOverlays();
             BuildPlayerCluster();
             BuildLoadoutStrip();
             BuildRoomBanner();
             BuildCheckpointToast();
+            BuildSkillAcquireCard();
             BuildBossBar();
             BuildObjectiveAndNotice();
             BuildControlsFooter();
@@ -98,11 +109,95 @@ namespace RewindNotary
             currentLang = Loc.Language;
         }
 
+        public static void PulseParryFlash() { parryFlashAge = 0f; }
+
         public void ShowToast(string text)
         {
             if (toastText == null) return;
             toastText.text = "◆  " + (text ?? "") + "  ◆";
             toastAge = 0f;
+        }
+
+        public void ShowSkillCard(string skillName, string inputFormula, string tip, Color accent)
+        {
+            if (skillCardGroup == null) return;
+            skillCardBorder.color = Color.Lerp(NotaryUiTheme.Gold, accent, 0.35f);
+            skillCardHeader.text = Loc.Get("skillcard.acquired");
+            skillCardTitle.text = skillName ?? "";
+            skillCardInput.text = Loc.Get("journal.input_formula", inputFormula ?? "");
+            skillCardTip.text = tip ?? "";
+            skillCardAge = 0f;
+        }
+
+        private void BuildScreenOverlays()
+        {
+            var edgeSprite = CreateEdgeVignetteSprite();
+            lowHpVignette = NotaryUiTheme.CreateImage(canvas.transform, "LowHpVignette", new Color(0.85f, 0.12f, 0.16f, 0f), edgeSprite);
+            NotaryUiTheme.Stretch(lowHpVignette.rectTransform);
+            lowHpVignette.raycastTarget = false;
+
+            parryFlashImage = NotaryUiTheme.CreateImage(canvas.transform, "ParryRimFlash", new Color(0.55f, 0.96f, 0.92f, 0f), edgeSprite);
+            NotaryUiTheme.Stretch(parryFlashImage.rectTransform);
+            parryFlashImage.raycastTarget = false;
+        }
+
+        private void BuildSkillAcquireCard()
+        {
+            skillCardBorder = NotaryUiTheme.CreateBorderedPanel(canvas.transform, "SkillAcquireCard", NotaryUiTheme.PanelBg, NotaryUiTheme.Gold, 2f);
+            var rt = skillCardBorder.rectTransform;
+            rt.anchorMin = new Vector2(1f, 0.5f);
+            rt.anchorMax = new Vector2(1f, 0.5f);
+            rt.pivot = new Vector2(1f, 0.5f);
+            rt.anchoredPosition = new Vector2(-24f, 18f);
+            rt.sizeDelta = new Vector2(376f, 140f);
+            skillCardGroup = skillCardBorder.gameObject.AddComponent<CanvasGroup>();
+            skillCardGroup.alpha = 0f;
+
+            skillCardHeader = NotaryUiTheme.CreateText(skillCardBorder.transform, "Header", "", 12, NotaryUiTheme.TealAccent, TextAnchor.MiddleLeft, true, false);
+            skillCardHeader.rectTransform.anchorMin = new Vector2(0f, 1f);
+            skillCardHeader.rectTransform.anchorMax = new Vector2(1f, 1f);
+            skillCardHeader.rectTransform.offsetMin = new Vector2(16f, -28f);
+            skillCardHeader.rectTransform.offsetMax = new Vector2(-16f, -8f);
+
+            skillCardTitle = NotaryUiTheme.CreateText(skillCardBorder.transform, "Title", "", 20, NotaryUiTheme.GoldGlow, TextAnchor.MiddleLeft, true, true);
+            skillCardTitle.rectTransform.anchorMin = new Vector2(0f, 1f);
+            skillCardTitle.rectTransform.anchorMax = new Vector2(1f, 1f);
+            skillCardTitle.rectTransform.offsetMin = new Vector2(16f, -64f);
+            skillCardTitle.rectTransform.offsetMax = new Vector2(-16f, -26f);
+            skillCardTitle.resizeTextForBestFit = true;
+            skillCardTitle.resizeTextMinSize = 14;
+            skillCardTitle.resizeTextMaxSize = 20;
+
+            skillCardInput = NotaryUiTheme.CreateText(skillCardBorder.transform, "Input", "", 13, NotaryUiTheme.Gold, TextAnchor.MiddleLeft, true, false);
+            skillCardInput.rectTransform.anchorMin = new Vector2(0f, 1f);
+            skillCardInput.rectTransform.anchorMax = new Vector2(1f, 1f);
+            skillCardInput.rectTransform.offsetMin = new Vector2(16f, -88f);
+            skillCardInput.rectTransform.offsetMax = new Vector2(-16f, -64f);
+
+            skillCardTip = NotaryUiTheme.CreateText(skillCardBorder.transform, "Tip", "", 12, NotaryUiTheme.Ivory, TextAnchor.UpperLeft, false, false);
+            skillCardTip.rectTransform.anchorMin = new Vector2(0f, 0f);
+            skillCardTip.rectTransform.anchorMax = new Vector2(1f, 0f);
+            skillCardTip.rectTransform.offsetMin = new Vector2(16f, 8f);
+            skillCardTip.rectTransform.offsetMax = new Vector2(-16f, 52f);
+        }
+
+        private static Sprite CreateEdgeVignetteSprite()
+        {
+            const int size = 128;
+            var tex = new Texture2D(size, size, TextureFormat.RGBA32, false) { filterMode = FilterMode.Bilinear, wrapMode = TextureWrapMode.Clamp };
+            for (int y = 0; y < size; y++)
+            {
+                float ny = (y / (float)(size - 1)) * 2f - 1f;
+                for (int x = 0; x < size; x++)
+                {
+                    float nx = (x / (float)(size - 1)) * 2f - 1f;
+                    float r = Mathf.Sqrt(nx * nx * 0.72f + ny * ny * 1.12f);
+                    float a = Mathf.Clamp01((r - 0.56f) / 0.62f);
+                    tex.SetPixel(x, y, new Color(1f, 1f, 1f, a * a));
+                }
+            }
+            tex.Apply();
+            return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f));
         }
 
         private void BuildPlayerCluster()
@@ -415,6 +510,7 @@ namespace RewindNotary
             if (!string.IsNullOrEmpty(s.RoomKey) && s.RoomKey != lastRoomKey)
             {
                 lastRoomKey = s.RoomKey;
+                CombatFloatingText2D.ClearAll();
                 roomBannerText.text = s.LocationTitle ?? "";
                 roomBannerAge = s.BossVisible ? 99f : 0f;
             }
@@ -440,6 +536,39 @@ namespace RewindNotary
                 toastGroup.alpha = a;
             }
             else if (toastGroup != null) toastGroup.alpha = 0f;
+
+            if (skillCardAge < 5.0f)
+            {
+                skillCardAge += Time.unscaledDeltaTime;
+                float a = skillCardAge < 0.30f ? skillCardAge / 0.30f
+                    : skillCardAge > 4.2f ? Mathf.Clamp01((5.0f - skillCardAge) / 0.8f) : 1f;
+                skillCardGroup.alpha = a;
+            }
+            else if (skillCardGroup != null) skillCardGroup.alpha = 0f;
+
+            if (lowHpVignette != null)
+            {
+                if (s.PlayerHp > 0 && s.PlayerHp <= 2)
+                {
+                    bool critical = s.PlayerHp == 1;
+                    float pulse = 0.5f + 0.5f * Mathf.Sin(Time.unscaledTime * (critical ? 8.2f : 5.4f));
+                    float alpha = critical ? Mathf.Lerp(0.18f, 0.44f, pulse) : Mathf.Lerp(0.06f, 0.20f, pulse);
+                    lowHpVignette.color = new Color(0.84f, 0.10f, 0.14f, alpha);
+                    UiAudioSynth.PlayHeartbeat(critical);
+                }
+                else lowHpVignette.color = new Color(0.84f, 0.10f, 0.14f, 0f);
+            }
+
+            if (parryFlashImage != null)
+            {
+                if (parryFlashAge < 0.28f)
+                {
+                    parryFlashAge += Time.unscaledDeltaTime;
+                    float a = Mathf.Clamp01(1f - parryFlashAge / 0.28f);
+                    parryFlashImage.color = new Color(0.56f, 0.96f, 0.90f, a * a * 0.55f);
+                }
+                else parryFlashImage.color = new Color(0.56f, 0.96f, 0.90f, 0f);
+            }
 
             if (s.Skills != null && skillSlotBorders != null)
             {
@@ -504,6 +633,10 @@ namespace RewindNotary
             bossNameText.font = title;
             overlayTitleText.font = title;
             if (toastText != null) toastText.font = title;
+            if (skillCardTitle != null) skillCardTitle.font = title;
+            if (skillCardHeader != null) skillCardHeader.font = body;
+            if (skillCardInput != null) skillCardInput.font = body;
+            if (skillCardTip != null) skillCardTip.font = body;
             playerHpText.font = body;
             if (skillSlotLabels != null)
                 for (int i = 0; i < skillSlotLabels.Length; i++)

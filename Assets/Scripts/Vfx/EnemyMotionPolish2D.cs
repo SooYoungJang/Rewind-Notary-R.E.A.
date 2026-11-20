@@ -219,8 +219,12 @@ namespace RewindNotary
                 wasCleared = false;
             }
 
-            if (remaining < lastRemaining && !cleared)
-                hitRecoilUntil = Time.time + 0.18f;
+            if (remaining < lastRemaining)
+            {
+                int delta = lastRemaining - remaining;
+                CombatFloatingText2D.SpawnDamage(transform.position + Vector3.up * 1.65f, delta, cleared, false);
+                if (!cleared) hitRecoilUntil = Time.time + 0.18f;
+            }
             lastRemaining = remaining;
 
             bool alive = !cleared && pictureRenderer.enabled;

@@ -216,7 +216,7 @@ namespace RewindNotary
                             Index = i,
                             Label = labels[i],
                             Selected = selected == i,
-                            IsSetting = Page == ShellPage.Settings && i < 7
+                            IsSetting = Page == ShellPage.Settings && i < 9
                         });
                     }
                     break;

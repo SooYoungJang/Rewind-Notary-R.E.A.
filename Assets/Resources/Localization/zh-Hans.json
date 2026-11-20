@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "公证记录已更新 · 体力已恢复"
+    },
+    {
+      "key": "combat.parry",
+      "value": "招架!"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "下劈弹跳!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "反击!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "破防!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "屏幕震动强度：{0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "关闭 (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "较弱 (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "标准 (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "打击顿帧（Hit-Stop）：{0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "受击无敌延长（辅助）：{0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "解锁新恩人技艺"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "用银丝缝合断裂的平台与封印结，并贯穿敌人。"
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "短暂回溯并定格机关与敌人的时间流动。"
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "在空中回旋飞跃，穿过剧场聚光灯区域。"
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "以共鸣重击震碎裂墙，并反制来袭攻击。"
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "在空中刻画临时落脚点以开辟新路线。"
+    },
+    {
+      "key": "ui.journal",
+      "value": "公证手记"
+    },
+    {
+      "key": "journal.title",
+      "value": "公证手记 · 记录簿"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "技艺 · 进化"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "人物 · 公证录"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "探索 · 记录"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D 切换标签  |  N / Esc 关闭"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "操作：{0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "已探索房间：{0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "已解锁恩人技艺：{0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "调查线索：{0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "当前按键配置"
+    },
+    {
+      "key": "journal.met",
+      "value": "已相遇"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "未相遇"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "已继承技艺"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "记录剑继承者 · 见习公证人"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "忘却阁楼的看护者"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "天鹅绒裁缝街恩人 · 银丝缝缀"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "大钟楼恩人 · 钟摆回溯"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "玻璃歌剧院恩人 · 谢幕华尔兹"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "大钟塔恩人 · 共鸣锻造"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "采光画廊恩人 · 留白刻痕"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "终审法官 · 公证审判席"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "位置：{0}"
     }
   ]
 }

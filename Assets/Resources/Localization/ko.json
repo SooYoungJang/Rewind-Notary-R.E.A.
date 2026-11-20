@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "공증 기록이 갱신되었습니다 · 체력 회복"
+    },
+    {
+      "key": "combat.parry",
+      "value": "패리!"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "포고!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "반격!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "파괴!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "화면 흔들림 강도: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "끄기 (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "약하게 (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "표준 (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "타격 역경직(히트스톱): {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "피격 무적 여유(어시스트): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "새 은인 기술 해금"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "끊긴 발판이나 봉인 매듭에 은실을 엮어 길을 열고 적을 꿰뚫습니다."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "움직이는 장치와 적의 시간 흐름을 잠시 되감아 고정합니다."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "공중에서 선회 도약하며 극장 조명 구간을 돌파합니다."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "공명 일격으로 균열벽을 부수고 적의 공격을 받아칩니다."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "허공에 발판을 새겨 새로운 도약 지점을 만듭니다."
+    },
+    {
+      "key": "ui.journal",
+      "value": "공증 수첩"
+    },
+    {
+      "key": "journal.title",
+      "value": "공증 수첩 · 기록장"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "기술 · 진화"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "인물 · 공증록"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "탐색 · 기록"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D 탭 전환  |  N · Esc 닫기"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "조작: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "탐색한 방: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "해금된 은인 기술: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "조사 단서: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "현재 조작 키"
+    },
+    {
+      "key": "journal.met",
+      "value": "조우 완료"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "미조우"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "기술 계승 완료"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "기록검 계승자 · 견습 공증인"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "망각 다락방의 보호자"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "벨벳 재단 거리의 은인 · 은실 박음질"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "대시계탑의 은인 · 진자 되감기"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "유리 오페라극장의 은인 · 커튼콜 왈츠"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "대종루의 은인 · 공명 단조"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "채광 화랑의 은인 · 여백 각인"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "최종 심판관 · 공증 심판석"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "위치: {0}"
     }
   ]
 }

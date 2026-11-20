@@ -91,6 +91,9 @@ namespace RewindNotary
             ImpactFeedback.ParrySuccess();
             AudioManager.Play(AudioManager.Sfx.Parry);
             ShowParry(Color.white, DefenseTuning.ParryEffectSeconds);
+            AtmospherePostEffect.PulseImpact(0.65f);
+            GameHudCanvas.PulseParryFlash();
+            CombatFloatingText2D.SpawnTag(transform.position + Vector3.up * 2.0f, Loc.Get("combat.parry"), NotaryUiTheme.TealAccent, 25);
             motor.Skills?.RecordParrySuccess();
             return true;
         }

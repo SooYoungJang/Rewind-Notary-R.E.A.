@@ -531,7 +531,7 @@ namespace RewindNotary
             }
 
             var vlg = panelButtonsContainer.gameObject.AddComponent<VerticalLayoutGroup>();
-            vlg.spacing = snap.Buttons != null && snap.Buttons.Count > 7 ? 6f : 10f;
+            vlg.spacing = snap.Buttons != null && snap.Buttons.Count > 9 ? 4f : snap.Buttons != null && snap.Buttons.Count > 7 ? 6f : 10f;
             vlg.childAlignment = TextAnchor.UpperCenter;
             vlg.childControlWidth = true;
             vlg.childControlHeight = true;
@@ -540,9 +540,10 @@ namespace RewindNotary
             vlg.padding = new RectOffset(snap.Page == ShellPage.Slots ? 24 : 140, snap.Page == ShellPage.Slots ? 24 : 140, 6, 6);
 
             float rowHeight = snap.Page == ShellPage.Slots ? 88f
+                : snap.Buttons != null && snap.Buttons.Count > 9 ? 32f
                 : snap.Buttons != null && snap.Buttons.Count > 7 ? 38f
                 : snap.Buttons != null && snap.Buttons.Count > 5 ? 46f : 54f;
-            int fontSize = snap.Page == ShellPage.Slots ? 16 : rowHeight < 42f ? 15 : 19;
+            int fontSize = snap.Page == ShellPage.Slots ? 16 : rowHeight < 35f ? 14 : rowHeight < 42f ? 15 : 19;
             SpawnButtons(snap.Buttons, fontSize, rowHeight, snap.Page == ShellPage.Slots);
         }
 

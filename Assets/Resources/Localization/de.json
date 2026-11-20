@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "Notarsprotokoll aktualisiert · LP geheilt"
+    },
+    {
+      "key": "combat.parry",
+      "value": "PARADE!"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "POGO!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "KONTER!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "BRUCH!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Kamerawackeln: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "Aus (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Leicht (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Voll (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Trefferstopp (Hit-Stop): {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Längere Unverwundbarkeit (Hilfe): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NEUE GÖNNER-TECHNIK"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Verbinde gebrochene Pfade mit Silberfaden und durchbohre Gegner."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Spule bewegte Uhrwerke und Gegner kurzzeitig zurück."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Schwinge durch die Luft und weiche Scheinwerfern aus."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Zertrümmere brüchige Wände und kontere Angriffe."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Zeichne temporäre Tritte in die Luft."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Notar-Tagebuch"
+    },
+    {
+      "key": "journal.title",
+      "value": "Notar-Tagebuch & Register"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Techniken"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Personen"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Erkundung"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Reiter wechseln  |  N / Esc Schließen"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Eingabe: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Erkundete Räume: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Gönner-Techniken: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Ermittlungshinweise: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Aktive Tastenbelegung"
+    },
+    {
+      "key": "journal.met",
+      "value": "Begegnet"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Unbekannt"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Technik übernommen"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Erbin der Chronikklinge · Notaranwärterin"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Hüterin des Dachbodens"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Gönner der Samtgasse · Silberstich"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Gönner des Uhrturms · Pendelrücklauf"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Gönnerin der Glasoper · Vorhangwalzer"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Gönner des Glockenturms · Resonanzschmiede"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Gönnerin der Galerie · Leinwandschnitt"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Oberster Richter · Tribunal"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Ort: {0}"
     }
   ]
 }

@@ -11,6 +11,9 @@ namespace RewindNotary
         public int schemaVersion = 1;
         public float bgmVolume = 0.4f, sfxVolume = 0.7f;
         public bool screenShake = true;
+        public int shakeStrength = 2;
+        public bool hitStop = true;
+        public bool assistImmunity = false;
         public int stageOverride;
         public string language;
         public int displayMode;
@@ -30,6 +33,8 @@ namespace RewindNotary
                 || stageOverride < 0 || stageOverride > 3) throw new InvalidDataException(Loc.Get("settings.invalid_values"));
             language = Loc.Normalize(language);
             displayMode = Mathf.Clamp(displayMode, 0, 3);
+            shakeStrength = Mathf.Clamp(shakeStrength, 0, 2);
+            screenShake = shakeStrength > 0;
         }
 
         public void ResetKeybinds()
@@ -111,7 +116,10 @@ namespace RewindNotary
                 AudioManager.Instance.MusicVolume = Value.bgmVolume;
                 AudioManager.Instance.SfxVolume = Value.sfxVolume;
             }
-            ImpactCameraShake.Enabled = Value.screenShake;
+            ImpactCameraShake.Enabled = Value.shakeStrength > 0;
+            ImpactCameraShake.StrengthMultiplier = Value.shakeStrength == 2 ? 1f : Value.shakeStrength == 1 ? 0.5f : 0f;
+            ImpactFeedback.HitStopEnabled = Value.hitStop;
+            Health.AssistImmunityMultiplier = Value.assistImmunity ? 1.5f : 1f;
             QualitySettings.vSyncCount = Value.vsync ? 1 : 0;
             GameInput.ApplyBindings(Value);
 
@@ -132,6 +140,16 @@ namespace RewindNotary
                         Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
                         break;
                 }
+            }
+        }
+
+        public static string ShakeStrengthLabel(int strength)
+        {
+            switch (strength)
+            {
+                case 0: return Loc.Get("settings.shake_off");
+                case 1: return Loc.Get("settings.shake_half");
+                default: return Loc.Get("settings.shake_full");
             }
         }
 

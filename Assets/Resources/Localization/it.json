@@ -4072,6 +4072,162 @@
     {
       "key": "hud.checkpoint_saved",
       "value": "Registro notarile aggiornato · Salute ripristinata"
+    },
+    {
+      "key": "combat.parry",
+      "value": "PARATA!"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "RIMBALZO!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "CONTRATTACCO!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "ROTTURA!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Intensità vibrazione: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "No (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Lieve (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Piena (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Fermo d'impatto (Hit-Stop): {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Invulnerabilità estesa (Aiuto): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NUOVA TECNICA SBLOCCATA"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Cuci filo d'argento sulle sporgenze rotte e trafiggi i nemici."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Riavvolgi e blocca per un attimo ingranaggi e nemici."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Balza ad arco in aria evitando i riflettori del palco."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Frantuma pareti incrinate e respingi gli attacchi."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Incidi appoggi temporanei a mezz'aria."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Diario Notarile"
+    },
+    {
+      "key": "journal.title",
+      "value": "Diario Notarile e Registro"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Tecniche"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Personaggi"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Esplorazione"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Cambia scheda  |  N / Esc Chiudi"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Comando: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Stanze esplorate: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Tecniche benefattori: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Indizi d'indagine: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Comandi attivi"
+    },
+    {
+      "key": "journal.met",
+      "value": "Incontrato"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Sconosciuto"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Tecnica ereditata"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Erede della Lama · Apprendista notaio"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Custode della Soffitta dell'Oblio"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Benefattore del Velluto · Punto d'Argento"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Benefattore dell'Orologio · Pendolo Inverso"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Benefattrice dell'Opera · Valzer di Sipario"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Benefattore del Campanile · Forgia Risonante"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Benefattrice della Galleria · Incisione su Tela"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Giudice Supremo · Tribunale Notarile"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Luogo: {0}"
     }
   ]
 }
