@@ -139,7 +139,7 @@ namespace RewindNotary
                 !(Has("gabriel_signals_agreed") || fieldTrial != null)) return;
             var trial = DistrictTrial;
             string signal = fieldTrial != null ? fieldTrial.PatternLabel :
-                mikhailBout != null ? mikhailBout.PatternLabel : trial.patterns[0].Label;
+                storyBout != null ? storyBout.PatternLabel : trial.patterns[0].Label;
             var screen = Camera.main.WorldToScreenPoint(opponent.transform.position + Vector3.up * 2.7f);
             var position = GUI.matrix.inverse.MultiplyPoint3x4(new Vector3(screen.x, Screen.height - screen.y, 0));
             GUI.Box(new Rect(position.x - 160, position.y - 14, 320, 30), signal);

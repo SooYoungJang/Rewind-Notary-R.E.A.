@@ -21,7 +21,7 @@ namespace RewindNotary
             if (GameInput.CanPlay)
             {
                 // Simultaneous defense buttons resolve to dash. No held-button auto-repeat.
-                if (GameInput.DashDown) TryDash(GameInput.Horizontal);
+                if (GameInput.DashDown) TryDash(GameInput.DashDirection);
                 else if (GameInput.ParryDown) TryStartParry();
             }
             if (State.Phase == DefensePhase.Dash && Time.time >= nextTrail)

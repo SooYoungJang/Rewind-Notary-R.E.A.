@@ -97,9 +97,11 @@ namespace RewindNotary
         public StopMeasurement groundStop = new StopMeasurement(), airStop = new StopMeasurement();
         public AttackMeasurement stationaryAttack = new AttackMeasurement();
         public MovingAttackMeasurement movingAttack = new MovingAttackMeasurement();
+        public string reverseAttack = "skipped";
+        public string heldCombo = "skipped";
         public string failure;
         internal bool Passed => groundStop.status == "pass" && airStop.status == "pass" && stationaryAttack.status == "pass"
-            && movingAttack.status == "pass";
+            && movingAttack.status == "pass" && reverseAttack == "pass" && heldCombo == "pass";
     }
 
     [Serializable] public sealed class StopMeasurement

@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 namespace RewindNotary
 {
-    public enum ShellPage { Main, Slots, Stages, Playing, Pause, Settings, Keybinds, DeleteConfirm, QuitConfirm, Skills, Investigation, CoreReading, ReturnSelection, ReturnConfirm, CourtLift, StoryDialogue, StorySaving }
+    public enum ShellPage { Main, Slots, Stages, Playing, Pause, Settings, Keybinds, DeleteConfirm, QuitConfirm, Skills, Investigation, CoreReading, ReturnSelection, ReturnConfirm, CourtLift, StoryDialogue, StorySaving, QuickSlots }
     public enum SlotPurpose { Continue, NewGame, StageSelect }
 
     // Runs before hit-stop and combat so pause/input transitions have a single owner.
@@ -67,11 +68,9 @@ namespace RewindNotary
             if (Page == ShellPage.Keybinds && remappingSlot >= 0)
             {
                 if (UnityEngine.Input.GetKeyDown(KeyCode.Escape)) { remappingSlot = -1; UiAudioSynth.PlayCancel(); return; }
-                if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse1)) { AssignKeybind(remappingSlot, KeyCode.Mouse1); remappingSlot = -1; return; }
-                if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse2)) { AssignKeybind(remappingSlot, KeyCode.Mouse2); remappingSlot = -1; return; }
                 foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (code == KeyCode.None || code == KeyCode.Escape || code >= KeyCode.Mouse0) continue;
+                    if (!GameInput.CanRemapTo(code)) continue;
                     if (UnityEngine.Input.GetKeyDown(code))
                     {
                         AssignKeybind(remappingSlot, code);
@@ -125,6 +124,13 @@ namespace RewindNotary
             }
             if (Page == ShellPage.StoryDialogue && (GameInput.PauseDown || GameInput.CancelDown))
             { Go(ShellPage.Pause); return; }
+            if (Page == ShellPage.StoryDialogue && openingScene != null)
+            {
+                if (!game.ActiveSkills.LastSaveSucceeded) { Go(ShellPage.StorySaving); return; }
+                if (openingScene.Advance(Time.unscaledDeltaTime, GameInput.SubmitDown) &&
+                    game.Area.ConfirmDialogue(false)) Resume();
+                return;
+            }
             if (Playing)
             {
                 if (GameInput.PauseDown && DistrictMinimapCanvas.ConsumedCancelFrame != Time.frameCount
@@ -132,7 +138,8 @@ namespace RewindNotary
                 else if (GameInput.InvestigateDown && game.ActiveCassel?.CanChooseReturn == true) OpenReturnSelection();
                 return;
             }
-            if (GameInput.CancelDown || ((Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.Investigation || Page == ShellPage.CoreReading) && GameInput.PauseDown)) { UiAudioSynth.PlayCancel(); Back(); return; }
+            if (GameInput.CancelDown || ((Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.QuickSlots ||
+                Page == ShellPage.Investigation || Page == ShellPage.CoreReading) && GameInput.PauseDown)) { UiAudioSynth.PlayCancel(); Back(); return; }
             Vector2 raw = GameInput.MenuAxis;
             var axis = new Vector2(Mathf.Abs(raw.x) >= 0.5f ? Mathf.Sign(raw.x) : 0,
                 Mathf.Abs(raw.y) >= 0.5f ? Mathf.Sign(raw.y) : 0);
@@ -140,6 +147,7 @@ namespace RewindNotary
             {
                 if (axis.y != 0) { selected = (selected - (int)axis.y + RowCount) % RowCount; UiAudioSynth.PlayMove(); }
                 else if (Page == ShellPage.Settings) { AdjustSetting(selected, (int)axis.x); UiAudioSynth.PlayMove(); }
+                else if (Page == ShellPage.QuickSlots) CycleQuickSlot(selected, (int)axis.x);
                 else if (Page == ShellPage.Investigation) clueScroll.y = Mathf.Max(0, clueScroll.y + axis.x * 85);
                 else if (Page == ShellPage.StoryDialogue || Page == ShellPage.CourtLift) dialogueScroll.y = Mathf.Max(0, dialogueScroll.y + axis.x * 85);
                 else if (Page == ShellPage.CoreReading) readingScroll.y = Mathf.Max(0, readingScroll.y + axis.x * 85);
@@ -153,7 +161,8 @@ namespace RewindNotary
             : Page == ShellPage.Stages ? StageCatalog.All.Length + (EndingCheckpoint.Marker(selectedRecord) == null ? 1 : 2) : Page == ShellPage.Pause ? 6
             : Page == ShellPage.Investigation || Page == ShellPage.CoreReading ? InvestigationRows
             : Page == ShellPage.ReturnSelection ? BenefactorIds.All.Length + 1
-            : Page == ShellPage.Skills ? 2 : Page == ShellPage.Settings ? 11 : Page == ShellPage.Keybinds ? 9 : 2;
+            : Page == ShellPage.Skills ? 3 : Page == ShellPage.QuickSlots ? QuickSkills.Keys.Length + 1
+            : Page == ShellPage.Settings ? 11 : Page == ShellPage.Keybinds ? 9 : 2;
         public void Pause()
         {
             if (!Playing) return;
@@ -176,6 +185,7 @@ namespace RewindNotary
                 case ShellPage.ReturnConfirm: Go(ShellPage.ReturnSelection); break;
                 case ShellPage.Pause: Resume(); break;
                 case ShellPage.Skills: Go(ShellPage.Pause); break;
+                case ShellPage.QuickSlots: Go(ShellPage.Skills); break;
                 case ShellPage.Investigation:
                 case ShellPage.CoreReading: CloseInvestigation(); break;
                 case ShellPage.Settings: Settings.Save(); Go(settingsReturn); break;
@@ -223,7 +233,12 @@ namespace RewindNotary
                     else if (index == 4) ReturnMain(); else RequestQuit();
                     break;
                 case ShellPage.Skills:
-                    if (index == 0) OpenInvestigation(); else Back();
+                    if (index == 0) OpenInvestigation();
+                    else if (index == 1) Go(ShellPage.QuickSlots);
+                    else Back();
+                    break;
+                case ShellPage.QuickSlots:
+                    if (index == QuickSkills.Keys.Length) Back(); else CycleQuickSlot(index, 1);
                     break;
                 case ShellPage.Investigation:
                 case ShellPage.CoreReading:
@@ -422,8 +437,13 @@ namespace RewindNotary
             Application.Quit();
 #endif
         }
-        private void OnApplicationFocus(bool focused) { if (!focused && Playing) Pause(); }
-        private void OnApplicationPause(bool paused) { if (paused && Playing) Pause(); }
+        private void OnApplicationFocus(bool focused) { if (!focused) PausePresentation(); }
+        private void OnApplicationPause(bool paused) { if (paused) PausePresentation(); }
+        private void PausePresentation()
+        {
+            if (Page == ShellPage.StoryDialogue && openingScene != null) Go(ShellPage.Pause);
+            else if (Playing) Pause();
+        }
         private void OnDestroy() { GameInput.SetGameplay(false); Time.timeScale = 1f; }
 
         private string SlotLabel(int index)
@@ -444,12 +464,19 @@ namespace RewindNotary
         }
         private void OnGUI()
         {
-            if (shellCanvas != null) return;
+            if (shellCanvas != null && (Page != ShellPage.StoryDialogue || openingScene == null)) return;
             if (Settings == null || Playing) return;
+            if (Event.current.isMouse || Event.current.type == EventType.ScrollWheel) return;
             var previous = GUI.matrix;
             float scale = Mathf.Min(Screen.width / 1280f, Screen.height / 720f);
             GUI.matrix = Matrix4x4.TRS(new Vector3((Screen.width - 1280 * scale) / 2f,
                 (Screen.height - 720 * scale) / 2f, 0), Quaternion.identity, Vector3.one * scale);
+            if (Page == ShellPage.StoryDialogue && openingScene != null)
+            {
+                openingScene.Draw(font);
+                GUI.matrix = previous;
+                return;
+            }
             if (titleStyle == null)
             {
                 titleStyle = new GUIStyle(GUI.skin.label) { font = font, fontSize = 34, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleCenter };
@@ -461,17 +488,14 @@ namespace RewindNotary
             GUI.DrawTexture(new Rect(-2000, -2000, 6000, 5000), Texture2D.whiteTexture); GUI.color = Color.white;
             GUI.Label(new Rect(90, 24, 1100, 62), Loc.Get("game.menu_title"), titleStyle);
             GUI.Label(new Rect(200, 95, 900, 36), Heading(), textStyle);
-            ShellPage renderedPage = Page;
             if (Page == ShellPage.Slots)
             {
                 int pitch = records.Length > 4 ? 490 / records.Length : 122;
                 for (int i = 0; i < records.Length; i++)
                 {
                     Row(i, SlotLabel(i), new Rect(200, 148 + i * pitch, 760, pitch - 12));
-                    if (Page != renderedPage) break;
-                    if (GUI.Button(new Rect(978, 175 + i * pitch, 100, 52), Loc.Get("ui.delete"), buttonStyle)) RequestDelete(i + 1);
                 }
-                if (Page == renderedPage) Row(records.Length, Loc.Get("ui.back"), new Rect(200, 154 + records.Length * pitch, 880, 46));
+                Row(records.Length, Loc.Get("ui.back"), new Rect(200, 154 + records.Length * pitch, 880, 46));
             }
             else if (Page == ShellPage.StorySaving)
             {
@@ -483,9 +507,11 @@ namespace RewindNotary
             else if (Page == ShellPage.Skills)
             {
                 DrawSkills();
-                Row(0, Loc.Get("ui.investigation_progress", Investigation.ProgressLabel), new Rect(60, 620, 760, 46));
-                if (Page == renderedPage) Row(1, Loc.Get("ui.back_to_pause"), new Rect(840, 620, 380, 46));
+                Row(0, Loc.Get("ui.investigation_progress", Investigation.ProgressLabel), new Rect(60, 620, 500, 46));
+                Row(1, Loc.Get("quick_skill.menu"), new Rect(575, 620, 300, 46));
+                Row(2, Loc.Get("ui.back_to_pause"), new Rect(890, 620, 330, 46));
             }
+            else if (Page == ShellPage.QuickSlots) DrawQuickSlots();
             else if (Page == ShellPage.Investigation || Page == ShellPage.CoreReading) DrawInvestigation();
             else if (Page == ShellPage.ReturnSelection || Page == ShellPage.ReturnConfirm) DrawReturn();
             else if (Page == ShellPage.Stages)
@@ -496,15 +522,10 @@ namespace RewindNotary
                 {
                     var stage = StageCatalog.All[i];
                     Row(i, stage.Name + "\n[" + stage.Status(selectedRecord) + "]", new Rect(50 + (i / rows) * 600, 136 + (i % rows) * pitch, 580, pitch - 2));
-                    if (Page != renderedPage) break;
                 }
-                if (Page == renderedPage)
-                {
-                    bool hasPrevious = EndingCheckpoint.Marker(selectedRecord) != null;
-                    Row(StageCatalog.All.Length, Loc.Get("ui.back"), new Rect(160, 590, hasPrevious ? 350 : 960, 40));
-                    if (Page == renderedPage && hasPrevious)
-                        Row(StageCatalog.All.Length + 1, Loc.Get("story.resume_previous"), new Rect(530, 590, 590, 40));
-                }
+                bool hasPrevious = EndingCheckpoint.Marker(selectedRecord) != null;
+                Row(StageCatalog.All.Length, Loc.Get("ui.back"), new Rect(160, 590, hasPrevious ? 350 : 960, 40));
+                if (hasPrevious) Row(StageCatalog.All.Length + 1, Loc.Get("story.resume_previous"), new Rect(530, 590, 590, 40));
             }
             else
             {
@@ -512,7 +533,6 @@ namespace RewindNotary
                 for (int i = 0; i < labels.Length; i++)
                 {
                     Row(i, labels[i], new Rect(300, 170 + i * 67, 680, 55));
-                    if (Page != renderedPage) break;
                 }
                 if (Page == ShellPage.Settings)
                 {
@@ -534,11 +554,13 @@ namespace RewindNotary
             GUI.matrix = previous;
         }
         private Vector2 dialogueScroll;
+        private OpeningScene openingScene;
         internal void OpenStoryDialogue()
         {
             game.SuspendInput();
             Time.timeScale = 0f;
             dialogueScroll = Vector2.zero;
+            openingScene = OpeningScene.For(DialogueRow);
             Go(ShellPage.StoryDialogue);
         }
         private StoryRow DialogueRow => game.Area != null ? game.Area.ActiveRow : game.ActiveCassel.Scenes.Modal;
@@ -580,22 +602,40 @@ namespace RewindNotary
                     BenefactorTrialProgress.Status(session.Progression.Record, trialInfo), new GUIStyle(textStyle) { fontSize = 15 });
             }
         }
+        private void CycleQuickSlot(int slot, int direction)
+        {
+            if (slot >= QuickSkills.Keys.Length) return;
+            var record = game.ActiveSkills.Progression.Record;
+            var options = new List<string>(QuickSkills.Starter);
+            foreach (string id in BenefactorIds.All)
+                if (record.Get(id)?.acquired == true) options.Add(id);
+            string current = QuickSkills.Equipped(Settings.Value, record, slot);
+            string previous = Settings.Value.quickSkills[slot];
+            Settings.Value.quickSkills[slot] = options[(options.IndexOf(current) + options.Count + direction) % options.Count];
+            if (Settings.Save()) message = null;
+            else { Settings.Value.quickSkills[slot] = previous; message = Settings.Error; }
+        }
+
+        private void DrawQuickSlots()
+        {
+            GUI.Label(new Rect(205, 151, 870, 54), Loc.Get("quick_skill.assign_hint"), textStyle);
+            var record = game.ActiveSkills.Progression.Record;
+            for (int i = 0; i < QuickSkills.Keys.Length; i++)
+            {
+                string id = QuickSkills.Equipped(Settings.Value, record, i);
+                Row(i, QuickSkills.Keys[i] + "   " + QuickSkills.Name(catalog, id), new Rect(240, 215 + i * 74, 800, 58));
+            }
+            Row(QuickSkills.Keys.Length, Loc.Get("ui.back"), new Rect(240, 527, 800, 48));
+        }
+
         private void Row(int index, string label, Rect rect)
         {
-            // GUI controls are mouse-only; all keyboard/gamepad dispatch happens once in Update.
-            // Clearing focus avoids IMGUI also submitting Space on an old focused button.
-            GUI.FocusControl(null);
             var style = selected == index ? selectedStyle : buttonStyle;
             if (Page == ShellPage.Stages) style = new GUIStyle(style) { fontSize = 15, padding = new RectOffset(10, 6, 1, 1) };
             style = new GUIStyle(style);
             while (style.fontSize > 12 && style.CalcHeight(new GUIContent(label), rect.width - 40) > rect.height - 10)
                 style.fontSize--;
-            if (GUI.Button(rect, (selected == index ? "▶ " : "   ") + label, style))
-            {
-                selected = index;
-                if (Page == ShellPage.Settings && index < 5) AdjustSetting(index, Event.current.mousePosition.x < rect.center.x ? -1 : 1);
-                else Activate(index);
-            }
+            GUI.Label(rect, (selected == index ? "▶ " : "   ") + label, style);
         }
         private string SlotHeading => Loc.Get(purpose == SlotPurpose.NewGame ? "heading.new_game" :
             purpose == SlotPurpose.Continue ? "heading.continue" : "heading.stage_slot");
@@ -615,6 +655,7 @@ namespace RewindNotary
                 case ShellPage.Stages: return Loc.Get("heading.stages", selectedStore.Slot);
                 case ShellPage.Pause: return Loc.Get("heading.pause");
                 case ShellPage.Skills: return Loc.Get("heading.skills");
+                case ShellPage.QuickSlots: return Loc.Get("quick_skill.menu");
                 case ShellPage.Investigation: return "";
                 case ShellPage.CoreReading: return Loc.Get("heading.core");
                 case ShellPage.Settings: return Loc.Get("heading.settings");

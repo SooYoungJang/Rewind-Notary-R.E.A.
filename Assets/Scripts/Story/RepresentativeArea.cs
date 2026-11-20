@@ -287,13 +287,15 @@ namespace RewindNotary
                     ? Room.interludeHealth : 0;
                 bool mikhail = Room.id == "velvet_04_arena";
                 float spawnX = mikhail ? Mathf.Clamp(player.Body.position.x + 5f, 3f, 38f) : 17f;
-                float spawnTop = gallery ? Room.SurfaceTop("sun_deck") : belfry ? Room.SurfaceTop("refuge") : Room.Surface("stage_floor") != null ? Room.SurfaceTop("stage_floor") : Room.SurfaceTop("drum_floor");
-                opponent.ResetAt(new Vector2(spawnX, spawnTop + .1f));
-                if (mikhail || belfry || gallery)
+                string deckId = gallery ? "sun_deck" : belfry ? "refuge" :
+                    Room.Surface("stage_floor") != null ? "stage_floor" : "drum_floor";
+                opponent.ResetAt(new Vector2(spawnX, Room.SurfaceTop(deckId) + .1f));
+                var trial = mikhail ? mikhailTrial : DistrictTrial;
+                if (trial != null)
                 {
-                    mikhailBout = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
-                    mikhailBout.StartStoryBout(player, belfry || gallery ? DistrictTrial : mikhailTrial, Room.interludeHealth,
-                        gallery ? surfaces["sun_deck"].bounds : belfry ? surfaces["refuge"].bounds : (Bounds?)null);
+                    storyBout = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
+                    storyBout.StartStoryBout(player, trial, Room.interludeHealth,
+                        surfaces.TryGetValue(deckId, out var deck) ? deck.bounds : (Bounds?)null);
                     AudioManager.SetMusic(AudioManager.Music.Boss);
                 }
                 attackAt = Time.time + .8f;
@@ -302,7 +304,7 @@ namespace RewindNotary
                 && opponent.Health.Current <= Room.interludeHealth)
             { if (Complete()) StopBout(); return; }
             if (opponent.Health.Dead) { if (Complete()) StopBout(); return; }
-            if (mikhailBout != null) return;
+            if (storyBout != null) return;
             if (opponent.Stunned || opponent.Temporal.Frozen || opponent.GetComponent<StitchBinding>().Bound) return;
             opponent.RefreshGround();
             float dx = player.transform.position.x - opponent.transform.position.x;
@@ -316,21 +318,21 @@ namespace RewindNotary
             if (!committed && worldAction && ActiveRow != null && ActionToken.StartsWith("win:", StringComparison.Ordinal)
                 && opponent.gameObject.activeSelf && opponent.Health.Dead && Complete()) StopBout();
         }
-        private BenefactorTrialOpponent mikhailBout;
+        private BenefactorTrialOpponent storyBout;
         private void StopBout()
         {
-            if (mikhailBout != null)
+            if (storyBout != null)
             {
                 if (opponent.Health.Dead)
                 {
                     AudioManager.Play(AudioManager.Sfx.BossDefeat);
                     ImpactFeedback.BossDefeated();
                 }
-                if (Benefactor == "irina") SkillProjectile2D.ClearAll();
+                if (Benefactor == "irina" || Benefactor == "valeria") SkillProjectile2D.ClearAll();
                 AudioManager.SetMusic(AudioManager.Music.Field);
-                mikhailBout.enabled = false;
-                Destroy(mikhailBout);
-                mikhailBout = null;
+                storyBout.enabled = false;
+                Destroy(storyBout);
+                storyBout = null;
                 opponent.Animation.Tint(Color.white);
             }
             opponent.gameObject.SetActive(false);

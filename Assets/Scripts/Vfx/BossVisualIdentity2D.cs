@@ -17,12 +17,17 @@ namespace RewindNotary
         private SpriteRenderer telegraphRing;
         private string activeIdentity;
         private float baseScale = 1f;
+        private CapsuleCollider2D bodyCollider;
+        private Vector2 baseColliderSize, baseColliderOffset;
         private float nextEchoGhost;
 
         public void Initialize(CombatMotor2D owner)
         {
             motor = owner;
             visual = owner.Animation.transform;
+            bodyCollider = owner.GetComponent<CapsuleCollider2D>();
+            baseColliderSize = bodyCollider.size;
+            baseColliderOffset = bodyCollider.offset;
             BuildTextures();
             BuildLayers();
             RefreshIdentity(true);
@@ -106,7 +111,8 @@ namespace RewindNotary
             activeIdentity = key;
 
             string customSheet = "GameArt/sprites/boss-" + key + "-sheet";
-            bool hasCustom = key != "janhyang" && motor.Animation.SwapSheet(customSheet);
+            bool hasCustom = key != "janhyang" &&
+                (motor.Animation.ActiveResource == customSheet || motor.Animation.SwapSheet(customSheet));
             if (!hasCustom && motor.Animation.ActiveResource != "GameArt/sprites/janhyang-sheet")
                 motor.Animation.SwapSheet("GameArt/sprites/janhyang-sheet");
 
@@ -114,42 +120,42 @@ namespace RewindNotary
             switch (key)
             {
                 case "mikhail":
-                    baseScale = 1.16f;
+                    baseScale = 1.36f;
                     tint = hasCustom ? Color.white : new Color(0.95f, 0.72f, 0.76f, 1f);
                     auraColor = new Color(0.86f, 0.18f, 0.28f, 0.34f);
                     ringColor = new Color(0.94f, 0.94f, 1.0f, 0.52f);
                     orbColor = new Color(0.92f, 0.96f, 1.0f, 0.85f);
                     break;
                 case "julius":
-                    baseScale = 1.14f;
+                    baseScale = 1.3f;
                     tint = hasCustom ? Color.white : new Color(1.0f, 0.90f, 0.68f, 1f);
                     auraColor = new Color(0.96f, 0.74f, 0.28f, 0.36f);
                     ringColor = new Color(1.0f, 0.84f, 0.40f, 0.64f);
                     orbColor = new Color(1.0f, 0.86f, 0.45f, 0.85f);
                     break;
                 case "valeria":
-                    baseScale = 1.10f;
+                    baseScale = 1.24f;
                     tint = hasCustom ? Color.white : new Color(1.0f, 0.80f, 0.88f, 1f);
                     auraColor = new Color(0.96f, 0.36f, 0.62f, 0.36f);
                     ringColor = new Color(1.0f, 0.82f, 0.88f, 0.58f);
                     orbColor = new Color(1.0f, 0.56f, 0.76f, 0.85f);
                     break;
                 case "gabriel":
-                    baseScale = 1.24f;
+                    baseScale = 1.51f;
                     tint = hasCustom ? Color.white : new Color(0.76f, 0.94f, 0.96f, 1f);
                     auraColor = new Color(0.24f, 0.76f, 0.88f, 0.38f);
                     ringColor = new Color(0.88f, 0.72f, 0.42f, 0.62f);
                     orbColor = new Color(0.42f, 0.92f, 1.0f, 0.85f);
                     break;
                 case "irina":
-                    baseScale = 1.12f;
+                    baseScale = 1.28f;
                     tint = hasCustom ? Color.white : new Color(0.88f, 0.95f, 1.0f, 1f);
                     auraColor = new Color(0.45f, 0.78f, 1.0f, 0.34f);
                     ringColor = new Color(1.0f, 0.92f, 0.74f, 0.54f);
                     orbColor = new Color(0.72f, 0.90f, 1.0f, 0.85f);
                     break;
                 case "cassel":
-                    baseScale = 1.32f;
+                    baseScale = 1.62f;
                     tint = hasCustom ? Color.white : new Color(0.86f, 0.92f, 1.0f, 1f);
                     auraColor = new Color(0.78f, 0.86f, 1.0f, 0.44f);
                     ringColor = new Color(1.0f, 0.86f, 0.44f, 0.78f);
@@ -165,6 +171,8 @@ namespace RewindNotary
             }
 
             motor.Animation.Tint(tint);
+            bodyCollider.size = Vector2.Scale(baseColliderSize, new Vector2(Mathf.Lerp(1f, baseScale, .5f), baseScale));
+            bodyCollider.offset = baseColliderOffset + Vector2.up * (bodyCollider.size.y - baseColliderSize.y) * .5f;
             auraBack.color = auraColor;
             crestRing.color = ringColor;
             for (int i = 0; i < orbiters.Length; i++) orbiters[i].color = orbColor;

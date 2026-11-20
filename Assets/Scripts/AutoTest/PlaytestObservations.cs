@@ -6,6 +6,9 @@ namespace RewindNotary
     public sealed partial class GameShell
     {
         internal int MenuIndex => selected;
+        internal int OpeningCaption => Page == ShellPage.StoryDialogue ? openingScene?.CaptionIndex ?? -1 : -1;
+        internal OpeningScene.PrologueShot? OpeningShot =>
+            Page == ShellPage.StoryDialogue && openingScene?.InPrologue == true ? openingScene.CurrentShot : null;
         internal bool EmptyNewSlot => purpose == SlotPurpose.NewGame && selected < records.Length &&
             records[selected] == null && slotErrors[selected] == null;
         internal CoreRecord MenuRecord => selectedRecord;
@@ -137,7 +140,7 @@ namespace RewindNotary
             }
         }
         internal CombatMotor2D BoutOpponent => opponent.gameObject.activeSelf && FightNeeded() ? opponent : null;
-        internal BenefactorTrialOpponent Bout => mikhailBout;
+        internal BenefactorTrialOpponent Bout => storyBout;
         internal string PendingAction => ReadyForAction ? ActionToken : null;
         internal bool OnReturnFloor => Safe && OnFixedFloor();
         internal StoryDoor ForwardDoor

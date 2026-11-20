@@ -1,0 +1,24 @@
+{
+  "sheets": [
+    {"name": "enemy-notary-guard-bell-sheet", "pixelsPerUnit": 125.4, "footPivots": [0.0625, 0.0625, 0.0664, 0.0664, 0.0664, 0.0664, 0.0664, 0.0664]},
+    {"name": "enemy-notary-guard-clock-sheet", "pixelsPerUnit": 128.6, "footPivots": [0.043, 0.043, 0.0469, 0.0664, 0.0625, 0.0664, 0.0703, 0.0664]},
+    {"name": "enemy-notary-guard-gallery-sheet", "pixelsPerUnit": 127, "footPivots": [0.0391, 0.0391, 0.043, 0.0547, 0.0547, 0.0586, 0.0547, 0.0547]},
+    {"name": "enemy-notary-guard-opera-sheet", "pixelsPerUnit": 125.4, "footPivots": [0.0508, 0.0508, 0.0586, 0.0547, 0.0508, 0.0547, 0.0547, 0.0508]},
+    {"name": "enemy-notary-guard-velvet-sheet", "pixelsPerUnit": 128.6, "footPivots": [0.0352, 0.0352, 0.0352, 0.0469, 0.043, 0.0703, 0.0469, 0.043]},
+    {"name": "enemy-reflection-statue-bell-sheet", "pixelsPerUnit": 130.8, "footPivots": [0.0469, 0.0469, 0.0469, 0.0469, 0.0469, 0.0469, 0.0469, 0.0391]},
+    {"name": "enemy-reflection-statue-clock-sheet", "pixelsPerUnit": 128.6, "footPivots": [0.0586, 0.0625, 0.0742, 0.0781, 0.0703, 0.0586, 0.0625, 0.0664]},
+    {"name": "enemy-reflection-statue-gallery-sheet", "pixelsPerUnit": 130.2, "footPivots": [0.0547, 0.0547, 0.0547, 0.0547, 0.0547, 0.0586, 0.0547, 0.0547]},
+    {"name": "enemy-reflection-statue-opera-sheet", "pixelsPerUnit": 126.9, "footPivots": [0.0703, 0.0703, 0.0625, 0.0742, 0.0703, 0.0703, 0.0742, 0.0742]},
+    {"name": "enemy-reflection-statue-velvet-sheet", "pixelsPerUnit": 128, "footPivots": [0.0586, 0.0586, 0.0586, 0.0508, 0.0625, 0.0625, 0.0547, 0.0547]},
+    {"name": "enemy-shell-sentry-bell-sheet", "pixelsPerUnit": 117.3, "footPivots": [0.1211, 0.1211, 0.1289, 0.1211, 0.1211, 0.1172, 0.1133, 0.1172]},
+    {"name": "enemy-shell-sentry-clock-sheet", "pixelsPerUnit": 121.2, "footPivots": [0.1172, 0.1172, 0.1172, 0.125, 0.1172, 0.1133, 0.1172, 0.1133]},
+    {"name": "enemy-shell-sentry-gallery-sheet", "pixelsPerUnit": 97.3, "footPivots": [0.1875, 0.1875, 0.1953, 0.1836, 0.1836, 0.1836, 0.1797, 0.1836]},
+    {"name": "enemy-shell-sentry-opera-sheet", "pixelsPerUnit": 139.7, "footPivots": [0.0859, 0.082, 0.0859, 0.082, 0.0781, 0.0742, 0.0742, 0.0742]},
+    {"name": "enemy-shell-sentry-velvet-sheet", "pixelsPerUnit": 121.2, "footPivots": [0.1133, 0.1133, 0.125, 0.1172, 0.1094, 0.1055, 0.1016, 0.1055]},
+    {"name": "enemy-sword-latch-bell-sheet", "pixelsPerUnit": 153.3, "footPivots": [0.0625, 0.0625, 0.0703, 0.0703, 0.0781, 0.0742, 0.0742, 0.0742]},
+    {"name": "enemy-sword-latch-clock-sheet", "pixelsPerUnit": 146.7, "footPivots": [0.0977, 0.0977, 0.1016, 0.0977, 0.0977, 0.1016, 0.0977, 0.1094]},
+    {"name": "enemy-sword-latch-gallery-sheet", "pixelsPerUnit": 146.7, "footPivots": [0.0898, 0.0938, 0.1094, 0.0977, 0.125, 0.1406, 0.1328, 0.1289]},
+    {"name": "enemy-sword-latch-opera-sheet", "pixelsPerUnit": 152.7, "footPivots": [0.0742, 0.0781, 0.0859, 0.082, 0.0898, 0.0898, 0.0898, 0.0938]},
+    {"name": "enemy-sword-latch-velvet-sheet", "pixelsPerUnit": 146, "footPivots": [0.0938, 0.0938, 0.0977, 0.0977, 0.1094, 0.1172, 0.1133, 0.1133]}
+  ]
+}
