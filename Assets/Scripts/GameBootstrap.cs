@@ -26,6 +26,7 @@ namespace RewindNotary
         private BenefactorSupportController support;
         private StitchBinding bossBinding;
         private Font hudFont;
+        private GameHudCanvas hudCanvas;
         private bool checkpoint, won, initialized, echoDuel;
         private float deathTimer;
         private string failure;
@@ -38,9 +39,11 @@ namespace RewindNotary
                 Physics2D.gravity = new Vector2(0f, -9.81f);
                 Time.timeScale = 1f;
                 Child("Audio").AddComponent<AudioManager>();
-                hudFont = Font.CreateDynamicFontFromOSFont(new[] { "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans CJK KR", "Arial Unicode MS" }, 18);
+                hudFont = LocalizationFonts.LoadBodyFont(Loc.DefaultLanguage(Application.systemLanguage));
                 shell = gameObject.AddComponent<GameShell>();
                 shell.Initialize(this, hudFont);
+                hudCanvas = gameObject.AddComponent<GameHudCanvas>();
+                hudCanvas.Initialize(transform);
             }
             catch (System.Exception exception) { failure = exception.Message; Debug.LogException(exception); }
         }
@@ -196,6 +199,8 @@ namespace RewindNotary
             Child("Impact feedback").AddComponent<ImpactFeedback>().Initialize(shake);
             Child("Skill evolution").AddComponent<SkillEvolutionPresentation>().Initialize(skills, player.transform, world.transform, hudFont);
             Child("Parallax").AddComponent<ParallaxBackground>().Initialize(camera, Area);
+            if (camera.GetComponent<AtmospherePostEffect>() == null) camera.gameObject.AddComponent<AtmospherePostEffect>();
+            Child("Atmosphere").AddComponent<DistrictAtmosphere2D>().Initialize(camera, Area, finale ? "cassel" : null);
             if (record.lastStageId == "prototype")
                 Child("Investigation points").AddComponent<InvestigationWorld>().Initialize(player, skills, shell, hudFont);
             skills.PresentRestoredState();
@@ -209,6 +214,7 @@ namespace RewindNotary
             var go = Child(label); go.transform.position = position;
             var motor = go.AddComponent<CombatMotor2D>();
             motor.Initialize("GameArt/sprites/" + sheet, hp, immunity, 1, Color.white, isPlayer);
+            go.AddComponent<ActorVisualPolish2D>().Initialize(motor, isPlayer);
             return motor;
         }
         private void Update()
@@ -351,8 +357,96 @@ namespace RewindNotary
             string name = skills.Progression.Catalog.Get(id).DisplayName;
             return Loc.Get("hud.skill_progress", name, progress.validUseCount, progress.stage, (progress.acquired ? "" : Loc.Get("skill.unowned_suffix")), (cassel != null && !skills.Finale.State.CanUse(id) ? Loc.Get("skill.return_suffix") : ""));
         }
+        private void LateUpdate()
+        {
+            if (hudCanvas == null) return;
+            if (!initialized || shell == null || !shell.Playing || failure != null)
+            {
+                hudCanvas.Render(default);
+                return;
+            }
+            var snap = new GameHudCanvas.HudSnapshot
+            {
+                Visible = true,
+                LocationTitle = Loc.Get("game.title"),
+                PlayerHp = player.Health.Current,
+                PlayerMaxHp = player.Health.Maximum,
+                ControlsText = Loc.Get("input.gameplay")
+            };
+            if (Area != null)
+            {
+                Area.FillHudSnapshot(ref snap);
+                hudCanvas.Render(snap);
+                return;
+            }
+            if (echoDuel)
+            {
+                snap.LocationTitle = encounter.Label;
+                snap.BossVisible = true;
+                snap.BossName = encounter.Label;
+                snap.BossPhase = Loc.Get("hud.echo_phase", bossAI.Phase, bossAI.PatternLabel);
+                snap.BossHp = boss.Health.Current;
+                snap.BossMaxHp = boss.Health.Maximum;
+                snap.ObjectiveHint = Loc.Get("input.retry_pause", encounter.Label);
+                snap.OverlayVisible = won || player.Health.Dead;
+                snap.OverlayTitle = won ? Loc.Get("finale.result", encounter.Label) : Loc.Get("hud.retrying");
+                snap.OverlayDetail = won ? Loc.Get("area.travel", Loc.Get("ui.stage_select")) : Loc.Get("hud.returning_checkpoint");
+                hudCanvas.Render(snap);
+                return;
+            }
+            var defense = player.Defense.State;
+            string defenseStatus = defense.Phase == DefensePhase.Dash ? Loc.Get("defense.dashing")
+                : defense.Phase == DefensePhase.ParryWindow ? Loc.Get("defense.parry_window")
+                : defense.Phase == DefensePhase.ParryRecovery ? Loc.Get("defense.parry_recovery")
+                : defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
+            snap.StatusLine = SkillLabel(SkillRules.BasicSword);
+            snap.SubStatusLine = defenseStatus + "  ·  " + Loc.Get("hud.dash_cooldown",
+                Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0", Loc.Culture),
+                defense.AirDashUsed ? Loc.Get("defense.air_spent") : Loc.Get("defense.air_available"));
+            snap.NoticeText = !string.IsNullOrEmpty(skills.StorageError) ? skills.StorageError : skills.Notice;
+            if (trial != null)
+            {
+                snap.BossVisible = true;
+                snap.BossName = trial.Definition.DisplayName;
+                snap.BossPhase = trial.PatternLabel;
+                snap.BossHp = boss.Health.Current;
+                snap.BossMaxHp = boss.Health.Maximum;
+                snap.ObjectiveHint = trial.Definition.ObjectiveLabel + "\n" + skills.Progression.Trials.SessionStatus;
+                string key = skills.Progression.Trials.LastTextKey;
+                if (!string.IsNullOrEmpty(key)) snap.NoticeText = Loc.Get(key);
+            }
+            else if (cassel != null)
+            {
+                snap.LocationTitle = Loc.Get("stage.cassel.name");
+                snap.BossVisible = true;
+                snap.BossName = Loc.Get("area.speaker.cassel");
+                snap.BossHp = boss.Health.Current;
+                snap.BossMaxHp = boss.Health.Maximum;
+                snap.ObjectiveHint = cassel.Status;
+            }
+            else if (bossAI != null && bossAI.Active)
+            {
+                snap.BossVisible = true;
+                snap.BossName = encounter.Label;
+                snap.BossPhase = Loc.Get("hud.echo_phase", bossAI.Phase, bossAI.PatternLabel);
+                snap.BossHp = boss.Health.Current;
+                snap.BossMaxHp = boss.Health.Maximum;
+            }
+            else
+            {
+                snap.ObjectiveHint = Loc.Get("input.retry_pause", waves != null ? Loc.Get("hud.wave_hint") : checkpoint ? Loc.Get("hud.checkpoint_hint") : Loc.Get("hud.reach_arena"));
+            }
+            if (player.Health.Dead || won)
+            {
+                snap.OverlayVisible = true;
+                snap.OverlayTitle = won ? Loc.Get("hud.practice_complete") : Loc.Get("hud.retrying");
+                snap.OverlayDetail = won ? Loc.Get("input.retry_button") : Loc.Get("hud.returning_checkpoint");
+            }
+            hudCanvas.Render(snap);
+        }
         private void OnGUI()
         {
+            if (failure == null && hudCanvas != null) return;
             Matrix4x4 previous = GUI.matrix;
             float scale = Mathf.Min(Screen.width / 1280f, Screen.height / 720f);
             GUI.matrix = Matrix4x4.TRS(new Vector3((Screen.width - 1280 * scale) / 2f,
@@ -464,7 +558,6 @@ namespace RewindNotary
         private void OnDestroy()
         {
             if (skills != null) skills.PresentationRequested -= PresentSkill;
-            if (hudFont != null) Destroy(hudFont);
         }
         private void OnApplicationPause(bool paused) { if (paused) FlushProgress(); }
         private void OnApplicationQuit() { FlushProgress(); }

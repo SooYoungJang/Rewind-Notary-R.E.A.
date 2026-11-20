@@ -300,6 +300,74 @@ namespace RewindNotary
             if (latches.Count > 0 && latches.TrueForAll(l => l.State.Cleared))
             { Put(BridgeFlag); session.Save(); RefreshFixtures(); }
         }
+        internal void FillHudSnapshot(ref GameHudCanvas.HudSnapshot snap)
+        {
+            snap.LocationTitle = Room.Label;
+            snap.RoomKey = Room.id;
+            snap.StatusLine = DistrictTrial == null
+                ? Loc.Get("area.uses", Record.Get(SkillRules.SilverStitch).validUseCount)
+                : Loc.Get("hud.skill_progress", session.Progression.Catalog.Get(Room.skill).DisplayName,
+                    Record.Get(Room.skill).validUseCount, Record.Get(Room.skill).stage, "", "");
+            if (Room.id == "court_03_lift" && Record.Get(SkillRules.BasicSword).stage < 3)
+                snap.SubStatusLine = Loc.Get("stage.finale_survival_locked");
+            else if (BenefactorTrialProgress.Has(Record, DistrictTrial ?? mikhailTrial, "unlocked"))
+                snap.SubStatusLine = BenefactorTrialProgress.Status(Record, DistrictTrial ?? mikhailTrial);
+            else
+            {
+                var defense = player.Defense.State;
+                snap.SubStatusLine = defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
+            }
+            snap.NoticeText = session.Notice;
+            if (mikhailBout != null)
+            {
+                snap.BossVisible = true;
+                snap.BossName = DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail");
+                snap.BossPhase = mikhailBout.PatternLabel;
+                snap.BossHp = opponent.Health.Current;
+                snap.BossMaxHp = opponent.Health.Maximum;
+            }
+            else if (courtEcho != null && ActiveRow != null && worldAction && ActionToken.StartsWith("echoHP"))
+            {
+                snap.BossVisible = true;
+                snap.BossName = Loc.Get("area.speaker.rea_echo");
+                snap.BossPhase = Loc.Get("hud.echo_phase", courtEcho.Phase, courtEcho.PatternLabel);
+                snap.BossHp = opponent.Health.Current;
+                snap.BossMaxHp = opponent.Health.Maximum;
+            }
+            snap.ObjectiveHint = BuildStoryHint();
+            snap.ControlsText = (mikhailBout != null || NeedsEntryWave) ? Loc.Get("input.gameplay") : Loc.Get("area.help");
+        }
+        private string BuildStoryHint()
+        {
+            if (!session.LastSaveSucceeded) return session.StorageError;
+            if (ActiveRow != null && worldAction)
+            {
+                string[] action = ActionToken.Split(':');
+                string key = action[0] == "walk" ? "area.walk" : action[0] == "strike" ? "area.strike"
+                    : action[0] == "win" ? "area.bout" : "area.travel";
+                var p = Room.Point(action[1]);
+                if (action[0] == "echoHP") return Loc.Get("hud.echo_phase", courtEcho.Phase, courtEcho.PatternLabel) + "   " + opponent.Health.Current + " / 12";
+                if (action[0] == "train") return Loc.Get("area.target.resonant_crucible") + "   " + Record.Get(SkillRules.BasicSword).validUseCount + " / 400";
+                if (action[0] == "clearDoor") return Loc.Get("area.travel", script.Room(action[1]).Label) + Arrow(Room.exits[1].x);
+                if (DistrictHint(action, out string districtHint)) return districtHint;
+                return Loc.Get(key, Loc.Get("area.target." + action[1])) + (p != null ? Arrow(p.x) : "");
+            }
+            if (FightNeeded()) return Loc.Get("area.bout", DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail"));
+            if (FirstDepartureHint() is string next) return next;
+            string hint = "";
+            if (BellReady) hint += Loc.Get("area.travel", Loc.Get("area.target." + Benefactor + "_trial_bell")) + Arrow(Room.Point(Benefactor + "_trial_bell").x) + "    ";
+            if (Room.id == "hub_lift" && Has("luka_signalled")) hint += Loc.Get("area.signal") + "    ";
+            if (Room.Point("core_terminal") != null && !NearCore())
+                hint += Loc.Get("area.target.core_terminal") + Arrow(Room.Point("core_terminal").x) + "    ";
+            if (NearCore()) hint = Loc.Get("area.travel", Loc.Get("area.target.core_terminal")) + "    ";
+            if (ForgeReturn is StoryMark passage)
+                hint += Loc.Get("area.travel", Loc.Get("area.target.forge_to_court_lift")) + Arrow(passage.x) + "    ";
+            foreach (var e in Room.exits)
+                if (Gate(e)) hint += Loc.Get("area.travel", Departure(e.room).Label) + DoorArrow(e) + "    ";
+            if (HasBridge && !Has(BridgeFlag)) hint += Loc.Get("area.latch");
+            if (Room.id == "hub_attic" && Has("sixth_bowl_stamped")) hint += Loc.Get("area.sixth");
+            return hint.Trim();
+        }
         public void DrawHUD(GUIStyle title, GUIStyle label)
         {
             var style = new GUIStyle(label) { wordWrap = true };

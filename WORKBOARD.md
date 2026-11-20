@@ -24,11 +24,10 @@
 ## 진행 중
 
 - **전투·조우 패스** — 담당 Astra (진행 중인 이 작업은 Astra가 마무리한다. 이후 작업은 Dots와 Astra가 나눠 맡는다). 기준 커밋 80e9d031, 2026-11-20 착수. 범위: 적 행동 방식 4종과 구역별 혼합 재배정, 적 상시 가시성, 구역별 트랩, 은인 보스 패턴 강화, 스킬 연출. 지시서: discussion/job-astra-combat-pass.txt
-- **AAA 1단계: UI/HUD·초상화 대화창 개편 + 9개 언어 폰트 임베드 + 2D 분위기·파티클·포스트 VFX** — 담당 Gemini. 기준 커밋 9ad645b, 2026-11-20 착수. 분석·설계 공유: `discussion/aaa-gap-analysis-20261120.md`. 범위: `OnGUI` → uGUI 전면 교체(타이틀·메뉴·HUD·초상화 대화창·진화 배너), 9개 언어 OFL 폰트 임베드, Built-in 호환 포스트프로세싱(Bloom·Vignette·구역 색보정·방 전환 페이드), `ParticleSystem` 환경/전투 입자, 접촉 그림자, `fx-*-additive` 이펙트 연결. Astra `전투·조우 패스` 파일과 충돌 금지.
 
 ## 검증 중
 
-- 없음.
+- **AAA 1단계: UI/HUD·초상화 대화창 개편 + 9개 언어 폰트 임베드 + 2D 분위기·파티클·포스트 VFX** — 담당 Gemini. 빌드 `stage1-20261120c` 자동 플레이 검증 9/9 전면 통과(오류 0, 60fps 유지) 및 바탕화면(`Desktop/ReaPlaytest`) 교체 완료. 분석 문서: `discussion/aaa-gap-analysis-20261120.md`. 후속 보완: 이미지 생성 쿼터 리셋 후 나머지 NPC 10인 초상화 PNG(`portrait_<speakerId>.png`) 추가(현재는 문장 메달리온 폴백 적용).
 
 ## 대기 큐
 
