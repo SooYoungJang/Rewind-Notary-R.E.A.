@@ -22,6 +22,7 @@ namespace RewindNotary
         private float hitRecoilUntil;
         private float animClock;
         private float phaseOffset;
+        private Vector3 lastTargetPosition;
         private static Texture2D sharedShadowTex;
         private static Sprite sharedShadowSprite;
         private static Texture2D sharedRingTex;
@@ -32,6 +33,7 @@ namespace RewindNotary
         {
             target = owner;
             player = playerActor;
+            lastTargetPosition = transform.position;
             phaseOffset = Mathf.Abs(transform.position.x * 1.37f + transform.position.y * 0.73f);
             var child = transform.Find("Target silhouette");
             if (child == null) return;
@@ -182,6 +184,9 @@ namespace RewindNotary
             lastRemaining = remaining;
 
             bool alive = !cleared && pictureRenderer.enabled;
+            Vector3 targetPosition = transform.position;
+            bool moving = (targetPosition - lastTargetPosition).sqrMagnitude > 0.000001f;
+            lastTargetPosition = targetPosition;
             shadowRenderer.enabled = alive;
             stateRing.enabled = alive;
             if (!alive)
@@ -215,7 +220,14 @@ namespace RewindNotary
 
             if (sheetFrames != null)
             {
-                int frame = recoiling ? 7 : winding ? (target.StrikeIn < 0.12f ? 5 : 4) : (Mathf.FloorToInt(t * 4f) % 2);
+                float sinceStrike = Time.time - target.LastStrikeAt;
+                int frame;
+                if (recoiling) frame = 7;
+                else if (winding) frame = 4;
+                else if (sinceStrike < 0.09f) frame = 5;
+                else if (sinceStrike < 0.18f) frame = 6;
+                else if (moving) frame = 2 + (Mathf.FloorToInt(t * 8f) % 2);
+                else frame = Mathf.FloorToInt(t * 4f) % 2;
                 pictureRenderer.sprite = sheetFrames[frame];
             }
 

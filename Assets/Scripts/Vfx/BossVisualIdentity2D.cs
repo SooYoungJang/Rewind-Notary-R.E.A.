@@ -106,7 +106,8 @@ namespace RewindNotary
             activeIdentity = key;
 
             string customSheet = "GameArt/sprites/boss-" + key + "-sheet";
-            bool hasCustom = key != "janhyang" && motor.Animation.SwapSheet(customSheet);
+            bool hasCustom = key != "janhyang" &&
+                (motor.Animation.ActiveResource == customSheet || motor.Animation.SwapSheet(customSheet));
             if (!hasCustom && motor.Animation.ActiveResource != "GameArt/sprites/janhyang-sheet")
                 motor.Animation.SwapSheet("GameArt/sprites/janhyang-sheet");
 
