@@ -96,8 +96,8 @@ namespace RewindNotary
 
         public void Initialize(Transform parent)
         {
-            NotaryUiTheme.EnsureEventSystem(parent);
             canvas = NotaryUiTheme.CreateCanvas(parent, "Game Shell Canvas", 100);
+            canvas.GetComponent<GraphicRaycaster>().enabled = false;
             BuildMainView();
             BuildDialogueView();
             BuildPanelView();

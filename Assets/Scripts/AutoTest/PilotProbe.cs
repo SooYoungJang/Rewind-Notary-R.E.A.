@@ -73,7 +73,7 @@ namespace RewindNotary
         {
             float dx = x - player.Body.position.x;
             if (Mathf.Abs(dx) <= tolerance) return true;
-            keys.Hold(dx < 0 ? KeyCode.A : KeyCode.D);
+            keys.Hold(dx < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
             return false;
         }
 
@@ -245,7 +245,7 @@ namespace RewindNotary
                         throw new InvalidOperationException("Expected the unlocked upper arena door");
                     if (Walk(keys, player, arenaDoor.x) && area.OnReturnFloor && feet < .15f)
                     {
-                        keys.Tap(KeyCode.F);
+                        keys.Tap(KeyCode.C);
                         if (GameInput.InvestigateDown) phase = Phase.VerifyLowerDoor;
                     }
                     break;
@@ -255,7 +255,7 @@ namespace RewindNotary
                         bot.Record.storyFlags.Contains("scene_floor:velvet:gallery_balcony_floor");
                     if (!result.lowerDoorRejected) throw new InvalidOperationException("Lower-floor input opened the upper arena door");
                     capture("gallery-lower");
-                    keys.Tap(KeyCode.R);
+                    keys.Tap(KeyCode.Backspace);
                     phase = Phase.Retry;
                     break;
                 case Phase.Retry:
@@ -271,7 +271,7 @@ namespace RewindNotary
                     if (phase == Phase.Drop && player.Grounded && feet < .15f) phase = Phase.Return;
                     break;
                 case Phase.ToWall:
-                    keys.Hold(KeyCode.D);
+                    keys.Hold(KeyCode.RightArrow);
                     if (post.x - player.Body.position.x <= .36f && player.Grounded)
                     {
                         if (route.parryBlocked) phase = Phase.Launch;
@@ -279,33 +279,33 @@ namespace RewindNotary
                     }
                     break;
                 case Phase.TestParry:
-                    keys.Hold(KeyCode.D);
+                    keys.Hold(KeyCode.RightArrow);
                     if (!controller.Sliding) { keys.Hold(KeyCode.Space); break; }
-                    phase = Phase.CastChord; // Release Space for a fresh press with the Q chord.
+                    phase = Phase.CastChord; // Release Space for a fresh press with the V chord.
                     break;
                 case Phase.CastChord:
-                    keys.Hold(KeyCode.D); keys.Tap(KeyCode.Q); keys.Tap(KeyCode.Space);
+                    keys.Hold(KeyCode.RightArrow); keys.Tap(KeyCode.V); keys.Tap(KeyCode.Space);
                     if (!GameInput.CastDown || !GameInput.JumpDown)
                         throw new InvalidOperationException("Did not deliver both cast and jump edges");
                     castTick = Time.fixedTime;
                     phase = Phase.CheckCast;
                     break;
                 case Phase.CheckCast:
-                    keys.Hold(KeyCode.D);
+                    keys.Hold(KeyCode.RightArrow);
                     if (Time.fixedTime <= castTick) break;
                     route.castBlockedKick = controller.WallJumps == kicksAtStart && !player.Grounded;
-                    if (!route.castBlockedKick) throw new InvalidOperationException("Q chord started a wall kick");
+                    if (!route.castBlockedKick) throw new InvalidOperationException("V chord started a wall kick");
                     phase = Phase.WaitParry;
                     break;
                 case Phase.WaitParry:
-                    keys.Hold(KeyCode.D);
-                    keys.Tap(KeyCode.Space); keys.Tap(KeyCode.L);
+                    keys.Hold(KeyCode.RightArrow);
+                    keys.Tap(KeyCode.Space); keys.Tap(KeyCode.X);
                     if (!GameInput.ParryDown || !GameInput.JumpDown)
                         throw new InvalidOperationException("Did not deliver both parry and jump edges");
                     phase = Phase.Land;
                     break;
                 case Phase.Land:
-                    keys.Hold(KeyCode.D);
+                    keys.Hold(KeyCode.RightArrow);
                     if (defense.Phase == DefensePhase.ParryWindow) route.parryBlocked = true;
                     if (controller.WallJumps != kicksAtStart) throw new InvalidOperationException("Kick during parry");
                     if (player.Grounded && !defense.BlocksActions)
@@ -315,24 +315,24 @@ namespace RewindNotary
                     }
                     break;
                 case Phase.Launch:
-                    keys.Hold(KeyCode.D); keys.Hold(KeyCode.Space);
+                    keys.Hold(KeyCode.RightArrow); keys.Hold(KeyCode.Space);
                     if (!player.Grounded && feet >= 1.6f)
-                    { keys.Tap(KeyCode.K); phase = Phase.SpendDash; }
+                    { keys.Tap(KeyCode.LeftShift); phase = Phase.SpendDash; }
                     break;
                 case Phase.SpendDash:
-                    keys.Hold(KeyCode.D); keys.Hold(KeyCode.Space);
+                    keys.Hold(KeyCode.RightArrow); keys.Hold(KeyCode.Space);
                     if (defense.Phase == DefensePhase.Dash && defense.AirDashUsed)
                     { route.airDashSpent = observeCharge = true; phase = Phase.Slide; }
                     break;
                 case Phase.Slide:
-                    keys.Hold(KeyCode.D);
+                    keys.Hold(KeyCode.RightArrow);
                     if (!controller.Sliding || player.Body.linearVelocity.y > -.5f) { keys.Hold(KeyCode.Space); break; }
                     route.slideSpeed = player.Body.linearVelocity.y;
                     phase = Phase.Kick;
                     break;
                 case Phase.Kick:
                     keys.Hold(KeyCode.Space);
-                    if (controller.WallJumps == kicksAtStart) { keys.Hold(KeyCode.D); break; }
+                    if (controller.WallJumps == kicksAtStart) { keys.Hold(KeyCode.RightArrow); break; }
                     route.heldUntilLanding = defense.AirDashUsed;
                     phase = Phase.WallFinish;
                     break;

@@ -23,6 +23,7 @@ namespace RewindNotary
         public string keyInteract = "";
         public string keyMap = "";
 
+        public string[] quickSkills = (string[])QuickSkills.Starter.Clone();
         public void Validate()
         {
             if (schemaVersion != 1 || float.IsNaN(bgmVolume) || float.IsNaN(sfxVolume)
@@ -30,6 +31,10 @@ namespace RewindNotary
                 || stageOverride < 0 || stageOverride > 3) throw new InvalidDataException(Loc.Get("settings.invalid_values"));
             language = Loc.Normalize(language);
             displayMode = Mathf.Clamp(displayMode, 0, 3);
+            if (quickSkills == null || quickSkills.Length != QuickSkills.Keys.Length)
+                quickSkills = (string[])QuickSkills.Starter.Clone();
+            else for (int i = 0; i < quickSkills.Length; i++)
+                if (!QuickSkills.IsAssignable(quickSkills[i])) quickSkills[i] = QuickSkills.Starter[i];
         }
 
         public void ResetKeybinds()

@@ -17,6 +17,7 @@ namespace RewindNotary
         private SpriteRenderer visual;
         private float nextAttack, strikeAt, lastDodge = float.NegativeInfinity;
         internal float StrikeIn => winding ? strikeAt - Time.time : float.PositiveInfinity;
+        internal float LastStrikeAt { get; private set; } = float.NegativeInfinity;
         private bool winding;
         private float immobilizedUntil;
         public bool CanReceiveSupport => Kind == EffectTargetKind.Enemy && !State.Cleared && Time.time >= immobilizedUntil;
@@ -84,6 +85,7 @@ namespace RewindNotary
                 && strikeAt - Time.time <= DefenseTuning.DashInvulnerableSeconds) lastDodge = Time.time;
             if (Time.time < strikeAt) return;
             winding = false; nextAttack = Time.time + definition.attackInterval;
+            LastStrikeAt = Time.time;
             bool contact = Threat.Intersects(playerBounds);
             int parries = player.Skills.ParrySuccessCount;
             bool evading = contact && player.Defense.State.Evading(Time.time);
@@ -97,6 +99,11 @@ namespace RewindNotary
             }
         }
         private void OnEnable() { WaveCombatTargets.All.Add(this); }
-        private void OnDisable() { winding = false; WaveCombatTargets.All.Remove(this); }
+        private void OnDisable()
+        {
+            winding = false;
+            LastStrikeAt = float.NegativeInfinity;
+            WaveCombatTargets.All.Remove(this);
+        }
     }
 }
