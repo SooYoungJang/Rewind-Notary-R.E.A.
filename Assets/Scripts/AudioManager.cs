@@ -58,8 +58,19 @@ namespace RewindNotary
             for (int i = 0; i < voices.Length; i++) voices[i] = Source("SFX " + i, false);
             field = Source("Field music", true); field.clip = Load("Audio/Bgm/field");
             boss = Source("Boss music", true); boss.clip = Load("Audio/Bgm/boss");
+            // Start the title cue cleanly instead of briefly leaking the placeholder field track.
+            if (GetComponentInParent<GameBootstrap>() != null)
+            {
+                legacyWeight = 0f;
+                if (RequestOst(Ost.Title, false))
+                {
+                    ostFadeProgress = 1f;
+                    UpdateOst();
+                }
+                else legacyWeight = legacyFadeStart = 1f;
+                gameObject.AddComponent<SoundtrackDirector>();
+            }
             ApplyMusic();
-            gameObject.AddComponent<SoundtrackDirector>();
         }
         private AudioClip Load(string path)
         {
