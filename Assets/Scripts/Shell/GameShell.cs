@@ -39,7 +39,7 @@ namespace RewindNotary
             Settings = new SettingsStore(root); Settings.Load(); Settings.Apply();
             try { message = SkillSaveStore.MigrateLegacy(directory, catalog); }
             catch (Exception e) { legacyError = Loc.Get("save.migration_failed", e.Message); message = legacyError; }
-            RefreshSlots(); Go(ShellPage.Main);
+            RefreshSlots(); InitShellCanvas(); Go(ShellPage.Main);
         }
         private SkillSaveStore Store(int slot) => stores[slot - 1] ?? (stores[slot - 1] = new SkillSaveStore(directory, catalog, slot));
         private void RefreshSlots()
@@ -376,6 +376,7 @@ namespace RewindNotary
         }
         private void OnGUI()
         {
+            if (shellCanvas != null) return;
             if (Settings == null || Playing) return;
             var previous = GUI.matrix;
             float scale = Mathf.Min(Screen.width / 1280f, Screen.height / 720f);

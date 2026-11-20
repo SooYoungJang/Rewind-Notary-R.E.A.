@@ -13,6 +13,7 @@ namespace RewindNotary
             public Func<string> Title, Detail;
             public bool Preview, FeedbackPlayed;
             public Color Tint;
+            public string Skill;
         }
         private readonly List<Banner> pending = new List<Banner>();
         private readonly HashSet<string> delivered = new HashSet<string>();
@@ -22,6 +23,7 @@ namespace RewindNotary
         private GUIStyle titleStyle, detailStyle;
         private Banner active;
         private SkillEvolutionBurst burst;
+        private SkillEvolutionCanvas evolutionCanvas;
         private AudioManager.VoiceHandle voice;
         private int previewStage, feedbackFrame = -1;
         private float age;
@@ -30,6 +32,11 @@ namespace RewindNotary
             Detach(); session = skills; actor = player; effectRoot = root; font = uiFont;
             previewStage = session.PreviewStage;
             session.Progression.Event += OnProgression;
+            if (evolutionCanvas == null)
+            {
+                evolutionCanvas = gameObject.AddComponent<SkillEvolutionCanvas>();
+                evolutionCanvas.Initialize(transform);
+            }
         }
         private void OnProgression(ProgressionEvent result)
         {
@@ -50,7 +57,7 @@ namespace RewindNotary
             if (!SkillStatusView.IsEvolution(result, session.Progression.Catalog)
                 || !delivered.Add(result.useId)) return;
             var definition = session.Progression.Catalog.Get(result.skillId);
-            Enqueue(new Banner { Title = () => Loc.Get("evolution.title", (result.testData ? Loc.Get("evolution.test_prefix") : ""), definition.DisplayName, SkillStatusView.StageLabel(result.stage)),
+            Enqueue(new Banner { Skill = result.skillId, Title = () => Loc.Get("evolution.title", (result.testData ? Loc.Get("evolution.test_prefix") : ""), definition.DisplayName, SkillStatusView.StageLabel(result.stage)),
                 Detail = () => definition.Profile(result.stage).Name + " — " + SkillStatusView.Describe(result.skillId, result.stage),
                 Tint = result.stage == 3 ? new Color(1f, 0.78f, 0.35f) : new Color(0.35f, 1f, 0.9f) });
         }
@@ -78,6 +85,19 @@ namespace RewindNotary
             if (pending.Count == 0) { active = null; return; }
             active = pending[0]; pending.RemoveAt(0); age = 0;
             if (!active.FeedbackPlayed) Feedback(active);
+            if (actor != null && !active.Preview && !string.IsNullOrEmpty(active.Skill))
+                ActorVisualPolish2D.SpawnSkillFx(active.Skill, actor.position + Vector3.up, 1, 3.0f, 0.55f);
+        }
+        private void LateUpdate()
+        {
+            if (evolutionCanvas == null) return;
+            if (active == null || !GameInput.GameplayEnabled)
+            {
+                evolutionCanvas.Render(false, null, null, Color.white, 0f, 0f);
+                return;
+            }
+            float opacity = Mathf.Clamp01((BannerSeconds - age) / FadeSeconds);
+            evolutionCanvas.Render(true, active.Title(), active.Detail(), active.Tint, opacity, age);
         }
         private void Update()
         {
@@ -103,6 +123,7 @@ namespace RewindNotary
         private void OnDestroy() { Detach(); }
         private void OnGUI()
         {
+            if (evolutionCanvas != null) return;
             if (active == null || !GameInput.GameplayEnabled) return;
             var previousMatrix = GUI.matrix; var previousColor = GUI.color; int previousDepth = GUI.depth;
             GUI.depth = -10;

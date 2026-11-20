@@ -32,11 +32,21 @@ namespace RewindNotary
         public bool Activate(SkillCastRequest request)
         {
             if (!CanRequest(request)) return false;
-            if (request.SkillId == SkillRules.SilverStitch) return !BlocksActions && silver.Activate();
-            var chosen = System.Array.Find(skills, skill => skill.SkillId == request.SkillId);
-            if (chosen == null) return false;
-            foreach (var other in skills) if (other != chosen && other.BlocksActions) return false;
-            return chosen is CanvasCarveSkill canvas ? canvas.Activate(request.PaintWall) : chosen.Activate();
+            bool ok;
+            if (request.SkillId == SkillRules.SilverStitch) ok = !BlocksActions && silver.Activate();
+            else
+            {
+                var chosen = System.Array.Find(skills, skill => skill.SkillId == request.SkillId);
+                if (chosen == null) return false;
+                foreach (var other in skills) if (other != chosen && other.BlocksActions) return false;
+                ok = chosen is CanvasCarveSkill canvas ? canvas.Activate(request.PaintWall) : chosen.Activate();
+            }
+            if (ok)
+            {
+                var motor = GetComponent<CombatMotor2D>();
+                ActorVisualPolish2D.SpawnSkillFx(request.SkillId, transform.position + Vector3.up, motor != null ? motor.Facing : 1);
+            }
+            return ok;
         }
         public bool DriveMovement()
         { if (skills != null) foreach (var skill in skills) if (skill.DriveMovement()) return true; return false; }

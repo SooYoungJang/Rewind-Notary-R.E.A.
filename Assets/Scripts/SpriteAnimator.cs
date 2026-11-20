@@ -26,6 +26,11 @@ namespace RewindNotary
         private bool invulnerable, dead, telegraph;
         private float flashUntil;
 
+        public SpriteRenderer Renderer => view;
+        public Pose CurrentPose => state;
+        public bool IsTelegraphing => telegraph;
+        public string ActiveResource { get; private set; }
+
         public void Initialize(string resource)
         {
             view = GetComponent<SpriteRenderer>();
@@ -37,8 +42,32 @@ namespace RewindNotary
                 properties = new MaterialPropertyBlock();
             }
             else Debug.LogWarning("Missing HitFlash shader (animation continues).", this);
+            LoadSheet(resource, true);
+            ready = true;
+            Play(Pose.Idle, true);
+        }
+
+        public bool SwapSheet(string resource)
+        {
+            if (string.IsNullOrEmpty(resource) || resource == ActiveResource) return false;
+            if (Resources.Load<Texture2D>(resource) == null) return false;
+            LoadSheet(resource, false);
+            if (ready && clips.TryGetValue(state, out var frames) && frames.Length > 0)
+                view.sprite = frames[0];
+            return true;
+        }
+
+        private void LoadSheet(string resource, bool required)
+        {
             Texture2D texture = Resources.Load<Texture2D>(resource);
-            if (texture == null) throw new InvalidOperationException("Missing GameArt: " + resource);
+            if (texture == null)
+            {
+                if (required) throw new InvalidOperationException("Missing GameArt: " + resource);
+                return;
+            }
+            foreach (Sprite sprite in ownedSprites) if (sprite != null) Destroy(sprite);
+            ownedSprites.Clear();
+            ActiveResource = resource;
             var layoutFile = Resources.Load<TextAsset>(resource + "-layout");
             SheetLayout layout = layoutFile == null ? null : JsonUtility.FromJson<SheetLayout>(layoutFile.text);
             float w = texture.width / 8f, h = texture.height / 4f;
@@ -65,8 +94,6 @@ namespace RewindNotary
             clips[Pose.Fall] = Slice(2, 1, 1);
             clips[Pose.Land] = Slice(2, 2, 1);
             clips[Pose.Attack] = Slice(3, 0, 4);
-            ready = true;
-            Play(Pose.Idle, true);
         }
 
         public void Face(int direction) { if (view != null) view.flipX = direction < 0; }
