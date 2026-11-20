@@ -4118,6 +4118,22 @@
       "value": "移動 ←/→ | ジャンプ {0} | 剣撃(↑/↓) {1} | 技 {2} | ダッシュ {3} | 地図 {4} | Esc"
     },
     {
+      "key": "controls.kb_opening",
+      "value": "←/→ 移動  ·  {0} ジャンプ  ·  {1} 調べる"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "左スティック/方向パッド 移動  ·  [A] ジャンプ  ·  [L3] 調べる"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "マルタの屋根裏部屋"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "{0}で木箱を飛び越え、床に落ちたミント飴を探しましょう。"
+    },
+    {
       "key": "controls.kb_explore",
       "value": "移動 ←/→ | 調査・移動 {0} | 剣撃 {1} | 技 {2} | ダッシュ {3} | 地図 {4} | Esc 一時停止"
     },

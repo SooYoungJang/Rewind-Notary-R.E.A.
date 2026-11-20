@@ -4118,6 +4118,22 @@
       "value": "Bewegen ←/→ | Sprung {0} | Angriff {1} | Technik {2} | Sprint {3} | Karte {4} | Esc"
     },
     {
+      "key": "controls.kb_opening",
+      "value": "←/→ Bewegen  ·  {0} Springen  ·  {1} Interagieren"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "LS/Steuerkreuz Bewegen  ·  [A] Springen  ·  [L3] Interagieren"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "Martas Dachboden"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Springe mit {0} über die Truhe und suche das Minzbonbon."
+    },
+    {
       "key": "controls.kb_explore",
       "value": "Bewegen ←/→ | Interag. {0} | Angriff {1} | Technik {2} | Sprint {3} | Karte {4} | Esc Pause"
     },

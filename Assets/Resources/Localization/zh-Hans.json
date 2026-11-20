@@ -4118,6 +4118,22 @@
       "value": "移动 ←/→ | 跳跃 {0} | 剑术(↑/↓下劈) {1} | 技能 {2} | 冲刺 {3} | 地图 {4} | Esc"
     },
     {
+      "key": "controls.kb_opening",
+      "value": "←/→ 移动  ·  {0} 跳跃  ·  {1} 互动"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "左摇杆/方向键移动  ·  [A] 跳跃  ·  [L3] 互动"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "玛尔塔的阁楼"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "按 {0} 跳过木箱，找到掉在地上的薄荷糖。"
+    },
+    {
       "key": "controls.kb_explore",
       "value": "移动 ←/→ | 调查·出入 {0} | 剑术 {1} | 技能 {2} | 冲刺 {3} | 地图 {4} | Esc 暂停"
     },

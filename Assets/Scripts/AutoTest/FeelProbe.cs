@@ -25,9 +25,8 @@ namespace RewindNotary
             if (Passed) return false;
             if (phase == Phase.Waiting)
             {
-                // This row waits for interaction on a flat, enemy-free floor. Let the route bot
-                // handle the preceding dialogue, then take exclusive ownership of the keys.
-                if (bot.Area?.PendingAction != "use:mint_candy_pickup") return false;
+                // Start on the open lane beyond the jump tutorial, where terrain cannot block the run.
+                if (bot.Area?.PendingAction != "use:mint_candy_tray" || !bot.Area.Rea.Grounded) return false;
                 player = bot.Area.Rea;
                 result = measurements;
                 result.groundStop.status = "running";

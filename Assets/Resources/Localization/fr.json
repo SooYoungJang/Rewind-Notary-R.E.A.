@@ -4118,6 +4118,22 @@
       "value": "Dépl. ←/→ | Saut {0} | Attaque {1} | Tech. {2} | Ruée {3} | Carte {4} | Échap"
     },
     {
+      "key": "controls.kb_opening",
+      "value": "←/→ Se déplacer  ·  {0} Sauter  ·  {1} Interagir"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "Stick G/croix Se déplacer  ·  [A] Sauter  ·  [L3] Interagir"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "Le grenier de Marta"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Appuyez sur {0} pour sauter par-dessus le coffre et retrouver le bonbon à la menthe."
+    },
+    {
       "key": "controls.kb_explore",
       "value": "Dépl. ←/→ | Interag. {0} | Attaque {1} | Tech. {2} | Ruée {3} | Carte {4} | Échap Pause"
     },

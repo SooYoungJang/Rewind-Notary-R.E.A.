@@ -24,8 +24,6 @@ namespace RewindNotary
         private Vector3 baseLocalScale;
         private SpriteRenderer shadowRenderer;
         private SpriteRenderer stateRing;
-        private SpriteRenderer telegraphRing;
-        private LineRenderer attackOutline;
         private GameObject hpBarRoot;
         private Transform hpBarFill;
         private SpriteRenderer hpBarFillSr;
@@ -64,7 +62,7 @@ namespace RewindNotary
             EnsureSharedAssets();
             TryLoadAnimatedSheet();
             BuildContactShadow();
-            BuildStateRings();
+            if (target.Kind == EffectTargetKind.TerrainMechanism) BuildStateRing();
             BuildOverheadHealthBar();
         }
 
@@ -176,7 +174,7 @@ namespace RewindNotary
             shadowRenderer.sortingOrder = 1;
         }
 
-        private void BuildStateRings()
+        private void BuildStateRing()
         {
             var sGo = new GameObject("EnemyStateRing");
             sGo.transform.SetParent(transform, false);
@@ -185,26 +183,7 @@ namespace RewindNotary
             stateRing.sprite = sharedRingSprite;
             stateRing.sharedMaterial = sharedAdditiveMat;
             stateRing.sortingOrder = 7;
-
-            var tGo = new GameObject("EnemyTelegraphRing");
-            tGo.transform.SetParent(transform, false);
-            tGo.transform.localPosition = new Vector3(0f, 0.95f, 0f);
-            telegraphRing = tGo.AddComponent<SpriteRenderer>();
-            telegraphRing.sprite = sharedRingSprite;
-            telegraphRing.sharedMaterial = sharedAdditiveMat;
-            telegraphRing.color = new Color(1.0f, 0.65f, 0.24f, 0.92f);
-            telegraphRing.sortingOrder = 13;
-            telegraphRing.enabled = false;
-
-            var outline = new GameObject("Enemy attack area");
-            outline.transform.SetParent(transform, false);
-            attackOutline = outline.AddComponent<LineRenderer>();
-            attackOutline.sharedMaterial = sharedAdditiveMat;
-            attackOutline.sortingOrder = 13;
-            attackOutline.useWorldSpace = true;
-            attackOutline.positionCount = 4;
-            attackOutline.loop = true;
-            attackOutline.enabled = false;
+            stateRing.enabled = false;
         }
 
         private void BuildOverheadHealthBar()
@@ -268,7 +247,8 @@ namespace RewindNotary
 
             bool alive = !cleared && pictureRenderer.enabled;
             shadowRenderer.enabled = alive && target.FeetSupported;
-            stateRing.enabled = alive;
+            bool ready = target.State.Ready(Time.time);
+            if (stateRing != null) stateRing.enabled = alive;
             if (hpBarRoot != null)
             {
                 bool showBar = alive && (remaining < maxRemaining || (player != null && Vector2.Distance(player.transform.position, transform.position) < 9.5f));
@@ -279,22 +259,16 @@ namespace RewindNotary
                     float ratio = Mathf.Clamp01((float)remaining / Mathf.Max(1, maxRemaining));
                     hpBarFill.localScale = new Vector3(Mathf.Max(0.02f, ratio), 0.085f, 1f);
                     hpBarFill.localPosition = new Vector3(-(1f - ratio) * 0.5f, 0f, 0f);
-                    hpBarFillSr.color = target.State.Ready(Time.time)
+                    hpBarFillSr.color = ready
                         ? new Color(0.32f, 0.86f, 0.78f, 0.96f)
                         : new Color(0.86f, 0.34f, 0.32f, 0.96f);
                 }
             }
-            if (!alive)
-            {
-                telegraphRing.enabled = false;
-                attackOutline.enabled = false;
-                return;
-            }
+            if (!alive) return;
 
             animClock += Time.deltaTime;
             float t = animClock + phaseOffset;
-            bool winding = target.TryGetAttackCue(out var threat, out var warningTint);
-            bool ready = target.State.Ready(Time.time);
+            bool winding = target.WindingUp;
             bool recoiling = Time.time < hitRecoilUntil || target.AirPinned;
 
             if (player != null && target.Kind == EffectTargetKind.Enemy)
@@ -307,7 +281,7 @@ namespace RewindNotary
             else if (winding)
             {
                 float flash = 0.5f + 0.5f * Mathf.Sin(Time.time * 26f);
-                pictureRenderer.color = Color.Lerp(Color.white, warningTint, flash * 0.45f);
+                pictureRenderer.color = Color.Lerp(Color.white, target.WindupTint, flash * 0.45f);
             }
             else
             {
@@ -329,35 +303,12 @@ namespace RewindNotary
             }
             else ApplyStillSpriteMotion(t, recoiling, winding);
 
-            float ringPulse = 0.92f + 0.10f * Mathf.Sin(t * 5.2f);
-            if (ready)
+            if (stateRing != null)
             {
-                stateRing.color = new Color(0.42f, 0.96f, 0.88f, 0.58f);
-                stateRing.transform.localScale = new Vector3(1.55f * ringPulse, 1.55f * ringPulse, 1f);
-            }
-            else
-            {
-                stateRing.color = new Color(0.84f, 0.72f, 0.45f, 0.28f);
-                stateRing.transform.localScale = new Vector3(1.38f * ringPulse, 1.38f * ringPulse, 1f);
-            }
-            stateRing.transform.localRotation = Quaternion.Euler(0f, 0f, t * 38f);
-
-            telegraphRing.enabled = winding;
-            attackOutline.enabled = winding;
-            if (winding)
-            {
-                float s = 1.35f + Mathf.PingPong(Time.time * 5.5f, 0.75f);
-                telegraphRing.color = warningTint;
-                telegraphRing.transform.localScale = new Vector3(s, s, 1f);
-                telegraphRing.transform.localRotation = Quaternion.Euler(0f, 0f, -Time.time * 160f);
-                float pulse = Mathf.Clamp01(1f - target.StrikeIn / .3f);
-                warningTint.a = Mathf.Lerp(.50f, .95f, pulse);
-                attackOutline.startColor = attackOutline.endColor = warningTint;
-                attackOutline.widthMultiplier = Mathf.Lerp(.034f, .069f, pulse);
-                attackOutline.SetPosition(0, new Vector3(threat.min.x, threat.min.y, 0f));
-                attackOutline.SetPosition(1, new Vector3(threat.max.x, threat.min.y, 0f));
-                attackOutline.SetPosition(2, new Vector3(threat.max.x, threat.max.y, 0f));
-                attackOutline.SetPosition(3, new Vector3(threat.min.x, threat.max.y, 0f));
+                float pulse = 0.92f + 0.10f * Mathf.Sin(t * 5.2f);
+                stateRing.color = ready ? new Color(.42f, .96f, .88f, .58f) : new Color(.84f, .72f, .45f, .28f);
+                stateRing.transform.localScale = Vector3.one * (pulse * (ready ? 1.55f : 1.38f));
+                stateRing.transform.localRotation = Quaternion.Euler(0f, 0f, t * 38f);
             }
         }
 

@@ -4118,6 +4118,22 @@
       "value": "Move ←/→ | Jump {0} | Attack(↑/↓Pogo) {1} | Skill {2} | Dash {3} | Map {4} | Esc Menu"
     },
     {
+      "key": "controls.kb_opening",
+      "value": "←/→ Move  ·  {0} Jump  ·  {1} Interact"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "LS/D-Pad Move  ·  [A] Jump  ·  [L3] Interact"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "Marta’s Attic"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Press {0} to jump over the chest and find the mint candy."
+    },
+    {
       "key": "controls.kb_explore",
       "value": "Move ←/→ | Interact {0} | Attack {1} | Skill {2} | Dash {3} | Map {4} | Esc Pause"
     },

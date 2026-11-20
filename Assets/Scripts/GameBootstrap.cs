@@ -604,14 +604,15 @@ namespace RewindNotary
             if (!initialized || !shell.Playing) { GUI.matrix = previous; return; }
             if (hudCanvas != null)
             {
-                if (minimap?.FullMapOpen != true && !NotaryJournalCanvas.IsOpen) DrawQuickSkills(label, 272);
+                if (Area?.InAtticTutorial != true && minimap?.FullMapOpen != true && !NotaryJournalCanvas.IsOpen)
+                    DrawQuickSkills(label, 272);
                 GUI.matrix = previous;
                 return;
             }
             if (Area != null)
             {
                 Area.DrawHUD(title, label);
-                DrawQuickSkills(label, 18);
+                if (!Area.InAtticTutorial) DrawQuickSkills(label, 18);
                 GUI.matrix = previous;
                 return;
             }

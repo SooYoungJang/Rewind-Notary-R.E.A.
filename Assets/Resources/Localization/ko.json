@@ -4118,6 +4118,22 @@
       "value": "이동 ←/→ | 점프 {0} | 검술(↑/↓포고) {1} | 기술 {2} | 대시 {3} | 지도 {4} | Esc 메뉴"
     },
     {
+      "key": "controls.kb_opening",
+      "value": "←/→ 이동  ·  {0} 점프  ·  {1} 상호작용"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "왼쪽 스틱/방향 패드 이동  ·  [A] 점프  ·  [L3] 상호작용"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "마르타의 다락방"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "{0}로 상자를 넘어 바닥에 떨어진 박하사탕을 찾으세요."
+    },
+    {
       "key": "controls.kb_explore",
       "value": "이동 ←/→ | 조사·출입 {0} | 검술 {1} | 기술 {2} | 대시 {3} | 지도 {4} | Esc 일시정지"
     },

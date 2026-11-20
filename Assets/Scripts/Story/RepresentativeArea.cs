@@ -167,7 +167,11 @@ namespace RewindNotary
                 session.Progression.CalibrationDormantSkill = RepresentativeScript.FirstSkill(Record);
             if (ActionToken == "use:reflection_plate" && actionIndex > 0)
                 session.Progression.CalibrationDormantSkill = null;
-            if (actionIndex + 1 < ActiveRow.requiredPlayerAction.Length) actionIndex++;
+            if (actionIndex + 1 < ActiveRow.requiredPlayerAction.Length)
+            {
+                actionIndex++;
+                if (InAttic) RefreshAtticProps();
+            }
             else Complete();
         }
         private string ActionToken => ActiveRow.requiredPlayerAction[actionIndex];
@@ -216,6 +220,7 @@ namespace RewindNotary
             }
             if (ActiveRow == null)
             {
+                if (AtticBoardApproach is StoryMark board && (!safeFloor || Distance(board.x) > 3f)) return;
                 bool half = opponent.gameObject.activeSelf && opponent.Health.Current <= opponent.Health.Maximum / 2;
                 ActiveRow = finaleRow ?? script.Next(Room, session.Investigation, half);
                 if (ActiveRow != null)

@@ -74,8 +74,10 @@ namespace RewindNotary
             portalGlow = AttachDoorArchitecture(door.transform, stage, out archway);
         }
 
-        internal void Show(bool canPass)
+        internal void Show(bool canPass, bool visible = true)
         {
+            if (view.gameObject.activeSelf != visible) view.gameObject.SetActive(visible);
+            if (!visible) return;
             var sprite = canPass ? open : locked;
             if (portalGlow != null) portalGlow.enabled = canPass;
             if (view.sprite == sprite) return;

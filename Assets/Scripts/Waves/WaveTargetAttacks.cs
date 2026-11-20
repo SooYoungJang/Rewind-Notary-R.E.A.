@@ -18,13 +18,8 @@ namespace RewindNotary
         internal bool Charging => attackPhase == AttackPhase.Charge;
         internal float LastStrikeAt { get; private set; } = float.NegativeInfinity;
 
-        internal bool TryGetAttackCue(out Bounds bounds, out Color tint)
-        {
-            bool pending = attackPhase == AttackPhase.Windup;
-            bounds = pending ? AttackBounds() : default;
-            tint = AttackTint();
-            return pending;
-        }
+        internal bool WindingUp => attackPhase == AttackPhase.Windup;
+        internal Color WindupTint => AttackTint();
 
         private Move ChooseAttack(float distance, bool alternate)
         {

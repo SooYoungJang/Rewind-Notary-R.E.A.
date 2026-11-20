@@ -4118,6 +4118,22 @@
       "value": "Muovi ←/→ | Salto {0} | Attacco {1} | Abilità {2} | Scatto {3} | Mappa {4} | Esc"
     },
     {
+      "key": "controls.kb_opening",
+      "value": "←/→ Muoviti  ·  {0} Salta  ·  {1} Interagisci"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "Stick sx/croce Muoviti  ·  [A] Salta  ·  [L3] Interagisci"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "La soffitta di Marta"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Premi {0} per saltare il baule e trovare la caramella alla menta."
+    },
+    {
       "key": "controls.kb_explore",
       "value": "Muovi ←/→ | Interag. {0} | Attacco {1} | Abilità {2} | Scatto {3} | Mappa {4} | Esc Pausa"
     },

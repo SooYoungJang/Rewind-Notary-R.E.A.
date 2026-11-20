@@ -84,6 +84,10 @@ namespace RewindNotary
                 KeyLabel(DashKey), KeyLabel(MapKey));
         }
 
+        internal static string FormatOpeningControlsPrompt() => UsingGamepad
+            ? Loc.Get("controls.pad_opening")
+            : Loc.Get("controls.kb_opening", KeyLabel(JumpKey), KeyLabel(InteractKey));
+
         private static float KeyboardHorizontal =>
             (Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) - (Input.GetKey(KeyCode.LeftArrow) ? 1f : 0f);
         private static float KeyboardVertical =>

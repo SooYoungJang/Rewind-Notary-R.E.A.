@@ -4,52 +4,14 @@
       "id": "hub_attic",
       "layers": [
         {
-          "resource": "attic-branch",
-          "height": 16,
-          "bottom": -6,
-          "factor": 0.12,
-          "vertical": 0.8,
-          "crop": {
-            "x": 0.01,
-            "y": 0,
-            "width": 0.83,
-            "height": 1
-          },
-          "tint": "#889da9",
-          "spacing": 1,
-          "offset": 0
-        },
-        {
-          "resource": "hub-props",
-          "height": 3.7,
-          "bottom": -0.5,
-          "factor": 0.44,
-          "vertical": 0.15,
-          "crop": {
-            "x": 0,
-            "y": 0.667,
-            "width": 0.5,
-            "height": 0.333
-          },
-          "tint": "#cabbab",
-          "spacing": 1.52,
-          "offset": 4
-        },
-        {
-          "resource": "hub-props",
-          "height": 1.9,
-          "bottom": 4.3,
-          "factor": 0.75,
-          "vertical": 0.34,
-          "crop": {
-            "x": 0.5,
-            "y": 0,
-            "width": 0.5,
-            "height": 0.332
-          },
-          "tint": "#d7bf8c",
-          "spacing": 2.4,
-          "offset": 0
+          "resource": "attic-tutorial-panorama",
+          "height": 13.4,
+          "bottom": -1.2,
+          "crop": {"x": 0, "y": 0.133, "width": 1, "height": 0.733},
+          "tint": "#B3A99A",
+          "foundationTint": "#24160F",
+          "offset": 23.8,
+          "fixedInWorld": true
         }
       ]
     },

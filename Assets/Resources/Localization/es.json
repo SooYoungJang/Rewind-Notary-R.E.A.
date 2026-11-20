@@ -4118,6 +4118,22 @@
       "value": "Mover ←/→ | Saltar {0} | Ataque {1} | Técnica {2} | Esquive {3} | Mapa {4} | Esc"
     },
     {
+      "key": "controls.kb_opening",
+      "value": "←/→ Moverse  ·  {0} Saltar  ·  {1} Interactuar"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "Stick izq./cruceta Moverse  ·  [A] Saltar  ·  [L3] Interactuar"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "El desván de Marta"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Salta el baúl con {0} y busca el caramelo de menta."
+    },
+    {
       "key": "controls.kb_explore",
       "value": "Mover ←/→ | Interact. {0} | Ataque {1} | Técnica {2} | Esquive {3} | Mapa {4} | Esc Pausa"
     },

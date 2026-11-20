@@ -25,6 +25,7 @@ namespace RewindNotary
             public string ObjectiveHint;
             public string NoticeText;
             public string ControlsText;
+            public bool OpeningTutorial;
             public bool BossVisible;
             public string BossName;
             public string BossPhase;
@@ -56,6 +57,7 @@ namespace RewindNotary
         private Text noticeText;
 
         private Text controlsText;
+        private GameObject loadoutStrip;
 
         private GameObject overlayPanel;
         private Text overlayTitleText, overlayDetailText;
@@ -266,6 +268,7 @@ namespace RewindNotary
         private void BuildLoadoutStrip()
         {
             var bar = NotaryUiTheme.CreateBorderedPanel(canvas.transform, "LoadoutStrip", NotaryUiTheme.PanelBgSoft, NotaryUiTheme.GoldSoft, 1.2f);
+            loadoutStrip = bar.gameObject;
             var rt = bar.rectTransform;
             rt.anchorMin = new Vector2(0f, 1f);
             rt.anchorMax = new Vector2(0f, 1f);
@@ -498,8 +501,9 @@ namespace RewindNotary
             playerHpGhost.rectTransform.anchorMax = new Vector2(displayedPlayerRatio, 1f);
             playerHpText.text = s.PlayerHp + " / " + s.PlayerMaxHp;
 
-            statusText.text = s.StatusLine ?? "";
-            subStatusText.text = s.SubStatusLine ?? "";
+            loadoutStrip.SetActive(!s.OpeningTutorial);
+            statusText.text = s.OpeningTutorial ? "" : s.StatusLine ?? "";
+            subStatusText.text = s.OpeningTutorial ? "" : s.SubStatusLine ?? "";
 
             if (!string.IsNullOrEmpty(s.RoomKey) && s.RoomKey != lastRoomKey)
             {

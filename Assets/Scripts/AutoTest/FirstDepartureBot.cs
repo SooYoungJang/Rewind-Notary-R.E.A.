@@ -142,6 +142,11 @@ namespace RewindNotary
                 else if (action.StartsWith("use:", StringComparison.Ordinal) && Walk(point.x, .38f)) keys.Tap(GameInput.InteractKey);
                 return;
             }
+            if (Area.AtticBoardApproach is StoryMark breakfast)
+            {
+                Walk(breakfast.x, .38f);
+                return;
+            }
             if (Record.firstTransferPending && !Has("returned_for_mid_invest"))
             {
                 if (!Area.OnReturnFloor) SeekFloor();
