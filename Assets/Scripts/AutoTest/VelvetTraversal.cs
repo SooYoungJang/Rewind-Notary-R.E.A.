@@ -17,7 +17,7 @@ namespace RewindNotary
         {
             float dx = x - Player.Body.position.x;
             if (Mathf.Abs(dx) <= tolerance) return true;
-            keys.Hold(dx < 0 ? KeyCode.A : KeyCode.D);
+            keys.Hold(dx < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
             return false;
         }
 
@@ -163,7 +163,7 @@ namespace RewindNotary
                 Walk(x, 0f);
             else if (lead <= seam.Bounds.extents.x || Player.Facing != direction)
                 // Back out before turning. The turn itself moves Rea one or more physics ticks.
-                keys.Hold(direction > 0 ? KeyCode.A : KeyCode.D);
+                keys.Hold(direction > 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
             else if (Player.Grounded)
                 keys.Cast();
             return true;
@@ -172,7 +172,7 @@ namespace RewindNotary
         {
             var door = Area.ForwardDoor;
             if (door != null && TryFaceAt(door.x, door.approach.y + door.approach.height / 2, out var exit) &&
-                ClockPosition(exit.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position)) keys.Tap(KeyCode.F);
+                ClockPosition(exit.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position)) keys.Tap(KeyCode.C);
         }
         internal bool RideCounterweight(string carrierId, string bank, float dismountHeight)
         {

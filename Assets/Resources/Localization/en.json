@@ -2,6 +2,74 @@
   "language": "en",
   "entries": [
     {
+      "key": "quick_skill.rea_thrust",
+      "value": "Thrust"
+    },
+    {
+      "key": "quick_skill.rea_rising",
+      "value": "Rising Cut"
+    },
+    {
+      "key": "quick_skill.rea_sweep",
+      "value": "Sweep"
+    },
+    {
+      "key": "quick_skill.rea_wave",
+      "value": "Blade Wave"
+    },
+    {
+      "key": "quick_skill.menu",
+      "value": "Skill slots"
+    },
+    {
+      "key": "quick_skill.assign_hint",
+      "value": "↑ ↓ Select a slot · ← → Equip a starter or learned skill"
+    },
+    {
+      "key": "story.prologue.city",
+      "value": "In Lapis, a city of notarization, the register keeps a person's name and the skills they have learned."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "The work of a lifelong tailor and the swordplay passed down by a master can both be notarized in Lapis."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "A notarizing swordsman captures a technique in the Record Sword, then proves it by reproducing it at Stage 3."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "At six tomorrow morning, five prisoners are due to be executed."
+    },
+    {
+      "key": "story.prologue.order",
+      "value": "A sealed order has arrived from the Central Notary Bureau. A clause inside offers all five a chance to live."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Find the five prisoners and learn a technique from each one. Capture them in the Record Sword and notarize all five at Stage 3."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "If all five notarizations are complete by the deadline, each prisoner will be granted a special pardon."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "The Bureau has entrusted this mission to Rea, a newly appointed notarizing swordsman. She has less than a day."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "That morning, Marta wrote the names of tomorrow's breakfast guests on the board in the attic."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "There were five names on the board. Beside them, one place was still blank."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "The scent of mint tea drifted in from the window. Rea opens her eyes in the attic, where the sealed order awaits."
+    },
+    {
       "key": "finale.ending.true",
       "value": "True ending unlocked"
     },
@@ -27,7 +95,7 @@
     },
     {
       "key": "finale.mirror_open",
-      "value": "Mirror exposed · F / Left Stick: choose a return"
+      "value": "Mirror exposed · C / Left Stick: choose a return"
     },
     {
       "key": "finale.mirror_closed",
@@ -167,7 +235,7 @@
     },
     {
       "key": "input.gameplay",
-      "value": "Move A/D·Arrows·Stick | Jump Space·A | Sword J/Z/Left Click·X | Skill Q·Y | Dash Shift/K·LB | Parry L·RB"
+      "value": "Move ← → · Jump Space · Attack Z · Parry X · Interact C · Dash/run Shift+direction · Skills Q W E R"
     },
     {
       "key": "hud.trial_hint",
@@ -187,7 +255,7 @@
     },
     {
       "key": "input.retry_pause",
-      "value": "{0}  R·View: restart | Esc·Menu: pause"
+      "value": "{0}  Backspace·View: restart | Esc·Menu: pause"
     },
     {
       "key": "input.debug",
@@ -195,7 +263,7 @@
     },
     {
       "key": "trial.health",
-      "value": "Practice HP {0}/{1} · Training resumes when depleted · R: reset positions"
+      "value": "Practice HP {0}/{1} · Training resumes when depleted · Backspace: reset positions"
     },
     {
       "key": "input.benefactor_support",
@@ -215,7 +283,7 @@
     },
     {
       "key": "input.retry_button",
-      "value": "Press R / View to try again."
+      "value": "Press Backspace / View to try again."
     },
     {
       "key": "hud.returning_checkpoint",
@@ -363,7 +431,7 @@
     },
     {
       "key": "input.investigation",
-      "value": "Inspect: F / Press Left Stick\nEsc → Skills → Investigation log"
+      "value": "Inspect: C / Press Left Stick\nEsc → Skills → Investigation log"
     },
     {
       "key": "investigation.read_core",
@@ -379,7 +447,7 @@
     },
     {
       "key": "input.inspect_action",
-      "value": "F / Press Left Stick: {0}"
+      "value": "C / Press Left Stick: {0}"
     },
     {
       "key": "investigation.wait_for_action",
@@ -567,7 +635,7 @@
     },
     {
       "key": "skill.acquired_notice",
-      "value": "{0} acquired — Select: 1–5 / E·B · Use: Q·Y"
+      "value": "{0} learned. Cast with direction + V or equip it in a skill slot."
     },
     {
       "key": "skill.stage_up_notice",
@@ -1315,7 +1383,7 @@
     },
     {
       "key": "wave.all_complete",
-      "value": "3 zones complete · Check sword milestone logs: 151 / 400. R: restart"
+      "value": "3 zones complete · Check sword milestone logs: 151 / 400. Backspace: restart"
     },
     {
       "key": "wave.zone_complete",
@@ -1815,7 +1883,7 @@
     },
     {
       "key": "input.cast_hint",
-      "value": "Direction + Q·Y | Wall: hold attack + ↓ cast"
+      "value": "Direction + V·Y | Wall: hold attack + ↓ cast"
     },
     {
       "key": "input.skill_unlearned",
@@ -1839,7 +1907,7 @@
     },
     {
       "key": "story.intro.attic.02",
-      "value": "“Up already, Rea? I set that candy out for your pouch while brewing resonant mint tea, and it must've rolled off. Bring it over and set it on the empty dish beside the envelope.”\n(Controls: Press F / Press Left Stick at the mint candy on the floor to pick it up, then place it on the dish beside the envelope on the table.)"
+      "value": "“Up already, Rea? I set that candy out for your pouch while brewing resonant mint tea, and it must've rolled off. Bring it over and set it on the empty dish beside the envelope.”\n(Controls: Press C / Press Left Stick at the mint candy on the floor to pick it up, then place it on the dish beside the envelope on the table.)"
     },
     {
       "key": "story.intro.attic.03",
@@ -1847,7 +1915,7 @@
     },
     {
       "key": "story.intro.attic.04",
-      "value": "(Straightening her clothes, she brightens into a warm smile and holds out the envelope)\n“Here you go, our Rea! A special recovery commission sent down from the Central Notary Bureau. Go ahead and take it.”\n(Controls: Press F / Press Left Stick at the commission envelope on the table to receive it. Clue [Contract · Copy seal] will be recorded.)"
+      "value": "(Straightening her clothes, she brightens into a warm smile and holds out the envelope)\n“Here you go, our Rea! A special recovery commission sent down from the Central Notary Bureau. Go ahead and take it.”\n(Controls: Press C / Press Left Stick at the commission envelope on the table to receive it. Clue [Contract · Copy seal] will be recorded.)"
     },
     {
       "key": "story.intro.attic.05",
@@ -1863,11 +1931,11 @@
     },
     {
       "key": "story.intro.board.03",
-      "value": "“I can eat after I get back—oh, right. That's after I get back.\n(Placing her hand on the sixth blank space beside the five names) Yes, I won't leave my seat empty either. Tomorrow morning, I'll definitely finish that sixth bowl myself!”\n(Controls: Press F / Press Left Stick at the breakfast reservation board to stamp the sixth seat yourself.)"
+      "value": "“I can eat after I get back—oh, right. That's after I get back.\n(Placing her hand on the sixth blank space beside the five names) Yes, I won't leave my seat empty either. Tomorrow morning, I'll definitely finish that sixth bowl myself!”\n(Controls: Press C / Press Left Stick at the breakfast reservation board to stamp the sixth seat yourself.)"
     },
     {
       "key": "story.intro.forge.01",
-      "value": "“Come to check your edge before heading out, Rea? Let me see it. I'll touch it to the grindstone and make sure the core channel isn't rattling.”\n(Controls: Press F / Press Left Stick at Ethan's grindstone workbench to lay the record blade down.)"
+      "value": "“Come to check your edge before heading out, Rea? Let me see it. I'll touch it to the grindstone and make sure the core channel isn't rattling.”\n(Controls: Press C / Press Left Stick at Ethan's grindstone workbench to lay the record blade down.)"
     },
     {
       "key": "story.intro.forge.02",
@@ -1887,7 +1955,7 @@
     },
     {
       "key": "story.velvet.entry.02",
-      "value": "“Look inside this open wardrobe. From size eleven all the way up to size sixteen, six winter coats hang side by side—one freshly tailored every single year for the past six years. Even though their owner never got to put them on once, every seam is pressed neat and crisp.”\n(Controls: Press F / Press Left Stick to inspect Mikhail's wardrobe. Clue [Mikhail · Core imprint] will be recorded.)"
+      "value": "“Look inside this open wardrobe. From size eleven all the way up to size sixteen, six winter coats hang side by side—one freshly tailored every single year for the past six years. Even though their owner never got to put them on once, every seam is pressed neat and crisp.”\n(Controls: Press C / Press Left Stick to inspect Mikhail's wardrobe. Clue [Mikhail · Core imprint] will be recorded.)"
     },
     {
       "key": "story.velvet.entry.03",
@@ -1907,7 +1975,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Planting his shear-blade into the floor, he drops to one knee. Rea's record blade core captures the blue trace of Mikhail's Stage 1 stitching swordplay revealed during the duel)\n“Tch…… Even though I kept my final knot hidden, that blade read the grain of my first stitch.\nListen well, Rea. Stop there and it's just simple self-defense, but the instant you master that stitching and take it all the way to completion, the torment in my heart passes to you. I'm falling back to the Sanctuary…… Put that sword away and go home, please.”\n(System Notice: Silver Stitch acquired — Press Q (Y on a controller) with no direction held.)"
+      "value": "(Planting his shear-blade into the floor, he drops to one knee. Rea's record blade core captures the blue trace of Mikhail's Stage 1 stitching swordplay revealed during the duel)\n“Tch…… Even though I kept my final knot hidden, that blade read the grain of my first stitch.\nListen well, Rea. Stop there and it's just simple self-defense, but the instant you master that stitching and take it all the way to completion, the torment in my heart passes to you. I'm falling back to the Sanctuary…… Put that sword away and go home, please.”\n(System Notice: Silver Stitch acquired — Press V (Y on a controller) with no direction held.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -1971,7 +2039,7 @@
     },
     {
       "key": "story.invest.03_theo",
-      "value": "(Limping swiftly back and forth before the calibration terminal, he brings up the waveform graph)\n“Look at the ledger log on this branch record terminal, Rea. That ‘mother-core absorption and erasure addendum’ the Central Notary Bureau advertised doesn't exist anywhere in the record blade's architecture.\nThe world's causality judged you—having flawlessly recreated a Stage 3 Ultimate—to be the ‘same person’ as the original holder, and transferred the slated Doom straight into your body.”\n(Controls: Press F / Press Left Stick to inspect the branch record terminal (point_route_ledger) and verify Clue [Transfer route · Record terminal].)"
+      "value": "(Limping swiftly back and forth before the calibration terminal, he brings up the waveform graph)\n“Look at the ledger log on this branch record terminal, Rea. That ‘mother-core absorption and erasure addendum’ the Central Notary Bureau advertised doesn't exist anywhere in the record blade's architecture.\nThe world's causality judged you—having flawlessly recreated a Stage 3 Ultimate—to be the ‘same person’ as the original holder, and transferred the slated Doom straight into your body.”\n(Controls: Press C / Press Left Stick to inspect the branch record terminal (point_route_ledger) and verify Clue [Transfer route · Record terminal].)"
     },
     {
       "key": "story.invest.04_luka",
@@ -1979,7 +2047,7 @@
     },
     {
       "key": "story.invest.05_marta",
-      "value": "(With trembling hands, Marta spreads the attic commission ledger and Rea's copy of the order side by side beneath the workbench lamp)\n“Rea, this old woman truly didn't know when I handed it over. But holding it to the light…… the paper fibers under [Article 3 (Special Addendum)] on your copy were thinly scraped off with a knife tip.\nOver that spot, someone stamped the ‘absorption, erasure, and special pardon’ wording using old lead type from our Clocktower Branch storeroom and your lapis notary ink. Now look at the entrustor's signature under [Record #01 / Before Reversal 06:25] in the ledger.”\n(Controls: Press F / Press Left Stick to compare the commission ledger and copy seal on the workbench.)"
+      "value": "(With trembling hands, Marta spreads the attic commission ledger and Rea's copy of the order side by side beneath the workbench lamp)\n“Rea, this old woman truly didn't know when I handed it over. But holding it to the light…… the paper fibers under [Article 3 (Special Addendum)] on your copy were thinly scraped off with a knife tip.\nOver that spot, someone stamped the ‘absorption, erasure, and special pardon’ wording using old lead type from our Clocktower Branch storeroom and your lapis notary ink. Now look at the entrustor's signature under [Record #01 / Before Reversal 06:25] in the ledger.”\n(Controls: Press C / Press Left Stick to compare the commission ledger and copy seal on the workbench.)"
     },
     {
       "key": "story.invest.06_rea",
@@ -1987,7 +2055,7 @@
     },
     {
       "key": "story.invest.07_exp1_ethan",
-      "value": "“No use guessing with words alone. Mount the blade on the calibration rig and we'll see what's left inside.\nRea, remember those three reference notches on the third section of the blade we saw back in my forge? Set the sword onto the mount without marring the old marks, and align the workbench calibration pin right into that third-section notch.”\n(Controls: Press F / Press Left Stick at the workbench calibration mount (calibration_mount) to align the calibration pin with the third-section reference marks. Clue [Transfer route · Core projection imprint] will be recorded.)"
+      "value": "“No use guessing with words alone. Mount the blade on the calibration rig and we'll see what's left inside.\nRea, remember those three reference notches on the third section of the blade we saw back in my forge? Set the sword onto the mount without marring the old marks, and align the workbench calibration pin right into that third-section notch.”\n(Controls: Press C / Press Left Stick at the workbench calibration mount (calibration_mount) to align the calibration pin with the third-section reference marks. Clue [Transfer route · Core projection imprint] will be recorded.)"
     },
     {
       "key": "story.invest.08_exp1_rea",
@@ -2003,7 +2071,7 @@
     },
     {
       "key": "story.invest.11_exp3_theo",
-      "value": "“Now for the third experiment! I'll switch on the Notary Bureau standard reflection plate across from us to duplicate your sword strike verbatim. Let's verify how far the mirror copies your motion trajectory and imprint power—and whether the record stays intact after shutting the device down!”\n(Controls: Press F / Press Left Stick at the reflection calibration plate (reflection_plate) to run the reflection comparison and detach the calibrator.)"
+      "value": "“Now for the third experiment! I'll switch on the Notary Bureau standard reflection plate across from us to duplicate your sword strike verbatim. Let's verify how far the mirror copies your motion trajectory and imprint power—and whether the record stays intact after shutting the device down!”\n(Controls: Press C / Press Left Stick at the reflection calibration plate (reflection_plate) to run the reflection comparison and detach the calibrator.)"
     },
     {
       "key": "story.invest.12_exp4_theo",
@@ -2019,7 +2087,7 @@
     },
     {
       "key": "story.luka.signal",
-      "value": "“Luka! Wait—give me a ride!”\n(Controls: Press F / Press Left Stick at the lift signal post (luka_signal_post) to signal Luka yourself.)"
+      "value": "“Luka! Wait—give me a ride!”\n(Controls: Press C / Press Left Stick at the lift signal post (luka_signal_post) to signal Luka yourself.)"
     },
     {
       "key": "story.luka.board",
@@ -2467,7 +2535,7 @@
     },
     {
       "key": "area.travel",
-      "value": "F / L3 · {0}"
+      "value": "C / L3 · {0}"
     },
     {
       "key": "area.walk",
@@ -2511,7 +2579,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Move   F / L3 Inspect·Enter   J·Z·Left Click Sword (Gamepad X)   Q / Y Skill   Esc Pause"
+      "value": "Move ← → · Jump Space · Attack Z · Parry X · Interact C · Dash/run Shift+direction · Skills Q W E R · Esc"
     },
     {
       "key": "investigation.clue.route_ledger.body",
@@ -2559,7 +2627,7 @@
     },
     {
       "key": "story.clock.entry.03",
-      "value": "“Of course! Look at the velvet cloth on this workbench, Rea. Ever since the day six years ago when my uncle came back frail as a white-haired old man overnight, he hasn't missed a single day wiping down something resting there with a dry cloth.”\n(Controls: Press F / Press Left Stick to inspect Julius's clock-tuning workbench (julius_workbench). Clue [Julius · Core imprint] will be recorded.)"
+      "value": "“Of course! Look at the velvet cloth on this workbench, Rea. Ever since the day six years ago when my uncle came back frail as a white-haired old man overnight, he hasn't missed a single day wiping down something resting there with a dry cloth.”\n(Controls: Press C / Press Left Stick to inspect Julius's clock-tuning workbench (julius_workbench). Clue [Julius · Core imprint] will be recorded.)"
     },
     {
       "key": "story.clock.entry.04",
@@ -2595,7 +2663,7 @@
     },
     {
       "key": "story.clock.route.07",
-      "value": "“Rea, I've set the return checkpoint right here on the dial antechamber floor. Whenever you're ready, open the main gate and head inside!”\n(Controls: Press F / Press Left Stick at the arena main gate (clock_arena_gate) to enter.)"
+      "value": "“Rea, I've set the return checkpoint right here on the dial antechamber floor. Whenever you're ready, open the main gate and head inside!”\n(Controls: Press C / Press Left Stick at the arena main gate (clock_arena_gate) to enter.)"
     },
     {
       "key": "story.julius.i0.01",
@@ -2615,7 +2683,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Planting his clock-hand broadsword into the floor, he exhales heavily. Rea's record blade core captures the brass-colored imprint of Julius's Stage 1 step trajectory shown during the duel)\n“……Even though I hid my final Ultimate, your record blade still read the round-trip path of my first ‘Pendulum Step.’\nMark my words, Rea. Up through twenty-nine times it is only footwork, and at thirty only the watch casing will resonate—yet the instant you reach the eightieth Ultimate, the frozen second hand of your half watch will start turning again, and my aging will crash down upon you.”\n(System Notice: Pendulum Rewind acquired — Hold the direction opposite the way Rea is facing and press Q (Y on a controller).)"
+      "value": "(Planting his clock-hand broadsword into the floor, he exhales heavily. Rea's record blade core captures the brass-colored imprint of Julius's Stage 1 step trajectory shown during the duel)\n“……Even though I hid my final Ultimate, your record blade still read the round-trip path of my first ‘Pendulum Step.’\nMark my words, Rea. Up through twenty-nine times it is only footwork, and at thirty only the watch casing will resonate—yet the instant you reach the eightieth Ultimate, the frozen second hand of your half watch will start turning again, and my aging will crash down upon you.”\n(System Notice: Pendulum Rewind acquired — Hold the direction opposite the way Rea is facing and press V (Y on a controller).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2671,7 +2739,7 @@
     },
     {
       "key": "story.clock.return.01",
-      "value": "“The brass shutter on the upper return path is closing fast. With Stage 1 ‘Pendulum Step’ of the ‘Pendulum Rewind’ I just recorded, I can leave an afterimage behind, lunge through to hit the switch, and re-input within 1.5 seconds to rewind safely back onto solid ground!”\n(Controls: Use Pendulum Rewind (Q / Y) to strike the switch past the shutter, then press again to rewind safely to your afterimage.)"
+      "value": "“The brass shutter on the upper return path is closing fast. With Stage 1 ‘Pendulum Step’ of the ‘Pendulum Rewind’ I just recorded, I can leave an afterimage behind, lunge through to hit the switch, and re-input within 1.5 seconds to rewind safely back onto solid ground!”\n(Controls: Use Pendulum Rewind (V / Y) to strike the switch past the shutter, then press again to rewind safely to your afterimage.)"
     },
     {
       "key": "story.clock.return.02",
@@ -2715,7 +2783,7 @@
     },
     {
       "key": "story.opera.entry.03",
-      "value": "“Yes. Now look down at the pointe shoes on that shelf and the wooden floor here, Rea. Even after Valeria could no longer stand on stage, she still swept and polished this spot every single day.”\n(Controls: Press F / Press Left Stick to inspect Valeria's pointe-shoe rack and rehearsal floor (valeria_shoes_rack). Clue [Valeria · Core imprint] will be recorded.)"
+      "value": "“Yes. Now look down at the pointe shoes on that shelf and the wooden floor here, Rea. Even after Valeria could no longer stand on stage, she still swept and polished this spot every single day.”\n(Controls: Press C / Press Left Stick to inspect Valeria's pointe-shoe rack and rehearsal floor (valeria_shoes_rack). Clue [Valeria · Core imprint] will be recorded.)"
     },
     {
       "key": "story.opera.entry.04",
@@ -2751,7 +2819,7 @@
     },
     {
       "key": "story.opera.route.07",
-      "value": "“I've opened a return checkpoint right here on the wings floor, Rea. I'll be waiting down by the lift platform lever below the stage!”\n(Controls: Press F / Press Left Stick at the main stage velvet curtain (opera_arena_gate) to enter.)"
+      "value": "“I've opened a return checkpoint right here on the wings floor, Rea. I'll be waiting down by the lift platform lever below the stage!”\n(Controls: Press C / Press Left Stick at the main stage velvet curtain (opera_arena_gate) to enter.)"
     },
     {
       "key": "story.valeria.i0.01",
@@ -2771,7 +2839,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Propping her rapier tip onto the floorboards, she catches her breath. Rea's record blade core captures the teal-colored imprint of Valeria's Stage 1 spinning leap path revealed in the duel)\n“……Haah, even though I hid the final curtain call, your blade still copied the leap angle of my first ‘Whirling Blade Dance.’\nPlease, Rea. Up to thirty times, only my bow habit will rub off—but the instant you complete the eightieth Grand Finale, the torment of my legs goes straight to you. I'll fall back to the Sanctuary…… so please don't dance those steps all the way to the end.”\n(System Notice: Curtain Call Waltz acquired — Hold up and press Q (Y on a controller).)"
+      "value": "(Propping her rapier tip onto the floorboards, she catches her breath. Rea's record blade core captures the teal-colored imprint of Valeria's Stage 1 spinning leap path revealed in the duel)\n“……Haah, even though I hid the final curtain call, your blade still copied the leap angle of my first ‘Whirling Blade Dance.’\nPlease, Rea. Up to thirty times, only my bow habit will rub off—but the instant you complete the eightieth Grand Finale, the torment of my legs goes straight to you. I'll fall back to the Sanctuary…… so please don't dance those steps all the way to the end.”\n(System Notice: Curtain Call Waltz acquired — Hold up and press V (Y on a controller).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2827,7 +2895,7 @@
     },
     {
       "key": "story.opera.return.01",
-      "value": "“The east spotlight roof return route! If I soar upward using Stage 1 ‘Whirling Blade Dance’ of ‘Curtain Call Waltz’ toward the hanging lanterns in midair, I can knock away projectiles while leaping higher!”\n(Controls: Strike the hanging midair lanterns with Curtain Call Waltz (Q / Y) to rise and land on the steel beam across the gap.)"
+      "value": "“The east spotlight roof return route! If I soar upward using Stage 1 ‘Whirling Blade Dance’ of ‘Curtain Call Waltz’ toward the hanging lanterns in midair, I can knock away projectiles while leaping higher!”\n(Controls: Strike the hanging midair lanterns with Curtain Call Waltz (V / Y) to rise and land on the steel beam across the gap.)"
     },
     {
       "key": "story.opera.return.02",
@@ -2871,7 +2939,7 @@
     },
     {
       "key": "story.bell.entry.03",
-      "value": "“Yes. Try reading the first page of that morning-bell score he played from every dawn right up until he lost his hearing, Rea.”\n(Controls: Press F / Press Left Stick to inspect Gabriel's morning-bell music stand and notebook (gabriel_score_desk). Clue [Gabriel · Core imprint] will be recorded.)"
+      "value": "“Yes. Try reading the first page of that morning-bell score he played from every dawn right up until he lost his hearing, Rea.”\n(Controls: Press C / Press Left Stick to inspect Gabriel's morning-bell music stand and notebook (gabriel_score_desk). Clue [Gabriel · Core imprint] will be recorded.)"
     },
     {
       "key": "story.bell.entry.04",
@@ -2907,7 +2975,7 @@
     },
     {
       "key": "story.bell.route.07",
-      "value": "“More than anything, he hates seeing you push yourself too hard. I've set the return checkpoint in the waiting hall, so open the ringing chamber door whenever you're ready!”\n(Controls: Press F / Press Left Stick at the top ringing chamber main gate (bell_arena_gate) to enter.)"
+      "value": "“More than anything, he hates seeing you push yourself too hard. I've set the return checkpoint in the waiting hall, so open the ringing chamber door whenever you're ready!”\n(Controls: Press C / Press Left Stick at the top ringing chamber main gate (bell_arena_gate) to enter.)"
     },
     {
       "key": "story.gabriel.i0.01",
@@ -2927,7 +2995,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Planting the haft of his hammer-sword into the floor, he drops to one knee. Rea's record blade core captures in golden light the Stage 1 vibrating-strike waveform Gabriel revealed during the duel)\n“[Notebook: Your blade captured the wave of my first ‘Vibrating Strike.’ Up through thirty times your ears will only ring slightly muffled—but upon reaching the eightieth Ultimate, my silence crosses into you. I will wait down at the Sanctuary, so stop that resonance, I beg you.]”\n(System Notice: Resonance Forge acquired — While airborne, hold down and press Q (Y on a controller).)"
+      "value": "(Planting the haft of his hammer-sword into the floor, he drops to one knee. Rea's record blade core captures in golden light the Stage 1 vibrating-strike waveform Gabriel revealed during the duel)\n“[Notebook: Your blade captured the wave of my first ‘Vibrating Strike.’ Up through thirty times your ears will only ring slightly muffled—but upon reaching the eightieth Ultimate, my silence crosses into you. I will wait down at the Sanctuary, so stop that resonance, I beg you.]”\n(System Notice: Resonance Forge acquired — While airborne, hold down and press V (Y on a controller).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -2951,7 +3019,7 @@
     },
     {
       "key": "story.gabriel.i1.05",
-      "value": "(Looking at Gabriel's face, she halts the sword she was recklessly swinging and shakes her head)\n“……No! If I pretend I can hear when I can't, Gabriel will never trust me. I'll signal him with my hand to stop first!”\n(Controls: Move to the right visual signal slate (gabriel_signal_floor), then press F / Press Left Stick to send Gabriel a stop hand signal (open palm) first.)"
+      "value": "(Looking at Gabriel's face, she halts the sword she was recklessly swinging and shakes her head)\n“……No! If I pretend I can hear when I can't, Gabriel will never trust me. I'll signal him with my hand to stop first!”\n(Controls: Move to the right visual signal slate (gabriel_signal_floor), then press C / Press Left Stick to send Gabriel a stop hand signal (open palm) first.)"
     },
     {
       "key": "story.gabriel.i1.06",
@@ -2971,7 +3039,7 @@
     },
     {
       "key": "story.gabriel.reunion.02",
-      "value": "(Cupping the warm milk glass with both hands for a sip, she reads the three hand signals written in Gabriel's notebook and spreads her palm open)\n“Open palm is stop, two fingers is ready, hand pointing down is land and return…… Yes, Gabriel! Whenever I can't hear, I won't ever hold back—I'll tell you right away with these hand signals!”\n(Controls: Check the three hand signals in Gabriel's notebook (gabriel_reunion_table) on the Sanctuary table with F / Press Left Stick and respond.)"
+      "value": "(Cupping the warm milk glass with both hands for a sip, she reads the three hand signals written in Gabriel's notebook and spreads her palm open)\n“Open palm is stop, two fingers is ready, hand pointing down is land and return…… Yes, Gabriel! Whenever I can't hear, I won't ever hold back—I'll tell you right away with these hand signals!”\n(Controls: Check the three hand signals in Gabriel's notebook (gabriel_reunion_table) on the Sanctuary table with C / Press Left Stick and respond.)"
     },
     {
       "key": "story.gabriel.reunion.03",
@@ -2983,7 +3051,7 @@
     },
     {
       "key": "story.bell.return.01",
-      "value": "“The floor of the descending corridor is cracked. If I slam down onto the stone and cracked shields using Stage 1 ‘Vibrating Strike’ of the ‘Resonance Forge’ I just recorded, I can shatter them in a single blow!”\n(Controls: Strike the cracked floors and stitchguard shields with Resonance Forge (↓ Air + Q / Y or grounded Forge).)"
+      "value": "“The floor of the descending corridor is cracked. If I slam down onto the stone and cracked shields using Stage 1 ‘Vibrating Strike’ of the ‘Resonance Forge’ I just recorded, I can shatter them in a single blow!”\n(Controls: Strike the cracked floors and stitchguard shields with Resonance Forge (↓ Air + V / Y or grounded Forge).)"
     },
     {
       "key": "story.bell.return.02",
@@ -3027,7 +3095,7 @@
     },
     {
       "key": "story.gallery.entry.03",
-      "value": "“Even after Irina lost the sight in both eyes six years ago, she never set down her brush. Try touching the thick braille sketchbook resting on that stand, Rea.”\n(Controls: Press F / Press Left Stick to inspect Irina's raised-paint braille sketchbook (irina_sketchbook_stand). Clue [Irina · Core imprint] will be recorded.)"
+      "value": "“Even after Irina lost the sight in both eyes six years ago, she never set down her brush. Try touching the thick braille sketchbook resting on that stand, Rea.”\n(Controls: Press C / Press Left Stick to inspect Irina's raised-paint braille sketchbook (irina_sketchbook_stand). Clue [Irina · Core imprint] will be recorded.)"
     },
     {
       "key": "story.gallery.entry.04",
@@ -3063,7 +3131,7 @@
     },
     {
       "key": "story.gallery.route.07",
-      "value": "“I've set the return checkpoint on the palette slate in the antechamber, Rea. Open the atelier door whenever you're ready!”\n(Controls: Press F / Press Left Stick at the atelier main gate (gallery_arena_gate) to enter.)"
+      "value": "“I've set the return checkpoint on the palette slate in the antechamber, Rea. Open the atelier door whenever you're ready!”\n(Controls: Press C / Press Left Stick at the atelier main gate (gallery_arena_gate) to enter.)"
     },
     {
       "key": "story.irina.i0.01",
@@ -3083,7 +3151,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Setting her brush-rapier gently onto the floor, she catches her breath. Rea's record blade core captures in watercolor shimmer the Stage 1 paint-stroke trace Irina drew in midair during the duel)\n“……Even though I hid the final self-portrait, your blade still read the grain of my first ‘Brushstroke.’\nRemember, Rea. Up through thirty times only a hint of watercolor will tint the edges of your vision—yet the instant you finish the eightieth self-portrait, my Doom of blindness passes into your eyes. I'll wait down in the Sanctuary…… Please lay down that brush and go home.”\n(System Notice: Canvas Carve acquired — While on the ground, hold down and press Q (Y on a controller).)"
+      "value": "(Setting her brush-rapier gently onto the floor, she catches her breath. Rea's record blade core captures in watercolor shimmer the Stage 1 paint-stroke trace Irina drew in midair during the duel)\n“……Even though I hid the final self-portrait, your blade still read the grain of my first ‘Brushstroke.’\nRemember, Rea. Up through thirty times only a hint of watercolor will tint the edges of your vision—yet the instant you finish the eightieth self-portrait, my Doom of blindness passes into your eyes. I'll wait down in the Sanctuary…… Please lay down that brush and go home.”\n(System Notice: Canvas Carve acquired — While on the ground, hold down and press V (Y on a controller).)"
     },
     {
       "key": "story.irina.i0.06",
@@ -3107,7 +3175,7 @@
     },
     {
       "key": "story.irina.i1.05",
-      "value": "(Relaxing the corners of her mouth she had started lifting out of habit beneath Irina's touch, she clasps Irina's hand gently without smiling)\n“……No, Irina. I'm not smiling.\nI'm scared today. I'm scared our hypothesis still has blanks in it, scared of losing all five of you, and truly scared I might not come back.”\n(Controls: At the right sunlit window (irina_sunlight_floor), press F / Press Left Stick to speak your honest fear without forcing a smile.)"
+      "value": "(Relaxing the corners of her mouth she had started lifting out of habit beneath Irina's touch, she clasps Irina's hand gently without smiling)\n“……No, Irina. I'm not smiling.\nI'm scared today. I'm scared our hypothesis still has blanks in it, scared of losing all five of you, and truly scared I might not come back.”\n(Controls: At the right sunlit window (irina_sunlight_floor), press C / Press Left Stick to speak your honest fear without forcing a smile.)"
     },
     {
       "key": "story.irina.i1.06",
@@ -3127,7 +3195,7 @@
     },
     {
       "key": "story.irina.reunion.02",
-      "value": "(Lowering the corners of her mouth she had started to lift, she rests her cheek gently against Irina's fingertips without smiling)\n“I won't force a smile, Irina. I'm scared today. That's why I'm not holding out alone—we're finding the way together.”\n(Controls: At the Sanctuary sunlit window (irina_reunion_window), press F / Press Left Stick to speak honestly without forcing a smile.)"
+      "value": "(Lowering the corners of her mouth she had started to lift, she rests her cheek gently against Irina's fingertips without smiling)\n“I won't force a smile, Irina. I'm scared today. That's why I'm not holding out alone—we're finding the way together.”\n(Controls: At the Sanctuary sunlit window (irina_reunion_window), press C / Press Left Stick to speak honestly without forcing a smile.)"
     },
     {
       "key": "story.irina.reunion.03",
@@ -3139,7 +3207,7 @@
     },
     {
       "key": "story.gallery.return.01",
-      "value": "“Beyond the ledge of the greenhouse return path, the floor drops away completely. If I paint Stage 1 ‘Brushstroke’ of ‘Canvas Carve’ from the ground, a lapis paint platform stays suspended in the air ahead of me for 3 seconds! Let's step onto that brushstroke and leap across!”\n(Controls: Standing at the ledge edge, press ↓ + Q / Y to place a Brushstroke platform in the air ahead, then step onto it to cross.)"
+      "value": "“Beyond the ledge of the greenhouse return path, the floor drops away completely. If I paint Stage 1 ‘Brushstroke’ of ‘Canvas Carve’ from the ground, a lapis paint platform stays suspended in the air ahead of me for 3 seconds! Let's step onto that brushstroke and leap across!”\n(Controls: Standing at the ledge edge, press ↓ + V / Y to place a Brushstroke platform in the air ahead, then step onto it to cross.)"
     },
     {
       "key": "story.gallery.return.02",
@@ -3151,7 +3219,7 @@
     },
     {
       "key": "story.gallery.synergy.01",
-      "value": "“Beyond this split floor with two solid anchors stretches empty air with no foothold at all!\nFirst, if I stitch the split gap in the real floor with Mikhail's ‘Silver Stitch’ to walk across, then at the far edge of that stitched floor paint a midair platform with Irina's ‘Canvas Carve’ to leap onward, I can combine both skills' strengths to cross!”\n(Controls: Seal the split floor (gallery_synergy_seam) with Silver Stitch and stand on it, then use Canvas Carve (↓ + Q / Y) at its edge to paint a platform ahead and cross onto the terrace.)"
+      "value": "“Beyond this split floor with two solid anchors stretches empty air with no foothold at all!\nFirst, if I stitch the split gap in the real floor with Mikhail's ‘Silver Stitch’ to walk across, then at the far edge of that stitched floor paint a midair platform with Irina's ‘Canvas Carve’ to leap onward, I can combine both skills' strengths to cross!”\n(Controls: Seal the split floor (gallery_synergy_seam) with Silver Stitch and stand on it, then use Canvas Carve (↓ + V / Y) at its edge to paint a platform ahead and cross onto the terrace.)"
     },
     {
       "key": "story.gallery.synergy.02",
@@ -3455,7 +3523,7 @@
     },
     {
       "key": "story.echo.entry.02",
-      "value": "(Following the glowing circuit veins up the giant lapis control pillar exposed in the center of the hall)\n“Look at this lapis control junction. The mother weapon ‘All-Resonance Mirror’ on the top floor and the frozen isolation system of the underground Permanent Preservation Vault are tied to a single control core.\nJust as Theo analyzed—shattering the mirror mother's core upstairs brings down the underground vault's containment system along with it!”\n(Controls: Press F / Press Left Stick to inspect the lapis control link pillar (court_control_pillar) in the center of the hall and confirm the link structure.)"
+      "value": "(Following the glowing circuit veins up the giant lapis control pillar exposed in the center of the hall)\n“Look at this lapis control junction. The mother weapon ‘All-Resonance Mirror’ on the top floor and the frozen isolation system of the underground Permanent Preservation Vault are tied to a single control core.\nJust as Theo analyzed—shattering the mirror mother's core upstairs brings down the underground vault's containment system along with it!”\n(Controls: Press C / Press Left Stick to inspect the lapis control link pillar (court_control_pillar) in the center of the hall and confirm the link structure.)"
     },
     {
       "key": "story.echo.entry.03",
@@ -3483,7 +3551,7 @@
     },
     {
       "key": "story.echo.pre.06",
-      "value": "(Pulling Theo's densely written 4-stage blade experiment notebook and the return route map marked by the five benefactors from her pouch, she spreads them out before Yesterday's Rea)\n“I'm scared too. That's why this time, I showed everyone else before crossing my share out.\nLook—that calibration waveform that snapped when you held it alone? Today Theo and Ethan held it steady with me, and we measured it all the way to the end! And instead of locking the gates, all five built the floors, the time, and the signals for me to come back alive! I'm not going down into the vault!”\n(Controls: Press F / Press Left Stick to present the blade experiment logs and return route to Yesterday's Rea.)"
+      "value": "(Pulling Theo's densely written 4-stage blade experiment notebook and the return route map marked by the five benefactors from her pouch, she spreads them out before Yesterday's Rea)\n“I'm scared too. That's why this time, I showed everyone else before crossing my share out.\nLook—that calibration waveform that snapped when you held it alone? Today Theo and Ethan held it steady with me, and we measured it all the way to the end! And instead of locking the gates, all five built the floors, the time, and the signals for me to come back alive! I'm not going down into the vault!”\n(Controls: Press C / Press Left Stick to present the blade experiment logs and return route to Yesterday's Rea.)"
     },
     {
       "key": "story.echo.battle.01_p1",
@@ -3507,7 +3575,7 @@
     },
     {
       "key": "story.echo.after.01",
-      "value": "(Stopping her record blade inches before the kneeling Echo's throat, she steps back and lowers her sword)\n“It still hurts that you deceived me. And trying to drag me away even when I refused scared me even more.”\n(Controls: Press F / Press Left Stick before the kneeling Echo to lower your blade and continue speaking.)"
+      "value": "(Stopping her record blade inches before the kneeling Echo's throat, she steps back and lowers her sword)\n“It still hurts that you deceived me. And trying to drag me away even when I refused scared me even more.”\n(Controls: Press C / Press Left Stick before the kneeling Echo to lower your blade and continue speaking.)"
     },
     {
       "key": "story.echo.after.02",
@@ -3527,7 +3595,7 @@
     },
     {
       "key": "story.echo.after.06",
-      "value": "(Today's Rea steps forward, holds out her hand to clasp the kneeling Echo's, and pulls her to her feet. Yesterday's Echo does not fade away—she merges cleanly alongside today's pulse as a luminous blue shimmer within the record blade's core)\n“I won't leave you behind, yesterday's me. Every one of those hundred and twenty basic swings you struck before the locked gate—and how you asked Ethan to leave a pretty blade-wave color for tomorrow's self—all of it is right here inside this sword.\nLet's climb to the top floor together. And let's come back down alive together!”\n(Controls: Press F / Press Left Stick before Yesterday's Rea (echo_hand_clasp) to clasp hands and unite her with the core.)"
+      "value": "(Today's Rea steps forward, holds out her hand to clasp the kneeling Echo's, and pulls her to her feet. Yesterday's Echo does not fade away—she merges cleanly alongside today's pulse as a luminous blue shimmer within the record blade's core)\n“I won't leave you behind, yesterday's me. Every one of those hundred and twenty basic swings you struck before the locked gate—and how you asked Ethan to leave a pretty blade-wave color for tomorrow's self—all of it is right here inside this sword.\nLet's climb to the top floor together. And let's come back down alive together!”\n(Controls: Press C / Press Left Stick before Yesterday's Rea (echo_hand_clasp) to clasp hands and unite her with the core.)"
     },
     {
       "key": "story.echo.after.07",
@@ -3535,7 +3603,7 @@
     },
     {
       "key": "story.echo.after.08",
-      "value": "(As the elevator platform rises swiftly toward the dawn-lit top-floor tribunal of the Grand Court, Yesterday's Rea whispers softly from inside the core)\n“Up ahead is the tribunal where Archon Cassel and his mother weapon ‘All-Resonance Mirror’ wait. I'll add my hundred and twenty strikes to your fingertips too. Let's go, today's me!”\n(Controls: Press F / Press Left Stick at the elevator console (cassel_lift_console) to enter the top-floor tribunal (cassel).)"
+      "value": "(As the elevator platform rises swiftly toward the dawn-lit top-floor tribunal of the Grand Court, Yesterday's Rea whispers softly from inside the core)\n“Up ahead is the tribunal where Archon Cassel and his mother weapon ‘All-Resonance Mirror’ wait. I'll add my hundred and twenty strikes to your fingertips too. Let's go, today's me!”\n(Controls: Press C / Press Left Stick at the elevator console (cassel_lift_console) to enter the top-floor tribunal (cassel).)"
     },
     {
       "key": "story.cassel.p1.01",
@@ -3563,11 +3631,11 @@
     },
     {
       "key": "story.cassel.p1.07_mirror",
-      "value": "(Upon reaching 120 HP, Cassel steps back and raises one hand. Behind him, the five reflecting layers of his mother weapon “All-Resonance Mirror” flare open simultaneously in cold blue light, ready to duplicate Rea's five benefactor skills!)\n“Impressive, Defendant R.E.A.. Yet before my mother weapon, the ‘All-Resonance Mirror,’ even the five Ultimates you learned shall be turned back as instruments of my judgment!”\n(Combat Guide: Cassel Phase 2 · All-Resonance Mirror — Press F / Press Left Stick while the mirror is exposed to select a benefactor skill to pledge for return!)"
+      "value": "(Upon reaching 120 HP, Cassel steps back and raises one hand. Behind him, the five reflecting layers of his mother weapon “All-Resonance Mirror” flare open simultaneously in cold blue light, ready to duplicate Rea's five benefactor skills!)\n“Impressive, Defendant R.E.A.. Yet before my mother weapon, the ‘All-Resonance Mirror,’ even the five Ultimates you learned shall be turned back as instruments of my judgment!”\n(Combat Guide: Cassel Phase 2 · All-Resonance Mirror — Press C / Press Left Stick while the mirror is exposed to select a benefactor skill to pledge for return!)"
     },
     {
       "key": "story.cassel.p2.01_prompt",
-      "value": "“The All-Resonance Mirror opened! Just like our experiment with Theo—the instant the mirror copies and reflects my Stage 3 skill, if I clash back all the way through that exact same Stage 3 finisher in my chosen order, I can lock in a return pledge to Cassel!”\n(Controls: Press F / Press Left Stick while the mirror is exposed to open the Reverse Notarization · Choose a skill to return menu.)"
+      "value": "“The All-Resonance Mirror opened! Just like our experiment with Theo—the instant the mirror copies and reflects my Stage 3 skill, if I clash back all the way through that exact same Stage 3 finisher in my chosen order, I can lock in a return pledge to Cassel!”\n(Controls: Press C / Press Left Stick while the mirror is exposed to open the Reverse Notarization · Choose a skill to return menu.)"
     },
     {
       "key": "story.cassel.p2.02_confirm",
@@ -3615,7 +3683,7 @@
     },
     {
       "key": "story.cassel.p2.08_r1_cassel",
-      "value": "(As the first return pledge 1/5 stamps into the notary ledger and +20% extra imprint power flares like blue fire from Rea's record blade, Cassel's brow twitches for the first time. Determined not to let her freely claim the other four skills, Cassel folds the “All-Resonance Mirror” behind his back and backsteps swiftly out of reach!)\n“……You exploited the reflection verdict of the All-Resonance Mirror to register a return pledge in my ledger?!\nYet with the mirror's panes folded shut, your remaining techniques have nothing left to clash against. I'll cut down your true body first with my direct swordplay!”\n(Tactical Guide: Cassel closes his mirror and attacks directly with Cassel's Form Zero 3-hit lunging slashes. Don't waste boss skills—deflect them with Basic Parry (L / RB)!)"
+      "value": "(As the first return pledge 1/5 stamps into the notary ledger and +20% extra imprint power flares like blue fire from Rea's record blade, Cassel's brow twitches for the first time. Determined not to let her freely claim the other four skills, Cassel folds the “All-Resonance Mirror” behind his back and backsteps swiftly out of reach!)\n“……You exploited the reflection verdict of the All-Resonance Mirror to register a return pledge in my ledger?!\nYet with the mirror's panes folded shut, your remaining techniques have nothing left to clash against. I'll cut down your true body first with my direct swordplay!”\n(Tactical Guide: Cassel closes his mirror and attacks directly with Cassel's Form Zero 3-hit lunging slashes. Don't waste boss skills—deflect them with Basic Parry (X / RB)!)"
     },
     {
       "key": "story.cassel.p2.09_r1_rea",
@@ -3683,7 +3751,7 @@
     },
     {
       "key": "story.ending.basic.03",
-      "value": "(Today's Rea shakes her head, steps closer, and wraps both arms warmly around her trembling yesterday's self first)\n“Don't apologize, yesterday's me. It isn't that we weren't enough, or didn't deserve it.\nBecause you refused to give up before that locked gate yesterday and rewound time for us, today we managed to save all five of them.”\n(Controls: Approach Yesterday's Rea (rooftop_echo_embrace) and press F / Press Left Stick to embrace her first.)"
+      "value": "(Today's Rea shakes her head, steps closer, and wraps both arms warmly around her trembling yesterday's self first)\n“Don't apologize, yesterday's me. It isn't that we weren't enough, or didn't deserve it.\nBecause you refused to give up before that locked gate yesterday and rewound time for us, today we managed to save all five of them.”\n(Controls: Approach Yesterday's Rea (rooftop_echo_embrace) and press C / Press Left Stick to embrace her first.)"
     },
     {
       "key": "story.ending.basic.04",
@@ -3695,7 +3763,7 @@
     },
     {
       "key": "story.ending.basic.06",
-      "value": "(Laying their hands together side by side, the two Reas write one indelible sentence in lapis ink on the final line of the notary ledger:\n[Notary Record #02 Final Entry — All five benefactors rescued. And today's Rea tried to come back alive together right to the end.])\n(Controls: Press F / Press Left Stick at the final notary ledger (basic_ending_ledger) to stamp today's answer without crossing it out.)"
+      "value": "(Laying their hands together side by side, the two Reas write one indelible sentence in lapis ink on the final line of the notary ledger:\n[Notary Record #02 Final Entry — All five benefactors rescued. And today's Rea tried to come back alive together right to the end.])\n(Controls: Press C / Press Left Stick at the final notary ledger (basic_ending_ledger) to stamp today's answer without crossing it out.)"
     },
     {
       "key": "story.ending.basic.07",
@@ -3723,7 +3791,7 @@
     },
     {
       "key": "story.ending.true.03_seat",
-      "value": "(With tears welling up, today's Rea reaches out first and pulls yesterday's self into a tight embrace)\n“Yeah. Our seat is still there too.”\n(Controls: Approach Yesterday's Rea (rooftop_echo_embrace) and press F / Press Left Stick to embrace her tightly.)"
+      "value": "(With tears welling up, today's Rea reaches out first and pulls yesterday's self into a tight embrace)\n“Yeah. Our seat is still there too.”\n(Controls: Approach Yesterday's Rea (rooftop_echo_embrace) and press C / Press Left Stick to embrace her tightly.)"
     },
     {
       "key": "story.ending.true.04_echo",
@@ -3763,7 +3831,7 @@
     },
     {
       "key": "story.ending.true.13_swing_prompt",
-      "value": "“Not a proxy sword art meant to carry someone else's death—here I'll carve the first movement written in my own name by the me living today!”\n(Controls: Before the sunlit rooftop overlook (rea_form_one_sky), press the Sword attack button (J / Z / Left Click / X) to swing Rea's own first slash!)"
+      "value": "“Not a proxy sword art meant to carry someone else's death—here I'll carve the first movement written in my own name by the me living today!”\n(Controls: Before the sunlit rooftop overlook (rea_form_one_sky), press the Sword attack button (Z / X) to swing Rea's own first slash!)"
     },
     {
       "key": "story.ending.true.14_registered",
@@ -3775,7 +3843,7 @@
     },
     {
       "key": "story.ending.true.16_to_attic",
-      "value": "“Yeah! I'm starving—let's all go eat breakfast together!”\n(Controls: Press F / Press Left Stick at the rooftop lift exit (rooftop_to_attic_exit) to travel to the breakfast table in the Attic of Oblivion.)"
+      "value": "“Yeah! I'm starving—let's all go eat breakfast together!”\n(Controls: Press C / Press Left Stick at the rooftop lift exit (rooftop_to_attic_exit) to travel to the breakfast table in the Attic of Oblivion.)"
     },
     {
       "key": "story.ending.true.17_marta_table",
@@ -3787,7 +3855,7 @@
     },
     {
       "key": "story.ending.true.19_sit",
-      "value": "(Mikhail slides out the sixth chair in the center of the table and speaks in a gruff voice filled with quiet warmth)\n“Going to stand there watching all day, Rea? That's the sixth seat you stamped yourself. Sit down before your soup gets cold.”\n(Controls: Walk to the sixth seat at the table (sixth_breakfast_seat) and press F / Press Left Stick to sit down.)"
+      "value": "(Mikhail slides out the sixth chair in the center of the table and speaks in a gruff voice filled with quiet warmth)\n“Going to stand there watching all day, Rea? That's the sixth seat you stamped yourself. Sit down before your soup gets cold.”\n(Controls: Walk to the sixth seat at the table (sixth_breakfast_seat) and press C / Press Left Stick to sit down.)"
     },
     {
       "key": "story.ending.true.20_sixth_beat",
@@ -3795,7 +3863,7 @@
     },
     {
       "key": "story.ending.true.21_spoon",
-      "value": "(Cradling the warm soup bowl in both hands, Rea takes a big first spoonful out of the rising steam. A single warm tear rolls down her cheek, yet the brightest, most peaceful smile blooms across her lips)\n“……It's warm. It's delicious, Grandma Marta!”\n(Controls: Press F / Press Left Stick or Enter / A to share the warm breakfast from the sixth bowl.)"
+      "value": "(Cradling the warm soup bowl in both hands, Rea takes a big first spoonful out of the rising steam. A single warm tear rolls down her cheek, yet the brightest, most peaceful smile blooms across her lips)\n“……It's warm. It's delicious, Grandma Marta!”\n(Controls: Press C / Press Left Stick or Enter / A to share the warm breakfast from the sixth bowl.)"
     },
     {
       "key": "story.ending.true.22_complete",
@@ -3815,7 +3883,7 @@
     },
     {
       "key": "story.resume.crucible.01_ethan",
-      "value": "(Swinging open the firebox door of the huge lapis furnace “Resonant Crucible” inside the Waterway Forge, Ethan gives a nod)\n“Good, you're here, Rea. To counter Cassel's mother swordplay all the way to the fourth strike, your hands need Basic Swordplay honed to its four hundredth Ultimate mark.\nInside this crucible wait high-density resonant targets and sentries built to take your basic parries and sword combos nonstop. Two minutes is plenty—swing to your heart's content!”\n(Controls: Press F / Press Left Stick to activate the Resonant Crucible (resonant_crucible).)"
+      "value": "(Swinging open the firebox door of the huge lapis furnace “Resonant Crucible” inside the Waterway Forge, Ethan gives a nod)\n“Good, you're here, Rea. To counter Cassel's mother swordplay all the way to the fourth strike, your hands need Basic Swordplay honed to its four hundredth Ultimate mark.\nInside this crucible wait high-density resonant targets and sentries built to take your basic parries and sword combos nonstop. Two minutes is plenty—swing to your heart's content!”\n(Controls: Press C / Press Left Stick to activate the Resonant Crucible (resonant_crucible).)"
     },
     {
       "key": "story.resume.crucible.02_theo",
@@ -3827,11 +3895,11 @@
     },
     {
       "key": "story.resume.crucible.04_rea",
-      "value": "“Thank you, Ethan, Theo! Now the ‘survival return not secured’ warning will be gone on the sortie screen, and my original form is completely ready.\nI'll head back to the Grand Court elevator—and this time, I'll make it down alive to the breakfast table!”\n(Controls: Press F / Press Left Stick at the forge direct passage (forge_to_court_lift) to return to the Grand Court elevator and challenge Cassel for the True Ending.)"
+      "value": "“Thank you, Ethan, Theo! Now the ‘survival return not secured’ warning will be gone on the sortie screen, and my original form is completely ready.\nI'll head back to the Grand Court elevator—and this time, I'll make it down alive to the breakfast table!”\n(Controls: Press C / Press Left Stick at the forge direct passage (forge_to_court_lift) to return to the Grand Court elevator and challenge Cassel for the True Ending.)"
     },
     {
       "key": "story.epilogue.01_marta",
-      "value": "(Morning sunlight lingers in the Attic of Oblivion. At the top of the screen, instead of an execution countdown, [Notarization Complete: Rea's Today / Time Advancing] floats peacefully. Marta sets a warm cup of resonant mint tea before Rea)\n“Even after finishing six bowls of morning soup, you've still got room for mint tea, haven't you, our Rea? Take your time and drink slowly now—nobody's chasing you anymore.”\n(Controls: Press F / Press Left Stick at the warm resonant mint tea on the table (attic_mint_tea) to drink and savor the peaceful morning.)"
+      "value": "(Morning sunlight lingers in the Attic of Oblivion. At the top of the screen, instead of an execution countdown, [Notarization Complete: Rea's Today / Time Advancing] floats peacefully. Marta sets a warm cup of resonant mint tea before Rea)\n“Even after finishing six bowls of morning soup, you've still got room for mint tea, haven't you, our Rea? Take your time and drink slowly now—nobody's chasing you anymore.”\n(Controls: Press C / Press Left Stick at the warm resonant mint tea on the table (attic_mint_tea) to drink and savor the peaceful morning.)"
     },
     {
       "key": "story.epilogue.02_benefactors",

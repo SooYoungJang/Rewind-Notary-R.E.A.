@@ -159,7 +159,7 @@ namespace RewindNotary
             }
             var door = Array.Find(room.exits, d => d.room == destination);
             if (door == null || !bot.GalleryDoor(door)) return false;
-            keys.Tap(KeyCode.F);
+            keys.Tap(KeyCode.C);
             return GameInput.InvestigateDown;
         }
 
@@ -314,7 +314,7 @@ namespace RewindNotary
             if (action != null && action.StartsWith("use:", StringComparison.Ordinal))
             {
                 var p = area.Room.Point(action.Substring(4));
-                if (p != null && bot.ClockPosition(p.surface, p.x)) keys.Tap(KeyCode.F);
+                if (p != null && bot.ClockPosition(p.surface, p.x)) keys.Tap(KeyCode.C);
                 return false;
             }
             if (room == Arena && (action == "win:irina" || action == "interlude:irina"))

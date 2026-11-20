@@ -19,7 +19,7 @@ namespace RewindNotary
                 var floor = FixedFaceAt(feet.x, feet.y);
                 float clearX = edge + direction * (SkillGeometry.SupportTolerance + FixedSurfaceRoute.AimTolerance);
                 if (floor == null || clearX < floor.rect.x || clearX > floor.rect.x + floor.rect.width) continue;
-                keys.Hold(direction < 0 ? KeyCode.A : KeyCode.D);
+                keys.Hold(direction < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
                 return true;
             }
             return false;

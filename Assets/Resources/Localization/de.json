@@ -2,6 +2,74 @@
   "language": "de",
   "entries": [
     {
+      "key": "quick_skill.rea_thrust",
+      "value": "Stich"
+    },
+    {
+      "key": "quick_skill.rea_rising",
+      "value": "Aufwärtshieb"
+    },
+    {
+      "key": "quick_skill.rea_sweep",
+      "value": "Rundhieb"
+    },
+    {
+      "key": "quick_skill.rea_wave",
+      "value": "Klingenwelle"
+    },
+    {
+      "key": "quick_skill.menu",
+      "value": "Technikplätze"
+    },
+    {
+      "key": "quick_skill.assign_hint",
+      "value": "↑ ↓ Platz wählen · ← → Technik zuweisen"
+    },
+    {
+      "key": "story.prologue.city",
+      "value": "In der Notariatsstadt Lapis verzeichnet das Register die Namen der Menschen und ihre erlernten Techniken."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "Die Handgriffe eines erfahrenen Schneiders lassen sich ebenso beglaubigen wie die von einem Meister erlernte Schwertkunst."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "Ein Schwertnotar hält eine Technik im Aufzeichnungsschwert fest und beweist sie, indem er sie auf Stufe 3 selbst nachahmt."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Morgen früh um sechs sollen fünf Gefangene hingerichtet werden."
+    },
+    {
+      "key": "story.prologue.order",
+      "value": "Ein versiegelter Auftrag des Zentralen Notariatsamts ist eingetroffen. Eine Klausel darin bietet allen fünf eine Überlebenschance."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Finde die fünf Gefangenen und lerne von jedem eine Technik. Halte sie im Aufzeichnungsschwert fest und beglaubige alle auf Stufe 3."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Werden alle fünf Beglaubigungen rechtzeitig abgeschlossen, erhalten die Gefangenen eine Sonderbegnadigung."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "Die frisch ernannte Schwertnotarin Rea soll den Auftrag ausführen. Ihr bleibt weniger als ein Tag."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "An diesem Morgen trägt Marta die Namen der morgigen Frühstücksgäste auf die Tafel im Dachboden ein."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "Fünf Namen stehen auf der Tafel. Daneben bleibt noch ein Platz frei."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "Vom Fenster her duftet es nach Minztee. Rea öffnet die Augen im Dachboden, wo der versiegelte Auftrag auf sie wartet."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Wahres Ende freigeschaltet"
     },
@@ -27,7 +95,7 @@
     },
     {
       "key": "finale.mirror_open",
-      "value": "Spiegel offen · F / linker Stick: Rückgabe wählen"
+      "value": "Spiegel offen · C / linker Stick: Rückgabe wählen"
     },
     {
       "key": "finale.mirror_closed",
@@ -167,7 +235,7 @@
     },
     {
       "key": "input.gameplay",
-      "value": "Bewegen A/D·Pfeile·Stick | Springen Leertaste·A | Schwert J/Z/Linksklick·X | Technik Q·Y | Ausweichen Shift/K·LB | Parieren L·RB"
+      "value": "← → Bewegung · Leertaste Sprung · Z Angriff · X Parade · C Interaktion · Umschalt+Richtung Sprint · Q W E R Techniken"
     },
     {
       "key": "hud.trial_hint",
@@ -187,7 +255,7 @@
     },
     {
       "key": "input.retry_pause",
-      "value": "{0}  R·Ansicht: Neustart | Esc·Menü: Pause"
+      "value": "{0}  Backspace·Ansicht: Neustart | Esc·Menü: Pause"
     },
     {
       "key": "input.debug",
@@ -195,7 +263,7 @@
     },
     {
       "key": "trial.health",
-      "value": "Übungs-TP {0}/{1} · Nach Verbrauch geht die Übung weiter · R: Positionen zurücksetzen"
+      "value": "Übungs-TP {0}/{1} · Nach Verbrauch geht die Übung weiter · Backspace: Positionen zurücksetzen"
     },
     {
       "key": "input.benefactor_support",
@@ -215,7 +283,7 @@
     },
     {
       "key": "input.retry_button",
-      "value": "Drücke R / Ansicht für einen neuen Versuch."
+      "value": "Drücke Backspace / Ansicht für einen neuen Versuch."
     },
     {
       "key": "hud.returning_checkpoint",
@@ -363,7 +431,7 @@
     },
     {
       "key": "input.investigation",
-      "value": "Untersuchen: F / linken Stick drücken\nEsc → Techniken → Untersuchungslog"
+      "value": "Untersuchen: C / linken Stick drücken\nEsc → Techniken → Untersuchungslog"
     },
     {
       "key": "investigation.read_core",
@@ -379,7 +447,7 @@
     },
     {
       "key": "input.inspect_action",
-      "value": "F / linken Stick drücken: {0}"
+      "value": "C / linken Stick drücken: {0}"
     },
     {
       "key": "investigation.wait_for_action",
@@ -567,7 +635,7 @@
     },
     {
       "key": "skill.acquired_notice",
-      "value": "{0} erhalten — Wählen: 1–5 / E·B · Nutzen: Q·Y"
+      "value": "{0} erlernt. Mit Richtung + V einsetzen oder einem Platz zuweisen."
     },
     {
       "key": "skill.stage_up_notice",
@@ -1315,7 +1383,7 @@
     },
     {
       "key": "wave.all_complete",
-      "value": "3 Gebiete abgeschlossen · Prüfe die Schwertlogs für 151 / 400. R: Neustart"
+      "value": "3 Gebiete abgeschlossen · Prüfe die Schwertlogs für 151 / 400. Backspace: Neustart"
     },
     {
       "key": "wave.zone_complete",
@@ -1815,7 +1883,7 @@
     },
     {
       "key": "input.cast_hint",
-      "value": "Richtung + Q·Y | Wand: Angriff halten + ↓ wirken"
+      "value": "Richtung + V·Y | Wand: Angriff halten + ↓ wirken"
     },
     {
       "key": "input.skill_unlearned",
@@ -1839,7 +1907,7 @@
     },
     {
       "key": "story.intro.attic.02",
-      "value": "„Schon wach, Rea? Ich hatte dir das Bonbon für deine Tasche herausgelegt, während ich den Minz-Resonanztee aufgebrüht habe, und es muss wohl heruntergerollt sein. Bring es herüber und leg es in die leere Schale neben dem Umschlag.“\n(Steuerung: Drücke F / linken Stick drücken vor dem Minzbonbon auf dem Boden, um es aufzuheben, und leg es in die Schale neben dem Umschlag auf dem Tisch.)"
+      "value": "„Schon wach, Rea? Ich hatte dir das Bonbon für deine Tasche herausgelegt, während ich den Minz-Resonanztee aufgebrüht habe, und es muss wohl heruntergerollt sein. Bring es herüber und leg es in die leere Schale neben dem Umschlag.“\n(Steuerung: Drücke C / linken Stick drücken vor dem Minzbonbon auf dem Boden, um es aufzuheben, und leg es in die Schale neben dem Umschlag auf dem Tisch.)"
     },
     {
       "key": "story.intro.attic.03",
@@ -1847,7 +1915,7 @@
     },
     {
       "key": "story.intro.attic.04",
-      "value": "(Sie streicht ihr Kleid glatt, setzt ein strahlendes Lächeln auf und reicht ihr den Umschlag)\n„Hier, meine Rea! Ein Sonderrückholungsauftrag vom Zentralen Notariatsamt. Nimm ihn rasch an.“\n(Steuerung: Drücke F / linken Stick drücken am Auftragsumschlag auf dem Tisch, um ihn entgegenzunehmen. Hinweis [Vertrag · Kopiesiegel] wird vermerkt.)"
+      "value": "(Sie streicht ihr Kleid glatt, setzt ein strahlendes Lächeln auf und reicht ihr den Umschlag)\n„Hier, meine Rea! Ein Sonderrückholungsauftrag vom Zentralen Notariatsamt. Nimm ihn rasch an.“\n(Steuerung: Drücke C / linken Stick drücken am Auftragsumschlag auf dem Tisch, um ihn entgegenzunehmen. Hinweis [Vertrag · Kopiesiegel] wird vermerkt.)"
     },
     {
       "key": "story.intro.attic.05",
@@ -1863,11 +1931,11 @@
     },
     {
       "key": "story.intro.board.03",
-      "value": "„Ich esse, wenn ich zurückkomme…… ach ja, genau, wenn wir zurück sind.\n(Sie legt die Hand auf das sechste leere Feld neben den fünf Namen) Ja, meinen Platz lasse ich auch nicht frei. Morgen früh leere ich die sechste Schüssel ganz bestimmt selbst!“\n(Steuerung: Drücke F / linken Stick drücken vor der Frühstücks-Tafel, um den sechsten Platz selbst abzustempeln.)"
+      "value": "„Ich esse, wenn ich zurückkomme…… ach ja, genau, wenn wir zurück sind.\n(Sie legt die Hand auf das sechste leere Feld neben den fünf Namen) Ja, meinen Platz lasse ich auch nicht frei. Morgen früh leere ich die sechste Schüssel ganz bestimmt selbst!“\n(Steuerung: Drücke C / linken Stick drücken vor der Frühstücks-Tafel, um den sechsten Platz selbst abzustempeln.)"
     },
     {
       "key": "story.intro.forge.01",
-      "value": "„Vor dem Aufbruch noch mal die Klinge prüfen lassen, Rea? Zeig her. Ich halte sie kurz an den Schleifstein und sehe nach, ob die Kernrille fest sitzt.“\n(Steuerung: Drücke F / linken Stick drücken an Ethans Schleifstein-Werkbank, um die Aufzeichnungsklinge aufzulegen.)"
+      "value": "„Vor dem Aufbruch noch mal die Klinge prüfen lassen, Rea? Zeig her. Ich halte sie kurz an den Schleifstein und sehe nach, ob die Kernrille fest sitzt.“\n(Steuerung: Drücke C / linken Stick drücken an Ethans Schleifstein-Werkbank, um die Aufzeichnungsklinge aufzulegen.)"
     },
     {
       "key": "story.intro.forge.02",
@@ -1887,7 +1955,7 @@
     },
     {
       "key": "story.velvet.entry.02",
-      "value": "„Sieh dir mal an, was in diesem offenen Schrank hängt. Von Größe elf bis Größe sechzehn hängen sechs Wintermäntel nebeneinander — sechs Jahre lang jedes Jahr ein neuer. Obwohl sie noch niemand ein einziges Mal getragen hat, ist jede Naht sauber gebügelt.“\n(Steuerung: Drücke F / linken Stick drücken, um Mikhails Kleiderschrank zu untersuchen. Hinweis [Mikhail · Kernprägung] wird vermerkt.)"
+      "value": "„Sieh dir mal an, was in diesem offenen Schrank hängt. Von Größe elf bis Größe sechzehn hängen sechs Wintermäntel nebeneinander — sechs Jahre lang jedes Jahr ein neuer. Obwohl sie noch niemand ein einziges Mal getragen hat, ist jede Naht sauber gebügelt.“\n(Steuerung: Drücke C / linken Stick drücken, um Mikhails Kleiderschrank zu untersuchen. Hinweis [Mikhail · Kernprägung] wird vermerkt.)"
     },
     {
       "key": "story.velvet.entry.03",
@@ -1907,7 +1975,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Er stützt die Scherenklinge auf den Boden und sinkt auf ein Knie. Reas Klingen-Kern zeichnet die blaue Spur von Mikhails Silbernaht auf Stufe 1 aus dem Duell auf)\n„Tch…… Meinen letzten Knoten habe ich verborgen, und doch hat dieses Schwert den Fadenlauf meines ersten Stichs gelesen.\nMerk dir eines, Rea: Hörst du hier auf, bleibt es bloße Selbstverteidigung. Doch in dem Moment, in dem du diese Naht bis ans Ende meisterst, geht die Qual meines Herzens auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte steck diese Klinge weg und geh heim.“\n(Systemhinweis: Silbernaht erhalten — Drück Q (Y auf dem Controller), ohne eine Richtung zu halten.)"
+      "value": "(Er stützt die Scherenklinge auf den Boden und sinkt auf ein Knie. Reas Klingen-Kern zeichnet die blaue Spur von Mikhails Silbernaht auf Stufe 1 aus dem Duell auf)\n„Tch…… Meinen letzten Knoten habe ich verborgen, und doch hat dieses Schwert den Fadenlauf meines ersten Stichs gelesen.\nMerk dir eines, Rea: Hörst du hier auf, bleibt es bloße Selbstverteidigung. Doch in dem Moment, in dem du diese Naht bis ans Ende meisterst, geht die Qual meines Herzens auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte steck diese Klinge weg und geh heim.“\n(Systemhinweis: Silbernaht erhalten — Drück V (Y auf dem Controller), ohne eine Richtung zu halten.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -1971,7 +2039,7 @@
     },
     {
       "key": "story.invest.03_theo",
-      "value": "(Mit hinkendem Schritt eilt er vor dem Messterminal hin und her und ruft das Wellenform-Diagramm auf)\n„Schau dir das Registerprotokoll am Zweigstellen-Terminal an, Rea. Diese ‚Mutterkern-Tilgungsklausel‘, für die das Zentrale Notariatsamt geworben hat, existiert nirgendwo im Schaltplan der Aufzeichnungsklinge.\nDie Kausalität der Welt hat dich — weil du eine Meisterform auf Stufe 3 lückenlos nachgebildet hast — als ‚dieselbe Person‘ wie den Vorbesitzer gewertet und das vorgesehene Verhängnis direkt auf deinen Körper übertragen.“\n(Steuerung: Drücke F / linken Stick drücken am Zweigstellen-Aufzeichnungsterminal (point_route_ledger), um Hinweis [Übertragungsweg · Aufzeichnungsterminal] zu prüfen.)"
+      "value": "(Mit hinkendem Schritt eilt er vor dem Messterminal hin und her und ruft das Wellenform-Diagramm auf)\n„Schau dir das Registerprotokoll am Zweigstellen-Terminal an, Rea. Diese ‚Mutterkern-Tilgungsklausel‘, für die das Zentrale Notariatsamt geworben hat, existiert nirgendwo im Schaltplan der Aufzeichnungsklinge.\nDie Kausalität der Welt hat dich — weil du eine Meisterform auf Stufe 3 lückenlos nachgebildet hast — als ‚dieselbe Person‘ wie den Vorbesitzer gewertet und das vorgesehene Verhängnis direkt auf deinen Körper übertragen.“\n(Steuerung: Drücke C / linken Stick drücken am Zweigstellen-Aufzeichnungsterminal (point_route_ledger), um Hinweis [Übertragungsweg · Aufzeichnungsterminal] zu prüfen.)"
     },
     {
       "key": "story.invest.04_luka",
@@ -1979,7 +2047,7 @@
     },
     {
       "key": "story.invest.05_marta",
-      "value": "(Mit zitternden Händen legt Marta das Dachboden-Auftragsbuch und Reas Befehlskopie nebeneinander unter die Werkbanklampe)\n„Rea, diese alte Frau hat das wirklich ahnungslos weitergereicht. Aber gegen das Licht gehalten…… an der Stelle von [Artikel 3 (Sonderzusatz)] auf deiner Kopie sind die ursprünglichen Papierfasern dünn mit einer Messerspitze abgeschabt.\nDarüber wurden die Worte ‚Absorption, Tilgung und Sonderbegnadigung‘ mit alten Bleilettern aus dem Lager unserer Uhrturm-Zweigstelle und deiner Lapis-Tinte neu aufgedruckt. Und jetzt sieh dir die Unterschrift unter [Aufzeichnung #01 / Vor Umkehr 06:25] hier im Buch an.“\n(Steuerung: Drücke F / linken Stick drücken, um Auftragsbuch und Kopiesiegel auf der Werkbank zu vergleichen.)"
+      "value": "(Mit zitternden Händen legt Marta das Dachboden-Auftragsbuch und Reas Befehlskopie nebeneinander unter die Werkbanklampe)\n„Rea, diese alte Frau hat das wirklich ahnungslos weitergereicht. Aber gegen das Licht gehalten…… an der Stelle von [Artikel 3 (Sonderzusatz)] auf deiner Kopie sind die ursprünglichen Papierfasern dünn mit einer Messerspitze abgeschabt.\nDarüber wurden die Worte ‚Absorption, Tilgung und Sonderbegnadigung‘ mit alten Bleilettern aus dem Lager unserer Uhrturm-Zweigstelle und deiner Lapis-Tinte neu aufgedruckt. Und jetzt sieh dir die Unterschrift unter [Aufzeichnung #01 / Vor Umkehr 06:25] hier im Buch an.“\n(Steuerung: Drücke C / linken Stick drücken, um Auftragsbuch und Kopiesiegel auf der Werkbank zu vergleichen.)"
     },
     {
       "key": "story.invest.06_rea",
@@ -1987,7 +2055,7 @@
     },
     {
       "key": "story.invest.07_exp1_ethan",
-      "value": "„Mit bloßem Raten kommen wir nicht weiter. Leg die Klinge aufs Messgestell, dann sehen wir, was darin steckt.\nRea, erinnerst du dich an die drei Bezugskerben am dritten Abschnitt, die wir vorhin in meiner Schmiede gesehen haben? Leg das Schwert behutsam auf das Gestell, ohne die alten Marken zu beschädigen, und richte den Werkbank-Messstift exakt auf diese Markierung am dritten Abschnitt aus.“\n(Steuerung: Drücke F / linken Stick drücken am Messgestell (calibration_mount), um den Messstift auf die Bezugskerben am dritten Abschnitt auszurichten. Hinweis [Übertragungsweg · Kernprojektionsprägung] wird vermerkt.)"
+      "value": "„Mit bloßem Raten kommen wir nicht weiter. Leg die Klinge aufs Messgestell, dann sehen wir, was darin steckt.\nRea, erinnerst du dich an die drei Bezugskerben am dritten Abschnitt, die wir vorhin in meiner Schmiede gesehen haben? Leg das Schwert behutsam auf das Gestell, ohne die alten Marken zu beschädigen, und richte den Werkbank-Messstift exakt auf diese Markierung am dritten Abschnitt aus.“\n(Steuerung: Drücke C / linken Stick drücken am Messgestell (calibration_mount), um den Messstift auf die Bezugskerben am dritten Abschnitt auszurichten. Hinweis [Übertragungsweg · Kernprojektionsprägung] wird vermerkt.)"
     },
     {
       "key": "story.invest.08_exp1_rea",
@@ -2003,7 +2071,7 @@
     },
     {
       "key": "story.invest.11_exp3_theo",
-      "value": "„Jetzt kommt das dritte Experiment! Ich schalte drüben die genormte Spiegel-Messplatte des Notariatsamts ein, damit sie deinen Schwerthieb exakt nachahmt. Wir prüfen, wie weit die Spiegelplatte deine Bewegungsbahn und Prägungsstärke kopiert — und ob der Eintrag nach dem Abschalten bleibt!“\n(Steuerung: Drücke F / linken Stick drücken vor der Spiegel-Messplatte (reflection_plate), um den Spiegelabgleich durchzuführen und das Messgerät wieder zu lösen.)"
+      "value": "„Jetzt kommt das dritte Experiment! Ich schalte drüben die genormte Spiegel-Messplatte des Notariatsamts ein, damit sie deinen Schwerthieb exakt nachahmt. Wir prüfen, wie weit die Spiegelplatte deine Bewegungsbahn und Prägungsstärke kopiert — und ob der Eintrag nach dem Abschalten bleibt!“\n(Steuerung: Drücke C / linken Stick drücken vor der Spiegel-Messplatte (reflection_plate), um den Spiegelabgleich durchzuführen und das Messgerät wieder zu lösen.)"
     },
     {
       "key": "story.invest.12_exp4_theo",
@@ -2019,7 +2087,7 @@
     },
     {
       "key": "story.luka.signal",
-      "value": "„Luka! Warte, nimmst du mich mit?“\n(Steuerung: Drücke F / linken Stick drücken am Signalposten (luka_signal_post), um Luka direkt ein Signal zu geben.)"
+      "value": "„Luka! Warte, nimmst du mich mit?“\n(Steuerung: Drücke C / linken Stick drücken am Signalposten (luka_signal_post), um Luka direkt ein Signal zu geben.)"
     },
     {
       "key": "story.luka.board",
@@ -2467,7 +2535,7 @@
     },
     {
       "key": "area.travel",
-      "value": "F / L3 · {0}"
+      "value": "C / L3 · {0}"
     },
     {
       "key": "area.walk",
@@ -2511,7 +2579,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Bewegen   F / L3 Untersuchen·Betreten   J·Z·Linksklick Schwert (Gamepad X)   Q / Y Technik   Esc Pause"
+      "value": "← → Bewegung · Leertaste Sprung · Z Angriff · X Parade · C Interaktion · Umschalt+Richtung Sprint · Q W E R Techniken · Esc"
     },
     {
       "key": "investigation.clue.route_ledger.body",
@@ -2559,7 +2627,7 @@
     },
     {
       "key": "story.clock.entry.03",
-      "value": "„Natürlich! Schau mal auf das Samttuch auf dieser Werkbank, Rea. Seit dem Tag vor sechs Jahren, als mein Onkel über Nacht so gebrechlich wie ein weißhaariger Greis zurückkam, hat er keinen einzigen Tag ausgelassen, das Ding dort mit einem trockenen Tuch zu polieren.“\n(Steuerung: Drücke F / linken Stick drücken, um Julius’ Uhrstimm-Werkbank (julius_workbench) zu untersuchen. Hinweis [Julius · Kernprägung] wird vermerkt.)"
+      "value": "„Natürlich! Schau mal auf das Samttuch auf dieser Werkbank, Rea. Seit dem Tag vor sechs Jahren, als mein Onkel über Nacht so gebrechlich wie ein weißhaariger Greis zurückkam, hat er keinen einzigen Tag ausgelassen, das Ding dort mit einem trockenen Tuch zu polieren.“\n(Steuerung: Drücke C / linken Stick drücken, um Julius’ Uhrstimm-Werkbank (julius_workbench) zu untersuchen. Hinweis [Julius · Kernprägung] wird vermerkt.)"
     },
     {
       "key": "story.clock.entry.04",
@@ -2595,7 +2663,7 @@
     },
     {
       "key": "story.clock.route.07",
-      "value": "„Rea, ich habe den Rückkehrpunkt gleich hier auf dem Boden der Zifferblatt-Vorhalle eingerichtet. Wenn du bereit bist, öffne das Haupttor und tritt ein!“\n(Steuerung: Drücke F / linken Stick drücken am Haupttor der Arena (clock_arena_gate), um einzutreten.)"
+      "value": "„Rea, ich habe den Rückkehrpunkt gleich hier auf dem Boden der Zifferblatt-Vorhalle eingerichtet. Wenn du bereit bist, öffne das Haupttor und tritt ein!“\n(Steuerung: Drücke C / linken Stick drücken am Haupttor der Arena (clock_arena_gate), um einzutreten.)"
     },
     {
       "key": "story.julius.i0.01",
@@ -2615,7 +2683,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Er stößt das Uhrzeiger-Langschwert in den Boden und stößt schwer den Atem aus. Reas Klingen-Kern zeichnet die messingfarbene Prägung von Julius’ Schrittbahn auf Stufe 1 aus dem Duell auf)\n„……Obwohl ich meine letzte Meisterform verborgen hielt, hat deine Aufzeichnungsklinge dennoch die Hin-und-Rück-Bahn meines ersten ‚Pendelschritts‘ gelesen.\nMerk dir eines, Rea: Bis neunundzwanzig Mal bleibt es bloße Schrittkunst, und beim dreißigsten Mal schwingt nur das Gehäuse mit. Doch sobald du die achtzigste Meisterform erreichst, springt der stille Sekundenzeiger deiner halben Uhr wieder an, und mein Verfall bricht über dich herein.“\n(Systemhinweis: Pendelrücklauf erhalten — Halte die Richtung entgegen Reas Blickrichtung und drück Q (Y auf dem Controller).)"
+      "value": "(Er stößt das Uhrzeiger-Langschwert in den Boden und stößt schwer den Atem aus. Reas Klingen-Kern zeichnet die messingfarbene Prägung von Julius’ Schrittbahn auf Stufe 1 aus dem Duell auf)\n„……Obwohl ich meine letzte Meisterform verborgen hielt, hat deine Aufzeichnungsklinge dennoch die Hin-und-Rück-Bahn meines ersten ‚Pendelschritts‘ gelesen.\nMerk dir eines, Rea: Bis neunundzwanzig Mal bleibt es bloße Schrittkunst, und beim dreißigsten Mal schwingt nur das Gehäuse mit. Doch sobald du die achtzigste Meisterform erreichst, springt der stille Sekundenzeiger deiner halben Uhr wieder an, und mein Verfall bricht über dich herein.“\n(Systemhinweis: Pendelrücklauf erhalten — Halte die Richtung entgegen Reas Blickrichtung und drück V (Y auf dem Controller).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2671,7 +2739,7 @@
     },
     {
       "key": "story.clock.return.01",
-      "value": "„Das Messingschott am oberen Rückweg schließt sich schnell. Mit ‚Pendelschritt‘, Stufe 1 meines eben aufgezeichneten ‚Pendelrücklaufs‘, lasse ich ein Nachbild zurück, stoße vor zum Schalter und drücke binnen 1,5 Sekunden erneut, um sicher aufs feste Fundament zurückzuspulen!“\n(Steuerung: Nutze Pendelrücklauf (Q / Y), um den Schalter hinter dem Schott zu treffen, und drücke erneut für die sichere Rückkehr zum Nachbild.)"
+      "value": "„Das Messingschott am oberen Rückweg schließt sich schnell. Mit ‚Pendelschritt‘, Stufe 1 meines eben aufgezeichneten ‚Pendelrücklaufs‘, lasse ich ein Nachbild zurück, stoße vor zum Schalter und drücke binnen 1,5 Sekunden erneut, um sicher aufs feste Fundament zurückzuspulen!“\n(Steuerung: Nutze Pendelrücklauf (V / Y), um den Schalter hinter dem Schott zu treffen, und drücke erneut für die sichere Rückkehr zum Nachbild.)"
     },
     {
       "key": "story.clock.return.02",
@@ -2715,7 +2783,7 @@
     },
     {
       "key": "story.opera.entry.03",
-      "value": "„Ja. Schau dir jetzt mal die Spitzenschuhe dort im Regal und diesen Holzboden hier an, Rea. Selbst als Valeria nicht mehr auf der Bühne stehen konnte, hat sie diesen Platz jeden Tag gefegt und gewienert.“\n(Steuerung: Drücke F / linken Stick drücken, um Valerias Spitzenschuh-Regal und den Probenraumboden (valeria_shoes_rack) zu untersuchen. Hinweis [Valeria · Kernprägung] wird vermerkt.)"
+      "value": "„Ja. Schau dir jetzt mal die Spitzenschuhe dort im Regal und diesen Holzboden hier an, Rea. Selbst als Valeria nicht mehr auf der Bühne stehen konnte, hat sie diesen Platz jeden Tag gefegt und gewienert.“\n(Steuerung: Drücke C / linken Stick drücken, um Valerias Spitzenschuh-Regal und den Probenraumboden (valeria_shoes_rack) zu untersuchen. Hinweis [Valeria · Kernprägung] wird vermerkt.)"
     },
     {
       "key": "story.opera.entry.04",
@@ -2751,7 +2819,7 @@
     },
     {
       "key": "story.opera.route.07",
-      "value": "„Ich habe den Rückkehrpunkt hier auf dem Boden der Seitenbühne geöffnet, Rea. Ich warte unten am Hebel der Hebebühne unter der Bühne!“\n(Steuerung: Drücke F / linken Stick drücken am Samtvorhang der Hauptbühne (opera_arena_gate), um einzutreten.)"
+      "value": "„Ich habe den Rückkehrpunkt hier auf dem Boden der Seitenbühne geöffnet, Rea. Ich warte unten am Hebel der Hebebühne unter der Bühne!“\n(Steuerung: Drücke C / linken Stick drücken am Samtvorhang der Hauptbühne (opera_arena_gate), um einzutreten.)"
     },
     {
       "key": "story.valeria.i0.01",
@@ -2771,7 +2839,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Sie stützt die Degenspitze auf den Dielenboden und schöpft Atem. Reas Klingen-Kern zeichnet die blaugrüne Prägung von Valerias Sprungbahn auf Stufe 1 aus dem Duell auf)\n„……Hah, selbst als ich das letzte Finale verbarg, hat dein Schwert den Sprungwinkel meines ersten ‚Wirbelnden Klingentanzes‘ abgelesen.\nBitte, Rea. Bis dreißig Mal übernimmt deine Landung nur meine Verbeugung, doch in dem Augenblick, in dem du das achtzigste Große Finale vollendest, geht die Qual meiner Beine auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte tanz diesen Schritt niemals bis ans Ende.“\n(Systemhinweis: Vorhangwalzer erhalten — Halte die Richtung nach oben und drück Q (Y auf dem Controller).)"
+      "value": "(Sie stützt die Degenspitze auf den Dielenboden und schöpft Atem. Reas Klingen-Kern zeichnet die blaugrüne Prägung von Valerias Sprungbahn auf Stufe 1 aus dem Duell auf)\n„……Hah, selbst als ich das letzte Finale verbarg, hat dein Schwert den Sprungwinkel meines ersten ‚Wirbelnden Klingentanzes‘ abgelesen.\nBitte, Rea. Bis dreißig Mal übernimmt deine Landung nur meine Verbeugung, doch in dem Augenblick, in dem du das achtzigste Große Finale vollendest, geht die Qual meiner Beine auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte tanz diesen Schritt niemals bis ans Ende.“\n(Systemhinweis: Vorhangwalzer erhalten — Halte die Richtung nach oben und drück V (Y auf dem Controller).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2827,7 +2895,7 @@
     },
     {
       "key": "story.opera.return.01",
-      "value": "„Der östliche Scheinwerferdach-Rückweg! Wenn ich mit ‚Wirbelnder Klingentanz‘, Stufe 1 des ‚Vorhangwalzers‘, auf die schwebenden Laternen in der Luft zuwirble, kann ich Projektile abwehren und zugleich hoch hinaufspringen!“\n(Steuerung: Triff die Luftlaternen mit Vorhangwalzer (Q / Y), um höher zu springen und den Stahlträger drüben zu erreichen.)"
+      "value": "„Der östliche Scheinwerferdach-Rückweg! Wenn ich mit ‚Wirbelnder Klingentanz‘, Stufe 1 des ‚Vorhangwalzers‘, auf die schwebenden Laternen in der Luft zuwirble, kann ich Projektile abwehren und zugleich hoch hinaufspringen!“\n(Steuerung: Triff die Luftlaternen mit Vorhangwalzer (V / Y), um höher zu springen und den Stahlträger drüben zu erreichen.)"
     },
     {
       "key": "story.opera.return.02",
@@ -2871,7 +2939,7 @@
     },
     {
       "key": "story.bell.entry.03",
-      "value": "„Ja. Lies doch mal die erste Seite dieser Morgenglocken-Partitur, nach der er bis kurz vor dem Verlust seines Gehörs jeden Morgen geläutet hat, Rea.“\n(Steuerung: Drücke F / linken Stick drücken, um Gabriels Notenpult der Morgenglocke und Notizbuch (gabriel_score_desk) zu untersuchen. Hinweis [Gabriel · Kernprägung] wird vermerkt.)"
+      "value": "„Ja. Lies doch mal die erste Seite dieser Morgenglocken-Partitur, nach der er bis kurz vor dem Verlust seines Gehörs jeden Morgen geläutet hat, Rea.“\n(Steuerung: Drücke C / linken Stick drücken, um Gabriels Notenpult der Morgenglocke und Notizbuch (gabriel_score_desk) zu untersuchen. Hinweis [Gabriel · Kernprägung] wird vermerkt.)"
     },
     {
       "key": "story.bell.entry.04",
@@ -2907,7 +2975,7 @@
     },
     {
       "key": "story.bell.route.07",
-      "value": "„Am meisten sorgt er sich, dass du dich überanstrengst. Ich habe den Rückkehrpunkt hier in der Wartehalle gelegt — öffne also die Tür zur Läutekammer, wenn du bereit bist!“\n(Steuerung: Drücke F / linken Stick drücken am Haupttor der obersten Läutekammer (bell_arena_gate), um einzutreten.)"
+      "value": "„Am meisten sorgt er sich, dass du dich überanstrengst. Ich habe den Rückkehrpunkt hier in der Wartehalle gelegt — öffne also die Tür zur Läutekammer, wenn du bereit bist!“\n(Steuerung: Drücke C / linken Stick drücken am Haupttor der obersten Läutekammer (bell_arena_gate), um einzutreten.)"
     },
     {
       "key": "story.gabriel.i0.01",
@@ -2927,7 +2995,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Er stützt den Schaft des Hammerschwerts auf den Boden und beugt ein Knie. Reas Klingen-Kern zeichnet die Schwingungswelle von Gabriels ‚Schwingungsschlag‘ auf Stufe 1 golden leuchtend auf)\n„[Notizbuch: Deine Klinge hat die Welle meines ersten ‚Schwingungsschlags‘ aufgezeichnet. Bis dreißig Mal werden deine Ohren nur dumpf klingen, doch bei der achtzigsten Meisterform geht mein Schweigen auf dich über. Ich gehe hinab in die Pflegestätte — bitte bring diesen Klang zum Schweigen.]“\n(Systemhinweis: Resonanzschmiede erhalten — Halte in der Luft die Richtung nach unten und drück Q (Y auf dem Controller).)"
+      "value": "(Er stützt den Schaft des Hammerschwerts auf den Boden und beugt ein Knie. Reas Klingen-Kern zeichnet die Schwingungswelle von Gabriels ‚Schwingungsschlag‘ auf Stufe 1 golden leuchtend auf)\n„[Notizbuch: Deine Klinge hat die Welle meines ersten ‚Schwingungsschlags‘ aufgezeichnet. Bis dreißig Mal werden deine Ohren nur dumpf klingen, doch bei der achtzigsten Meisterform geht mein Schweigen auf dich über. Ich gehe hinab in die Pflegestätte — bitte bring diesen Klang zum Schweigen.]“\n(Systemhinweis: Resonanzschmiede erhalten — Halte in der Luft die Richtung nach unten und drück V (Y auf dem Controller).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -2951,7 +3019,7 @@
     },
     {
       "key": "story.gabriel.i1.05",
-      "value": "(Sie sieht Gabriels Gesicht, stoppt ihr blindlings geschwungenes Schwert und schüttelt den Kopf)\n„……Nein! Wenn ich so tue, als würde ich hören, wird Gabriel mir nie vertrauen. Ich gebe ihm zuerst mit der Hand das Zeichen zum Anhalten!“\n(Steuerung: Geh zur rechten Sichtzeichen-Steinplatte (gabriel_signal_floor) und drücke F / linken Stick drücken, um Gabriel zuerst das Halt-Handzeichen (offene Hand) zu senden.)"
+      "value": "(Sie sieht Gabriels Gesicht, stoppt ihr blindlings geschwungenes Schwert und schüttelt den Kopf)\n„……Nein! Wenn ich so tue, als würde ich hören, wird Gabriel mir nie vertrauen. Ich gebe ihm zuerst mit der Hand das Zeichen zum Anhalten!“\n(Steuerung: Geh zur rechten Sichtzeichen-Steinplatte (gabriel_signal_floor) und drücke C / linken Stick drücken, um Gabriel zuerst das Halt-Handzeichen (offene Hand) zu senden.)"
     },
     {
       "key": "story.gabriel.i1.06",
@@ -2971,7 +3039,7 @@
     },
     {
       "key": "story.gabriel.reunion.02",
-      "value": "(Sie umfasst das warme Milchglas mit beiden Händen, nimmt einen Schluck, liest die drei in Gabriels Notizbuch geschriebenen Zeichen und öffnet die Handfläche)\n„Offene Hand heißt Halt, zwei Finger heißt bereit, Hand nach unten heißt landen und zurückkehren…… Ja, Gabriel! Wenn ich nichts höre, halte ich es nie zurück — ich sage es dir gleich mit diesen Handzeichen!“\n(Steuerung: Prüfe die drei Handzeichen in Gabriels Notizbuch auf dem Tisch in der Pflegestätte (gabriel_reunion_table) mit F / linken Stick drücken und antworte.)"
+      "value": "(Sie umfasst das warme Milchglas mit beiden Händen, nimmt einen Schluck, liest die drei in Gabriels Notizbuch geschriebenen Zeichen und öffnet die Handfläche)\n„Offene Hand heißt Halt, zwei Finger heißt bereit, Hand nach unten heißt landen und zurückkehren…… Ja, Gabriel! Wenn ich nichts höre, halte ich es nie zurück — ich sage es dir gleich mit diesen Handzeichen!“\n(Steuerung: Prüfe die drei Handzeichen in Gabriels Notizbuch auf dem Tisch in der Pflegestätte (gabriel_reunion_table) mit C / linken Stick drücken und antworte.)"
     },
     {
       "key": "story.gabriel.reunion.03",
@@ -2983,7 +3051,7 @@
     },
     {
       "key": "story.bell.return.01",
-      "value": "„Der Boden des absteigenden Korridors hat Risse. Wenn ich mit ‚Schwingungsschlag‘, Stufe 1 der eben aufgezeichneten ‚Resonanzschmiede‘, auf Boden und rissige Schilde schmettere, zerbreche ich sie auf einen Schlag!“\n(Steuerung: Schlage mit Resonanzschmiede (↓ Luft + Q / Y oder am Boden) auf die rissigen Böden und die Schilde der Nahtwachen.)"
+      "value": "„Der Boden des absteigenden Korridors hat Risse. Wenn ich mit ‚Schwingungsschlag‘, Stufe 1 der eben aufgezeichneten ‚Resonanzschmiede‘, auf Boden und rissige Schilde schmettere, zerbreche ich sie auf einen Schlag!“\n(Steuerung: Schlage mit Resonanzschmiede (↓ Luft + V / Y oder am Boden) auf die rissigen Böden und die Schilde der Nahtwachen.)"
     },
     {
       "key": "story.bell.return.02",
@@ -3027,7 +3095,7 @@
     },
     {
       "key": "story.gallery.entry.03",
-      "value": "„Selbst nachdem Irina vor sechs Jahren auf beiden Augen erblindete, hat sie den Pinsel nie aus der Hand gelegt. Tast doch mal das dicke Blindenschrift-Skizzenbuch auf diesem Ständer ab, Rea.“\n(Steuerung: Drücke F / linken Stick drücken, um Irinas Relief-Skizzenbuch in Blindenschrift (irina_sketchbook_stand) zu untersuchen. Hinweis [Irina · Kernprägung] wird vermerkt.)"
+      "value": "„Selbst nachdem Irina vor sechs Jahren auf beiden Augen erblindete, hat sie den Pinsel nie aus der Hand gelegt. Tast doch mal das dicke Blindenschrift-Skizzenbuch auf diesem Ständer ab, Rea.“\n(Steuerung: Drücke C / linken Stick drücken, um Irinas Relief-Skizzenbuch in Blindenschrift (irina_sketchbook_stand) zu untersuchen. Hinweis [Irina · Kernprägung] wird vermerkt.)"
     },
     {
       "key": "story.gallery.entry.04",
@@ -3063,7 +3131,7 @@
     },
     {
       "key": "story.gallery.route.07",
-      "value": "„Ich habe den Rückkehrpunkt auf der Paletten-Steinplatte in der Vorhalle festgelegt, Rea. Öffne die Ateliertür, sobald du bereit bist!“\n(Steuerung: Drücke F / linken Stick drücken am Haupttor des Ateliers (gallery_arena_gate), um einzutreten.)"
+      "value": "„Ich habe den Rückkehrpunkt auf der Paletten-Steinplatte in der Vorhalle festgelegt, Rea. Öffne die Ateliertür, sobald du bereit bist!“\n(Steuerung: Drücke C / linken Stick drücken am Haupttor des Ateliers (gallery_arena_gate), um einzutreten.)"
     },
     {
       "key": "story.irina.i0.01",
@@ -3083,7 +3151,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Sie setzt den Pinsel-Degen auf den Boden und schöpft ruhig Atem. Reas Klingen-Kern zeichnet die aquarellfarbene Spur von Irinas ‚Pinselstrich‘ auf Stufe 1 in der Luft auf)\n„……Obwohl ich das letzte Selbstporträt verbarg, hat deine Klinge den Verlauf meines ersten ‚Pinselstrichs‘ abgelesen.\nMerk dir das, Rea. Bis dreißig Mal schimmert nur ein Hauch Aquarell am Rand deines Blicks, doch sobald du das achtzigste Selbstporträt vollendest, geht mein Verhängnis der Erblindung auf deine Augen über. Ich ziehe mich in die Pflegestätte zurück…… Bitte leg diesen Pinselstrich nieder und geh heim.“\n(Systemhinweis: Leinwandschnitt erhalten — Halte am Boden die Richtung nach unten und drück Q (Y auf dem Controller).)"
+      "value": "(Sie setzt den Pinsel-Degen auf den Boden und schöpft ruhig Atem. Reas Klingen-Kern zeichnet die aquarellfarbene Spur von Irinas ‚Pinselstrich‘ auf Stufe 1 in der Luft auf)\n„……Obwohl ich das letzte Selbstporträt verbarg, hat deine Klinge den Verlauf meines ersten ‚Pinselstrichs‘ abgelesen.\nMerk dir das, Rea. Bis dreißig Mal schimmert nur ein Hauch Aquarell am Rand deines Blicks, doch sobald du das achtzigste Selbstporträt vollendest, geht mein Verhängnis der Erblindung auf deine Augen über. Ich ziehe mich in die Pflegestätte zurück…… Bitte leg diesen Pinselstrich nieder und geh heim.“\n(Systemhinweis: Leinwandschnitt erhalten — Halte am Boden die Richtung nach unten und drück V (Y auf dem Controller).)"
     },
     {
       "key": "story.irina.i0.06",
@@ -3107,7 +3175,7 @@
     },
     {
       "key": "story.irina.i1.05",
-      "value": "(Unter Irinas Fingern löst sie die aus Gewohnheit schon angehobenen Mundwinkel und umfasst ohne Lächeln ruhig Irinas Handrücken)\n„……Nein, Irina. Ich lächle nicht.\nHeute habe ich Angst. Ich habe Angst, weil unsere Hypothese noch Lücken hat, Angst, euch alle fünf zu verlieren, und wirklich Angst, dass ich nicht zurückkomme.“\n(Steuerung: Drücke am rechten Sonnenfenster (irina_sunlight_floor) F / linken Stick drücken, um ohne erzwungenes Lächeln ehrlich deine Angst zu gestehen.)"
+      "value": "(Unter Irinas Fingern löst sie die aus Gewohnheit schon angehobenen Mundwinkel und umfasst ohne Lächeln ruhig Irinas Handrücken)\n„……Nein, Irina. Ich lächle nicht.\nHeute habe ich Angst. Ich habe Angst, weil unsere Hypothese noch Lücken hat, Angst, euch alle fünf zu verlieren, und wirklich Angst, dass ich nicht zurückkomme.“\n(Steuerung: Drücke am rechten Sonnenfenster (irina_sunlight_floor) C / linken Stick drücken, um ohne erzwungenes Lächeln ehrlich deine Angst zu gestehen.)"
     },
     {
       "key": "story.irina.i1.06",
@@ -3127,7 +3195,7 @@
     },
     {
       "key": "story.irina.reunion.02",
-      "value": "(Sie senkt die schon gehobenen Mundwinkel wieder und lehnt ohne Lächeln ihre Wange sanft an Irinas Fingerspitzen)\n„Ich werde kein Lächeln erzwingen, Irina. Heute habe ich Angst. Darum halte ich es nicht allein aus, sondern wir suchen gemeinsam einen Weg.“\n(Steuerung: Drücke am Sonnenfenster der Pflegestätte (irina_reunion_window) F / linken Stick drücken, um ehrlich ohne erzwungenes Lächeln zu sprechen.)"
+      "value": "(Sie senkt die schon gehobenen Mundwinkel wieder und lehnt ohne Lächeln ihre Wange sanft an Irinas Fingerspitzen)\n„Ich werde kein Lächeln erzwingen, Irina. Heute habe ich Angst. Darum halte ich es nicht allein aus, sondern wir suchen gemeinsam einen Weg.“\n(Steuerung: Drücke am Sonnenfenster der Pflegestätte (irina_reunion_window) C / linken Stick drücken, um ehrlich ohne erzwungenes Lächeln zu sprechen.)"
     },
     {
       "key": "story.irina.reunion.03",
@@ -3139,7 +3207,7 @@
     },
     {
       "key": "story.gallery.return.01",
-      "value": "„Hinter der Kante des Gewächshaus-Rückwegs bricht der Boden völlig ab. Wenn ich am Boden ‚Pinselstrich‘, Stufe 1 des ‚Leinwandschnitts‘, vor mir in die Luft male, bleibt eine Lapis-Farbplattform 3 Sekunden lang schweben! Auf diesen Pinselstrich kann ich treten und hinüberspringen!“\n(Steuerung: Drücke an der Stufenkante am Boden ↓ + Q / Y, um vor dir eine Pinselstrich-Plattform in die Luft zu malen, und spring darüber hinweg.)"
+      "value": "„Hinter der Kante des Gewächshaus-Rückwegs bricht der Boden völlig ab. Wenn ich am Boden ‚Pinselstrich‘, Stufe 1 des ‚Leinwandschnitts‘, vor mir in die Luft male, bleibt eine Lapis-Farbplattform 3 Sekunden lang schweben! Auf diesen Pinselstrich kann ich treten und hinüberspringen!“\n(Steuerung: Drücke an der Stufenkante am Boden ↓ + V / Y, um vor dir eine Pinselstrich-Plattform in die Luft zu malen, und spring darüber hinweg.)"
     },
     {
       "key": "story.gallery.return.02",
@@ -3151,7 +3219,7 @@
     },
     {
       "key": "story.gallery.synergy.01",
-      "value": "„Hinter diesem gespaltenen Boden mit zwei festen Ankern tut sich völlig haltlose Luft auf!\nWenn ich zuerst den Riss im echten Boden mit Mikhails ‚Silbernaht‘ zunähe, um hinüberzugehen, und dann an dessen Kante mit Irinas ‚Leinwandschnitt‘ eine schwebende Farbplattform in die Luft male, verbinde ich die Stärken beider Techniken!“\n(Steuerung: Vernähe den gespaltenen Boden (gallery_synergy_seam) mit Silbernaht, tritt darauf und male am Ende mit Leinwandschnitt (↓ + Q / Y) eine Farbplattform vor dich auf die Terrasse.)"
+      "value": "„Hinter diesem gespaltenen Boden mit zwei festen Ankern tut sich völlig haltlose Luft auf!\nWenn ich zuerst den Riss im echten Boden mit Mikhails ‚Silbernaht‘ zunähe, um hinüberzugehen, und dann an dessen Kante mit Irinas ‚Leinwandschnitt‘ eine schwebende Farbplattform in die Luft male, verbinde ich die Stärken beider Techniken!“\n(Steuerung: Vernähe den gespaltenen Boden (gallery_synergy_seam) mit Silbernaht, tritt darauf und male am Ende mit Leinwandschnitt (↓ + V / Y) eine Farbplattform vor dich auf die Terrasse.)"
     },
     {
       "key": "story.gallery.synergy.02",
@@ -3455,7 +3523,7 @@
     },
     {
       "key": "story.echo.entry.02",
-      "value": "(Sie folgt mit den Augen den leuchtenden Schaltadern der mächtigen Lapis-Steuerungssäule mitten in der Halle)\n„Schau dir diese Lapis-Steuerungsverbindung an. Die Mutterwaffe ‚Allresonanzspiegel‘ ganz oben und die Frostisolation der unterirdischen Kammer der Ewigen Konservierung hängen an ein und demselben Steuerkern.\nGenau wie Theo es analysiert hat: Zerstört man oben den Kern des Spiegel-Muttergeräts, bricht auch das Einschluss-System der unterirdischen Kammer zusammen!“\n(Steuerung: Drücke F / linken Stick drücken, um die Lapis-Steuerungssäule (court_control_pillar) in der Hallenmitte zu untersuchen.)"
+      "value": "(Sie folgt mit den Augen den leuchtenden Schaltadern der mächtigen Lapis-Steuerungssäule mitten in der Halle)\n„Schau dir diese Lapis-Steuerungsverbindung an. Die Mutterwaffe ‚Allresonanzspiegel‘ ganz oben und die Frostisolation der unterirdischen Kammer der Ewigen Konservierung hängen an ein und demselben Steuerkern.\nGenau wie Theo es analysiert hat: Zerstört man oben den Kern des Spiegel-Muttergeräts, bricht auch das Einschluss-System der unterirdischen Kammer zusammen!“\n(Steuerung: Drücke C / linken Stick drücken, um die Lapis-Steuerungssäule (court_control_pillar) in der Hallenmitte zu untersuchen.)"
     },
     {
       "key": "story.echo.entry.03",
@@ -3483,7 +3551,7 @@
     },
     {
       "key": "story.echo.pre.06",
-      "value": "(Sie zieht Theos dicht beschriebenes Laborheft vom 4-stufigen Klingenexperiment und die von den fünf Wohltätern eingezeichnete Rückkehrkarte aus der Tasche und breitet sie vor der gestrigen Rea aus)\n„Ich habe auch Angst. Genau deshalb habe ich es diesmal zuerst den anderen gezeigt, ehe ich meinen Teil streiche.\nSieh her — die Messkurve, die dir allein abbrach, haben Theo und Ethan heute mit mir festgehalten und bis zum Ende gemessen! Und statt Tore zu verriegeln, haben uns alle fünf zuerst die Böden, die Zeit und die Signale zum Überleben bereitet! Ich gehe nicht in die Kammer hinunter!“\n(Steuerung: Drücke F / linken Stick drücken, um der gestrigen Rea die Klingenmessdaten und den Rückkehrweg vorzulegen.)"
+      "value": "(Sie zieht Theos dicht beschriebenes Laborheft vom 4-stufigen Klingenexperiment und die von den fünf Wohltätern eingezeichnete Rückkehrkarte aus der Tasche und breitet sie vor der gestrigen Rea aus)\n„Ich habe auch Angst. Genau deshalb habe ich es diesmal zuerst den anderen gezeigt, ehe ich meinen Teil streiche.\nSieh her — die Messkurve, die dir allein abbrach, haben Theo und Ethan heute mit mir festgehalten und bis zum Ende gemessen! Und statt Tore zu verriegeln, haben uns alle fünf zuerst die Böden, die Zeit und die Signale zum Überleben bereitet! Ich gehe nicht in die Kammer hinunter!“\n(Steuerung: Drücke C / linken Stick drücken, um der gestrigen Rea die Klingenmessdaten und den Rückkehrweg vorzulegen.)"
     },
     {
       "key": "story.echo.battle.01_p1",
@@ -3507,7 +3575,7 @@
     },
     {
       "key": "story.echo.after.01",
-      "value": "(Sie stoppt die Aufzeichnungsklinge eine Handbreit vor dem knienden Nachhall, tritt einen Schritt zurück und senkt das Schwert)\n„Dass du mich getäuscht hast, tut noch immer weh. Und dass du mich auch gegen meinen Willen mitnehmen wolltest, hat mir noch mehr Angst gemacht.“\n(Steuerung: Drücke F / linken Stick drücken vor dem knienden Nachhall, um die Klinge zu senken und weiterzusprechen.)"
+      "value": "(Sie stoppt die Aufzeichnungsklinge eine Handbreit vor dem knienden Nachhall, tritt einen Schritt zurück und senkt das Schwert)\n„Dass du mich getäuscht hast, tut noch immer weh. Und dass du mich auch gegen meinen Willen mitnehmen wolltest, hat mir noch mehr Angst gemacht.“\n(Steuerung: Drücke C / linken Stick drücken vor dem knienden Nachhall, um die Klinge zu senken und weiterzusprechen.)"
     },
     {
       "key": "story.echo.after.02",
@@ -3527,7 +3595,7 @@
     },
     {
       "key": "story.echo.after.06",
-      "value": "(Die heutige Rea tritt vor, streckt der knienden gestrigen Rea die Hand entgegen, ergreift sie und zieht sie hoch. Der gestrige Nachhall löst sich nicht auf, sondern fließt als reiner blauer Lichtschein neben den Puls von heute in den Kern der Aufzeichnungsklinge ein und geht mit ihr)\n„Ich lasse dich nicht allein zurück, mein gestriges Ich. Jeder deiner hundertzwanzig Grundhiebe vor dem verschlossenen Tor — und dein Wunsch an Ethan, für dein morgiges Ich einen schönen Wellenglanz zu schmieden — steckt doch ganz in diesem Schwert.\nGehen wir beide zusammen ganz nach oben. Und kommen wir zusammen lebend wieder herunter!“\n(Steuerung: Drücke F / linken Stick drücken vor der gestrigen Rea (echo_hand_clasp), um ihre Hand zu fassen und sie im Kern mitzunehmen.)"
+      "value": "(Die heutige Rea tritt vor, streckt der knienden gestrigen Rea die Hand entgegen, ergreift sie und zieht sie hoch. Der gestrige Nachhall löst sich nicht auf, sondern fließt als reiner blauer Lichtschein neben den Puls von heute in den Kern der Aufzeichnungsklinge ein und geht mit ihr)\n„Ich lasse dich nicht allein zurück, mein gestriges Ich. Jeder deiner hundertzwanzig Grundhiebe vor dem verschlossenen Tor — und dein Wunsch an Ethan, für dein morgiges Ich einen schönen Wellenglanz zu schmieden — steckt doch ganz in diesem Schwert.\nGehen wir beide zusammen ganz nach oben. Und kommen wir zusammen lebend wieder herunter!“\n(Steuerung: Drücke C / linken Stick drücken vor der gestrigen Rea (echo_hand_clasp), um ihre Hand zu fassen und sie im Kern mitzunehmen.)"
     },
     {
       "key": "story.echo.after.07",
@@ -3535,7 +3603,7 @@
     },
     {
       "key": "story.echo.after.08",
-      "value": "(Während sich die Aufzugsplattform in Richtung des vom Morgenlicht erhellten Tribunals im obersten Stock emporhebt, flüstert die gestrige Rea leise aus dem Kern)\n„Dort oben liegt das Tribunal mit Archon Cassel und seiner Mutterwaffe ‚Allresonanzspiegel‘. Ich lege auch meine hundertzwanzig Hiebe in deine Fingerspitzen. Gehen wir, mein heutiges Ich!“\n(Steuerung: Drücke F / linken Stick drücken an der Aufzugskonsole (cassel_lift_console), um das Tribunal im obersten Stockwerk (cassel) zu betreten.)"
+      "value": "(Während sich die Aufzugsplattform in Richtung des vom Morgenlicht erhellten Tribunals im obersten Stock emporhebt, flüstert die gestrige Rea leise aus dem Kern)\n„Dort oben liegt das Tribunal mit Archon Cassel und seiner Mutterwaffe ‚Allresonanzspiegel‘. Ich lege auch meine hundertzwanzig Hiebe in deine Fingerspitzen. Gehen wir, mein heutiges Ich!“\n(Steuerung: Drücke C / linken Stick drücken an der Aufzugskonsole (cassel_lift_console), um das Tribunal im obersten Stockwerk (cassel) zu betreten.)"
     },
     {
       "key": "story.cassel.p1.01",
@@ -3563,11 +3631,11 @@
     },
     {
       "key": "story.cassel.p1.07_mirror",
-      "value": "(Bei 120 TP tritt Cassel zurück und hebt eine Hand. Hinter ihm öffnen sich alle fünf Spiegelschichten der Mutterwaffe ‚Allresonanzspiegel‘ gleichzeitig in kaltem blauem Licht, bereit, Reas fünf Wohltäter-Techniken nachzubilden!)\n„Nicht schlecht, Angeklagte R.E.A.. Doch vor meiner Mutterwaffe, dem ‚Allresonanzspiegel‘, werden selbst deine fünf erlernten Meisterformen allesamt zu Werkzeugen meines Urteils zurückgespiegelt!“\n(Kampfhinweis: Cassel Phase 2 · Allresonanzspiegel — Drücke bei offenem Spiegel F / linken Stick drücken, um eine Wohltäter-Technik zur Rückgabe vorzumerken!)"
+      "value": "(Bei 120 TP tritt Cassel zurück und hebt eine Hand. Hinter ihm öffnen sich alle fünf Spiegelschichten der Mutterwaffe ‚Allresonanzspiegel‘ gleichzeitig in kaltem blauem Licht, bereit, Reas fünf Wohltäter-Techniken nachzubilden!)\n„Nicht schlecht, Angeklagte R.E.A.. Doch vor meiner Mutterwaffe, dem ‚Allresonanzspiegel‘, werden selbst deine fünf erlernten Meisterformen allesamt zu Werkzeugen meines Urteils zurückgespiegelt!“\n(Kampfhinweis: Cassel Phase 2 · Allresonanzspiegel — Drücke bei offenem Spiegel C / linken Stick drücken, um eine Wohltäter-Technik zur Rückgabe vorzumerken!)"
     },
     {
       "key": "story.cassel.p2.01_prompt",
-      "value": "„Der Allresonanzspiegel ist offen! Genau wie bei unserem Experiment mit Theo: In dem Augenblick, in dem der Spiegel meine Stufe-3-Technik nachbildet, kann ich mit dem exakt gleichen Stufe-3-Abschluss in meiner gewählten Reihenfolge im Klingenkreuzen eine Rückgabevormerkung an Cassel setzen!“\n(Steuerung: Drücke bei offenem Spiegel F / linken Stick drücken, um das Menü ‚Umkehrbeglaubigung · Technik zur Rückgabe wählen‘ zu öffnen.)"
+      "value": "„Der Allresonanzspiegel ist offen! Genau wie bei unserem Experiment mit Theo: In dem Augenblick, in dem der Spiegel meine Stufe-3-Technik nachbildet, kann ich mit dem exakt gleichen Stufe-3-Abschluss in meiner gewählten Reihenfolge im Klingenkreuzen eine Rückgabevormerkung an Cassel setzen!“\n(Steuerung: Drücke bei offenem Spiegel C / linken Stick drücken, um das Menü ‚Umkehrbeglaubigung · Technik zur Rückgabe wählen‘ zu öffnen.)"
     },
     {
       "key": "story.cassel.p2.02_confirm",
@@ -3615,7 +3683,7 @@
     },
     {
       "key": "story.cassel.p2.08_r1_cassel",
-      "value": "(Als die erste Rückgabevormerkung 1/5 ins Notariatsregister eingeht und +20% zusätzliche Prägungsstärke wie blaues Feuer aus Reas Klinge lodern, zuckt Cassels Braue zum ersten Mal. Um nicht auch die restlichen vier Techniken hergeben zu müssen, klappt Cassel den ‚Allresonanzspiegel‘ hinter den Rücken zu und weicht rasch mit einem Schritt zurück!)\n„……Du hast die Spiegelungswertung des Allresonanzspiegels ausgenutzt, um in meinem Register eine Rückgabevormerkung zu setzen?!\nDoch bleiben die Spiegelflächen zugeklappt, verlieren deine übrigen Techniken ihr Gegenstück fürs Klingenkreuzen. Dann schlage ich erst deinen eigenen Körper mit direkter Schwertkunst nieder!“\n(Taktik-Hinweis: Cassel schließt den Spiegel und greift direkt mit der 3-fachen Sturmhieb-Serie von Cassels Nullter Form an. Verschwende keine Bosstechniken — wehre sie mit einfachem Parieren (L / RB) ab!)"
+      "value": "(Als die erste Rückgabevormerkung 1/5 ins Notariatsregister eingeht und +20% zusätzliche Prägungsstärke wie blaues Feuer aus Reas Klinge lodern, zuckt Cassels Braue zum ersten Mal. Um nicht auch die restlichen vier Techniken hergeben zu müssen, klappt Cassel den ‚Allresonanzspiegel‘ hinter den Rücken zu und weicht rasch mit einem Schritt zurück!)\n„……Du hast die Spiegelungswertung des Allresonanzspiegels ausgenutzt, um in meinem Register eine Rückgabevormerkung zu setzen?!\nDoch bleiben die Spiegelflächen zugeklappt, verlieren deine übrigen Techniken ihr Gegenstück fürs Klingenkreuzen. Dann schlage ich erst deinen eigenen Körper mit direkter Schwertkunst nieder!“\n(Taktik-Hinweis: Cassel schließt den Spiegel und greift direkt mit der 3-fachen Sturmhieb-Serie von Cassels Nullter Form an. Verschwende keine Bosstechniken — wehre sie mit einfachem Parieren (X / RB) ab!)"
     },
     {
       "key": "story.cassel.p2.09_r1_rea",
@@ -3683,7 +3751,7 @@
     },
     {
       "key": "story.ending.basic.03",
-      "value": "(Die heutige Rea schüttelt den Kopf, tritt einen Schritt näher und schließt zuerst ihr zitterndes gestriges Ich warm in beide Arme)\n„Entschuldige dich nicht, mein gestriges Ich. Es lag nicht daran, dass wir zu schwach oder unwürdig gewesen wären.\nWeil du gestern vor dem verschlossenen Tor nicht aufgegeben und die Zeit zurückgedreht hast, konnten wir heute alle fünf retten.“\n(Steuerung: Geh zur gestrigen Rea (rooftop_echo_embrace) und drücke F / linken Stick drücken, um sie zuerst zu umarmen.)"
+      "value": "(Die heutige Rea schüttelt den Kopf, tritt einen Schritt näher und schließt zuerst ihr zitterndes gestriges Ich warm in beide Arme)\n„Entschuldige dich nicht, mein gestriges Ich. Es lag nicht daran, dass wir zu schwach oder unwürdig gewesen wären.\nWeil du gestern vor dem verschlossenen Tor nicht aufgegeben und die Zeit zurückgedreht hast, konnten wir heute alle fünf retten.“\n(Steuerung: Geh zur gestrigen Rea (rooftop_echo_embrace) und drücke C / linken Stick drücken, um sie zuerst zu umarmen.)"
     },
     {
       "key": "story.ending.basic.04",
@@ -3695,7 +3763,7 @@
     },
     {
       "key": "story.ending.basic.06",
-      "value": "(Hand in Hand über demselben Stift schreiben beide Reas mit Lapis-Tinte einen unauslöschlichen Satz in die letzte Zeile des Notariatsregisters:\n[Notariatsaufzeichnung #02 Abschlusseintrag — Alle fünf Wohltäter vollständig gerettet. Und die heutige Rea wollte bis zuletzt gemeinsam mit ihnen lebend zurückkehren.])\n(Steuerung: Drücke F / linken Stick drücken am letzten Notariatsregister (basic_ending_ledger), um die heutige Antwort ungestrichen einzustempeln.)"
+      "value": "(Hand in Hand über demselben Stift schreiben beide Reas mit Lapis-Tinte einen unauslöschlichen Satz in die letzte Zeile des Notariatsregisters:\n[Notariatsaufzeichnung #02 Abschlusseintrag — Alle fünf Wohltäter vollständig gerettet. Und die heutige Rea wollte bis zuletzt gemeinsam mit ihnen lebend zurückkehren.])\n(Steuerung: Drücke C / linken Stick drücken am letzten Notariatsregister (basic_ending_ledger), um die heutige Antwort ungestrichen einzustempeln.)"
     },
     {
       "key": "story.ending.basic.07",
@@ -3723,7 +3791,7 @@
     },
     {
       "key": "story.ending.true.03_seat",
-      "value": "(Mit feuchten Augen streckt die heutige Rea zuerst beide Arme aus und drückt ihr gestriges Ich aus voller Kraft an sich)\n„Ja. Auch unser Platz ist noch frei.“\n(Steuerung: Geh zur gestrigen Rea (rooftop_echo_embrace) und drücke F / linken Stick drücken, um sie fest zu umarmen.)"
+      "value": "(Mit feuchten Augen streckt die heutige Rea zuerst beide Arme aus und drückt ihr gestriges Ich aus voller Kraft an sich)\n„Ja. Auch unser Platz ist noch frei.“\n(Steuerung: Geh zur gestrigen Rea (rooftop_echo_embrace) und drücke C / linken Stick drücken, um sie fest zu umarmen.)"
     },
     {
       "key": "story.ending.true.04_echo",
@@ -3763,7 +3831,7 @@
     },
     {
       "key": "story.ending.true.13_swing_prompt",
-      "value": "„Keine Stellvertreter-Schwertkunst, die fremden Tod auf sich lädt — hier meißle ich die erste Bewegung ein, die ich, im Heute lebend, unter meinem eigenen Namen schreibe!“\n(Steuerung: Drücke vor der sonnenbeschienenen Dachterrasse (rea_form_one_sky) die Schwerttaste (J / Z / Linksklick / X), um Reas ganz eigenen ersten Hieb auszuführen!)"
+      "value": "„Keine Stellvertreter-Schwertkunst, die fremden Tod auf sich lädt — hier meißle ich die erste Bewegung ein, die ich, im Heute lebend, unter meinem eigenen Namen schreibe!“\n(Steuerung: Drücke vor der sonnenbeschienenen Dachterrasse (rea_form_one_sky) die Schwerttaste (Z / X), um Reas ganz eigenen ersten Hieb auszuführen!)"
     },
     {
       "key": "story.ending.true.14_registered",
@@ -3775,7 +3843,7 @@
     },
     {
       "key": "story.ending.true.16_to_attic",
-      "value": "„Ja! Ich habe solchen Hunger — gehen wir alle zusammen frühstücken!“\n(Steuerung: Drücke F / linken Stick drücken am Dachaufzugs-Ausgang (rooftop_to_attic_exit), um zum Frühstückstisch auf dem Dachboden des Vergessens zu fahren.)"
+      "value": "„Ja! Ich habe solchen Hunger — gehen wir alle zusammen frühstücken!“\n(Steuerung: Drücke C / linken Stick drücken am Dachaufzugs-Ausgang (rooftop_to_attic_exit), um zum Frühstückstisch auf dem Dachboden des Vergessens zu fahren.)"
     },
     {
       "key": "story.ending.true.17_marta_table",
@@ -3787,7 +3855,7 @@
     },
     {
       "key": "story.ending.true.19_sit",
-      "value": "(Mikhail zieht den sechsten Stuhl mitten am Tisch ein Stück heraus und spricht mit rauer, doch herzlich warmer Stimme)\n„Willst du hier den ganzen Tag nur zusehen, Rea? Das ist der sechste Platz, den du selbst abgestempelt hast. Setz dich, bevor die Suppe kalt wird.“\n(Steuerung: Tritt an den sechsten Platz am Esstisch (sixth_breakfast_seat) und drücke F / linken Stick drücken, um dich zu setzen.)"
+      "value": "(Mikhail zieht den sechsten Stuhl mitten am Tisch ein Stück heraus und spricht mit rauer, doch herzlich warmer Stimme)\n„Willst du hier den ganzen Tag nur zusehen, Rea? Das ist der sechste Platz, den du selbst abgestempelt hast. Setz dich, bevor die Suppe kalt wird.“\n(Steuerung: Tritt an den sechsten Platz am Esstisch (sixth_breakfast_seat) und drücke C / linken Stick drücken, um dich zu setzen.)"
     },
     {
       "key": "story.ending.true.20_sixth_beat",
@@ -3795,7 +3863,7 @@
     },
     {
       "key": "story.ending.true.21_spoon",
-      "value": "(Rea umschließt die warme Suppenschüssel mit beiden Händen und führt mitten aus dem aufsteigenden Dampf den ersten vollen Löffel zum Mund. Eine einzige warme Träne rollt über ihre Wange, während sich das entspannteste, hellste Lächeln auf ihrem Gesicht ausbreitet)\n„……So warm. Es schmeckt wundervoll, Oma Marta!“\n(Steuerung: Drücke F / linken Stick drücken oder Enter / A, um das warme Frühstück aus der sechsten Schüssel gemeinsam zu genießen.)"
+      "value": "(Rea umschließt die warme Suppenschüssel mit beiden Händen und führt mitten aus dem aufsteigenden Dampf den ersten vollen Löffel zum Mund. Eine einzige warme Träne rollt über ihre Wange, während sich das entspannteste, hellste Lächeln auf ihrem Gesicht ausbreitet)\n„……So warm. Es schmeckt wundervoll, Oma Marta!“\n(Steuerung: Drücke C / linken Stick drücken oder Enter / A, um das warme Frühstück aus der sechsten Schüssel gemeinsam zu genießen.)"
     },
     {
       "key": "story.ending.true.22_complete",
@@ -3815,7 +3883,7 @@
     },
     {
       "key": "story.resume.crucible.01_ethan",
-      "value": "(Ethan reißt die Feuertür des riesigen Lapisofens ‚Resonanzschmelzofen‘ in der Wasserwegschmiede auf und nickt)\n„Da bist du ja, Rea. Um Cassels Mutter-Schwertkunst bis zum letzten vierten Hieb zu kontern, muss deine Grundschwertkunst die vierhundertste Meistermarke erreichen.\nIn diesem Schmelzofen warten hochdichte Resonanzziele und Wachen, die dein einfaches Parieren und deine Schwertkombos ohne Pause aufnehmen. Zwei Minuten genügen — schwing deine Klinge nach Herzenslust!“\n(Steuerung: Drücke F / linken Stick drücken, um den Resonanzschmelzofen (resonant_crucible) zu starten.)"
+      "value": "(Ethan reißt die Feuertür des riesigen Lapisofens ‚Resonanzschmelzofen‘ in der Wasserwegschmiede auf und nickt)\n„Da bist du ja, Rea. Um Cassels Mutter-Schwertkunst bis zum letzten vierten Hieb zu kontern, muss deine Grundschwertkunst die vierhundertste Meistermarke erreichen.\nIn diesem Schmelzofen warten hochdichte Resonanzziele und Wachen, die dein einfaches Parieren und deine Schwertkombos ohne Pause aufnehmen. Zwei Minuten genügen — schwing deine Klinge nach Herzenslust!“\n(Steuerung: Drücke C / linken Stick drücken, um den Resonanzschmelzofen (resonant_crucible) zu starten.)"
     },
     {
       "key": "story.resume.crucible.02_theo",
@@ -3827,11 +3895,11 @@
     },
     {
       "key": "story.resume.crucible.04_rea",
-      "value": "„Danke, Ethan, Theo! Jetzt verschwindet die Warnung ‚Rückgabe mit Überleben nicht gesichert‘ auf dem Aufbruchs-Bildschirm, und meine Urform ist völlig bereit.\nIch kehre zum Aufzug zum Hohen Gericht zurück — und diesmal komme ich ganz sicher lebend an den Frühstückstisch hinunter!“\n(Steuerung: Drücke F / linken Stick drücken am direkten Schmiede-Durchgang (forge_to_court_lift), um zum Aufzug zum Hohen Gericht zurückzukehren und Cassel fürs Wahre Ende herauszufordern.)"
+      "value": "„Danke, Ethan, Theo! Jetzt verschwindet die Warnung ‚Rückgabe mit Überleben nicht gesichert‘ auf dem Aufbruchs-Bildschirm, und meine Urform ist völlig bereit.\nIch kehre zum Aufzug zum Hohen Gericht zurück — und diesmal komme ich ganz sicher lebend an den Frühstückstisch hinunter!“\n(Steuerung: Drücke C / linken Stick drücken am direkten Schmiede-Durchgang (forge_to_court_lift), um zum Aufzug zum Hohen Gericht zurückzukehren und Cassel fürs Wahre Ende herauszufordern.)"
     },
     {
       "key": "story.epilogue.01_marta",
-      "value": "(Morgensonne verweilt im Dachboden des Vergessens. Oben am Bildschirm schwebt nun friedlich statt des Hinrichtungs-Countdowns [Beglaubigung abgeschlossen: Reas Heute / Zeit schreitet voran]. Marta stellt Rea eine warme Tasse Minz-Resonanztee hin)\n„Nach ganzen sechs Schüsseln Morgensuppe passt doch sicher noch ein Minztee hinein, meine Rea? Lass dir Zeit und trink in Ruhe — niemand jagt uns mehr.“\n(Steuerung: Drücke F / linken Stick drücken am warmen Minz-Resonanztee auf dem Tisch (attic_mint_tea), um ihn zu trinken und den friedlichen Morgen zu genießen.)"
+      "value": "(Morgensonne verweilt im Dachboden des Vergessens. Oben am Bildschirm schwebt nun friedlich statt des Hinrichtungs-Countdowns [Beglaubigung abgeschlossen: Reas Heute / Zeit schreitet voran]. Marta stellt Rea eine warme Tasse Minz-Resonanztee hin)\n„Nach ganzen sechs Schüsseln Morgensuppe passt doch sicher noch ein Minztee hinein, meine Rea? Lass dir Zeit und trink in Ruhe — niemand jagt uns mehr.“\n(Steuerung: Drücke C / linken Stick drücken am warmen Minz-Resonanztee auf dem Tisch (attic_mint_tea), um ihn zu trinken und den friedlichen Morgen zu genießen.)"
     },
     {
       "key": "story.epilogue.02_benefactors",
