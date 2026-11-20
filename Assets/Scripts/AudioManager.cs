@@ -7,6 +7,21 @@ namespace RewindNotary
     {
         public enum Sfx { Swing, Hit, Hurt, Jump, Land, BossWarning, BossAttack, BossDefeat, PlayerDown, Parry, Evolution }
         public enum Music { Field, Boss }
+        // Values follow the OST track numbers (minus one).
+        public enum Ost { Attic, Belvet, CasselPhase2, Title, Janhyang, CasselPhase1,
+            Mikhail, Julius, Valeria, Gabriel, Irina, EndingNormal, EndingTrue,
+            Forge, Clocktower, Opera, BellTower, Gallery }
+        private static readonly string[] OstNames = {
+            "track-01-mangak-darakbang-v1", "track-02-belvet-jaedangeori-v1",
+            "track-03-cassel-phase2-v1", "track-04-title-theme-v1",
+            "track-05-janhyang-boss-v1", "track-06-cassel-phase1-v1",
+            "track-07-mikhail-boss-v1", "track-08-julius-boss-v1",
+            "track-09-valeria-boss-v1", "track-10-gabriel-boss-v1",
+            "track-11-irina-boss-v1", "track-12-ending-normal-v1",
+            "track-13-ending-true-v1", "track-14-suro-forge-v1",
+            "track-15-clocktower-v1", "track-16-glass-opera-v1",
+            "track-17-bell-tower-v1", "track-18-canvas-gallery-v1"
+        };
         public struct VoiceHandle { internal int Index, Generation; }
         public const int PoolSize = 12;
         public const float CrossfadeSeconds = 0.8f;
@@ -26,6 +41,14 @@ namespace RewindNotary
         private AudioSource field, boss;
         private Music requested;
         private float bossBlend;
+        // Lazy sources retain playback positions when a fade is reversed. No
+        // source is recycled mid-fade, even under rapid A -> B -> C requests.
+        private readonly AudioSource[] ostSources = new AudioSource[OstNames.Length];
+        private readonly bool[] ostLoadAttempted = new bool[OstNames.Length];
+        private readonly float[] ostWeights = new float[OstNames.Length];
+        private readonly float[] ostFadeStart = new float[OstNames.Length];
+        private int requestedOst = -1;
+        private float legacyWeight = 1f, legacyFadeStart = 1f, ostFadeProgress = 1f;
 
         private void Awake()
         {
@@ -92,6 +115,65 @@ namespace RewindNotary
         {
             if (Instance != null) Instance.requested = music;
         }
+        // Opt-in: legacy callers keep their old behavior until a director calls
+        // this. Missing/invalid tracks leave the current music untouched.
+        // Repeated requests do not restart loops or completed ending one-shots.
+        public static bool SetOst(Ost track, bool restart = false)
+        {
+            return Instance != null && Instance.RequestOst(track, restart);
+        }
+        private bool RequestOst(Ost track, bool restart)
+        {
+            int index = (int)track;
+            if (index < 0 || index >= OstNames.Length) return false;
+            if (requestedOst == index && !restart) return true;
+            if (!ostLoadAttempted[index])
+            {
+                ostLoadAttempted[index] = true;
+                var clip = Load("Audio/Bgm/" + OstNames[index]);
+                if (clip != null)
+                {
+                    var source = Source(OstNames[index],
+                        track != Ost.EndingNormal && track != Ost.EndingTrue);
+                    source.clip = clip;
+                    ostSources[index] = source;
+                }
+            }
+            var next = ostSources[index];
+            if (next == null) return false;
+            // Set gain before Play so a new source cannot flash at full volume.
+            next.volume = MasterVolume * MusicVolume * ostWeights[index];
+            if (restart) next.Stop();
+            if (!next.isPlaying) next.Play();
+            BeginOstFade(index);
+            return true;
+        }
+        public static void UseLegacyMusic()
+        {
+            if (Instance != null && Instance.requestedOst != -1)
+                Instance.BeginOstFade(-1);
+        }
+        private void BeginOstFade(int target)
+        {
+            requestedOst = target;
+            legacyFadeStart = legacyWeight;
+            for (int i = 0; i < ostWeights.Length; i++) ostFadeStart[i] = ostWeights[i];
+            ostFadeProgress = 0f;
+        }
+        private void UpdateOst()
+        {
+            ostFadeProgress = Mathf.Min(1f, ostFadeProgress + Time.unscaledDeltaTime / CrossfadeSeconds);
+            legacyWeight = Mathf.Lerp(legacyFadeStart, requestedOst < 0 ? 1f : 0f, ostFadeProgress);
+            for (int i = 0; i < ostSources.Length; i++)
+            {
+                ostWeights[i] = Mathf.Lerp(ostFadeStart[i], requestedOst == i ? 1f : 0f, ostFadeProgress);
+                var source = ostSources[i];
+                if (source == null) continue;
+                source.volume = MasterVolume * MusicVolume * ostWeights[i];
+                if (ostFadeProgress >= 1f && requestedOst != i && source.isPlaying) source.Stop();
+                // Never auto-Play here: completed ending tracks must stay ended.
+            }
+        }
         public static void ResetPlayback(bool arena)
         {
             if (Instance == null) return;
@@ -119,6 +201,7 @@ namespace RewindNotary
                     if (paused[i]) { voices[i].UnPause(); paused[i] = false; }
                 }
             }
+            UpdateOst();
             bossBlend = Mathf.MoveTowards(bossBlend, requested == Music.Boss ? 1f : 0f,
                 Time.unscaledDeltaTime / CrossfadeSeconds);
             ApplyMusic();
@@ -127,8 +210,8 @@ namespace RewindNotary
         {
             // Apply volume before playback; reversing a fade keeps the currently
             // playing sample positions and the current blend.
-            ApplyTrack(field, 1f - bossBlend, requested == Music.Field);
-            ApplyTrack(boss, bossBlend, requested == Music.Boss);
+            ApplyTrack(field, (1f - bossBlend) * legacyWeight, requested == Music.Field && legacyWeight > 0f);
+            ApplyTrack(boss, bossBlend * legacyWeight, requested == Music.Boss && legacyWeight > 0f);
         }
         private void ApplyTrack(AudioSource source, float weight, bool target)
         {
