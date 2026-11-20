@@ -28,6 +28,7 @@ namespace RewindNotary
         private bool attackHoldBlocked;
         internal event System.Action AttackInputAccepted;
         private SkillCastRequest? pendingCast;
+        private readonly StarterCommandInput starterCommand = new StarterCommandInput();
         private void Awake()
         {
             motor = GetComponent<CombatMotor2D>();
@@ -45,6 +46,7 @@ namespace RewindNotary
                 attackPressed = float.NegativeInfinity;
                 attackHoldBlocked = attackHeld;
                 pendingCast = null;
+                starterCommand.Reset();
                 return;
             }
             if (!attackHeld) attackHoldBlocked = false;
@@ -52,6 +54,22 @@ namespace RewindNotary
             var runner = motor.BenefactorSkills;
             var input = runner?.InputSnapshot;
             bool castDown = input != null && input.CastDown;
+            if (motor.Grounded && !castDown && !GameInput.SprintHeld && !motor.Stunned)
+            {
+                starterCommand.Press(GameInput.CommandArrowDown, Time.unscaledTime);
+                if (GameInput.KeyboardAttackDown)
+                {
+                    int starter = starterCommand.Consume(Time.unscaledTime, out int facing);
+                    if (starter >= 0 && motor.UseStarterSkill(starter, facing, command: true))
+                    {
+                        attackHoldBlocked = true;
+                        attackPressed = jumpPressed = float.NegativeInfinity;
+                        pendingCast = null;
+                        return;
+                    }
+                }
+            }
+            else starterCommand.Reset();
             // A cast chord owns its attack modifier. Other taps survive action recovery.
             if (!castDown && GameInput.AttackDown) attackPressed = Time.time;
             if (motor.Stunned) pendingCast = null;
@@ -171,6 +189,7 @@ namespace RewindNotary
         public void SuspendInput()
         {
             pendingCast = null;
+            starterCommand.Reset();
             kickUntil = 0f; Sliding = false;
             motor?.Animation?.SetWallPose(0);
             axis = 0f; cutJump = false;

@@ -62,9 +62,9 @@ namespace RewindNotary
         {
             if (State.RearmSwitch()) visual.enabled = true;
         }
-        public bool Cut(UseContext use)
+        public bool Cut(UseContext use, bool echo = false)
         {
-            if (!State.Cut(use, Time.time)) return false;
+            if (!State.Cut(use, Time.time, echo)) return false;
             FinishAttack(Time.time);
             if (State.Cleared) visual.enabled = false;
             return true;
@@ -115,6 +115,22 @@ namespace RewindNotary
             if (!nearby) Facing = nextX > feet.x ? 1 : -1;
             Walking = true;
             transform.position = next;
+        }
+
+        internal void ReactToStarter(int starter, float originX)
+        {
+            if (footing == null || State.Cleared || !footing.Grounded || State.NeedsSetup) return;
+            if (starter == QuickSkills.Rising)
+            {
+                footing.Launch();
+                return;
+            }
+            if (starter != QuickSkills.Sweep) return;
+            Vector2 feet = transform.position;
+            int direction = feet.x >= originX ? 1 : -1;
+            float distance = footing.WalkableDistance(feet, direction, .85f);
+            if (distance > 0f && footing.TryStep(feet, feet.x + direction * distance, out var next))
+                transform.position = next;
         }
 
         private bool TerrainBetween(Vector2 feet) => Physics2D.Linecast(

@@ -10,12 +10,13 @@ namespace RewindNotary
     public sealed class SpriteAnimator : MonoBehaviour
     {
         public enum Pose { Idle, Run, Jump, Fall, Land, Attack }
-        [Serializable] private sealed class SheetLayout { public FramePivot[] frames; public int[] columnEdges; }
+        [Serializable] private sealed class SheetLayout { public FramePivot[] frames; public int[] columnEdges; public RowSlice[] rows; }
+        [Serializable] private sealed class RowSlice { public int top, bottom; public int[] columnEdges; }
         [Serializable] private sealed class FramePivot { public int row; public int col; public float x; public float y; }
         private readonly Dictionary<Pose, Sprite[]> clips = new Dictionary<Pose, Sprite[]>();
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private SpriteRenderer view;
-        private Sprite[][] groundAttacks, airAttacks;
+        private Sprite[][] groundAttacks, airAttacks, starterAttacks;
         private Sprite[] runAttack, activeAttack;
         private Pose state;
         private float elapsed;
@@ -73,7 +74,7 @@ namespace RewindNotary
             foreach (Sprite sprite in ownedSprites) if (sprite != null) Destroy(sprite);
             ownedSprites.Clear();
             ActiveResource = resource;
-            groundAttacks = airAttacks = null;
+            groundAttacks = airAttacks = starterAttacks = null;
             runAttack = activeAttack = null;
             var layout = LoadLayout(resource);
             clips[Pose.Idle] = Slice(texture, layout, 8, 4, 0, 0, 4, 2.5f);
@@ -88,6 +89,9 @@ namespace RewindNotary
                 groundAttacks = LoadAttackRows(rea + "-ground-attacks", 4, 2.65f);
                 airAttacks = LoadAttackRows(rea + "-air-attacks", 2, 3.40f);
                 runAttack = LoadAttackRows(rea + "-running-attack", 1, 4.30f)[0];
+                const string starter = rea + "-starter-attacks";
+                if (Resources.Load<Texture2D>(starter) != null)
+                    starterAttacks = LoadAttackRows(starter, 4, 2.45f);
             }
         }
 
@@ -114,13 +118,15 @@ namespace RewindNotary
             var frames = new Sprite[count];
             float cellWidth = texture.width / (float)columns;
             float cellHeight = texture.height / (float)rows;
-            int top = texture.height - Mathf.RoundToInt(row * cellHeight);
-            int bottom = texture.height - Mathf.RoundToInt((row + 1) * cellHeight);
+            var slice = layout?.rows?[row];
+            int top = texture.height - (slice?.top ?? Mathf.RoundToInt(row * cellHeight));
+            int bottom = texture.height - (slice?.bottom ?? Mathf.RoundToInt((row + 1) * cellHeight));
+            var edges = slice?.columnEdges ?? layout?.columnEdges;
             for (int i = 0; i < count; i++)
             {
                 int col = first + i;
-                int left = layout?.columnEdges?[col] ?? Mathf.RoundToInt(col * cellWidth);
-                int right = layout?.columnEdges?[col + 1] ?? Mathf.RoundToInt((col + 1) * cellWidth);
+                int left = edges?[col] ?? Mathf.RoundToInt(col * cellWidth);
+                int right = edges?[col + 1] ?? Mathf.RoundToInt((col + 1) * cellWidth);
                 var pivot = layout?.frames == null ? null : Array.Find(layout.frames, p => p.row == row && p.col == col);
                 var anchor = pivot == null ? new Vector2(.5f, .04f) : new Vector2(pivot.x, pivot.y);
                 frames[i] = Sprite.Create(texture, new Rect(left, bottom, right - left, top - bottom),
@@ -174,10 +180,11 @@ namespace RewindNotary
             elapsed = 0f;
             view.sprite = clips[state][0];
         }
-        internal void BeginAttack(int step, bool grounded, bool moving)
+        internal void BeginAttack(int step, bool grounded, bool moving, int starter = -1)
         {
             if (!ready) return;
-            if (groundAttacks == null || step == 0) activeAttack = clips[Pose.Attack];
+            if (starter >= 0 && starterAttacks != null) activeAttack = starterAttacks[starter];
+            else if (groundAttacks == null || step == 0) activeAttack = clips[Pose.Attack];
             else if (!grounded && step <= airAttacks.Length) activeAttack = airAttacks[step - 1];
             else if (step == 1 && grounded && moving) activeAttack = runAttack;
             else activeAttack = groundAttacks[step - 1];

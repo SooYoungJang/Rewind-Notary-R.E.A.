@@ -25,6 +25,7 @@ namespace RewindNotary
 
         internal float HomeX { get; private set; }
         internal bool Grounded => support != null;
+        internal void Launch() { support = null; fallSpeed = -8f; }
 
         internal Vector2 FollowGround(Vector2 feet, float dt)
         {
@@ -35,7 +36,14 @@ namespace RewindNotary
                 feet = carried;
             }
 
-            fallSpeed = Mathf.Max(fallSpeed + 28f * dt, 0f);
+            fallSpeed += 28f * dt;
+            if (fallSpeed < 0f)
+            {
+                float rise = -fallSpeed * dt;
+                if (Physics2D.Raycast(feet + Vector2.up * 1.7f, Vector2.up, rise, GroundMask).collider == null)
+                    return feet + Vector2.up * rise;
+                fallSpeed = 0f;
+            }
             if (FindFloor(feet, StepHeight + fallSpeed * dt, out var floor))
                 return Plant(feet.x, floor);
 

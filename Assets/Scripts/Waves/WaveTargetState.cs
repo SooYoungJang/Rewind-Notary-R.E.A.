@@ -16,6 +16,7 @@ namespace RewindNotary
         private readonly bool skillOnly;
         private int hits;
         private bool prepared;
+        private bool echoed;
         private float openUntil = float.NegativeInfinity;
         public WaveTargetState(WaveArchetype kind, WaveSpawn spawn, int setupHits = 1, bool skillOnly = false)
         {
@@ -50,10 +51,20 @@ namespace RewindNotary
             openUntil = now + archetype.openingSeconds;
             return true;
         }
-        public bool Cut(UseContext use, float now)
+        public bool Cut(UseContext use, float now, bool echo = false)
         {
-            if (Cleared || use == null || use.Closed || use.SkillId != SkillRules.BasicSword
-                || use == LastSword || (LastSword != null && !LastSword.Closed) || !Ready(now)) return false;
+            if (Cleared || use == null || use.Closed || use.SkillId != SkillRules.BasicSword || !Ready(now)) return false;
+            if (LastSword == use)
+            {
+                // The delayed wave follows its first hit only on ordinary moving enemies.
+                if (!echo || echoed || archetype.mechanism || NeedsSetup || archetype.gate == "defense") return false;
+                echoed = true;
+            }
+            else
+            {
+                if (LastSword != null && !LastSword.Closed) return false;
+                echoed = false;
+            }
             Remaining--;
             LastSword = use;
             CrossLoopFinish = NeedsSetup && prepared;

@@ -129,6 +129,18 @@ namespace RewindNotary
         public static bool JumpHeld => Input.GetKey(JumpKey) || (JumpKey != KeyCode.Space && Input.GetKey(KeyCode.Space) && AutoTestRuntime.Report != null) || Input.GetKey(KeyCode.JoystickButton0);
         public static bool JumpUp => Input.GetKeyUp(JumpKey) || (JumpKey != KeyCode.Space && Input.GetKeyUp(KeyCode.Space) && AutoTestRuntime.Report != null) || Input.GetKeyUp(KeyCode.JoystickButton0);
         public static bool AttackDown => Input.GetKeyDown(AttackKey) || Input.GetKeyDown(KeyCode.JoystickButton2);
+        internal static bool KeyboardAttackDown => Input.GetKeyDown(AttackKey);
+        internal static KeyCode CommandArrowDown
+        {
+            get
+            {
+                if (Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) return KeyCode.LeftArrow;
+                if (Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)) return KeyCode.RightArrow;
+                if (Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow)) return KeyCode.UpArrow;
+                if (Input.GetKeyDown(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow)) return KeyCode.DownArrow;
+                return KeyCode.None;
+            }
+        }
         internal static bool AttackHeld => Input.GetKey(AttackKey) || Input.GetKey(KeyCode.JoystickButton2);
         public static bool CastDown => Input.GetKeyDown(CastKey) || Input.GetKeyDown(KeyCode.JoystickButton3) ||
             QuickSkillDown >= 0;

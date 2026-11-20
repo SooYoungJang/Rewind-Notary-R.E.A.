@@ -8,20 +8,22 @@ namespace RewindNotary
     public static class WaveCombatTargets
     {
         public static readonly List<WaveTarget2D> All = new List<WaveTarget2D>();
-        public static void Sword(SkillSession session, UseContext use, Bounds area, bool finisher)
+        public static bool Sword(SkillSession session, UseContext use, Bounds area, bool finisher, int starter = -1, bool echo = false)
         {
-            if (session == null || use == null || use.Closed || use.Owner != session.Progression) return;
+            if (session == null || use == null || use.Closed || use.Owner != session.Progression) return false;
             bool changed = false;
             foreach (var target in All)
                 if (area.Intersects(target.Bounds))
                 {
-                    bool hit = target.Cut(use);
+                    bool hit = target.Cut(use, echo);
+                    if (hit) target.ReactToStarter(starter, area.center.x);
                     session.Progression.Apply(use, new CombatEffectResult(target.Kind, target.TargetId, hit, hit ? 1 : 0));
                     changed |= hit;
                 }
-            if (!changed) return;
+            if (!changed) return false;
             AudioManager.Play(AudioManager.Sfx.Hit);
             if (finisher) ImpactFeedback.ComboFinisherHit(); else ImpactFeedback.SwordHit();
+            return true;
         }
         public static void Skill(SkillSession session, UseContext use, Bounds area)
         {
