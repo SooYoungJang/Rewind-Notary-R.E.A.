@@ -212,7 +212,8 @@ namespace RewindNotary
             Attacking = true;
             strikeDelivered = false;
             queuedAttack = false;
-            Animation.PlayAttack(0f, activeAttack.StrikeTime, activeAttack.Duration);
+            bool moving = Mathf.Abs(Body.linearVelocity.x - carrierSpeed) >= PlayerController2D.MoveSpeed * .5f;
+            Animation.BeginAttack(attackStep, Grounded, moving);
             AttackStarted?.Invoke();
         }
         private void ResetCombo()
