@@ -38,6 +38,7 @@ namespace RewindNotary
             else
             {
                 Put(EntryCleared);
+                Record.supplies.silver += SupplyPouch.EncounterReward;
                 session.Save();
                 RefreshFixtures();
             }

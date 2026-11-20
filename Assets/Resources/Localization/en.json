@@ -4118,6 +4118,90 @@
       "value": "Move ←/→ | Jump {0} | Attack(↑/↓Pogo) {1} | Skill {2} | Dash {3} | Map {4} | Esc Menu"
     },
     {
+      "key": "shop.title",
+      "value": "Ethan’s Supplies"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Bag"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Talk to Ethan"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Heading for the Velvet Tailor Quarter, Rea? Take some resonance tea and bandages. If you get hurt, use them from your bag. Don’t try to walk it off."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "Back from Velvet, Rea? Look after yourself as well as that blade. Tell me what you need for the next road."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Browse supplies"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "End conversation"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Silver coins {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Health {0}/{1}   ·   Silver coins {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Restores {0} health   ·   In bag {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} silver"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Select   ·   Enter Buy   ·   Esc Back"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Select   ·   Enter Use   ·   Esc Back"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Mint Resonance Tea"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Travel Bandage"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "You need more silver."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "Bought {0}."
+    },
+    {
+      "key": "shop.none_held",
+      "value": "You have no {0}."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "You can’t use supplies while down."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "Your health is full."
+    },
+    {
+      "key": "shop.used",
+      "value": "Used {0} · Restored {1} health"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ Move  ·  {0} Jump  ·  {1} Interact"
     },

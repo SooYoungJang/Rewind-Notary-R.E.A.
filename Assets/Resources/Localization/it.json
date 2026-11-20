@@ -4118,6 +4118,90 @@
       "value": "Muovi ←/→ | Salto {0} | Attacco {1} | Abilità {2} | Scatto {3} | Mappa {4} | Esc"
     },
     {
+      "key": "shop.title",
+      "value": "Scorte di Ethan"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Borsa"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Parla con Ethan"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Vai al quartiere dei sarti di Velluto, Rea? Porta con te tè di risonanza e bende. Se ti ferisci, usali dalla borsa. Non sforzarti di continuare."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "Di ritorno da Velluto, Rea? Abbi cura di te come della tua lama. Dimmi cosa ti serve per il prossimo tratto."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Guarda le scorte"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "Chiudi la conversazione"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Monete d’argento {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Salute {0}/{1}   ·   Monete d’argento {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Recupera {0} salute   ·   In borsa {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} argento"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Scegli   ·   Invio Compra   ·   Esc Indietro"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Scegli   ·   Invio Usa   ·   Esc Indietro"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Tè di risonanza alla menta"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Benda da viaggio"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "Non hai abbastanza argento."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "Acquisto riuscito · {0}"
+    },
+    {
+      "key": "shop.none_held",
+      "value": "Non hai {0} nella borsa."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "Non puoi usare oggetti a terra."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "La tua salute è al massimo."
+    },
+    {
+      "key": "shop.used",
+      "value": "Hai usato {0} · Recuperi {1} salute"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ Muoviti  ·  {0} Salta  ·  {1} Interagisci"
     },

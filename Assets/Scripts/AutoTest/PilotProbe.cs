@@ -196,7 +196,7 @@ namespace RewindNotary
                             var store = new SkillSaveStore(bot.Session.SaveDirectory, bot.Session.Progression.Catalog, bot.Session.ActiveSlot);
                             var saved = store.Load();
                             result.contactFloor = floor.id;
-                            result.slotReadback = store.LoadStatus == SaveLoadStatus.Loaded && saved?.schemaVersion == 4 &&
+                            result.slotReadback = store.LoadStatus == SaveLoadStatus.Loaded && saved?.schemaVersion == CoreRecord.SchemaVersion &&
                                 saved.slotId == bot.Record.slotId && saved.lastStageId == area.Room.stage &&
                                 saved.storyFlags.Contains("scene_floor:velvet:" + floor.id);
                             if (!result.slotReadback) throw new InvalidOperationException("Missing contact save in isolated slot");

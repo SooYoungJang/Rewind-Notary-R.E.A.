@@ -4118,6 +4118,90 @@
       "value": "移动 ←/→ | 跳跃 {0} | 剑术(↑/↓下劈) {1} | 技能 {2} | 冲刺 {3} | 地图 {4} | Esc"
     },
     {
+      "key": "shop.title",
+      "value": "伊森的补给店"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "背包"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · 与伊森交谈"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "要去天鹅绒裁缝街了吧，蕾娅？带上共鸣茶和绷带。受了伤就从背包里拿出来用，别硬撑着走。"
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "蕾娅，从天鹅绒裁缝街回来了？别只顾着剑，也要照顾好自己。下一段路缺什么，就跟我说。"
+    },
+    {
+      "key": "shop.browse",
+      "value": "查看商品"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "结束对话"
+    },
+    {
+      "key": "shop.balance",
+      "value": "持有银币 {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "生命 {0}/{1}   ·   持有银币 {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "恢复 {0} 生命   ·   持有 {1} 件"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} 银币"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ 选择   ·   Enter 购买   ·   Esc 返回"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ 选择   ·   Enter 使用   ·   Esc 返回"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "薄荷共鸣茶"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "旅行绷带"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "银币不足。"
+    },
+    {
+      "key": "shop.purchased",
+      "value": "已购买{0}。"
+    },
+    {
+      "key": "shop.none_held",
+      "value": "没有{0}。"
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "倒地时无法使用。"
+    },
+    {
+      "key": "shop.full_health",
+      "value": "生命值已满。"
+    },
+    {
+      "key": "shop.used",
+      "value": "已使用{0} · 恢复 {1} 生命"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ 移动  ·  {0} 跳跃  ·  {1} 互动"
     },

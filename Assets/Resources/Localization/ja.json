@@ -4118,6 +4118,90 @@
       "value": "移動 ←/→ | ジャンプ {0} | 剣撃(↑/↓) {1} | 技 {2} | ダッシュ {3} | 地図 {4} | Esc"
     },
     {
+      "key": "shop.title",
+      "value": "イーサンの補給店"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "持ち物"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · イーサンに話しかける"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "ベルベット仕立て街へ向かうそうだな、レア。共鳴茶と包帯を持っていけ。怪我をしたら持ち物から使うんだ。無理して歩くなよ。"
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "ベルベットから戻ったか、レア。剣だけじゃなく、自分の体も大事にしろ。次の旅に必要なものがあれば言ってくれ。"
+    },
+    {
+      "key": "shop.browse",
+      "value": "品物を見る"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "会話を終える"
+    },
+    {
+      "key": "shop.balance",
+      "value": "所持銀貨 {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "体力 {0}/{1}   ·   所持銀貨 {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "体力 {0} 回復   ·   所持 {1} 個"
+    },
+    {
+      "key": "shop.price",
+      "value": "銀貨 {0}"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ 選択   ·   Enter 購入   ·   Esc 戻る"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ 選択   ·   Enter 使用   ·   Esc 戻る"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "ミント共鳴茶"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "旅用の包帯"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "銀貨が足りません。"
+    },
+    {
+      "key": "shop.purchased",
+      "value": "{0}を購入しました。"
+    },
+    {
+      "key": "shop.none_held",
+      "value": "{0}を持っていません。"
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "倒れている間は使えません。"
+    },
+    {
+      "key": "shop.full_health",
+      "value": "体力は満タンです。"
+    },
+    {
+      "key": "shop.used",
+      "value": "{0}を使用 · 体力 {1} 回復"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ 移動  ·  {0} ジャンプ  ·  {1} 調べる"
     },

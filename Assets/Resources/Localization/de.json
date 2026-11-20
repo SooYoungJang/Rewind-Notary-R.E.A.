@@ -4118,6 +4118,90 @@
       "value": "Bewegen ←/→ | Sprung {0} | Angriff {1} | Technik {2} | Sprint {3} | Karte {4} | Esc"
     },
     {
+      "key": "shop.title",
+      "value": "Ethans Proviant"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Tasche"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Mit Ethan sprechen"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Du willst ins Samtviertel, Rea? Nimm Resonanztee und Verbände mit. Wenn du dich verletzt, hol sie aus deiner Tasche. Geh nicht einfach weiter."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "Zurück aus dem Samtviertel, Rea? Kümmere dich um dich selbst wie um deine Klinge. Sag mir, was du für den nächsten Weg brauchst."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Waren ansehen"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "Gespräch beenden"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Silbermünzen {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Lebenspunkte {0}/{1}   ·   Silbermünzen {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Heilt {0} LP   ·   In der Tasche {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} Silber"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Wählen   ·   Enter Kaufen   ·   Esc Zurück"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Wählen   ·   Enter Benutzen   ·   Esc Zurück"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Minz-Resonanztee"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Reiseverband"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "Du hast zu wenig Silber."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "{0} gekauft."
+    },
+    {
+      "key": "shop.none_held",
+      "value": "Du hast kein Exemplar von {0}."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "Am Boden kannst du nichts benutzen."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "Deine Lebenspunkte sind voll."
+    },
+    {
+      "key": "shop.used",
+      "value": "{0} benutzt · {1} LP geheilt"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ Bewegen  ·  {0} Springen  ·  {1} Interagieren"
     },

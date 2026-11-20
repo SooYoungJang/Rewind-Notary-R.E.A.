@@ -4118,6 +4118,90 @@
       "value": "Ход ←/→ | Прыжок {0} | Атака {1} | Навык {2} | Рывок {3} | Карта {4} | Esc"
     },
     {
+      "key": "shop.title",
+      "value": "Припасы Итана"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Сумка"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Поговорить с Итаном"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Идёшь в квартал портных, Реа? Возьми резонансный чай и бинты. Если ранят, достань их из сумки. Не иди дальше через силу."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "Вернулась из Бархатного квартала, Реа? Береги не только клинок, но и себя. Скажи, что нужно для следующего пути."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Посмотреть товары"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "Закончить разговор"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Серебряные монеты {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Здоровье {0}/{1}   ·   Серебряные монеты {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Восстанавливает {0} ОЗ   ·   В сумке {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} серебра"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Выбор   ·   Enter Купить   ·   Esc Назад"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Выбор   ·   Enter Использовать   ·   Esc Назад"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Мятный резонансный чай"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Походный бинт"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "Не хватает серебра."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "Куплено · {0}"
+    },
+    {
+      "key": "shop.none_held",
+      "value": "Нет в сумке · {0}"
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "Нельзя использовать после падения."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "Здоровье уже полное."
+    },
+    {
+      "key": "shop.used",
+      "value": "Использовано · {0} · Восстановлено {1} ОЗ"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ Движение  ·  {0} Прыжок  ·  {1} Взаимодействие"
     },

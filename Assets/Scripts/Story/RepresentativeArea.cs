@@ -255,7 +255,7 @@ namespace RewindNotary
             {
                 if (Room.id == "hub_lift" && Has("luka_lift_complete") && Distance(Room.Point("luka_freight_platform").x) <= 1.25f)
                 { shell.FinishDeparture(); return; }
-                if (TryTrialBell() || TryForgeReturn()) return;
+                if (TryTalkToEthan() || TryTrialBell() || TryForgeReturn()) return;
                 if (NearCore()) shell.OpenStoryCore();
                 else
                 {

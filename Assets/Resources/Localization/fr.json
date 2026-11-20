@@ -4118,6 +4118,90 @@
       "value": "Dépl. ←/→ | Saut {0} | Attaque {1} | Tech. {2} | Ruée {3} | Carte {4} | Échap"
     },
     {
+      "key": "shop.title",
+      "value": "Provisions d’Ethan"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Sac"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Parler à Ethan"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Tu pars au quartier des tailleurs de Velours, Rea ? Emporte du thé de résonance et des bandages. Si tu es blessée, utilise-les depuis ton sac. Ne force pas."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "De retour de Velours, Rea ? Prends autant soin de toi que de ta lame. Dis-moi ce qu’il te faut pour la suite."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Voir les provisions"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "Terminer la conversation"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Pièces d’argent {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Santé {0}/{1}   ·   Pièces d’argent {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Rend {0} PV   ·   Dans le sac {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} argent"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Choisir   ·   Entrée Acheter   ·   Échap Retour"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Choisir   ·   Entrée Utiliser   ·   Échap Retour"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Thé de résonance à la menthe"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Bandage de voyage"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "Tu n’as pas assez d’argent."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "Achat effectué · {0}"
+    },
+    {
+      "key": "shop.none_held",
+      "value": "Aucun exemplaire de {0} dans le sac."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "Tu ne peux rien utiliser à terre."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "Ta santé est au maximum."
+    },
+    {
+      "key": "shop.used",
+      "value": "{0} utilisé · {1} PV rendus"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ Se déplacer  ·  {0} Sauter  ·  {1} Interagir"
     },

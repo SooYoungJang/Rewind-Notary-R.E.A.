@@ -19,7 +19,7 @@ namespace RewindNotary
     [Serializable]
     public sealed class CoreRecord
     {
-        public const int SchemaVersion = 4;
+        public const int SchemaVersion = 5;
         public int schemaVersion = SchemaVersion;
         public string rulesVersion = SkillRules.Version;
         public string slotId = "slot-1", savedUtc;
@@ -32,6 +32,7 @@ namespace RewindNotary
         public InvestigationState investigation = new InvestigationState();
         public FinalBattleAttempt finalBattleAttempt = new FinalBattleAttempt();
         public FinalBattleAttempt lastFinalBattleAttempt;
+        public SupplyPouch supplies = new SupplyPouch();
         public string lastStageId = "prototype";
         public SkillProgress Get(string id) => skills.Find(s => s.skillId == id);
         public static CoreRecord NewGame(SkillCatalog catalog)
@@ -61,6 +62,8 @@ namespace RewindNotary
                 throw new InvalidOperationException("Incomplete story state");
             if (investigation == null) throw new InvalidOperationException("Missing investigation state");
             if (finalBattleAttempt == null) throw new InvalidOperationException("Missing final battle state");
+            if (supplies == null) throw new InvalidOperationException("Missing supply pouch");
+            supplies.Validate();
             finalBattleAttempt.Validate(); lastFinalBattleAttempt?.Validate();
             investigation.Validate();
             investigation.ValidateProgress(InvestigationCatalog.Load());

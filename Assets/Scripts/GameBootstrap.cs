@@ -15,6 +15,7 @@ namespace RewindNotary
         private CinemachineCamera virtualCamera;
         private SkillSession skills;
         public SkillSession ActiveSkills => initialized ? skills : null;
+        internal Health ActivePlayerHealth => initialized ? player?.Health : null;
         internal RepresentativeArea Area { get; private set; }
         private GameShell shell;
         private GameObject world;

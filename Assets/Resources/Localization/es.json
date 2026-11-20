@@ -4118,6 +4118,90 @@
       "value": "Mover ←/→ | Saltar {0} | Ataque {1} | Técnica {2} | Esquive {3} | Mapa {4} | Esc"
     },
     {
+      "key": "shop.title",
+      "value": "Suministros de Ethan"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Bolsa"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Hablar con Ethan"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "¿Vas al barrio de los sastres de Terciopelo, Rea? Llévate té de resonancia y vendas. Si te hieren, úsalos desde la bolsa. No sigas andando a la fuerza."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "¿Ya volviste de Terciopelo, Rea? Cuídate tanto como a tu espada. Dime qué necesitas para el próximo tramo."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Ver suministros"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "Terminar conversación"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Monedas de plata {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Salud {0}/{1}   ·   Monedas de plata {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Recupera {0} de salud   ·   En la bolsa {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} de plata"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Elegir   ·   Enter Comprar   ·   Esc Volver"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Elegir   ·   Enter Usar   ·   Esc Volver"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Té de resonancia con menta"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Venda de viaje"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "No tienes suficiente plata."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "Has comprado {0}."
+    },
+    {
+      "key": "shop.none_held",
+      "value": "No tienes {0}."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "No puedes usar objetos si has caído."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "Tu salud está al máximo."
+    },
+    {
+      "key": "shop.used",
+      "value": "Has usado {0} · Recuperas {1} de salud"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ Moverse  ·  {0} Saltar  ·  {1} Interactuar"
     },

@@ -175,6 +175,7 @@ namespace RewindNotary
             }
             if (InAttic) BuildAtticFurniture();
             else BuildRoomPoints();
+            BuildForgeMerchant();
             if (Room.Point("resonant_crucible") != null)
                 for (int i = 0; i < 5; i++) Place("crucible_" + i, 10 + i, 1).AddComponent<DestructibleTarget2D>();
 
@@ -306,6 +307,7 @@ namespace RewindNotary
         }
         private void LateUpdate()
         {
+            UpdateForgeMerchant();
             if (shell.Playing) UpdateEntryWave();
             if (shell.Playing) { UpdateActivationZones(); RefreshDoors(); }
             UpdateDistrictFixtures();
@@ -372,6 +374,7 @@ namespace RewindNotary
             if (AtticBoardApproach is StoryMark board)
                 return Loc.Get("area.travel", Loc.Get("area.target." + board.id)) + Arrow(board.x);
             if (FightNeeded()) return Loc.Get("area.bout", DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail"));
+            if (CanTalkToEthan) return EthanPrompt();
             if (FirstDepartureHint() is string next) return next;
             string hint = "";
             if (BellReady) hint += Loc.Get("area.travel", Loc.Get("area.target." + Benefactor + "_trial_bell")) + Arrow(Room.Point(Benefactor + "_trial_bell").x) + "    ";

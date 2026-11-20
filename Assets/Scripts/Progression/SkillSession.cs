@@ -45,6 +45,7 @@ namespace RewindNotary
         public string StorageError => string.Join("\n", new[] { store?.LastError, logError }).Trim();
         public bool LastSaveSucceeded => !dirty;
         internal bool AcceptsStoryActions => !closed && Progression != null;
+        internal bool AcceptsSupplies => AcceptsStoryActions && !standaloneDuel && !Progression.Record.testData;
         public int ActiveSlot => store.Slot;
         public int PreviewStage { get; private set; }
         public string EncounterId { get; set; } = EncounterRewardBridge.PrototypeEncounter;
@@ -99,6 +100,18 @@ namespace RewindNotary
             Save();
             return true; // In-memory transaction accepted. The world waits for LastSaveSucceeded.
         }
+        internal bool TrySaveSupplies(SupplyPouch updated)
+        {
+            if (!AcceptsSupplies || !LastSaveSucceeded || sceneTransaction) return false;
+            var record = Progression.Record;
+            var previous = record.supplies;
+            record.supplies = updated;
+            Save();
+            if (LastSaveSucceeded) return true;
+            record.supplies = previous;
+            return false;
+        }
+
         public void Save()
         {
             if (Progression == null || closed || sceneTransaction) return;

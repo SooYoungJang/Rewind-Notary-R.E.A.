@@ -4118,6 +4118,90 @@
       "value": "이동 ←/→ | 점프 {0} | 검술(↑/↓포고) {1} | 기술 {2} | 대시 {3} | 지도 {4} | Esc 메뉴"
     },
     {
+      "key": "shop.title",
+      "value": "에단의 보급 상점"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "소지품"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · 에단에게 말 걸기"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "벨벳 재단거리로 간다며, 레아. 공명차와 붕대를 좀 챙겨 둬라. 다치면 소지품에서 꺼내 쓰고, 상처를 참고 걷지는 말거라."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "벨벳에서 돌아왔구나, 레아. 검만 챙기지 말고 네 몸도 돌봐라. 다음 길에 필요한 게 있으면 말해."
+    },
+    {
+      "key": "shop.browse",
+      "value": "물건 보기"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "대화 끝내기"
+    },
+    {
+      "key": "shop.balance",
+      "value": "소지 은화 {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "체력 {0}/{1}   ·   소지 은화 {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "체력 {0} 회복   ·   보유 {1}개"
+    },
+    {
+      "key": "shop.price",
+      "value": "은화 {0}"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ 선택   ·   Enter 구매   ·   Esc 돌아가기"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ 선택   ·   Enter 사용   ·   Esc 돌아가기"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "박하 공명차"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "여행용 붕대"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "은화가 부족합니다."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "{0}을(를) 구입했습니다."
+    },
+    {
+      "key": "shop.none_held",
+      "value": "{0}을(를) 가지고 있지 않습니다."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "쓰러진 상태에서는 사용할 수 없습니다."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "체력이 가득 찼습니다."
+    },
+    {
+      "key": "shop.used",
+      "value": "{0} 사용 · 체력 {1} 회복"
+    },
+    {
       "key": "controls.kb_opening",
       "value": "←/→ 이동  ·  {0} 점프  ·  {1} 상호작용"
     },
