@@ -610,7 +610,6 @@ namespace RewindNotary
                 GUI.Label(new Rect(245, 285, 780, 130), failure, new GUIStyle(label) { wordWrap = true });
                 GUI.matrix = previous; return;
             }
-            if (!initialized || !shell.Playing) { GUI.matrix = previous; return; }
             if (hudCanvas != null)
             {
                 if (Area?.InAtticTutorial != true && minimap?.FullMapOpen != true && !NotaryJournalCanvas.IsOpen)
