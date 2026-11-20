@@ -152,6 +152,15 @@ namespace RewindNotary
             if (ActiveRow.DialogueOnly)
             {
                 if (!Complete()) return false;
+                var next = InAtticTutorial && !relocate && session.LastSaveSucceeded && AtticDialogueTarget == null
+                    ? script.Next(Room, session.Investigation, false)
+                    : null;
+                if (next?.sceneId == ActiveRow.sceneId)
+                {
+                    ClearCompletedRow();
+                    ActiveRow = next;
+                    return true;
+                }
             }
             else
             {
@@ -175,6 +184,11 @@ namespace RewindNotary
             }
             else Complete();
         }
+        private void ClearCompletedRow()
+        {
+            ActiveRow = null; committed = worldAction = false; actionIndex = 0;
+            RefreshFixtures();
+        }
         private string ActionToken => ActiveRow.requiredPlayerAction[actionIndex];
         private bool ReadyForAction => ActiveRow != null && worldAction && !committed && session.LastSaveSucceeded
             && shell.Playing && GameInput.CanPlay && !player.Health.Dead;
@@ -196,8 +210,7 @@ namespace RewindNotary
                 if (ActiveRow?.completionFlag == "luka_lift_complete")
                 { shell.FinishDeparture(); return; }
                 if (relocate) { Restore(); return; }
-                ActiveRow = null; committed = worldAction = false; actionIndex = 0;
-                RefreshFixtures();
+                ClearCompletedRow();
             }
             bool safeFloor = Safe && OnFixedFloor();
             if (!safeFloor) touchingCheckpoint = null;

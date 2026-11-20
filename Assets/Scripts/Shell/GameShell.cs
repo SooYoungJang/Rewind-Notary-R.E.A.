@@ -128,7 +128,11 @@ namespace RewindNotary
             {
                 if (!game.ActiveSkills.LastSaveSucceeded) { Go(ShellPage.StorySaving); return; }
                 if (openingScene.Advance(Time.unscaledDeltaTime, GameInput.SubmitDown) &&
-                    game.Area.ConfirmDialogue(false)) Resume();
+                    game.Area.ConfirmDialogue(false))
+                {
+                    if (game.Area.DialogueOpen) OpenStoryDialogue();
+                    else Resume();
+                }
                 return;
             }
             if (Playing)
