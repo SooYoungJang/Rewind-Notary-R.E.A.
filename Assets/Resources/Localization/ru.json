@@ -18,6 +18,10 @@
       "value": "Волна клинка"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "Удерж. {0}"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "Ячейки приёмов"
     },

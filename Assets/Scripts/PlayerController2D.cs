@@ -25,7 +25,10 @@ namespace RewindNotary
         internal int WallJumps { get; private set; }
         internal float AttackSteering => Time.time < kickUntil ? kickDirection : GameInput.Horizontal;
         private float attackPressed = float.NegativeInfinity;
-        private bool attackHoldBlocked;
+        internal const float WaveChargeOne = .38f, WaveChargeTwo = 1.02f;
+        private float waveChargeAt = float.NegativeInfinity;
+        private SpriteRenderer chargeGlow;
+        internal int WaveChargeLevel { get; private set; }
         internal event System.Action AttackInputAccepted;
         private SkillCastRequest? pendingCast;
         private readonly StarterCommandInput starterCommand = new StarterCommandInput();
@@ -46,13 +49,12 @@ namespace RewindNotary
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead)
             {
                 attackPressed = float.NegativeInfinity;
-                attackHoldBlocked = attackHeld;
+                ClearWaveCharge();
                 pendingCast = null;
                 pendingStarter = null;
                 starterCommand.Reset();
                 return;
             }
-            if (!attackHeld) attackHoldBlocked = false;
             axis = GameInput.Horizontal;
             var runner = motor.BenefactorSkills;
             var input = runner?.InputSnapshot;
@@ -73,11 +75,15 @@ namespace RewindNotary
             }
             else starterCommand.Reset();
             // A cast chord owns its attack modifier. Other taps survive action recovery.
-            if (!castDown && !commandDown && GameInput.AttackDown) attackPressed = Time.time;
+            if (castDown || commandDown || motor.Stunned) ClearWaveCharge();
+            else
+            {
+                if (GameInput.AttackDown) attackPressed = waveChargeAt = Time.time;
+                UpdateWaveCharge(attackHeld);
+            }
             if (motor.Stunned) { pendingCast = null; pendingStarter = null; }
             if (castDown)
             {
-                attackHoldBlocked = attackHeld;
                 attackPressed = float.NegativeInfinity;
                 jumpPressed = float.NegativeInfinity;
                 // One request only: a later press replaces it, even if the requested skill is unlearned.
@@ -115,9 +121,8 @@ namespace RewindNotary
             }
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
             bool attackBuffered = Time.time - attackPressed <= AttackBuffer;
-            bool repeatAttack = attackHeld && !attackHoldBlocked;
             if (!castDown && !pendingCast.HasValue && !pendingStarter.HasValue &&
-                (attackBuffered || repeatAttack) && motor.Attack())
+                attackBuffered && motor.Attack())
             {
                 attackPressed = float.NegativeInfinity;
                 if (attackBuffered) AttackInputAccepted?.Invoke();
@@ -136,8 +141,39 @@ namespace RewindNotary
             if (facing == 0) facing = axis == 0f ? motor.Facing : (int)Mathf.Sign(axis);
             pendingStarter = (index, facing, command, Time.time + StarterBuffer);
             pendingCast = null;
-            attackHoldBlocked = GameInput.AttackHeld;
             attackPressed = jumpPressed = float.NegativeInfinity;
+        }
+
+        private void UpdateWaveCharge(bool held)
+        {
+            if (float.IsNegativeInfinity(waveChargeAt)) return;
+            float elapsed = Time.time - waveChargeAt;
+            int level = elapsed >= WaveChargeTwo ? 2 : elapsed >= WaveChargeOne ? 1 : 0;
+            if (!held)
+            {
+                ClearWaveCharge();
+                if (level == 0) return;
+                attackPressed = float.NegativeInfinity;
+                motor.FireChargedWave(level, axis);
+                return;
+            }
+
+            if (level > WaveChargeLevel)
+            {
+                attackPressed = float.NegativeInfinity;
+                motor.EndSwingRecoveryForCharge();
+            }
+            WaveChargeLevel = level;
+            if (elapsed >= .14f)
+                chargeGlow = StarterSlashVisual.ChargeAura(chargeGlow, transform, level, elapsed);
+        }
+
+        private void ClearWaveCharge()
+        {
+            waveChargeAt = float.NegativeInfinity;
+            WaveChargeLevel = 0;
+            if (chargeGlow != null) Destroy(chargeGlow.gameObject);
+            chargeGlow = null;
         }
         private int WallSide(out Collider2D wall)
         {
@@ -221,7 +257,7 @@ namespace RewindNotary
             motor?.Animation?.SetWallPose(0);
             axis = 0f; cutJump = false;
             attackPressed = jumpPressed = lastGrounded = float.NegativeInfinity;
-            attackHoldBlocked = GameInput.AttackHeld;
+            ClearWaveCharge();
         }
         public void ClearInput()
         {

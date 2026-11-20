@@ -18,6 +18,10 @@
       "value": "Klingenwelle"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "{0} halten"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "Technikplätze"
     },

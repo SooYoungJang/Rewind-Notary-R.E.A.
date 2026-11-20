@@ -18,6 +18,10 @@
       "value": "剑气"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "长按 {0}"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "招式槽"
     },

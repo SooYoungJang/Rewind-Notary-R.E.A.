@@ -18,6 +18,10 @@
       "value": "Onda di lama"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "Tieni {0}"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "Slot tecniche"
     },

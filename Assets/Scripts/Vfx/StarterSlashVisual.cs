@@ -4,7 +4,7 @@ namespace RewindNotary
 {
     internal sealed class StarterSlashVisual : MonoBehaviour
     {
-        private static Sprite[] strikes, accents;
+        private static Sprite[] strikes, accents, charged;
         private static Material glow;
         private static readonly Color[] Colors =
         {
@@ -91,14 +91,49 @@ namespace RewindNotary
             }
         }
 
-        internal static void Wake(Vector2 position, int direction)
+        internal static SpriteRenderer ChargedBlade(int level, Vector2 position, int direction, int crest)
         {
-            var after = Create(QuickSkills.BladeWave, position, new Vector2(1.39f, 1.85f), direction);
-            if (after != null)
+            charged ??= LoadAtlas("GameArt/sprites/rea-charged-blades");
+            var size = level == 2 ? new Vector2(3.3f, 3.72f) : new Vector2(1.95f, 2.12f);
+            var blade = charged == null ? Create(QuickSkills.BladeWave, position, size, direction) :
+                Layer(charged[level - 1], position, size, direction, 15);
+            if (blade != null)
             {
-                after.sortingOrder = 14;
-                Animate(after, new Color(.38f, .74f, 1f, .36f), .14f, 1f, .65f);
+                blade.gameObject.name = "Rea charged blade " + level + " / " + (crest + 1);
+                if (crest > 0) blade.color = new Color(.72f, .92f, 1f, .85f);
             }
+            return blade;
+        }
+
+        internal static void ChargedWake(int level, Vector2 position, int direction)
+        {
+            var after = ChargedBlade(level, position, direction, 0);
+            if (after == null) return;
+            after.gameObject.name = "Rea blade wake";
+            after.sortingOrder = 14;
+            var color = level == 2 ? new Color(.82f, .66f, 1f, .31f) : new Color(.40f, .92f, 1f, .28f);
+            Animate(after, color, .17f, .9f, .56f);
+        }
+
+        internal static SpriteRenderer ChargeAura(SpriteRenderer aura, Transform wielder, int level, float elapsed)
+        {
+            charged ??= LoadAtlas("GameArt/sprites/rea-charged-blades");
+            if (charged == null) return aura;
+            var sprite = charged[level == 2 ? 3 : 2];
+            if (aura == null)
+            {
+                aura = Layer(sprite, wielder.position, Vector2.one, 1, 9);
+                aura.gameObject.name = "Rea charging glow";
+                aura.transform.SetParent(wielder, false);
+                aura.transform.localPosition = Vector3.up * .89f;
+            }
+            aura.sprite = sprite;
+            var size = sprite.bounds.size;
+            float width = (level == 2 ? 3.1f : 2.35f) * (1f + .065f * Mathf.Sin(elapsed * 13f));
+            aura.transform.localScale = new Vector3(width / size.x, width * .82f / size.y, 1f);
+            aura.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(elapsed * 7f) * 9f);
+            aura.color = new Color(1f, 1f, 1f, level == 0 ? .27f : level == 1 ? .65f : .92f);
+            return aura;
         }
 
         private static void EmitSparks(GameObject source, Vector3 at, Color color, int index, int facing, int count)

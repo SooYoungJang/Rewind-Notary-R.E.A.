@@ -17,8 +17,7 @@ namespace RewindNotary
             facing = direction == KeyCode.LeftArrow ? -1 : direction == KeyCode.RightArrow ? 1 : 0;
             if (now - previousAt <= SequenceSeconds)
             {
-                if (facing != 0 && previous == KeyCode.DownArrow) ready = QuickSkills.BladeWave;
-                else if (facing != 0 && previous == direction) ready = QuickSkills.Thrust;
+                if (facing != 0 && previous == direction) ready = QuickSkills.Thrust;
                 else if (previous == KeyCode.DownArrow && direction == KeyCode.UpArrow) ready = QuickSkills.Rising;
                 else if (previous == KeyCode.UpArrow && direction == KeyCode.DownArrow) ready = QuickSkills.Sweep;
             }

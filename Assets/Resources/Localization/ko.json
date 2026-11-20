@@ -18,6 +18,10 @@
       "value": "검기"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "{0} 길게"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "스킬 슬롯"
     },

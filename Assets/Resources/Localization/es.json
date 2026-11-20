@@ -18,6 +18,10 @@
       "value": "Onda de filo"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "Mantén {0}"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "Ranuras de técnicas"
     },

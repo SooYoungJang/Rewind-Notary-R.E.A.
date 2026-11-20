@@ -63,9 +63,9 @@ namespace RewindNotary
         {
             if (State.RearmSwitch()) visual.enabled = true;
         }
-        public bool Cut(UseContext use, bool echo = false, int comboStep = 0)
+        public bool Cut(UseContext use, int comboStep = 0, int pulse = 0)
         {
-            if (!State.Cut(use, Time.time, echo, comboStep)) return false;
+            if (!State.Cut(use, Time.time, comboStep, pulse)) return false;
             FinishAttack(Time.time);
             if (State.Cleared) visual.enabled = false;
             return true;

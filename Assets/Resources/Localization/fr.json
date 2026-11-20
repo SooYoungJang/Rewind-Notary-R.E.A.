@@ -18,6 +18,10 @@
       "value": "Onde de lame"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "Maintenir {0}"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "Emplacements de techniques"
     },

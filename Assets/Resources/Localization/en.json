@@ -18,6 +18,10 @@
       "value": "Blade Wave"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "Hold {0}"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "Skill slots"
     },

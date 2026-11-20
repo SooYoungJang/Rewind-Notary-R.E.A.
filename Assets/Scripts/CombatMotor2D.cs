@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RewindNotary
@@ -380,7 +381,8 @@ namespace RewindNotary
             }
         }
 
-        private bool ApplySwordBounds(Bounds blade, UseContext use, int amount, float knockback, int step, int starter, bool echo = false)
+        private bool ApplySwordBounds(Bounds blade, UseContext use, int amount, float knockback, int step,
+            int starter, int pulse = 0, HashSet<int> visited = null)
         {
             bool contact = false;
             bool pogo = starter < 0 && AttackDirectionY == -1;
@@ -393,9 +395,9 @@ namespace RewindNotary
                             contact = true;
                 }
                 bool juggle = starter < 0 && aerialSwing && !Grounded && AttackDirectionY >= 0;
-                contact |= WaveCombatTargets.Sword(Skills, use, blade, step, starter, echo, juggle);
+                contact |= WaveCombatTargets.Sword(Skills, use, blade, step, starter, juggle, pulse, visited);
                 foreach (var destructible in DestructibleTarget2D.All)
-                    if (blade.Intersects(destructible.Bounds))
+                    if (blade.Intersects(destructible.Bounds) && (visited == null || visited.Add(destructible.GetInstanceID())))
                     {
                         bool hitOk = destructible.Hit(amount);
                         contact |= hitOk || pogo;
@@ -404,7 +406,7 @@ namespace RewindNotary
                             destructible.TargetId, hitOk, amount));
                     }
                 foreach (var surface in StitchSurface2D.All)
-                    if (blade.Intersects(surface.Bounds))
+                    if (pulse <= 1 && blade.Intersects(surface.Bounds) && (visited == null || visited.Add(surface.GetInstanceID())))
                     {
                         bool cut = surface.Cut(false);
                         contact |= cut || pogo;
@@ -412,11 +414,11 @@ namespace RewindNotary
                             surface.TargetId, cut));
                     }
             }
-            if (Health.IsPlayer) BasicStrikeDelivered?.Invoke(blade, amount);
+            if (Health.IsPlayer && pulse <= 1) BasicStrikeDelivered?.Invoke(blade, amount);
             if (opponent != null && opponent.gameObject.activeInHierarchy && !opponent.Dead)
             {
                 var target = opponent.GetComponent<Collider2D>();
-                if (target != null && blade.Intersects(target.bounds)
+                if (target != null && blade.Intersects(target.bounds) && (visited == null || visited.Add(opponent.GetInstanceID()))
                     && (Health.IsPlayer
                         ? opponent.HitBySword(amount, starter == QuickSkills.BladeWave ? blade.center : transform.position,
                             step > 0 && step < ComboLimit ? knockback * .45f : knockback)

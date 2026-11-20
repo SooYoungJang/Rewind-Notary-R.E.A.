@@ -18,6 +18,10 @@
       "value": "剣気"
     },
     {
+      "key": "quick_skill.wave_charge",
+      "value": "{0} 長押し"
+    },
+    {
       "key": "quick_skill.menu",
       "value": "技スロット"
     },

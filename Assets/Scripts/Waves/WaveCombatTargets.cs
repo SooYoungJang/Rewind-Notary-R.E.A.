@@ -9,14 +9,14 @@ namespace RewindNotary
     {
         public static readonly List<WaveTarget2D> All = new List<WaveTarget2D>();
         public static bool Sword(SkillSession session, UseContext use, Bounds area, int comboStep,
-            int starter, bool echo, bool juggle)
+            int starter, bool juggle, int pulse, HashSet<int> visited)
         {
             if (session == null || use == null || use.Closed || use.Owner != session.Progression) return false;
             bool changed = false;
             foreach (var target in All)
-                if (area.Intersects(target.Bounds))
+                if (area.Intersects(target.Bounds) && (visited == null || visited.Add(target.GetInstanceID())))
                 {
-                    bool hit = target.Cut(use, echo, comboStep);
+                    bool hit = target.Cut(use, comboStep, pulse);
                     if (hit) target.ReactToSword(starter, area.center.x, comboStep, juggle);
                     session.Progression.Apply(use, new CombatEffectResult(target.Kind, target.TargetId, hit, hit ? 1 : 0));
                     changed |= hit;

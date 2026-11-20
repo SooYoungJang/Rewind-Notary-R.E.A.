@@ -24,12 +24,12 @@ namespace RewindNotary
 
         internal static string Command(int index)
         {
+            if (index == BladeWave) return Loc.Get("quick_skill.wave_charge", GameInput.AttackKey);
             string sequence = index switch
             {
                 Thrust => "→ →",
                 Rising => "↓ ↑",
                 Sweep => "↑ ↓",
-                BladeWave => "↓ →",
                 _ => ""
             };
             return sequence.Length == 0 ? "" : sequence + " + " + GameInput.AttackKey;

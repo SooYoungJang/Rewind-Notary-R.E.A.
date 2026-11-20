@@ -16,8 +16,7 @@ namespace RewindNotary
         private readonly bool skillOnly;
         private int hits;
         private bool prepared;
-        private bool echoed;
-        private int lastComboStep;
+        private int lastComboStep, lastWavePulse;
         private float openUntil = float.NegativeInfinity;
         public WaveTargetState(WaveArchetype kind, WaveSpawn spawn, int setupHits = 1, bool skillOnly = false)
         {
@@ -54,20 +53,19 @@ namespace RewindNotary
             openUntil = now + archetype.openingSeconds;
             return true;
         }
-        public bool Cut(UseContext use, float now, bool echo = false, int comboStep = 0)
+        public bool Cut(UseContext use, float now, int comboStep = 0, int pulse = 0)
         {
             if (Cleared || use == null || use.Closed || use.SkillId != SkillRules.BasicSword || !Ready(now)) return false;
             if (LastSword == use)
             {
-                if (!TakesComboHits || (echo ? echoed : comboStep <= lastComboStep)) return false;
-                if (echo) echoed = true;
+                if (!TakesComboHits || (pulse > 0 ? pulse <= lastWavePulse : comboStep <= lastComboStep)) return false;
             }
             else
             {
-                if (LastSword != null && !LastSword.Closed) return false;
-                echoed = false;
+                if (!TakesComboHits && LastSword != null && !LastSword.Closed) return false;
             }
             lastComboStep = comboStep;
+            lastWavePulse = pulse;
             Remaining--;
             LastSword = use;
             CrossLoopFinish = NeedsSetup && prepared;

@@ -6,14 +6,25 @@ namespace RewindNotary
 {
     public sealed partial class CombatMotor2D
     {
-        private const float WaveSpeed = 14f, WaveRange = 7f, EchoDelay = .42f;
-        private static readonly Vector2 WaveSize = new Vector2(.56f, 1.05f);
+        private const float WaveSpeed = 17f, CrestInterval = .13f, WaveLifetime = 3f;
+        private static readonly Vector2 LightWaveSize = new Vector2(.64f, 1.1f);
+        private static readonly Vector2 HeavyWaveSize = new Vector2(.84f, 2.03f);
         private int starterFacing;
         private bool swingConnected;
+
+        private sealed class WaveCrest
+        {
+            internal readonly HashSet<int> Visited = new HashSet<int>();
+            internal Vector2 Position;
+            internal SpriteRenderer Visual;
+            internal bool Started, Done;
+            internal float NextWake;
+        }
+
         private sealed class WaveCast
         {
             internal UseContext Use;
-            internal SpriteRenderer Visual;
+            internal WaveCrest[] Crests;
             internal Coroutine Flight;
         }
         private readonly List<WaveCast> starterWaves = new List<WaveCast>();
@@ -25,64 +36,125 @@ namespace RewindNotary
                 SkillStroke.Afterimage(Animation.Renderer, .20f);
         }
 
-        private void ReleaseStarterWave()
+        internal void EndSwingRecoveryForCharge()
         {
-            var wave = new WaveCast { Use = activeUse };
-            activeUse = chainUse = null;
-            Vector2 origin = Body.position + Vector2.up * StarterAttacks[QuickSkills.BladeWave].centerY;
-            wave.Visual = StarterSlashVisual.Create(QuickSkills.BladeWave, origin, new Vector2(2.15f, 2.35f), starterFacing);
-            if (wave.Visual != null) wave.Visual.gameObject.name = "Rea travelling sword wave";
-            StarterSlashVisual.Burst(QuickSkills.BladeWave, origin, new Vector2(1.4f, 1.6f), starterFacing, false);
-            SkillStroke.Afterimage(Animation.Renderer, .19f);
-            starterWaves.Add(wave);
-            wave.Flight = StartCoroutine(FlyStarterWave(wave, origin, starterFacing, strikeDamage));
+            if (Attacking && activeStarter < 0 && strikeDelivered) CancelAttack();
         }
 
-        private IEnumerator FlyStarterWave(WaveCast wave, Vector2 position, int direction, int amount)
+        internal void FireChargedWave(int level, float axis)
         {
-            float remaining = WaveRange, nextWake = Time.time;
-            while (remaining > 0f)
+            if (Health.Dead || Stunned || Skills == null || Temporal?.Frozen == true ||
+                BenefactorSkills?.BlocksActions == true) return;
+            bool defending = Defense?.BlocksActions == true;
+            if (defending && Defense.State.Phase != DefensePhase.Dash) return;
+
+            var use = Skills.Progression.BeginUse(SkillRules.BasicSword, Skills.PreviewStage);
+            if (use == null) return;
+            int direction = Mathf.Abs(axis) <= .01f ? Facing : (int)Mathf.Sign(axis);
+            int amount;
+            if (!defending && !Attacking)
+            {
+                ResetCombo();
+                activeStarter = QuickSkills.BladeWave;
+                starterFacing = direction;
+                Face(direction);
+                aerialSwing = false;
+                attackStep = AttackDirectionY = 0;
+                var attack = StarterAttacks[QuickSkills.BladeWave];
+                StartSwing(attack.swing, attack.art, false);
+                strikeDelivered = true;
+                amount = strikeDamage;
+            }
+            else
+            {
+                float counter = Defense != null ? Defense.State.ConsumeCounter(Time.time) : 1f;
+                amount = FinaleCombat.Scale(Skills, Mathf.CeilToInt(2 * damage * counter));
+            }
+            LaunchWave(use, direction, level, level == 2 ? Mathf.CeilToInt(amount * 1.5f) : amount);
+        }
+
+        private void ReleaseStarterWave()
+        {
+            var use = activeUse;
+            activeUse = chainUse = null;
+            if (use != null) LaunchWave(use, starterFacing, 1, strikeDamage);
+        }
+
+        private void LaunchWave(UseContext use, int direction, int level, int amount)
+        {
+            var wave = new WaveCast { Use = use, Crests = new WaveCrest[level == 2 ? 3 : 1] };
+            Vector2 origin = Body.position + Vector2.up * (level == 2 ? 1.24f : 1.08f);
+            for (int i = 0; i < wave.Crests.Length; i++) wave.Crests[i] = new WaveCrest { Position = origin };
+            StarterSlashVisual.Burst(QuickSkills.BladeWave, origin, Vector2.one * (level == 2 ? 2.35f : 1.45f), direction, false);
+            SkillStroke.Afterimage(Animation.Renderer, .19f);
+            starterWaves.Add(wave);
+            wave.Flight = StartCoroutine(FlyWave(wave, origin, direction, level, amount));
+        }
+
+        private IEnumerator FlyWave(WaveCast wave, Vector2 origin, int direction, int level, int amount)
+        {
+            var camera = Camera.main;
+            float distance = ViewEdge(camera, origin, direction);
+            Vector2 size = level == 2 ? HeavyWaveSize : LightWaveSize;
+            float age = 0f;
+            int left = wave.Crests.Length;
+            while (left > 0 && age < WaveLifetime)
             {
                 yield return null;
                 if (!GameInput.GameplayEnabled || Time.deltaTime <= 0f) continue;
-                float distance = Mathf.Min(remaining, Time.deltaTime * WaveSpeed);
-                Vector2 heading = Vector2.right * direction;
-                var terrain = Physics2D.BoxCast(position, WaveSize, 0f, heading, distance, 1 << LevelBuilder.GroundLayer);
-                float travel = terrain.collider == null ? distance : Mathf.Max(0f, terrain.distance - .02f);
-                Vector2 next = position + heading * travel;
-                if (wave.Visual != null) wave.Visual.transform.position = next;
-                if (Time.time >= nextWake)
+                age += Time.deltaTime;
+                distance = Mathf.Max(distance, ViewEdge(camera, origin, direction));
+                for (int i = 0; i < wave.Crests.Length; i++)
                 {
-                    StarterSlashVisual.Wake(position, direction);
-                    nextWake = Time.time + .062f;
+                    var crest = wave.Crests[i];
+                    if (crest.Done || age < i * CrestInterval) continue;
+                    if (!crest.Started)
+                    {
+                        crest.Started = true;
+                        crest.Visual = StarterSlashVisual.ChargedBlade(level, origin, direction, i);
+                    }
+                    if (!AdvanceCrest(wave.Use, crest, size, level, amount, i + 1, direction,
+                        distance - (crest.Position.x - origin.x) * direction)) continue;
+                    crest.Done = true;
+                    left--;
+                    if (crest.Visual != null) Destroy(crest.Visual.gameObject);
                 }
-                var swept = new Bounds((position + next) * .5f, new Vector3(WaveSize.x + travel, WaveSize.y, 2f));
-                if (ApplySwordBounds(swept, wave.Use, amount, .65f, 0, QuickSkills.BladeWave))
-                {
-                    StarterSlashVisual.Burst(QuickSkills.BladeWave, next, Vector2.one * 1.65f, direction, true);
-                    yield return WaveEcho(wave, next, direction, amount);
-                    break;
-                }
-                if (terrain.collider != null)
-                {
-                    StarterSlashVisual.Burst(QuickSkills.BladeWave, next, Vector2.one * 1.15f, direction, false);
-                    break;
-                }
-                position = next;
-                remaining -= distance;
             }
             starterWaves.Remove(wave);
             ClearStarterWave(wave);
         }
 
-        private IEnumerator WaveEcho(WaveCast wave, Vector2 position, int direction, int amount)
+        private bool AdvanceCrest(UseContext use, WaveCrest crest, Vector2 size, int level, int amount,
+            int pulse, int direction, float remaining)
         {
-            if (wave.Visual != null)
-                wave.Visual.color = new Color(.55f, .8f, 1f, .28f);
-            yield return new WaitForSeconds(EchoDelay);
-            bool hit = ApplySwordBounds(new Bounds(position, new Vector3(1.05f, 1.35f, 2f)),
-                wave.Use, Mathf.Max(1, amount / 2), .35f, 0, QuickSkills.BladeWave, echo: true);
-            StarterSlashVisual.Burst(QuickSkills.BladeWave, position, Vector2.one * 2.2f, -direction, hit);
+            if (remaining <= 0f) return true;
+            float distance = Mathf.Min(remaining, Time.deltaTime * WaveSpeed);
+            Vector2 heading = Vector2.right * direction;
+            var terrain = Physics2D.BoxCast(crest.Position, size, 0f, heading, distance, 1 << LevelBuilder.GroundLayer);
+            float travel = terrain.collider == null ? distance : Mathf.Max(0f, terrain.distance - .02f);
+            Vector2 next = crest.Position + heading * travel;
+            if (crest.Visual != null) crest.Visual.transform.position = next;
+            if (Time.time >= crest.NextWake)
+            {
+                StarterSlashVisual.ChargedWake(level, crest.Position, direction);
+                crest.NextWake = Time.time + .085f;
+            }
+
+            var swept = new Bounds((crest.Position + next) * .5f, new Vector3(size.x + travel, size.y, 2f));
+            if (ApplySwordBounds(swept, use, amount, .16f, 0, QuickSkills.BladeWave, pulse, crest.Visited))
+                StarterSlashVisual.Burst(QuickSkills.BladeWave, next, Vector2.one * (level == 2 ? 1.9f : 1.35f), direction, true);
+            else if (terrain.collider != null && pulse == 1)
+                StarterSlashVisual.Burst(QuickSkills.BladeWave, next, Vector2.one * 1.05f, direction, false);
+            crest.Position = next;
+            return terrain.collider != null;
+        }
+
+        private static float ViewEdge(Camera camera, Vector2 origin, int direction)
+        {
+            if (camera == null) return 14f;
+            float depth = camera.WorldToViewportPoint(origin).z;
+            float edge = camera.ViewportToWorldPoint(new Vector3(direction > 0 ? 1f : 0f, .5f, depth)).x;
+            return Mathf.Max(1.4f, (edge - origin.x) * direction + .95f);
         }
 
         private void CancelStarterWaves()
@@ -97,9 +169,9 @@ namespace RewindNotary
 
         private void ClearStarterWave(WaveCast wave)
         {
-            if (wave.Visual != null) Destroy(wave.Visual.gameObject);
+            foreach (var crest in wave.Crests)
+                if (crest.Visual != null) Destroy(crest.Visual.gameObject);
             Skills?.Progression.EndUse(wave.Use);
         }
-
     }
 }

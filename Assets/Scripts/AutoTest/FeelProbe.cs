@@ -128,10 +128,10 @@ namespace RewindNotary
                 case Phase.HoldAttack:
                     if (Time.time - holdStarted > 3f)
                     {
-                        Abort("Holding Z did not complete and release two full starting combos");
+                        Abort("Tapping Z did not complete the four-hit starting combo");
                         break;
                     }
-                    if (heldSwings < 4) keys.Hold(KeyCode.Z);
+                    if (heldSwings < 4) keys.Tap(KeyCode.Z);
                     else if (!player.Attacking)
                     {
                         player.AttackStarted -= OnHeldAttackStarted;
@@ -201,12 +201,12 @@ namespace RewindNotary
 
         private void OnHeldAttackStarted()
         {
-            int expectedStep = heldSwings % 2 + 1;
+            int expectedStep = heldSwings + 1;
             var sprite = player.Animation.GetComponent<SpriteRenderer>().sprite;
             if (heldSwings == 0) firstHeldPose = sprite;
             heldSwings++;
             if (heldSwings > 4 || player.ComboStep != expectedStep || (sprite == firstHeldPose) != (expectedStep == 1))
-                Abort("Holding Z repeated the wrong swing or reused the first pose for the second hit");
+                Abort("Tapping Z played the wrong swing or reused the first pose");
         }
 
         private bool FacingLeft => player.Facing < 0 && player.Animation.GetComponent<SpriteRenderer>().flipX;
