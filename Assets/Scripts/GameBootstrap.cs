@@ -201,6 +201,7 @@ namespace RewindNotary
             Child("Parallax").AddComponent<ParallaxBackground>().Initialize(camera, Area);
             if (camera.GetComponent<AtmospherePostEffect>() == null) camera.gameObject.AddComponent<AtmospherePostEffect>();
             Child("Atmosphere").AddComponent<DistrictAtmosphere2D>().Initialize(camera, Area, finale ? "cassel" : null);
+            Child("Room architecture").AddComponent<RoomArchitectureDecorator>().Initialize(camera, Area, world.transform, finale ? "cassel" : null);
             Child("Stage2 visual director").AddComponent<Stage2VisualDirector>().Initialize(player);
             if (record.lastStageId == "prototype")
                 Child("Investigation points").AddComponent<InvestigationWorld>().Initialize(player, skills, shell, hudFont);

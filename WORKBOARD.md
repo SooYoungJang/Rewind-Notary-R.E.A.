@@ -28,13 +28,13 @@
 ## 검증 중
 
 - **AAA 1단계: UI/HUD·초상화 대화창 개편 + 9개 언어 폰트 임베드 + 2D 분위기·파티클·포스트 VFX** — 담당 Gemini. 커밋 `0ce3e51`, 빌드 `stage1-20261120c` 자동 플레이 검증 9/9 전면 통과(오류 0, 60fps 유지) 및 바탕화면(`Desktop/ReaPlaytest`) 교체 완료. 분석 문서: `discussion/aaa-gap-analysis-20261120.md`.
-- **AAA 2단계 (코드·모션·성장 가시화·드롭인 비주얼 프레임워크)** — 담당 Gemini. 빌드 `stage2-20261120a`, 실기 자동 플레이(NewSlot·Attic·Velvet·Mikhail·Silver) 오류 0·60.0fps 통과 및 바탕화면(`Desktop/ReaPlaytest`) 교체 완료. 범위: 레아 검 4단 오라 + 은인 5인 의상 흔적 + 드롭인 시트 로더(`ReaGrowthVisual2D`), 점프/착지 스쿼시·4단 콤보 연출·대시 잔상·패리 방패 링(`ReaMotionPolish2D`), 보스 6인 고유 비주얼·드롭인 시트 로더(`BossVisualIdentity2D`), 일반 적 20종 프로시저럴 모션·상태 링·접촉 그림자·드롭인 시트 로더(`EnemyMotionPolish2D`, `Stage2VisualDirector`).
+- **AAA 2단계 (코드·모션·성장 가시화·드롭인 비주얼 프레임워크)** — 담당 Gemini. 커밋 `a8497bb`, 빌드 `stage2-20261120a`, 실기 자동 플레이(NewSlot·Attic·Velvet·Mikhail·Silver) 오류 0·60.0fps 통과 및 바탕화면(`Desktop/ReaPlaytest`) 교체 완료. 범위: 레아 검 4단 오라 + 은인 5인 의상 흔적 + 드롭인 시트 로더(`ReaGrowthVisual2D`), 점프/착지 스쿼시·4단 콤보 연출·대시 잔상·패리 방패 링(`ReaMotionPolish2D`), 보스 6인 고유 비주얼·드롭인 시트 로더(`BossVisualIdentity2D`), 일반 적 20종 프로시저럴 모션·상태 링·접촉 그림자·드롭인 시트 로더(`EnemyMotionPolish2D`, `Stage2VisualDirector`).
+- **AAA 3단계 (공간 일체화·지형 건축 장식·문 포털 글로우·전경 패럴랙스·`SkillStroke` 광선화·카셀 심판석 보강)** — 담당 Gemini. 빌드 `stage3-20261120b`, 실기 자동 플레이 오류 0·60.0fps 통과 및 바탕화면(`Desktop/ReaPlaytest`) 교체 완료. 범위: `RoomArchitectureDecorator`(발판 상단 림·하부 그림자·플러시 끝단 캡·지지 코벨·벽타기 황금 그립·4층 전경 패럴랙스 실루엣), `RoomDoorView`(부드러운 문 배경 그림자·문지방 발광·열림 포털 글로우), `SkillStroke`(구형 단색 직선 → 가산 광선 교체), `CasselArena`(심판석 기둥·5은인 거울 금테).
 
 ## 대기 큐
 
 - **AAA 이미지 에셋 제작 (NPC 초상화 10장 + 보스 6인 시트 + 일반 적 애니메이션 시트 20종 + 레아 성장 시트)** — 담당 **Astra (Codex)** (사용자 지시 2026-11-20: 이미지 생성 작업 전담). 지시서·드롭인 규격: `discussion/job-astra-aaa-art-assets.md`. 규격에 맞춰 PNG만 배치하면 1·2단계 코드에 자동 반영된다.
 - **사운드 패스** — 담당 Dots. 지시서: discussion/job-dots-sound-pass.txt (OST 18곡 파일도 저장소에 함께 들어갔다). 범위: OST 18곡 인게임 연결, 구역별·상황별 곡 운용, 환경음·SFX 보강. 상호 검증은 Astra.
-- **AAA 3단계: 지형 타일셋·공간 일체화 & 거점·최종 구간 비주얼 보강** — 담당 Astra·Gemini(지시서 미작성). 발판 끝단 캡·지지대·문 프레임·전경 실루엣·배경 명도 분리, 거점·최종 구간 보강.
 - **AAA 4단계: 시네마틱 연출·구역 지도(미니맵)·키 리매핑·디스플레이 설정** — 담당 미정. 보스 인트로·피니시 슬로우·카메라 피크, 56방 미니맵, 키 리매핑·해상도/창모드·컨트롤러 글리프.
 - **출시 행정** — 담당 Muse. 사용자 결정 대기: 목표 출시일, 목표 등급, Epic 동시 출시 여부. 체크리스트: 18-release-checklist.md
 
