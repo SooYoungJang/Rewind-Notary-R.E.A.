@@ -47,7 +47,7 @@ namespace RewindNotary
                             !Area.ChandelierShaded) return false;
                         boarding = false;
                     }
-                    keys.Hold(eastbound ? KeyCode.D : KeyCode.A);
+                    keys.Hold(eastbound ? KeyCode.RightArrow : KeyCode.LeftArrow);
                     return false;
                 }
             }
@@ -72,7 +72,7 @@ namespace RewindNotary
                 return;
             }
             ClearStep();
-            if (ReserveWaveParry(target)) return;
+            if (ReserveWaveDodge(target)) return;
             if (target.State.NeedsSetup && !target.State.Ready(Time.time))
             {
                 if (Aim(at.x) && Player.Grounded) keys.Cast(0, 1);

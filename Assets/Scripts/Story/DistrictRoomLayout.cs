@@ -32,6 +32,7 @@ namespace RewindNotary
             if (!BellReady) return false;
             var bell = Room.Point(Benefactor + "_trial_bell");
             if (Distance(bell.x) > 1.25f || !string.IsNullOrEmpty(bell.surface) && !StandingOn(bell.surface)) return false;
+            if (!InteractAt(bell)) return true;
             var arena = Array.Find(script.rooms, r => r.stage == Room.stage && r.boutHealth > 0);
             if (!session.CommitScene(() =>
             {
@@ -139,7 +140,7 @@ namespace RewindNotary
                 !(Has("gabriel_signals_agreed") || fieldTrial != null)) return;
             var trial = DistrictTrial;
             string signal = fieldTrial != null ? fieldTrial.PatternLabel :
-                mikhailBout != null ? mikhailBout.PatternLabel : trial.patterns[0].Label;
+                storyBout != null ? storyBout.PatternLabel : trial.patterns[0].Label;
             var screen = Camera.main.WorldToScreenPoint(opponent.transform.position + Vector3.up * 2.7f);
             var position = GUI.matrix.inverse.MultiplyPoint3x4(new Vector3(screen.x, Screen.height - screen.y, 0));
             GUI.Box(new Rect(position.x - 160, position.y - 14, 320, 30), signal);
@@ -303,7 +304,7 @@ namespace RewindNotary
                 else
                 {
                     var door = Array.Find(Room.exits, e => e.room == ActiveRow.alternateRoom);
-                    if (door != null && Gate(door) && door.InReach(player.Body.position) && InspectPressed)
+                    if (door != null && Gate(door) && door.InReach(player.Body.position) && InteractAt(door))
                     {
                         Put("crossed:" + ActiveRow.completionFlag);
                         Travel(script.Room(door.room), door.destinationFloor);

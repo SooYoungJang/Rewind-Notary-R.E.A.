@@ -58,12 +58,13 @@ namespace RewindNotary
             }
             return go;
         }
-        private void PlaceMarker(string id, float x, float floorY, Sprite sprite, float height)
+        private GameObject PlaceMarker(string id, float x, float floorY, Sprite sprite, float height)
         {
             var view = Place(id, x, floorY + height * .5f).AddComponent<SpriteRenderer>();
             view.sprite = sprite;
             view.transform.localScale = Vector3.one * (height / sprite.bounds.size.y);
             view.sortingOrder = 2;
+            return view.gameObject;
         }
 
         private bool OnFixedFloor()
@@ -123,7 +124,10 @@ namespace RewindNotary
             else if (Room.Surface("intake_quay") != null)
                 DrawWaterway();
             else if (Room.eastBoundary > 0)
-                Block("floor", (Room.eastBoundary - 4) / 2, -1, Room.eastBoundary + 4, 2, stone, true);
+            {
+                var floor = Block("floor", (Room.eastBoundary - 4) / 2, -1, Room.eastBoundary + 4, 2, stone, true);
+                if (InAttic) floor.GetComponent<SpriteRenderer>().enabled = false;
+            }
             else Block("floor", HasBridge ? 14 : InFieldTrial ? 29 : 21, -1, HasBridge ? 36 : InFieldTrial ? 66 : 50, 2, stone, true);
             if (HasBridge)
             {
@@ -134,9 +138,14 @@ namespace RewindNotary
                 Room.stage == "velvet" && Room.cameraBounds.y + Room.cameraBounds.height >= 10;
             float wallHeight = tall ? Room.cameraBounds.y + Room.cameraBounds.height + 5 : 10;
             float wallY = tall ? wallHeight / 2 - 1 : 3;
-            Block("west_wall", echoArena ? 32 : -4, wallY, .4f, wallHeight, stone, true);
-            Block("east_wall", echoArena ? 62 : InFieldTrial ? 61 : Room.eastBoundary > 0 ? Room.eastBoundary : 46,
+            var westWall = Block("west_wall", echoArena ? 32 : InAttic ? 0.2f : -4, wallY, .4f, wallHeight, stone, true);
+            var eastWall = Block("east_wall", echoArena ? 62 : InFieldTrial ? 61 : Room.eastBoundary > 0 ? Room.eastBoundary : 46,
                 wallY, .4f, wallHeight, stone, true);
+            if (InAttic)
+            {
+                westWall.GetComponent<SpriteRenderer>().enabled = false;
+                eastWall.GetComponent<SpriteRenderer>().enabled = false;
+            }
             BuildSurfaces();
             BuildOperaFixtures();
             BuildBellWaves();
@@ -165,20 +174,9 @@ namespace RewindNotary
                 }
                 doorViews.Add(e, new RoomDoorView(Place(e.room, x, y), Room.stage));
             }
-            foreach (var p in Room.points)
-            {
-                bool plank = p.platform || p.id == "mikhail_escape_plank" || p.id == "luka_freight_platform" || p.id == "mikhail_reunion_plank";
-                if (p.id == "core_terminal" || p.id == "marta_ledger" || p.id == "basic_ending_ledger")
-                {
-                    var desk = Place(p.id, p.x, Room.SurfaceTop(p.surface) + .65f);
-                    var view = desk.AddComponent<SpriteRenderer>();
-                    view.sprite = RoomArt.Picture("notary-desk-props");
-                    view.transform.localScale = Vector3.one * (1.3f / view.sprite.bounds.size.y);
-                    fixtures[p.id] = desk;
-                }
-                else fixtures[p.id] = Block(p.id, p.x, Room.SurfaceTop(p.surface) + (plank ? .16f : .65f), plank ? 3.4f : .68f, plank ? .32f : 1.3f,
-                    plank ? new Color(.68f,.43f,.24f) : new Color(.92f,.70f,.24f), plank);
-            }
+            if (InAttic) BuildAtticFurniture();
+            else BuildRoomPoints();
+            BuildForgeMerchant();
             if (Room.Point("resonant_crucible") != null)
                 for (int i = 0; i < 5; i++) Place("crucible_" + i, 10 + i, 1).AddComponent<DestructibleTarget2D>();
 
@@ -220,7 +218,7 @@ namespace RewindNotary
                         throw new System.InvalidOperationException("Unknown roster placement in " + Room.id);
                     var go = Place(Room.id + ":" + group.id + "_" + index, point == null ? x : point.x, point == null ? .05f : point.y);
                     var target = go.AddComponent<WaveTarget2D>();
-                    var spawn = new WaveSpawn { segments = group.segments,
+                    var spawn = new WaveSpawn { archetypeId = group.id, segments = group.segments,
                         setupSkill = !string.IsNullOrEmpty(group.setupSkill) ? group.setupSkill : kind.gate == "skill" ? SkillRules.SilverStitch : null };
                     // Before learning stitch, the armour seam is exposed to ordinary sword hits.
                     if (kind.gate == "skill" && string.IsNullOrEmpty(group.setupSkill) &&
@@ -231,9 +229,25 @@ namespace RewindNotary
                     if (point?.active != null && point.active.Defined) activationZones.Add((go, point.active));
                     if (latch) latches.Add(target);
                 }
-            if (Room.Point("mint_candy_tray") != null)
-                fixtures["placed_candy"] = Block("placed_candy", Room.Point("mint_candy_tray").x, 1.42f, .35f, .16f, Color.white);
             RefreshFixtures();
+        }
+
+        private void BuildRoomPoints()
+        {
+            foreach (var p in Room.points)
+            {
+                bool plank = p.platform || p.id == "mikhail_escape_plank" || p.id == "luka_freight_platform" || p.id == "mikhail_reunion_plank";
+                if (p.id == "core_terminal" || p.id == "marta_ledger" || p.id == "basic_ending_ledger")
+                {
+                    var desk = Place(p.id, p.x, Room.SurfaceTop(p.surface) + .65f);
+                    var view = desk.AddComponent<SpriteRenderer>();
+                    view.sprite = RoomArt.Picture("notary-desk-props");
+                    view.transform.localScale = Vector3.one * (1.3f / view.sprite.bounds.size.y);
+                    fixtures[p.id] = desk;
+                }
+                else fixtures[p.id] = Block(p.id, p.x, Room.SurfaceTop(p.surface) + (plank ? .16f : .65f), plank ? 3.4f : .68f, plank ? .32f : 1.3f,
+                    plank ? new Color(.68f,.43f,.24f) : new Color(.92f,.70f,.24f), plank);
+            }
         }
         private void DrawWaterway()
         {
@@ -253,8 +267,7 @@ namespace RewindNotary
 
         private void RefreshFixtures()
         {
-            if (fixtures.TryGetValue("mint_candy_pickup", out var candy)) candy.SetActive(!Has("mint_candy_placed"));
-            if (fixtures.TryGetValue("placed_candy", out var placed)) placed.SetActive(Has("mint_candy_placed"));
+            if (InAttic) RefreshAtticProps();
             if (fixtures.TryGetValue("mikhail_escape_plank", out var plank)) plank.SetActive(Has("mikhail_retreat_plank_down"));
             if (fixtures.TryGetValue("luka_freight_platform", out var lift))
                 lift.transform.position = new Vector2(lift.transform.position.x, Has("investigation_complete") && !Has("luka_signalled") ? 3.5f : .16f);
@@ -267,7 +280,10 @@ namespace RewindNotary
         private void RefreshDoors()
         {
             foreach (var e in Room.exits)
-                doorViews[e].Show(Gate(e));
+            {
+                bool canPass = Gate(e);
+                doorViews[e].Show(canPass, !InAttic || canPass);
+            }
         }
         private bool Gate(StoryDoor door)
         {
@@ -292,6 +308,7 @@ namespace RewindNotary
         }
         private void LateUpdate()
         {
+            UpdateForgeMerchant();
             if (shell.Playing) UpdateEntryWave();
             if (shell.Playing) { UpdateActivationZones(); RefreshDoors(); }
             UpdateDistrictFixtures();
@@ -300,23 +317,96 @@ namespace RewindNotary
             if (latches.Count > 0 && latches.TrueForAll(l => l.State.Cleared))
             { Put(BridgeFlag); session.Save(); RefreshFixtures(); }
         }
+        internal void FillHudSnapshot(ref GameHudCanvas.HudSnapshot snap)
+        {
+            snap.LocationTitle = InAtticTutorial ? Loc.Get("tutorial.attic_title") : Room.Label;
+            snap.RoomKey = Room.id;
+            snap.OpeningTutorial = InAtticTutorial;
+            snap.StatusLine = DistrictTrial == null
+                ? Loc.Get("area.uses", Record.Get(SkillRules.SilverStitch).validUseCount)
+                : Loc.Get("hud.skill_progress", session.Progression.Catalog.Get(Room.skill).DisplayName,
+                    Record.Get(Room.skill).validUseCount, Record.Get(Room.skill).stage, "", "");
+            if (Room.id == "court_03_lift" && Record.Get(SkillRules.BasicSword).stage < 3)
+                snap.SubStatusLine = Loc.Get("stage.finale_survival_locked");
+            else if (BenefactorTrialProgress.Has(Record, DistrictTrial ?? mikhailTrial, "unlocked"))
+                snap.SubStatusLine = BenefactorTrialProgress.Status(Record, DistrictTrial ?? mikhailTrial);
+            else
+            {
+                var defense = player.Defense.State;
+                snap.SubStatusLine = defense.BlocksActions ? Loc.Get("defense.dashing") : Loc.Get("defense.ready");
+            }
+            snap.NoticeText = session.Notice;
+            if (storyBout != null)
+            {
+                snap.BossVisible = true;
+                snap.BossName = DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail");
+                snap.BossPhase = storyBout.PatternLabel;
+                snap.BossHp = opponent.Health.Current;
+                snap.BossMaxHp = opponent.Health.Maximum;
+            }
+            else if (courtEcho != null && ActiveRow != null && worldAction && ActionToken.StartsWith("echoHP"))
+            {
+                snap.BossVisible = true;
+                snap.BossName = Loc.Get("area.speaker.rea_echo");
+                snap.BossPhase = Loc.Get("hud.echo_phase", courtEcho.Phase, courtEcho.PatternLabel);
+                snap.BossHp = opponent.Health.Current;
+                snap.BossMaxHp = opponent.Health.Maximum;
+            }
+            snap.ObjectiveHint = BuildStoryHint();
+            snap.ControlsText = InAtticTutorial ? GameInput.FormatOpeningControlsPrompt() :
+                GameInput.FormatControlsPrompt(storyBout != null || NeedsEntryWave);
+        }
+        private string BuildStoryHint()
+        {
+            if (!session.LastSaveSucceeded) return session.StorageError;
+            if (ActiveRow != null && worldAction)
+            {
+                if (InAttic && AtticActionHint() is string tutorial) return tutorial;
+                string[] action = ActionToken.Split(':');
+                string key = action[0] == "walk" ? "area.walk" : action[0] == "strike" ? "area.strike"
+                    : action[0] == "win" ? "area.bout" : "area.travel";
+                var p = Room.Point(action[1]);
+                if (action[0] == "echoHP") return Loc.Get("hud.echo_phase", courtEcho.Phase, courtEcho.PatternLabel) + "   " + opponent.Health.Current + " / 12";
+                if (action[0] == "train") return Loc.Get("area.target.resonant_crucible") + "   " + Record.Get(SkillRules.BasicSword).validUseCount + " / 400";
+                if (action[0] == "clearDoor") return Loc.Get("area.travel", script.Room(action[1]).Label) + Arrow(Room.exits[1].x);
+                if (DistrictHint(action, out string districtHint)) return districtHint;
+                return Loc.Get(key, Loc.Get("area.target." + action[1])) + (p != null ? Arrow(p.x) : "");
+            }
+            if (AtticDialogueTarget is StoryMark target) return AtticDialogueHint(target);
+            if (FightNeeded()) return Loc.Get("area.bout", DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail"));
+            if (CanTalkToEthan) return EthanPrompt();
+            if (FirstDepartureHint() is string next) return next;
+            string hint = "";
+            if (BellReady) hint += Loc.Get("area.travel", Loc.Get("area.target." + Benefactor + "_trial_bell")) + Arrow(Room.Point(Benefactor + "_trial_bell").x) + "    ";
+            if (Room.id == "hub_lift" && Has("luka_signalled")) hint += Loc.Get("area.signal") + "    ";
+            if (Room.Point("core_terminal") != null && !NearCore())
+                hint += Loc.Get("area.target.core_terminal") + Arrow(Room.Point("core_terminal").x) + "    ";
+            if (NearCore()) hint = Loc.Get("area.travel", Loc.Get("area.target.core_terminal")) + "    ";
+            if (ForgeReturn is StoryMark passage)
+                hint += Loc.Get("area.travel", Loc.Get("area.target.forge_to_court_lift")) + Arrow(passage.x) + "    ";
+            foreach (var e in Room.exits)
+                if (Gate(e)) hint += Loc.Get("area.travel", Departure(e.room).Label) + DoorArrow(e) + "    ";
+            if (HasBridge && !Has(BridgeFlag)) hint += Loc.Get("area.latch");
+            if (Room.id == "hub_attic" && Has("sixth_bowl_stamped")) hint += Loc.Get("area.sixth");
+            return hint.Trim();
+        }
         public void DrawHUD(GUIStyle title, GUIStyle label)
         {
             var style = new GUIStyle(label) { wordWrap = true };
-            GUI.Box(new Rect(20, 18, 1000, 110), "");
-            GUI.Label(new Rect(34, 24, 960, 35), Room.Label, title);
-            GUI.Label(new Rect(34, 63, 950, 60), Loc.Get("hud.rea_health", player.Health.Current, player.Health.Maximum) + "   " +
+            GUI.Box(new Rect(20, 18, 806, 110), "");
+            GUI.Label(new Rect(34, 24, 780, 35), Room.Label, title);
+            GUI.Label(new Rect(34, 63, 770, 60), Loc.Get("hud.rea_health", player.Health.Current, player.Health.Maximum) + "   " +
                 (DistrictTrial == null ? Loc.Get("area.uses", Record.Get(SkillRules.SilverStitch).validUseCount) :
                     Loc.Get("hud.skill_progress", session.Progression.Catalog.Get(Room.skill).DisplayName, Record.Get(Room.skill).validUseCount, Record.Get(Room.skill).stage, "", "")) + "   " + session.Notice, style);
             if (Room.id == "court_03_lift" && Record.Get(SkillRules.BasicSword).stage < 3)
                 GUI.Label(new Rect(34, 92, 950, 34), Loc.Get("stage.finale_survival_locked"), style);
             else if (BenefactorTrialProgress.Has(Record, DistrictTrial ?? mikhailTrial, "unlocked"))
                 GUI.Label(new Rect(34, 92, 950, 34), BenefactorTrialProgress.Status(Record, DistrictTrial ?? mikhailTrial), style);
-            if (mikhailBout != null)
+            if (storyBout != null)
             {
                 GUI.Box(new Rect(215, 138, 850, 78), "");
                 GUI.Label(new Rect(235, 144, 810, 36), Loc.Get("area.bout", DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail")) + "   " +
-                    opponent.Health.Current + " / " + opponent.Health.Maximum + "   " + mikhailBout.PatternLabel, style);
+                    opponent.Health.Current + " / " + opponent.Health.Maximum + "   " + storyBout.PatternLabel, style);
                 GameBootstrap.Bar(new Rect(235, 190, 810, 12), opponent.Health, new Color(.90f, .48f, .40f));
             }
             DrawHandSignal();
@@ -351,7 +441,7 @@ namespace RewindNotary
                 if (HasBridge && !Has(BridgeFlag)) hint += Loc.Get("area.latch");
                 if (Room.id == "hub_attic" && Has("sixth_bowl_stamped")) hint += Loc.Get("area.sixth");
             }
-            if (mikhailBout != null || NeedsEntryWave) hint += "\n" + Loc.Get("input.gameplay");
+            if (storyBout != null || NeedsEntryWave) hint += "\n" + Loc.Get("input.gameplay");
             GUI.Box(new Rect(20, 534, 1240, 168), "");
             GUI.Label(new Rect(35, 545, 1200, 100), hint, style);
             GUI.Label(new Rect(35, 658, 1200, 36), Loc.Get("area.help"), style);

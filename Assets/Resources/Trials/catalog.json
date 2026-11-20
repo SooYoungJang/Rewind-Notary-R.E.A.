@@ -21,6 +21,16 @@
       "arenaMax": 58,
       "approachSpeed": 2.4,
       "restSeconds": 2,
+      "storyFinisher": {
+        "action": "thread_lunge",
+        "label": "trial.mikhail.thread_lunge",
+        "windup": 1.05,
+        "duration": 0.36,
+        "recovery": 1.35,
+        "reach": 4.3,
+        "damage": 1,
+        "speed": 10
+      },
       "dialogue": {
         "enterKey": "trial.mikhail.enter",
         "successKey": "trial.mikhail.verified",

@@ -11,7 +11,6 @@ namespace RewindNotary
         public SkillProgressionService Progression { get; private set; }
         public FinalBattleService Finale { get; private set; }
         public event Action<UseContext> TechniqueCompleted;
-        public event Action BasicParried;
         public void ReportTechniqueCompleted(UseContext use)
         { if (use != null && use.Counted && !use.Closed && !use.Preview && use.Stage == 3) TechniqueCompleted?.Invoke(use); }
         public InvestigationService Investigation { get; private set; }
@@ -46,10 +45,10 @@ namespace RewindNotary
         public string StorageError => string.Join("\n", new[] { store?.LastError, logError }).Trim();
         public bool LastSaveSucceeded => !dirty;
         internal bool AcceptsStoryActions => !closed && Progression != null;
+        internal bool AcceptsSupplies => AcceptsStoryActions && !standaloneDuel && !Progression.Record.testData;
         public int ActiveSlot => store.Slot;
         public int PreviewStage { get; private set; }
         public string EncounterId { get; set; } = EncounterRewardBridge.PrototypeEncounter;
-        public int ParrySuccessCount { get; private set; }
         public event Action<string, string> PresentationRequested;
         public event Action<string> SoundRequested;
         private SkillSaveStore store;
@@ -64,7 +63,6 @@ namespace RewindNotary
         {
             public string utc, sessionId, rulesVersion, buildId, encounterId, slotId;
             public float gameSeconds, realtimeSeconds;
-            public int parrySuccessCount;
             public ProgressionEvent result;
         }
         public void Initialize(SkillSaveStore selectedStore, CoreRecord record)
@@ -102,6 +100,18 @@ namespace RewindNotary
             Save();
             return true; // In-memory transaction accepted. The world waits for LastSaveSucceeded.
         }
+        internal bool TrySaveSupplies(SupplyPouch updated)
+        {
+            if (!AcceptsSupplies || !LastSaveSucceeded || sceneTransaction) return false;
+            var record = Progression.Record;
+            var previous = record.supplies;
+            record.supplies = updated;
+            Save();
+            if (LastSaveSucceeded) return true;
+            record.supplies = previous;
+            return false;
+        }
+
         public void Save()
         {
             if (Progression == null || closed || sceneTransaction) return;
@@ -130,8 +140,7 @@ namespace RewindNotary
             var row = new LogRow { utc = DateTime.UtcNow.ToString("O"), sessionId = sessionId, slotId = store.SlotId,
                 rulesVersion = SkillRules.Version, buildId = Application.version,
                 encounterId = EncounterId,
-                gameSeconds = Time.time, realtimeSeconds = Time.unscaledTime, result = result,
-                parrySuccessCount = ParrySuccessCount };
+                gameSeconds = Time.time, realtimeSeconds = Time.unscaledTime, result = result };
             try
             {
                 Directory.CreateDirectory(SaveDirectory);
@@ -162,15 +171,6 @@ namespace RewindNotary
                 case "blindness": return Loc.Get("doom.blindness");
                 default: return "";
             }
-        }
-        public void RecordParrySuccess()
-        {
-            if (Progression == null || closed) return;
-            ParrySuccessCount++;
-            BasicParried?.Invoke();
-            // Session telemetry only. No BeginUse/Apply, Changed event, save schema or mastery mutation.
-            OnEvent(new ProgressionEvent { kind = "parry_success", skillId = "", useId = "",
-                reason = "defense_only;preview=" + PreviewStage, testData = Progression.Record.testData });
         }
         public void ShowUnlearnedSkill(string skillId)
         {

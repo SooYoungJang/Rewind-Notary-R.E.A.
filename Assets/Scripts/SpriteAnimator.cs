@@ -10,11 +10,19 @@ namespace RewindNotary
     public sealed class SpriteAnimator : MonoBehaviour
     {
         public enum Pose { Idle, Run, Jump, Fall, Land, Attack }
-        [Serializable] private sealed class SheetLayout { public FramePivot[] frames; }
+        [Serializable] private sealed class SheetLayout { public FramePivot[] frames; public int[] columnEdges; public RowSlice[] rows; }
+        [Serializable] private sealed class RowSlice { public int top, bottom; public int[] columnEdges; }
         [Serializable] private sealed class FramePivot { public int row; public int col; public float x; public float y; }
         private readonly Dictionary<Pose, Sprite[]> clips = new Dictionary<Pose, Sprite[]>();
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private SpriteRenderer view;
+        private Sprite[][] groundAttacks, airAttacks, starterAttacks;
+        private Sprite[] activeAttack, groundUp, airUp, airDown;
+        private static readonly float[] AirUpTilt = { 0f, -5f, 10f, 5f };
+        private static readonly float[] AirDownTilt = { 0f, 8f, -24f, -13f };
+        private float[] attackTiltFrames;
+        private float attackTilt;
+        private bool skipGuard;
         private Pose state;
         private float elapsed;
         private bool ready;
@@ -26,8 +34,16 @@ namespace RewindNotary
         private bool invulnerable, dead, telegraph;
         private float flashUntil;
 
-        public void Initialize(string resource)
+        public SpriteRenderer Renderer => view;
+        public Pose CurrentPose => state;
+        public bool IsTelegraphing => telegraph;
+        public string ActiveResource { get; private set; }
+
+        private float spriteScale = 1f;
+
+        public void Initialize(string resource, float scale = 1f)
         {
+            spriteScale = scale;
             view = GetComponent<SpriteRenderer>();
             var shader = Resources.Load<Shader>("Shaders/HitFlash");
             if (shader != null)
@@ -37,46 +53,123 @@ namespace RewindNotary
                 properties = new MaterialPropertyBlock();
             }
             else Debug.LogWarning("Missing HitFlash shader (animation continues).", this);
-            Texture2D texture = Resources.Load<Texture2D>(resource);
-            if (texture == null) throw new InvalidOperationException("Missing GameArt: " + resource);
-            var layoutFile = Resources.Load<TextAsset>(resource + "-layout");
-            SheetLayout layout = layoutFile == null ? null : JsonUtility.FromJson<SheetLayout>(layoutFile.text);
-            float w = texture.width / 8f, h = texture.height / 4f;
-            Sprite[] Slice(int row, int first, int count)
-            {
-                var frames = new Sprite[count];
-                for (int i = 0; i < count; i++)
-                {
-                    int col = first + i;
-                    Vector2 pivot = new Vector2(0.5f, 0.04f);
-                    if (layout != null && layout.frames != null)
-                        foreach (FramePivot p in layout.frames)
-                            if (p.row == row && p.col == col) { pivot = new Vector2(p.x, p.y); break; }
-                    frames[i] = Sprite.Create(texture, new Rect(col * w, texture.height - (row + 1) * h, w, h),
-                        pivot, h / 2.5f, 0, SpriteMeshType.FullRect);
-                    frames[i].name = resource + "_" + row + "_" + col;
-                    ownedSprites.Add(frames[i]);
-                }
-                return frames;
-            }
-            clips[Pose.Idle] = Slice(0, 0, 4);
-            clips[Pose.Run] = Slice(1, 0, 8);
-            clips[Pose.Jump] = Slice(2, 0, 1);
-            clips[Pose.Fall] = Slice(2, 1, 1);
-            clips[Pose.Land] = Slice(2, 2, 1);
-            clips[Pose.Attack] = Slice(3, 0, 4);
+            LoadSheet(resource, true);
             ready = true;
             Play(Pose.Idle, true);
         }
 
-        public void Face(int direction) { if (view != null) view.flipX = direction < 0; }
+        public bool SwapSheet(string resource)
+        {
+            if (string.IsNullOrEmpty(resource) || resource == ActiveResource) return false;
+            if (Resources.Load<Texture2D>(resource) == null) return false;
+            LoadSheet(resource, false);
+            if (ready && clips.TryGetValue(state, out var frames) && frames.Length > 0)
+                view.sprite = frames[0];
+            return true;
+        }
+
+        private void LoadSheet(string resource, bool required)
+        {
+            Texture2D texture = Resources.Load<Texture2D>(resource);
+            if (texture == null)
+            {
+                if (required) throw new InvalidOperationException("Missing GameArt: " + resource);
+                return;
+            }
+            foreach (Sprite sprite in ownedSprites) if (sprite != null) Destroy(sprite);
+            ownedSprites.Clear();
+            ActiveResource = resource;
+            groundAttacks = airAttacks = starterAttacks = null;
+            activeAttack = groundUp = airUp = airDown = null;
+            attackTiltFrames = null;
+            SetAttackTilt(0f);
+            var layout = LoadLayout(resource);
+            clips[Pose.Idle] = Slice(texture, layout, 8, 4, 0, 0, 4, 2.5f);
+            clips[Pose.Run] = Slice(texture, layout, 8, 4, 1, 0, 8, 2.5f);
+            clips[Pose.Jump] = Slice(texture, layout, 8, 4, 2, 0, 1, 2.5f);
+            clips[Pose.Fall] = Slice(texture, layout, 8, 4, 2, 1, 1, 2.5f);
+            clips[Pose.Land] = Slice(texture, layout, 8, 4, 2, 2, 1, 2.5f);
+            clips[Pose.Attack] = Slice(texture, layout, 8, 4, 3, 0, 4, 2.5f);
+            const string rea = "GameArt/sprites/rea-sheet";
+            if (resource == rea || resource.StartsWith(rea + "-tier", StringComparison.Ordinal))
+            {
+                groundAttacks = LoadAttackRows(rea + "-ground-attacks", 4, 2.43f);
+                airAttacks = LoadAttackRows(rea + "-air-attacks", 4, 2.59f);
+                groundUp = new[] { groundAttacks[0][0], groundAttacks[1][1], groundAttacks[1][3], groundAttacks[1][2] };
+                airUp = new[] { airAttacks[0][0], airAttacks[1][1], airAttacks[1][3], airAttacks[1][2] };
+                airDown = new[] { airAttacks[3][0], airAttacks[3][1], airAttacks[3][2], airAttacks[2][3] };
+                const string starter = rea + "-starter-attacks";
+                if (Resources.Load<Texture2D>(starter) != null)
+                    starterAttacks = LoadAttackRows(starter, 4, 2.45f);
+            }
+        }
+
+        private static SheetLayout LoadLayout(string resource)
+        {
+            var layout = Resources.Load<TextAsset>(resource + "-layout");
+            return layout == null ? null : JsonUtility.FromJson<SheetLayout>(layout.text);
+        }
+
+        private Sprite[][] LoadAttackRows(string resource, int rows, float worldHeight)
+        {
+            var texture = Resources.Load<Texture2D>(resource);
+            if (texture == null) throw new InvalidOperationException("Missing GameArt: " + resource);
+            var layout = LoadLayout(resource);
+            var attacks = new Sprite[rows][];
+            for (int row = 0; row < rows; row++)
+                attacks[row] = Slice(texture, layout, 4, rows, row, 0, 4, worldHeight);
+            return attacks;
+        }
+
+        private Sprite[] Slice(Texture2D texture, SheetLayout layout, int columns, int rows,
+            int row, int first, int count, float worldHeight)
+        {
+            var frames = new Sprite[count];
+            float cellWidth = texture.width / (float)columns;
+            float cellHeight = texture.height / (float)rows;
+            var slice = layout?.rows?[row];
+            int top = texture.height - (slice?.top ?? Mathf.RoundToInt(row * cellHeight));
+            int bottom = texture.height - (slice?.bottom ?? Mathf.RoundToInt((row + 1) * cellHeight));
+            var edges = slice?.columnEdges ?? layout?.columnEdges;
+            for (int i = 0; i < count; i++)
+            {
+                int col = first + i;
+                int left = edges?[col] ?? Mathf.RoundToInt(col * cellWidth);
+                int right = edges?[col + 1] ?? Mathf.RoundToInt((col + 1) * cellWidth);
+                var pivot = layout?.frames == null ? null : Array.Find(layout.frames, p => p.row == row && p.col == col);
+                var anchor = pivot == null ? new Vector2(.5f, .04f) : new Vector2(pivot.x, pivot.y);
+                frames[i] = Sprite.Create(texture, new Rect(left, bottom, right - left, top - bottom),
+                    anchor, cellHeight / (worldHeight * spriteScale), 0, SpriteMeshType.FullRect);
+                frames[i].name = texture.name + "_" + row + "_" + col;
+                ownedSprites.Add(frames[i]);
+            }
+            return frames;
+        }
+
+        public void Face(int direction)
+        {
+            bool flip = direction < 0;
+            if (view == null || view.flipX == flip) return;
+            view.flipX = flip;
+            if (attackTilt != 0f) ApplyPoseRotation();
+        }
         private int wallPoseSide;
         public void SetWallPose(int side)
         {
             if (wallPoseSide == side) return;
             wallPoseSide = side;
-            transform.localRotation = Quaternion.Euler(0f, 0f, side * 12f);
+            ApplyPoseRotation();
         }
+
+        private void SetAttackTilt(float tilt)
+        {
+            if (attackTilt == tilt) return;
+            attackTilt = tilt;
+            ApplyPoseRotation();
+        }
+
+        private void ApplyPoseRotation() =>
+            transform.localRotation = Quaternion.Euler(0f, 0f, wallPoseSide * 12f + (view.flipX ? -attackTilt : attackTilt));
         public void Tint(Color color) { baseTint = color; ApplyVisual(); }
         public void SetCombatVisual(bool immune, bool isDead) { invulnerable = immune; dead = isDead; }
         public void SetTelegraph(bool active) { telegraph = active; }
@@ -84,6 +177,7 @@ namespace RewindNotary
         public void ResetVisual()
         {
             SetWallPose(0);
+            SetAttackTilt(0f);
             flashUntil = 0f; dead = invulnerable = telegraph = false;
             ApplyVisual();
         }
@@ -110,17 +204,45 @@ namespace RewindNotary
             if (!ready || (state == next && !restart)) return;
             state = next;
             elapsed = 0f;
+            SetAttackTilt(0f);
             view.sprite = clips[state][0];
         }
+        internal void BeginAttack(int step, bool grounded, bool moving, int starter, int directionY)
+        {
+            if (!ready) return;
+            attackTiltFrames = null;
+            skipGuard = directionY == 0 && starter < 0 && step == 1 && grounded && moving && groundAttacks != null;
+            if (starter >= 0 && starterAttacks != null) activeAttack = starterAttacks[starter];
+            else if (groundAttacks == null || step == 0) activeAttack = clips[Pose.Attack];
+            else if (directionY > 0)
+            {
+                activeAttack = grounded ? groundUp : airUp;
+                if (!grounded) attackTiltFrames = AirUpTilt;
+            }
+            else if (directionY < 0)
+            {
+                activeAttack = airDown;
+                attackTiltFrames = AirDownTilt;
+            }
+            else activeAttack = (grounded ? groundAttacks : airAttacks)[step - 1];
+            state = Pose.Attack;
+            ShowAttackFrame(skipGuard ? 1 : 0);
+        }
+
         public void PlayAttack(float attackElapsed, float strikeTime, float duration)
         {
             if (!ready) return;
             state = Pose.Attack;
-            // Existing row 3: preparation -> raised blade -> slash/contact -> recovery.
             // The motor owns this clock, so the hit and slash frame cannot drift apart.
-            int index = attackElapsed < strikeTime * 0.5f ? 0 : attackElapsed < strikeTime ? 1
+            int index = !skipGuard && attackElapsed < strikeTime * 0.5f ? 0 : attackElapsed < strikeTime ? 1
                 : attackElapsed < strikeTime + (duration - strikeTime) * 0.5f ? 2 : 3;
-            view.sprite = clips[Pose.Attack][index];
+            ShowAttackFrame(index);
+        }
+
+        private void ShowAttackFrame(int index)
+        {
+            view.sprite = (activeAttack ?? clips[Pose.Attack])[index];
+            SetAttackTilt(attackTiltFrames?[index] ?? 0f);
         }
         private void Update()
         {

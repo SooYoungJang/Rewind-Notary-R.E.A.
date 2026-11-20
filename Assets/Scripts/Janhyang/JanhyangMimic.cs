@@ -222,7 +222,7 @@ namespace RewindNotary
                 if (hit.collider != null) speed = 0;
             }
             motor.Move(speed);
-            // Return strokes keep the original facing so parry source and silhouette remain legible.
+            // Return strokes keep the original facing so attack source and silhouette remain legible.
             motor.Face(facing);
         }
         private void StopMotion()

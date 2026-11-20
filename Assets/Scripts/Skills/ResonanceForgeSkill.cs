@@ -6,14 +6,20 @@ namespace RewindNotary
     {
         public override string SkillId => BenefactorIds.Forge;
         public override bool BlocksActions => Active;
-        private bool counter, plunge;
+        private bool plunge;
         private float endAt;
         public override bool Activate()
         {
             if (!Begin()) return false;
-            counter = use.Stage == 3 && motor.Grounded; plunge = use.Stage == 3 && !motor.Grounded;
-            endAt = Time.time + (counter ? profile.counterWindow : plunge ? profile.lifetime : profile.duration);
-            if (!counter && !plunge) Strike(SkillGeometry.Forward(motor, profile.reach), false);
+            plunge = use.Stage == 3 && !motor.Grounded;
+            endAt = Time.time + (plunge ? profile.lifetime : profile.duration);
+            if (use.Stage == 3 && !plunge)
+            {
+                Vector2 center = motor.Body.position + Vector2.up;
+                Strike(SkillGeometry.Area(center, profile.burstRadius), true);
+                Stroke(center + Vector2.left * profile.burstRadius, center + Vector2.right * profile.burstRadius, Color.yellow);
+            }
+            else if (!plunge) Strike(SkillGeometry.Forward(motor, profile.reach), false);
             Stroke(motor.Body.position, motor.Body.position + Vector2.up * profile.reach, Color.yellow);
             return true;
         }
@@ -46,17 +52,6 @@ namespace RewindNotary
             foreach (var target in DestructibleTarget2D.All)
                 if (area.Intersects(target.Bounds)) Credit(target.TargetId, target.Hit(FinaleCombat.Scale(session, bell ? profile.burstDamage : profile.damage)), EffectTargetKind.Destructible);
         }
-        // Health calls this AFTER the unchanged basic dash/parry path. It never records a basic parry.
-        public bool TryCounter(Vector2 source)
-        {
-            if (!GameInput.GameplayEnabled || !Active || !counter || Time.time >= endAt) return false;
-            counter = false; motor.Face(source.x - transform.position.x);
-            Credit("forge_counter", true);
-            Strike(SkillGeometry.Area(transform.position + Vector3.up, profile.burstRadius), true);
-            Stroke(motor.Body.position + Vector2.left * profile.burstRadius,
-                motor.Body.position + Vector2.right * profile.burstRadius, Color.yellow);
-            Finish(); return true;
-        }
         private void Update()
         {
             if (!GameInput.GameplayEnabled || !Active) return;
@@ -70,6 +65,6 @@ namespace RewindNotary
             motor.Body.linearVelocity = new Vector2(0, plunge ? -profile.plungeSpeed : motor.Body.linearVelocity.y);
             return true;
         }
-        public override void Interrupt() { counter = plunge = false; base.Interrupt(); }
+        public override void Interrupt() { plunge = false; base.Interrupt(); }
     }
 }

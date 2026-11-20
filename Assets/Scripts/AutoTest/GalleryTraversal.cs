@@ -19,7 +19,7 @@ namespace RewindNotary
                 var floor = FixedFaceAt(feet.x, feet.y);
                 float clearX = edge + direction * (SkillGeometry.SupportTolerance + FixedSurfaceRoute.AimTolerance);
                 if (floor == null || clearX < floor.rect.x || clearX > floor.rect.x + floor.rect.width) continue;
-                keys.Hold(direction < 0 ? KeyCode.A : KeyCode.D);
+                keys.Hold(direction < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
                 return true;
             }
             return false;
@@ -113,7 +113,7 @@ namespace RewindNotary
                 Mathf.Abs(p.Bounds.max.y - at.y) < .5f && Player.Body.position.x >= face.rect.x && Player.Body.position.x <= face.rect.x + face.rect.width);
             if (!onStroke && !ReachedCombatSurface(face, at.x)) return;
             if (!setup) { FightTarget(target); return; }
-            if (ReserveWaveParry(target)) return;
+            if (ReserveWaveDodge(target)) return;
             int direction = at.x - face.rect.x >= face.rect.x + face.rect.width - at.x ? 1 : -1;
             if (PaintSurface2D.All.Exists(p => !p.Wall && Mathf.Abs(p.Bounds.max.y - at.y) < .5f &&
                 p.Bounds.min.x < at.x && p.Bounds.max.x > at.x))

@@ -6,6 +6,7 @@ namespace RewindNotary
     public sealed class ImpactFeedback : MonoBehaviour
     {
         public static ImpactFeedback Instance { get; private set; }
+        public static bool HitStopEnabled = true;
         public const float SwordStopScale = 0.05f, SwordStopSeconds = 0.065f;
         public const float FinisherStopScale = 0.03f, FinisherStopSeconds = 0.11f;
         public const float HurtStopScale = 0.2f, HurtStopSeconds = 0.045f;
@@ -38,10 +39,12 @@ namespace RewindNotary
             Instance.HitStop(FinisherStopScale, FinisherStopSeconds);
             Instance.cameraShake?.Shake(SwordShake, 0.12f);
         }
-        public static void ParrySuccess()
+        internal static void StarterHit(int index)
         {
             if (Instance == null || !Instance.isActiveAndEnabled) return;
-            Instance.HitStop(DefenseTuning.ParryStopScale, DefenseTuning.ParryStopSeconds);
+            bool heavy = index == QuickSkills.Sweep || index == QuickSkills.RetreatCut;
+            Instance.HitStop(.09f, heavy ? .057f : .044f);
+            Instance.cameraShake?.Shake(heavy ? .115f : .085f, .13f);
         }
         public static void BossDefeated()
         {
@@ -50,7 +53,7 @@ namespace RewindNotary
         }
         private void HitStop(float scale, float seconds)
         {
-            // A pause/slow-motion owner that changes timeScale takes precedence.
+            if (!HitStopEnabled) return;
             if (stopping && !Mathf.Approximately(Time.timeScale, appliedScale)) stopping = false;
             if (Time.timeScale <= 0f) return;
             if (!stopping) { restoreScale = Time.timeScale; stopping = true; stopUntil = 0f; }

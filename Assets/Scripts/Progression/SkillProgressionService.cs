@@ -111,6 +111,8 @@ namespace RewindNotary
             if (progress == null || !Catalog.Get(rewardSkillId).implemented || string.IsNullOrEmpty(encounterId)) return false;
             if (Record.completedEncounters.Contains(encounterId)) return false;
             Record.completedEncounters.Add(encounterId);
+            if (encounterId.StartsWith("story:", StringComparison.Ordinal) && encounterId.EndsWith("_bout", StringComparison.Ordinal))
+                Record.supplies.silver += SupplyPouch.EncounterReward;
             bool newlyAcquired = !progress.acquired;
             if (newlyAcquired) { progress.acquired = true; progress.acquiredEncounterId = encounterId; }
             Changed?.Invoke();

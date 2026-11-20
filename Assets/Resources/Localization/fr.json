@@ -2,6 +2,78 @@
   "language": "fr",
   "entries": [
     {
+      "key": "quick_skill.rea_thrust",
+      "value": "Estoc"
+    },
+    {
+      "key": "quick_skill.rea_rising",
+      "value": "Coupe haute"
+    },
+    {
+      "key": "quick_skill.rea_sweep",
+      "value": "Balayage"
+    },
+    {
+      "key": "quick_skill.rea_retreat_cut",
+      "value": "Entaille en retrait"
+    },
+    {
+      "key": "quick_skill.wave_charge",
+      "value": "Onde de lame · Maintenir {0}"
+    },
+    {
+      "key": "quick_skill.menu",
+      "value": "Emplacements de techniques"
+    },
+    {
+      "key": "quick_skill.assign_hint",
+      "value": "↑ ↓ Choisir · ← → Équiper une technique"
+    },
+    {
+      "key": "story.prologue.city",
+      "value": "À Lapis, la cité du Notariat, le registre consigne le nom de chacun et les techniques qu’il a apprises."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "Le geste d’un tailleur chevronné comme l’art de l’épée transmis par un maître peuvent être authentifiés à Lapis."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "L’épéiste du Notariat grave une technique dans son épée de consignation, puis prouve sa maîtrise en la reproduisant au palier 3."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Demain, à six heures du matin, cinq condamnés doivent être exécutés."
+    },
+    {
+      "key": "story.prologue.order",
+      "value": "Un ordre scellé est arrivé du Bureau central du Notariat. Une clause donne aux cinq condamnés une chance de survivre."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Retrouve les cinq condamnés et apprends une technique de chacun. Grave-les dans l’épée et authentifie-les toutes au palier 3."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Si les cinq authentifications sont terminées à temps, chaque condamné recevra une grâce spéciale."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "Le Bureau a confié cette mission à Rea, une épéiste du Notariat tout juste nommée. Il lui reste moins d’un jour."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "Ce matin-là, Marta inscrit sur le tableau du grenier les noms des invités au petit-déjeuner du lendemain."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "Cinq noms figurent au tableau. À côté, une place reste libre."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "Un parfum de thé à la menthe flotte près de la fenêtre. Rea ouvre les yeux dans le grenier, où l’ordre scellé l’attend."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Fin véritable débloquée"
     },
@@ -31,7 +103,7 @@
     },
     {
       "key": "finale.mirror_closed",
-      "value": "Miroir fermé · Pare, puis brise la garde à l'épée"
+      "value": "Miroir fermé · Esquivez avec une ruée, puis brisez la garde à l’épée"
     },
     {
       "key": "finale.selected_finisher",
@@ -39,7 +111,7 @@
     },
     {
       "key": "finale.core_hint",
-      "value": "Noyau {0}/{1} · Pare, puis termine un combo complet / B<3 : détruis le noyau"
+      "value": "Noyau {0}/{1} · Esquivez puis terminez le combo / B<3 : détruisez le noyau"
     },
     {
       "key": "finale.boss_status",
@@ -71,7 +143,7 @@
     },
     {
       "key": "finale.confirm_return_body",
-      "value": "Restituer {0} ?\n\nAprès le choc des lames, cette technique sera indisponible jusqu'à la fin du combat.\nPuissance d'empreinte +{1}% · Ton épée et tes autres techniques seront renforcées.\nDéplacements, sauts, esquives, parades et attaques à l'épée restent disponibles. Les plateformes disparaîtront après 3 secondes.\nLes Destins funestes ne seront tous restitués qu'après la réussite du dernier choc des lames de la forme originelle."
+      "value": "Restituer {0} ?\n\nAprès le choc des lames, cette technique sera indisponible jusqu'à la fin du combat.\nPuissance d'empreinte +{1}% · Ton épée et tes autres techniques seront renforcées.\nDéplacements, sauts, esquives, esquives et attaques à l'épée restent disponibles. Les plateformes disparaîtront après 3 secondes.\nLes Destins funestes ne seront tous restitués qu'après la réussite du dernier choc des lames de la forme originelle."
     },
     {
       "key": "finale.cancel_return",
@@ -138,18 +210,6 @@
       "value": "Esquive en cours"
     },
     {
-      "key": "defense.parry_window",
-      "value": "Parade active"
-    },
-    {
-      "key": "defense.parry_recovery",
-      "value": "Parade ratée · Récupération"
-    },
-    {
-      "key": "defense.counter_ready",
-      "value": "Riposte prête · Prochaine attaque à l'épée renforcée"
-    },
-    {
       "key": "defense.ready",
       "value": "Défense prête"
     },
@@ -167,7 +227,7 @@
     },
     {
       "key": "input.gameplay",
-      "value": "Bouger A/D·Flèches·Stick | Saut Espace·A | Épée J/Z/Clic gauche·X | Technique Q·Y | Esquive Maj/K·LB | Parade L·RB"
+      "value": "Déplacement ← → · Saut Espace · Attaque A · Interaction F · Ruée Maj+direction · Techniques Q W E R"
     },
     {
       "key": "hud.trial_hint",
@@ -175,7 +235,7 @@
     },
     {
       "key": "hud.wave_hint",
-      "value": "Noyau bleu-or : épée · Signal doré : parade/esquive · Garde rouge : technique requise"
+      "value": "Noyau bleu-or : épée · Avertissement doré : esquivez avec une ruée · Garde rouge : technique requise"
     },
     {
       "key": "hud.checkpoint_hint",
@@ -187,7 +247,7 @@
     },
     {
       "key": "input.retry_pause",
-      "value": "{0}  R·Affichage : recommencer | Échap·Menu : pause"
+      "value": "{0}  Backspace·Affichage : recommencer | Échap·Menu : pause"
     },
     {
       "key": "input.debug",
@@ -195,7 +255,7 @@
     },
     {
       "key": "trial.health",
-      "value": "PV d'entraînement {0}/{1} · Reprise une fois épuisés · R : replacer les combattants"
+      "value": "PV d'entraînement {0}/{1} · Reprise une fois épuisés · Backspace : replacer les combattants"
     },
     {
       "key": "input.benefactor_support",
@@ -215,7 +275,7 @@
     },
     {
       "key": "input.retry_button",
-      "value": "Appuie sur R / Affichage pour réessayer."
+      "value": "Appuie sur Backspace / Affichage pour réessayer."
     },
     {
       "key": "hud.returning_checkpoint",
@@ -567,7 +627,7 @@
     },
     {
       "key": "skill.acquired_notice",
-      "value": "{0} acquise — Choisir : 1–5 / E·B · Utiliser : Q·Y"
+      "value": "{0} apprise. Utilise direction + V ou équipe-la dans un emplacement."
     },
     {
       "key": "skill.stage_up_notice",
@@ -1091,11 +1151,11 @@
     },
     {
       "key": "skills.sword.form1",
-      "value": "Combo d'épée à 2 coups"
+      "value": "Combo d'épée à 4 coups"
     },
     {
       "key": "skills.sword.form2",
-      "value": "Combo à 3 coups · Pas en avant · Onde courte au dernier coup"
+      "value": "Combo à 4 coups · Pas en avant · Onde courte au dernier coup"
     },
     {
       "key": "skills.sword.form3",
@@ -1147,7 +1207,7 @@
     },
     {
       "key": "skills.forge.form3",
-      "value": "Parade simple + Frappe de cloche aérienne vers le bas · Onde de choc de contre étendue"
+      "value": "Onde de résonance au sol · Coup de cloche aérien descendant"
     },
     {
       "key": "skills.canvas.form1",
@@ -1315,7 +1375,7 @@
     },
     {
       "key": "wave.all_complete",
-      "value": "3 zones terminées · Vérifie les seuils d'épée 151 / 400 dans le journal. R : recommencer"
+      "value": "3 zones terminées · Vérifie les seuils d'épée 151 / 400 dans le journal. Backspace : recommencer"
     },
     {
       "key": "wave.zone_complete",
@@ -1335,7 +1395,7 @@
     },
     {
       "key": "wave.defense_then_sword",
-      "value": "Pare / esquive l'attaque dorée → Épée"
+      "value": "Traversez l’attaque dorée avec une ruée → Épée"
     },
     {
       "key": "wave.target_hint",
@@ -1456,6 +1516,10 @@
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
       "value": "Balayage au fil d'argent"
+    },
+    {
+      "key": "trial.mikhail.thread_lunge",
+      "value": "Fente du fil d’argent"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
@@ -1815,7 +1879,7 @@
     },
     {
       "key": "input.cast_hint",
-      "value": "Direction + Q·Y | Mur : maintiens l’attaque + ↓ technique"
+      "value": "Direction + V·Y | Mur : maintiens l’attaque + ↓ technique"
     },
     {
       "key": "input.skill_unlearned",
@@ -1907,7 +1971,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Plantant ses ciseaux au sol, il pose un genou à terre. Le noyau de la lame-mémoire capte en bleu la trace du palier 1 de la Couture d'argent révélée pendant le duel)\n« Tss…… J'avais beau cacher mon dernier nœud, cette épée a lu le fil de mon point simple.\nRetiens bien ceci, Rea : si tu t'arrêtes là, ce n'est qu'une simple défense ; mais à l'instant où tu pousseras cette couture jusqu'à son terme, le supplice de mon cœur passera en toi. Je me retire à l'infirmerie…… Rengaine cette épée et rentre chez toi, je t'en supplie. »\n(Avis système : Couture d'argent acquise — Appuie sur Q (Y à la manette) sans maintenir de direction.)"
+      "value": "(Plantant ses ciseaux au sol, il pose un genou à terre. Le noyau de la lame-mémoire capte en bleu la trace du palier 1 de la Couture d'argent révélée pendant le duel)\n« Tss…… J'avais beau cacher mon dernier nœud, cette épée a lu le fil de mon point simple.\nRetiens bien ceci, Rea : si tu t'arrêtes là, ce n'est qu'une simple défense ; mais à l'instant où tu pousseras cette couture jusqu'à son terme, le supplice de mon cœur passera en toi. Je me retire à l'infirmerie…… Rengaine cette épée et rentre chez toi, je t'en supplie. »\n(Avis système : Couture d'argent acquise — Appuie sur V (Y à la manette) sans maintenir de direction.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2511,7 +2575,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Bouger   F / L3 Examiner·Entrer   J·Z·Clic gauche Épée (manette X)   Q / Y Technique   Échap Pause"
+      "value": "Déplacement ← → · Saut Espace · Attaque A · Interaction F · Ruée Maj+direction · Techniques Q W E R · Esc"
     },
     {
       "key": "investigation.clue.route_ledger.body",
@@ -2587,7 +2651,7 @@
     },
     {
       "key": "story.clock.route.05",
-      "value": "« Une fois cette salle verticale des rouages de l'échappement gravie, vous arriverez au vestibule du cadran où vous attend mon oncle. Dévie les attaques dorées annoncées de la Statue-miroir du notaire par une parade ou une esquive simple, puis frappe à l'Épée de base dès qu'elle s'ouvre ! »\n(Commandes : Monte les paliers de l'échappement et franchis 1 verrou de lapis ainsi que la sentinelle et la statue.)"
+      "value": "« Une fois cette salle verticale des rouages de l'échappement gravie, vous arriverez au vestibule du cadran où vous attend mon oncle. Dévie les attaques dorées annoncées de la Statue-miroir du notaire par une esquive ou une esquive simple, puis frappe à l'Épée de base dès qu'elle s'ouvre ! »\n(Commandes : Monte les paliers de l'échappement et franchis 1 verrou de lapis ainsi que la sentinelle et la statue.)"
     },
     {
       "key": "story.clock.route.06",
@@ -2615,7 +2679,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Plantant son épée-aiguille dans le sol, il souffle lourdement. Le noyau de la lame-mémoire capte en lueur de laiton la trace de la trajectoire de palier 1 de Julius montrée pendant le duel)\n« ……J'avais beau cacher ma Forme ultime, ta lame-mémoire a déchiffré la trajectoire d'aller-retour de mon premier “Pas du pendule”.\nRetiens bien ceci, Rea. Jusqu'à vingt-neuf fois, ce n'est qu'un pas d'escrime, et à trente seul le boîtier de la montre vibrera ; mais à l'instant du quatre-vingtième geste de Forme ultime, la trotteuse figée de ta demi-montre repartira et mon vieillissement s'abattra sur toi. »\n(Avis système : Retour du pendule acquis — Maintiens la direction opposée à celle où regarde Rea et appuie sur Q (Y à la manette).)"
+      "value": "(Plantant son épée-aiguille dans le sol, il souffle lourdement. Le noyau de la lame-mémoire capte en lueur de laiton la trace de la trajectoire de palier 1 de Julius montrée pendant le duel)\n« ……J'avais beau cacher ma Forme ultime, ta lame-mémoire a déchiffré la trajectoire d'aller-retour de mon premier “Pas du pendule”.\nRetiens bien ceci, Rea. Jusqu'à vingt-neuf fois, ce n'est qu'un pas d'escrime, et à trente seul le boîtier de la montre vibrera ; mais à l'instant du quatre-vingtième geste de Forme ultime, la trotteuse figée de ta demi-montre repartira et mon vieillissement s'abattra sur toi. »\n(Avis système : Retour du pendule acquis — Maintiens la direction opposée à celle où regarde Rea et appuie sur V (Y à la manette).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2671,7 +2735,7 @@
     },
     {
       "key": "story.clock.return.01",
-      "value": "« La cloison de laiton de la voie de retour haute se referme vite. Avec le palier 1 “Pas du pendule” du “Retour du pendule” que je viens d'enregistrer, je peux laisser une image rémanente, foncer frapper l'interrupteur et réappuyer sous 1,5 seconde pour revenir en sécurité sur le sol ferme ! »\n(Commandes : Utilise Retour du pendule (Q / Y) pour frapper l'interrupteur derrière la cloison, puis réappuie pour revenir sans danger à ton image rémanente.)"
+      "value": "« La cloison de laiton de la voie de retour haute se referme vite. Avec le palier 1 “Pas du pendule” du “Retour du pendule” que je viens d'enregistrer, je peux laisser une image rémanente, foncer frapper l'interrupteur et réappuyer sous 1,5 seconde pour revenir en sécurité sur le sol ferme ! »\n(Commandes : Utilise Retour du pendule (V / Y) pour frapper l'interrupteur derrière la cloison, puis réappuie pour revenir sans danger à ton image rémanente.)"
     },
     {
       "key": "story.clock.return.02",
@@ -2739,7 +2803,7 @@
     },
     {
       "key": "story.opera.route.04",
-      "value": "« Renvoie les attaques des statues d'une parade simple, frappe l'ouverture à l'Épée de base et coupe les verrous des câbles de maintien pour stabiliser les plateformes ! »\n(Commandes : Traverse les plateaux des lustres en coupant 2 verrous de lapis et en éliminant sentinelles, statue et garde cousu.)"
+      "value": "« Renvoie les attaques des statues d'une esquive simple, frappe l'ouverture à l'Épée de base et coupe les verrous des câbles de maintien pour stabiliser les plateformes ! »\n(Commandes : Traverse les plateaux des lustres en coupant 2 verrous de lapis et en éliminant sentinelles, statue et garde cousu.)"
     },
     {
       "key": "story.opera.route.05",
@@ -2771,7 +2835,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Appuyant la pointe de sa rapière au parquet, elle reprend souffle. Le noyau de la lame-mémoire capte en lueur bleu-vert la trace de la trajectoire de saut tournoyant de palier 1 de Valeria)\n« ……Ah, j'avais beau cacher le final, ton épée a copié l'angle de saut de ma première “Danse des lames tournoyantes”.\nJe t'en prie, Rea. Jusqu'à trente fois, tu ne prendras que mon tic de révérence, mais dès que tu achèveras le quatre-vingtième Grand final, le supplice de mes jambes ira vers toi. Je me retire à l'infirmerie…… alors ne danse pas ce pas jusqu'au bout. »\n(Avis système : Valse du rappel acquise — Maintiens la direction vers le haut et appuie sur Q (Y à la manette).)"
+      "value": "(Appuyant la pointe de sa rapière au parquet, elle reprend souffle. Le noyau de la lame-mémoire capte en lueur bleu-vert la trace de la trajectoire de saut tournoyant de palier 1 de Valeria)\n« ……Ah, j'avais beau cacher le final, ton épée a copié l'angle de saut de ma première “Danse des lames tournoyantes”.\nJe t'en prie, Rea. Jusqu'à trente fois, tu ne prendras que mon tic de révérence, mais dès que tu achèveras le quatre-vingtième Grand final, le supplice de mes jambes ira vers toi. Je me retire à l'infirmerie…… alors ne danse pas ce pas jusqu'au bout. »\n(Avis système : Valse du rappel acquise — Maintiens la direction vers le haut et appuie sur V (Y à la manette).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2827,7 +2891,7 @@
     },
     {
       "key": "story.opera.return.01",
-      "value": "« La voie de retour est par les toits sous projecteurs ! En m'élançant vers les lanternes suspendues avec le palier 1 “Danse des lames tournoyantes” de “Valse du rappel”, je peux dévier les projectiles tout en bondissant bien plus haut ! »\n(Commandes : Frappe les lanternes suspendues avec Valse du rappel (Q / Y) pour t'élever et atterrir sur la poutre d'acier d'en face.)"
+      "value": "« La voie de retour est par les toits sous projecteurs ! En m'élançant vers les lanternes suspendues avec le palier 1 “Danse des lames tournoyantes” de “Valse du rappel”, je peux dévier les projectiles tout en bondissant bien plus haut ! »\n(Commandes : Frappe les lanternes suspendues avec Valse du rappel (V / Y) pour t'élever et atterrir sur la poutre d'acier d'en face.)"
     },
     {
       "key": "story.opera.return.02",
@@ -2927,7 +2991,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Appuyant le manche de son épée-marteau au sol, il pose un genou. Le noyau de la lame-mémoire capte en or la trace d'onde de la Frappe vibrante de palier 1 révélée durant le duel)\n« [Carnet : Ta lame a capté l'onde de ma première “Frappe vibrante”. Jusqu'à trente fois, tes oreilles seront seulement un peu sourdes, mais à la quatre-vingtième Forme ultime, mon silence passera en toi. Je descends à l'infirmerie — je t'en prie, arrête cette résonance.] »\n(Avis système : Forge de résonance acquise — En l’air, maintiens la direction vers le bas et appuie sur Q (Y à la manette).)"
+      "value": "(Appuyant le manche de son épée-marteau au sol, il pose un genou. Le noyau de la lame-mémoire capte en or la trace d'onde de la Frappe vibrante de palier 1 révélée durant le duel)\n« [Carnet : Ta lame a capté l'onde de ma première “Frappe vibrante”. Jusqu'à trente fois, tes oreilles seront seulement un peu sourdes, mais à la quatre-vingtième Forme ultime, mon silence passera en toi. Je descends à l'infirmerie — je t'en prie, arrête cette résonance.] »\n(Avis système : Forge de résonance acquise — En l’air, maintiens la direction vers le bas et appuie sur V (Y à la manette).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -2955,7 +3019,7 @@
     },
     {
       "key": "story.gabriel.i1.06",
-      "value": "(Dès que Rea baisse l'épée et tend la paume ouverte, Gabriel stoppe net son épée-marteau en plein élan, s'approche soulagé et trace trois grands signes de main dans son carnet)\n« [Signaux convenus du carnet — Trois signes pour se protéger même sans son]\n1. [Paume ouverte · arrêt] : Arrêter immédiatement attaque et déplacement en cas de surcharge ou de danger\n2. [Deux doigts · prépare-toi] : Coup de cloche frontal en approche — tiens-toi prête pour une parade ou frappe descendante\n3. [Main vers le bas · atterris et reviens] : Pose-toi sur un sol sûr et reprends tes distances avant l'onde étendue »"
+      "value": "(Dès que Rea baisse l'épée et tend la paume ouverte, Gabriel stoppe net son épée-marteau en plein élan, s'approche soulagé et trace trois grands signes de main dans son carnet)\n« [Signaux convenus du carnet — Trois signes pour se protéger même sans son]\n1. [Paume ouverte · arrêt] : Arrêter immédiatement attaque et déplacement en cas de surcharge ou de danger\n2. [Deux doigts · prépare-toi] : Coup de cloche frontal en approche — tiens-toi prête pour une esquive ou frappe descendante\n3. [Main vers le bas · atterris et reviens] : Pose-toi sur un sol sûr et reprends tes distances avant l'onde étendue »"
     },
     {
       "key": "story.gabriel.i1.07",
@@ -2983,7 +3047,7 @@
     },
     {
       "key": "story.bell.return.01",
-      "value": "« Le sol du couloir descendant est fissuré. En frappant le dallage et les boucliers fendillés avec le palier 1 “Frappe vibrante” de “Forge de résonance” que je viens d'enregistrer, je peux les briser d'un coup ! »\n(Commandes : Frappe les sols fissurés et les boucliers des gardes cousus avec Forge de résonance (↓ En l'air + Q / Y ou Forge au sol).)"
+      "value": "« Le sol du couloir descendant est fissuré. En frappant le dallage et les boucliers fendillés avec le palier 1 “Frappe vibrante” de “Forge de résonance” que je viens d'enregistrer, je peux les briser d'un coup ! »\n(Commandes : Frappe les sols fissurés et les boucliers des gardes cousus avec Forge de résonance (↓ En l'air + V / Y ou Forge au sol).)"
     },
     {
       "key": "story.bell.return.02",
@@ -3007,7 +3071,7 @@
     },
     {
       "key": "story.bell.mastery.02",
-      "value": "(Juste après que le quatre-vingtième geste ultime « Les Semailles de six heures » éclate d'une parade simple suivie d'une frappe descendante en une onde de contre dorée de grande cloche, les sons alentour sombrent dans un silence profond et une fente cramoisie fend le quatrième pétale de la broche !)\n« ……Ah, ah…… Le cri sorti de ma gorge est devenu à moitié rauque et tout faible.\n“Destin funeste 4 : Silence éternel” vient d'être transféré à “Accusée R.E.A.” — sur moi. »"
+      "value": "(Juste après que le quatre-vingtième geste ultime « Les Semailles de six heures » éclate d'une esquive simple suivie d'une frappe descendante en une onde de contre dorée de grande cloche, les sons alentour sombrent dans un silence profond et une fente cramoisie fend le quatrième pétale de la broche !)\n« ……Ah, ah…… Le cri sorti de ma gorge est devenu à moitié rauque et tout faible.\n“Destin funeste 4 : Silence éternel” vient d'être transféré à “Accusée R.E.A.” — sur moi. »"
     },
     {
       "key": "story.bell.mastery.03",
@@ -3051,7 +3115,7 @@
     },
     {
       "key": "story.gallery.route.04",
-      "value": "« Renvoie les attaques reflétées des statues d'une parade simple pour enfoncer l'Épée de base dans l'ouverture, abaisse les ponts de toile et traverse vers la serre ! »\n(Commandes : Abaisse les ponts en coupant 2 verrous de lapis et élimine sentinelles, statue et garde cousu.)"
+      "value": "« Renvoie les attaques reflétées des statues d'une esquive simple pour enfoncer l'Épée de base dans l'ouverture, abaisse les ponts de toile et traverse vers la serre ! »\n(Commandes : Abaisse les ponts en coupant 2 verrous de lapis et élimine sentinelles, statue et garde cousu.)"
     },
     {
       "key": "story.gallery.route.05",
@@ -3083,7 +3147,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Appuyant sa rapière-pinceau au sol, elle reprend doucement souffle. Le noyau de la lame-mémoire capte en reflets d'aquarelle la trace aérienne du Trait de pinceau de palier 1 d'Irina)\n« ……J'avais beau cacher le dernier autoportrait, ta lame-mémoire a su lire la touche de mon premier “Trait de pinceau”.\nSouviens-t'en, Rea. Jusqu'à trente fois, seule une nuance d'aquarelle effleurera le bord de ta vue ; mais dès que tu achèveras le quatre-vingtième autoportrait, mon Destin de cécité passera dans tes yeux. Je me retire à l'infirmerie…… Arrête ce pinceau et rentre chez toi, je t'en prie. »\n(Avis système : Entaille du vide acquise — Au sol, maintiens la direction vers le bas et appuie sur Q (Y à la manette).)"
+      "value": "(Appuyant sa rapière-pinceau au sol, elle reprend doucement souffle. Le noyau de la lame-mémoire capte en reflets d'aquarelle la trace aérienne du Trait de pinceau de palier 1 d'Irina)\n« ……J'avais beau cacher le dernier autoportrait, ta lame-mémoire a su lire la touche de mon premier “Trait de pinceau”.\nSouviens-t'en, Rea. Jusqu'à trente fois, seule une nuance d'aquarelle effleurera le bord de ta vue ; mais dès que tu achèveras le quatre-vingtième autoportrait, mon Destin de cécité passera dans tes yeux. Je me retire à l'infirmerie…… Arrête ce pinceau et rentre chez toi, je t'en prie. »\n(Avis système : Entaille du vide acquise — Au sol, maintiens la direction vers le bas et appuie sur V (Y à la manette).)"
     },
     {
       "key": "story.irina.i0.06",
@@ -3139,7 +3203,7 @@
     },
     {
       "key": "story.gallery.return.01",
-      "value": "« Passé le rebord du chemin de retour de la serre, il n'y a plus de sol du tout. En traçant au sol le palier 1 “Trait de pinceau” d'“Entaille du vide”, une plateforme de peinture lapis reste 3 secondes dans les airs devant moi ! Prenons appui sur ce coup de pinceau pour sauter en face ! »\n(Commandes : Au bord du palier au sol, appuie sur ↓ + Q / Y pour placer une plateforme Trait de pinceau devant toi, puis saute dessus pour traverser.)"
+      "value": "« Passé le rebord du chemin de retour de la serre, il n'y a plus de sol du tout. En traçant au sol le palier 1 “Trait de pinceau” d'“Entaille du vide”, une plateforme de peinture lapis reste 3 secondes dans les airs devant moi ! Prenons appui sur ce coup de pinceau pour sauter en face ! »\n(Commandes : Au bord du palier au sol, appuie sur ↓ + V / Y pour placer une plateforme Trait de pinceau devant toi, puis saute dessus pour traverser.)"
     },
     {
       "key": "story.gallery.return.02",
@@ -3151,7 +3215,7 @@
     },
     {
       "key": "story.gallery.synergy.01",
-      "value": "« Au-delà de ce sol fendu entre deux appuis fixes s'ouvre un vide sans le moindre point d'appui !\nSi je couds d'abord la brèche du vrai plancher avec “Couture d'argent” de Mikhail pour le traverser, puis qu'au bord de cette toile cousue je peins une plateforme dans le vide avec “Entaille du vide” d'Irina pour bondir, je peux réunir la force des deux techniques ! »\n(Commandes : Scelle le sol fendu (gallery_synergy_seam) avec Couture d'argent et monte dessus, puis utilise Entaille du vide (↓ + Q / Y) au bout pour peindre une plateforme vers la terrasse.)"
+      "value": "« Au-delà de ce sol fendu entre deux appuis fixes s'ouvre un vide sans le moindre point d'appui !\nSi je couds d'abord la brèche du vrai plancher avec “Couture d'argent” de Mikhail pour le traverser, puis qu'au bord de cette toile cousue je peins une plateforme dans le vide avec “Entaille du vide” d'Irina pour bondir, je peux réunir la force des deux techniques ! »\n(Commandes : Scelle le sol fendu (gallery_synergy_seam) avec Couture d'argent et monte dessus, puis utilise Entaille du vide (↓ + V / Y) au bout pour peindre une plateforme vers la terrasse.)"
     },
     {
       "key": "story.gallery.synergy.02",
@@ -3551,7 +3615,7 @@
     },
     {
       "key": "story.cassel.p1.04",
-      "value": "« Le voilà…… ! Sa garde préparatoire est identique à mon Épée de base ! »\n(Début du combat : Cassel Phase 1 · Forme originelle d'épée — Contrez la technique mère de Cassel (Forme Zéro de Cassel) et ses cinq motifs originels avec parades simples, esquives et techniques pour abaisser ses PV à 120.)"
+      "value": "« Le voilà…… ! Sa garde préparatoire est identique à mon Épée de base ! »\n(Début du combat : Cassel Phase 1 · Forme originelle d'épée — Contrez la technique mère de Cassel (Forme Zéro de Cassel) et ses cinq motifs originels avec esquives simples, esquives et techniques pour abaisser ses PV à 120.)"
     },
     {
       "key": "story.cassel.p1.05",
@@ -3599,11 +3663,11 @@
     },
     {
       "key": "story.cassel.return.forge_early",
-      "value": "(L'onde dorée de grande cloche des « Semailles de six heures », abattue en plein vol juste après une parade simple, percute l'onde terrestre du miroir et brise la couche réfléchissante !)\nRestitution de la « Forge de résonance » de Gabriel engagée !\nAu lieu de garder la frappe de contre étendue, j'ai stoppé tôt l'« Onde de la grande cloche reflétée » qui rasait le sol. Maintenant je peux me concentrer sur mes parades au sol sans être forcée de sauter !\n(Signal audio : Boucle froide de grande cloche coupée définitivement + Couche de résonance d'empreinte +1)"
+      "value": "(L'onde dorée de grande cloche des « Semailles de six heures », abattue en plein vol juste après une esquive simple, percute l'onde terrestre du miroir et brise la couche réfléchissante !)\nRestitution de la « Forge de résonance » de Gabriel engagée !\nAu lieu de garder la frappe de contre étendue, j'ai stoppé tôt l'« Onde de la grande cloche reflétée » qui rasait le sol. Maintenant je peux me concentrer sur mes esquives au sol sans être forcée de sauter !\n(Signal audio : Boucle froide de grande cloche coupée définitivement + Couche de résonance d'empreinte +1)"
     },
     {
       "key": "story.cassel.return.forge_late",
-      "value": "(L'onde de grande cloche qui brisa maintes fois la garde de Cassel par parade simple et frappe aérienne descendante s'enfonce profondément dans le miroir !)\nGabriel, les signes et les coups de cloche que tu m'as appris ont forcé le miroir fermé de Cassel à maintes reprises !\nJ'engage maintenant « Forge de résonance » et le Destin de Silence éternel vers Cassel !\n(Signal audio : Boucle froide de grande cloche coupée définitivement + Couche de résonance d'empreinte +1)"
+      "value": "(L'onde de grande cloche qui brisa maintes fois la garde de Cassel par esquive simple et frappe aérienne descendante s'enfonce profondément dans le miroir !)\nGabriel, les signes et les coups de cloche que tu m'as appris ont forcé le miroir fermé de Cassel à maintes reprises !\nJ'engage maintenant « Forge de résonance » et le Destin de Silence éternel vers Cassel !\n(Signal audio : Boucle froide de grande cloche coupée définitivement + Couche de résonance d'empreinte +1)"
     },
     {
       "key": "story.cassel.return.canvas_early",
@@ -3615,7 +3679,7 @@
     },
     {
       "key": "story.cassel.p2.08_r1_cassel",
-      "value": "(Lorsque le premier engagement 1/5 s'inscrit au registre et que +20% de puissance d'empreinte jaillit telle une flamme bleue de la lame de Rea, le sourcil de Cassel tressaille pour la première fois. Résolu à ne pas céder les quatre autres techniques, Cassel replie le « Miroir d'Omnirésonance » dans son dos et recule d'un bond rapide !)\n« ……Tu as détourné le verdict de réflexion du Miroir d'Omnirésonance pour inscrire une restitution sur mon registre ?!\nMais si je referme les pans du miroir, tes autres techniques perdent leur cible de choc des lames. Je vais d'abord trancher ta propre personne par mon escrime directe ! »\n(Note tactique : Cassel ferme son miroir et attaque directement avec les 3 charges tranchantes de la Forme Zéro de Cassel. Ne gaspille pas tes techniques de boss — contre-les avec la Parade simple (L / RB) !)"
+      "value": "(Lorsque le premier engagement 1/5 s'inscrit au registre et que +20% de puissance d'empreinte jaillit telle une flamme bleue de la lame de Rea, le sourcil de Cassel tressaille pour la première fois. Résolu à ne pas céder les quatre autres techniques, Cassel replie le « Miroir d'Omnirésonance » dans son dos et recule d'un bond rapide !)\n« ……Tu as détourné le verdict de réflexion du Miroir d'Omnirésonance pour inscrire une restitution sur mon registre ?!\nMais si je referme les pans du miroir, tes autres techniques perdent leur cible de choc des lames. Je vais d'abord trancher ta propre personne par mon escrime directe ! »\n(Note tactique : Cassel ferme son miroir et attaque directement avec les 3 charges tranchantes de la Forme Zéro de Cassel. Ne gaspille pas tes techniques de boss — contre-les avec la esquive simple (Shift / LB) !)"
     },
     {
       "key": "story.cassel.p2.09_r1_rea",
@@ -3635,7 +3699,7 @@
     },
     {
       "key": "story.cassel.p2.13_r5",
-      "value": "(Au fracas du cinquième choc des lames, les cinq couches du « Miroir d'Omnirésonance » s'éteignent totalement, et tout écho distordu disparaît ! Les cinq emplacements de technique de Rea affichent [Restitution engagée], tandis que depuis la rainure centrale s'élève un pilier éblouissant de 100% (×2,0) de puissance d'empreinte libérée)\n[Restitutions engagées 5/5 terminées — +100% de puissance d'empreinte libérée]\n« Le droit d'usage des cinq techniques de bienfaiteur est confié au registre de restitution. Il ne me reste en main que l'Épée de base, mais mes jambes, mon esquive, ma parade et tout le temps forgé par la moi d'hier et celle d'aujourd'hui convergent dans cette seule lame ! »"
+      "value": "(Au fracas du cinquième choc des lames, les cinq couches du « Miroir d'Omnirésonance » s'éteignent totalement, et tout écho distordu disparaît ! Les cinq emplacements de technique de Rea affichent [Restitution engagée], tandis que depuis la rainure centrale s'élève un pilier éblouissant de 100% (×2,0) de puissance d'empreinte libérée)\n[Restitutions engagées 5/5 terminées — +100% de puissance d'empreinte libérée]\n« Le droit d'usage des cinq techniques de bienfaiteur est confié au registre de restitution. Il ne me reste en main que l'Épée de base, mais mes jambes, mon esquive, ma esquive et tout le temps forgé par la moi d'hier et celle d'aujourd'hui convergent dans cette seule lame ! »"
     },
     {
       "key": "story.cassel.p3.01_open",
@@ -3643,15 +3707,15 @@
     },
     {
       "key": "story.cassel.p3.02_live_b3",
-      "value": "(Sur le coup même qui heurte la lame de Cassel, les utilisations effectives d'Épée de base atteignent quatre cents ! Dans un anneau doré qui s'étend, la dernière rune de la lame s'illumine : [Vrai nom révélé : Lame du Péché Originel — Forme Zéro de Cassel] !)\n« ……Ce seul coup vient de remplir la quatre-centième empreinte !\nLe terme de la Forme originelle que vous aviez plantée en moi s'est complètement ouvert entre mes mains, Cassel ! À la prochaine parade, mon enchaînement ultime à quatre coups validera la restitution des cinq Destins funestes ! »"
+      "value": "(Sur le coup même qui heurte la lame de Cassel, les utilisations effectives d'Épée de base atteignent quatre cents ! Dans un anneau doré qui s'étend, la dernière rune de la lame s'illumine : [Vrai nom révélé : Lame du Péché Originel — Forme Zéro de Cassel] !)\n« ……Ce seul coup vient de remplir la quatre-centième empreinte !\nLe terme de la Forme originelle que vous aviez plantée en moi s'est complètement ouvert entre mes mains, Cassel ! À la prochaine esquive, mon enchaînement ultime à quatre coups validera la restitution des cinq Destins funestes ! »"
     },
     {
       "key": "story.cassel.p3.03_b3_ready",
-      "value": "« Le palier 3 de la Forme originelle est prêt, moi d'aujourd'hui !\nQuand Cassel se jettera avec “Forme Zéro de Cassel”, dévie-le par une Parade simple et enchaîne du 1er au 4e coup de notre Épée de base de palier 3 jusqu'au bout pendant l'ouverture ! Du premier jusqu'au quatrième coup, je frapperai exactement derrière toi à l'unisson ! »"
+      "value": "« Le palier 3 de la Forme originelle est prêt, moi d'aujourd'hui !\nQuand Cassel se jettera avec “Forme Zéro de Cassel”, dévie-le par une esquive simple et enchaîne du 1er au 4e coup de notre Épée de base de palier 3 jusqu'au bout pendant l'ouverture ! Du premier jusqu'au quatrième coup, je frapperai exactement derrière toi à l'unisson ! »"
     },
     {
       "key": "story.cassel.p3.04_b3_retry",
-      "value": "« Tout va bien, ne te précipite pas ! Notre Forme originelle a déjà atteint la Forme ultime de palier 3. Ne brise pas simplement le noyau : reprends ton souffle, puis réussis le choc des lames jusqu'au combo complet 1~4 coups après une Parade simple ! »"
+      "value": "« Tout va bien, ne te précipite pas ! Notre Forme originelle a déjà atteint la Forme ultime de palier 3. Ne brise pas simplement le noyau : reprends ton souffle, puis réussis le choc des lames jusqu'au combo complet 1~4 coups après une esquive simple ! »"
     },
     {
       "key": "story.cassel.p3.05_true_hit",
@@ -3763,7 +3827,7 @@
     },
     {
       "key": "story.ending.true.13_swing_prompt",
-      "value": "« Pas une escrime de substitution destinée à porter la mort d'un autre — ici, je grave le premier geste écrit sous mon propre nom par la moi qui vit aujourd'hui ! »\n(Commandes : Face au belvédère ensoleillé (rea_form_one_sky), appuie sur la touche d'Épée (J / Z / Clic gauche / X) pour porter la toute première frappe de Rea !)"
+      "value": "« Pas une escrime de substitution destinée à porter la mort d'un autre — ici, je grave le premier geste écrit sous mon propre nom par la moi qui vit aujourd'hui ! »\n(Commandes : Face au belvédère ensoleillé (rea_form_one_sky), appuie sur la touche d'Épée (A / X) pour porter la toute première frappe de Rea !)"
     },
     {
       "key": "story.ending.true.14_registered",
@@ -3811,11 +3875,11 @@
     },
     {
       "key": "story.resume.lift.03_theo",
-      "value": "(La voix de Théo résonne dans le cornet acoustique)\n« Rea ! Pour compléter tes utilisations d'Épée de base, inutile de reparcourir de longs quartiers. Emprunte simplement le passage de retour juste à côté ou le Choix du niveau vers le “Creuset de résonance” d'Ethan à la Forge des Canaux — l'entraînement intensif aux parades et combos t'amènera vite à 400 coups, puis tu reviendras droit devant cet ascenseur ! »\n(Commandes : Rends-toi à la Forge des Canaux / Creuset de résonance pour porter l'Épée de base au palier 3 (400 utilisations), ou utilise le panneau de l'ascenseur pour défier aussitôt Cassel.)"
+      "value": "(La voix de Théo résonne dans le cornet acoustique)\n« Rea ! Pour compléter tes utilisations d'Épée de base, inutile de reparcourir de longs quartiers. Emprunte simplement le passage de retour juste à côté ou le Choix du niveau vers le “Creuset de résonance” d'Ethan à la Forge des Canaux — l'entraînement intensif aux esquives et combos t'amènera vite à 400 coups, puis tu reviendras droit devant cet ascenseur ! »\n(Commandes : Rends-toi à la Forge des Canaux / Creuset de résonance pour porter l'Épée de base au palier 3 (400 utilisations), ou utilise le panneau de l'ascenseur pour défier aussitôt Cassel.)"
     },
     {
       "key": "story.resume.crucible.01_ethan",
-      "value": "(Ouvrant grand la porte du foyer de l'immense fourneau en lapis « Creuset de résonance » au fond de la Forge des Canaux, Ethan hoche la tête)\n« Te voilà, Rea. Pour contrer l'escrime mère de Cassel jusqu'au quatrième et dernier coup, il faut que ton Épée de base atteigne sa quatre-centième marque ultime.\nDans ce creuset t'attendent des cibles de résonance haute densité et des sentinelles prêtes à encaisser tes parades simples et tes combos sans relâche. Deux minutes suffisent : frappe tout ton saoul ! »\n(Commandes : Appuie sur F / clic stick gauche pour activer le Creuset de résonance (resonant_crucible).)"
+      "value": "(Ouvrant grand la porte du foyer de l'immense fourneau en lapis « Creuset de résonance » au fond de la Forge des Canaux, Ethan hoche la tête)\n« Te voilà, Rea. Pour contrer l'escrime mère de Cassel jusqu'au quatrième et dernier coup, il faut que ton Épée de base atteigne sa quatre-centième marque ultime.\nDans ce creuset t'attendent des cibles de résonance haute densité et des sentinelles prêtes à encaisser tes esquives simples et tes combos sans relâche. Deux minutes suffisent : frappe tout ton saoul ! »\n(Commandes : Appuie sur F / clic stick gauche pour activer le Creuset de résonance (resonant_crucible).)"
     },
     {
       "key": "story.resume.crucible.02_theo",
@@ -3932,6 +3996,394 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Passage de retour vers l'Ascenseur du Grand Tribunal"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Affichage : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Plein écran fenêtré"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Fenêtré)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Fenêtré)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Fenêtré)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "Synchronisation VSync : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Raccourcis clavier"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Commandes"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Choisissez une action puis appuyez sur une touche ou clic droit. (Échange auto · Échap annule)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Appuyez sur une touche… Échap ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Réinitialiser"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Touche en double échangée."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Sauter :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Attaque :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Compétence :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Ruée :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interagir :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "Carte du quartier :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Carte"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Exploré : {0} / {1} salles"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Position   ■ Visitée   □ Inexplorée   ❖ Boss/Arène   [{0} / Tab / Esc] Fermer"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Refuge · Grenier Oublié"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Rue du Tailleur Velours"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Quartier de l’Horloge"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Opéra de Verre"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Aqueduc du Grand Beffroi"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Galerie de la Toile"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Cour Notariale"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Grand Tribunal"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Dépl. ←/→ | Saut {0} | Attaque {1} | Tech. {2} | Ruée {3} | Carte {4} | Échap"
+    },
+    {
+      "key": "shop.title",
+      "value": "Provisions d’Ethan"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Sac"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Parler à Ethan"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Tu pars au quartier des tailleurs de Velours, Rea ? Emporte du thé de résonance et des bandages. Si tu es blessée, utilise-les depuis ton sac. Ne force pas."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "De retour de Velours, Rea ? Prends autant soin de toi que de ta lame. Dis-moi ce qu’il te faut pour la suite."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Voir les provisions"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "Terminer la conversation"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Pièces d’argent {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Santé {0}/{1}   ·   Pièces d’argent {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Rend {0} PV   ·   Dans le sac {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} argent"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Choisir   ·   Entrée Acheter   ·   Échap Retour"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Choisir   ·   Entrée Utiliser   ·   Échap Retour"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Thé de résonance à la menthe"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Bandage de voyage"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "Tu n’as pas assez d’argent."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "Achat effectué · {0}"
+    },
+    {
+      "key": "shop.none_held",
+      "value": "Aucun exemplaire de {0} dans le sac."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "Tu ne peux rien utiliser à terre."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "Ta santé est au maximum."
+    },
+    {
+      "key": "shop.used",
+      "value": "{0} utilisé · {1} PV rendus"
+    },
+    {
+      "key": "controls.kb_opening",
+      "value": "←/→ Se déplacer  ·  {0} Sauter  ·  {1} Interagir"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "Stick G/croix Se déplacer  ·  [A] Sauter  ·  [L3] Interagir"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "Le grenier de Marta"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Appuyez sur {0} pour sauter par-dessus le coffre et retrouver le bonbon à la menthe."
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Dépl. ←/→ | Interag. {0} | Attaque {1} | Tech. {2} | Ruée {3} | Carte {4} | Échap Pause"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "LS | Saut [A] | Attaque [X] | Tech. [Y] | Ruée [LB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "LS | Interag. [L3] | Attaque [X] | Tech. [Y] | Ruée [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Registre notarial mis à jour · Santé restaurée"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "REBOND !"
+    },
+    {
+      "key": "combat.counter",
+      "value": "CONTRE !"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "BRISÉ !"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Tremblement d'écran : {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "Non (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Léger (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Complet (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Arrêt d'impact (Hit-Stop) : {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Invulnérabilité prolongée (Aide) : {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NOUVELLE TECHNIQUE"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Tissez du fil d'argent sur les corniches brisées et percez l'ennemi."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Rembobinez et figez brièvement mécanismes et ennemis."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Décrivez un arc aérien pour franchir les projecteurs."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Brisez les parois fissurées et contrez les attaques."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Tracez des appuis temporaires dans les airs."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Journal Notarial"
+    },
+    {
+      "key": "journal.title",
+      "value": "Journal Notarial & Registre"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Techniques"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Personnages"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Exploration"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Changer d'onglet  |  N / Esc Fermer"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Commande : {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Salles explorées : {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Techniques de bienfaiteur : {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Indices d'enquête : {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Touches actives"
+    },
+    {
+      "key": "journal.met",
+      "value": "Rencontré"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Inconnu"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Technique héritée"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Héritière de la Lame · Apprentie notaire"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Gardienne du Grenier de l'Oubli"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Bienfaiteur de Velours · Couture d'Argent"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Bienfaiteur de l'Horloge · Retour du Pendule"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Bienfaitrice de l'Opéra · Valse de Rideau"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Bienfaiteur du Beffroi · Forge Résonante"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Bienfaitrice de la Galerie · Gravure de Toile"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Juge Suprême · Tribunal Notarial"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Lieu : {0}"
     }
   ]
 }

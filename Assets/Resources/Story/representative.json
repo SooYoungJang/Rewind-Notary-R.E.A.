@@ -6,48 +6,52 @@
       "floors": [
         {
           "id": "attic_safe_floor",
-          "x": 3.0
+          "x": 4.4
         },
         {
           "id": "attic_table_floor",
-          "x": 10.0
+          "x": 18.2
         },
         {
           "id": "attic_board_floor",
-          "x": 16.0
+          "x": 26.3
         },
         {
           "id": "attic_exit_floor",
-          "x": 20.0
+          "x": 45.5
         }
       ],
       "points": [
         {
+          "id": "marta",
+          "x": 6.5
+        },
+        {
           "id": "mint_candy_pickup",
-          "x": 5.0
+          "x": 12.6
         },
         {
           "id": "mint_candy_tray",
-          "x": 10.0
+          "x": 17.4
         },
         {
           "id": "contract_copy_envelope",
-          "x": 10.0
+          "x": 18.35
         },
         {
           "id": "breakfast_board",
-          "x": 16.0
+          "x": 26.3
         }
       ],
       "exits": [
         {
           "room": "hub_workroom",
-          "x": 2,
-          "gate": ""
+          "x": 1.8,
+          "gate": "intro_complete"
         },
         {
           "room": "hub_forge",
-          "x": 20,
+          "x": 45.5,
           "gate": "sixth_bowl_stamped"
         }
       ],
@@ -55,7 +59,15 @@
       "roster": [],
       "singleSeams": 0,
       "releaseKnots": 0,
-      "backgroundSet": "hub_attic"
+      "backgroundSet": "hub_attic",
+      "eastBoundary": 49,
+      "cameraBounds": {"x": 8.7, "y": 1.7, "width": 31.6, "height": 2.2},
+      "terrain": [
+        {
+          "id": "attic_storage_chest",
+          "rect": {"x": 8.25, "y": 0, "width": 1.96, "height": 1.06}
+        }
+      ]
     },
     {
       "id": "hub_workroom",
@@ -163,7 +175,8 @@
         {
           "room": "hub_attic",
           "x": 1,
-          "gate": ""
+          "gate": "",
+          "destinationFloor": "attic_exit_floor"
         },
         {
           "room": "hub_workroom",

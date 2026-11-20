@@ -150,7 +150,7 @@ namespace RewindNotary
         {
             var d = Array.Find(bot.Area.Room.exits, e => e.room == dest);
             if (d == null || !bot.OperaDoor(d)) return false;
-            keys.Tap(KeyCode.F);
+            keys.Tap(GameInput.InteractKey);
             return GameInput.InvestigateDown;
         }
 
@@ -267,7 +267,7 @@ namespace RewindNotary
                 var point = area.Room.Point(action.Substring(action.IndexOf(':') + 1));
                 if (point != null && (action.StartsWith("use:") || action.StartsWith("ride:") || action.StartsWith("walk:")))
                 {
-                    if (bot.OperaPosition(point.surface, point.x) && action.StartsWith("use:")) keys.Tap(KeyCode.F);
+                    if (bot.OperaPosition(point.surface, point.x) && action.StartsWith("use:")) keys.Tap(GameInput.InteractKey);
                     return false;
                 }
             }

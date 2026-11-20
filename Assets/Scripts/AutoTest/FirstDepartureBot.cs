@@ -19,7 +19,7 @@ namespace RewindNotary
             "Luka signalled and boarded, saved lift_arrival_exit, clock selected",
             "Same slot enters clock_01_entry with investigation and lift receipts"
         };
-        internal static readonly int[] Limits = { 45, 100, 240, 180, 45, 600, 180, 150, 45 };
+        internal static readonly int[] Limits = { 45, 165, 240, 180, 45, 600, 180, 150, 45 };
         private readonly BotKeyboard keys;
         private readonly Action<string> stop;
         internal GameBootstrap Game { get; private set; }
@@ -29,6 +29,8 @@ namespace RewindNotary
         internal CoreRecord Record => Session?.Progression.Record ?? Shell?.MenuRecord;
         private CombatMotor2D Player => Area.Rea;
         private bool sawEmpty, sawSafeCall;
+        private bool talkedToMarta;
+        private float arrivalTestAt = -1f, martaApproachedAt = -1f;
         private float jumpUntil;
         private readonly List<ContactPoint2D> walkContacts = new List<ContactPoint2D>();
         private const float BlockedWalkSeconds = .2f, BlockedWalkSlop = .01f;
@@ -56,6 +58,7 @@ namespace RewindNotary
             switch (step)
             {
                 case PlaytestStep.NewSlot: return sawEmpty && room == "hub_attic" && Session.ActiveSlot == 1 &&
+                    arrivalTestAt >= 0f && Time.unscaledTime >= arrivalTestAt + .35f && Shell.Playing &&
                     Record.Get(SkillRules.BasicSword).validUseCount == SkillRules.InitialSwordUses && !silver.acquired;
                 case PlaytestStep.Attic: return room == "hub_attic" && Has("mint_candy_placed") &&
                     Has("contract_copy_received") && Record.investigation.clueIds.Contains("contract_copy") && Has("sixth_bowl_stamped");
@@ -93,6 +96,13 @@ namespace RewindNotary
                     if (step == PlaytestStep.DistrictTwo && Shell.MenuIndex == clockIndex) keys.Tap(KeyCode.Return);
                     return;
                 case ShellPage.StoryDialogue:
+                    if (Area?.ActiveRow?.completionFlag == "intro_attic_01_read" && !talkedToMarta)
+                    {
+                        stop("The opening dialogue started before Rea interacted with Marta");
+                        return;
+                    }
+                    Select(0);
+                    return;
                 case ShellPage.Pause:
                     Select(0);
                     return;
@@ -100,7 +110,16 @@ namespace RewindNotary
                 default: return;
             }
             if (Area == null || !GameInput.CanPlay) return;
-            if (Player.Health.Dead) { keys.Tap(KeyCode.R); return; }
+            if (Player.Health.Dead) { keys.Tap(KeyCode.Backspace); return; }
+            if (step == PlaytestStep.NewSlot)
+            {
+                if (arrivalTestAt < 0f && Player.Grounded)
+                {
+                    arrivalTestAt = Time.unscaledTime;
+                    keys.Tap(GameInput.InteractKey);
+                }
+                return;
+            }
             if (Time.time < jumpUntil) keys.Hold(KeyCode.Space);
             if (Area.BoutOpponent != null)
             {
@@ -112,8 +131,8 @@ namespace RewindNotary
             {
                 if (Area.OnReturnFloor)
                 {
-                    keys.Tap(KeyCode.F);
-                    if (keys.GetKeyDown(KeyCode.F)) sawSafeCall = true;
+                    keys.Tap(GameInput.InteractKey);
+                    if (keys.GetKeyDown(GameInput.InteractKey)) sawSafeCall = true;
                 }
                 else SeekFloor();
                 return;
@@ -133,7 +152,20 @@ namespace RewindNotary
                 }
                 if (action.StartsWith("strike:", StringComparison.Ordinal)) StrikeStoryPoint(point.x);
                 else if (action.StartsWith("walk:", StringComparison.Ordinal)) Walk(point.x, .38f);
-                else if (action.StartsWith("use:", StringComparison.Ordinal) && Walk(point.x, .38f)) keys.Tap(KeyCode.F);
+                else if (action.StartsWith("use:", StringComparison.Ordinal) && Walk(point.x, .38f)) keys.Tap(GameInput.InteractKey);
+                return;
+            }
+            if (Area.AtticDialogueTarget is StoryMark dialogueTarget)
+            {
+                if (!Walk(dialogueTarget.x, .38f)) return;
+                if (dialogueTarget.id == "marta")
+                {
+                    if (martaApproachedAt < 0f) martaApproachedAt = Time.unscaledTime;
+                    if (Time.unscaledTime < martaApproachedAt + .4f) return;
+                    keys.Tap(GameInput.InteractKey);
+                    talkedToMarta |= keys.GetKeyDown(GameInput.InteractKey);
+                }
+                else keys.Tap(GameInput.InteractKey);
                 return;
             }
             if (Record.firstTransferPending && !Has("returned_for_mid_invest"))
@@ -160,13 +192,13 @@ namespace RewindNotary
             if (door == null) return;
             if (Area.Room.stage == "clock" || Area.Room.id == "velvet_05_return")
             {
-                if (ClockDoor(door)) keys.Tap(KeyCode.F);
+                if (ClockDoor(door)) keys.Tap(GameInput.InteractKey);
                 return;
             }
             if (Area.Room.stage == "velvet" && door.approach?.Defined == true && door.approach.y > 1 && !ReachBalcony()) return;
-            if (Walk(door.x, .45f) && door.InReach(Player.Body.position)) keys.Tap(KeyCode.F);
+            if (Walk(door.x, .45f) && door.InReach(Player.Body.position)) keys.Tap(GameInput.InteractKey);
             else if (Area.Room.id == "velvet_01_entry" && Player.Grounded &&
-                door.x - Player.Body.position.x > DefenseTuning.DashDistance + 1f) keys.Tap(KeyCode.K);
+                door.x - Player.Body.position.x > DefenseTuning.DashDistance + 1f) keys.Tap(KeyCode.LeftShift);
         }
 
         internal void Select(int index)
@@ -180,7 +212,7 @@ namespace RewindNotary
             float dx = to - Player.Body.position.x;
             if (Mathf.Abs(dx) <= tolerance) return true;
             int facing = dx < 0 ? -1 : 1;
-            keys.Hold(facing < 0 ? KeyCode.A : KeyCode.D);
+            keys.Hold(facing < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
             JumpOverStep(facing, approachingLaunch);
             return false;
         }
@@ -272,7 +304,7 @@ namespace RewindNotary
             if (range > 1.15f) { Walk(x, 1.15f); return false; }
             if (range > .06f && dx * Player.Facing <= 0)
             {
-                keys.Hold(dx < 0 ? KeyCode.A : KeyCode.D);
+                keys.Hold(dx < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
                 return false;
             }
             return true;
@@ -298,35 +330,43 @@ namespace RewindNotary
             float ahead = dx * Player.Facing;
             if (ahead >= minRange && ahead <= maxRange)
             {
-                if (Player.Grounded) keys.Tap(KeyCode.J);
+                if (Player.Grounded) keys.Tap(GameInput.AttackKey);
             }
             else if (Mathf.Abs(dx) < maxRange)
             {
                 // Back out far enough to turn by walking toward the point again.
-                keys.Hold(dx < 0 ? KeyCode.D : KeyCode.A);
+                keys.Hold(dx < 0 ? KeyCode.RightArrow : KeyCode.LeftArrow);
             }
             else Walk(x, 0f);
         }
-        // Longest sword recovery (.56s) plus the lead needed for a parry.
+        // Longest sword recovery (.56s) plus the lead needed for a dash.
         private const float SafeSwingLead = .65f;
 
-        private bool ReserveWaveParry(WaveTarget2D target)
+        private bool ReserveWaveDodge(WaveTarget2D target)
         {
             if (target.StrikeIn <= .085f)
             {
-                keys.Tap(KeyCode.L);
+                DodgeToward(target.transform.position.x);
                 return true;
             }
             return Player.Health.Current * 2 <= Player.Health.Maximum && target.StrikeIn <= SafeSwingLead;
+        }
+
+        private void DodgeToward(float x)
+        {
+            bool right = x >= Player.Body.position.x;
+            keys.Release(right ? KeyCode.LeftArrow : KeyCode.RightArrow);
+            keys.Hold(right ? KeyCode.RightArrow : KeyCode.LeftArrow);
+            keys.Tap(GameInput.DashKey);
         }
 
         private void FightTarget(WaveTarget2D target)
         {
             if (target.State.Cleared) return;
             bool aimed = Aim(target.transform.position.x);
-            if (ReserveWaveParry(target)) return;
+            if (ReserveWaveDodge(target)) return;
             if (!aimed || Player.Attacking || target.State.LastSword?.Closed == false) return;
-            if (target.State.Ready(Time.time)) keys.Tap(KeyCode.J);
+            if (target.State.Ready(Time.time)) keys.Tap(GameInput.AttackKey);
             else if (target.State.NeedsSetup) keys.Cast();
         }
         // Down + support selects the grounded healing assist through the ordinary input map.
@@ -350,7 +390,7 @@ namespace RewindNotary
             // An incoming attack can reach us on a low plank or in mid-jump.
             if (strikeIn <= .09f)
             {
-                keys.Tap(KeyCode.L);
+                DodgeToward(foe.Body.position.x);
                 return;
             }
             var at = foe.Body.position;
@@ -365,14 +405,14 @@ namespace RewindNotary
             if (Mathf.Abs(dx) > swordRange) { Walk(at.x, swordRange); return; }
             if (Mathf.Abs(dx) > .06f && dx * Player.Facing < 0)
             {
-                keys.Hold(dx < 0 ? KeyCode.A : KeyCode.D);
+                keys.Hold(dx < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
                 return;
             }
             // Let a hop clear the lip and settle before committing the next swing.
-            // Preserve enough of the telegraph to finish the swing and open a parry.
+            // Preserve enough of the telegraph to finish the swing and evade the next strike.
             if (Player.Grounded && Mathf.Abs(feet.y - at.y) <= 1.25f && strikeIn > SafeSwingLead &&
                 !Player.Attacking && !Player.Stunned && !Player.Defense.BlocksActions)
-                keys.Tap(KeyCode.J);
+                keys.Tap(GameInput.AttackKey);
         }
 
         internal WorldState Snapshot()

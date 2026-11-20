@@ -15,11 +15,12 @@ namespace RewindNotary
     // No package/reflection dependency. Keep these field sets covered by the static schema audit.
     internal static class SaveJsonIntegrity
     {
-        private const string CoreFields = "schemaVersion rulesVersion slotId savedUtc revision testData basicMasteryReached firstTransferPending skills ledger completedEncounters storyFlags lastStageId investigation finalBattleAttempt lastFinalBattleAttempt";
+        private const string CoreFields = "schemaVersion rulesVersion slotId savedUtc revision testData basicMasteryReached firstTransferPending skills ledger completedEncounters storyFlags lastStageId investigation finalBattleAttempt lastFinalBattleAttempt supplies";
         private const string LegacyFields = "schemaVersion rulesVersion slotId savedUtc revision testData basicMasteryReached firstTransferPending skills ledger completedEncounters";
         private const string SkillFields = "skillId acquiredEncounterId acquired validUseCount stage";
         private const string LedgerFields = "doomId skillId ownerId transferEventId transferredToRea";
         private const string InvestigationFields = "clueIds readStageIds confirmedEntryIds";
+        private const string SupplyFields = "silver mintTea travelBandage";
         private const string AttemptFields = "attemptId outcome active physicalCoreDestroyed zeroFormClashCompleted returnCount phase basicStageAtSettlement finalConfirmationCount returnOrder remainingSkills";
 
         internal static Dictionary<string, object> Validate(string json)
@@ -58,6 +59,12 @@ namespace RewindNotary
             }
             if (version >= 4 || (root.ContainsKey("finalBattleAttempt") && root["finalBattleAttempt"] != null)) Attempt(Value(root, "finalBattleAttempt"));
             if (root.ContainsKey("lastFinalBattleAttempt") && root["lastFinalBattleAttempt"] != null) Attempt(root["lastFinalBattleAttempt"]);
+            if (version >= 5 || root.ContainsKey("supplies"))
+            {
+                var pouch = Object(Value(root, "supplies"));
+                Fields(pouch, SupplyFields, SupplyFields);
+                foreach (var value in pouch.Values) Integer(value, 0, int.MaxValue);
+            }
             return root;
         }
         private static void Attempt(object value)

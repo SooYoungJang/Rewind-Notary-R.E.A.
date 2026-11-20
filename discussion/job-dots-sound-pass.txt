@@ -1,0 +1,44 @@
+사운드 패스 지시서 — 담당 Dots
+기준: 착수 시점의 main 최신 커밋에서 분기한 dots/sound-pass 브랜치. 작업 공유 규칙은 저장소 루트 WORKBOARD.md와 AGENTS.md를 먼저 읽어라.
+
+목표
+제작이 끝난 OST 18곡을 게임에 연결하고, 구역과 상황에 맞는 곡이 흐르게 한다. 지금 게임에는 임시 곡(field.wav, boss.wav)만 있다. 실제 OST 18곡은 이 지시서와 함께 Assets/Resources/Audio/Bgm/ 폴더에 track-01부터 track-18까지 mp3로 들어갔다.
+
+곡 배정
+- track-04-title-theme: 타이틀 화면
+- track-01-mangak-darakbang: 거점 다락방
+- track-14-suro-forge: 수로 대장간
+- track-02-belvet-jaedangeori: 벨벳 재단거리 구역
+- track-15-clocktower: 시계탑 구역
+- track-16-glass-opera: 오페라 구역
+- track-17-bell-tower: 대종루 구역
+- track-18-canvas-gallery: 화랑 구역
+- track-07-mikhail-boss: 미하일전
+- track-08-julius-boss: 율리우스전
+- track-09-valeria-boss: 발레리아전
+- track-10-gabriel-boss: 가브리엘전
+- track-11-irina-boss: 이리나전
+- track-05-janhyang-boss: 잔향 보스전
+- track-06-cassel-phase1: 카셀전 1페이즈
+- track-03-cassel-phase2: 카셀전 2페이즈
+- track-12-ending-normal: 일반 엔딩
+- track-13-ending-true: 진 엔딩
+
+할 일
+1. 기존 배경음 재생 코드를 찾아 임시 곡을 위 배정으로 교체한다. 구역에 들어가면 그 구역 곡으로 바뀌고, 보스전이 시작되면 보스 곡으로, 카셀전은 페이즈 전환에 맞춰 1페이즈 곡에서 2페이즈 곡으로 바뀐다. 타이틀과 엔딩도 연결한다.
+2. 곡이 바뀔 때 뚝 끊기지 않게 짧은 크로스페이드로 전환한다. 곡별 음량 편차가 있으면 재생 음량을 맞춰라.
+3. 다양화: 같은 구역 안에서 탐험과 전투를 구분해 곡 운용을 달리할 수 있으면 설계안을 리포트에 제시한다. 새 곡이 필요하다고 판단되면 필요한 곡 목록만 만들어 PO에게 요청한다. 곡을 임의로 생성하지 마라.
+4. 효과음은 이번 범위 밖이다. 기존 효과음 체계를 건드리지 마라.
+
+지키지 말 것
+- 스토리, 기술 획득 순서, 성장 횟수 체계, 세이브 구조, 전투 판정 구조를 바꾸지 마라.
+- 진행 중인 전투·조우 패스(Astra)와 겹치는 파일이 있으면 그 파일은 손대지 말고 리포트에 적어라.
+- Packages/manifest.json과 packages-lock.json을 바꾸지 마라.
+
+검증
+- 정적 검증 전체를 돌려 착수 기준선 대비 실패가 늘지 않았음을 보인다.
+- 구역 5개와 보스전, 타이틀, 엔딩에서 올바른 곡이 재생되는지 재생 로그나 스크린샷으로 남긴다.
+
+제출
+- dots/sound-pass 브랜치에 커밋하고, 리포트를 저장소 루트에 SOUND-PASS-REPORT.md로 남긴다. 리포트에는 보드 갱신안(완료 처리할 항목, 발견한 후속 작업)을 포함한다.
+- 이 작업은 Astra가 상호 검증한다. 검증 지적이 오면 고쳐서 같은 브랜치에 다시 올려라. main 병합은 PO가 한다.

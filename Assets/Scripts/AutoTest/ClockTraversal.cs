@@ -91,7 +91,7 @@ namespace RewindNotary
                     var deck = Area.ProbeSurfaceBounds(carrier);
                     var landing = Area.ProbeSurfaceBounds(terrain[goal]);
                     bool left = landing.center.x < deck.center.x;
-                    keys.Hold(left ? KeyCode.A : KeyCode.D);
+                    keys.Hold(left ? KeyCode.LeftArrow : KeyCode.RightArrow);
                     return false;
                 }
                 // Low fixed story planks (including the timed return plank) overlay a walkable floor.
@@ -103,7 +103,7 @@ namespace RewindNotary
                     if (stepFrom >= 0)
                     {
                         if (jumpingFrom != null) keys.Hold(KeyCode.Space);
-                        if (step.WalkOff != 0) keys.Hold(step.WalkOff < 0 ? KeyCode.A : KeyCode.D);
+                        if (step.WalkOff != 0) keys.Hold(step.WalkOff < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
                         else MoveTo(step.LandX);
                     }
                     return false;
@@ -123,7 +123,7 @@ namespace RewindNotary
             if (step.WalkOff != 0)
             {
                 // A walk-off ends when support changes, even if the nominal landing x is underfoot.
-                keys.Hold(step.WalkOff < 0 ? KeyCode.A : KeyCode.D);
+                keys.Hold(step.WalkOff < 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
                 if (sewing && StitchSurface2D.All.Exists(s => !s.Available)) JumpOverStep(step.WalkOff);
             }
             else if (jumpingFrom != null)
@@ -183,7 +183,7 @@ namespace RewindNotary
             if (!ReachedCombatSurface(face, at.x)) return;
             if (target.State.NeedsSetup && !target.State.Ready(Time.time))
             {
-                if (ReserveWaveParry(target)) return;
+                if (ReserveWaveDodge(target)) return;
                 // Hit a finite joint from outside its body and recall before the sword cut.
                 var ledge = face.rect;
                 int side = at.x - ledge.x < 3 ? -1 : ledge.x + ledge.width - at.x < 3 ? 1 :
@@ -208,7 +208,7 @@ namespace RewindNotary
             }
             float lead = (x - Player.Body.position.x) * direction;
             if (lead > 2.8f) MoveTo(x);
-            else if (lead < .85f || Player.Facing != direction) keys.Hold(direction > 0 ? KeyCode.A : KeyCode.D);
+            else if (lead < .85f || Player.Facing != direction) keys.Hold(direction > 0 ? KeyCode.LeftArrow : KeyCode.RightArrow);
             else if (Player.Grounded && Time.time >= nextClockCast)
             {
                 keys.Cast(-Player.Facing);

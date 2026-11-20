@@ -7,6 +7,7 @@ namespace RewindNotary
     public sealed class ImpactCameraShake : CinemachineExtension
     {
         public static bool Enabled = true;
+        public static float StrengthMultiplier = 1f;
         private float started, duration, amplitude;
         private float Envelope
         {
@@ -19,9 +20,10 @@ namespace RewindNotary
         }
         public void Shake(float strength, float seconds)
         {
-            if (!Enabled) { Clear(); return; }
+            if (!Enabled || StrengthMultiplier <= 0.001f) { Clear(); return; }
+            float scaled = strength * StrengthMultiplier;
             float remaining = Mathf.Max(0f, started + duration - Time.unscaledTime);
-            amplitude = Mathf.Max(amplitude * Envelope, strength);
+            amplitude = Mathf.Max(amplitude * Envelope, scaled);
             duration = Mathf.Max(remaining, seconds);
             started = Time.unscaledTime;
         }

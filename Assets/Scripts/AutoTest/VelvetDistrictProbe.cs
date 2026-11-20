@@ -174,7 +174,7 @@ namespace RewindNotary
                         if (closedInputFrame < 0 && bot.ReachBalcony() && bot.MoveTo(upper.x) &&
                             area.OnReturnFloor && upper.InReach(area.Rea.Body.position) && result.contacts.Count == 2)
                         {
-                            keys.Tap(KeyCode.F);
+                            keys.Tap(GameInput.InteractKey);
                             if (GameInput.InvestigateDown) closedInputFrame = Time.frameCount;
                         }
                         return false;
@@ -183,7 +183,7 @@ namespace RewindNotary
                     {
                         if (bot.ReachBalcony() && bot.MoveTo(upper.x) && area.OnReturnFloor && upper.InReach(area.Rea.Body.position))
                         {
-                            keys.Tap(KeyCode.F);
+                            keys.Tap(GameInput.InteractKey);
                             if (GameInput.InvestigateDown && upperDoorTime == 0) upperDoorTime = now;
                         }
                         return false;
@@ -198,7 +198,7 @@ namespace RewindNotary
                     var lower = area.ForwardDoor;
                     if (lower != null && bot.MoveTo(lower.x) && area.OnReturnFloor && lower.InReach(area.Rea.Body.position))
                     {
-                        keys.Tap(KeyCode.F);
+                        keys.Tap(GameInput.InteractKey);
                         if (GameInput.InvestigateDown && lowerDoorTime == 0) lowerDoorTime = now;
                     }
                     return false;

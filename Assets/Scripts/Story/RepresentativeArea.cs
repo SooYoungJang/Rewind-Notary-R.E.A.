@@ -14,6 +14,7 @@ namespace RewindNotary
         public StoryRoom Room { get; private set; }
         public StoryRow ActiveRow { get; private set; }
         public bool DialogueOpen { get; private set; }
+        internal Vector2? InteractionAnchor { get; private set; }
         public bool CanSkip => ActiveRow != null && Has(ActiveRow.ReadFlag);
         private bool worldAction, committed, relocate;
 
@@ -25,7 +26,7 @@ namespace RewindNotary
         private bool Has(string flag) => Record.storyFlags.Contains(flag);
         private void Put(string flag) { if (!Has(flag)) Record.storyFlags.Add(flag); }
         private bool InspectPressed => GameInput.InvestigateDown && !GameInput.RetryDown && !GameInput.JumpDown
-            && !GameInput.AttackDown && !GameInput.CastDown && !GameInput.DashDown && !GameInput.ParryDown;
+            && !GameInput.AttackDown && !GameInput.CastDown && !GameInput.DashDown;
         private bool Safe => player.Grounded && !player.Health.Dead && !player.Attacking && !player.Stunned
             && !player.Defense.BlocksActions && !player.BenefactorSkills.BlocksActions;
 
@@ -167,7 +168,11 @@ namespace RewindNotary
                 session.Progression.CalibrationDormantSkill = RepresentativeScript.FirstSkill(Record);
             if (ActionToken == "use:reflection_plate" && actionIndex > 0)
                 session.Progression.CalibrationDormantSkill = null;
-            if (actionIndex + 1 < ActiveRow.requiredPlayerAction.Length) actionIndex++;
+            if (actionIndex + 1 < ActiveRow.requiredPlayerAction.Length)
+            {
+                actionIndex++;
+                if (InAttic) RefreshAtticProps();
+            }
             else Complete();
         }
         private string ActionToken => ActiveRow.requiredPlayerAction[actionIndex];
@@ -183,6 +188,7 @@ namespace RewindNotary
         }
         private void Update()
         {
+            InteractionAnchor = null;
             if (!shell.Playing || !GameInput.CanPlay || player.Health.Dead || !session.LastSaveSucceeded) return;
             if (committed)
             {
@@ -216,6 +222,8 @@ namespace RewindNotary
             }
             if (ActiveRow == null)
             {
+                if (AtticDialogueTarget is StoryMark dialogueTarget &&
+                    (!safeFloor || Distance(dialogueTarget.x) > 1.6f || !InteractAt(dialogueTarget))) return;
                 bool half = opponent.gameObject.activeSelf && opponent.Health.Current <= opponent.Health.Maximum / 2;
                 ActiveRow = finaleRow ?? script.Next(Room, session.Investigation, half);
                 if (ActiveRow != null)
@@ -234,7 +242,11 @@ namespace RewindNotary
                 if (CourtAction() || DistrictAction()) return;
                 if (!Safe) return;
                 string token = ActionToken;
-                if (token == "use:return_call") { if (OnFixedFloor() && InspectPressed) FinishAction(); return; }
+                if (token == "use:return_call")
+                {
+                    if (OnFixedFloor() && InteractAt(player.Body.position + Vector2.up * 2.3f)) FinishAction();
+                    return;
+                }
                 int split = token.IndexOf(':');
                 if (split < 0) return;
                 var target = Room.Point(token.Substring(split + 1));
@@ -243,22 +255,53 @@ namespace RewindNotary
                 {
                     if (OnPlank(target.id)) FinishAction();
                 }
-                else if (token.StartsWith("use:", StringComparison.Ordinal) && InspectPressed) FinishAction();
+                else if (token.StartsWith("use:", StringComparison.Ordinal) && InteractAt(target)) FinishAction();
                 return;
             }
-            if (Safe && InspectPressed)
+            if (Safe)
             {
-                if (Room.id == "hub_lift" && Has("luka_lift_complete") && Distance(Room.Point("luka_freight_platform").x) <= 1.25f)
-                { shell.FinishDeparture(); return; }
-                if (TryTrialBell() || TryForgeReturn()) return;
-                if (NearCore()) shell.OpenStoryCore();
+                if (Room.id == "hub_lift" && Has("luka_lift_complete"))
+                {
+                    var lift = Room.Point("luka_freight_platform");
+                    if (Distance(lift.x) <= 1.25f)
+                    {
+                        if (InteractAt(lift)) shell.FinishDeparture();
+                        return;
+                    }
+                }
+                if (TryTalkToEthan() || TryTrialBell() || TryForgeReturn()) return;
+                if (NearCore())
+                {
+                    if (InteractAt(Room.Point("core_terminal"))) shell.OpenStoryCore();
+                }
                 else
                 {
                     var exit = NearestDoor();
-                    if (exit != null) Travel(Departure(exit.room), exit.destinationFloor);
+                    if (exit != null && InteractAt(exit)) Travel(Departure(exit.room), exit.destinationFloor);
                 }
             }
         }
+
+        private bool InteractAt(Vector2 anchor)
+        {
+            if (InspectPressed) return true;
+            InteractionAnchor ??= anchor;
+            return false;
+        }
+
+        private bool InteractAt(SpriteRenderer view) =>
+            InteractAt(new Vector2(view.bounds.center.x, view.bounds.max.y + .24f));
+
+        private bool InteractAt(StoryMark target)
+        {
+            if (fixtures.TryGetValue(target.id, out var fixture) && fixture.TryGetComponent<SpriteRenderer>(out var view))
+                return InteractAt(view);
+            float y = InAttic && target.id == CandyTray ? 1.84f : Room.SurfaceTop(target.surface) + 1.15f;
+            return InteractAt(new Vector2(target.x, y));
+        }
+
+        private bool InteractAt(StoryDoor door) => InteractAt(doorViews[door].InteractionAnchor);
+
         private bool NearCore()
         {
             var terminal = Room.Point("core_terminal");
@@ -287,13 +330,15 @@ namespace RewindNotary
                     ? Room.interludeHealth : 0;
                 bool mikhail = Room.id == "velvet_04_arena";
                 float spawnX = mikhail ? Mathf.Clamp(player.Body.position.x + 5f, 3f, 38f) : 17f;
-                float spawnTop = gallery ? Room.SurfaceTop("sun_deck") : belfry ? Room.SurfaceTop("refuge") : Room.Surface("stage_floor") != null ? Room.SurfaceTop("stage_floor") : Room.SurfaceTop("drum_floor");
-                opponent.ResetAt(new Vector2(spawnX, spawnTop + .1f));
-                if (mikhail || belfry || gallery)
+                string deckId = gallery ? "sun_deck" : belfry ? "refuge" :
+                    Room.Surface("stage_floor") != null ? "stage_floor" : "drum_floor";
+                opponent.ResetAt(new Vector2(spawnX, Room.SurfaceTop(deckId) + .1f));
+                var trial = mikhail ? mikhailTrial : DistrictTrial;
+                if (trial != null)
                 {
-                    mikhailBout = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
-                    mikhailBout.StartStoryBout(player, belfry || gallery ? DistrictTrial : mikhailTrial, Room.interludeHealth,
-                        gallery ? surfaces["sun_deck"].bounds : belfry ? surfaces["refuge"].bounds : (Bounds?)null);
+                    storyBout = opponent.gameObject.AddComponent<BenefactorTrialOpponent>();
+                    storyBout.StartStoryBout(player, trial, Room.interludeHealth,
+                        surfaces.TryGetValue(deckId, out var deck) ? deck.bounds : (Bounds?)null);
                     AudioManager.SetMusic(AudioManager.Music.Boss);
                 }
                 attackAt = Time.time + .8f;
@@ -302,7 +347,7 @@ namespace RewindNotary
                 && opponent.Health.Current <= Room.interludeHealth)
             { if (Complete()) StopBout(); return; }
             if (opponent.Health.Dead) { if (Complete()) StopBout(); return; }
-            if (mikhailBout != null) return;
+            if (storyBout != null) return;
             if (opponent.Stunned || opponent.Temporal.Frozen || opponent.GetComponent<StitchBinding>().Bound) return;
             opponent.RefreshGround();
             float dx = player.transform.position.x - opponent.transform.position.x;
@@ -316,21 +361,21 @@ namespace RewindNotary
             if (!committed && worldAction && ActiveRow != null && ActionToken.StartsWith("win:", StringComparison.Ordinal)
                 && opponent.gameObject.activeSelf && opponent.Health.Dead && Complete()) StopBout();
         }
-        private BenefactorTrialOpponent mikhailBout;
+        private BenefactorTrialOpponent storyBout;
         private void StopBout()
         {
-            if (mikhailBout != null)
+            if (storyBout != null)
             {
                 if (opponent.Health.Dead)
                 {
                     AudioManager.Play(AudioManager.Sfx.BossDefeat);
                     ImpactFeedback.BossDefeated();
                 }
-                if (Benefactor == "irina") SkillProjectile2D.ClearAll();
+                if (Benefactor == "irina" || Benefactor == "valeria") SkillProjectile2D.ClearAll();
                 AudioManager.SetMusic(AudioManager.Music.Field);
-                mikhailBout.enabled = false;
-                Destroy(mikhailBout);
-                mikhailBout = null;
+                storyBout.enabled = false;
+                Destroy(storyBout);
+                storyBout = null;
                 opponent.Animation.Tint(Color.white);
             }
             opponent.gameObject.SetActive(false);

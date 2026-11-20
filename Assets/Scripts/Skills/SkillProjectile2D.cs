@@ -56,7 +56,14 @@ namespace RewindNotary
             if (Physics2D.Linecast(start, end, 1 << LevelBuilder.GroundLayer).collider != null) { Consume(); return; }
             transform.position = end;
             var target = Hostile ? player : enemy;
-            if (!target.Health.Dead && swept.Intersects(target.GetComponent<Collider2D>().bounds))
+            if (target.Health.Dead) return;
+            var body = target.GetComponent<Collider2D>().bounds;
+            if (Hostile && enemy.TryGetComponent<CasselBoss>(out var cassel) && player.Defense.Evaded(swept, body))
+            {
+                cassel.OpenAfterDodge();
+                Consume();
+            }
+            else if (swept.Intersects(body))
             { target.Health.Hit(Hostile ? damage : FinaleCombat.Scale(player.Skills, damage), start); Consume(); }
         }
         private void OnDestroy() { if (sprite != null) Destroy(sprite); }

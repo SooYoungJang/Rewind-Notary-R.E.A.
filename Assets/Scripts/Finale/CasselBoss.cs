@@ -10,7 +10,7 @@ namespace RewindNotary
         private SkillSession session;
         private CasselDefinition data;
         private CasselPattern pattern;
-        private float timer, guard, parryUntil, exposureUntil, staggerUntil, motionUntil, backstepUntil;
+        private float timer, guard, evadeUntil, exposureUntil, staggerUntil, motionUntil, backstepUntil;
         private int cursor, beat, core, matchedSteps;
         private bool telegraph, mirrorOpen, mirrorCompleted, techniqueCompleted;
         private string armedSkill, matchingUse;
@@ -47,7 +47,6 @@ namespace RewindNotary
         {
             motor = GetComponent<CombatMotor2D>(); player = target; session = skills; data = CasselDefinition.Load();
             motor.Health.Initialize(data.health, 0.12f);
-            session.BasicParried += Parried;
             session.TechniqueCompleted += TechniqueCompleted;
             session.Finale.Returned += Returned;
             player.SwordContact += SwordContact;
@@ -72,7 +71,7 @@ namespace RewindNotary
             clashWindow = false;
             Scenes?.Begin(defeated);
             pattern = null; cursor = beat = matchedSteps = 0; timer = 1.1f;
-            guard = parryUntil = exposureUntil = staggerUntil = motionUntil = backstepUntil = 0;
+            guard = evadeUntil = exposureUntil = staggerUntil = motionUntil = backstepUntil = 0;
             matchingUse = armedSkill = null; mirrorOpen = telegraph = mirrorCompleted = techniqueCompleted = false;
             guardEchoes.Clear(); core = data.coreIntegrity;
             motor.Health.MinimumHealth = data.mirrorHealth;
@@ -128,8 +127,8 @@ namespace RewindNotary
             motor.GetComponent<StitchBinding>().Break();
             SkillProjectile2D.ClearAll(); guardEchoes.Clear();
             armedSkill = null; mirrorOpen = mirrorCompleted = techniqueCompleted = false; pattern = null; telegraph = false; beat = 0;
-            // The new closed guard requires a parry after this return.
-            parryUntil = float.NegativeInfinity;
+            // The next successful dodge opens the new guard.
+            evadeUntil = float.NegativeInfinity;
             guard = 0; timer = 1f; motionUntil = 0;
             // A visible backstep; no teleport and no requirement for the returned mobility skill.
             motor.Face(player.Body.position.x - motor.Body.position.x);
@@ -137,16 +136,16 @@ namespace RewindNotary
             motor.Body.linearVelocity = new Vector2(-motor.Facing * 5f, 0);
             SkillStroke.Show(motor.transform.position + Vector3.up * 2,
                 player.transform.position + Vector3.up, new Color(0.2f, 1f, 0.9f), 0.5f);
-            AudioManager.Play(AudioManager.Sfx.Parry);
+            AudioManager.Play(AudioManager.Sfx.Evolution);
         }
-        private void Parried()
+        internal void OpenAfterDodge()
         {
             if (!State.active) return;
             if (State.returnCount == 1 && !MirrorOpen) Scenes?.Signal("parry1");
             clashWindow = Phase == 3 && BasicMastered;
             var profile = data.Profile(State.returnCount);
-            parryUntil = Time.time + data.parryOpening + profile.parryBonus;
-            staggerUntil = Time.time + 0.35f + profile.parryBonus;
+            evadeUntil = Time.time + data.evadeOpening + profile.evadeBonus;
+            staggerUntil = Time.time + 0.35f + profile.evadeBonus;
             pattern = null; telegraph = false; motionUntil = 0; timer = 0.6f;
             matchingUse = null; matchedSteps = 0;
         }
@@ -154,7 +153,7 @@ namespace RewindNotary
         {
             if (!State.active || use == null || use.Preview || player.Health.Dead) return;
             var profile = data.Profile(State.returnCount);
-            if (Phase == 2 && !MirrorOpen && Time.time <= parryUntil)
+            if (Phase == 2 && !MirrorOpen && Time.time <= evadeUntil)
             {
                 AddGuard(damage * profile.guardPower);
                 if (profile.echoDelay > 0)
@@ -170,9 +169,9 @@ namespace RewindNotary
             core = Mathf.Max(0, core - damage);
             int basic = session.Progression.Record.Get(SkillRules.BasicSword).stage;
             if (basic < 3 && core == 0) { Finish(false, true); return; }
-            if (basic == 3 && core == 0 && !(last && matchedSteps == 3 && matchingUse == use.Id && Time.time <= parryUntil))
+            if (basic == 3 && core == 0 && !(last && matchedSteps == 3 && matchingUse == use.Id && Time.time <= evadeUntil))
                 Scenes?.Signal("clashMiss");
-            if (Time.time > parryUntil || use.Stage != 3) { matchedSteps = 0; return; }
+            if (Time.time > evadeUntil || use.Stage != 3) { matchedSteps = 0; return; }
             if (step == 1) { matchingUse = use.Id; matchedSteps = 1; }
             else if (matchingUse == use.Id && step == matchedSteps + 1) matchedSteps++;
             else matchedSteps = 0;
@@ -197,7 +196,7 @@ namespace RewindNotary
         {
             if (!GameInput.GameplayEnabled || session == null || !State.active || player.Health.Dead) return;
             if (Scenes?.Modal != null) return;
-            if (clashWindow && Time.time > parryUntil)
+            if (clashWindow && Time.time > evadeUntil)
             {
                 clashWindow = false;
                 Scenes?.Signal("clashMiss");
@@ -275,15 +274,17 @@ namespace RewindNotary
                 Vector2 direction = ((Vector2)player.transform.position + Vector2.up - (Vector2)go.transform.position).normalized;
                 shot.ConfigureTrialShot(direction * 6f, pattern.damage, 3); return;
             }
-            // All patterns share the real dash/parry/counter receiver. No player input reading or mastery-scaled density.
+            var body = player.GetComponent<Collider2D>().bounds;
+            bool dodged = player.Defense.Evaded(area, body);
             SkillStroke.Show(area.min, area.max, pattern.shape == "sword" ? Color.white : Color.cyan, 0.18f);
-            if (area.Intersects(player.GetComponent<Collider2D>().bounds)) player.Health.Hit(pattern.damage, motor.transform.position);
+            if (area.Intersects(body)) player.Health.Hit(pattern.damage, motor.transform.position);
+            if (dodged) OpenAfterDodge();
             AudioManager.Play(AudioManager.Sfx.BossAttack);
         }
         private void OnDestroy()
         {
             if (session != null)
-            { session.BasicParried -= Parried; session.TechniqueCompleted -= TechniqueCompleted; session.Finale.Returned -= Returned; }
+            { session.TechniqueCompleted -= TechniqueCompleted; session.Finale.Returned -= Returned; }
             if (Scenes != null)
             {
                 session.Progression.Event -= ObserveMastery;

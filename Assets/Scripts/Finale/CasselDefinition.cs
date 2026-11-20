@@ -7,7 +7,7 @@ namespace RewindNotary
     [Serializable] public sealed class CasselReturnProfile
     {
         public int r, releasedPercent, directBeats;
-        public float guardPower, parryBonus, waveReach, staggerSeconds, echoDelay, reaTheme;
+        public float guardPower, evadeBonus, waveReach, staggerSeconds, echoDelay, reaTheme;
     }
     [Serializable] public sealed class CasselPattern
     {
@@ -19,7 +19,7 @@ namespace RewindNotary
     [Serializable] public sealed class CasselDefinition
     {
         public int version, health, mirrorHealth, coreIntegrity;
-        public float arenaMin, arenaMax, playerX, bossX, graceSeconds, exposureSeconds, matchDistance, guardThreshold, parryOpening;
+        public float arenaMin, arenaMax, playerX, bossX, graceSeconds, exposureSeconds, matchDistance, guardThreshold, evadeOpening;
         public CasselReturnProfile[] returns;
         public CasselPattern[] patterns;
         public string[] openingSequence, mirrorSequence, finaleSequence;
@@ -39,7 +39,7 @@ namespace RewindNotary
         {
             if (version != 1 || health <= mirrorHealth || mirrorHealth <= 1 || coreIntegrity <= 0
                 || arenaMin >= playerX || playerX >= bossX || bossX >= arenaMax || graceSeconds != 3f
-                || exposureSeconds < 10 || matchDistance < 4 || guardThreshold <= 0 || parryOpening < 1
+                || exposureSeconds < 10 || matchDistance < 4 || guardThreshold <= 0 || evadeOpening < 1
                 || returns == null || returns.Length != 6 || patterns == null || patterns.Length != 6)
                 throw new InvalidOperationException("Invalid Cassel definition");
             for (int r = 0; r <= 5; r++)
@@ -47,7 +47,7 @@ namespace RewindNotary
                 var p = returns[r];
                 if (p.r != r || p.releasedPercent != r * 20 || Mathf.Abs(p.reaTheme - r * 0.2f) > 0.0001f
                     || p.guardPower < 1 || p.directBeats < 3 || p.directBeats > 4 || p.waveReach < 0
-                    || p.parryBonus < 0 || p.staggerSeconds < 0 || p.echoDelay < 0)
+                    || p.evadeBonus < 0 || p.staggerSeconds < 0 || p.echoDelay < 0)
                     throw new InvalidOperationException("Invalid Cassel return profile");
             }
             var ids = new HashSet<string>(); var skills = new HashSet<string>();

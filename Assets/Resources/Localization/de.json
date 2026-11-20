@@ -2,6 +2,78 @@
   "language": "de",
   "entries": [
     {
+      "key": "quick_skill.rea_thrust",
+      "value": "Stich"
+    },
+    {
+      "key": "quick_skill.rea_rising",
+      "value": "Aufwärtshieb"
+    },
+    {
+      "key": "quick_skill.rea_sweep",
+      "value": "Rundhieb"
+    },
+    {
+      "key": "quick_skill.rea_retreat_cut",
+      "value": "Rückzugshieb"
+    },
+    {
+      "key": "quick_skill.wave_charge",
+      "value": "Klingenwelle · {0} halten"
+    },
+    {
+      "key": "quick_skill.menu",
+      "value": "Technikplätze"
+    },
+    {
+      "key": "quick_skill.assign_hint",
+      "value": "↑ ↓ Platz wählen · ← → Technik zuweisen"
+    },
+    {
+      "key": "story.prologue.city",
+      "value": "In der Notariatsstadt Lapis verzeichnet das Register die Namen der Menschen und ihre erlernten Techniken."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "Die Handgriffe eines erfahrenen Schneiders lassen sich ebenso beglaubigen wie die von einem Meister erlernte Schwertkunst."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "Ein Schwertnotar hält eine Technik im Aufzeichnungsschwert fest und beweist sie, indem er sie auf Stufe 3 selbst nachahmt."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Morgen früh um sechs sollen fünf Gefangene hingerichtet werden."
+    },
+    {
+      "key": "story.prologue.order",
+      "value": "Ein versiegelter Auftrag des Zentralen Notariatsamts ist eingetroffen. Eine Klausel darin bietet allen fünf eine Überlebenschance."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Finde die fünf Gefangenen und lerne von jedem eine Technik. Halte sie im Aufzeichnungsschwert fest und beglaubige alle auf Stufe 3."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Werden alle fünf Beglaubigungen rechtzeitig abgeschlossen, erhalten die Gefangenen eine Sonderbegnadigung."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "Die frisch ernannte Schwertnotarin Rea soll den Auftrag ausführen. Ihr bleibt weniger als ein Tag."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "An diesem Morgen trägt Marta die Namen der morgigen Frühstücksgäste auf die Tafel im Dachboden ein."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "Fünf Namen stehen auf der Tafel. Daneben bleibt noch ein Platz frei."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "Vom Fenster her duftet es nach Minztee. Rea öffnet die Augen im Dachboden, wo der versiegelte Auftrag auf sie wartet."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Wahres Ende freigeschaltet"
     },
@@ -31,7 +103,7 @@
     },
     {
       "key": "finale.mirror_closed",
-      "value": "Spiegel geschlossen · Parieren, dann die Deckung mit dem Schwert brechen"
+      "value": "Spiegel geschlossen · Mit einem Sprint ausweichen, dann die Deckung mit der Klinge brechen"
     },
     {
       "key": "finale.selected_finisher",
@@ -39,7 +111,7 @@
     },
     {
       "key": "finale.core_hint",
-      "value": "Kern {0}/{1} · Parieren, dann volle Kombo / B<3: Kern zerstören"
+      "value": "Kern {0}/{1} · Ausweichen und volle Kombo / B<3: Kern zerstören"
     },
     {
       "key": "finale.boss_status",
@@ -71,7 +143,7 @@
     },
     {
       "key": "finale.confirm_return_body",
-      "value": "{0} zurückgeben?\n\nNach dem Klingenkreuzen ist diese Technik für den restlichen Kampf gesperrt.\nPrägungsstärke +{1}% · Dein Schwert und die übrigen Techniken werden stärker.\nBewegen, Springen, Ausweichen, Parieren und Schwertangriffe bleiben verfügbar. Plattformen verschwinden nach 3 Sekunden.\nAlle Verhängnisse werden erst nach dem erfolgreichen letzten Klingenkreuzen der Urform zurückgegeben."
+      "value": "{0} zurückgeben?\n\nNach dem Klingenkreuzen ist diese Technik für den restlichen Kampf gesperrt.\nPrägungsstärke +{1}% · Dein Schwert und die übrigen Techniken werden stärker.\nBewegen, Springen, Ausweichen und Schwertangriffe bleiben verfügbar. Plattformen verschwinden nach 3 Sekunden.\nAlle Verhängnisse werden erst nach dem erfolgreichen letzten Klingenkreuzen der Urform zurückgegeben."
     },
     {
       "key": "finale.cancel_return",
@@ -138,18 +210,6 @@
       "value": "Ausweichen"
     },
     {
-      "key": "defense.parry_window",
-      "value": "Parierfenster aktiv"
-    },
-    {
-      "key": "defense.parry_recovery",
-      "value": "Parade verfehlt · Erholung"
-    },
-    {
-      "key": "defense.counter_ready",
-      "value": "Konter bereit · Nächster Schwertangriff verstärkt"
-    },
-    {
       "key": "defense.ready",
       "value": "Abwehr bereit"
     },
@@ -167,7 +227,7 @@
     },
     {
       "key": "input.gameplay",
-      "value": "Bewegen A/D·Pfeile·Stick | Springen Leertaste·A | Schwert J/Z/Linksklick·X | Technik Q·Y | Ausweichen Shift/K·LB | Parieren L·RB"
+      "value": "Bewegen ← → · Springen Space · Angriff A · Interaktion F · Sprint Umschalt+Richtung · Techniken Q W E R"
     },
     {
       "key": "hud.trial_hint",
@@ -175,7 +235,7 @@
     },
     {
       "key": "hud.wave_hint",
-      "value": "Blaugoldener Kern: Schwert · Goldsignal: Parieren/Ausweichen · Rote Deckung: passende Technik"
+      "value": "Blaugoldener Kern: Schwert · Goldsignal: per Sprint ausweichen · Rote Deckung: passende Technik"
     },
     {
       "key": "hud.checkpoint_hint",
@@ -187,7 +247,7 @@
     },
     {
       "key": "input.retry_pause",
-      "value": "{0}  R·Ansicht: Neustart | Esc·Menü: Pause"
+      "value": "{0}  Backspace·Ansicht: Neustart | Esc·Menü: Pause"
     },
     {
       "key": "input.debug",
@@ -195,7 +255,7 @@
     },
     {
       "key": "trial.health",
-      "value": "Übungs-TP {0}/{1} · Nach Verbrauch geht die Übung weiter · R: Positionen zurücksetzen"
+      "value": "Übungs-TP {0}/{1} · Nach Verbrauch geht die Übung weiter · Backspace: Positionen zurücksetzen"
     },
     {
       "key": "input.benefactor_support",
@@ -215,7 +275,7 @@
     },
     {
       "key": "input.retry_button",
-      "value": "Drücke R / Ansicht für einen neuen Versuch."
+      "value": "Drücke Backspace / Ansicht für einen neuen Versuch."
     },
     {
       "key": "hud.returning_checkpoint",
@@ -567,7 +627,7 @@
     },
     {
       "key": "skill.acquired_notice",
-      "value": "{0} erhalten — Wählen: 1–5 / E·B · Nutzen: Q·Y"
+      "value": "{0} erlernt. Mit Richtung + V einsetzen oder einem Platz zuweisen."
     },
     {
       "key": "skill.stage_up_notice",
@@ -1091,11 +1151,11 @@
     },
     {
       "key": "skills.sword.form1",
-      "value": "2-Treffer-Schwertkombo"
+      "value": "4-Treffer-Schwertkombo"
     },
     {
       "key": "skills.sword.form2",
-      "value": "3-Treffer-Kombo · Vorwärtsschritt · Kurze Klingenwelle beim letzten Treffer"
+      "value": "4-Treffer-Kombo · Vorwärtsschritt · Kurze Klingenwelle beim letzten Treffer"
     },
     {
       "key": "skills.sword.form3",
@@ -1147,7 +1207,7 @@
     },
     {
       "key": "skills.forge.form3",
-      "value": "Einfaches Parieren + Abwärts-Glockenschlag aus der Luft · Weite Konter-Druckwelle"
+      "value": "Resonanzwelle am Boden · Glockenschlag abwärts aus der Luft"
     },
     {
       "key": "skills.canvas.form1",
@@ -1315,7 +1375,7 @@
     },
     {
       "key": "wave.all_complete",
-      "value": "3 Gebiete abgeschlossen · Prüfe die Schwertlogs für 151 / 400. R: Neustart"
+      "value": "3 Gebiete abgeschlossen · Prüfe die Schwertlogs für 151 / 400. Backspace: Neustart"
     },
     {
       "key": "wave.zone_complete",
@@ -1335,7 +1395,7 @@
     },
     {
       "key": "wave.defense_then_sword",
-      "value": "Goldenen Angriff parieren / durchqueren → Schwert"
+      "value": "Goldenen Angriff mit einem Sprint durchqueren → Schwert"
     },
     {
       "key": "wave.target_hint",
@@ -1456,6 +1516,10 @@
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
       "value": "Silberfaden-Querschnitt"
+    },
+    {
+      "key": "trial.mikhail.thread_lunge",
+      "value": "Silberfaden-Ausfall"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
@@ -1815,7 +1879,7 @@
     },
     {
       "key": "input.cast_hint",
-      "value": "Richtung + Q·Y | Wand: Angriff halten + ↓ wirken"
+      "value": "Richtung + V·Y | Wand: Angriff halten + ↓ wirken"
     },
     {
       "key": "input.skill_unlearned",
@@ -1907,7 +1971,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Er stützt die Scherenklinge auf den Boden und sinkt auf ein Knie. Reas Klingen-Kern zeichnet die blaue Spur von Mikhails Silbernaht auf Stufe 1 aus dem Duell auf)\n„Tch…… Meinen letzten Knoten habe ich verborgen, und doch hat dieses Schwert den Fadenlauf meines ersten Stichs gelesen.\nMerk dir eines, Rea: Hörst du hier auf, bleibt es bloße Selbstverteidigung. Doch in dem Moment, in dem du diese Naht bis ans Ende meisterst, geht die Qual meines Herzens auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte steck diese Klinge weg und geh heim.“\n(Systemhinweis: Silbernaht erhalten — Drück Q (Y auf dem Controller), ohne eine Richtung zu halten.)"
+      "value": "(Er stützt die Scherenklinge auf den Boden und sinkt auf ein Knie. Reas Klingen-Kern zeichnet die blaue Spur von Mikhails Silbernaht auf Stufe 1 aus dem Duell auf)\n„Tch…… Meinen letzten Knoten habe ich verborgen, und doch hat dieses Schwert den Fadenlauf meines ersten Stichs gelesen.\nMerk dir eines, Rea: Hörst du hier auf, bleibt es bloße Selbstverteidigung. Doch in dem Moment, in dem du diese Naht bis ans Ende meisterst, geht die Qual meines Herzens auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte steck diese Klinge weg und geh heim.“\n(Systemhinweis: Silbernaht erhalten — Drück V (Y auf dem Controller), ohne eine Richtung zu halten.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2511,7 +2575,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Bewegen   F / L3 Untersuchen·Betreten   J·Z·Linksklick Schwert (Gamepad X)   Q / Y Technik   Esc Pause"
+      "value": "Bewegen ← → · Springen Space · Angriff A · Interaktion F · Sprint Umschalt+Richtung · Techniken Q W E R · Esc"
     },
     {
       "key": "investigation.clue.route_ledger.body",
@@ -2587,7 +2651,7 @@
     },
     {
       "key": "story.clock.route.05",
-      "value": "„Sobald du durch diesen senkrechten Hemmwerk-Getrieberaum hinaufsteigst, kommst du zur innersten Zifferblatt-Vorhalle, wo mein Onkel ist. Lenke die goldenen Ansage-Angriffe der Spiegelstatue des Notars mit einfachem Parieren oder Ausweichen ab und schlag in die Lücke mit der Grundschwertkunst zu!“\n(Steuerung: Steige die Hemmwerk-Stufen hinauf und überwinde 1 Lapisriegel sowie Wache und Statue.)"
+      "value": "„Sobald du durch diesen senkrechten Hemmwerk-Getrieberaum hinaufsteigst, kommst du zur innersten Zifferblatt-Vorhalle, wo mein Onkel ist. Lenke die goldenen Ansage-Angriffe der Spiegelstatue des Notars mit Ausweichen per Sprint oder Ausweichen ab und schlag in die Lücke mit der Grundschwertkunst zu!“\n(Steuerung: Steige die Hemmwerk-Stufen hinauf und überwinde 1 Lapisriegel sowie Wache und Statue.)"
     },
     {
       "key": "story.clock.route.06",
@@ -2615,7 +2679,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Er stößt das Uhrzeiger-Langschwert in den Boden und stößt schwer den Atem aus. Reas Klingen-Kern zeichnet die messingfarbene Prägung von Julius’ Schrittbahn auf Stufe 1 aus dem Duell auf)\n„……Obwohl ich meine letzte Meisterform verborgen hielt, hat deine Aufzeichnungsklinge dennoch die Hin-und-Rück-Bahn meines ersten ‚Pendelschritts‘ gelesen.\nMerk dir eines, Rea: Bis neunundzwanzig Mal bleibt es bloße Schrittkunst, und beim dreißigsten Mal schwingt nur das Gehäuse mit. Doch sobald du die achtzigste Meisterform erreichst, springt der stille Sekundenzeiger deiner halben Uhr wieder an, und mein Verfall bricht über dich herein.“\n(Systemhinweis: Pendelrücklauf erhalten — Halte die Richtung entgegen Reas Blickrichtung und drück Q (Y auf dem Controller).)"
+      "value": "(Er stößt das Uhrzeiger-Langschwert in den Boden und stößt schwer den Atem aus. Reas Klingen-Kern zeichnet die messingfarbene Prägung von Julius’ Schrittbahn auf Stufe 1 aus dem Duell auf)\n„……Obwohl ich meine letzte Meisterform verborgen hielt, hat deine Aufzeichnungsklinge dennoch die Hin-und-Rück-Bahn meines ersten ‚Pendelschritts‘ gelesen.\nMerk dir eines, Rea: Bis neunundzwanzig Mal bleibt es bloße Schrittkunst, und beim dreißigsten Mal schwingt nur das Gehäuse mit. Doch sobald du die achtzigste Meisterform erreichst, springt der stille Sekundenzeiger deiner halben Uhr wieder an, und mein Verfall bricht über dich herein.“\n(Systemhinweis: Pendelrücklauf erhalten — Halte die Richtung entgegen Reas Blickrichtung und drück V (Y auf dem Controller).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2671,7 +2735,7 @@
     },
     {
       "key": "story.clock.return.01",
-      "value": "„Das Messingschott am oberen Rückweg schließt sich schnell. Mit ‚Pendelschritt‘, Stufe 1 meines eben aufgezeichneten ‚Pendelrücklaufs‘, lasse ich ein Nachbild zurück, stoße vor zum Schalter und drücke binnen 1,5 Sekunden erneut, um sicher aufs feste Fundament zurückzuspulen!“\n(Steuerung: Nutze Pendelrücklauf (Q / Y), um den Schalter hinter dem Schott zu treffen, und drücke erneut für die sichere Rückkehr zum Nachbild.)"
+      "value": "„Das Messingschott am oberen Rückweg schließt sich schnell. Mit ‚Pendelschritt‘, Stufe 1 meines eben aufgezeichneten ‚Pendelrücklaufs‘, lasse ich ein Nachbild zurück, stoße vor zum Schalter und drücke binnen 1,5 Sekunden erneut, um sicher aufs feste Fundament zurückzuspulen!“\n(Steuerung: Nutze Pendelrücklauf (V / Y), um den Schalter hinter dem Schott zu treffen, und drücke erneut für die sichere Rückkehr zum Nachbild.)"
     },
     {
       "key": "story.clock.return.02",
@@ -2739,7 +2803,7 @@
     },
     {
       "key": "story.opera.route.04",
-      "value": "„Schleudere die Angriffe der Statuen mit einfachem Parieren zurück, schlag mit der Grundschwertkunst in die Lücke und durchtrenne die Haltedraht-Riegel, um die Plattformen zu sichern!“\n(Steuerung: Überquere die Kronleuchter-Plattformen, durchtrenne 2 Lapisriegel und besiege Wachen, Statue und Nahtwache.)"
+      "value": "„Schleudere die Angriffe der Statuen mit Ausweichen per Sprint zurück, schlag mit der Grundschwertkunst in die Lücke und durchtrenne die Haltedraht-Riegel, um die Plattformen zu sichern!“\n(Steuerung: Überquere die Kronleuchter-Plattformen, durchtrenne 2 Lapisriegel und besiege Wachen, Statue und Nahtwache.)"
     },
     {
       "key": "story.opera.route.05",
@@ -2771,7 +2835,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Sie stützt die Degenspitze auf den Dielenboden und schöpft Atem. Reas Klingen-Kern zeichnet die blaugrüne Prägung von Valerias Sprungbahn auf Stufe 1 aus dem Duell auf)\n„……Hah, selbst als ich das letzte Finale verbarg, hat dein Schwert den Sprungwinkel meines ersten ‚Wirbelnden Klingentanzes‘ abgelesen.\nBitte, Rea. Bis dreißig Mal übernimmt deine Landung nur meine Verbeugung, doch in dem Augenblick, in dem du das achtzigste Große Finale vollendest, geht die Qual meiner Beine auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte tanz diesen Schritt niemals bis ans Ende.“\n(Systemhinweis: Vorhangwalzer erhalten — Halte die Richtung nach oben und drück Q (Y auf dem Controller).)"
+      "value": "(Sie stützt die Degenspitze auf den Dielenboden und schöpft Atem. Reas Klingen-Kern zeichnet die blaugrüne Prägung von Valerias Sprungbahn auf Stufe 1 aus dem Duell auf)\n„……Hah, selbst als ich das letzte Finale verbarg, hat dein Schwert den Sprungwinkel meines ersten ‚Wirbelnden Klingentanzes‘ abgelesen.\nBitte, Rea. Bis dreißig Mal übernimmt deine Landung nur meine Verbeugung, doch in dem Augenblick, in dem du das achtzigste Große Finale vollendest, geht die Qual meiner Beine auf dich über. Ich ziehe mich in die Pflegestätte zurück…… Bitte tanz diesen Schritt niemals bis ans Ende.“\n(Systemhinweis: Vorhangwalzer erhalten — Halte die Richtung nach oben und drück V (Y auf dem Controller).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2827,7 +2891,7 @@
     },
     {
       "key": "story.opera.return.01",
-      "value": "„Der östliche Scheinwerferdach-Rückweg! Wenn ich mit ‚Wirbelnder Klingentanz‘, Stufe 1 des ‚Vorhangwalzers‘, auf die schwebenden Laternen in der Luft zuwirble, kann ich Projektile abwehren und zugleich hoch hinaufspringen!“\n(Steuerung: Triff die Luftlaternen mit Vorhangwalzer (Q / Y), um höher zu springen und den Stahlträger drüben zu erreichen.)"
+      "value": "„Der östliche Scheinwerferdach-Rückweg! Wenn ich mit ‚Wirbelnder Klingentanz‘, Stufe 1 des ‚Vorhangwalzers‘, auf die schwebenden Laternen in der Luft zuwirble, kann ich Projektile abwehren und zugleich hoch hinaufspringen!“\n(Steuerung: Triff die Luftlaternen mit Vorhangwalzer (V / Y), um höher zu springen und den Stahlträger drüben zu erreichen.)"
     },
     {
       "key": "story.opera.return.02",
@@ -2927,7 +2991,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Er stützt den Schaft des Hammerschwerts auf den Boden und beugt ein Knie. Reas Klingen-Kern zeichnet die Schwingungswelle von Gabriels ‚Schwingungsschlag‘ auf Stufe 1 golden leuchtend auf)\n„[Notizbuch: Deine Klinge hat die Welle meines ersten ‚Schwingungsschlags‘ aufgezeichnet. Bis dreißig Mal werden deine Ohren nur dumpf klingen, doch bei der achtzigsten Meisterform geht mein Schweigen auf dich über. Ich gehe hinab in die Pflegestätte — bitte bring diesen Klang zum Schweigen.]“\n(Systemhinweis: Resonanzschmiede erhalten — Halte in der Luft die Richtung nach unten und drück Q (Y auf dem Controller).)"
+      "value": "(Er stützt den Schaft des Hammerschwerts auf den Boden und beugt ein Knie. Reas Klingen-Kern zeichnet die Schwingungswelle von Gabriels ‚Schwingungsschlag‘ auf Stufe 1 golden leuchtend auf)\n„[Notizbuch: Deine Klinge hat die Welle meines ersten ‚Schwingungsschlags‘ aufgezeichnet. Bis dreißig Mal werden deine Ohren nur dumpf klingen, doch bei der achtzigsten Meisterform geht mein Schweigen auf dich über. Ich gehe hinab in die Pflegestätte — bitte bring diesen Klang zum Schweigen.]“\n(Systemhinweis: Resonanzschmiede erhalten — Halte in der Luft die Richtung nach unten und drück V (Y auf dem Controller).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -2955,7 +3019,7 @@
     },
     {
       "key": "story.gabriel.i1.06",
-      "value": "(Kaum senkt Rea ihr Schwert und hebt die offene Handfläche, stoppt Gabriel seinen niederfahrenden Hammerschlag auf der Stelle, tritt sichtbar erleichtert heran und zeichnet drei große Handformen in sein Notizbuch)\n„[Vereinbarte Notizbuch-Zeichen — Drei Handzeichen zum gegenseitigen Schutz auch ohne Ton]\n1. [Offene Hand · Halt] : Bei Resonanzüberlastung und Gefahr Angriff und Bewegung sofort einstellen\n2. [Zwei Finger · bereit] : Frontaler Glockenschlag naht — auf einfaches Parieren oder Abwärtsschlag aus der Luft einstellen\n3. [Hand nach unten · landen und zurückkehren] : Vor der Flächenwelle auf sicherem Boden landen und Abstand gewinnen“"
+      "value": "(Kaum senkt Rea ihr Schwert und hebt die offene Handfläche, stoppt Gabriel seinen niederfahrenden Hammerschlag auf der Stelle, tritt sichtbar erleichtert heran und zeichnet drei große Handformen in sein Notizbuch)\n„[Vereinbarte Notizbuch-Zeichen — Drei Handzeichen zum gegenseitigen Schutz auch ohne Ton]\n1. [Offene Hand · Halt] : Bei Resonanzüberlastung und Gefahr Angriff und Bewegung sofort einstellen\n2. [Zwei Finger · bereit] : Frontaler Glockenschlag naht — auf Ausweichen per Sprint oder Abwärtsschlag aus der Luft einstellen\n3. [Hand nach unten · landen und zurückkehren] : Vor der Flächenwelle auf sicherem Boden landen und Abstand gewinnen“"
     },
     {
       "key": "story.gabriel.i1.07",
@@ -2983,7 +3047,7 @@
     },
     {
       "key": "story.bell.return.01",
-      "value": "„Der Boden des absteigenden Korridors hat Risse. Wenn ich mit ‚Schwingungsschlag‘, Stufe 1 der eben aufgezeichneten ‚Resonanzschmiede‘, auf Boden und rissige Schilde schmettere, zerbreche ich sie auf einen Schlag!“\n(Steuerung: Schlage mit Resonanzschmiede (↓ Luft + Q / Y oder am Boden) auf die rissigen Böden und die Schilde der Nahtwachen.)"
+      "value": "„Der Boden des absteigenden Korridors hat Risse. Wenn ich mit ‚Schwingungsschlag‘, Stufe 1 der eben aufgezeichneten ‚Resonanzschmiede‘, auf Boden und rissige Schilde schmettere, zerbreche ich sie auf einen Schlag!“\n(Steuerung: Schlage mit Resonanzschmiede (↓ Luft + V / Y oder am Boden) auf die rissigen Böden und die Schilde der Nahtwachen.)"
     },
     {
       "key": "story.bell.return.02",
@@ -3007,7 +3071,7 @@
     },
     {
       "key": "story.bell.mastery.02",
-      "value": "(Unmittelbar nachdem die achtzigste Meisterform ‚Saat um sechs‘ aus einfachem Parieren und Abwärtsschlag aus der Luft als goldene Großglocken-Konterwelle hervorbricht, versinkt das Umgebungsgeräusch in tiefer Stille und ein purpurroter Riss schneidet ins vierte Blütenblatt der Brosche!)\n„……Ah, aah…… Mein Kampfschrei aus der Kehle ist halb heiser und ganz leise geworden.\n‚Verhängnis 4: Ewiges Schweigen‘ ist auf ‚Angeklagte R.E.A.‘ — auf mich — übergegangen.“"
+      "value": "(Unmittelbar nachdem die achtzigste Meisterform ‚Saat um sechs‘ aus Ausweichen per Sprint und Abwärtsschlag aus der Luft als goldene Großglocken-Konterwelle hervorbricht, versinkt das Umgebungsgeräusch in tiefer Stille und ein purpurroter Riss schneidet ins vierte Blütenblatt der Brosche!)\n„……Ah, aah…… Mein Kampfschrei aus der Kehle ist halb heiser und ganz leise geworden.\n‚Verhängnis 4: Ewiges Schweigen‘ ist auf ‚Angeklagte R.E.A.‘ — auf mich — übergegangen.“"
     },
     {
       "key": "story.bell.mastery.03",
@@ -3051,7 +3115,7 @@
     },
     {
       "key": "story.gallery.route.04",
-      "value": "„Kontere die gespiegelten Angriffe der Statuen mit einfachem Parieren, schlag mit der Grundschwertkunst in die Lücke, lass die Leinwandbrücken herab und geh hinüber zum Gewächshaus!“\n(Steuerung: Senke die Brücken durch Kappen von 2 Lapisriegeln und besiege Wachen, Statue und Nahtwache.)"
+      "value": "„Kontere die gespiegelten Angriffe der Statuen mit Ausweichen per Sprint, schlag mit der Grundschwertkunst in die Lücke, lass die Leinwandbrücken herab und geh hinüber zum Gewächshaus!“\n(Steuerung: Senke die Brücken durch Kappen von 2 Lapisriegeln und besiege Wachen, Statue und Nahtwache.)"
     },
     {
       "key": "story.gallery.route.05",
@@ -3083,7 +3147,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Sie setzt den Pinsel-Degen auf den Boden und schöpft ruhig Atem. Reas Klingen-Kern zeichnet die aquarellfarbene Spur von Irinas ‚Pinselstrich‘ auf Stufe 1 in der Luft auf)\n„……Obwohl ich das letzte Selbstporträt verbarg, hat deine Klinge den Verlauf meines ersten ‚Pinselstrichs‘ abgelesen.\nMerk dir das, Rea. Bis dreißig Mal schimmert nur ein Hauch Aquarell am Rand deines Blicks, doch sobald du das achtzigste Selbstporträt vollendest, geht mein Verhängnis der Erblindung auf deine Augen über. Ich ziehe mich in die Pflegestätte zurück…… Bitte leg diesen Pinselstrich nieder und geh heim.“\n(Systemhinweis: Leinwandschnitt erhalten — Halte am Boden die Richtung nach unten und drück Q (Y auf dem Controller).)"
+      "value": "(Sie setzt den Pinsel-Degen auf den Boden und schöpft ruhig Atem. Reas Klingen-Kern zeichnet die aquarellfarbene Spur von Irinas ‚Pinselstrich‘ auf Stufe 1 in der Luft auf)\n„……Obwohl ich das letzte Selbstporträt verbarg, hat deine Klinge den Verlauf meines ersten ‚Pinselstrichs‘ abgelesen.\nMerk dir das, Rea. Bis dreißig Mal schimmert nur ein Hauch Aquarell am Rand deines Blicks, doch sobald du das achtzigste Selbstporträt vollendest, geht mein Verhängnis der Erblindung auf deine Augen über. Ich ziehe mich in die Pflegestätte zurück…… Bitte leg diesen Pinselstrich nieder und geh heim.“\n(Systemhinweis: Leinwandschnitt erhalten — Halte am Boden die Richtung nach unten und drück V (Y auf dem Controller).)"
     },
     {
       "key": "story.irina.i0.06",
@@ -3139,7 +3203,7 @@
     },
     {
       "key": "story.gallery.return.01",
-      "value": "„Hinter der Kante des Gewächshaus-Rückwegs bricht der Boden völlig ab. Wenn ich am Boden ‚Pinselstrich‘, Stufe 1 des ‚Leinwandschnitts‘, vor mir in die Luft male, bleibt eine Lapis-Farbplattform 3 Sekunden lang schweben! Auf diesen Pinselstrich kann ich treten und hinüberspringen!“\n(Steuerung: Drücke an der Stufenkante am Boden ↓ + Q / Y, um vor dir eine Pinselstrich-Plattform in die Luft zu malen, und spring darüber hinweg.)"
+      "value": "„Hinter der Kante des Gewächshaus-Rückwegs bricht der Boden völlig ab. Wenn ich am Boden ‚Pinselstrich‘, Stufe 1 des ‚Leinwandschnitts‘, vor mir in die Luft male, bleibt eine Lapis-Farbplattform 3 Sekunden lang schweben! Auf diesen Pinselstrich kann ich treten und hinüberspringen!“\n(Steuerung: Drücke an der Stufenkante am Boden ↓ + V / Y, um vor dir eine Pinselstrich-Plattform in die Luft zu malen, und spring darüber hinweg.)"
     },
     {
       "key": "story.gallery.return.02",
@@ -3151,7 +3215,7 @@
     },
     {
       "key": "story.gallery.synergy.01",
-      "value": "„Hinter diesem gespaltenen Boden mit zwei festen Ankern tut sich völlig haltlose Luft auf!\nWenn ich zuerst den Riss im echten Boden mit Mikhails ‚Silbernaht‘ zunähe, um hinüberzugehen, und dann an dessen Kante mit Irinas ‚Leinwandschnitt‘ eine schwebende Farbplattform in die Luft male, verbinde ich die Stärken beider Techniken!“\n(Steuerung: Vernähe den gespaltenen Boden (gallery_synergy_seam) mit Silbernaht, tritt darauf und male am Ende mit Leinwandschnitt (↓ + Q / Y) eine Farbplattform vor dich auf die Terrasse.)"
+      "value": "„Hinter diesem gespaltenen Boden mit zwei festen Ankern tut sich völlig haltlose Luft auf!\nWenn ich zuerst den Riss im echten Boden mit Mikhails ‚Silbernaht‘ zunähe, um hinüberzugehen, und dann an dessen Kante mit Irinas ‚Leinwandschnitt‘ eine schwebende Farbplattform in die Luft male, verbinde ich die Stärken beider Techniken!“\n(Steuerung: Vernähe den gespaltenen Boden (gallery_synergy_seam) mit Silbernaht, tritt darauf und male am Ende mit Leinwandschnitt (↓ + V / Y) eine Farbplattform vor dich auf die Terrasse.)"
     },
     {
       "key": "story.gallery.synergy.02",
@@ -3551,7 +3615,7 @@
     },
     {
       "key": "story.cassel.p1.04",
-      "value": "„Jetzt kommt er……! Cassels Ausgangshaltung gleicht exakt meiner Grundschwertkunst!“\n(Kampfbeginn: Cassel Phase 1 · Ursprüngliche Schwertform — Kontere Cassels Mutter-Schwertkunst (Cassels Nullte Form) und die fünf Ur-Muster mit einfachem Parieren, Ausweichen und Techniken, um seine TP auf 120 zu senken.)"
+      "value": "„Jetzt kommt er……! Cassels Ausgangshaltung gleicht exakt meiner Grundschwertkunst!“\n(Kampfbeginn: Cassel Phase 1 · Ursprüngliche Schwertform — Kontere Cassels Mutter-Schwertkunst (Cassels Nullte Form) und die fünf Ur-Muster mit Ausweichen per Sprint, Ausweichen und Techniken, um seine TP auf 120 zu senken.)"
     },
     {
       "key": "story.cassel.p1.05",
@@ -3583,7 +3647,7 @@
     },
     {
       "key": "story.cassel.return.pendulum_early",
-      "value": "(Die Uhrzeiger-Detonation von ‚Stunde Null‘ überlagert sauber die Pendelbahn des Spiegels und löscht das Licht der zweiten Spiegelschicht!)\nJulius’ ‚Pendelrücklauf‘ zur Rückgabe vorgemerkt!\nStatt Nachbild-Rückkehren zu behalten, habe ich den unangenehmsten Trick des Spiegels — ‚zwei gekreuzte Vorstöße nach langer Ansage‘ — früh ausgeschaltet. Jetzt kann ich Cassels unverstellten Schwertrhythmus klar lesen und frontal parieren!\n(Audio-Hinweis: Verzerrter Pendel-Spiegelloop dauerhaft stummgeschaltet + Zeitprägungs-Resonanzschicht +1)"
+      "value": "(Die Uhrzeiger-Detonation von ‚Stunde Null‘ überlagert sauber die Pendelbahn des Spiegels und löscht das Licht der zweiten Spiegelschicht!)\nJulius’ ‚Pendelrücklauf‘ zur Rückgabe vorgemerkt!\nStatt Nachbild-Rückkehren zu behalten, habe ich den unangenehmsten Trick des Spiegels — ‚zwei gekreuzte Vorstöße nach langer Ansage‘ — früh ausgeschaltet. Jetzt kann ich Cassels unverstellten Schwertrhythmus klar lesen und frontal Ausweichen per Sprint!\n(Audio-Hinweis: Verzerrter Pendel-Spiegelloop dauerhaft stummgeschaltet + Zeitprägungs-Resonanzschicht +1)"
     },
     {
       "key": "story.cassel.return.pendulum_late",
@@ -3599,11 +3663,11 @@
     },
     {
       "key": "story.cassel.return.forge_early",
-      "value": "(Die goldene Großglockenwelle von ‚Saat um sechs‘, direkt nach dem Parieren als Abwärtsschlag aus der Luft hinabgeschmettert, kollidiert frontal mit der Bodenwelle des Spiegels und sprengt die Spiegelschicht!)\nGabriels ‚Resonanzschmiede‘ zur Rückgabe vorgemerkt!\nStatt den weiten Konter-Glockenschlag zu behalten, habe ich früh die bodenfegende ‚Gespiegelte Großglockenwelle‘ gestoppt. Jetzt kann ich mich ohne Sprungzwang auf das Parieren am Boden konzentrieren!\n(Audio-Hinweis: Kalter Großglocken-Spiegelloop dauerhaft stummgeschaltet + Zeitprägungs-Resonanzschicht +1)"
+      "value": "(Die goldene Großglockenwelle von ‚Saat um sechs‘, direkt nach dem Ausweichen per Sprint als Abwärtsschlag aus der Luft hinabgeschmettert, kollidiert frontal mit der Bodenwelle des Spiegels und sprengt die Spiegelschicht!)\nGabriels ‚Resonanzschmiede‘ zur Rückgabe vorgemerkt!\nStatt den weiten Konter-Glockenschlag zu behalten, habe ich früh die bodenfegende ‚Gespiegelte Großglockenwelle‘ gestoppt. Jetzt kann ich mich ohne Sprungzwang auf das Ausweichen per Sprint am Boden konzentrieren!\n(Audio-Hinweis: Kalter Großglocken-Spiegelloop dauerhaft stummgeschaltet + Zeitprägungs-Resonanzschicht +1)"
     },
     {
       "key": "story.cassel.return.forge_late",
-      "value": "(Die Großglockenwelle, die Cassels Deckung mit einfachem Parieren und Luft-Abwärtsschlägen immer wieder aufsprengte, gräbt sich tief in den Spiegel!)\nGabriel, die Zeichen und Glockenschläge, die du mich gelehrt hast, haben Cassels verschlossenen Spiegel wieder und wieder aufgerissen!\nJetzt merke ich ‚Resonanzschmiede‘ samt dem Verhängnis des Ewigen Schweigens zur Rückgabe an Cassel vor!\n(Audio-Hinweis: Kalter Großglocken-Spiegelloop dauerhaft stummgeschaltet + Zeitprägungs-Resonanzschicht +1)"
+      "value": "(Die Großglockenwelle, die Cassels Deckung mit Ausweichen per Sprint und Luft-Abwärtsschlägen immer wieder aufsprengte, gräbt sich tief in den Spiegel!)\nGabriel, die Zeichen und Glockenschläge, die du mich gelehrt hast, haben Cassels verschlossenen Spiegel wieder und wieder aufgerissen!\nJetzt merke ich ‚Resonanzschmiede‘ samt dem Verhängnis des Ewigen Schweigens zur Rückgabe an Cassel vor!\n(Audio-Hinweis: Kalter Großglocken-Spiegelloop dauerhaft stummgeschaltet + Zeitprägungs-Resonanzschicht +1)"
     },
     {
       "key": "story.cassel.return.canvas_early",
@@ -3615,7 +3679,7 @@
     },
     {
       "key": "story.cassel.p2.08_r1_cassel",
-      "value": "(Als die erste Rückgabevormerkung 1/5 ins Notariatsregister eingeht und +20% zusätzliche Prägungsstärke wie blaues Feuer aus Reas Klinge lodern, zuckt Cassels Braue zum ersten Mal. Um nicht auch die restlichen vier Techniken hergeben zu müssen, klappt Cassel den ‚Allresonanzspiegel‘ hinter den Rücken zu und weicht rasch mit einem Schritt zurück!)\n„……Du hast die Spiegelungswertung des Allresonanzspiegels ausgenutzt, um in meinem Register eine Rückgabevormerkung zu setzen?!\nDoch bleiben die Spiegelflächen zugeklappt, verlieren deine übrigen Techniken ihr Gegenstück fürs Klingenkreuzen. Dann schlage ich erst deinen eigenen Körper mit direkter Schwertkunst nieder!“\n(Taktik-Hinweis: Cassel schließt den Spiegel und greift direkt mit der 3-fachen Sturmhieb-Serie von Cassels Nullter Form an. Verschwende keine Bosstechniken — wehre sie mit einfachem Parieren (L / RB) ab!)"
+      "value": "(Als die erste Rückgabevormerkung 1/5 ins Notariatsregister eingeht und +20% zusätzliche Prägungsstärke wie blaues Feuer aus Reas Klinge lodern, zuckt Cassels Braue zum ersten Mal. Um nicht auch die restlichen vier Techniken hergeben zu müssen, klappt Cassel den ‚Allresonanzspiegel‘ hinter den Rücken zu und weicht rasch mit einem Schritt zurück!)\n„……Du hast die Spiegelungswertung des Allresonanzspiegels ausgenutzt, um in meinem Register eine Rückgabevormerkung zu setzen?!\nDoch bleiben die Spiegelflächen zugeklappt, verlieren deine übrigen Techniken ihr Gegenstück fürs Klingenkreuzen. Dann schlage ich erst deinen eigenen Körper mit direkter Schwertkunst nieder!“\n(Taktik-Hinweis: Cassel schließt den Spiegel und greift direkt mit der 3-fachen Sturmhieb-Serie von Cassels Nullter Form an. Verschwende keine Bosstechniken — wehre sie mit Ausweichen per Sprint (Shift / LB) ab!)"
     },
     {
       "key": "story.cassel.p2.09_r1_rea",
@@ -3635,7 +3699,7 @@
     },
     {
       "key": "story.cassel.p2.13_r5",
-      "value": "(Als das fünfte Klingenkreuzen einschlägt, erlöschen alle fünf Spiegelschichten des ‚Allresonanzspiegels‘ vollständig, und jeder verzerrte Widerhall verstummt! Alle fünf Technikplätze Reas stehen als [Rückgabe vorgemerkt] leer, während aus der mittleren Runenrille der Klinge 100% (×2,0) freigesetzte Prägungsstärke als gleißende Lapis-Lichtsäule emporsteigt)\n[Rückgabevormerkungen 5/5 komplett — +100% zusätzliche Prägungsstärke freigegeben]\n„Das Nutzungsrecht aller fünf Wohltäter-Techniken liegt nun im Rückgaberegister. In meinen Händen bleibt allein die Grundschwertkunst — aber meine Beine, mein Ausweichen, mein Parieren und jede Stunde Zeit, die mein gestriges und heutiges Ich selbst erkämpft haben, ruhen vereint in dieser einzigen Klinge!“"
+      "value": "(Als das fünfte Klingenkreuzen einschlägt, erlöschen alle fünf Spiegelschichten des ‚Allresonanzspiegels‘ vollständig, und jeder verzerrte Widerhall verstummt! Alle fünf Technikplätze Reas stehen als [Rückgabe vorgemerkt] leer, während aus der mittleren Runenrille der Klinge 100% (×2,0) freigesetzte Prägungsstärke als gleißende Lapis-Lichtsäule emporsteigt)\n[Rückgabevormerkungen 5/5 komplett — +100% zusätzliche Prägungsstärke freigegeben]\n„Das Nutzungsrecht aller fünf Wohltäter-Techniken liegt nun im Rückgaberegister. In meinen Händen bleibt allein die Grundschwertkunst — aber meine Beine, mein Ausweichen, mein Ausweichen per Sprint und jede Stunde Zeit, die mein gestriges und heutiges Ich selbst erkämpft haben, ruhen vereint in dieser einzigen Klinge!“"
     },
     {
       "key": "story.cassel.p3.01_open",
@@ -3643,7 +3707,7 @@
     },
     {
       "key": "story.cassel.p3.02_live_b3",
-      "value": "(Genau bei diesem Schlag gegen Cassels Klinge erreichen die wirksamen Einsätze der Grundschwertkunst die vierhundert! Mit einem goldenen Lichtring entzündet sich die letzte Rune der Klinge: [Wahrer Name enthüllt: Klinge der Erbsünde — Cassels Nullte Form]!)\n„……Genau dieser eine Schlag hat die vierhundertste Prägung vollgemacht!\nDas Ende der Urform, die Ihr in meinen Körper gepflanzt habt, hat sich jetzt vollständig in meinen Händen geöffnet, Cassel! Beim nächsten Parieren bestätige ich mit einer vierfachen Meister-Kombo die Rückgabe aller fünf Verhängnisse!“"
+      "value": "(Genau bei diesem Schlag gegen Cassels Klinge erreichen die wirksamen Einsätze der Grundschwertkunst die vierhundert! Mit einem goldenen Lichtring entzündet sich die letzte Rune der Klinge: [Wahrer Name enthüllt: Klinge der Erbsünde — Cassels Nullte Form]!)\n„……Genau dieser eine Schlag hat die vierhundertste Prägung vollgemacht!\nDas Ende der Urform, die Ihr in meinen Körper gepflanzt habt, hat sich jetzt vollständig in meinen Händen geöffnet, Cassel! Beim nächsten Ausweichen per Sprint bestätige ich mit einer vierfachen Meister-Kombo die Rückgabe aller fünf Verhängnisse!“"
     },
     {
       "key": "story.cassel.p3.03_b3_ready",
@@ -3651,7 +3715,7 @@
     },
     {
       "key": "story.cassel.p3.04_b3_retry",
-      "value": "„Alles gut, keine Hast! Unsere Urform hat bereits die Meisterform auf Stufe 3 erreicht. Zerstöre nicht bloß den Kern — hol Luft und führe das Klingenkreuzen nach einem einfachen Parieren bis zum vollen 1~4-Treffer-Abschluss durch!“"
+      "value": "„Alles gut, keine Hast! Unsere Urform hat bereits die Meisterform auf Stufe 3 erreicht. Zerstöre nicht bloß den Kern — hol Luft und führe das Klingenkreuzen nach einem Ausweichen per Sprint bis zum vollen 1~4-Treffer-Abschluss durch!“"
     },
     {
       "key": "story.cassel.p3.05_true_hit",
@@ -3763,7 +3827,7 @@
     },
     {
       "key": "story.ending.true.13_swing_prompt",
-      "value": "„Keine Stellvertreter-Schwertkunst, die fremden Tod auf sich lädt — hier meißle ich die erste Bewegung ein, die ich, im Heute lebend, unter meinem eigenen Namen schreibe!“\n(Steuerung: Drücke vor der sonnenbeschienenen Dachterrasse (rea_form_one_sky) die Schwerttaste (J / Z / Linksklick / X), um Reas ganz eigenen ersten Hieb auszuführen!)"
+      "value": "„Keine Stellvertreter-Schwertkunst, die fremden Tod auf sich lädt — hier meißle ich die erste Bewegung ein, die ich, im Heute lebend, unter meinem eigenen Namen schreibe!“\n(Steuerung: Drücke vor der sonnenbeschienenen Dachterrasse (rea_form_one_sky) die Schwerttaste (A / X), um Reas ganz eigenen ersten Hieb auszuführen!)"
     },
     {
       "key": "story.ending.true.14_registered",
@@ -3815,7 +3879,7 @@
     },
     {
       "key": "story.resume.crucible.01_ethan",
-      "value": "(Ethan reißt die Feuertür des riesigen Lapisofens ‚Resonanzschmelzofen‘ in der Wasserwegschmiede auf und nickt)\n„Da bist du ja, Rea. Um Cassels Mutter-Schwertkunst bis zum letzten vierten Hieb zu kontern, muss deine Grundschwertkunst die vierhundertste Meistermarke erreichen.\nIn diesem Schmelzofen warten hochdichte Resonanzziele und Wachen, die dein einfaches Parieren und deine Schwertkombos ohne Pause aufnehmen. Zwei Minuten genügen — schwing deine Klinge nach Herzenslust!“\n(Steuerung: Drücke F / linken Stick drücken, um den Resonanzschmelzofen (resonant_crucible) zu starten.)"
+      "value": "(Ethan reißt die Feuertür des riesigen Lapisofens ‚Resonanzschmelzofen‘ in der Wasserwegschmiede auf und nickt)\n„Da bist du ja, Rea. Um Cassels Mutter-Schwertkunst bis zum letzten vierten Hieb zu kontern, muss deine Grundschwertkunst die vierhundertste Meistermarke erreichen.\nIn diesem Schmelzofen warten hochdichte Resonanzziele und Wachen, die dein Ausweichen per Sprint und deine Schwertkombos ohne Pause aufnehmen. Zwei Minuten genügen — schwing deine Klinge nach Herzenslust!“\n(Steuerung: Drücke F / linken Stick drücken, um den Resonanzschmelzofen (resonant_crucible) zu starten.)"
     },
     {
       "key": "story.resume.crucible.02_theo",
@@ -3932,6 +3996,394 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Rückweg zum Aufzug zum Hohen Gericht"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Anzeige : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Randloses Vollbild"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Fenster)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Fenster)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Fenster)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "VSync : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Tastenbelegung"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Tastenbelegung"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Aktion wählen und neue Taste oder Rechtsklick drücken. (Doppelte tauschen automatisch · Esc bricht ab)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Neue Taste drücken… Esc ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Standard wiederherstellen"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Doppelte Taste automatisch getauscht."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Springen :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Angriff :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Technik :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Sprint :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interagieren :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "Bezirkskarte :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Karte"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Erkundet: {0} / {1} Räume"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Position   ■ Besucht   □ Offen   ❖ Boss/Arena   [{0} / Tab / Esc] Schließen"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Stützpunkt · Dachboden"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Samtschneider-Gasse"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Uhrturm-Bezirk"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Gläserne Oper"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Glockenturm-Aquädukt"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Leinwand-Galerie"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Notarsgericht"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Großes Tribunal"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Bewegen ←/→ | Sprung {0} | Angriff {1} | Technik {2} | Sprint {3} | Karte {4} | Esc"
+    },
+    {
+      "key": "shop.title",
+      "value": "Ethans Proviant"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Tasche"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Mit Ethan sprechen"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Du willst ins Samtviertel, Rea? Nimm Resonanztee und Verbände mit. Wenn du dich verletzt, hol sie aus deiner Tasche. Geh nicht einfach weiter."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "Zurück aus dem Samtviertel, Rea? Kümmere dich um dich selbst wie um deine Klinge. Sag mir, was du für den nächsten Weg brauchst."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Waren ansehen"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "Gespräch beenden"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Silbermünzen {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Lebenspunkte {0}/{1}   ·   Silbermünzen {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Heilt {0} LP   ·   In der Tasche {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} Silber"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Wählen   ·   Enter Kaufen   ·   Esc Zurück"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Wählen   ·   Enter Benutzen   ·   Esc Zurück"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Minz-Resonanztee"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Reiseverband"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "Du hast zu wenig Silber."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "{0} gekauft."
+    },
+    {
+      "key": "shop.none_held",
+      "value": "Du hast kein Exemplar von {0}."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "Am Boden kannst du nichts benutzen."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "Deine Lebenspunkte sind voll."
+    },
+    {
+      "key": "shop.used",
+      "value": "{0} benutzt · {1} LP geheilt"
+    },
+    {
+      "key": "controls.kb_opening",
+      "value": "←/→ Bewegen  ·  {0} Springen  ·  {1} Interagieren"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "LS/Steuerkreuz Bewegen  ·  [A] Springen  ·  [L3] Interagieren"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "Martas Dachboden"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Springe mit {0} über die Truhe und suche das Minzbonbon."
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Bewegen ←/→ | Interag. {0} | Angriff {1} | Technik {2} | Sprint {3} | Karte {4} | Esc Pause"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "LS | Sprung [A] | Angriff [X] | Technik [Y] | Sprint [LB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "LS | Interag. [L3] | Angriff [X] | Technik [Y] | Sprint [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Notarsprotokoll aktualisiert · LP geheilt"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "POGO!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "KONTER!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "BRUCH!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Kamerawackeln: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "Aus (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Leicht (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Voll (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Trefferstopp (Hit-Stop): {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Längere Unverwundbarkeit (Hilfe): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NEUE GÖNNER-TECHNIK"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Verbinde gebrochene Pfade mit Silberfaden und durchbohre Gegner."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Spule bewegte Uhrwerke und Gegner kurzzeitig zurück."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Schwinge durch die Luft und weiche Scheinwerfern aus."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Zertrümmere brüchige Wände und kontere Angriffe."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Zeichne temporäre Tritte in die Luft."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Notar-Tagebuch"
+    },
+    {
+      "key": "journal.title",
+      "value": "Notar-Tagebuch & Register"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Techniken"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Personen"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Erkundung"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Reiter wechseln  |  N / Esc Schließen"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Eingabe: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Erkundete Räume: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Gönner-Techniken: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Ermittlungshinweise: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Aktive Tastenbelegung"
+    },
+    {
+      "key": "journal.met",
+      "value": "Begegnet"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Unbekannt"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Technik übernommen"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Erbin der Chronikklinge · Notaranwärterin"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Hüterin des Dachbodens"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Gönner der Samtgasse · Silberstich"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Gönner des Uhrturms · Pendelrücklauf"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Gönnerin der Glasoper · Vorhangwalzer"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Gönner des Glockenturms · Resonanzschmiede"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Gönnerin der Galerie · Leinwandschnitt"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Oberster Richter · Tribunal"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Ort: {0}"
     }
   ]
 }

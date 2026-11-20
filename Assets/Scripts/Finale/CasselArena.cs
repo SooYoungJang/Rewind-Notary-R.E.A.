@@ -29,7 +29,21 @@ namespace RewindNotary
                 doors.Add(exit, new RoomDoorView(door, room.stage));
             }
             RefreshDoors();
-            for (int i = 0; i < 5; i++) mirrors.Add(Visual("반사층 " + BenefactorIds.All[i], new Vector2(43 + i * 1.7f, 5), new Vector2(.9f, 2)));
+            for (int i = 0; i < 5; i++)
+            {
+                var pos = new Vector2(43 + i * 1.7f, 5);
+                var frame = Visual("반사층 틀 " + i, pos, new Vector2(1.06f, 2.18f));
+                frame.color = new Color(0.86f, 0.72f, 0.42f, 0.82f);
+                frame.sortingOrder = -2;
+                mirrors.Add(Visual("반사층 " + BenefactorIds.All[i], pos, new Vector2(.9f, 2)));
+            }
+            for (int c = 0; c < 4; c++)
+            {
+                float cx = Mathf.Lerp(d.arenaMin + 2.5f, d.arenaMax - 2.5f, c / 3f);
+                var col = Visual("심판석 기둥 " + c, new Vector2(cx, 5.2f), new Vector2(1.1f, 11.4f));
+                col.color = new Color(0.18f, 0.22f, 0.30f, 0.62f);
+                col.sortingOrder = -5;
+            }
             imprint = Visual("레아 각인 출력", new Vector2(47, 6.5f), new Vector2(10, .12f));
         }
         private SpriteRenderer Visual(string label, Vector2 at, Vector2 size)

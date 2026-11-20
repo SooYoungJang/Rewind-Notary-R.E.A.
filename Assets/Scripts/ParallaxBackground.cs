@@ -9,6 +9,7 @@ namespace RewindNotary
         private sealed class Layer
         {
             public float factor, width, y, vertical, offset;
+            public bool fixedInWorld;
             public Transform[] tiles;
             public SpriteRenderer[] renderers;
         }
@@ -18,9 +19,10 @@ namespace RewindNotary
         [System.Serializable] private sealed class Set { public string id; public Strip[] layers; }
         [System.Serializable] private sealed class Strip
         {
-            public string resource, tint;
+            public string resource, tint, foundationTint;
             public StoryRect crop;
             public float factor, height, bottom, vertical, spacing, offset;
+            public bool fixedInWorld;
         }
         private RepresentativeArea area;
         private Library library;
@@ -74,10 +76,12 @@ namespace RewindNotary
             var sprite = Sprite.Create(texture, rect, new Vector2(0.5f, 0),
                 rect.height / height, 0, SpriteMeshType.FullRect);
             owned.Add(sprite);
+            bool fixedInWorld = strip?.fixedInWorld == true;
+            int tileCount = fixedInWorld ? 1 : 5;
             var layer = new Layer { factor = factor, width = sprite.bounds.size.x * (strip?.spacing ?? 1), y = bottom,
                 vertical = strip?.vertical ?? 0, offset = strip?.offset ?? 0,
-                tiles = new Transform[5], renderers = new SpriteRenderer[5] };
-            for (int i = 0; i < 5; i++)
+                fixedInWorld = fixedInWorld, tiles = new Transform[tileCount], renderers = new SpriteRenderer[tileCount] };
+            for (int i = 0; i < tileCount; i++)
             {
                 var tile = new GameObject(resource + " tile " + i);
                 tile.transform.SetParent(transform, false);
@@ -85,8 +89,28 @@ namespace RewindNotary
                 layer.renderers[i] = tile.AddComponent<SpriteRenderer>();
                 layer.renderers[i].color = tint;
                 layer.renderers[i].sprite = sprite; layer.renderers[i].sortingOrder = order;
+                if (fixedInWorld)
+                {
+                    tile.transform.position = new Vector3(layer.offset, bottom, 5f);
+                    if (ColorUtility.TryParseHtmlString(strip.foundationTint, out var foundation))
+                        AddFoundation(tile.transform, sprite.bounds.size.x, order - 1, foundation);
+                }
             }
             layers.Add(layer);
+        }
+
+        private void AddFoundation(Transform strip, float width, int order, Color tint)
+        {
+            var baseboard = new GameObject("Foundation beneath panorama").AddComponent<SpriteRenderer>();
+            baseboard.transform.SetParent(strip, false);
+            baseboard.transform.localPosition = new Vector3(0f, -4f, 0f);
+            baseboard.transform.localScale = new Vector3(width, 8.02f, 1f);
+            var sheet = Texture2D.whiteTexture;
+            var sprite = Sprite.Create(sheet, new Rect(0f, 0f, sheet.width, sheet.height), Vector2.one * .5f, sheet.width);
+            owned.Add(sprite);
+            baseboard.sprite = sprite;
+            baseboard.sortingOrder = order;
+            baseboard.color = tint;
         }
         private void LateUpdate()
         {
@@ -94,6 +118,7 @@ namespace RewindNotary
             if (area?.Room.backgroundSet != current) LoadRoom(area?.Room.backgroundSet);
             foreach (Layer layer in layers)
             {
+                if (layer.fixedInWorld) continue;
                 float drift = target.transform.position.x * (1f - layer.factor) + layer.offset;
                 int center = Mathf.FloorToInt((target.transform.position.x - drift) / layer.width);
                 for (int i = 0; i < layer.tiles.Length; i++)

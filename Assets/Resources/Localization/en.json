@@ -2,6 +2,78 @@
   "language": "en",
   "entries": [
     {
+      "key": "quick_skill.rea_thrust",
+      "value": "Thrust"
+    },
+    {
+      "key": "quick_skill.rea_rising",
+      "value": "Rising Cut"
+    },
+    {
+      "key": "quick_skill.rea_sweep",
+      "value": "Sweep"
+    },
+    {
+      "key": "quick_skill.rea_retreat_cut",
+      "value": "Retreating Slash"
+    },
+    {
+      "key": "quick_skill.wave_charge",
+      "value": "Blade wave · Hold {0}"
+    },
+    {
+      "key": "quick_skill.menu",
+      "value": "Skill slots"
+    },
+    {
+      "key": "quick_skill.assign_hint",
+      "value": "↑ ↓ Select a slot · ← → Equip a starter or learned skill"
+    },
+    {
+      "key": "story.prologue.city",
+      "value": "In Lapis, a city of notarization, the register keeps a person's name and the skills they have learned."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "The work of a lifelong tailor and the swordplay passed down by a master can both be notarized in Lapis."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "A notarizing swordsman captures a technique in the Record Sword, then proves it by reproducing it at Stage 3."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "At six tomorrow morning, five prisoners are due to be executed."
+    },
+    {
+      "key": "story.prologue.order",
+      "value": "A sealed order has arrived from the Central Notary Bureau. A clause inside offers all five a chance to live."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Find the five prisoners and learn a technique from each one. Capture them in the Record Sword and notarize all five at Stage 3."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "If all five notarizations are complete by the deadline, each prisoner will be granted a special pardon."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "The Bureau has entrusted this mission to Rea, a newly appointed notarizing swordsman. She has less than a day."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "That morning, Marta wrote the names of tomorrow's breakfast guests on the board in the attic."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "There were five names on the board. Beside them, one place was still blank."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "The scent of mint tea drifted in from the window. Rea opens her eyes in the attic, where the sealed order awaits."
+    },
+    {
       "key": "finale.ending.true",
       "value": "True ending unlocked"
     },
@@ -31,7 +103,7 @@
     },
     {
       "key": "finale.mirror_closed",
-      "value": "Mirror sealed · Parry, then use sword attacks to break the guard"
+      "value": "Mirror sealed · Dodge with a dash, then break the guard with sword attacks"
     },
     {
       "key": "finale.selected_finisher",
@@ -39,7 +111,7 @@
     },
     {
       "key": "finale.core_hint",
-      "value": "Core {0}/{1} · Parry, then finish a full combo / B<3: destroy the core"
+      "value": "Core {0}/{1} · Dodge with a dash, then finish a full combo / B<3: destroy the core"
     },
     {
       "key": "finale.boss_status",
@@ -71,7 +143,7 @@
     },
     {
       "key": "finale.confirm_return_body",
-      "value": "Return {0}?\n\nAfter the clash, this skill becomes unavailable for the rest of the battle.\nImprint power +{1}% · Your sword and remaining skills grow stronger.\nMovement, jumping, dashing, parrying and sword attacks remain available. Platforms vanish after 3 seconds.\nAll Dooms are returned only when the final original-form clash succeeds."
+      "value": "Return {0}?\n\nAfter the clash, this skill becomes unavailable for the rest of the battle.\nImprint power +{1}% · Your sword and remaining skills grow stronger.\nMovement, jumping, dashing and sword attacks remain available. Platforms vanish after 3 seconds.\nAll Dooms are returned only when the final original-form clash succeeds."
     },
     {
       "key": "finale.cancel_return",
@@ -138,18 +210,6 @@
       "value": "Dashing"
     },
     {
-      "key": "defense.parry_window",
-      "value": "Parry active"
-    },
-    {
-      "key": "defense.parry_recovery",
-      "value": "Missed parry · Recovering"
-    },
-    {
-      "key": "defense.counter_ready",
-      "value": "Counter ready · Next sword attack empowered"
-    },
-    {
       "key": "defense.ready",
       "value": "Defense ready"
     },
@@ -167,7 +227,7 @@
     },
     {
       "key": "input.gameplay",
-      "value": "Move A/D·Arrows·Stick | Jump Space·A | Sword J/Z/Left Click·X | Skill Q·Y | Dash Shift/K·LB | Parry L·RB"
+      "value": "Move ← → · Jump Space · Attack A · Interact F · Dash Shift+direction · Skills Q W E R"
     },
     {
       "key": "hud.trial_hint",
@@ -175,7 +235,7 @@
     },
     {
       "key": "hud.wave_hint",
-      "value": "Blue-gold core: sword · Gold warning: parry/dash · Red guard: required skill"
+      "value": "Blue-gold core: sword · Gold warning: dash through the attack · Red guard: required skill"
     },
     {
       "key": "hud.checkpoint_hint",
@@ -187,7 +247,7 @@
     },
     {
       "key": "input.retry_pause",
-      "value": "{0}  R·View: restart | Esc·Menu: pause"
+      "value": "{0}  Backspace·View: restart | Esc·Menu: pause"
     },
     {
       "key": "input.debug",
@@ -195,7 +255,7 @@
     },
     {
       "key": "trial.health",
-      "value": "Practice HP {0}/{1} · Training resumes when depleted · R: reset positions"
+      "value": "Practice HP {0}/{1} · Training resumes when depleted · Backspace: reset positions"
     },
     {
       "key": "input.benefactor_support",
@@ -215,7 +275,7 @@
     },
     {
       "key": "input.retry_button",
-      "value": "Press R / View to try again."
+      "value": "Press Backspace / View to try again."
     },
     {
       "key": "hud.returning_checkpoint",
@@ -567,7 +627,7 @@
     },
     {
       "key": "skill.acquired_notice",
-      "value": "{0} acquired — Select: 1–5 / E·B · Use: Q·Y"
+      "value": "{0} learned. Cast with direction + V or equip it in a skill slot."
     },
     {
       "key": "skill.stage_up_notice",
@@ -1091,11 +1151,11 @@
     },
     {
       "key": "skills.sword.form1",
-      "value": "2-hit sword combo"
+      "value": "4-hit sword combo"
     },
     {
       "key": "skills.sword.form2",
-      "value": "3-hit combo · Advancing step · Short blade wave on the final hit"
+      "value": "4-hit combo · Advancing step · Short blade wave on the final hit"
     },
     {
       "key": "skills.sword.form3",
@@ -1147,7 +1207,7 @@
     },
     {
       "key": "skills.forge.form3",
-      "value": "Basic parry + Downward aerial bell strike · Wide counter shockwave"
+      "value": "Ground resonance shockwave · Downward aerial bell strike"
     },
     {
       "key": "skills.canvas.form1",
@@ -1315,7 +1375,7 @@
     },
     {
       "key": "wave.all_complete",
-      "value": "3 zones complete · Check sword milestone logs: 151 / 400. R: restart"
+      "value": "3 zones complete · Check sword milestone logs: 151 / 400. Backspace: restart"
     },
     {
       "key": "wave.zone_complete",
@@ -1335,7 +1395,7 @@
     },
     {
       "key": "wave.defense_then_sword",
-      "value": "Parry / dash through the golden attack → Sword"
+      "value": "Dash through the golden attack → Sword"
     },
     {
       "key": "wave.target_hint",
@@ -1456,6 +1516,10 @@
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
       "value": "Silver Thread Sweep"
+    },
+    {
+      "key": "trial.mikhail.thread_lunge",
+      "value": "Silver-Thread Lunge"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
@@ -1815,7 +1879,7 @@
     },
     {
       "key": "input.cast_hint",
-      "value": "Direction + Q·Y | Wall: hold attack + ↓ cast"
+      "value": "Direction + V·Y | Wall: hold attack + ↓ cast"
     },
     {
       "key": "input.skill_unlearned",
@@ -1907,7 +1971,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Planting his shear-blade into the floor, he drops to one knee. Rea's record blade core captures the blue trace of Mikhail's Stage 1 stitching swordplay revealed during the duel)\n“Tch…… Even though I kept my final knot hidden, that blade read the grain of my first stitch.\nListen well, Rea. Stop there and it's just simple self-defense, but the instant you master that stitching and take it all the way to completion, the torment in my heart passes to you. I'm falling back to the Sanctuary…… Put that sword away and go home, please.”\n(System Notice: Silver Stitch acquired — Press Q (Y on a controller) with no direction held.)"
+      "value": "(Planting his shear-blade into the floor, he drops to one knee. Rea's record blade core captures the blue trace of Mikhail's Stage 1 stitching swordplay revealed during the duel)\n“Tch…… Even though I kept my final knot hidden, that blade read the grain of my first stitch.\nListen well, Rea. Stop there and it's just simple self-defense, but the instant you master that stitching and take it all the way to completion, the torment in my heart passes to you. I'm falling back to the Sanctuary…… Put that sword away and go home, please.”\n(System Notice: Silver Stitch acquired — Press V (Y on a controller) with no direction held.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2511,7 +2575,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Move   F / L3 Inspect·Enter   J·Z·Left Click Sword (Gamepad X)   Q / Y Skill   Esc Pause"
+      "value": "Move ← → · Jump Space · Attack A · Interact F · Dash Shift+direction · Skills Q W E R · Esc"
     },
     {
       "key": "investigation.clue.route_ledger.body",
@@ -2587,7 +2651,7 @@
     },
     {
       "key": "story.clock.route.05",
-      "value": "“Once you climb past this vertical escapement gear room, you'll reach the innermost dial antechamber where my uncle is waiting. Deflect the Notary's Mirror Statue's golden telegraphed attacks with a basic parry or dash, then slash with Basic Swordplay when it leaves an opening!”\n(Controls: Climb the escapement tiers and clear 1 lapis latch along with the sentry and statue.)"
+      "value": "“Once you climb past this vertical escapement gear room, you'll reach the innermost dial antechamber where my uncle is waiting. Deflect the Notary's Mirror Statue's golden telegraphed attacks with a dash, then slash with Basic Swordplay when it leaves an opening!”\n(Controls: Climb the escapement tiers and clear 1 lapis latch along with the sentry and statue.)"
     },
     {
       "key": "story.clock.route.06",
@@ -2615,7 +2679,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Planting his clock-hand broadsword into the floor, he exhales heavily. Rea's record blade core captures the brass-colored imprint of Julius's Stage 1 step trajectory shown during the duel)\n“……Even though I hid my final Ultimate, your record blade still read the round-trip path of my first ‘Pendulum Step.’\nMark my words, Rea. Up through twenty-nine times it is only footwork, and at thirty only the watch casing will resonate—yet the instant you reach the eightieth Ultimate, the frozen second hand of your half watch will start turning again, and my aging will crash down upon you.”\n(System Notice: Pendulum Rewind acquired — Hold the direction opposite the way Rea is facing and press Q (Y on a controller).)"
+      "value": "(Planting his clock-hand broadsword into the floor, he exhales heavily. Rea's record blade core captures the brass-colored imprint of Julius's Stage 1 step trajectory shown during the duel)\n“……Even though I hid my final Ultimate, your record blade still read the round-trip path of my first ‘Pendulum Step.’\nMark my words, Rea. Up through twenty-nine times it is only footwork, and at thirty only the watch casing will resonate—yet the instant you reach the eightieth Ultimate, the frozen second hand of your half watch will start turning again, and my aging will crash down upon you.”\n(System Notice: Pendulum Rewind acquired — Hold the direction opposite the way Rea is facing and press V (Y on a controller).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2671,7 +2735,7 @@
     },
     {
       "key": "story.clock.return.01",
-      "value": "“The brass shutter on the upper return path is closing fast. With Stage 1 ‘Pendulum Step’ of the ‘Pendulum Rewind’ I just recorded, I can leave an afterimage behind, lunge through to hit the switch, and re-input within 1.5 seconds to rewind safely back onto solid ground!”\n(Controls: Use Pendulum Rewind (Q / Y) to strike the switch past the shutter, then press again to rewind safely to your afterimage.)"
+      "value": "“The brass shutter on the upper return path is closing fast. With Stage 1 ‘Pendulum Step’ of the ‘Pendulum Rewind’ I just recorded, I can leave an afterimage behind, lunge through to hit the switch, and re-input within 1.5 seconds to rewind safely back onto solid ground!”\n(Controls: Use Pendulum Rewind (V / Y) to strike the switch past the shutter, then press again to rewind safely to your afterimage.)"
     },
     {
       "key": "story.clock.return.02",
@@ -2771,7 +2835,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Propping her rapier tip onto the floorboards, she catches her breath. Rea's record blade core captures the teal-colored imprint of Valeria's Stage 1 spinning leap path revealed in the duel)\n“……Haah, even though I hid the final curtain call, your blade still copied the leap angle of my first ‘Whirling Blade Dance.’\nPlease, Rea. Up to thirty times, only my bow habit will rub off—but the instant you complete the eightieth Grand Finale, the torment of my legs goes straight to you. I'll fall back to the Sanctuary…… so please don't dance those steps all the way to the end.”\n(System Notice: Curtain Call Waltz acquired — Hold up and press Q (Y on a controller).)"
+      "value": "(Propping her rapier tip onto the floorboards, she catches her breath. Rea's record blade core captures the teal-colored imprint of Valeria's Stage 1 spinning leap path revealed in the duel)\n“……Haah, even though I hid the final curtain call, your blade still copied the leap angle of my first ‘Whirling Blade Dance.’\nPlease, Rea. Up to thirty times, only my bow habit will rub off—but the instant you complete the eightieth Grand Finale, the torment of my legs goes straight to you. I'll fall back to the Sanctuary…… so please don't dance those steps all the way to the end.”\n(System Notice: Curtain Call Waltz acquired — Hold up and press V (Y on a controller).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2827,7 +2891,7 @@
     },
     {
       "key": "story.opera.return.01",
-      "value": "“The east spotlight roof return route! If I soar upward using Stage 1 ‘Whirling Blade Dance’ of ‘Curtain Call Waltz’ toward the hanging lanterns in midair, I can knock away projectiles while leaping higher!”\n(Controls: Strike the hanging midair lanterns with Curtain Call Waltz (Q / Y) to rise and land on the steel beam across the gap.)"
+      "value": "“The east spotlight roof return route! If I soar upward using Stage 1 ‘Whirling Blade Dance’ of ‘Curtain Call Waltz’ toward the hanging lanterns in midair, I can knock away projectiles while leaping higher!”\n(Controls: Strike the hanging midair lanterns with Curtain Call Waltz (V / Y) to rise and land on the steel beam across the gap.)"
     },
     {
       "key": "story.opera.return.02",
@@ -2927,7 +2991,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Planting the haft of his hammer-sword into the floor, he drops to one knee. Rea's record blade core captures in golden light the Stage 1 vibrating-strike waveform Gabriel revealed during the duel)\n“[Notebook: Your blade captured the wave of my first ‘Vibrating Strike.’ Up through thirty times your ears will only ring slightly muffled—but upon reaching the eightieth Ultimate, my silence crosses into you. I will wait down at the Sanctuary, so stop that resonance, I beg you.]”\n(System Notice: Resonance Forge acquired — While airborne, hold down and press Q (Y on a controller).)"
+      "value": "(Planting the haft of his hammer-sword into the floor, he drops to one knee. Rea's record blade core captures in golden light the Stage 1 vibrating-strike waveform Gabriel revealed during the duel)\n“[Notebook: Your blade captured the wave of my first ‘Vibrating Strike.’ Up through thirty times your ears will only ring slightly muffled—but upon reaching the eightieth Ultimate, my silence crosses into you. I will wait down at the Sanctuary, so stop that resonance, I beg you.]”\n(System Notice: Resonance Forge acquired — While airborne, hold down and press V (Y on a controller).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -2955,7 +3019,7 @@
     },
     {
       "key": "story.gabriel.i1.06",
-      "value": "(The instant Rea lowers her sword and raises an open palm, Gabriel halts his descending hammer-sword mid-swing, approaches with clear relief, and draws three large hand shapes in his notebook)\n“[Notebook Agreed Signals — Three hand signals to protect each other even without sound]\n1. [Open palm · stop] : Halt all attacks and movement immediately on resonance overload or danger\n2. [Two fingers · ready] : Prepare for frontal bell strike — ready basic parry or downward aerial strike\n3. [Hand pointing down · land and return] : Land onto a safe floor and pull back before the wide wave rings out”"
+      "value": "(The instant Rea lowers her sword and raises an open palm, Gabriel halts his descending hammer-sword mid-swing, approaches with clear relief, and draws three large hand shapes in his notebook)\n“[Notebook Agreed Signals — Three hand signals to protect each other even without sound]\n1. [Open palm · stop] : Halt all attacks and movement immediately on resonance overload or danger\n2. [Two fingers · ready] : Prepare for frontal bell strike — ready dash dodge or downward aerial strike\n3. [Hand pointing down · land and return] : Land onto a safe floor and pull back before the wide wave rings out”"
     },
     {
       "key": "story.gabriel.i1.07",
@@ -2983,7 +3047,7 @@
     },
     {
       "key": "story.bell.return.01",
-      "value": "“The floor of the descending corridor is cracked. If I slam down onto the stone and cracked shields using Stage 1 ‘Vibrating Strike’ of the ‘Resonance Forge’ I just recorded, I can shatter them in a single blow!”\n(Controls: Strike the cracked floors and stitchguard shields with Resonance Forge (↓ Air + Q / Y or grounded Forge).)"
+      "value": "“The floor of the descending corridor is cracked. If I slam down onto the stone and cracked shields using Stage 1 ‘Vibrating Strike’ of the ‘Resonance Forge’ I just recorded, I can shatter them in a single blow!”\n(Controls: Strike the cracked floors and stitchguard shields with Resonance Forge (↓ Air + V / Y or grounded Forge).)"
     },
     {
       "key": "story.bell.return.02",
@@ -3007,7 +3071,7 @@
     },
     {
       "key": "story.bell.mastery.02",
-      "value": "(Right after the eightieth Ultimate ‘Sowing at Six’ bursts from a basic parry and downward aerial strike to ring out a golden great-bell counterwave, ambient sound sinks into deep stillness and a crimson crack cuts across the brooch's fourth petal!)\n“……Ah, aah…… My battle cry came out half-hoarse and faint.\n‘Doom 4: Eternal Silence’ has been transferred to ‘Defendant R.E.A.’—to me.”"
+      "value": "(Right after the eightieth Ultimate ‘Sowing at Six’ bursts from a ground resonance shockwave and downward aerial strike to ring out a golden great-bell counterwave, ambient sound sinks into deep stillness and a crimson crack cuts across the brooch's fourth petal!)\n“……Ah, aah…… My battle cry came out half-hoarse and faint.\n‘Doom 4: Eternal Silence’ has been transferred to ‘Defendant R.E.A.’—to me.”"
     },
     {
       "key": "story.bell.mastery.03",
@@ -3083,7 +3147,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Setting her brush-rapier gently onto the floor, she catches her breath. Rea's record blade core captures in watercolor shimmer the Stage 1 paint-stroke trace Irina drew in midair during the duel)\n“……Even though I hid the final self-portrait, your blade still read the grain of my first ‘Brushstroke.’\nRemember, Rea. Up through thirty times only a hint of watercolor will tint the edges of your vision—yet the instant you finish the eightieth self-portrait, my Doom of blindness passes into your eyes. I'll wait down in the Sanctuary…… Please lay down that brush and go home.”\n(System Notice: Canvas Carve acquired — While on the ground, hold down and press Q (Y on a controller).)"
+      "value": "(Setting her brush-rapier gently onto the floor, she catches her breath. Rea's record blade core captures in watercolor shimmer the Stage 1 paint-stroke trace Irina drew in midair during the duel)\n“……Even though I hid the final self-portrait, your blade still read the grain of my first ‘Brushstroke.’\nRemember, Rea. Up through thirty times only a hint of watercolor will tint the edges of your vision—yet the instant you finish the eightieth self-portrait, my Doom of blindness passes into your eyes. I'll wait down in the Sanctuary…… Please lay down that brush and go home.”\n(System Notice: Canvas Carve acquired — While on the ground, hold down and press V (Y on a controller).)"
     },
     {
       "key": "story.irina.i0.06",
@@ -3139,7 +3203,7 @@
     },
     {
       "key": "story.gallery.return.01",
-      "value": "“Beyond the ledge of the greenhouse return path, the floor drops away completely. If I paint Stage 1 ‘Brushstroke’ of ‘Canvas Carve’ from the ground, a lapis paint platform stays suspended in the air ahead of me for 3 seconds! Let's step onto that brushstroke and leap across!”\n(Controls: Standing at the ledge edge, press ↓ + Q / Y to place a Brushstroke platform in the air ahead, then step onto it to cross.)"
+      "value": "“Beyond the ledge of the greenhouse return path, the floor drops away completely. If I paint Stage 1 ‘Brushstroke’ of ‘Canvas Carve’ from the ground, a lapis paint platform stays suspended in the air ahead of me for 3 seconds! Let's step onto that brushstroke and leap across!”\n(Controls: Standing at the ledge edge, press ↓ + V / Y to place a Brushstroke platform in the air ahead, then step onto it to cross.)"
     },
     {
       "key": "story.gallery.return.02",
@@ -3151,7 +3215,7 @@
     },
     {
       "key": "story.gallery.synergy.01",
-      "value": "“Beyond this split floor with two solid anchors stretches empty air with no foothold at all!\nFirst, if I stitch the split gap in the real floor with Mikhail's ‘Silver Stitch’ to walk across, then at the far edge of that stitched floor paint a midair platform with Irina's ‘Canvas Carve’ to leap onward, I can combine both skills' strengths to cross!”\n(Controls: Seal the split floor (gallery_synergy_seam) with Silver Stitch and stand on it, then use Canvas Carve (↓ + Q / Y) at its edge to paint a platform ahead and cross onto the terrace.)"
+      "value": "“Beyond this split floor with two solid anchors stretches empty air with no foothold at all!\nFirst, if I stitch the split gap in the real floor with Mikhail's ‘Silver Stitch’ to walk across, then at the far edge of that stitched floor paint a midair platform with Irina's ‘Canvas Carve’ to leap onward, I can combine both skills' strengths to cross!”\n(Controls: Seal the split floor (gallery_synergy_seam) with Silver Stitch and stand on it, then use Canvas Carve (↓ + V / Y) at its edge to paint a platform ahead and cross onto the terrace.)"
     },
     {
       "key": "story.gallery.synergy.02",
@@ -3583,7 +3647,7 @@
     },
     {
       "key": "story.cassel.return.pendulum_early",
-      "value": "(“Zero Hour”'s clock-hand detonation overlaps the mirror's pendulum arc cleanly, extinguishing the second reflecting layer's light!)\nJulius's “Pendulum Rewind” return pledged!\nInstead of keeping afterimage returns, I locked down the mirror's nastiest trick—“two crossing lunges after a long telegraph”—early. Now I can read Cassel's honest sword rhythm with my own eyes and parry head-on!\n(Audio Cue: Mirror's warped pendulum reflection loop permanently silenced + Imprint Resonance Layer +1)"
+      "value": "(“Zero Hour”'s clock-hand detonation overlaps the mirror's pendulum arc cleanly, extinguishing the second reflecting layer's light!)\nJulius's “Pendulum Rewind” return pledged!\nInstead of keeping afterimage returns, I locked down the mirror's nastiest trick—“two crossing lunges after a long telegraph”—early. Now I can read Cassel's honest sword rhythm with my own eyes and dodge head-on!\n(Audio Cue: Mirror's warped pendulum reflection loop permanently silenced + Imprint Resonance Layer +1)"
     },
     {
       "key": "story.cassel.return.pendulum_late",
@@ -3599,7 +3663,7 @@
     },
     {
       "key": "story.cassel.return.forge_early",
-      "value": "(The golden great-bell wave of “Sowing at Six,” driven downward in midair right after a basic parry, slams head-on into the mirror's ground shockwave and shatters the reflecting layer!)\nGabriel's “Resonance Forge” return pledged!\nInstead of keeping the wide counter strike, I stopped the mirror's floor-sweeping “Reflected Great Bell Shockwave” early. Now I can focus on grounded parries without being forced into the air!\n(Audio Cue: Mirror's cold reflected great-bell loop permanently silenced + Imprint Resonance Layer +1)"
+      "value": "(The golden great-bell wave of “Sowing at Six,” driven downward in midair right with a ground resonance shockwave, slams head-on into the mirror's ground shockwave and shatters the reflecting layer!)\nGabriel's “Resonance Forge” return pledged!\nInstead of keeping the wide counter strike, I stopped the mirror's floor-sweeping “Reflected Great Bell Shockwave” early. Now I can focus on grounded parries without being forced into the air!\n(Audio Cue: Mirror's cold reflected great-bell loop permanently silenced + Imprint Resonance Layer +1)"
     },
     {
       "key": "story.cassel.return.forge_late",
@@ -3607,7 +3671,7 @@
     },
     {
       "key": "story.cassel.return.canvas_early",
-      "value": "(The brushstroke slashes of “Completed Self-Portrait,” tracing a 0.3s staggered echo, overlap the mirror's twin chromatic blades cleanly and wipe the paint from the reflecting layer! Existing paint platforms blink for 3 seconds to ensure safe landing)\nIrina's “Canvas Carve” return pledged!\nInstead of keeping instant paint platforms and clones, I erased the mirror's treacherous “0.3s staggered Reflected Twin Chromatic Blades” early. Now all I have to watch and parry are Cassel's own single strikes!\n(Audio Cue: Mirror's reflected piano arpeggio loop permanently silenced + Imprint Resonance Layer +1)"
+      "value": "(The brushstroke slashes of “Completed Self-Portrait,” tracing a 0.3s staggered echo, overlap the mirror's twin chromatic blades cleanly and wipe the paint from the reflecting layer! Existing paint platforms blink for 3 seconds to ensure safe landing)\nIrina's “Canvas Carve” return pledged!\nInstead of keeping instant paint platforms and clones, I erased the mirror's treacherous “0.3s staggered Reflected Twin Chromatic Blades” early. Now all I have to watch and dodge are Cassel's own single strikes!\n(Audio Cue: Mirror's reflected piano arpeggio loop permanently silenced + Imprint Resonance Layer +1)"
     },
     {
       "key": "story.cassel.return.canvas_late",
@@ -3615,7 +3679,7 @@
     },
     {
       "key": "story.cassel.p2.08_r1_cassel",
-      "value": "(As the first return pledge 1/5 stamps into the notary ledger and +20% extra imprint power flares like blue fire from Rea's record blade, Cassel's brow twitches for the first time. Determined not to let her freely claim the other four skills, Cassel folds the “All-Resonance Mirror” behind his back and backsteps swiftly out of reach!)\n“……You exploited the reflection verdict of the All-Resonance Mirror to register a return pledge in my ledger?!\nYet with the mirror's panes folded shut, your remaining techniques have nothing left to clash against. I'll cut down your true body first with my direct swordplay!”\n(Tactical Guide: Cassel closes his mirror and attacks directly with Cassel's Form Zero 3-hit lunging slashes. Don't waste boss skills—deflect them with Basic Parry (L / RB)!)"
+      "value": "(As the first return pledge 1/5 stamps into the notary ledger and +20% extra imprint power flares like blue fire from Rea's record blade, Cassel's brow twitches for the first time. Determined not to let her freely claim the other four skills, Cassel folds the “All-Resonance Mirror” behind his back and backsteps swiftly out of reach!)\n“……You exploited the reflection verdict of the All-Resonance Mirror to register a return pledge in my ledger?!\nYet with the mirror's panes folded shut, your remaining techniques have nothing left to clash against. I'll cut down your true body first with my direct swordplay!”\n(Tactical Guide: Cassel closes his mirror and attacks directly with Cassel's Form Zero 3-hit lunging slashes. Don't waste boss skills—deflect them with dash dodge (Shift / LB)!)"
     },
     {
       "key": "story.cassel.p2.09_r1_rea",
@@ -3635,23 +3699,23 @@
     },
     {
       "key": "story.cassel.p2.13_r5",
-      "value": "(As the fifth clash detonates, all five reflecting layers of the “All-Resonance Mirror” black out completely, and every distorted echo sound vanishes! All five of Rea's skill slots sit empty as [Return pledged], while 100% (×2.0) unleashed imprint power erupts from the blade's central rune channel in a dazzling pillar of lapis light)\n[Return Pledges 5/5 Complete — +100% Extra Imprint Power Unleashed]\n“Every benefactor's skill access is entrusted to the return ledger. All I have left in my hands is Basic Swordplay—yet my legs, my dash, my parry, and every ounce of time yesterday's me and today's me swung into existence are gathered into this single blade!”"
+      "value": "(As the fifth clash detonates, all five reflecting layers of the “All-Resonance Mirror” black out completely, and every distorted echo sound vanishes! All five of Rea's skill slots sit empty as [Return pledged], while 100% (×2.0) unleashed imprint power erupts from the blade's central rune channel in a dazzling pillar of lapis light)\n[Return Pledges 5/5 Complete — +100% Extra Imprint Power Unleashed]\n“Every benefactor's skill access is entrusted to the return ledger. All I have left in my hands is Basic Swordplay—yet my legs, my dash and every ounce of time yesterday's me and today's me swung into existence are gathered into this single blade!”"
     },
     {
       "key": "story.cassel.p3.01_open",
-      "value": "(Before the cracked mother mirror stripped of all reflection, Cassel—his ceremonial robe disarrayed for the first time—grips his longsword with both hands and calls Rea plainly by name)\n“……Even with all five paths pledged, unless you counter and overcome the sixth and final original form—my ‘Cassel's Form Zero’—to the very end, the unified return of the Dooms will never be finalized, Rea!\nDo you truly think empty hands with not a single boss skill left can surpass my original swordplay?!”\n(Combat Guide: Cassel Phase 3 · Fundamentals Showdown — When B=3 (400+ uses), parry and land a full 1~4 hit Stage 3 Basic Swordplay combo to confirm the True Ending clash! When B<3, deplete the core's 48 durability with Basic Swordplay for an emergency break.)"
+      "value": "(Before the cracked mother mirror stripped of all reflection, Cassel—his ceremonial robe disarrayed for the first time—grips his longsword with both hands and calls Rea plainly by name)\n“……Even with all five paths pledged, unless you counter and overcome the sixth and final original form—my ‘Cassel's Form Zero’—to the very end, the unified return of the Dooms will never be finalized, Rea!\nDo you truly think empty hands with not a single boss skill left can surpass my original swordplay?!”\n(Combat Guide: Cassel Phase 3 · Fundamentals Showdown — When B=3 (400+ uses), dodge and land a full 1~4 hit Stage 3 Basic Swordplay combo to confirm the True Ending clash! When B<3, deplete the core's 48 durability with Basic Swordplay for an emergency break.)"
     },
     {
       "key": "story.cassel.p3.02_live_b3",
-      "value": "(On the very strike that meets Cassel's blade, effective Basic Swordplay uses reach four hundred! Amid an expanding golden ring, the blade's final rune ignites: [True name revealed: Blade of Original Sin — Cassel's Form Zero]!)\n“……That single strike just filled the four hundredth imprint!\nThe end of the original form you planted inside me has just fully opened in my hands, Cassel! On the very next parry, a four-hit Ultimate combo will confirm the return of all five Dooms!”"
+      "value": "(On the very strike that meets Cassel's blade, effective Basic Swordplay uses reach four hundred! Amid an expanding golden ring, the blade's final rune ignites: [True name revealed: Blade of Original Sin — Cassel's Form Zero]!)\n“……That single strike just filled the four hundredth imprint!\nThe end of the original form you planted inside me has just fully opened in my hands, Cassel! On the very next dodge, a four-hit Ultimate combo will confirm the return of all five Dooms!”"
     },
     {
       "key": "story.cassel.p3.03_b3_ready",
-      "value": "“Stage 3 original form is ready, today's me!\nWhen Cassel lunges in with ‘Cassel's Form Zero,’ deflect it with Basic Parry, then drive hits 1 through 4 of our Stage 3 Basic Swordplay straight through while his guard is open! From the first hit to the final fourth, I'll swing right behind your back in unison!”"
+      "value": "“Stage 3 original form is ready, today's me!\nWhen Cassel lunges in with ‘Cassel's Form Zero,’ deflect it with dash dodge, then drive hits 1 through 4 of our Stage 3 Basic Swordplay straight through while his guard is open! From the first hit to the final fourth, I'll swing right behind your back in unison!”"
     },
     {
       "key": "story.cassel.p3.04_b3_retry",
-      "value": "“It's okay—don't rush! Our original form has already reached Stage 3 Ultimate. Don't just shatter the core; catch your breath, then finish the clash cleanly from a Basic Parry straight through the full 1~4 hit combo!”"
+      "value": "“It's okay—don't rush! Our original form has already reached Stage 3 Ultimate. Don't just shatter the core; catch your breath, then finish the clash cleanly from a dash dodge straight through the full 1~4 hit combo!”"
     },
     {
       "key": "story.cassel.p3.05_true_hit",
@@ -3763,7 +3827,7 @@
     },
     {
       "key": "story.ending.true.13_swing_prompt",
-      "value": "“Not a proxy sword art meant to carry someone else's death—here I'll carve the first movement written in my own name by the me living today!”\n(Controls: Before the sunlit rooftop overlook (rea_form_one_sky), press the Sword attack button (J / Z / Left Click / X) to swing Rea's own first slash!)"
+      "value": "“Not a proxy sword art meant to carry someone else's death—here I'll carve the first movement written in my own name by the me living today!”\n(Controls: Before the sunlit rooftop overlook (rea_form_one_sky), press the Sword attack button (A / X) to swing Rea's own first slash!)"
     },
     {
       "key": "story.ending.true.14_registered",
@@ -3811,7 +3875,7 @@
     },
     {
       "key": "story.resume.lift.03_theo",
-      "value": "(Theo's guiding voice comes through the speaking horn)\n“Rea! You don't need to trek all the way back through long districts to rack up Basic Swordplay uses. Just take the return passage right beside you or Stage Select straight to Ethan's ‘Resonant Crucible’ at the Waterway Forge—elite parry and combo training will bring you up to 400 uses in no time, then you can head right back to that elevator!”\n(Controls: Head to Waterway Forge / Resonant Crucible to hone Basic Swordplay to Stage 3 (400 uses), or use the elevator console to challenge Cassel right away.)"
+      "value": "(Theo's guiding voice comes through the speaking horn)\n“Rea! You don't need to trek all the way back through long districts to rack up Basic Swordplay uses. Just take the return passage right beside you or Stage Select straight to Ethan's ‘Resonant Crucible’ at the Waterway Forge—elite dodge and combo training will bring you up to 400 uses in no time, then you can head right back to that elevator!”\n(Controls: Head to Waterway Forge / Resonant Crucible to hone Basic Swordplay to Stage 3 (400 uses), or use the elevator console to challenge Cassel right away.)"
     },
     {
       "key": "story.resume.crucible.01_ethan",
@@ -3819,7 +3883,7 @@
     },
     {
       "key": "story.resume.crucible.02_theo",
-      "value": "“Crucible calibrator is live, Rea! Parry the golden attacks or land full Basic Swordplay combos right afterward and your effective uses will climb fast. Keep pushing until the 400-use ‘Blade of Original Sin — Cassel's Form Zero’ unlocks!”\n(Controls: Land effective Basic Swordplay hits in the crucible waves until reaching 400 total uses (Stage 3 Ultimate B=3).)"
+      "value": "“Crucible calibrator is live, Rea! dodge the golden attacks or land full Basic Swordplay combos right afterward and your effective uses will climb fast. Keep pushing until the 400-use ‘Blade of Original Sin — Cassel's Form Zero’ unlocks!”\n(Controls: Land effective Basic Swordplay hits in the crucible waves until reaching 400 total uses (Stage 3 Ultimate B=3).)"
     },
     {
       "key": "story.resume.crucible.03_ethan",
@@ -3932,6 +3996,394 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Return passage to Grand Court elevator"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Display : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Fullscreen Window"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Windowed)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Windowed)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Windowed)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "VSync : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Key Bindings"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Key Bindings"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Select an action and press a new key or right-click. (Duplicates auto-swap · Esc cancels)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Press new key… Esc cancel ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Reset to Defaults"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Swapped duplicate binding automatically."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Jump :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Attack :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Skill :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Dash :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interact :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "District Map :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Map"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Explored: {0} / {1} rooms"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Current   ■ Visited   □ Unexplored   ❖ Boss/Arena   [{0} / Tab / Esc] Close"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Hub · Forgotten Attic"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Velvet Tailor Street"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Clocktower District"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Glass Opera House"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Great Bell Aqueduct"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Canvas Gallery"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Notary Court"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Grand Tribunal"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Move ←/→ | Jump {0} | Attack(↑/↓Pogo) {1} | Skill {2} | Dash {3} | Map {4} | Esc Menu"
+    },
+    {
+      "key": "shop.title",
+      "value": "Ethan’s Supplies"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Bag"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Talk to Ethan"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Heading for the Velvet Tailor Quarter, Rea? Take some resonance tea and bandages. If you get hurt, use them from your bag. Don’t try to walk it off."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "Back from Velvet, Rea? Look after yourself as well as that blade. Tell me what you need for the next road."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Browse supplies"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "End conversation"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Silver coins {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Health {0}/{1}   ·   Silver coins {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Restores {0} health   ·   In bag {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} silver"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Select   ·   Enter Buy   ·   Esc Back"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Select   ·   Enter Use   ·   Esc Back"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Mint Resonance Tea"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Travel Bandage"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "You need more silver."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "Bought {0}."
+    },
+    {
+      "key": "shop.none_held",
+      "value": "You have no {0}."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "You can’t use supplies while down."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "Your health is full."
+    },
+    {
+      "key": "shop.used",
+      "value": "Used {0} · Restored {1} health"
+    },
+    {
+      "key": "controls.kb_opening",
+      "value": "←/→ Move  ·  {0} Jump  ·  {1} Interact"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "LS/D-Pad Move  ·  [A] Jump  ·  [L3] Interact"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "Marta’s Attic"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Press {0} to jump over the chest and find the mint candy."
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Move ←/→ | Interact {0} | Attack {1} | Skill {2} | Dash {3} | Map {4} | Esc Pause"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "Move LS/D-Pad | Jump [A] | Attack [X] | Skill [Y] | Dash [LB] | Pause [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "Move LS/D-Pad | Interact [L3] | Attack [X] | Skill [Y] | Dash [LB] | Pause [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Notary Record Updated · Health Restored"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "POGO!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "COUNTER!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "BREAK!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Screen Shake Strength: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "Off (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Mild (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Full (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Hit-Stop Impact Freeze: {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Extended Invulnerability (Assist): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NEW BENEFACTOR SKILL"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Weave silver thread across broken ledges and pierce targets."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Rewind and freeze moving clockwork hazards and foes."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Arc through midair and weave past stage spotlights."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Shatter cracked bronze barriers and counter incoming blows."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Carve temporary inked footholds in midair."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Notary Journal"
+    },
+    {
+      "key": "journal.title",
+      "value": "Notary Journal & Ledger"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Skills & Growth"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Characters"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Exploration"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Switch Tab  |  N / Esc Close"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Input: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Rooms Explored: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Benefactor Skills: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Investigation Clues: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Active Keybindings"
+    },
+    {
+      "key": "journal.met",
+      "value": "Encountered"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Unknown"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Technique Inherited"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Record Blade Heir · Apprentice Notary"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Caretaker of the Attic of Oblivion"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Benefactor of Velvet Row · Silver Stitch"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Benefactor of Clocktower · Pendulum Rewind"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Benefactor of Glass Opera · Curtain Call Waltz"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Benefactor of Bell Tower · Resonance Forge"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Benefactor of Gallery · Canvas Carve"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Chief Arbiter · Notary Tribunal"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Location: {0}"
     }
   ]
 }

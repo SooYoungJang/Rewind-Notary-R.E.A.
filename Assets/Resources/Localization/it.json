@@ -2,6 +2,78 @@
   "language": "it",
   "entries": [
     {
+      "key": "quick_skill.rea_thrust",
+      "value": "Affondo"
+    },
+    {
+      "key": "quick_skill.rea_rising",
+      "value": "Colpo ascendente"
+    },
+    {
+      "key": "quick_skill.rea_sweep",
+      "value": "Fendente ampio"
+    },
+    {
+      "key": "quick_skill.rea_retreat_cut",
+      "value": "Fendente in ritirata"
+    },
+    {
+      "key": "quick_skill.wave_charge",
+      "value": "Onda di lama · Tieni {0}"
+    },
+    {
+      "key": "quick_skill.menu",
+      "value": "Slot tecniche"
+    },
+    {
+      "key": "quick_skill.assign_hint",
+      "value": "↑ ↓ Scegli slot · ← → Assegna tecnica"
+    },
+    {
+      "key": "story.prologue.city",
+      "value": "A Lapis, città del Notariato, il registro conserva il nome di ognuno e le tecniche che ha appreso."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "Tanto i gesti di un sarto esperto quanto la scherma tramandata da un maestro possono essere autenticati a Lapis."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "Uno spadaccino del Notariato imprime una tecnica nella Spada del Registro e la dimostra riproducendola al Livello 3."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Domani, alle sei del mattino, è prevista l’esecuzione di cinque prigionieri."
+    },
+    {
+      "key": "story.prologue.order",
+      "value": "È giunto un ordine sigillato dell’Ufficio Notarile Centrale. Una clausola offre a tutti e cinque la possibilità di salvarsi."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Trova i cinque prigionieri e impara una tecnica da ciascuno. Imprimile nella Spada del Registro e autenticale tutte al Livello 3."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Se tutte e cinque le autenticazioni saranno completate in tempo, a ciascun prigioniero verrà concessa la grazia speciale."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "L’Ufficio ha affidato l’incarico a Rea, una spadaccina del Notariato appena nominata. Le resta meno di un giorno."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "Quella mattina Marta scrive sulla lavagna della soffitta i nomi degli ospiti della colazione di domani."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "Sulla lavagna ci sono cinque nomi. Accanto resta ancora un posto vuoto."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "Dalla finestra arriva un profumo di tè alla menta. Rea apre gli occhi in soffitta, dove l’aspetta l’ordine sigillato."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Finale vero sbloccato"
     },
@@ -31,7 +103,7 @@
     },
     {
       "key": "finale.mirror_closed",
-      "value": "Specchio chiuso · Esegui una parata, poi spezza la guardia con la spada"
+      "value": "Specchio chiuso · Schiva con uno scatto e spezza la guardia con la spada"
     },
     {
       "key": "finale.selected_finisher",
@@ -39,7 +111,7 @@
     },
     {
       "key": "finale.core_hint",
-      "value": "Nucleo {0}/{1} · Para, poi completa la combo / B<3: distruggi il nucleo"
+      "value": "Nucleo {0}/{1} · Schiva e completa la combo / B<3: distruggi il nucleo"
     },
     {
       "key": "finale.boss_status",
@@ -71,7 +143,7 @@
     },
     {
       "key": "finale.confirm_return_body",
-      "value": "Restituire {0}?\n\nDopo lo scontro di lame, questa tecnica non sarà più disponibile per il resto della battaglia.\nPotenza dell'impronta +{1}% · La spada e le tecniche rimaste saranno potenziate.\nMovimento, salto, scatto, parata e attacchi di spada restano disponibili. Le piattaforme spariranno dopo 3 secondi.\nTutte le Condanne saranno restituite solo dopo aver completato lo scontro finale nella forma originale."
+      "value": "Restituire {0}?\n\nDopo lo scontro di lame, questa tecnica non sarà più disponibile per il resto della battaglia.\nPotenza dell'impronta +{1}% · La spada e le tecniche rimaste saranno potenziate.\nMovimento, salto, scatto e attacchi di spada restano disponibili. Le piattaforme spariranno dopo 3 secondi.\nTutte le Condanne saranno restituite solo dopo aver completato lo scontro finale nella forma originale."
     },
     {
       "key": "finale.cancel_return",
@@ -138,18 +210,6 @@
       "value": "Scatto in corso"
     },
     {
-      "key": "defense.parry_window",
-      "value": "Parata attiva"
-    },
-    {
-      "key": "defense.parry_recovery",
-      "value": "Parata fallita · Recupero"
-    },
-    {
-      "key": "defense.counter_ready",
-      "value": "Contrattacco pronto · Prossimo attacco di spada potenziato"
-    },
-    {
       "key": "defense.ready",
       "value": "Difesa pronta"
     },
@@ -167,7 +227,7 @@
     },
     {
       "key": "input.gameplay",
-      "value": "Muovi A/D·Frecce·Levetta | Salta Spazio·A | Spada J/Z/Clic sx·X | Tecnica Q·Y | Scatto Shift/K·LB | Parata L·RB"
+      "value": "Muovi ← → · Salta Spazio · Attacca A · Interagisci F · Scatto Maiusc+direzione · Tecniche Q W E R"
     },
     {
       "key": "hud.trial_hint",
@@ -175,7 +235,7 @@
     },
     {
       "key": "hud.wave_hint",
-      "value": "Nucleo blu-oro: spada · Segnale dorato: parata/scatto · Guardia rossa: tecnica richiesta"
+      "value": "Nucleo blu-oro: spada · Segnale dorato: schiva con uno scatto · Guardia rossa: tecnica richiesta"
     },
     {
       "key": "hud.checkpoint_hint",
@@ -187,7 +247,7 @@
     },
     {
       "key": "input.retry_pause",
-      "value": "{0}  R·Visualizza: ricomincia | Esc·Menu: pausa"
+      "value": "{0}  Backspace·Visualizza: ricomincia | Esc·Menu: pausa"
     },
     {
       "key": "input.debug",
@@ -195,7 +255,7 @@
     },
     {
       "key": "trial.health",
-      "value": "PV di allenamento {0}/{1} · La pratica riprende quando si esauriscono · R: ripristina posizioni"
+      "value": "PV di allenamento {0}/{1} · La pratica riprende quando si esauriscono · Backspace: ripristina posizioni"
     },
     {
       "key": "input.benefactor_support",
@@ -215,7 +275,7 @@
     },
     {
       "key": "input.retry_button",
-      "value": "Premi R / Visualizza per riprovare."
+      "value": "Premi Backspace / Visualizza per riprovare."
     },
     {
       "key": "hud.returning_checkpoint",
@@ -567,7 +627,7 @@
     },
     {
       "key": "skill.acquired_notice",
-      "value": "{0} acquisita — Seleziona: 1–5 / E·B · Usa: Q·Y"
+      "value": "Hai appreso {0}. Usa direzione + V oppure assegnala a uno slot."
     },
     {
       "key": "skill.stage_up_notice",
@@ -1091,11 +1151,11 @@
     },
     {
       "key": "skills.sword.form1",
-      "value": "Combo di spada da 2 colpi"
+      "value": "Combo di spada da 4 colpi"
     },
     {
       "key": "skills.sword.form2",
-      "value": "Combo da 3 colpi · Passo avanti · Onda corta all'ultimo colpo"
+      "value": "Combo da 4 colpi · Passo avanti · Onda corta all'ultimo colpo"
     },
     {
       "key": "skills.sword.form3",
@@ -1147,7 +1207,7 @@
     },
     {
       "key": "skills.forge.form3",
-      "value": "Parata base + Rintocco aereo verso il basso · Onda d'urto ad area"
+      "value": "Onda risonante a terra · Rintocco aereo discendente"
     },
     {
       "key": "skills.canvas.form1",
@@ -1315,7 +1375,7 @@
     },
     {
       "key": "wave.all_complete",
-      "value": "3 zone completate · Controlla nel registro le soglie spada 151 / 400. R: ricomincia"
+      "value": "3 zone completate · Controlla nel registro le soglie spada 151 / 400. Backspace: ricomincia"
     },
     {
       "key": "wave.zone_complete",
@@ -1335,7 +1395,7 @@
     },
     {
       "key": "wave.defense_then_sword",
-      "value": "Para / schiva l'attacco dorato → Spada"
+      "value": "Attraversa l’attacco dorato con uno scatto → Spada"
     },
     {
       "key": "wave.target_hint",
@@ -1456,6 +1516,10 @@
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.1.label",
       "value": "Spazzata di filo d'argento"
+    },
+    {
+      "key": "trial.mikhail.thread_lunge",
+      "value": "Affondo del filo d’argento"
     },
     {
       "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
@@ -1815,7 +1879,7 @@
     },
     {
       "key": "input.cast_hint",
-      "value": "Direzione + Q·Y | Parete: tieni premuto attacco + ↓ tecnica"
+      "value": "Direzione + V·Y | Parete: tieni premuto attacco + ↓ tecnica"
     },
     {
       "key": "input.skill_unlearned",
@@ -1907,7 +1971,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Pianta la forbice nel pavimento e cade su un ginocchio. Il nucleo della spada dei ricordi cattura in luce azzurra la traiettoria di Livello 1 della scherma di cucitura mostrata da Mikhail nello scontro)\n«Tsk…… Avevo nascosto l'ultimo nodo, e quella spada è comunque riuscita a leggere la trama del primo punto.\nTientelo bene in mente, Rea: se ti fermi lì resta solo difesa personale, ma nell'istante in cui padroneggerai quella cucitura fino alla fine, il tormento del mio cuore passerà a te. Io mi ritiro in Infermeria…… ti prego, non usare più quella spada e torna indietro.»\n(Avviso di sistema: Cucitura d'argento acquisita — Premi Q (Y sul controller) senza tenere premuta alcuna direzione.)"
+      "value": "(Pianta la forbice nel pavimento e cade su un ginocchio. Il nucleo della spada dei ricordi cattura in luce azzurra la traiettoria di Livello 1 della scherma di cucitura mostrata da Mikhail nello scontro)\n«Tsk…… Avevo nascosto l'ultimo nodo, e quella spada è comunque riuscita a leggere la trama del primo punto.\nTientelo bene in mente, Rea: se ti fermi lì resta solo difesa personale, ma nell'istante in cui padroneggerai quella cucitura fino alla fine, il tormento del mio cuore passerà a te. Io mi ritiro in Infermeria…… ti prego, non usare più quella spada e torna indietro.»\n(Avviso di sistema: Cucitura d'argento acquisita — Premi V (Y sul controller) senza tenere premuta alcuna direzione.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2511,7 +2575,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Spostamento   F / L3 Esamina·Entra   J·Z·Clic sinistro Spada (controller X)   Q / Y Abilità   Esc Pausa"
+      "value": "Muovi ← → · Salta Spazio · Attacca A · Interagisci F · Scatto Maiusc+direzione · Tecniche Q W E R · Esc"
     },
     {
       "key": "investigation.clue.route_ledger.body",
@@ -2587,7 +2651,7 @@
     },
     {
       "key": "story.clock.route.05",
-      "value": "«Appena salita questa sala verticale degli ingranaggi dello scappamento, arrivi all'anticamera interna del quadrante dove c'è mio zio. Devia gli attacchi dorati telegrafati della Statua riflettente del notaio con parata base o scatto, poi affonda con la Spada di base appena si apre!»\n(Comandi: Risali i gradoni dello scappamento e supera 1 chiavistello di lapislazzuli con sentinella e statua.)"
+      "value": "«Appena salita questa sala verticale degli ingranaggi dello scappamento, arrivi all'anticamera interna del quadrante dove c'è mio zio. Devia gli attacchi dorati telegrafati della Statua riflettente del notaio con uno scatto, poi affonda con la Spada di base appena si apre!»\n(Comandi: Risali i gradoni dello scappamento e supera 1 chiavistello di lapislazzuli con sentinella e statua.)"
     },
     {
       "key": "story.clock.route.06",
@@ -2615,7 +2679,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Piantando lo spadone a lancetta nel pavimento, espira pesantemente. Il nucleo della spada cattura in bagliore d'ottone la traiettoria di Livello 1 del passo di Julius rivelata nel duello)\n«……Avevo nascosto l'ultima Forma suprema, eppure la tua spada ha letto la traiettoria di andata e ritorno del mio primo „Passo del pendolo“.\nAscoltami bene, Rea. Fino a ventinove volte è solo un gioco di gambe, e alla trentesima risuonerà appena la cassa; ma nell'attimo dell'ottantesima Forma suprema, la lancetta immobile del tuo mezzo orologio riprenderà a girare e la mia vecchiaia si abbatterà su di te.»\n(Avviso di sistema: Ritorno del pendolo acquisito — Tieni premuta la direzione opposta a quella in cui guarda Rea e premi Q (Y sul controller).)"
+      "value": "(Piantando lo spadone a lancetta nel pavimento, espira pesantemente. Il nucleo della spada cattura in bagliore d'ottone la traiettoria di Livello 1 del passo di Julius rivelata nel duello)\n«……Avevo nascosto l'ultima Forma suprema, eppure la tua spada ha letto la traiettoria di andata e ritorno del mio primo „Passo del pendolo“.\nAscoltami bene, Rea. Fino a ventinove volte è solo un gioco di gambe, e alla trentesima risuonerà appena la cassa; ma nell'attimo dell'ottantesima Forma suprema, la lancetta immobile del tuo mezzo orologio riprenderà a girare e la mia vecchiaia si abbatterà su di te.»\n(Avviso di sistema: Ritorno del pendolo acquisito — Tieni premuta la direzione opposta a quella in cui guarda Rea e premi V (Y sul controller).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2671,7 +2735,7 @@
     },
     {
       "key": "story.clock.return.01",
-      "value": "«La paratia d'ottone sul percorso di ritorno superiore si chiude in fretta. Con il Livello 1 „Passo del pendolo“ del „Ritorno del pendolo“ appena registrato, lascio un'immagine residua, scatto a colpire l'interruttore e ripremo entro 1,5 secondi per riavvolgermi al sicuro!»\n(Comandi: Usa Ritorno del pendolo (Q / Y del gamepad) per colpire l'interruttore oltre la paratia, poi ripremi per tornare al sicuro sull'immagine residua.)"
+      "value": "«La paratia d'ottone sul percorso di ritorno superiore si chiude in fretta. Con il Livello 1 „Passo del pendolo“ del „Ritorno del pendolo“ appena registrato, lascio un'immagine residua, scatto a colpire l'interruttore e ripremo entro 1,5 secondi per riavvolgermi al sicuro!»\n(Comandi: Usa Ritorno del pendolo (V / Y del gamepad) per colpire l'interruttore oltre la paratia, poi ripremi per tornare al sicuro sull'immagine residua.)"
     },
     {
       "key": "story.clock.return.02",
@@ -2739,7 +2803,7 @@
     },
     {
       "key": "story.opera.route.04",
-      "value": "«Respingiamo gli attacchi delle statue con parata base, affondiamo con la Spada di base nell'apertura e recidiamo i chiavistelli dei cavi per stabilizzare le pedane!»\n(Comandi: Attraversa i piani dei lampadari recidendo 2 chiavistelli di lapislazzuli e sconfiggendo sentinelle, statua e guardia cucita.)"
+      "value": "«Respingiamo gli attacchi delle statue con schivata con scatto, affondiamo con la Spada di base nell'apertura e recidiamo i chiavistelli dei cavi per stabilizzare le pedane!»\n(Comandi: Attraversa i piani dei lampadari recidendo 2 chiavistelli di lapislazzuli e sconfiggendo sentinelle, statua e guardia cucita.)"
     },
     {
       "key": "story.opera.route.05",
@@ -2771,7 +2835,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Appoggiando la punta della spada sul parquet, riprende fiato. Il nucleo della spada cattura in bagliore turchese la traiettoria di salto rotante di Livello 1 mostrata da Valeria)\n«……Ah, avevo nascosto il gran finale, eppure la tua spada ha copiato l'angolo di balzo della mia prima „Danza delle lame rotanti“.\nTi prego, Rea. Fino a trenta volte ti resterà solo il mio inchino di congedo, ma nell'istante in cui completi l'ottantesimo Gran finale il supplizio delle mie gambe passerà a te. Io mi ritiro in Infermeria…… ti scongiuro, non danzare quei passi fino in fondo.»\n(Avviso di sistema: Valzer del sipario acquisito — Tieni premuta la direzione verso l’alto e premi Q (Y sul controller).)"
+      "value": "(Appoggiando la punta della spada sul parquet, riprende fiato. Il nucleo della spada cattura in bagliore turchese la traiettoria di salto rotante di Livello 1 mostrata da Valeria)\n«……Ah, avevo nascosto il gran finale, eppure la tua spada ha copiato l'angolo di balzo della mia prima „Danza delle lame rotanti“.\nTi prego, Rea. Fino a trenta volte ti resterà solo il mio inchino di congedo, ma nell'istante in cui completi l'ottantesimo Gran finale il supplizio delle mie gambe passerà a te. Io mi ritiro in Infermeria…… ti scongiuro, non danzare quei passi fino in fondo.»\n(Avviso di sistema: Valzer del sipario acquisito — Tieni premuta la direzione verso l’alto e premi V (Y sul controller).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2827,7 +2891,7 @@
     },
     {
       "key": "story.opera.return.01",
-      "value": "«La rotta di ritorno sul tetto orientale dei riflettori! Se mi slancio verso le lanterne sospese a mezz'aria con il Livello 1 „Danza delle lame rotanti“ del „Valzer del sipario“, posso respingere i proiettili saltando in alto!»\n(Comandi: Colpisci le lanterne sospese con Valzer del sipario (Q / Y del gamepad) per salire e atterrare sulla trave d'acciaio di fronte.)"
+      "value": "«La rotta di ritorno sul tetto orientale dei riflettori! Se mi slancio verso le lanterne sospese a mezz'aria con il Livello 1 „Danza delle lame rotanti“ del „Valzer del sipario“, posso respingere i proiettili saltando in alto!»\n(Comandi: Colpisci le lanterne sospese con Valzer del sipario (V / Y del gamepad) per salire e atterrare sulla trave d'acciaio di fronte.)"
     },
     {
       "key": "story.opera.return.02",
@@ -2927,7 +2991,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Pianta l'impugnatura dello spadone-martello sul pavimento e piega un ginocchio. Il nucleo della spada cattura in luce dorata l'onda di Livello 1 del Colpo vibrante di Gabriel)\n«[Taccuino: La tua spada ha catturato l'onda del mio primo „Colpo vibrante“. Fino a trenta volte sentirai solo le orecchie ovattate, ma all'ottantesima Forma suprema il mio silenzio passerà in te. Scendo in Infermeria: ti prego, ferma quella risonanza.]»\n(Avviso di sistema: Forgia risonante acquisita — In aria, tieni premuta la direzione verso il basso e premi Q (Y sul controller).)"
+      "value": "(Pianta l'impugnatura dello spadone-martello sul pavimento e piega un ginocchio. Il nucleo della spada cattura in luce dorata l'onda di Livello 1 del Colpo vibrante di Gabriel)\n«[Taccuino: La tua spada ha catturato l'onda del mio primo „Colpo vibrante“. Fino a trenta volte sentirai solo le orecchie ovattate, ma all'ottantesima Forma suprema il mio silenzio passerà in te. Scendo in Infermeria: ti prego, ferma quella risonanza.]»\n(Avviso di sistema: Forgia risonante acquisita — In aria, tieni premuta la direzione verso il basso e premi V (Y sul controller).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -2955,7 +3019,7 @@
     },
     {
       "key": "story.gabriel.i1.06",
-      "value": "(Appena Rea abbassa la spada e mostra il palmo aperto, Gabriel arresta sul colpo il fendente dello spadone-martello, si avvicina sollevato e disegna in grande tre gesti sul taccuino)\n«[Segnali concordati sul taccuino — Tre segnali manuali per proteggersi anche senza suono]\n1. [Palmo aperto · fermati] : Fermare subito attacco e movimento in caso di sovraccarico o pericolo\n2. [Due dita · preparati] : Rintocco frontale in arrivo — preparati a parata base o rintocco aereo discendente\n3. [Mano verso il basso · atterra e torna] : Atterra su un pavimento sicuro e riprendi distanza prima dell'onda ad area»"
+      "value": "(Appena Rea abbassa la spada e mostra il palmo aperto, Gabriel arresta sul colpo il fendente dello spadone-martello, si avvicina sollevato e disegna in grande tre gesti sul taccuino)\n«[Segnali concordati sul taccuino — Tre segnali manuali per proteggersi anche senza suono]\n1. [Palmo aperto · fermati] : Fermare subito attacco e movimento in caso di sovraccarico o pericolo\n2. [Due dita · preparati] : Rintocco frontale in arrivo — preparati a schivata con scatto o rintocco aereo discendente\n3. [Mano verso il basso · atterra e torna] : Atterra su un pavimento sicuro e riprendi distanza prima dell'onda ad area»"
     },
     {
       "key": "story.gabriel.i1.07",
@@ -2983,7 +3047,7 @@
     },
     {
       "key": "story.bell.return.01",
-      "value": "«Il pavimento del corridoio discendente è crepato. Se abbatto il Livello 1 „Colpo vibrante“ di „Forgia risonante“ appena registrato sul suolo e sugli scudi incrinati, posso mandarli in frantumi in un colpo!»\n(Comandi: Colpisci i pavimenti crepati e gli scudi delle guardie cucite con Forgia risonante (↓ In aria + Q / Y o Forgia a terra).)"
+      "value": "«Il pavimento del corridoio discendente è crepato. Se abbatto il Livello 1 „Colpo vibrante“ di „Forgia risonante“ appena registrato sul suolo e sugli scudi incrinati, posso mandarli in frantumi in un colpo!»\n(Comandi: Colpisci i pavimenti crepati e gli scudi delle guardie cucite con Forgia risonante (↓ In aria + V / Y o Forgia a terra).)"
     },
     {
       "key": "story.bell.return.02",
@@ -3007,7 +3071,7 @@
     },
     {
       "key": "story.bell.mastery.02",
-      "value": "(Subito dopo che l'ottantesima Forma suprema «Semina delle sei» erompe da parata base e rintocco aereo discendente in un'onda d'oro di grande campana, il rumore intorno sprofonda nel silenzio e una crepa scarlatta fende il quarto petalo della spilla!)\n«……Ah, ah…… Il grido dalla gola mi è uscito mezzo roco e fioco.\nLa „Condanna 4: Silenzio eterno“ è stata trasferita a „Imputata R.E.A.“, su di me.»"
+      "value": "(Subito dopo che l'ottantesima Forma suprema «Semina delle sei» erompe da onda risonante e rintocco aereo discendente in un'onda d'oro di grande campana, il rumore intorno sprofonda nel silenzio e una crepa scarlatta fende il quarto petalo della spilla!)\n«……Ah, ah…… Il grido dalla gola mi è uscito mezzo roco e fioco.\nLa „Condanna 4: Silenzio eterno“ è stata trasferita a „Imputata R.E.A.“, su di me.»"
     },
     {
       "key": "story.bell.mastery.03",
@@ -3051,7 +3115,7 @@
     },
     {
       "key": "story.gallery.route.04",
-      "value": "«Respingiamo i colpi riflessi delle statue con parata base per colpire nel varco con la Spada di base, caliamo i ponti di tela e passiamo verso la serra!»\n(Comandi: Cala i ponti recidendo 2 chiavistelli di lapislazzuli e sconfiggi sentinelle, statua e guardia cucita.)"
+      "value": "«Respingiamo i colpi riflessi delle statue con schivata con scatto per colpire nel varco con la Spada di base, caliamo i ponti di tela e passiamo verso la serra!»\n(Comandi: Cala i ponti recidendo 2 chiavistelli di lapislazzuli e sconfiggi sentinelle, statua e guardia cucita.)"
     },
     {
       "key": "story.gallery.route.05",
@@ -3083,7 +3147,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Posando la spada-pennello sul pavimento, riprende fiato con calma. Il nucleo della spada cattura con riflessi d'acquerello la traccia aerea di Livello 1 della Pennellata di Irina)\n«……Avevo nascosto l'ultimo autoritratto, eppure la tua spada ha letto la trama della mia prima „Pennellata“.\nTienilo a mente, Rea. Fino a trenta volte ti sfioreranno gli occhi solo sfumature d'acquerello, ma nell'attimo in cui compi l'ottantesimo autoritratto la mia Condanna della cecità passerà ai tuoi occhi. Scendo in Infermeria…… ti prego, ferma quella pennellata e torna indietro.»\n(Avviso di sistema: Intaglio del vuoto acquisito — A terra, tieni premuta la direzione verso il basso e premi Q (Y sul controller).)"
+      "value": "(Posando la spada-pennello sul pavimento, riprende fiato con calma. Il nucleo della spada cattura con riflessi d'acquerello la traccia aerea di Livello 1 della Pennellata di Irina)\n«……Avevo nascosto l'ultimo autoritratto, eppure la tua spada ha letto la trama della mia prima „Pennellata“.\nTienilo a mente, Rea. Fino a trenta volte ti sfioreranno gli occhi solo sfumature d'acquerello, ma nell'attimo in cui compi l'ottantesimo autoritratto la mia Condanna della cecità passerà ai tuoi occhi. Scendo in Infermeria…… ti prego, ferma quella pennellata e torna indietro.»\n(Avviso di sistema: Intaglio del vuoto acquisito — A terra, tieni premuta la direzione verso il basso e premi V (Y sul controller).)"
     },
     {
       "key": "story.irina.i0.06",
@@ -3139,7 +3203,7 @@
     },
     {
       "key": "story.gallery.return.01",
-      "value": "«Oltre il gradino del percorso di ritorno nella serra manca del tutto il pavimento. Se traccio da terra il Livello 1 „Pennellata“ di „Intaglio del vuoto“, davanti a me resta sospesa per 3 secondi una pedana di colore lapislazzuli! Saliamoci sopra per saltare dall'altra parte!»\n(Comandi: Dal bordo del gradino a terra premi ↓ + Q / Y per posare davanti in aria una pedana Pennellata e attraversa.)"
+      "value": "«Oltre il gradino del percorso di ritorno nella serra manca del tutto il pavimento. Se traccio da terra il Livello 1 „Pennellata“ di „Intaglio del vuoto“, davanti a me resta sospesa per 3 secondi una pedana di colore lapislazzuli! Saliamoci sopra per saltare dall'altra parte!»\n(Comandi: Dal bordo del gradino a terra premi ↓ + V / Y per posare davanti in aria una pedana Pennellata e attraversa.)"
     },
     {
       "key": "story.gallery.return.02",
@@ -3151,7 +3215,7 @@
     },
     {
       "key": "story.gallery.synergy.01",
-      "value": "«Oltre questo pavimento spaccato tra due punti saldi si apre il vuoto totale senza alcun appoggio!\nSe prima ricucio la crepa sul pavimento reale con la „Cucitura d'argento“ di Mikhail per attraversarlo, e poi dal suo bordo dipingo una pedana nell'aria con „Intaglio del vuoto“ di Irina per balzare oltre, posso unire i pregi di entrambe le abilità!»\n(Comandi: Ripara il pavimento spaccato (gallery_synergy_seam) con Cucitura d'argento e salici sopra, poi all'estremità usa Intaglio del vuoto (↓ + Q / Y) per dipingere una pedana verso la terrazza.)"
+      "value": "«Oltre questo pavimento spaccato tra due punti saldi si apre il vuoto totale senza alcun appoggio!\nSe prima ricucio la crepa sul pavimento reale con la „Cucitura d'argento“ di Mikhail per attraversarlo, e poi dal suo bordo dipingo una pedana nell'aria con „Intaglio del vuoto“ di Irina per balzare oltre, posso unire i pregi di entrambe le abilità!»\n(Comandi: Ripara il pavimento spaccato (gallery_synergy_seam) con Cucitura d'argento e salici sopra, poi all'estremità usa Intaglio del vuoto (↓ + V / Y) per dipingere una pedana verso la terrazza.)"
     },
     {
       "key": "story.gallery.synergy.02",
@@ -3551,7 +3615,7 @@
     },
     {
       "key": "story.cassel.p1.04",
-      "value": "«Eccolo……! La guardia di Cassel è identica alla mia Spada di base!»\n(Inizio battaglia: Cassel Fase 1 · Forma originale della spada — Supera la forma madre di Cassel (Forma Zero di Cassel) e i cinque schemi originali con parata base, scatto e abilità fino a portargli la salute a 120.)"
+      "value": "«Eccolo……! La guardia di Cassel è identica alla mia Spada di base!»\n(Inizio battaglia: Cassel Fase 1 · Forma originale della spada — Supera la forma madre di Cassel (Forma Zero di Cassel) e i cinque schemi originali con schivata con scatto, scatto e abilità fino a portargli la salute a 120.)"
     },
     {
       "key": "story.cassel.p1.05",
@@ -3599,11 +3663,11 @@
     },
     {
       "key": "story.cassel.return.forge_early",
-      "value": "(L'onda aurea di grande campana di «Semina delle sei», abbattuta in volo subito dopo la parata base, urta in pieno l'onda tellurica dello specchio mandando in frantumi lo strato)\n«„Forgia risonante“ di Gabriel prenotata per il ritorno!\nHo ceduto presto il contrattacco rintoccante ad area, ma intanto ho fermato subito l'„Onda della grande campana riflessa“ che spazzava tutto il pavimento! Non devo più saltare a forza: posso concentrarmi sulla parata a terra!»\n(Segnale audio: loop riflesso gelido della campana eliminato + strato risonanza impronta +1)"
+      "value": "(L'onda aurea di grande campana di «Semina delle sei», abbattuta in volo subito dopo la schivata con scatto, urta in pieno l'onda tellurica dello specchio mandando in frantumi lo strato)\n«„Forgia risonante“ di Gabriel prenotata per il ritorno!\nHo ceduto presto il contrattacco rintoccante ad area, ma intanto ho fermato subito l'„Onda della grande campana riflessa“ che spazzava tutto il pavimento! Non devo più saltare a forza: posso concentrarmi sulla schivata a terra!»\n(Segnale audio: loop riflesso gelido della campana eliminato + strato risonanza impronta +1)"
     },
     {
       "key": "story.cassel.return.forge_late",
-      "value": "(L'onda della campana che fino alla fine ha frantumato la guardia agli attacchi diretti di Cassel con parata e rintocco aereo penetra a fondo nello specchio)\n«Gabriel, i tuoi segnali e il tuo rintocco hanno spalancato più volte lo specchio serrato di Cassel!\nOra prenoto la restituzione di „Forgia risonante“ e del silenzio eterno a Cassel!»\n(Segnale audio: loop riflesso gelido della campana eliminato + strato risonanza impronta +1)"
+      "value": "(L'onda della campana che fino alla fine ha frantumato la guardia agli attacchi diretti di Cassel con schivata e rintocco aereo penetra a fondo nello specchio)\n«Gabriel, i tuoi segnali e il tuo rintocco hanno spalancato più volte lo specchio serrato di Cassel!\nOra prenoto la restituzione di „Forgia risonante“ e del silenzio eterno a Cassel!»\n(Segnale audio: loop riflesso gelido della campana eliminato + strato risonanza impronta +1)"
     },
     {
       "key": "story.cassel.return.canvas_early",
@@ -3615,11 +3679,11 @@
     },
     {
       "key": "story.cassel.p2.08_r1_cassel",
-      "value": "(Appena si stampa la prima prenotazione 1/5 e dalla spada di Rea divampa come fiamma azzurra +20% di potenza d'impronta temporale extra, un sopracciglio di Cassel freme per la prima volta. Per non incassare docilmente le altre quattro abilità, Cassel ripiega alle spalle lo «Specchio d'Onnirisonanza» e indietreggia d'un balzo veloce!)\n«……Hai volto la riflessione dello Specchio d'Onnirisonanza contro di me per scrivere una restituzione nel mio stesso registro!\nMa chiuso il varco riflettente, le tue tecniche rimaste perdono il bersaglio dello scontro. Ti reciderò subito con la mia scherma diretta!»\n(Guida tattica: Cassel chiude lo specchio e carica con una serie diretta di 3 affondi di Forma Zero di Cassel. Non sprecare abilità boss: respingilo con la parata base (L / RB)!)"
+      "value": "(Appena si stampa la prima prenotazione 1/5 e dalla spada di Rea divampa come fiamma azzurra +20% di potenza d'impronta temporale extra, un sopracciglio di Cassel freme per la prima volta. Per non incassare docilmente le altre quattro abilità, Cassel ripiega alle spalle lo «Specchio d'Onnirisonanza» e indietreggia d'un balzo veloce!)\n«……Hai volto la riflessione dello Specchio d'Onnirisonanza contro di me per scrivere una restituzione nel mio stesso registro!\nMa chiuso il varco riflettente, le tue tecniche rimaste perdono il bersaglio dello scontro. Ti reciderò subito con la mia scherma diretta!»\n(Guida tattica: Cassel chiude lo specchio e carica con una serie diretta di 3 affondi di Forma Zero di Cassel. Non sprecare abilità boss: respingilo con la schivata con scatto (Shift / LB)!)"
     },
     {
       "key": "story.cassel.p2.09_r1_rea",
-      "value": "(Subito dopo aver respinto frontalmente di parata base il 3° affondo diretto di Cassel, Rea cala sulla sua guardia una pesante serie di Spada di base carica del +20% di potenza d'impronta liberata! Cassel, che non ha mai bruciato neppure 1 secondo del proprio tempo, non regge col polso quella massa schiacciante: la postura gli si spezza e per salvarsi da un colpo fatale riapre di scatto davanti a sé lo «Specchio d'Onnirisonanza»!)\n«Anche se chiudi lo specchio, le prenotazioni già timbrate non spariscono! E senza barriera riflettente, i tuoi polsi non reggono il peso della „potenza d'impronta temporale“ accumulata a colpi veri dalla me di ieri e di oggi!\nGuarda, per salvarsi ha riaperto lo specchio! Mentre il circuito è spalancato a forza, piazziamo la prossima abilità!»"
+      "value": "(Subito dopo aver respinto frontalmente di schivata con scatto il 3° affondo diretto di Cassel, Rea cala sulla sua guardia una pesante serie di Spada di base carica del +20% di potenza d'impronta liberata! Cassel, che non ha mai bruciato neppure 1 secondo del proprio tempo, non regge col polso quella massa schiacciante: la postura gli si spezza e per salvarsi da un colpo fatale riapre di scatto davanti a sé lo «Specchio d'Onnirisonanza»!)\n«Anche se chiudi lo specchio, le prenotazioni già timbrate non spariscono! E senza barriera riflettente, i tuoi polsi non reggono il peso della „potenza d'impronta temporale“ accumulata a colpi veri dalla me di ieri e di oggi!\nGuarda, per salvarsi ha riaperto lo specchio! Mentre il circuito è spalancato a forza, piazziamo la prossima abilità!»"
     },
     {
       "key": "story.cassel.p2.10_r2",
@@ -3635,27 +3699,27 @@
     },
     {
       "key": "story.cassel.p2.13_r5",
-      "value": "(Al quinto scontro di lame tutti e cinque i livelli dello «Specchio d'Onnirisonanza» piombano nel buio e gli echi distorti ammutoliscono del tutto! Tutti e cinque gli slot abilità di Rea risultano ora vuoti come [Restituzione prenotata], e dal solco runico al centro della lama si alza una colonna abbagliante di potenza d'impronta temporale sbloccata al 100% (×2.0))\n«[Prenotazioni completate 5/5 — Potenza d'impronta temporale extra aperta al 100%]\nHo affidato al registro di rientro i diritti di tutte e cinque le tecniche dei Benefattori. Ora in mano mi resta solo un attacco — la Spada di base — ma le mie gambe, il mio scatto, la parata e tutto il tempo che ieri e oggi abbiamo menato insieme confluiscono in questa sola lama!»"
+      "value": "(Al quinto scontro di lame tutti e cinque i livelli dello «Specchio d'Onnirisonanza» piombano nel buio e gli echi distorti ammutoliscono del tutto! Tutti e cinque gli slot abilità di Rea risultano ora vuoti come [Restituzione prenotata], e dal solco runico al centro della lama si alza una colonna abbagliante di potenza d'impronta temporale sbloccata al 100% (×2.0))\n«[Prenotazioni completate 5/5 — Potenza d'impronta temporale extra aperta al 100%]\nHo affidato al registro di rientro i diritti di tutte e cinque le tecniche dei Benefattori. Ora in mano mi resta solo un attacco — la Spada di base — ma le mie gambe, il mio scatto, la schivata e tutto il tempo che ieri e oggi abbiamo menato insieme confluiscono in questa sola lama!»"
     },
     {
       "key": "story.cassel.p3.01_open",
-      "value": "(Dinanzi allo specchio madre crepato e privo di riflessi, Cassel per la prima volta con le vesti sconvolte riafferra a due mani lo spadone e chiama Rea per nome)\n«……Anche avendo vincolato tutti e cinque i rami, finché non reggerai fino in fondo il sesto e ultimo movimento originale — la mia „Forma Zero di Cassel“ — la restituzione collettiva delle Condanne non verrà mai confermata, Rea!\nCredi forse di poter superare la mia Forma originale con quelle mani nude prive perfino d'una sola abilità boss?!»\n(Guida al combattimento: Cassel Fase 3 · Duello decisivo sui fondamentali — Con B=3 (400 o più utilizzi), dopo la parata base concatena la serie completa 1–4 colpi di Spada di base Livello 3 per confermare il vero finale! Con B<3 abbatti di 48 la resistenza del nucleo con la Spada di base per la distruzione d'emergenza.)"
+      "value": "(Dinanzi allo specchio madre crepato e privo di riflessi, Cassel per la prima volta con le vesti sconvolte riafferra a due mani lo spadone e chiama Rea per nome)\n«……Anche avendo vincolato tutti e cinque i rami, finché non reggerai fino in fondo il sesto e ultimo movimento originale — la mia „Forma Zero di Cassel“ — la restituzione collettiva delle Condanne non verrà mai confermata, Rea!\nCredi forse di poter superare la mia Forma originale con quelle mani nude prive perfino d'una sola abilità boss?!»\n(Guida al combattimento: Cassel Fase 3 · Duello decisivo sui fondamentali — Con B=3 (400 o più utilizzi), dopo la schivata con scatto concatena la serie completa 1–4 colpi di Spada di base Livello 3 per confermare il vero finale! Con B<3 abbatti di 48 la resistenza del nucleo con la Spada di base per la distruzione d'emergenza.)"
     },
     {
       "key": "story.cassel.p3.02_live_b3",
-      "value": "(Proprio con il colpo che incrocia la lama di Cassel gli utilizzi validi della Spada di base toccano quota quattrocento! Con un anello d'oro si schiude l'ultima runa della lama e si accende: [Vero nome sbloccato: Lama del Peccato Originale — Forma Zero di Cassel]!)\n«……Con questo preciso fendente si è compiuta la quattrocentesima impronta!\nIl limite del movimento originale che avevi piantato nel mio corpo ora si è schiuso tutto nelle mie mani, Cassel! Alla prossima parata, con quattro colpi in serie della Forma suprema ti restituirò in via definitiva tutte e cinque le Condanne!»"
+      "value": "(Proprio con il colpo che incrocia la lama di Cassel gli utilizzi validi della Spada di base toccano quota quattrocento! Con un anello d'oro si schiude l'ultima runa della lama e si accende: [Vero nome sbloccato: Lama del Peccato Originale — Forma Zero di Cassel]!)\n«……Con questo preciso fendente si è compiuta la quattrocentesima impronta!\nIl limite del movimento originale che avevi piantato nel mio corpo ora si è schiuso tutto nelle mie mani, Cassel! Alla prossima schivata, con quattro colpi in serie della Forma suprema ti restituirò in via definitiva tutte e cinque le Condanne!»"
     },
     {
       "key": "story.cassel.p3.03_b3_ready",
-      "value": "«Movimento originale di Livello 3 pronto, me di oggi!\nQuando Cassel affonda con la „Forma Zero di Cassel“, devialo con la parata base e nel varco aperto pianta fino all'ultimo fendente la serie completa dal 1° al 4° colpo della nostra Spada di base Livello 3! Dal primo al quarto colpo affonderò anch'io proprio alle tue spalle!»"
+      "value": "«Movimento originale di Livello 3 pronto, me di oggi!\nQuando Cassel affonda con la „Forma Zero di Cassel“, devialo con la schivata con scatto e nel varco aperto pianta fino all'ultimo fendente la serie completa dal 1° al 4° colpo della nostra Spada di base Livello 3! Dal primo al quarto colpo affonderò anch'io proprio alle tue spalle!»"
     },
     {
       "key": "story.cassel.p3.04_b3_retry",
-      "value": "«Tranquilla, non avere fretta! Il nostro movimento originale ha già raggiunto la Forma suprema di Livello 3. Non limitarti a rompere il nucleo: riprendi fiato e chiudi di nuovo lo scontro fino in fondo con la serie completa 1–4 dopo la parata base!»"
+      "value": "«Tranquilla, non avere fretta! Il nostro movimento originale ha già raggiunto la Forma suprema di Livello 3. Non limitarti a rompere il nucleo: riprendi fiato e chiudi di nuovo lo scontro fino in fondo con la serie completa 1–4 dopo la schivata con scatto!»"
     },
     {
       "key": "story.cassel.p3.05_true_hit",
-      "value": "(Appena deviato di parata base il fendente di Cassel, la Rea di oggi (#02), la Rea di ieri (#01) materializzatasi dal nucleo e centinaia di profili temporali si sovrappongono nella danza suprema in 4 colpi «Sovrapposizione d'impronte», recidendo frontalmente alla perfezione la «Forma Zero di Cassel»!\nOgni suono tace per 1.0 secondo assoluto, finché col fragore dello Specchio d'Onnirisonanza che esplode in schegge viene impresso a lettere d'oro nel registro notarile: [Forma originale confermata / Restituzione unificata 5 Condanne approvata: Imputata R.E.A. ➔ Detentore originario Arconte Cassel]!)\n«Questa è la nostra risposta, dimostrata dalla me di ieri, dalla me di oggi e da nove persone accanto a noi!\nLe cinque Condanne che avevi scaricato sugli altri vengono adesso definitivamente restituite per intero a te, il loro vero proprietario!»"
+      "value": "(Appena deviato di schivata con scatto il fendente di Cassel, la Rea di oggi (#02), la Rea di ieri (#01) materializzatasi dal nucleo e centinaia di profili temporali si sovrappongono nella danza suprema in 4 colpi «Sovrapposizione d'impronte», recidendo frontalmente alla perfezione la «Forma Zero di Cassel»!\nOgni suono tace per 1.0 secondo assoluto, finché col fragore dello Specchio d'Onnirisonanza che esplode in schegge viene impresso a lettere d'oro nel registro notarile: [Forma originale confermata / Restituzione unificata 5 Condanne approvata: Imputata R.E.A. ➔ Detentore originario Arconte Cassel]!)\n«Questa è la nostra risposta, dimostrata dalla me di ieri, dalla me di oggi e da nove persone accanto a noi!\nLe cinque Condanne che avevi scaricato sugli altri vengono adesso definitivamente restituite per intero a te, il loro vero proprietario!»"
     },
     {
       "key": "story.cassel.p3.06_true_fall",
@@ -3763,7 +3827,7 @@
     },
     {
       "key": "story.ending.true.13_swing_prompt",
-      "value": "«Non una tecnica sostitutiva per portare la morte altrui, ma il primo movimento che la me stessa viva di oggi scrive col proprio nome: ecco cosa inciderò qui!»\n(Comandi: Davanti al belvedere illuminato dal sole del mattino (rea_form_one_sky), premi il tasto spada (J / Z / Clic sx / X sul gamepad) per vibrare il primo fendente tutto di Rea!)"
+      "value": "«Non una tecnica sostitutiva per portare la morte altrui, ma il primo movimento che la me stessa viva di oggi scrive col proprio nome: ecco cosa inciderò qui!»\n(Comandi: Davanti al belvedere illuminato dal sole del mattino (rea_form_one_sky), premi il tasto spada (A / X sul gamepad) per vibrare il primo fendente tutto di Rea!)"
     },
     {
       "key": "story.ending.true.14_registered",
@@ -3811,7 +3875,7 @@
     },
     {
       "key": "story.resume.lift.03_theo",
-      "value": "(Dalla tromba di comunicazione arriva la guida di Theo)\n«Rea! Non serve rifare lunghi giri nei settori per accumulare i colpi di Spada di base. Passando dal raccordo diretto qui accanto o dalla selezione zona fino alla Forgia del Canale di Ethan — al „Crogiolo di risonanza ad alta densità“ — con l'allenamento di parata e combo d'élite raggiungerai i 400 colpi in un attimo e potrai subito tornare qui davanti all'ascensore!»\n(Comandi: Vai alla Forgia del Canale / Crogiolo di risonanza per portare la Spada di base al Livello 3 (400 colpi), oppure usa subito il pannello dell'ascensore per riaffrontare Cassel.)"
+      "value": "(Dalla tromba di comunicazione arriva la guida di Theo)\n«Rea! Non serve rifare lunghi giri nei settori per accumulare i colpi di Spada di base. Passando dal raccordo diretto qui accanto o dalla selezione zona fino alla Forgia del Canale di Ethan — al „Crogiolo di risonanza ad alta densità“ — con l'allenamento di schivata e combo d'élite raggiungerai i 400 colpi in un attimo e potrai subito tornare qui davanti all'ascensore!»\n(Comandi: Vai alla Forgia del Canale / Crogiolo di risonanza per portare la Spada di base al Livello 3 (400 colpi), oppure usa subito il pannello dell'ascensore per riaffrontare Cassel.)"
     },
     {
       "key": "story.resume.crucible.01_ethan",
@@ -3932,6 +3996,394 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Passaggio diretto all'ascensore del Gran Tribunale"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Schermo : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Schermo intero"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Finestra)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Finestra)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Finestra)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "Sincronia VSync : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Assegnazione tasti"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Tasti"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Scegli un’azione e premi un nuovo tasto o clic destro. (Scambio automatico · Esc annulla)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Premi nuovo tasto… Esc ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Ripristina predefiniti"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Tasto duplicato scambiato."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Salto :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Attacco :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Abilità :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Scatto :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interagisci :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "Mappa distretto :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Mappa"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Esplorato: {0} / {1} stanze"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Attuale   ■ Visitata   □ Inesplorata   ❖ Boss/Arena   [{0} / Tab / Esc] Chiudi"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Rifugio · Soffitta"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Via del Sarto di Velluto"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Distretto dell’Orologio"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Teatro d’Opera di Vetro"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Acquedotto della Campana"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Galleria della Tela"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Corte Notarile"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Gran Tribunale"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Muovi ←/→ | Salto {0} | Attacco {1} | Abilità {2} | Scatto {3} | Mappa {4} | Esc"
+    },
+    {
+      "key": "shop.title",
+      "value": "Scorte di Ethan"
+    },
+    {
+      "key": "shop.bag_title",
+      "value": "Borsa"
+    },
+    {
+      "key": "shop.talk_prompt",
+      "value": "{0} · Parla con Ethan"
+    },
+    {
+      "key": "shop.ethan.greeting",
+      "value": "Vai al quartiere dei sarti di Velluto, Rea? Porta con te tè di risonanza e bende. Se ti ferisci, usali dalla borsa. Non sforzarti di continuare."
+    },
+    {
+      "key": "shop.ethan.return",
+      "value": "Di ritorno da Velluto, Rea? Abbi cura di te come della tua lama. Dimmi cosa ti serve per il prossimo tratto."
+    },
+    {
+      "key": "shop.browse",
+      "value": "Guarda le scorte"
+    },
+    {
+      "key": "shop.end_talk",
+      "value": "Chiudi la conversazione"
+    },
+    {
+      "key": "shop.balance",
+      "value": "Monete d’argento {0}"
+    },
+    {
+      "key": "shop.bag_status",
+      "value": "Salute {0}/{1}   ·   Monete d’argento {2}"
+    },
+    {
+      "key": "shop.item_detail",
+      "value": "Recupera {0} salute   ·   In borsa {1}"
+    },
+    {
+      "key": "shop.price",
+      "value": "{0} argento"
+    },
+    {
+      "key": "shop.buy_keys",
+      "value": "↑↓ Scegli   ·   Invio Compra   ·   Esc Indietro"
+    },
+    {
+      "key": "shop.use_keys",
+      "value": "↑↓ Scegli   ·   Invio Usa   ·   Esc Indietro"
+    },
+    {
+      "key": "shop.mint_tea",
+      "value": "Tè di risonanza alla menta"
+    },
+    {
+      "key": "shop.travel_bandage",
+      "value": "Benda da viaggio"
+    },
+    {
+      "key": "shop.insufficient",
+      "value": "Non hai abbastanza argento."
+    },
+    {
+      "key": "shop.purchased",
+      "value": "Acquisto riuscito · {0}"
+    },
+    {
+      "key": "shop.none_held",
+      "value": "Non hai {0} nella borsa."
+    },
+    {
+      "key": "shop.use_unavailable",
+      "value": "Non puoi usare oggetti a terra."
+    },
+    {
+      "key": "shop.full_health",
+      "value": "La tua salute è al massimo."
+    },
+    {
+      "key": "shop.used",
+      "value": "Hai usato {0} · Recuperi {1} salute"
+    },
+    {
+      "key": "controls.kb_opening",
+      "value": "←/→ Muoviti  ·  {0} Salta  ·  {1} Interagisci"
+    },
+    {
+      "key": "controls.pad_opening",
+      "value": "Stick sx/croce Muoviti  ·  [A] Salta  ·  [L3] Interagisci"
+    },
+    {
+      "key": "tutorial.attic_title",
+      "value": "La soffitta di Marta"
+    },
+    {
+      "key": "tutorial.attic_chest",
+      "value": "Premi {0} per saltare il baule e trovare la caramella alla menta."
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Muovi ←/→ | Interag. {0} | Attacco {1} | Abilità {2} | Scatto {3} | Mappa {4} | Esc Pausa"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "LS | Salto [A] | Attacco [X] | Abilità [Y] | Scatto [LB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "LS | Interag. [L3] | Attacco [X] | Abilità [Y] | Scatto [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Registro notarile aggiornato · Salute ripristinata"
+    },
+    {
+      "key": "combat.pogo",
+      "value": "RIMBALZO!"
+    },
+    {
+      "key": "combat.counter",
+      "value": "CONTRATTACCO!"
+    },
+    {
+      "key": "combat.guard_break",
+      "value": "ROTTURA!"
+    },
+    {
+      "key": "settings.shake_strength",
+      "value": "Intensità vibrazione: {0}"
+    },
+    {
+      "key": "settings.shake_off",
+      "value": "No (0%)"
+    },
+    {
+      "key": "settings.shake_half",
+      "value": "Lieve (50%)"
+    },
+    {
+      "key": "settings.shake_full",
+      "value": "Piena (100%)"
+    },
+    {
+      "key": "settings.hit_stop",
+      "value": "Fermo d'impatto (Hit-Stop): {0}"
+    },
+    {
+      "key": "settings.assist_immunity",
+      "value": "Invulnerabilità estesa (Aiuto): {0}"
+    },
+    {
+      "key": "skillcard.acquired",
+      "value": "NUOVA TECNICA SBLOCCATA"
+    },
+    {
+      "key": "skillcard.tip_silver_stitch",
+      "value": "Cuci filo d'argento sulle sporgenze rotte e trafiggi i nemici."
+    },
+    {
+      "key": "skillcard.tip_pendulum_rewind",
+      "value": "Riavvolgi e blocca per un attimo ingranaggi e nemici."
+    },
+    {
+      "key": "skillcard.tip_curtain_call_waltz",
+      "value": "Balza ad arco in aria evitando i riflettori del palco."
+    },
+    {
+      "key": "skillcard.tip_resonance_forge",
+      "value": "Frantuma pareti incrinate e respingi gli attacchi."
+    },
+    {
+      "key": "skillcard.tip_canvas_carve",
+      "value": "Incidi appoggi temporanei a mezz'aria."
+    },
+    {
+      "key": "ui.journal",
+      "value": "Diario Notarile"
+    },
+    {
+      "key": "journal.title",
+      "value": "Diario Notarile e Registro"
+    },
+    {
+      "key": "journal.tab_skills",
+      "value": "Tecniche"
+    },
+    {
+      "key": "journal.tab_codex",
+      "value": "Personaggi"
+    },
+    {
+      "key": "journal.tab_progress",
+      "value": "Esplorazione"
+    },
+    {
+      "key": "journal.footer",
+      "value": "A/D Cambia scheda  |  N / Esc Chiudi"
+    },
+    {
+      "key": "journal.input_formula",
+      "value": "Comando: {0}"
+    },
+    {
+      "key": "journal.explored_rooms",
+      "value": "Stanze esplorate: {0} / {1} ({2}%)"
+    },
+    {
+      "key": "journal.owned_skills",
+      "value": "Tecniche benefattori: {0} / 5"
+    },
+    {
+      "key": "journal.investigation_stat",
+      "value": "Indizi d'indagine: {0}"
+    },
+    {
+      "key": "journal.keybinds_summary",
+      "value": "Comandi attivi"
+    },
+    {
+      "key": "journal.met",
+      "value": "Incontrato"
+    },
+    {
+      "key": "journal.unmet",
+      "value": "Sconosciuto"
+    },
+    {
+      "key": "journal.cleared",
+      "value": "Tecnica ereditata"
+    },
+    {
+      "key": "journal.role_rea",
+      "value": "Erede della Lama · Apprendista notaio"
+    },
+    {
+      "key": "journal.role_marta",
+      "value": "Custode della Soffitta dell'Oblio"
+    },
+    {
+      "key": "journal.role_mikhail",
+      "value": "Benefattore del Velluto · Punto d'Argento"
+    },
+    {
+      "key": "journal.role_julius",
+      "value": "Benefattore dell'Orologio · Pendolo Inverso"
+    },
+    {
+      "key": "journal.role_valeria",
+      "value": "Benefattrice dell'Opera · Valzer di Sipario"
+    },
+    {
+      "key": "journal.role_gabriel",
+      "value": "Benefattore del Campanile · Forgia Risonante"
+    },
+    {
+      "key": "journal.role_irina",
+      "value": "Benefattrice della Galleria · Incisione su Tela"
+    },
+    {
+      "key": "journal.role_cassel",
+      "value": "Giudice Supremo · Tribunale Notarile"
+    },
+    {
+      "key": "slot.stage_badge",
+      "value": "Luogo: {0}"
     }
   ]
 }

@@ -9,21 +9,36 @@ namespace RewindNotary
         public const float JumpBuffer = 0.1f;
         public const float AttackBuffer = 0.13f;
         public const float MoveSpeed = 6.5f;
-        public const float JumpSpeed = 12f;
+        public const float SprintSpeed = 8.7f;
+        public const float JumpSpeed = 11.4f;
+        private const float AirJumpSpeed = 12.5f;
         private CombatMotor2D motor;
         public SilverStitchSkill Silver { get; set; }
         private float axis, lastGrounded = float.NegativeInfinity, jumpPressed = float.NegativeInfinity;
-        private bool cutJump;
+        private bool cutJump, usedAirJump;
+        private bool canCutJump = true;
         private Collider2D actorCollider;
         private readonly ContactPoint2D[] wallContacts = new ContactPoint2D[12];
         internal const float WallSlideSpeed = 2.2f, WallKickX = 7f, WallKickY = 13f, KickControlTime = .14f;
         private float kickUntil;
-        private int kickDirection, lastKickSide;
+        private int kickDirection;
+        private Collider2D kickedWall;
         internal bool Sliding { get; private set; }
         internal int WallJumps { get; private set; }
+        internal float AttackSteering => Time.time < kickUntil ? kickDirection : GameInput.Horizontal;
         private float attackPressed = float.NegativeInfinity;
+        private int attackDirectionY;
+        internal const float WaveChargeOne = .38f, WaveChargeTwo = 1.02f;
+        private const float AttackTapSeconds = .21f;
+        private float waveChargeAt = float.NegativeInfinity;
+        private bool tapMaySwing;
+        private SpriteRenderer chargeGlow;
+        internal int WaveChargeLevel { get; private set; }
         internal event System.Action AttackInputAccepted;
         private SkillCastRequest? pendingCast;
+        private readonly StarterCommandInput starterCommand = new StarterCommandInput();
+        private const float StarterBuffer = .34f;
+        private (int index, int facing, bool command, float expires)? pendingStarter;
         private void Awake()
         {
             motor = GetComponent<CombatMotor2D>();
@@ -32,41 +47,104 @@ namespace RewindNotary
             motor.AttackStarted += OnAttackStarted;
         }
         private void OnLanded() { AudioManager.Play(AudioManager.Sfx.Land); }
-        private void OnAttackStarted() { AudioManager.Play(AudioManager.Sfx.Swing); }
+        private void OnAttackStarted()
+        {
+            attackPressed = float.NegativeInfinity;
+            tapMaySwing = false;
+            AudioManager.Play(AudioManager.Sfx.Swing);
+        }
         private void Update()
         {
+            bool attackHeld = GameInput.AttackHeld;
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead)
-            { attackPressed = float.NegativeInfinity; pendingCast = null; return; }
+            {
+                attackPressed = float.NegativeInfinity;
+                ClearWaveCharge();
+                pendingCast = null;
+                pendingStarter = null;
+                starterCommand.Reset();
+                return;
+            }
             axis = GameInput.Horizontal;
             var runner = motor.BenefactorSkills;
             var input = runner?.InputSnapshot;
             bool castDown = input != null && input.CastDown;
+            bool commandDown = false;
+            if (motor.Grounded && !castDown && !GameInput.SprintHeld && !motor.Stunned)
+            {
+                starterCommand.Press(GameInput.CommandArrowDown, Time.unscaledTime);
+                if (GameInput.KeyboardAttackDown)
+                {
+                    int starter = starterCommand.Consume(Time.unscaledTime, out int facing);
+                    if (starter >= 0)
+                    {
+                        QueueStarter(starter, facing, command: true);
+                        commandDown = true;
+                    }
+                }
+            }
+            else starterCommand.Reset();
             // A cast chord owns its attack modifier. Other taps survive action recovery.
-            if (!castDown && GameInput.AttackDown) attackPressed = Time.time;
-            if (motor.Stunned) pendingCast = null;
+            if (castDown || commandDown || motor.Stunned) ClearWaveCharge();
+            else
+            {
+                if (GameInput.AttackDown)
+                {
+                    float vertical = GameInput.Vertical;
+                    if (vertical > .5f || (vertical < -.5f && !motor.Grounded))
+                    {
+                        ClearWaveCharge();
+                        BufferAttack(vertical > 0f ? 1 : -1);
+                    }
+                    else
+                    {
+                        waveChargeAt = Time.time;
+                        tapMaySwing = true;
+                    }
+                }
+                UpdateWaveCharge(attackHeld);
+            }
+            if (motor.Stunned) { pendingCast = null; pendingStarter = null; }
             if (castDown)
             {
+                attackPressed = float.NegativeInfinity;
                 jumpPressed = float.NegativeInfinity;
                 // One request only: a later press replaces it, even if the requested skill is unlearned.
                 pendingCast = null;
-                if (runner.CanRequest(input.Request) && !motor.Stunned) pendingCast = input.Request;
+                pendingStarter = null;
+                int starter = QuickSkills.StarterIndex(input.Request.SkillId);
+                if (starter >= 0 && !motor.Stunned) QueueStarter(starter, 0, command: false);
+                else if (runner.CanRequest(input.Request) && !motor.Stunned) pendingCast = input.Request;
             }
             if (motor.Defense != null && motor.Defense.BlocksActions)
             {
-                // Dash keeps the press-time ID/modifier until recovery; parry never reserves a cast.
-                if (motor.Defense.State.Phase != DefensePhase.Dash) pendingCast = null;
+                // Dash keeps the press-time skill ID until recovery.
                 jumpPressed = float.NegativeInfinity; cutJump = false; return;
             }
             if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
-            { pendingCast = null; jumpPressed = float.NegativeInfinity; cutJump = false; return; }
-            if (!castDown && !pendingCast.HasValue && GameInput.JumpDown)
+            { pendingCast = null; pendingStarter = null; jumpPressed = float.NegativeInfinity; cutJump = false; return; }
+
+            if (pendingStarter.HasValue)
+            {
+                var starter = pendingStarter.Value;
+                if (Time.time > starter.expires) pendingStarter = null;
+                else if (motor.UseStarterSkill(starter.index, starter.facing, starter.command))
+                {
+                    pendingStarter = null;
+                    cutJump = false;
+                    return;
+                }
+            }
+            if (!castDown && !pendingCast.HasValue && !pendingStarter.HasValue && GameInput.JumpDown)
             {
                 // A release queued since the previous physics tick belongs to the previous press.
                 jumpPressed = Time.time;
                 cutJump = false;
             }
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
-            if (!castDown && !pendingCast.HasValue && Time.time - attackPressed <= AttackBuffer && motor.Attack())
+            bool attackBuffered = Time.time - attackPressed <= AttackBuffer;
+            if (!castDown && !pendingCast.HasValue && !pendingStarter.HasValue &&
+                attackBuffered && motor.Attack(attackDirectionY))
             {
                 attackPressed = float.NegativeInfinity;
                 AttackInputAccepted?.Invoke();
@@ -80,8 +158,59 @@ namespace RewindNotary
                 { jumpPressed = lastGrounded = float.NegativeInfinity; cutJump = false; }
             }
         }
-        private int WallSide()
+        private void QueueStarter(int index, int facing, bool command)
         {
+            if (facing == 0) facing = axis == 0f ? motor.Facing : (int)Mathf.Sign(axis);
+            pendingStarter = (index, facing, command, Time.time + StarterBuffer);
+            pendingCast = null;
+            attackPressed = jumpPressed = float.NegativeInfinity;
+        }
+
+        private void BufferAttack(int directionY)
+        {
+            attackPressed = Time.time;
+            attackDirectionY = directionY;
+        }
+
+        private void UpdateWaveCharge(bool held)
+        {
+            if (float.IsNegativeInfinity(waveChargeAt)) return;
+            float elapsed = Time.time - waveChargeAt;
+            int level = elapsed >= WaveChargeTwo ? 2 : elapsed >= WaveChargeOne ? 1 : 0;
+            if (!held)
+            {
+                bool tap = tapMaySwing && elapsed <= AttackTapSeconds;
+                ClearWaveCharge();
+                if (level > 0)
+                {
+                    attackPressed = float.NegativeInfinity;
+                    motor.FireChargedWave(level, axis);
+                }
+                else if (tap) BufferAttack(0);
+                return;
+            }
+
+            if (level > WaveChargeLevel)
+            {
+                attackPressed = float.NegativeInfinity;
+                motor.EndSwingRecoveryForCharge();
+            }
+            WaveChargeLevel = level;
+            if (elapsed >= AttackTapSeconds)
+                chargeGlow = StarterSlashVisual.ChargeAura(chargeGlow, transform, motor.Facing, level, elapsed);
+        }
+
+        private void ClearWaveCharge()
+        {
+            waveChargeAt = float.NegativeInfinity;
+            tapMaySwing = false;
+            WaveChargeLevel = 0;
+            if (chargeGlow != null) Destroy(chargeGlow.gameObject);
+            chargeGlow = null;
+        }
+        private int WallSide(out Collider2D wall)
+        {
+            wall = null;
             if (motor.Grounded || motor.Stunned || motor.Attacking || motor.Skills == null ||
                 !motor.Skills.Progression.Record.storyFlags.Contains("intro_complete") ||
                 motor.Defense.BlocksActions || motor.BenefactorSkills.BlocksActions) return 0;
@@ -93,7 +222,9 @@ namespace RewindNotary
                 if (other == null || other.attachedRigidbody != null || Mathf.Abs(hit.normal.x) < .9f ||
                     !other.TryGetComponent<AuthoredSurface>(out var surface) || !surface.Kickable) continue;
                 int side = other.bounds.center.x > motor.Body.position.x ? 1 : -1;
-                if (axis * side > .25f) return side;
+                if (axis * side <= .25f) continue;
+                wall = other;
+                return side;
             }
             return 0;
         }
@@ -101,31 +232,38 @@ namespace RewindNotary
         {
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead) return;
             motor.RefreshGround();
-            if (motor.Grounded) { lastGrounded = Time.time; lastKickSide = 0; }
-            int side = WallSide();
+            if (motor.Grounded)
+            {
+                lastGrounded = Time.time;
+                usedAirJump = false;
+                canCutJump = true;
+            }
+            // Releasing direction or suspending an action can hide a wall without breaking contact.
+            if (motor.Grounded || (kickedWall != null && !actorCollider.IsTouching(kickedWall))) kickedWall = null;
+            int side = WallSide(out var wall);
             Sliding = side != 0 && motor.Body.linearVelocity.y <= 0f;
             if (motor.Stunned || motor.Grounded || motor.Defense.BlocksActions || motor.BenefactorSkills.BlocksActions)
                 kickUntil = 0f;
-            if (Time.time - jumpPressed <= JumpBuffer && Time.time - lastGrounded <= CoyoteTime && !motor.Stunned
+            if (Time.time - jumpPressed <= JumpBuffer && !motor.Stunned
                 && (motor.Defense == null || !motor.Defense.BlocksActions)
                 && (motor.BenefactorSkills == null || !motor.BenefactorSkills.BlocksActions))
             {
-                motor.Jump(JumpSpeed);
-                AudioManager.Play(AudioManager.Sfx.Jump);
-                jumpPressed = lastGrounded = float.NegativeInfinity;
-            }
-            else if (side != 0 && side != lastKickSide && Time.time - jumpPressed <= JumpBuffer)
-            {
-                lastKickSide = side;
-                kickDirection = -side;
-                kickUntil = Time.time + KickControlTime;
-                motor.Jump(WallKickY);
-                motor.Body.linearVelocity = new Vector2(kickDirection * WallKickX, WallKickY);
-                motor.Face(kickDirection);
-                Sliding = false;
-                WallJumps++;
-                AudioManager.Play(AudioManager.Sfx.Jump);
-                jumpPressed = lastGrounded = float.NegativeInfinity;
+                if (Time.time - lastGrounded <= CoyoteTime) StartJump(JumpSpeed);
+                else if (wall != null && wall != kickedWall)
+                {
+                    kickedWall = wall;
+                    kickDirection = -side;
+                    kickUntil = Time.time + KickControlTime;
+                    StartJump(WallKickY);
+                    motor.Body.linearVelocity = new Vector2(kickDirection * WallKickX, WallKickY);
+                    motor.Face(kickDirection);
+                    WallJumps++;
+                }
+                else if (!usedAirJump)
+                {
+                    usedAirJump = true;
+                    StartJump(AirJumpSpeed, variableHeight: false);
+                }
             }
             motor.Animation.SetWallPose(Sliding ? side : 0);
             if (Sliding)
@@ -137,24 +275,35 @@ namespace RewindNotary
             }
             // Jump first so a simultaneous jump/attack receives air control immediately.
             if (Time.time < kickUntil) motor.Move(kickDirection * WallKickX);
-            else motor.Move(axis * MoveSpeed);
+            else motor.Move(axis * (motor.Grounded && GameInput.SprintHeld ? SprintSpeed : MoveSpeed));
             if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions) cutJump = false;
             if (cutJump)
             {
-                if (motor.Body.linearVelocity.y > 0f)
+                if (canCutJump && !motor.RisingArc && motor.Body.linearVelocity.y > 0f)
                     motor.Body.linearVelocity = new Vector2(motor.Body.linearVelocity.x, motor.Body.linearVelocity.y * 0.5f);
                 cutJump = false;
             }
             if (motor.Body.linearVelocity.y < -18f)
                 motor.Body.linearVelocity = new Vector2(motor.Body.linearVelocity.x, -18f);
         }
+        private void StartJump(float speed, bool variableHeight = true)
+        {
+            motor.Jump(speed);
+            canCutJump = variableHeight;
+            Sliding = false;
+            jumpPressed = lastGrounded = float.NegativeInfinity;
+            AudioManager.Play(AudioManager.Sfx.Jump);
+        }
         public void SuspendInput()
         {
             pendingCast = null;
+            pendingStarter = null;
+            starterCommand.Reset();
             kickUntil = 0f; Sliding = false;
             motor?.Animation?.SetWallPose(0);
             axis = 0f; cutJump = false;
             attackPressed = jumpPressed = lastGrounded = float.NegativeInfinity;
+            ClearWaveCharge();
         }
         public void ClearInput()
         {

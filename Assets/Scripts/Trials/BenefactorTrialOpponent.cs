@@ -15,10 +15,11 @@ namespace RewindNotary
         private bool contacted;
         private int storyHalfHealth;
         private float trialTop;
-        private Bounds bellLanding;
+        private Bounds markedThreat;
         private Bounds? storyDeck;
         private bool StoryBell => storyHalfHealth > 0 && Pattern.action == "bell";
-        private TrialPattern Pattern => Definition.patterns[pattern];
+        private bool ThreadLunge => Pattern.action == "thread_lunge";
+        private TrialPattern Pattern => pattern == Definition.patterns.Length ? Definition.StoryFinisher : Definition.patterns[pattern];
         public string PatternLabel => rest > 0 ? Loc.Get("trial.resting") : Pattern.Label + (phase == 0 ? Loc.Get("trial.windup_suffix") : phase == 1 ? Loc.Get("trial.action_suffix") : Loc.Get("trial.opening_suffix"));
         public void Initialize(CombatMotor2D actor, SkillSession skills, BenefactorTrialDefinition definition, float floorY = 0)
         {
@@ -30,7 +31,7 @@ namespace RewindNotary
             session.Progression.Trials.Verified += Rest;
             ResetAttempt();
         }
-        // The story room owns HP, interlude, victory and reward. Reuse only the two authored attacks.
+        // The story room still owns HP, interlude, victory and reward.
         internal void StartStoryBout(CombatMotor2D actor, BenefactorTrialDefinition definition, int halfHealth, Bounds? deck = null)
         {
             motor = GetComponent<CombatMotor2D>(); player = actor; Definition = definition;
@@ -38,6 +39,8 @@ namespace RewindNotary
             binding.Break();
             storyHalfHealth = halfHealth;
             storyDeck = deck;
+            if (Definition.StoryFinisher != null && motor.Health.Current <= halfHealth)
+                pattern = Definition.patterns.Length;
             remaining = Pattern.windup;
             motor.Face(player.Body.position.x - motor.Body.position.x);
             motor.Animation.Tint(new Color(.96f, .72f, .68f));
@@ -89,9 +92,19 @@ namespace RewindNotary
                             // Low radial strike at the hammer, then a tall strike at the landing marked under Rea.
                             float height = pattern == 0 ? .75f : 2.8f;
                             float center = pattern == 0 ? motor.Body.position.x : player.Body.position.x;
-                            bellLanding = new Bounds(new Vector3(center, motor.Body.position.y + height / 2, 0),
+                            markedThreat = new Bounds(new Vector3(center, motor.Body.position.y + height / 2, 0),
                                 new Vector3(pattern == 0 ? Pattern.reach * 2 : Pattern.reach, height, 2));
-                            BellOutline(bellLanding, Pattern.windup);
+                            MarkOutline(markedThreat, Pattern.windup);
+                        }
+                        else if (ThreadLunge)
+                        {
+                            Vector2 start = motor.Body.position;
+                            float end = start.x + direction * Pattern.reach;
+                            if (storyDeck.HasValue)
+                                end = Mathf.Clamp(end, storyDeck.Value.min.x + .6f, storyDeck.Value.max.x - .6f);
+                            markedThreat = new Bounds(new Vector3((start.x + end) * .5f, start.y + .55f, 0),
+                                new Vector3(Mathf.Abs(end - start.x), 1.1f, 2));
+                            MarkOutline(markedThreat, Pattern.windup);
                         }
                         else
                         {
@@ -105,7 +118,7 @@ namespace RewindNotary
             else if (phase == 1)
             {
                 motor.Animation.SetTelegraph(false);
-                bool dash = Pattern.action == "pendulum_out" || Pattern.action == "pendulum_back";
+                bool dash = ThreadLunge || Pattern.action == "pendulum_out" || Pattern.action == "pendulum_back";
                 Move(dash ? direction * Pattern.speed : 0);
                 motor.Animation.PlayAttack(Pattern.duration - remaining, 0, Pattern.duration);
                 if (!contacted && Threat().Intersects(player.GetComponent<Collider2D>().bounds))
@@ -117,20 +130,30 @@ namespace RewindNotary
             if (phase == 0)
             {
                 phase = 1; remaining = Pattern.duration; contacted = false;
-                if (storyHalfHealth > 0) AudioManager.Play(AudioManager.Sfx.BossAttack);
+                if (storyHalfHealth > 0)
+                {
+                    AudioManager.Play(AudioManager.Sfx.BossAttack);
+                    ActorVisualPolish2D.SpawnSkillFx(Definition.skillId, motor.transform.position + Vector3.up,
+                        motor.Facing, ThreadLunge ? 2.9f : 2.1f, Pattern.duration);
+                }
                 if (Pattern.action == "waltz") motor.Jump(Pattern.speed);
                 if (Pattern.action == "volley") { Shoot(); contacted = true; }
                 var area = Threat(); SkillStroke.Show(area.min, area.max, Color.cyan, Pattern.duration);
             }
             else if (phase == 1) { phase = 2; remaining = Pattern.recovery * (pressing ? .65f : 1f); }
-            else { pattern = (pattern + 1) % Definition.patterns.Length; phase = 0; remaining = Pattern.windup; }
+            else
+            {
+                int count = Definition.patterns.Length + (pressing && Definition.StoryFinisher != null ? 1 : 0);
+                pattern = (pattern + 1) % count;
+                phase = 0; remaining = Pattern.windup;
+            }
         }
         private void LateUpdate()
         {
             if (storyHalfHealth > 0 && phase == 1 && !motor.Health.Dead && !motor.Stunned && !motor.Temporal.Frozen && !binding.Bound)
                 motor.Animation.PlayAttack(Pattern.duration - remaining, 0, Pattern.duration);
         }
-        private static void BellOutline(Bounds b, float seconds)
+        private static void MarkOutline(Bounds b, float seconds)
         {
             Vector2 lo = b.min, hi = b.max;
             var left = new Vector2(lo.x, hi.y);
@@ -142,7 +165,7 @@ namespace RewindNotary
         }
         private Bounds Threat()
         {
-            if (StoryBell) return bellLanding;
+            if (StoryBell || ThreadLunge) return markedThreat;
             float height = Pattern.action == "paint_line" ? 0.5f : Pattern.action == "thread_cross" ? 3f : 2f;
             bool radial = Pattern.action == "bell" || Pattern.action == "waltz";
             return new Bounds(motor.transform.position + new Vector3(radial ? 0 : direction * Pattern.reach * 0.5f, height * 0.5f, 0),
@@ -157,8 +180,11 @@ namespace RewindNotary
         {
             var go = new GameObject("trial_shot:" + Definition.id + ":" + (++shotSerial));
             go.transform.SetParent(transform.parent, false);
-            bool fromRight = player.Body.position.x + Pattern.reach <= Definition.arenaMax;
+            float left = storyDeck.HasValue ? storyDeck.Value.min.x + .35f : Definition.arenaMin;
+            float right = storyDeck.HasValue ? storyDeck.Value.max.x - .35f : Definition.arenaMax;
+            bool fromRight = player.Body.position.x + Pattern.reach <= right;
             float x = player.Body.position.x + (fromRight ? Pattern.reach : -Pattern.reach);
+            if (storyDeck.HasValue) x = Mathf.Clamp(x, left, right);
             go.transform.position = new Vector3(x, player.Body.position.y + Pattern.projectileHeight, 0);
             var shot = go.AddComponent<SkillProjectile2D>();
             shot.Initialize(player, motor);
