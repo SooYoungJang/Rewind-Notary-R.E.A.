@@ -42,19 +42,19 @@ namespace RewindNotary
                         result.groundStop.releaseSpeed = speed;
                         phase = Phase.GroundStop;
                     }
-                    else keys.Hold(KeyCode.D);
+                    else keys.Hold(KeyCode.RightArrow);
                     break;
                 case Phase.Tap:
                     if (!player.Grounded || player.Attacking || Mathf.Abs(speed) >= .1f)
-                    { Abort("Single J tap requires a stationary idle player"); break; }
-                    keys.Tap(KeyCode.J);
+                    { Abort("Single Z tap requires a stationary idle player"); break; }
+                    keys.Tap(KeyCode.Z);
                     tapFrame = Time.frameCount;
                     player.AttackStarted += OnAttackStarted;
                     phase = Phase.Attack;
                     break;
                 case Phase.AirRun:
                     if (player.Attacking) break;
-                    keys.Hold(KeyCode.D);
+                    keys.Hold(KeyCode.RightArrow);
                     if (player.Grounded && AtRunSpeed(speed))
                     {
                         keys.Hold(KeyCode.Space);
@@ -69,21 +69,21 @@ namespace RewindNotary
                     }
                     else
                     {
-                        keys.Hold(KeyCode.D);
+                        keys.Hold(KeyCode.RightArrow);
                         keys.Hold(KeyCode.Space);
                     }
                     break;
                 case Phase.MovingRun:
                     if (!player.Grounded || player.Attacking) break;
-                    keys.Hold(KeyCode.D);
+                    keys.Hold(KeyCode.RightArrow);
                     if (!AtRunSpeed(speed)) break;
                     result.movingAttack.startSpeed = speed;
-                    keys.Hold(KeyCode.J);
+                    keys.Hold(KeyCode.Z);
                     phase = Phase.MovingAttack;
                     break;
                 case Phase.MovingAttack:
-                    if (player.Attacking) keys.Hold(KeyCode.D);
-                    else if (result.movingAttack.physicsTicks == 0) Abort("Running J produced no attack physics ticks");
+                    if (player.Attacking) keys.Hold(KeyCode.RightArrow);
+                    else if (result.movingAttack.physicsTicks == 0) Abort("Running Z produced no attack physics ticks");
                     else
                     {
                         result.movingAttack.status = "pass";
@@ -161,7 +161,7 @@ namespace RewindNotary
                 result.airStop.status = "running";
                 phase = Phase.AirRun;
             }
-            else if (sample.framesSinceTap >= 2) Abort("Stationary J did not start one swing within two frames");
+            else if (sample.framesSinceTap >= 2) Abort("Stationary Z did not start one swing within two frames");
         }
 
         internal void Abort(string reason)

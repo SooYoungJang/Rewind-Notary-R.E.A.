@@ -14,12 +14,17 @@ namespace RewindNotary
         public int stageOverride;
         // Additive schema-1 field. Older files deserialize this as null.
         public string language;
+        public string[] quickSkills = (string[])QuickSkills.Starter.Clone();
         public void Validate()
         {
             if (schemaVersion != 1 || float.IsNaN(bgmVolume) || float.IsNaN(sfxVolume)
                 || bgmVolume < 0 || bgmVolume > 1 || sfxVolume < 0 || sfxVolume > 1
                 || stageOverride < 0 || stageOverride > 3) throw new InvalidDataException(Loc.Get("settings.invalid_values"));
             language = Loc.Normalize(language);
+            if (quickSkills == null || quickSkills.Length != QuickSkills.Keys.Length)
+                quickSkills = (string[])QuickSkills.Starter.Clone();
+            else for (int i = 0; i < quickSkills.Length; i++)
+                if (!QuickSkills.IsAssignable(quickSkills[i])) quickSkills[i] = QuickSkills.Starter[i];
         }
     }
     public sealed class SettingsStore

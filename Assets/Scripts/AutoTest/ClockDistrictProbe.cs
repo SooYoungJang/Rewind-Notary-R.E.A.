@@ -238,7 +238,7 @@ namespace RewindNotary
             {
                 var point = area.Room.Point(action.Substring(action.IndexOf(':') + 1));
                 if (action.StartsWith("use:", StringComparison.Ordinal) && point != null)
-                { if (bot.ClockPosition(point.surface, point.x)) keys.Tap(KeyCode.F); }
+                { if (bot.ClockPosition(point.surface, point.x)) keys.Tap(KeyCode.C); }
                 else if (action.StartsWith("timed:", StringComparison.Ordinal) && point != null)
                     bot.ClockPosition(point.surface, point.x);
                 else if (bot.ClockTarget != null) bot.ClockFight(bot.ClockTarget);
@@ -317,7 +317,7 @@ namespace RewindNotary
         {
             var door = Array.Find(bot.Area.Room.exits, d => d.room == dest);
             if (door == null || !bot.ClockDoor(door)) return false;
-            keys.Tap(KeyCode.F);
+            keys.Tap(KeyCode.C);
             return GameInput.InvestigateDown;
         }
     }

@@ -161,7 +161,7 @@ namespace RewindNotary
                 bool drivingPilot = (PlaytestStep)index == PlaytestStep.Velvet && pilot.Drive(bot, keyboard, report.pilot);
                 if (!drivingPilot && ((PlaytestStep)index != PlaytestStep.Attic || !feel.Drive(bot, keyboard, report.feel)))
                     bot.Drive((PlaytestStep)index);
-                if (keyboard.GetKeyDown(KeyCode.J)) report.attackInputs.issued++;
+                if (keyboard.GetKeyDown(KeyCode.Z)) report.attackInputs.issued++;
             }
             catch (Exception e)
             {

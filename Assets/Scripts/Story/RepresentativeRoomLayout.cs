@@ -303,9 +303,9 @@ namespace RewindNotary
         public void DrawHUD(GUIStyle title, GUIStyle label)
         {
             var style = new GUIStyle(label) { wordWrap = true };
-            GUI.Box(new Rect(20, 18, 1000, 110), "");
-            GUI.Label(new Rect(34, 24, 960, 35), Room.Label, title);
-            GUI.Label(new Rect(34, 63, 950, 60), Loc.Get("hud.rea_health", player.Health.Current, player.Health.Maximum) + "   " +
+            GUI.Box(new Rect(20, 18, 806, 110), "");
+            GUI.Label(new Rect(34, 24, 780, 35), Room.Label, title);
+            GUI.Label(new Rect(34, 63, 770, 60), Loc.Get("hud.rea_health", player.Health.Current, player.Health.Maximum) + "   " +
                 (DistrictTrial == null ? Loc.Get("area.uses", Record.Get(SkillRules.SilverStitch).validUseCount) :
                     Loc.Get("hud.skill_progress", session.Progression.Catalog.Get(Room.skill).DisplayName, Record.Get(Room.skill).validUseCount, Record.Get(Room.skill).stage, "", "")) + "   " + session.Notice, style);
             if (Room.id == "court_03_lift" && Record.Get(SkillRules.BasicSword).stage < 3)

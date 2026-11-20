@@ -2,6 +2,30 @@
   "language": "fr",
   "entries": [
     {
+      "key": "quick_skill.rea_thrust",
+      "value": "Estoc"
+    },
+    {
+      "key": "quick_skill.rea_rising",
+      "value": "Coupe haute"
+    },
+    {
+      "key": "quick_skill.rea_sweep",
+      "value": "Balayage"
+    },
+    {
+      "key": "quick_skill.rea_wave",
+      "value": "Onde de lame"
+    },
+    {
+      "key": "quick_skill.menu",
+      "value": "Emplacements de techniques"
+    },
+    {
+      "key": "quick_skill.assign_hint",
+      "value": "↑ ↓ Choisir · ← → Équiper une technique"
+    },
+    {
       "key": "story.prologue.city",
       "value": "À Lapis, la cité du Notariat, le registre consigne le nom de chacun et les techniques qu’il a apprises."
     },
@@ -71,7 +95,7 @@
     },
     {
       "key": "finale.mirror_open",
-      "value": "Miroir exposé · F / stick gauche : choisir une restitution"
+      "value": "Miroir exposé · C / stick gauche : choisir une restitution"
     },
     {
       "key": "finale.mirror_closed",
@@ -211,7 +235,7 @@
     },
     {
       "key": "input.gameplay",
-      "value": "Bouger A/D·Flèches·Stick | Saut Espace·A | Épée J/Z/Clic gauche·X | Technique Q·Y | Esquive Maj/K·LB | Parade L·RB"
+      "value": "← → Déplacement · Espace Saut · Z Attaque · X Parade · C Interaction · Maj+direction Course · Q W E R Techniques"
     },
     {
       "key": "hud.trial_hint",
@@ -231,7 +255,7 @@
     },
     {
       "key": "input.retry_pause",
-      "value": "{0}  R·Affichage : recommencer | Échap·Menu : pause"
+      "value": "{0}  Backspace·Affichage : recommencer | Échap·Menu : pause"
     },
     {
       "key": "input.debug",
@@ -239,7 +263,7 @@
     },
     {
       "key": "trial.health",
-      "value": "PV d'entraînement {0}/{1} · Reprise une fois épuisés · R : replacer les combattants"
+      "value": "PV d'entraînement {0}/{1} · Reprise une fois épuisés · Backspace : replacer les combattants"
     },
     {
       "key": "input.benefactor_support",
@@ -259,7 +283,7 @@
     },
     {
       "key": "input.retry_button",
-      "value": "Appuie sur R / Affichage pour réessayer."
+      "value": "Appuie sur Backspace / Affichage pour réessayer."
     },
     {
       "key": "hud.returning_checkpoint",
@@ -407,7 +431,7 @@
     },
     {
       "key": "input.investigation",
-      "value": "Examiner : F / clic stick gauche\nÉchap → Techniques → Journal d'enquête"
+      "value": "Examiner : C / clic stick gauche\nÉchap → Techniques → Journal d'enquête"
     },
     {
       "key": "investigation.read_core",
@@ -423,7 +447,7 @@
     },
     {
       "key": "input.inspect_action",
-      "value": "F / clic stick gauche : {0}"
+      "value": "C / clic stick gauche : {0}"
     },
     {
       "key": "investigation.wait_for_action",
@@ -611,7 +635,7 @@
     },
     {
       "key": "skill.acquired_notice",
-      "value": "{0} acquise — Choisir : 1–5 / E·B · Utiliser : Q·Y"
+      "value": "{0} apprise. Utilise direction + V ou équipe-la dans un emplacement."
     },
     {
       "key": "skill.stage_up_notice",
@@ -1359,7 +1383,7 @@
     },
     {
       "key": "wave.all_complete",
-      "value": "3 zones terminées · Vérifie les seuils d'épée 151 / 400 dans le journal. R : recommencer"
+      "value": "3 zones terminées · Vérifie les seuils d'épée 151 / 400 dans le journal. Backspace : recommencer"
     },
     {
       "key": "wave.zone_complete",
@@ -1859,7 +1883,7 @@
     },
     {
       "key": "input.cast_hint",
-      "value": "Direction + Q·Y | Mur : maintiens l’attaque + ↓ technique"
+      "value": "Direction + V·Y | Mur : maintiens l’attaque + ↓ technique"
     },
     {
       "key": "input.skill_unlearned",
@@ -1883,7 +1907,7 @@
     },
     {
       "key": "story.intro.attic.02",
-      "value": "« Déjà réveillée, Rea ? J'avais sorti ce bonbon pour ta sacoche en préparant la tisane de menthe résonante, il a dû rouler. Apporte-le et pose-le dans la coupelle vide à côté de l'enveloppe. »\n(Commandes : Appuie sur F / clic stick gauche devant le bonbon au sol pour le ramasser, puis pose-le dans la coupelle sur la table.)"
+      "value": "« Déjà réveillée, Rea ? J'avais sorti ce bonbon pour ta sacoche en préparant la tisane de menthe résonante, il a dû rouler. Apporte-le et pose-le dans la coupelle vide à côté de l'enveloppe. »\n(Commandes : Appuie sur C / clic stick gauche devant le bonbon au sol pour le ramasser, puis pose-le dans la coupelle sur la table.)"
     },
     {
       "key": "story.intro.attic.03",
@@ -1891,7 +1915,7 @@
     },
     {
       "key": "story.intro.attic.04",
-      "value": "(Elle lisse son tablier, affiche un sourire radieux et tend l'enveloppe)\n« Tiens, ma Rea ! Un ordre de mission spécial descendu du Bureau central du Notariat. Prends-le vite. »\n(Commandes : Appuie sur F / clic stick gauche sur l'enveloppe de mission sur la table pour la recevoir. L'indice [Contrat · Sceau de la copie] sera consigné.)"
+      "value": "(Elle lisse son tablier, affiche un sourire radieux et tend l'enveloppe)\n« Tiens, ma Rea ! Un ordre de mission spécial descendu du Bureau central du Notariat. Prends-le vite. »\n(Commandes : Appuie sur C / clic stick gauche sur l'enveloppe de mission sur la table pour la recevoir. L'indice [Contrat · Sceau de la copie] sera consigné.)"
     },
     {
       "key": "story.intro.attic.05",
@@ -1907,11 +1931,11 @@
     },
     {
       "key": "story.intro.board.03",
-      "value": "« Moi, je mangerai quand je serai rentrée…… ah oui, quand nous serons rentrés !\n(Posant la main sur la sixième case vide à côté des cinq noms) Oui, je ne laisserai pas ma place vide non plus. Demain matin, le sixième bol, c'est moi qui le viderai ! »\n(Commandes : Appuie sur F / clic stick gauche devant le tableau des petits-déjeuners pour apposer ton sceau à la sixième place.)"
+      "value": "« Moi, je mangerai quand je serai rentrée…… ah oui, quand nous serons rentrés !\n(Posant la main sur la sixième case vide à côté des cinq noms) Oui, je ne laisserai pas ma place vide non plus. Demain matin, le sixième bol, c'est moi qui le viderai ! »\n(Commandes : Appuie sur C / clic stick gauche devant le tableau des petits-déjeuners pour apposer ton sceau à la sixième place.)"
     },
     {
       "key": "story.intro.forge.01",
-      "value": "« Tu viens vérifier ton fil avant de partir, Rea ? Fais voir. Je vais l'effleurer sur la meule et voir si la rainure du noyau ne branle pas. »\n(Commandes : Appuie sur F / clic stick gauche devant la meule d'Ethan pour y poser la lame-mémoire.)"
+      "value": "« Tu viens vérifier ton fil avant de partir, Rea ? Fais voir. Je vais l'effleurer sur la meule et voir si la rainure du noyau ne branle pas. »\n(Commandes : Appuie sur C / clic stick gauche devant la meule d'Ethan pour y poser la lame-mémoire.)"
     },
     {
       "key": "story.intro.forge.02",
@@ -1931,7 +1955,7 @@
     },
     {
       "key": "story.velvet.entry.02",
-      "value": "« Regarde dans cette penderie ouverte. De la taille onze ans jusqu'à la taille seize ans, six manteaux d'hiver pendent côte à côte — un neuf chaque année depuis six ans. Pourtant personne n'a jamais pu les revêtir, et chaque couture est repassée au cordeau. »\n(Commandes : Appuie sur F / clic stick gauche pour examiner la penderie de Mikhail. L'indice [Mikhail · Empreinte du noyau] sera consigné.)"
+      "value": "« Regarde dans cette penderie ouverte. De la taille onze ans jusqu'à la taille seize ans, six manteaux d'hiver pendent côte à côte — un neuf chaque année depuis six ans. Pourtant personne n'a jamais pu les revêtir, et chaque couture est repassée au cordeau. »\n(Commandes : Appuie sur C / clic stick gauche pour examiner la penderie de Mikhail. L'indice [Mikhail · Empreinte du noyau] sera consigné.)"
     },
     {
       "key": "story.velvet.entry.03",
@@ -1951,7 +1975,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Plantant ses ciseaux au sol, il pose un genou à terre. Le noyau de la lame-mémoire capte en bleu la trace du palier 1 de la Couture d'argent révélée pendant le duel)\n« Tss…… J'avais beau cacher mon dernier nœud, cette épée a lu le fil de mon point simple.\nRetiens bien ceci, Rea : si tu t'arrêtes là, ce n'est qu'une simple défense ; mais à l'instant où tu pousseras cette couture jusqu'à son terme, le supplice de mon cœur passera en toi. Je me retire à l'infirmerie…… Rengaine cette épée et rentre chez toi, je t'en supplie. »\n(Avis système : Couture d'argent acquise — Appuie sur Q (Y à la manette) sans maintenir de direction.)"
+      "value": "(Plantant ses ciseaux au sol, il pose un genou à terre. Le noyau de la lame-mémoire capte en bleu la trace du palier 1 de la Couture d'argent révélée pendant le duel)\n« Tss…… J'avais beau cacher mon dernier nœud, cette épée a lu le fil de mon point simple.\nRetiens bien ceci, Rea : si tu t'arrêtes là, ce n'est qu'une simple défense ; mais à l'instant où tu pousseras cette couture jusqu'à son terme, le supplice de mon cœur passera en toi. Je me retire à l'infirmerie…… Rengaine cette épée et rentre chez toi, je t'en supplie. »\n(Avis système : Couture d'argent acquise — Appuie sur V (Y à la manette) sans maintenir de direction.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -2015,7 +2039,7 @@
     },
     {
       "key": "story.invest.03_theo",
-      "value": "(Faisant rapidement la navette en boitant devant le terminal, il affiche le graphe des courbes)\n« Regarde le journal du registre sur le terminal de l'antenne, Rea. Cette “clause d'absorption et d'effacement du noyau mère” vantée par le Bureau central n'existe nulle part dans les plans de la lame-mémoire.\nLa causalité du monde t'a jugée “identique” au détenteur originel parce que tu as reproduit parfaitement une Forme ultime de palier 3, et elle a aussitôt transféré le Destin prévu dans ton corps. »\n(Commandes : Appuie sur F / clic stick gauche pour examiner le terminal d'archives de l'antenne (point_route_ledger) et vérifier l'indice [Parcours du transfert · Terminal d'archives].)"
+      "value": "(Faisant rapidement la navette en boitant devant le terminal, il affiche le graphe des courbes)\n« Regarde le journal du registre sur le terminal de l'antenne, Rea. Cette “clause d'absorption et d'effacement du noyau mère” vantée par le Bureau central n'existe nulle part dans les plans de la lame-mémoire.\nLa causalité du monde t'a jugée “identique” au détenteur originel parce que tu as reproduit parfaitement une Forme ultime de palier 3, et elle a aussitôt transféré le Destin prévu dans ton corps. »\n(Commandes : Appuie sur C / clic stick gauche pour examiner le terminal d'archives de l'antenne (point_route_ledger) et vérifier l'indice [Parcours du transfert · Terminal d'archives].)"
     },
     {
       "key": "story.invest.04_luka",
@@ -2023,7 +2047,7 @@
     },
     {
       "key": "story.invest.05_marta",
-      "value": "(Les mains tremblantes, Marta étale côte à côte sous la lampe de l'établi le livre de consignation du grenier et la copie de l'ordre de Rea)\n« Rea, cette vieille femme n'en savait vraiment rien en te le donnant. Mais à la lumière…… sous [Article 3 (Clause spéciale)] de ta copie, la trame d'origine du papier a été finement grattée au couteau.\nPar-dessus, on a réimprimé “absorption, effacement et grâce spéciale” avec les vieux caractères en plomb de notre réserve de la Tour de l'Horloge et ton encre notariale de lapis. Et maintenant regarde la signature sous [Archive #01 / Avant reflux 06:25] dans le registre. »\n(Commandes : Appuie sur F / clic stick gauche pour comparer le livre de consignation et le sceau de la copie sur l'établi.)"
+      "value": "(Les mains tremblantes, Marta étale côte à côte sous la lampe de l'établi le livre de consignation du grenier et la copie de l'ordre de Rea)\n« Rea, cette vieille femme n'en savait vraiment rien en te le donnant. Mais à la lumière…… sous [Article 3 (Clause spéciale)] de ta copie, la trame d'origine du papier a été finement grattée au couteau.\nPar-dessus, on a réimprimé “absorption, effacement et grâce spéciale” avec les vieux caractères en plomb de notre réserve de la Tour de l'Horloge et ton encre notariale de lapis. Et maintenant regarde la signature sous [Archive #01 / Avant reflux 06:25] dans le registre. »\n(Commandes : Appuie sur C / clic stick gauche pour comparer le livre de consignation et le sceau de la copie sur l'établi.)"
     },
     {
       "key": "story.invest.06_rea",
@@ -2031,7 +2055,7 @@
     },
     {
       "key": "story.invest.07_exp1_ethan",
-      "value": "« À quoi bon deviner en paroles ? Pose l'épée sur le banc de mesure, on verra ce qui y reste.\nRea, tu te souviens des trois entailles de repère sur le troisième segment de la lame qu'on a vues tout à l'heure à la forge ? Pose la lame sans abîmer les marques et cale exactement l'ergot de l'établi dans cette graduation du troisième segment. »\n(Commandes : Appuie sur F / clic stick gauche au banc de mesure de l'établi (calibration_mount) pour caler l'ergot sur les repères du troisième segment. L'indice [Parcours du transfert · Empreinte projetée du noyau] sera consigné.)"
+      "value": "« À quoi bon deviner en paroles ? Pose l'épée sur le banc de mesure, on verra ce qui y reste.\nRea, tu te souviens des trois entailles de repère sur le troisième segment de la lame qu'on a vues tout à l'heure à la forge ? Pose la lame sans abîmer les marques et cale exactement l'ergot de l'établi dans cette graduation du troisième segment. »\n(Commandes : Appuie sur C / clic stick gauche au banc de mesure de l'établi (calibration_mount) pour caler l'ergot sur les repères du troisième segment. L'indice [Parcours du transfert · Empreinte projetée du noyau] sera consigné.)"
     },
     {
       "key": "story.invest.08_exp1_rea",
@@ -2047,7 +2071,7 @@
     },
     {
       "key": "story.invest.11_exp3_theo",
-      "value": "« Passons à la troisième expérience ! Je vais allumer la plaque de mesure à réflexion réglementaire du Notariat en face pour cloner exactement ton coup d'épée. Voyons jusqu'où le miroir copie ta trajectoire et ta puissance d'empreinte — et si l'enregistrement reste après extinction ! »\n(Commandes : Appuie sur F / clic stick gauche devant la plaque de réflexion (reflection_plate) pour effectuer l'essai et détacher le mesureur.)"
+      "value": "« Passons à la troisième expérience ! Je vais allumer la plaque de mesure à réflexion réglementaire du Notariat en face pour cloner exactement ton coup d'épée. Voyons jusqu'où le miroir copie ta trajectoire et ta puissance d'empreinte — et si l'enregistrement reste après extinction ! »\n(Commandes : Appuie sur C / clic stick gauche devant la plaque de réflexion (reflection_plate) pour effectuer l'essai et détacher le mesureur.)"
     },
     {
       "key": "story.invest.12_exp4_theo",
@@ -2063,7 +2087,7 @@
     },
     {
       "key": "story.luka.signal",
-      "value": "« Luka ! Attends, emmène-moi ! »\n(Commandes : Appuie sur F / clic stick gauche au poste de signalisation (luka_signal_post) pour envoyer directement le signal à Luka.)"
+      "value": "« Luka ! Attends, emmène-moi ! »\n(Commandes : Appuie sur C / clic stick gauche au poste de signalisation (luka_signal_post) pour envoyer directement le signal à Luka.)"
     },
     {
       "key": "story.luka.board",
@@ -2511,7 +2535,7 @@
     },
     {
       "key": "area.travel",
-      "value": "F / L3 · {0}"
+      "value": "C / L3 · {0}"
     },
     {
       "key": "area.walk",
@@ -2555,7 +2579,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Bouger   F / L3 Examiner·Entrer   J·Z·Clic gauche Épée (manette X)   Q / Y Technique   Échap Pause"
+      "value": "← → Déplacement · Espace Saut · Z Attaque · X Parade · C Interaction · Maj+direction Course · Q W E R Techniques · Esc"
     },
     {
       "key": "investigation.clue.route_ledger.body",
@@ -2603,7 +2627,7 @@
     },
     {
       "key": "story.clock.entry.03",
-      "value": "« Bien sûr ! Regarde sur le velours de cet établi, Rea. Depuis le jour, il y a six ans, où mon oncle est revenu affaibli du jour au lendemain comme un vieillard aux cheveux blancs, il n'a pas manqué un seul jour de frotter avec un chiffon sec ce qui repose là. »\n(Commandes : Appuie sur F / clic stick gauche pour examiner l'établi d'accordage horloger de Julius (julius_workbench). L'indice [Julius · Empreinte du noyau] sera consigné.)"
+      "value": "« Bien sûr ! Regarde sur le velours de cet établi, Rea. Depuis le jour, il y a six ans, où mon oncle est revenu affaibli du jour au lendemain comme un vieillard aux cheveux blancs, il n'a pas manqué un seul jour de frotter avec un chiffon sec ce qui repose là. »\n(Commandes : Appuie sur C / clic stick gauche pour examiner l'établi d'accordage horloger de Julius (julius_workbench). L'indice [Julius · Empreinte du noyau] sera consigné.)"
     },
     {
       "key": "story.clock.entry.04",
@@ -2639,7 +2663,7 @@
     },
     {
       "key": "story.clock.route.07",
-      "value": "« Rea, j'ai calé le point de retour juste ici sur le sol du vestibule du cadran. Dès que tu es prête, ouvre le grand portail et entre ! »\n(Commandes : Appuie sur F / clic stick gauche au grand portail de l'arène (clock_arena_gate) pour entrer.)"
+      "value": "« Rea, j'ai calé le point de retour juste ici sur le sol du vestibule du cadran. Dès que tu es prête, ouvre le grand portail et entre ! »\n(Commandes : Appuie sur C / clic stick gauche au grand portail de l'arène (clock_arena_gate) pour entrer.)"
     },
     {
       "key": "story.julius.i0.01",
@@ -2659,7 +2683,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Plantant son épée-aiguille dans le sol, il souffle lourdement. Le noyau de la lame-mémoire capte en lueur de laiton la trace de la trajectoire de palier 1 de Julius montrée pendant le duel)\n« ……J'avais beau cacher ma Forme ultime, ta lame-mémoire a déchiffré la trajectoire d'aller-retour de mon premier “Pas du pendule”.\nRetiens bien ceci, Rea. Jusqu'à vingt-neuf fois, ce n'est qu'un pas d'escrime, et à trente seul le boîtier de la montre vibrera ; mais à l'instant du quatre-vingtième geste de Forme ultime, la trotteuse figée de ta demi-montre repartira et mon vieillissement s'abattra sur toi. »\n(Avis système : Retour du pendule acquis — Maintiens la direction opposée à celle où regarde Rea et appuie sur Q (Y à la manette).)"
+      "value": "(Plantant son épée-aiguille dans le sol, il souffle lourdement. Le noyau de la lame-mémoire capte en lueur de laiton la trace de la trajectoire de palier 1 de Julius montrée pendant le duel)\n« ……J'avais beau cacher ma Forme ultime, ta lame-mémoire a déchiffré la trajectoire d'aller-retour de mon premier “Pas du pendule”.\nRetiens bien ceci, Rea. Jusqu'à vingt-neuf fois, ce n'est qu'un pas d'escrime, et à trente seul le boîtier de la montre vibrera ; mais à l'instant du quatre-vingtième geste de Forme ultime, la trotteuse figée de ta demi-montre repartira et mon vieillissement s'abattra sur toi. »\n(Avis système : Retour du pendule acquis — Maintiens la direction opposée à celle où regarde Rea et appuie sur V (Y à la manette).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2715,7 +2739,7 @@
     },
     {
       "key": "story.clock.return.01",
-      "value": "« La cloison de laiton de la voie de retour haute se referme vite. Avec le palier 1 “Pas du pendule” du “Retour du pendule” que je viens d'enregistrer, je peux laisser une image rémanente, foncer frapper l'interrupteur et réappuyer sous 1,5 seconde pour revenir en sécurité sur le sol ferme ! »\n(Commandes : Utilise Retour du pendule (Q / Y) pour frapper l'interrupteur derrière la cloison, puis réappuie pour revenir sans danger à ton image rémanente.)"
+      "value": "« La cloison de laiton de la voie de retour haute se referme vite. Avec le palier 1 “Pas du pendule” du “Retour du pendule” que je viens d'enregistrer, je peux laisser une image rémanente, foncer frapper l'interrupteur et réappuyer sous 1,5 seconde pour revenir en sécurité sur le sol ferme ! »\n(Commandes : Utilise Retour du pendule (V / Y) pour frapper l'interrupteur derrière la cloison, puis réappuie pour revenir sans danger à ton image rémanente.)"
     },
     {
       "key": "story.clock.return.02",
@@ -2759,7 +2783,7 @@
     },
     {
       "key": "story.opera.entry.03",
-      "value": "« Oui. Regarde maintenant les chaussons de pointe sur l'étagère et ce parquet sous nos pieds, Rea. Même après ne plus pouvoir monter sur scène, Valeria balayait et nettoyait cet endroit tous les jours. »\n(Commandes : Appuie sur F / clic stick gauche pour examiner l'étagère à pointes et le parquet de répétition de Valeria (valeria_shoes_rack). L'indice [Valeria · Empreinte du noyau] sera consigné.)"
+      "value": "« Oui. Regarde maintenant les chaussons de pointe sur l'étagère et ce parquet sous nos pieds, Rea. Même après ne plus pouvoir monter sur scène, Valeria balayait et nettoyait cet endroit tous les jours. »\n(Commandes : Appuie sur C / clic stick gauche pour examiner l'étagère à pointes et le parquet de répétition de Valeria (valeria_shoes_rack). L'indice [Valeria · Empreinte du noyau] sera consigné.)"
     },
     {
       "key": "story.opera.entry.04",
@@ -2795,7 +2819,7 @@
     },
     {
       "key": "story.opera.route.07",
-      "value": "« J'ai ouvert un point de retour juste ici sur le sol des coulisses, Rea. Je t'attends en bas près du levier du monte-charge sous la scène ! »\n(Commandes : Appuie sur F / clic stick gauche au rideau de velours de la grande scène (opera_arena_gate) pour entrer.)"
+      "value": "« J'ai ouvert un point de retour juste ici sur le sol des coulisses, Rea. Je t'attends en bas près du levier du monte-charge sous la scène ! »\n(Commandes : Appuie sur C / clic stick gauche au rideau de velours de la grande scène (opera_arena_gate) pour entrer.)"
     },
     {
       "key": "story.valeria.i0.01",
@@ -2815,7 +2839,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Appuyant la pointe de sa rapière au parquet, elle reprend souffle. Le noyau de la lame-mémoire capte en lueur bleu-vert la trace de la trajectoire de saut tournoyant de palier 1 de Valeria)\n« ……Ah, j'avais beau cacher le final, ton épée a copié l'angle de saut de ma première “Danse des lames tournoyantes”.\nJe t'en prie, Rea. Jusqu'à trente fois, tu ne prendras que mon tic de révérence, mais dès que tu achèveras le quatre-vingtième Grand final, le supplice de mes jambes ira vers toi. Je me retire à l'infirmerie…… alors ne danse pas ce pas jusqu'au bout. »\n(Avis système : Valse du rappel acquise — Maintiens la direction vers le haut et appuie sur Q (Y à la manette).)"
+      "value": "(Appuyant la pointe de sa rapière au parquet, elle reprend souffle. Le noyau de la lame-mémoire capte en lueur bleu-vert la trace de la trajectoire de saut tournoyant de palier 1 de Valeria)\n« ……Ah, j'avais beau cacher le final, ton épée a copié l'angle de saut de ma première “Danse des lames tournoyantes”.\nJe t'en prie, Rea. Jusqu'à trente fois, tu ne prendras que mon tic de révérence, mais dès que tu achèveras le quatre-vingtième Grand final, le supplice de mes jambes ira vers toi. Je me retire à l'infirmerie…… alors ne danse pas ce pas jusqu'au bout. »\n(Avis système : Valse du rappel acquise — Maintiens la direction vers le haut et appuie sur V (Y à la manette).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2871,7 +2895,7 @@
     },
     {
       "key": "story.opera.return.01",
-      "value": "« La voie de retour est par les toits sous projecteurs ! En m'élançant vers les lanternes suspendues avec le palier 1 “Danse des lames tournoyantes” de “Valse du rappel”, je peux dévier les projectiles tout en bondissant bien plus haut ! »\n(Commandes : Frappe les lanternes suspendues avec Valse du rappel (Q / Y) pour t'élever et atterrir sur la poutre d'acier d'en face.)"
+      "value": "« La voie de retour est par les toits sous projecteurs ! En m'élançant vers les lanternes suspendues avec le palier 1 “Danse des lames tournoyantes” de “Valse du rappel”, je peux dévier les projectiles tout en bondissant bien plus haut ! »\n(Commandes : Frappe les lanternes suspendues avec Valse du rappel (V / Y) pour t'élever et atterrir sur la poutre d'acier d'en face.)"
     },
     {
       "key": "story.opera.return.02",
@@ -2915,7 +2939,7 @@
     },
     {
       "key": "story.bell.entry.03",
-      "value": "« Oui. Essaie de lire la première page de cette partition de la cloche du matin qu'il jouait chaque aube jusqu'au jour où il a perdu l'ouïe, Rea. »\n(Commandes : Appuie sur F / clic stick gauche pour examiner le lutrin de la cloche du matin et le carnet de Gabriel (gabriel_score_desk). L'indice [Gabriel · Empreinte du noyau] sera consigné.)"
+      "value": "« Oui. Essaie de lire la première page de cette partition de la cloche du matin qu'il jouait chaque aube jusqu'au jour où il a perdu l'ouïe, Rea. »\n(Commandes : Appuie sur C / clic stick gauche pour examiner le lutrin de la cloche du matin et le carnet de Gabriel (gabriel_score_desk). L'indice [Gabriel · Empreinte du noyau] sera consigné.)"
     },
     {
       "key": "story.bell.entry.04",
@@ -2951,7 +2975,7 @@
     },
     {
       "key": "story.bell.route.07",
-      "value": "« Ce qu'il craint par-dessus tout, c'est que tu forces trop. J'ai calé le point de retour dans le vestibule, alors ouvre la porte de la chambre des cloches quand tu seras prête ! »\n(Commandes : Appuie sur F / clic stick gauche au grand portail de la chambre des cloches (bell_arena_gate) pour entrer.)"
+      "value": "« Ce qu'il craint par-dessus tout, c'est que tu forces trop. J'ai calé le point de retour dans le vestibule, alors ouvre la porte de la chambre des cloches quand tu seras prête ! »\n(Commandes : Appuie sur C / clic stick gauche au grand portail de la chambre des cloches (bell_arena_gate) pour entrer.)"
     },
     {
       "key": "story.gabriel.i0.01",
@@ -2971,7 +2995,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Appuyant le manche de son épée-marteau au sol, il pose un genou. Le noyau de la lame-mémoire capte en or la trace d'onde de la Frappe vibrante de palier 1 révélée durant le duel)\n« [Carnet : Ta lame a capté l'onde de ma première “Frappe vibrante”. Jusqu'à trente fois, tes oreilles seront seulement un peu sourdes, mais à la quatre-vingtième Forme ultime, mon silence passera en toi. Je descends à l'infirmerie — je t'en prie, arrête cette résonance.] »\n(Avis système : Forge de résonance acquise — En l’air, maintiens la direction vers le bas et appuie sur Q (Y à la manette).)"
+      "value": "(Appuyant le manche de son épée-marteau au sol, il pose un genou. Le noyau de la lame-mémoire capte en or la trace d'onde de la Frappe vibrante de palier 1 révélée durant le duel)\n« [Carnet : Ta lame a capté l'onde de ma première “Frappe vibrante”. Jusqu'à trente fois, tes oreilles seront seulement un peu sourdes, mais à la quatre-vingtième Forme ultime, mon silence passera en toi. Je descends à l'infirmerie — je t'en prie, arrête cette résonance.] »\n(Avis système : Forge de résonance acquise — En l’air, maintiens la direction vers le bas et appuie sur V (Y à la manette).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -2995,7 +3019,7 @@
     },
     {
       "key": "story.gabriel.i1.05",
-      "value": "(En voyant le visage de Gabriel, elle arrête l'épée qu'elle maniait à l'aveugle et secoue la tête)\n« ……Non ! Si je fais semblant d'entendre alors que je n'entends rien, Gabriel ne me fera jamais confiance. Faisons-lui signe de la main de s'arrêter d'abord ! »\n(Commandes : Rejoins la dalle de signaux visuels à droite (gabriel_signal_floor) et appuie sur F / clic stick gauche pour envoyer d'abord à Gabriel un signe d'arrêt (paume ouverte).)"
+      "value": "(En voyant le visage de Gabriel, elle arrête l'épée qu'elle maniait à l'aveugle et secoue la tête)\n« ……Non ! Si je fais semblant d'entendre alors que je n'entends rien, Gabriel ne me fera jamais confiance. Faisons-lui signe de la main de s'arrêter d'abord ! »\n(Commandes : Rejoins la dalle de signaux visuels à droite (gabriel_signal_floor) et appuie sur C / clic stick gauche pour envoyer d'abord à Gabriel un signe d'arrêt (paume ouverte).)"
     },
     {
       "key": "story.gabriel.i1.06",
@@ -3015,7 +3039,7 @@
     },
     {
       "key": "story.gabriel.reunion.02",
-      "value": "(Entourant de ses deux mains le verre de lait chaud pour en boire une gorgée, elle lit les trois signaux notés dans le carnet de Gabriel et ouvre la paume)\n« Paume ouverte veut dire arrêt, deux doigts veut dire prépare-toi, main vers le bas veut dire atterris et reviens…… Oui, Gabriel ! Dès que je n'entendrai plus rien, je ne prendrai pas sur moi : je te le dirai aussitôt avec ces signes ! »\n(Commandes : Consulte les trois signes du carnet de Gabriel sur la table de l'infirmerie (gabriel_reunion_table) avec F / clic stick gauche et réponds.)"
+      "value": "(Entourant de ses deux mains le verre de lait chaud pour en boire une gorgée, elle lit les trois signaux notés dans le carnet de Gabriel et ouvre la paume)\n« Paume ouverte veut dire arrêt, deux doigts veut dire prépare-toi, main vers le bas veut dire atterris et reviens…… Oui, Gabriel ! Dès que je n'entendrai plus rien, je ne prendrai pas sur moi : je te le dirai aussitôt avec ces signes ! »\n(Commandes : Consulte les trois signes du carnet de Gabriel sur la table de l'infirmerie (gabriel_reunion_table) avec C / clic stick gauche et réponds.)"
     },
     {
       "key": "story.gabriel.reunion.03",
@@ -3027,7 +3051,7 @@
     },
     {
       "key": "story.bell.return.01",
-      "value": "« Le sol du couloir descendant est fissuré. En frappant le dallage et les boucliers fendillés avec le palier 1 “Frappe vibrante” de “Forge de résonance” que je viens d'enregistrer, je peux les briser d'un coup ! »\n(Commandes : Frappe les sols fissurés et les boucliers des gardes cousus avec Forge de résonance (↓ En l'air + Q / Y ou Forge au sol).)"
+      "value": "« Le sol du couloir descendant est fissuré. En frappant le dallage et les boucliers fendillés avec le palier 1 “Frappe vibrante” de “Forge de résonance” que je viens d'enregistrer, je peux les briser d'un coup ! »\n(Commandes : Frappe les sols fissurés et les boucliers des gardes cousus avec Forge de résonance (↓ En l'air + V / Y ou Forge au sol).)"
     },
     {
       "key": "story.bell.return.02",
@@ -3071,7 +3095,7 @@
     },
     {
       "key": "story.gallery.entry.03",
-      "value": "« Même après avoir perdu la vue des deux yeux il y a six ans, Irina n'a jamais posé le pinceau. Essaie de toucher l'épais carnet en relief posé sur ce lutrin, Rea. »\n(Commandes : Appuie sur F / clic stick gauche pour examiner le carnet à peinture en relief d'Irina (irina_sketchbook_stand). L'indice [Irina · Empreinte du noyau] sera consigné.)"
+      "value": "« Même après avoir perdu la vue des deux yeux il y a six ans, Irina n'a jamais posé le pinceau. Essaie de toucher l'épais carnet en relief posé sur ce lutrin, Rea. »\n(Commandes : Appuie sur C / clic stick gauche pour examiner le carnet à peinture en relief d'Irina (irina_sketchbook_stand). L'indice [Irina · Empreinte du noyau] sera consigné.)"
     },
     {
       "key": "story.gallery.entry.04",
@@ -3107,7 +3131,7 @@
     },
     {
       "key": "story.gallery.route.07",
-      "value": "« J'ai réglé le point de retour sur la dalle-palette de l'antichambre, Rea. Ouvre la porte de l'atelier quand tu seras prête ! »\n(Commandes : Appuie sur F / clic stick gauche au grand portail de l'atelier (gallery_arena_gate) pour entrer.)"
+      "value": "« J'ai réglé le point de retour sur la dalle-palette de l'antichambre, Rea. Ouvre la porte de l'atelier quand tu seras prête ! »\n(Commandes : Appuie sur C / clic stick gauche au grand portail de l'atelier (gallery_arena_gate) pour entrer.)"
     },
     {
       "key": "story.irina.i0.01",
@@ -3127,7 +3151,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Appuyant sa rapière-pinceau au sol, elle reprend doucement souffle. Le noyau de la lame-mémoire capte en reflets d'aquarelle la trace aérienne du Trait de pinceau de palier 1 d'Irina)\n« ……J'avais beau cacher le dernier autoportrait, ta lame-mémoire a su lire la touche de mon premier “Trait de pinceau”.\nSouviens-t'en, Rea. Jusqu'à trente fois, seule une nuance d'aquarelle effleurera le bord de ta vue ; mais dès que tu achèveras le quatre-vingtième autoportrait, mon Destin de cécité passera dans tes yeux. Je me retire à l'infirmerie…… Arrête ce pinceau et rentre chez toi, je t'en prie. »\n(Avis système : Entaille du vide acquise — Au sol, maintiens la direction vers le bas et appuie sur Q (Y à la manette).)"
+      "value": "(Appuyant sa rapière-pinceau au sol, elle reprend doucement souffle. Le noyau de la lame-mémoire capte en reflets d'aquarelle la trace aérienne du Trait de pinceau de palier 1 d'Irina)\n« ……J'avais beau cacher le dernier autoportrait, ta lame-mémoire a su lire la touche de mon premier “Trait de pinceau”.\nSouviens-t'en, Rea. Jusqu'à trente fois, seule une nuance d'aquarelle effleurera le bord de ta vue ; mais dès que tu achèveras le quatre-vingtième autoportrait, mon Destin de cécité passera dans tes yeux. Je me retire à l'infirmerie…… Arrête ce pinceau et rentre chez toi, je t'en prie. »\n(Avis système : Entaille du vide acquise — Au sol, maintiens la direction vers le bas et appuie sur V (Y à la manette).)"
     },
     {
       "key": "story.irina.i0.06",
@@ -3151,7 +3175,7 @@
     },
     {
       "key": "story.irina.i1.05",
-      "value": "(Relâchant le coin des lèvres qu'elle s'apprêtait par réflexe à relever sous les doigts d'Irina, elle prend doucement la main d'Irina sans sourire)\n« ……Non, Irina. Je ne souris pas.\nJ'ai peur aujourd'hui. J'ai peur qu'il reste des cases vides dans notre hypothèse, peur de vous perdre tous les cinq, et vraiment peur de ne pas revenir. »\n(Commandes : Près de la fenêtre ensoleillée à droite (irina_sunlight_floor), appuie sur F / clic stick gauche pour avouer ta peur franchement sans sourire forcé.)"
+      "value": "(Relâchant le coin des lèvres qu'elle s'apprêtait par réflexe à relever sous les doigts d'Irina, elle prend doucement la main d'Irina sans sourire)\n« ……Non, Irina. Je ne souris pas.\nJ'ai peur aujourd'hui. J'ai peur qu'il reste des cases vides dans notre hypothèse, peur de vous perdre tous les cinq, et vraiment peur de ne pas revenir. »\n(Commandes : Près de la fenêtre ensoleillée à droite (irina_sunlight_floor), appuie sur C / clic stick gauche pour avouer ta peur franchement sans sourire forcé.)"
     },
     {
       "key": "story.irina.i1.06",
@@ -3171,7 +3195,7 @@
     },
     {
       "key": "story.irina.reunion.02",
-      "value": "(Relâchant le coin de ses lèvres qui allait se lever, elle pose doucement sa joue contre les doigts d'Irina sans sourire)\n« Je ne forcerai pas de sourire, Irina. J'ai peur aujourd'hui. C'est pour ça que je ne tiens pas seule et qu'on cherche la solution tous ensemble. »\n(Commandes : À la fenêtre ensoleillée de l'infirmerie (irina_reunion_window), appuie sur F / clic stick gauche pour parler franc sans sourire forcé.)"
+      "value": "(Relâchant le coin de ses lèvres qui allait se lever, elle pose doucement sa joue contre les doigts d'Irina sans sourire)\n« Je ne forcerai pas de sourire, Irina. J'ai peur aujourd'hui. C'est pour ça que je ne tiens pas seule et qu'on cherche la solution tous ensemble. »\n(Commandes : À la fenêtre ensoleillée de l'infirmerie (irina_reunion_window), appuie sur C / clic stick gauche pour parler franc sans sourire forcé.)"
     },
     {
       "key": "story.irina.reunion.03",
@@ -3183,7 +3207,7 @@
     },
     {
       "key": "story.gallery.return.01",
-      "value": "« Passé le rebord du chemin de retour de la serre, il n'y a plus de sol du tout. En traçant au sol le palier 1 “Trait de pinceau” d'“Entaille du vide”, une plateforme de peinture lapis reste 3 secondes dans les airs devant moi ! Prenons appui sur ce coup de pinceau pour sauter en face ! »\n(Commandes : Au bord du palier au sol, appuie sur ↓ + Q / Y pour placer une plateforme Trait de pinceau devant toi, puis saute dessus pour traverser.)"
+      "value": "« Passé le rebord du chemin de retour de la serre, il n'y a plus de sol du tout. En traçant au sol le palier 1 “Trait de pinceau” d'“Entaille du vide”, une plateforme de peinture lapis reste 3 secondes dans les airs devant moi ! Prenons appui sur ce coup de pinceau pour sauter en face ! »\n(Commandes : Au bord du palier au sol, appuie sur ↓ + V / Y pour placer une plateforme Trait de pinceau devant toi, puis saute dessus pour traverser.)"
     },
     {
       "key": "story.gallery.return.02",
@@ -3195,7 +3219,7 @@
     },
     {
       "key": "story.gallery.synergy.01",
-      "value": "« Au-delà de ce sol fendu entre deux appuis fixes s'ouvre un vide sans le moindre point d'appui !\nSi je couds d'abord la brèche du vrai plancher avec “Couture d'argent” de Mikhail pour le traverser, puis qu'au bord de cette toile cousue je peins une plateforme dans le vide avec “Entaille du vide” d'Irina pour bondir, je peux réunir la force des deux techniques ! »\n(Commandes : Scelle le sol fendu (gallery_synergy_seam) avec Couture d'argent et monte dessus, puis utilise Entaille du vide (↓ + Q / Y) au bout pour peindre une plateforme vers la terrasse.)"
+      "value": "« Au-delà de ce sol fendu entre deux appuis fixes s'ouvre un vide sans le moindre point d'appui !\nSi je couds d'abord la brèche du vrai plancher avec “Couture d'argent” de Mikhail pour le traverser, puis qu'au bord de cette toile cousue je peins une plateforme dans le vide avec “Entaille du vide” d'Irina pour bondir, je peux réunir la force des deux techniques ! »\n(Commandes : Scelle le sol fendu (gallery_synergy_seam) avec Couture d'argent et monte dessus, puis utilise Entaille du vide (↓ + V / Y) au bout pour peindre une plateforme vers la terrasse.)"
     },
     {
       "key": "story.gallery.synergy.02",
@@ -3499,7 +3523,7 @@
     },
     {
       "key": "story.echo.entry.02",
-      "value": "(Suivant du regard les veines de circuit lumineuses du grand pilier de contrôle en lapis au milieu du hall)\n« Regarde cette jonction de contrôle en lapis. L'arme mère “Miroir d'Omnirésonance” tout en haut et le dispositif d'isolement glacé du Caveau de Conservation Perpétuelle souterrain sont reliés au même noyau de commande.\nC'est exactement ce qu'avait analysé Théo : si on brise en haut le noyau du miroir mère, tout le système de rétention du caveau s'effondrera avec lui ! »\n(Commandes : Appuie sur F / clic stick gauche pour examiner le pilier de contrôle en lapis (court_control_pillar) au centre du hall.)"
+      "value": "(Suivant du regard les veines de circuit lumineuses du grand pilier de contrôle en lapis au milieu du hall)\n« Regarde cette jonction de contrôle en lapis. L'arme mère “Miroir d'Omnirésonance” tout en haut et le dispositif d'isolement glacé du Caveau de Conservation Perpétuelle souterrain sont reliés au même noyau de commande.\nC'est exactement ce qu'avait analysé Théo : si on brise en haut le noyau du miroir mère, tout le système de rétention du caveau s'effondrera avec lui ! »\n(Commandes : Appuie sur C / clic stick gauche pour examiner le pilier de contrôle en lapis (court_control_pillar) au centre du hall.)"
     },
     {
       "key": "story.echo.entry.03",
@@ -3527,7 +3551,7 @@
     },
     {
       "key": "story.echo.pre.06",
-      "value": "(Elle sort de sa sacoche le carnet d'expérience en 4 étapes couvert de l'écriture de Théo ainsi que la carte du retour tracée par les cinq bienfaiteurs et les déploie devant Rea d'hier)\n« Moi aussi j'ai peur. C'est pour ça que cette fois, je l'ai montré aux autres avant de biffer ma part.\nRegarde : cette onde qui cassait quand tu la tenais seule, Théo et Ethan l'ont tenue avec moi et on l'a mesurée jusqu'au bout ! Et au lieu de fermer les grilles, tous les cinq ont d'abord préparé les planchers, l'heure et les signaux pour que je revienne vivante ! Je ne descendrai pas dans le Caveau ! »\n(Commandes : Appuie sur F / clic stick gauche pour présenter les relevés d'essais et le parcours de retour à Rea d'hier.)"
+      "value": "(Elle sort de sa sacoche le carnet d'expérience en 4 étapes couvert de l'écriture de Théo ainsi que la carte du retour tracée par les cinq bienfaiteurs et les déploie devant Rea d'hier)\n« Moi aussi j'ai peur. C'est pour ça que cette fois, je l'ai montré aux autres avant de biffer ma part.\nRegarde : cette onde qui cassait quand tu la tenais seule, Théo et Ethan l'ont tenue avec moi et on l'a mesurée jusqu'au bout ! Et au lieu de fermer les grilles, tous les cinq ont d'abord préparé les planchers, l'heure et les signaux pour que je revienne vivante ! Je ne descendrai pas dans le Caveau ! »\n(Commandes : Appuie sur C / clic stick gauche pour présenter les relevés d'essais et le parcours de retour à Rea d'hier.)"
     },
     {
       "key": "story.echo.battle.01_p1",
@@ -3551,7 +3575,7 @@
     },
     {
       "key": "story.echo.after.01",
-      "value": "(Arrêtant sa lame-mémoire juste devant l'Écho agenouillée, elle recule d'un pas et abaisse son épée)\n« Que tu m'aies trompée me fait encore mal. Et que tu aies voulu m'emmener même si je refusais m'a fait encore plus peur. »\n(Commandes : Appuie sur F / clic stick gauche devant l'Écho agenouillée pour baisser la lame et poursuivre la conversation.)"
+      "value": "(Arrêtant sa lame-mémoire juste devant l'Écho agenouillée, elle recule d'un pas et abaisse son épée)\n« Que tu m'aies trompée me fait encore mal. Et que tu aies voulu m'emmener même si je refusais m'a fait encore plus peur. »\n(Commandes : Appuie sur C / clic stick gauche devant l'Écho agenouillée pour baisser la lame et poursuivre la conversation.)"
     },
     {
       "key": "story.echo.after.02",
@@ -3571,7 +3595,7 @@
     },
     {
       "key": "story.echo.after.06",
-      "value": "(Rea d'aujourd'hui s'approche, tend la main à Rea d'hier agenouillée, la saisit et l'aide à se relever. L'Écho d'hier ne disparaît pas : elle se fond en une lueur bleue limpide aux côtés du pouls d'aujourd'hui dans le noyau de la lame-mémoire et l'accompagne)\n« Je ne te laisse pas seule, moi d'hier. Tes cent vingt coups de base frappés devant la porte close, et ta prière à Ethan de garder une jolie couleur d'onde pour demain, tout est déjà là dans cette épée.\nMontons toutes les deux au dernier étage. Et redescendons vivantes ensemble ! »\n(Commandes : Appuie sur F / clic stick gauche devant Rea d'hier (echo_hand_clasp) pour joindre vos mains et l'unir au noyau.)"
+      "value": "(Rea d'aujourd'hui s'approche, tend la main à Rea d'hier agenouillée, la saisit et l'aide à se relever. L'Écho d'hier ne disparaît pas : elle se fond en une lueur bleue limpide aux côtés du pouls d'aujourd'hui dans le noyau de la lame-mémoire et l'accompagne)\n« Je ne te laisse pas seule, moi d'hier. Tes cent vingt coups de base frappés devant la porte close, et ta prière à Ethan de garder une jolie couleur d'onde pour demain, tout est déjà là dans cette épée.\nMontons toutes les deux au dernier étage. Et redescendons vivantes ensemble ! »\n(Commandes : Appuie sur C / clic stick gauche devant Rea d'hier (echo_hand_clasp) pour joindre vos mains et l'unir au noyau.)"
     },
     {
       "key": "story.echo.after.07",
@@ -3579,7 +3603,7 @@
     },
     {
       "key": "story.echo.after.08",
-      "value": "(Tandis que la plateforme s'élève vers le prétoire baigné de la lueur de l'aube, Rea d'hier murmure doucement au cœur du noyau)\n« Là-haut t'attendent l'Archonte Cassel et son arme mère le “Miroir d'Omnirésonance”. Je joins aussi mes cent vingt frappes au bout de tes doigts. Allons-y, moi d'aujourd'hui ! »\n(Commandes : Appuie sur F / clic stick gauche au panneau de commande (cassel_lift_console) pour entrer au prétoire (cassel).)"
+      "value": "(Tandis que la plateforme s'élève vers le prétoire baigné de la lueur de l'aube, Rea d'hier murmure doucement au cœur du noyau)\n« Là-haut t'attendent l'Archonte Cassel et son arme mère le “Miroir d'Omnirésonance”. Je joins aussi mes cent vingt frappes au bout de tes doigts. Allons-y, moi d'aujourd'hui ! »\n(Commandes : Appuie sur C / clic stick gauche au panneau de commande (cassel_lift_console) pour entrer au prétoire (cassel).)"
     },
     {
       "key": "story.cassel.p1.01",
@@ -3607,11 +3631,11 @@
     },
     {
       "key": "story.cassel.p1.07_mirror",
-      "value": "(À 120 PV, Cassel recule et lève la main. Derrière lui, les cinq couches réfléchissantes du « Miroir d'Omnirésonance » s'ouvrent ensemble dans une lueur bleue, prêtes à dupliquer les cinq techniques de bienfaiteur de Rea !)\n« Pas mal, Accusée R.E.A.. Mais devant mon arme mère, le “Miroir d'Omnirésonance”, même les cinq Formes ultimes que tu as apprises ne seront plus que des miroirs au service de mon jugement ! »\n(Guide de combat : Cassel Phase 2 · Miroir d'Omnirésonance — Appuie sur F / clic stick gauche quand le miroir est exposé pour choisir une technique de bienfaiteur à engager pour restitution !)"
+      "value": "(À 120 PV, Cassel recule et lève la main. Derrière lui, les cinq couches réfléchissantes du « Miroir d'Omnirésonance » s'ouvrent ensemble dans une lueur bleue, prêtes à dupliquer les cinq techniques de bienfaiteur de Rea !)\n« Pas mal, Accusée R.E.A.. Mais devant mon arme mère, le “Miroir d'Omnirésonance”, même les cinq Formes ultimes que tu as apprises ne seront plus que des miroirs au service de mon jugement ! »\n(Guide de combat : Cassel Phase 2 · Miroir d'Omnirésonance — Appuie sur C / clic stick gauche quand le miroir est exposé pour choisir une technique de bienfaiteur à engager pour restitution !)"
     },
     {
       "key": "story.cassel.p2.01_prompt",
-      "value": "« Le Miroir d'Omnirésonance s'est ouvert ! Exactement comme dans notre expérience avec Théo : à l'instant où le miroir copie et reflète ma technique de palier 3, si je croise le fer jusqu'au même coup final de palier 3 dans l'ordre que je choisis, je peux verrouiller un engagement de restitution envers Cassel ! »\n(Commandes : Appuie sur F / clic stick gauche pendant l'exposition du miroir pour ouvrir le menu Contre-authentification · Choisis une technique à restituer.)"
+      "value": "« Le Miroir d'Omnirésonance s'est ouvert ! Exactement comme dans notre expérience avec Théo : à l'instant où le miroir copie et reflète ma technique de palier 3, si je croise le fer jusqu'au même coup final de palier 3 dans l'ordre que je choisis, je peux verrouiller un engagement de restitution envers Cassel ! »\n(Commandes : Appuie sur C / clic stick gauche pendant l'exposition du miroir pour ouvrir le menu Contre-authentification · Choisis une technique à restituer.)"
     },
     {
       "key": "story.cassel.p2.02_confirm",
@@ -3659,7 +3683,7 @@
     },
     {
       "key": "story.cassel.p2.08_r1_cassel",
-      "value": "(Lorsque le premier engagement 1/5 s'inscrit au registre et que +20% de puissance d'empreinte jaillit telle une flamme bleue de la lame de Rea, le sourcil de Cassel tressaille pour la première fois. Résolu à ne pas céder les quatre autres techniques, Cassel replie le « Miroir d'Omnirésonance » dans son dos et recule d'un bond rapide !)\n« ……Tu as détourné le verdict de réflexion du Miroir d'Omnirésonance pour inscrire une restitution sur mon registre ?!\nMais si je referme les pans du miroir, tes autres techniques perdent leur cible de choc des lames. Je vais d'abord trancher ta propre personne par mon escrime directe ! »\n(Note tactique : Cassel ferme son miroir et attaque directement avec les 3 charges tranchantes de la Forme Zéro de Cassel. Ne gaspille pas tes techniques de boss — contre-les avec la Parade simple (L / RB) !)"
+      "value": "(Lorsque le premier engagement 1/5 s'inscrit au registre et que +20% de puissance d'empreinte jaillit telle une flamme bleue de la lame de Rea, le sourcil de Cassel tressaille pour la première fois. Résolu à ne pas céder les quatre autres techniques, Cassel replie le « Miroir d'Omnirésonance » dans son dos et recule d'un bond rapide !)\n« ……Tu as détourné le verdict de réflexion du Miroir d'Omnirésonance pour inscrire une restitution sur mon registre ?!\nMais si je referme les pans du miroir, tes autres techniques perdent leur cible de choc des lames. Je vais d'abord trancher ta propre personne par mon escrime directe ! »\n(Note tactique : Cassel ferme son miroir et attaque directement avec les 3 charges tranchantes de la Forme Zéro de Cassel. Ne gaspille pas tes techniques de boss — contre-les avec la Parade simple (X / RB) !)"
     },
     {
       "key": "story.cassel.p2.09_r1_rea",
@@ -3727,7 +3751,7 @@
     },
     {
       "key": "story.ending.basic.03",
-      "value": "(Rea d'aujourd'hui secoue la tête, fait un pas en avant et serre d'abord chaleureusement dans ses bras son moi d'hier tremblant)\n« Ne t'excuse pas, moi d'hier. Ce n'est ni que nous ayons été insuffisantes, ni que nous n'en étions pas dignes.\nC'est parce que tu n'as pas abandonné hier devant la grille close et que tu as remonté le temps qu'aujourd'hui nous avons pu les sauver tous les cinq. »\n(Commandes : Approche-toi de Rea d'hier (rooftop_echo_embrace) et appuie sur F / clic stick gauche pour l'étreindre la première.)"
+      "value": "(Rea d'aujourd'hui secoue la tête, fait un pas en avant et serre d'abord chaleureusement dans ses bras son moi d'hier tremblant)\n« Ne t'excuse pas, moi d'hier. Ce n'est ni que nous ayons été insuffisantes, ni que nous n'en étions pas dignes.\nC'est parce que tu n'as pas abandonné hier devant la grille close et que tu as remonté le temps qu'aujourd'hui nous avons pu les sauver tous les cinq. »\n(Commandes : Approche-toi de Rea d'hier (rooftop_echo_embrace) et appuie sur C / clic stick gauche pour l'étreindre la première.)"
     },
     {
       "key": "story.ending.basic.04",
@@ -3739,7 +3763,7 @@
     },
     {
       "key": "story.ending.basic.06",
-      "value": "(Posant leurs mains l'une sur l'autre, les deux Rea écrivent à l'encre de lapis une phrase ineffaçable sur la dernière ligne du registre notarial :\n[Archive notariale #02 Inscription finale — Sauvetage intégral des cinq bienfaiteurs accompli. Et Rea d'aujourd'hui a voulu revenir vivante à leurs côtés jusqu'à la fin.])\n(Commandes : Appuie sur F / clic stick gauche devant le dernier registre (basic_ending_ledger) pour apposer la réponse d'aujourd'hui sans la biffer.)"
+      "value": "(Posant leurs mains l'une sur l'autre, les deux Rea écrivent à l'encre de lapis une phrase ineffaçable sur la dernière ligne du registre notarial :\n[Archive notariale #02 Inscription finale — Sauvetage intégral des cinq bienfaiteurs accompli. Et Rea d'aujourd'hui a voulu revenir vivante à leurs côtés jusqu'à la fin.])\n(Commandes : Appuie sur C / clic stick gauche devant le dernier registre (basic_ending_ledger) pour apposer la réponse d'aujourd'hui sans la biffer.)"
     },
     {
       "key": "story.ending.basic.07",
@@ -3767,7 +3791,7 @@
     },
     {
       "key": "story.ending.true.03_seat",
-      "value": "(Les yeux embués, Rea d'aujourd'hui tend la première les bras et serre son moi d'hier contre elle de toutes ses forces)\n« Oui. Notre place aussi nous attend encore. »\n(Commandes : Approche-toi de Rea d'hier (rooftop_echo_embrace) et appuie sur F / clic stick gauche pour l'étreindre fort.)"
+      "value": "(Les yeux embués, Rea d'aujourd'hui tend la première les bras et serre son moi d'hier contre elle de toutes ses forces)\n« Oui. Notre place aussi nous attend encore. »\n(Commandes : Approche-toi de Rea d'hier (rooftop_echo_embrace) et appuie sur C / clic stick gauche pour l'étreindre fort.)"
     },
     {
       "key": "story.ending.true.04_echo",
@@ -3807,7 +3831,7 @@
     },
     {
       "key": "story.ending.true.13_swing_prompt",
-      "value": "« Pas une escrime de substitution destinée à porter la mort d'un autre — ici, je grave le premier geste écrit sous mon propre nom par la moi qui vit aujourd'hui ! »\n(Commandes : Face au belvédère ensoleillé (rea_form_one_sky), appuie sur la touche d'Épée (J / Z / Clic gauche / X) pour porter la toute première frappe de Rea !)"
+      "value": "« Pas une escrime de substitution destinée à porter la mort d'un autre — ici, je grave le premier geste écrit sous mon propre nom par la moi qui vit aujourd'hui ! »\n(Commandes : Face au belvédère ensoleillé (rea_form_one_sky), appuie sur la touche d'Épée (Z / X) pour porter la toute première frappe de Rea !)"
     },
     {
       "key": "story.ending.true.14_registered",
@@ -3819,7 +3843,7 @@
     },
     {
       "key": "story.ending.true.16_to_attic",
-      "value": "« Oui ! J'ai tellement faim — allons tous prendre le petit-déjeuner ensemble ! »\n(Commandes : Appuie sur F / clic stick gauche à la sortie de l'ascenseur du toit (rooftop_to_attic_exit) pour rejoindre la table du Grenier de l'oubli.)"
+      "value": "« Oui ! J'ai tellement faim — allons tous prendre le petit-déjeuner ensemble ! »\n(Commandes : Appuie sur C / clic stick gauche à la sortie de l'ascenseur du toit (rooftop_to_attic_exit) pour rejoindre la table du Grenier de l'oubli.)"
     },
     {
       "key": "story.ending.true.17_marta_table",
@@ -3831,7 +3855,7 @@
     },
     {
       "key": "story.ending.true.19_sit",
-      "value": "(Mikhail tire doucement la sixième chaise au centre de la table et parle d'une voix bourrue mais débordante de chaleur)\n« Tu comptes rester planter là à regarder, Rea ? C'est la sixième place que tu as tamponnée toi-même. Assieds-toi avant que la soupe refroidisse. »\n(Commandes : Approche-toi de la sixième place à table (sixth_breakfast_seat) et appuie sur F / clic stick gauche pour t'asseoir.)"
+      "value": "(Mikhail tire doucement la sixième chaise au centre de la table et parle d'une voix bourrue mais débordante de chaleur)\n« Tu comptes rester planter là à regarder, Rea ? C'est la sixième place que tu as tamponnée toi-même. Assieds-toi avant que la soupe refroidisse. »\n(Commandes : Approche-toi de la sixième place à table (sixth_breakfast_seat) et appuie sur C / clic stick gauche pour t'asseoir.)"
     },
     {
       "key": "story.ending.true.20_sixth_beat",
@@ -3839,7 +3863,7 @@
     },
     {
       "key": "story.ending.true.21_spoon",
-      "value": "(Tenant le bol de soupe chaud à deux mains, Rea porte à ses lèvres une grande première cuillerée dans la vapeur montante. Une larme chaude roule sur sa joue tandis que le plus doux et le plus radieux des sourires éclaire son visage)\n« ……C'est chaud. C'est délicieux, Mamie Marta ! »\n(Commandes : Appuie sur F / clic stick gauche ou Entrée / A pour partager le petit-déjeuner chaud du sixième bol.)"
+      "value": "(Tenant le bol de soupe chaud à deux mains, Rea porte à ses lèvres une grande première cuillerée dans la vapeur montante. Une larme chaude roule sur sa joue tandis que le plus doux et le plus radieux des sourires éclaire son visage)\n« ……C'est chaud. C'est délicieux, Mamie Marta ! »\n(Commandes : Appuie sur C / clic stick gauche ou Entrée / A pour partager le petit-déjeuner chaud du sixième bol.)"
     },
     {
       "key": "story.ending.true.22_complete",
@@ -3859,7 +3883,7 @@
     },
     {
       "key": "story.resume.crucible.01_ethan",
-      "value": "(Ouvrant grand la porte du foyer de l'immense fourneau en lapis « Creuset de résonance » au fond de la Forge des Canaux, Ethan hoche la tête)\n« Te voilà, Rea. Pour contrer l'escrime mère de Cassel jusqu'au quatrième et dernier coup, il faut que ton Épée de base atteigne sa quatre-centième marque ultime.\nDans ce creuset t'attendent des cibles de résonance haute densité et des sentinelles prêtes à encaisser tes parades simples et tes combos sans relâche. Deux minutes suffisent : frappe tout ton saoul ! »\n(Commandes : Appuie sur F / clic stick gauche pour activer le Creuset de résonance (resonant_crucible).)"
+      "value": "(Ouvrant grand la porte du foyer de l'immense fourneau en lapis « Creuset de résonance » au fond de la Forge des Canaux, Ethan hoche la tête)\n« Te voilà, Rea. Pour contrer l'escrime mère de Cassel jusqu'au quatrième et dernier coup, il faut que ton Épée de base atteigne sa quatre-centième marque ultime.\nDans ce creuset t'attendent des cibles de résonance haute densité et des sentinelles prêtes à encaisser tes parades simples et tes combos sans relâche. Deux minutes suffisent : frappe tout ton saoul ! »\n(Commandes : Appuie sur C / clic stick gauche pour activer le Creuset de résonance (resonant_crucible).)"
     },
     {
       "key": "story.resume.crucible.02_theo",
@@ -3871,11 +3895,11 @@
     },
     {
       "key": "story.resume.crucible.04_rea",
-      "value": "« Merci, Ethan, Théo ! Maintenant l'avertissement “survie après restitution non assurée” va disparaître de l'écran de départ, et ma Forme originelle est fin prête.\nJe retourne devant l'Ascenseur du Grand Tribunal — et cette fois, je redescendrai vivante à la table du petit-déjeuner ! »\n(Commandes : Appuie sur F / clic stick gauche au passage direct de la forge (forge_to_court_lift) pour revenir devant l'Ascenseur du Grand Tribunal et tenter la Fin véritable contre Cassel.)"
+      "value": "« Merci, Ethan, Théo ! Maintenant l'avertissement “survie après restitution non assurée” va disparaître de l'écran de départ, et ma Forme originelle est fin prête.\nJe retourne devant l'Ascenseur du Grand Tribunal — et cette fois, je redescendrai vivante à la table du petit-déjeuner ! »\n(Commandes : Appuie sur C / clic stick gauche au passage direct de la forge (forge_to_court_lift) pour revenir devant l'Ascenseur du Grand Tribunal et tenter la Fin véritable contre Cassel.)"
     },
     {
       "key": "story.epilogue.01_marta",
-      "value": "(La lumière du matin baigne le Grenier de l'oubli. En haut de l'écran, à la place du compte à rebours d'exécution, flotte paisiblement [Authentification achevée : L'aujourd'hui de Rea / Temps en marche]. Marta dépose une tasse fumante de tisane de menthe résonante devant Rea)\n« Même après six bols de soupe, il te reste bien une petite place pour une tisane à la menthe, ma Rea ? Prends tout ton temps pour la boire — plus personne ne nous poursuit. »\n(Commandes : Appuie sur F / clic stick gauche sur la tisane chaude (attic_mint_tea) sur la table pour savourer ce matin paisible.)"
+      "value": "(La lumière du matin baigne le Grenier de l'oubli. En haut de l'écran, à la place du compte à rebours d'exécution, flotte paisiblement [Authentification achevée : L'aujourd'hui de Rea / Temps en marche]. Marta dépose une tasse fumante de tisane de menthe résonante devant Rea)\n« Même après six bols de soupe, il te reste bien une petite place pour une tisane à la menthe, ma Rea ? Prends tout ton temps pour la boire — plus personne ne nous poursuit. »\n(Commandes : Appuie sur C / clic stick gauche sur la tisane chaude (attic_mint_tea) sur la table pour savourer ce matin paisible.)"
     },
     {
       "key": "story.epilogue.02_benefactors",

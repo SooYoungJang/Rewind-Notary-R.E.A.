@@ -9,6 +9,7 @@ namespace RewindNotary
         public const float JumpBuffer = 0.1f;
         public const float AttackBuffer = 0.13f;
         public const float MoveSpeed = 6.5f;
+        public const float SprintSpeed = 8.7f;
         public const float JumpSpeed = 12f;
         private CombatMotor2D motor;
         public SilverStitchSkill Silver { get; set; }
@@ -137,7 +138,7 @@ namespace RewindNotary
             }
             // Jump first so a simultaneous jump/attack receives air control immediately.
             if (Time.time < kickUntil) motor.Move(kickDirection * WallKickX);
-            else motor.Move(axis * MoveSpeed);
+            else motor.Move(axis * (motor.Grounded && GameInput.SprintHeld ? SprintSpeed : MoveSpeed));
             if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions) cutJump = false;
             if (cutJump)
             {

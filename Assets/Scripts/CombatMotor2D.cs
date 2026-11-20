@@ -28,6 +28,8 @@ namespace RewindNotary
         private float attackStartedAt, comboExpiresAt, stunUntil, landUntil, lastHitAt;
         private bool strikeDelivered, groundSampled, queuedAttack;
         private int comboStep, attackStep;
+        private int activeStarter = -1;
+        private readonly float[] starterReadyAt = new float[QuickSkills.Keys.Length];
         private Health opponent;
         private int damage, strikeDamage;
         private UseContext chainUse, activeUse;
@@ -60,6 +62,14 @@ namespace RewindNotary
         };
         private static readonly AttackSpec BossAttack =
             new AttackSpec(AttackDuration, 0.16f, AttackDuration, 0.9f, 1.7f, 1.55f, 1, 1f);
+        private const int Sweep = 2, BladeWave = 3;
+        private static readonly (AttackSpec swing, float centerY, int art, float cooldown)[] StarterAttacks =
+        {
+            (new AttackSpec(.39f, .15f, 0f, 1.28f, 2.24f, 1.12f, 2, .8f), 1.05f, 3, 2.5f),
+            (new AttackSpec(.41f, .15f, 0f, .72f, 1.66f, 2.38f, 2, 1.1f), 1.46f, 2, 3f),
+            (new AttackSpec(.51f, .23f, 0f, 0f, 3.6f, 1.42f, 2, 1.2f), .95f, 4, 4f),
+            (new AttackSpec(.49f, .22f, 0f, 2.15f, 3.82f, .84f, 2, .65f), 1.08f, 1, 5f)
+        };
         private AttackSpec activeAttack;
         private CapsuleCollider2D capsule;
         private readonly Collider2D[] groundHits = new Collider2D[4];
@@ -175,11 +185,12 @@ namespace RewindNotary
             Grounded = false;
             landUntil = 0f;
         }
+        private bool CanSwing => !Health.Dead && !Stunned && Temporal?.Frozen != true &&
+            Defense?.BlocksActions != true && BenefactorSkills?.BlocksActions != true;
+
         public bool Attack()
         {
-            if ((Temporal != null && Temporal.Frozen) || (BenefactorSkills != null && BenefactorSkills.BlocksActions)) return false;
-            if (Health.Dead || Stunned) return false;
-            if (Defense != null && Defense.BlocksActions) return false;
+            if (!CanSwing) return false;
             if (Attacking)
             {
                 // The final step and a chain reset by landing cannot reserve another swing.
@@ -194,6 +205,23 @@ namespace RewindNotary
             BeginAttack(comboStep + 1);
             return true;
         }
+
+        internal float StarterCooldown(int index) => Mathf.Max(0f, starterReadyAt[index] - Time.time);
+
+        internal bool UseStarterSkill(int index)
+        {
+            if (!CanSwing || Attacking || StarterCooldown(index) > 0f) return false;
+            ResetCombo();
+            activeUse = chainUse = Skills.Progression.BeginUse(SkillRules.BasicSword, Skills.PreviewStage);
+            chainProfile = null;
+            activeStarter = index;
+            attackStep = 0;
+            var starter = StarterAttacks[index];
+            starterReadyAt[index] = Time.time + starter.cooldown;
+            StartSwing(starter.swing, starter.art, false);
+            return true;
+        }
+
         private void BeginAttack(int step)
         {
             if (step == 1 && Skills != null)
@@ -203,7 +231,14 @@ namespace RewindNotary
             }
             activeUse = chainUse;
             attackStep = comboStep = step;
-            activeAttack = step == 0 ? BossAttack : PlayerCombo[step - 1];
+            activeStarter = -1;
+            bool moving = Mathf.Abs(Body.linearVelocity.x - carrierSpeed) >= PlayerController2D.MoveSpeed * .5f;
+            StartSwing(step == 0 ? BossAttack : PlayerCombo[step - 1], step, moving);
+        }
+
+        private void StartSwing(AttackSpec swing, int art, bool moving)
+        {
+            activeAttack = swing;
             // Consume once at an actual swing start, including a later whiff/interruption.
             float counter = Defense != null ? Defense.State.ConsumeCounter(Time.time) : 1f;
             strikeDamage = Mathf.CeilToInt(damage * activeAttack.DamageMultiplier * counter);
@@ -212,8 +247,7 @@ namespace RewindNotary
             Attacking = true;
             strikeDelivered = false;
             queuedAttack = false;
-            bool moving = Mathf.Abs(Body.linearVelocity.x - carrierSpeed) >= PlayerController2D.MoveSpeed * .5f;
-            Animation.BeginAttack(attackStep, Grounded, moving);
+            Animation.BeginAttack(art, Grounded, moving);
             AttackStarted?.Invoke();
         }
         private void ResetCombo()
@@ -237,8 +271,17 @@ namespace RewindNotary
         {
             // Mark even a whiff/immune target as delivered: one contact query per swing.
             strikeDelivered = true;
-            Bounds blade = new Bounds(transform.position + new Vector3(Facing * activeAttack.Reach, 1f, 0),
+            float centerY = activeStarter < 0 ? 1f : StarterAttacks[activeStarter].centerY;
+            Bounds blade = new Bounds(transform.position + new Vector3(Facing * activeAttack.Reach, centerY, 0),
                 new Vector3(activeAttack.Width, activeAttack.Height, 2f));
+            if (activeStarter == Sweep || activeStarter == BladeWave)
+            {
+                Vector3 center = transform.position + Vector3.up * centerY;
+                float front = activeAttack.Reach + activeAttack.Width * .5f;
+                Vector3 start = activeStarter == Sweep ? center - Vector3.right * Facing * front : center;
+                SkillStroke.Show(start, center + Vector3.right * Facing * front,
+                    new Color(.43f, .89f, 1f, .85f), .16f);
+            }
             // The short wave extends only the last strike, with the SAME activation and damage query.
             if (Health.IsPlayer && chainProfile != null && attackStep == ComboLimit && chainProfile.waveReach > 0f)
             {

@@ -130,7 +130,7 @@ namespace RewindNotary
             controller.Silver = player.gameObject.AddComponent<SilverStitchSkill>();
             controller.Silver.Initialize(skills, boss);
             player.BenefactorSkills = player.gameObject.AddComponent<BenefactorSkillRunner>();
-            player.BenefactorSkills.Initialize(skills, boss, controller.Silver);
+            player.BenefactorSkills.Initialize(skills, boss, controller.Silver, shell.Settings.Value);
             if (!finale)
             {
                 support = player.gameObject.AddComponent<BenefactorSupportController>();
@@ -368,7 +368,14 @@ namespace RewindNotary
                 GUI.matrix = previous; return;
             }
             if (!initialized || !shell.Playing) { GUI.matrix = previous; return; }
-            if (Area != null) { Area.DrawHUD(title, label); GUI.matrix = previous; return; }
+            if (Area != null)
+            {
+                Area.DrawHUD(title, label);
+                DrawQuickSkills(label, 18);
+                GUI.matrix = previous;
+                return;
+            }
+            DrawQuickSkills(label, 576);
             GUI.Box(new Rect(20, 18, 400, 128), "");
             GUI.Label(new Rect(36, 28, 380, 34), Loc.Get("game.title"), title);
             GUI.Label(new Rect(36, 64, 370, 25), Loc.Get("hud.rea_health", player.Health.Current, player.Health.Maximum), label);
@@ -460,6 +467,28 @@ namespace RewindNotary
                 GUI.Label(new Rect(515, 342, 460, 35), won ? Loc.Get("input.retry_button") : Loc.Get("hud.returning_checkpoint"), label);
             }
             GUI.matrix = previous;
+        }
+        private void DrawQuickSkills(GUIStyle label, float y)
+        {
+            var keyStyle = new GUIStyle(label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold };
+            var nameStyle = new GUIStyle(label) { alignment = TextAnchor.MiddleCenter, fontSize = 13, wordWrap = true };
+            var previous = GUI.color;
+            var record = skills.Progression.Record;
+            for (int i = 0; i < QuickSkills.Keys.Length; i++)
+            {
+                string id = QuickSkills.Equipped(shell.Settings.Value, record, i);
+                float cooldown = player.BenefactorSkills.Cooldown(id);
+                float x = 842 + i * 104;
+                GUI.color = new Color(.05f, .075f, .11f, .94f);
+                GUI.DrawTexture(new Rect(x, y, 98, 56), Texture2D.whiteTexture);
+                GUI.color = cooldown > 0f ? new Color(.68f, .74f, .81f) : new Color(.62f, 1f, .93f);
+                var key = QuickSkills.Keys[i].ToString();
+                GUI.Label(new Rect(x + 2, y + 1, 94, 23),
+                    cooldown > 0f ? key + "  " + cooldown.ToString("0.0", Loc.Culture) : key, keyStyle);
+                GUI.color = Color.white;
+                GUI.Label(new Rect(x + 2, y + 22, 94, 32), QuickSkills.Name(skills.Progression.Catalog, id), nameStyle);
+            }
+            GUI.color = previous;
         }
         private void OnDestroy()
         {
