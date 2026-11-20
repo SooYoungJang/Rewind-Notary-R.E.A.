@@ -25,8 +25,12 @@ namespace RewindNotary
             }
 
             var track = cue.Value;
-            if (AudioManager.SetOst(track, track == AudioManager.Ost.EndingNormal || track == AudioManager.Ost.EndingTrue)
-                && (Debug.isDebugBuild || Application.isEditor))
+            if (!AudioManager.SetOst(track, track == AudioManager.Ost.EndingNormal || track == AudioManager.Ost.EndingTrue))
+            {
+                AudioManager.UseLegacyMusic();
+                return;
+            }
+            if (Debug.isDebugBuild || Application.isEditor)
                 Debug.Log("REWA OST cue: " + track, this);
         }
 
