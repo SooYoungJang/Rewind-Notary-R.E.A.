@@ -29,6 +29,8 @@ namespace RewindNotary
         internal CoreRecord Record => Session?.Progression.Record ?? Shell?.MenuRecord;
         private CombatMotor2D Player => Area.Rea;
         private bool sawEmpty, sawSafeCall;
+        private bool talkedToMarta;
+        private float arrivalTestAt = -1f, martaApproachedAt = -1f;
         private float jumpUntil;
         private readonly List<ContactPoint2D> walkContacts = new List<ContactPoint2D>();
         private const float BlockedWalkSeconds = .2f, BlockedWalkSlop = .01f;
@@ -56,6 +58,7 @@ namespace RewindNotary
             switch (step)
             {
                 case PlaytestStep.NewSlot: return sawEmpty && room == "hub_attic" && Session.ActiveSlot == 1 &&
+                    arrivalTestAt >= 0f && Time.unscaledTime >= arrivalTestAt + .35f && Shell.Playing &&
                     Record.Get(SkillRules.BasicSword).validUseCount == SkillRules.InitialSwordUses && !silver.acquired;
                 case PlaytestStep.Attic: return room == "hub_attic" && Has("mint_candy_placed") &&
                     Has("contract_copy_received") && Record.investigation.clueIds.Contains("contract_copy") && Has("sixth_bowl_stamped");
@@ -93,6 +96,11 @@ namespace RewindNotary
                     if (step == PlaytestStep.DistrictTwo && Shell.MenuIndex == clockIndex) keys.Tap(KeyCode.Return);
                     return;
                 case ShellPage.StoryDialogue:
+                    if (Area?.ActiveRow?.completionFlag == "intro_attic_01_read" && !talkedToMarta)
+                    {
+                        stop("The opening dialogue started before Rea interacted with Marta");
+                        return;
+                    }
                     Select(0);
                     return;
                 case ShellPage.Pause:
@@ -103,6 +111,15 @@ namespace RewindNotary
             }
             if (Area == null || !GameInput.CanPlay) return;
             if (Player.Health.Dead) { keys.Tap(KeyCode.Backspace); return; }
+            if (step == PlaytestStep.NewSlot)
+            {
+                if (arrivalTestAt < 0f && Player.Grounded)
+                {
+                    arrivalTestAt = Time.unscaledTime;
+                    keys.Tap(GameInput.InteractKey);
+                }
+                return;
+            }
             if (Time.time < jumpUntil) keys.Hold(KeyCode.Space);
             if (Area.BoutOpponent != null)
             {
@@ -138,9 +155,17 @@ namespace RewindNotary
                 else if (action.StartsWith("use:", StringComparison.Ordinal) && Walk(point.x, .38f)) keys.Tap(GameInput.InteractKey);
                 return;
             }
-            if (Area.AtticBoardApproach is StoryMark breakfast)
+            if (Area.AtticDialogueTarget is StoryMark dialogueTarget)
             {
-                Walk(breakfast.x, .38f);
+                if (!Walk(dialogueTarget.x, .38f)) return;
+                if (dialogueTarget.id == "marta")
+                {
+                    if (martaApproachedAt < 0f) martaApproachedAt = Time.unscaledTime;
+                    if (Time.unscaledTime < martaApproachedAt + .4f) return;
+                    keys.Tap(GameInput.InteractKey);
+                    talkedToMarta |= keys.GetKeyDown(GameInput.InteractKey);
+                }
+                else keys.Tap(GameInput.InteractKey);
                 return;
             }
             if (Record.firstTransferPending && !Has("returned_for_mid_invest"))

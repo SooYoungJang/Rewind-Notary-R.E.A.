@@ -17,6 +17,7 @@ namespace RewindNotary
         private Health health;
         private PlayerController2D controller;
         private FeelProbe feel;
+        private string lastAtticInteraction;
         private PilotProbe pilot;
         private VelvetDistrictProbe district;
         private ClockDistrictProbe clock;
@@ -244,6 +245,15 @@ namespace RewindNotary
             var position = p == null ? Vector2.zero : p.Body.position;
             var openingShot = bot.Shell?.OpeningShot;
             int openingCaption = bot.Shell?.OpeningCaption ?? -1;
+            if (area?.InAtticTutorial == true && area.InteractionAnchor.HasValue)
+            {
+                string interaction = area.AtticDialogueTarget?.id ?? area.PendingAction;
+                if (interaction != null && interaction != lastAtticInteraction)
+                {
+                    lastAtticInteraction = interaction;
+                    Capture("interact-" + interaction.Replace(':', '-'));
+                }
+            }
             string state = string.Join("|", bot.Shell?.Page, bot.Shell?.MenuIndex, openingCaption, openingShot,
                 area?.Room.id, area?.ActiveRow?.textKey,
                 area?.PendingAction, bot.Record?.storyFlags.Count, bot.Record?.Get(SkillRules.SilverStitch)?.validUseCount,

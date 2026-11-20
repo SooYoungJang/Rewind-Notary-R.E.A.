@@ -7,6 +7,7 @@ namespace RewindNotary
     public sealed partial class RepresentativeArea
     {
         private const string AtticRoomId = "hub_attic";
+        private const string Marta = "marta";
         private const string CandyPickup = "mint_candy_pickup";
         private const string CandyTray = "mint_candy_tray";
         private const string CopyEnvelope = "contract_copy_envelope";
@@ -14,8 +15,18 @@ namespace RewindNotary
         private const string StorageChest = "attic_storage_chest";
         internal bool InAttic => Room?.id == AtticRoomId;
         internal bool InAtticTutorial => InAttic && !Has("intro_complete");
-        internal StoryMark AtticBoardApproach =>
-            InAttic && Has("intro_copy_read") && !Has("intro_board_01_read") ? Room.Point(BreakfastBoard) : null;
+        internal StoryMark AtticDialogueTarget
+        {
+            get
+            {
+                if (!InAttic) return null;
+                if (InAtticTutorial && !Has("intro_attic_01_read") && !Has("mint_candy_placed")) return Room.Point(Marta);
+                return Has("intro_copy_read") && !Has("intro_board_01_read") ? Room.Point(BreakfastBoard) : null;
+            }
+        }
+
+        private string AtticDialogueHint(StoryMark target) =>
+            Loc.Get(target.id == Marta ? "area.speaker.marta" : "area.target." + target.id) + Arrow(target.x);
 
         private static readonly Dictionary<string, Sprite> atticProps = new Dictionary<string, Sprite>();
 
@@ -39,6 +50,9 @@ namespace RewindNotary
 
         private void BuildAtticFurniture()
         {
+            var marta = Room.Point(Marta);
+            fixtures[Marta] = PlaceMarker(Marta, marta.x, 0f, RoomArt.Picture("marta-attic"), 1.95f);
+
             var chest = Room.Surface(StorageChest).rect;
             surfaces[StorageChest].GetComponent<SpriteRenderer>().enabled = false;
             AtticProp("Oak chest", new RectInt(552, 194, 434, 239),
@@ -48,7 +62,7 @@ namespace RewindNotary
             float copyX = Room.Point(CopyEnvelope).x;
             float tableX = (trayX + copyX) * .5f;
             AtticProp("Tea table", new RectInt(1056, 54, 422, 432), tableX, 0f, 2.6f, 1);
-            AtticProp(BreakfastBoard, new RectInt(52, 534, 428, 464),
+            fixtures[BreakfastBoard] = AtticProp(BreakfastBoard, new RectInt(52, 534, 428, 464),
                 Room.Point(BreakfastBoard).x, 0f, 2.0f, 1);
 
             var candyFrame = new RectInt(612, 692, 308, 136);

@@ -28,6 +28,7 @@ namespace RewindNotary
         private StitchBinding bossBinding;
         private Font hudFont;
         private GameHudCanvas hudCanvas;
+        private InvestigationWorld investigationWorld;
         private CinematicJuiceDirector cinematic;
         private DistrictMinimapCanvas minimap;
         private NotaryJournalCanvas journal;
@@ -222,7 +223,10 @@ namespace RewindNotary
             Child("Room architecture").AddComponent<RoomArchitectureDecorator>().Initialize(camera, Area, world.transform, finale ? "cassel" : null);
             Child("Stage2 visual director").AddComponent<Stage2VisualDirector>().Initialize(player);
             if (record.lastStageId == "prototype")
-                Child("Investigation points").AddComponent<InvestigationWorld>().Initialize(player, skills, shell, hudFont);
+            {
+                investigationWorld = Child("Investigation points").AddComponent<InvestigationWorld>();
+                investigationWorld.Initialize(player, skills, shell, hudFont);
+            }
             skills.PresentRestoredState();
         }
         private GameObject Child(string label)
@@ -359,6 +363,7 @@ namespace RewindNotary
             if (world != null) { world.SetActive(false); Destroy(world); world = null; }
             player = boss = null; controller = null; skills = null; reward = null; practice = null;
             Area = null; waves = null; trial = null; support = null; bossAI = null; cassel = null;
+            investigationWorld = null;
         }
         public void AbortStage()
         {
@@ -429,6 +434,8 @@ namespace RewindNotary
                 PlayerHp = player.Health.Current,
                 PlayerMaxHp = player.Health.Maximum,
                 ControlsText = GameInput.FormatControlsPrompt(true),
+                InteractionAnchor = GameInput.CanPlay && minimap?.FullMapOpen != true && !NotaryJournalCanvas.IsOpen
+                    ? Area?.InteractionAnchor ?? investigationWorld?.InteractionAnchor : null,
                 Skills = BuildSkillBadges(),
                 DashReadyRatio = player.Defense != null
                     ? 1f - Mathf.Clamp01((player.Defense.State.DashReadyAt - Time.time) / Mathf.Max(0.05f, DefenseTuning.DashCooldown))

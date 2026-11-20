@@ -31,6 +31,7 @@ namespace RewindNotary
         private bool TryTalkToEthan()
         {
             if (!CanTalkToEthan) return false;
+            if (!InteractAt(ethan)) return true;
             shell.OpenForgeDialogue();
             return true;
         }
