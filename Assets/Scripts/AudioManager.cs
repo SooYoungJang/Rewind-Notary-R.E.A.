@@ -59,6 +59,7 @@ namespace RewindNotary
             field = Source("Field music", true); field.clip = Load("Audio/Bgm/field");
             boss = Source("Boss music", true); boss.clip = Load("Audio/Bgm/boss");
             ApplyMusic();
+            gameObject.AddComponent<SoundtrackDirector>();
         }
         private AudioClip Load(string path)
         {
