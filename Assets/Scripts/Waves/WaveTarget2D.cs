@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RewindNotary
 {
-    public sealed class WaveTarget2D : MonoBehaviour
+    public sealed partial class WaveTarget2D : MonoBehaviour
     {
         public string TargetId => name;
         public WaveTargetState State { get; private set; }
@@ -21,16 +21,12 @@ namespace RewindNotary
         private string setupNameKey;
         private string setupLabel => string.IsNullOrEmpty(setupNameKey) ? "" : Loc.Get(setupNameKey);
         private SpriteRenderer visual;
-        private float nextAttack, strikeAt, lastDodge = float.NegativeInfinity;
-        internal float StrikeIn => winding ? strikeAt - Time.time : float.PositiveInfinity;
-        internal float LastStrikeAt { get; private set; } = float.NegativeInfinity;
-        private bool winding;
         private float immobilizedUntil;
         public bool CanReceiveSupport => Kind == EffectTargetKind.Enemy && !State.Cleared && Time.time >= immobilizedUntil;
         public bool ReceiveSupport(BenefactorSupportDefinition support)
         {
             if (!CanReceiveSupport) return false;
-            winding = false;
+            FinishAttack(Time.time);
             if (support.effect == "strike")
             {
                 State.SupportHit(support.damage);
@@ -51,13 +47,14 @@ namespace RewindNotary
             picture.transform.localScale = Vector3.one * scale;
             picture.transform.localPosition = Vector3.up * (sprite.bounds.extents.y * scale);
             visual = picture.AddComponent<SpriteRenderer>(); visual.sprite = sprite; visual.sortingOrder = 8;
+            attackIndex = Mathf.FloorToInt(Mathf.Abs(transform.position.x) * .65f);
             nextAttack = Time.time + definition.attackInterval;
         }
         public bool Setup(UseContext use)
         {
             if (!State.Setup(use)) return false;
             if (State.Cleared) visual.enabled = false;
-            winding = false; nextAttack = Time.time + definition.attackInterval;
+            FinishAttack(Time.time);
             SkillStroke.Show(Bounds.min, Bounds.max, Color.cyan, 0.2f);
             return true;
         }
@@ -68,29 +65,24 @@ namespace RewindNotary
         public bool Cut(UseContext use)
         {
             if (!State.Cut(use, Time.time)) return false;
-            winding = false; nextAttack = Time.time + definition.attackInterval;
+            FinishAttack(Time.time);
             if (State.Cleared) visual.enabled = false;
             return true;
         }
-        private Bounds Threat
-        {
-            get
-            {
-                float height = movementArchetype == "shell_sentry" ? 1.15f : 2.2f;
-                float back = .4f;
-                return new Bounds(transform.position + new Vector3(Facing * (definition.attackReach - back) * .5f, height * .5f, 0f),
-                    new Vector3(definition.attackReach + back, height, 2f));
-            }
-        }
-
         private void FixedUpdate()
         {
             Walking = false;
             if (!GameInput.GameplayEnabled || footing == null || State.Cleared) return;
             Vector2 feet = footing.FollowGround(transform.position, Time.fixedDeltaTime);
             transform.position = feet;
-            if (!footing.Grounded || winding || player.Health.Dead || Time.time < immobilizedUntil ||
+            if (!footing.Grounded || player.Health.Dead || Time.time < immobilizedUntil ||
                 (State.NeedsSetup && State.Ready(Time.time))) return;
+            if (Charging)
+            {
+                StepCharge(feet, Time.time, Time.fixedDeltaTime);
+                return;
+            }
+            if (attackPhase == AttackPhase.Windup || Time.time < recoverUntil) return;
 
             Vector2 offset = player.Body.position - feet;
             bool nearby = Mathf.Abs(offset.y) <= 1.25f && Mathf.Abs(offset.x) <= 5f && !TerrainBetween(player.Body.position);
@@ -131,44 +123,21 @@ namespace RewindNotary
 
         private void Update()
         {
-            if (!GameInput.GameplayEnabled || State == null || player.Health.Dead || State.Cleared) return;
-            visual.color = winding ? Color.yellow : State.Ready(Time.time) ? Color.cyan
+            if (!GameInput.GameplayEnabled || Time.deltaTime <= 0f || State == null || player.Health.Dead || State.Cleared) return;
+            visual.color = attackPhase == AttackPhase.Windup ? Color.yellow : State.Ready(Time.time) ? Color.cyan
                 : definition.gate == "armor" ? Color.gray : new Color(0.8f, 0.35f, 0.4f);
             if (Time.time < immobilizedUntil || footing == null || (State.NeedsSetup && State.Ready(Time.time))) return;
-            if (!footing.Grounded) { winding = false; return; }
-            var playerBounds = player.GetComponent<Collider2D>().bounds;
-            if (!winding)
+            if (!footing.Grounded)
             {
-                if (Time.time < nextAttack ||
-                    Mathf.Abs(player.Body.position.x - transform.position.x) > definition.attackReach + .35f) return;
-                Facing = player.Body.position.x >= transform.position.x ? 1 : -1;
-                if (!Threat.Intersects(playerBounds) || TerrainBetween(player.Body.position)) return;
-                winding = true; strikeAt = Time.time + definition.telegraphSeconds;
-                lastDodge = float.NegativeInfinity;
-                SkillStroke.Show(Threat.min, Threat.max, Color.yellow, definition.telegraphSeconds);
+                if (attackPhase != AttackPhase.Idle) FinishAttack(Time.time);
+                return;
             }
-            // A dash counts only when it actually traverses this imminent attack's danger area.
-            if (Threat.Intersects(playerBounds) && player.Defense.State.Evading(Time.time)
-                && strikeAt - Time.time <= DefenseTuning.DashInvulnerableSeconds) lastDodge = Time.time;
-            if (Time.time < strikeAt) return;
-            winding = false; nextAttack = Time.time + definition.attackInterval;
-            LastStrikeAt = Time.time;
-            bool contact = Threat.Intersects(playerBounds) && !TerrainBetween(player.Body.position);
-            int parries = player.Skills.ParrySuccessCount;
-            bool evading = contact && player.Defense.State.Evading(Time.time);
-            bool hurt = contact && player.Health.Hit(definition.attackDamage, transform.position);
-            bool parried = player.Skills.ParrySuccessCount > parries;
-            bool dodged = !hurt && (evading || (!contact && Time.time - lastDodge <= DefenseTuning.DashInvulnerableSeconds));
-            if (parried || dodged)
-            {
-                if (State.OpenDefense(Time.time))
-                    player.Skills.Progression.EmitSimple("wave_opening", "", TargetId + (parried ? ":parry" : ":dash"));
-            }
+            TickAttack(Time.time);
         }
         private void OnEnable() { WaveCombatTargets.All.Add(this); }
         private void OnDisable()
         {
-            winding = false;
+            attackPhase = AttackPhase.Idle;
             Walking = false;
             LastStrikeAt = float.NegativeInfinity;
             WaveCombatTargets.All.Remove(this);

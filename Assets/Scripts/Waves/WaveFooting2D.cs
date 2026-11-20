@@ -50,15 +50,35 @@ namespace RewindNotary
         internal bool TryStep(Vector2 feet, float nextX, out Vector2 next)
         {
             next = feet;
+            if (!ProbeStep(feet, nextX, out var floor)) return false;
+            next = Plant(nextX, floor);
+            return true;
+        }
+
+        internal float WalkableDistance(Vector2 feet, int direction, float maxDistance)
+        {
+            float distance = 0f;
+            while (distance < maxDistance)
+            {
+                float step = Mathf.Min(.24f, maxDistance - distance);
+                float nextX = feet.x + direction * step;
+                if (!ProbeStep(feet, nextX, out var floor)) break;
+                feet = new Vector2(nextX, floor.point.y + Skin);
+                distance += step;
+            }
+            return distance;
+        }
+
+        private bool ProbeStep(Vector2 feet, float nextX, out RaycastHit2D floor)
+        {
+            floor = default;
             float direction = Mathf.Sign(nextX - feet.x);
             if (Physics2D.Raycast(feet + Vector2.up * .7f, Vector2.right * direction,
                     Mathf.Abs(nextX - feet.x) + .24f, GroundMask).collider != null) return false;
 
             // Check the leading foot as well as the center so the actor turns before a drop.
-            if (!FindFloor(new Vector2(nextX + direction * .19f, feet.y), StepHeight, out _) ||
-                !FindFloor(new Vector2(nextX, feet.y), StepHeight, out var floor)) return false;
-            next = Plant(nextX, floor);
-            return true;
+            return FindFloor(new Vector2(nextX + direction * .19f, feet.y), StepHeight, out _) &&
+                FindFloor(new Vector2(nextX, feet.y), StepHeight, out floor);
         }
 
         private bool FindFloor(Vector2 feet, float below, out RaycastHit2D floor)

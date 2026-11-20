@@ -25,6 +25,7 @@ namespace RewindNotary
         private SpriteRenderer shadowRenderer;
         private SpriteRenderer stateRing;
         private SpriteRenderer telegraphRing;
+        private LineRenderer attackOutline;
         private GameObject hpBarRoot;
         private Transform hpBarFill;
         private SpriteRenderer hpBarFillSr;
@@ -194,6 +195,16 @@ namespace RewindNotary
             telegraphRing.color = new Color(1.0f, 0.65f, 0.24f, 0.92f);
             telegraphRing.sortingOrder = 13;
             telegraphRing.enabled = false;
+
+            var outline = new GameObject("Enemy attack area");
+            outline.transform.SetParent(transform, false);
+            attackOutline = outline.AddComponent<LineRenderer>();
+            attackOutline.sharedMaterial = sharedAdditiveMat;
+            attackOutline.sortingOrder = 13;
+            attackOutline.useWorldSpace = true;
+            attackOutline.positionCount = 4;
+            attackOutline.loop = true;
+            attackOutline.enabled = false;
         }
 
         private void BuildOverheadHealthBar()
@@ -276,12 +287,13 @@ namespace RewindNotary
             if (!alive)
             {
                 telegraphRing.enabled = false;
+                attackOutline.enabled = false;
                 return;
             }
 
             animClock += Time.deltaTime;
             float t = animClock + phaseOffset;
-            bool winding = !float.IsPositiveInfinity(target.StrikeIn);
+            bool winding = target.TryGetAttackCue(out var threat, out var warningTint);
             bool ready = target.State.Ready(Time.time);
             bool recoiling = Time.time < hitRecoilUntil;
 
@@ -295,7 +307,7 @@ namespace RewindNotary
             else if (winding)
             {
                 float flash = 0.5f + 0.5f * Mathf.Sin(Time.time * 26f);
-                pictureRenderer.color = Color.Lerp(Color.white, new Color(1.0f, 0.90f, 0.68f, 1f), flash * 0.45f);
+                pictureRenderer.color = Color.Lerp(Color.white, warningTint, flash * 0.45f);
             }
             else
             {
@@ -307,8 +319,9 @@ namespace RewindNotary
                 float sinceStrike = Time.time - target.LastStrikeAt;
                 int frame;
                 if (recoiling) frame = 7;
-                else if (winding) frame = 4;
                 else if (sinceStrike < 0.09f) frame = 5;
+                else if (winding) frame = 4;
+                else if (target.Charging) frame = 2 + (Mathf.FloorToInt(t * 16f) % 2);
                 else if (sinceStrike < 0.18f) frame = 6;
                 else if (target.Walking) frame = 2 + (Mathf.FloorToInt(t * 8f) % 2);
                 else frame = Mathf.FloorToInt(t * 4f) % 2;
@@ -330,11 +343,21 @@ namespace RewindNotary
             stateRing.transform.localRotation = Quaternion.Euler(0f, 0f, t * 38f);
 
             telegraphRing.enabled = winding;
+            attackOutline.enabled = winding;
             if (winding)
             {
                 float s = 1.35f + Mathf.PingPong(Time.time * 5.5f, 0.75f);
+                telegraphRing.color = warningTint;
                 telegraphRing.transform.localScale = new Vector3(s, s, 1f);
                 telegraphRing.transform.localRotation = Quaternion.Euler(0f, 0f, -Time.time * 160f);
+                float pulse = Mathf.Clamp01(1f - target.StrikeIn / .3f);
+                warningTint.a = Mathf.Lerp(.50f, .95f, pulse);
+                attackOutline.startColor = attackOutline.endColor = warningTint;
+                attackOutline.widthMultiplier = Mathf.Lerp(.034f, .069f, pulse);
+                attackOutline.SetPosition(0, new Vector3(threat.min.x, threat.min.y, 0f));
+                attackOutline.SetPosition(1, new Vector3(threat.max.x, threat.min.y, 0f));
+                attackOutline.SetPosition(2, new Vector3(threat.max.x, threat.max.y, 0f));
+                attackOutline.SetPosition(3, new Vector3(threat.min.x, threat.max.y, 0f));
             }
         }
 
