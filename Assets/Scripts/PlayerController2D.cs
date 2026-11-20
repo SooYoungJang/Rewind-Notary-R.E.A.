@@ -28,6 +28,7 @@ namespace RewindNotary
         internal const float WaveChargeOne = .38f, WaveChargeTwo = 1.02f;
         private const float AttackTapSeconds = .21f;
         private float waveChargeAt = float.NegativeInfinity;
+        private bool tapMaySwing;
         private SpriteRenderer chargeGlow;
         internal int WaveChargeLevel { get; private set; }
         internal event System.Action AttackInputAccepted;
@@ -43,7 +44,12 @@ namespace RewindNotary
             motor.AttackStarted += OnAttackStarted;
         }
         private void OnLanded() { AudioManager.Play(AudioManager.Sfx.Land); }
-        private void OnAttackStarted() { AudioManager.Play(AudioManager.Sfx.Swing); }
+        private void OnAttackStarted()
+        {
+            attackPressed = float.NegativeInfinity;
+            tapMaySwing = false;
+            AudioManager.Play(AudioManager.Sfx.Swing);
+        }
         private void Update()
         {
             bool attackHeld = GameInput.AttackHeld;
@@ -79,7 +85,11 @@ namespace RewindNotary
             if (castDown || commandDown || motor.Stunned) ClearWaveCharge();
             else
             {
-                if (GameInput.AttackDown) waveChargeAt = Time.time;
+                if (GameInput.AttackDown)
+                {
+                    waveChargeAt = Time.time;
+                    tapMaySwing = true;
+                }
                 UpdateWaveCharge(attackHeld);
             }
             if (motor.Stunned) { pendingCast = null; pendingStarter = null; }
@@ -151,13 +161,14 @@ namespace RewindNotary
             int level = elapsed >= WaveChargeTwo ? 2 : elapsed >= WaveChargeOne ? 1 : 0;
             if (!held)
             {
+                bool tap = tapMaySwing && elapsed <= AttackTapSeconds;
                 ClearWaveCharge();
                 if (level > 0)
                 {
                     attackPressed = float.NegativeInfinity;
                     motor.FireChargedWave(level, axis);
                 }
-                else if (elapsed <= AttackTapSeconds) attackPressed = Time.time;
+                else if (tap) attackPressed = Time.time;
                 return;
             }
 
@@ -174,6 +185,7 @@ namespace RewindNotary
         private void ClearWaveCharge()
         {
             waveChargeAt = float.NegativeInfinity;
+            tapMaySwing = false;
             WaveChargeLevel = 0;
             if (chargeGlow != null) Destroy(chargeGlow.gameObject);
             chargeGlow = null;

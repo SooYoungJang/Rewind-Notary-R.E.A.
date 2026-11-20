@@ -22,8 +22,6 @@ namespace RewindNotary
         private int currentTier = -1;
         private int lastSkillMask = -1;
 
-        public int CurrentTier => Mathf.Max(1, currentTier);
-
         public void Initialize(CombatMotor2D owner)
         {
             motor = owner;
@@ -122,6 +120,7 @@ namespace RewindNotary
 
         private void RefreshGrowth(bool force)
         {
+            if (!force && motor.Attacking) return;
             int tier = 1;
             int mask = 0;
             var session = motor.Skills;

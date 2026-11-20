@@ -34,7 +34,8 @@ namespace RewindNotary
         private readonly bool[] knownOwnedSkills = new bool[5];
         private bool skillOwnershipSeeded;
         private int lastContactSaves;
-        private float currentCameraSize = 5.5f;
+        private const float GameplayCameraSize = 6.1f;
+        private float currentCameraSize = GameplayCameraSize;
         private bool checkpoint, won, initialized, echoDuel;
         private float deathTimer;
         private string failure;
@@ -97,7 +98,7 @@ namespace RewindNotary
                 var go = new GameObject("Main Camera"); go.tag = "MainCamera";
                 camera = go.AddComponent<Camera>(); go.AddComponent<AudioListener>();
             }
-            camera.orthographic = true; camera.orthographicSize = 5.5f;
+            camera.orthographic = true; camera.orthographicSize = GameplayCameraSize;
             camera.nearClipPlane = 0.1f; camera.farClipPlane = 100f;
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.backgroundColor = new Color(0.53f, 0.70f, 0.85f);
@@ -206,7 +207,7 @@ namespace RewindNotary
             virtualCamera = Child("Cinemachine follow camera").AddComponent<CinemachineCamera>();
             virtualCamera.Follow = cameraTarget.transform;
             var lens = LensSettings.Default;
-            lens.OrthographicSize = 5.5f; lens.NearClipPlane = 0.1f; lens.FarClipPlane = 100f;
+            lens.OrthographicSize = GameplayCameraSize; lens.NearClipPlane = 0.1f; lens.FarClipPlane = 100f;
             virtualCamera.Lens = lens;
             var composer = virtualCamera.gameObject.AddComponent<CinemachinePositionComposer>();
             composer.CameraDistance = 10f;
@@ -238,7 +239,7 @@ namespace RewindNotary
             {
                 var growth = go.AddComponent<ReaGrowthVisual2D>();
                 growth.Initialize(motor);
-                go.AddComponent<ReaMotionPolish2D>().Initialize(motor, growth);
+                go.AddComponent<ReaMotionPolish2D>().Initialize(motor);
             }
             else
             {
@@ -351,7 +352,7 @@ namespace RewindNotary
             }
             initialized = false; SkillStroke.WorldRoot = null;
             lastContactSaves = 0;
-            currentCameraSize = 5.5f;
+            currentCameraSize = GameplayCameraSize;
             cinematic?.ResetState();
             minimap?.CloseFullMap();
             ImpactFeedback.ResetEffects(); AudioManager.ResetPlayback(false);
@@ -394,7 +395,7 @@ namespace RewindNotary
         {
             if (virtualCamera != null && shell != null && initialized)
             {
-                float targetSize = shell.Page == ShellPage.StoryDialogue ? 4.85f : 5.5f;
+                float targetSize = shell.Page == ShellPage.StoryDialogue ? 4.85f : GameplayCameraSize;
                 currentCameraSize = Mathf.Lerp(currentCameraSize, targetSize, 1f - Mathf.Exp(-Time.unscaledDeltaTime * 5.5f));
                 var lens = virtualCamera.Lens;
                 if (Mathf.Abs(lens.OrthographicSize - currentCameraSize) > 0.002f)

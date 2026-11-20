@@ -187,6 +187,7 @@ namespace RewindNotary
 
         private void OnAttackStarted()
         {
+            if (isPlayer && motor.ComboStep > 0) return;
             Vector3 at = transform.position + new Vector3(motor.Facing * 0.95f, 1.02f, 0f);
             Color sparkColor = isPlayer ? new Color(0.95f, 0.92f, 0.65f) : new Color(0.62f, 0.86f, 1f);
             EmitBurst(at, sparkColor, 8, 3.0f);

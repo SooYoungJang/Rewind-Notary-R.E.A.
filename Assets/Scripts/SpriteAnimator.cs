@@ -16,8 +16,9 @@ namespace RewindNotary
         private readonly Dictionary<Pose, Sprite[]> clips = new Dictionary<Pose, Sprite[]>();
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private SpriteRenderer view;
-        private Sprite[][] groundAttacks, airAttacks, airFinishers, starterAttacks;
-        private Sprite[] runAttack, activeAttack;
+        private Sprite[][] groundAttacks, airAttacks, starterAttacks;
+        private Sprite[] activeAttack;
+        private bool skipGuard;
         private Pose state;
         private float elapsed;
         private bool ready;
@@ -74,8 +75,8 @@ namespace RewindNotary
             foreach (Sprite sprite in ownedSprites) if (sprite != null) Destroy(sprite);
             ownedSprites.Clear();
             ActiveResource = resource;
-            groundAttacks = airAttacks = airFinishers = starterAttacks = null;
-            runAttack = activeAttack = null;
+            groundAttacks = airAttacks = starterAttacks = null;
+            activeAttack = null;
             var layout = LoadLayout(resource);
             clips[Pose.Idle] = Slice(texture, layout, 8, 4, 0, 0, 4, 2.5f);
             clips[Pose.Run] = Slice(texture, layout, 8, 4, 1, 0, 8, 2.5f);
@@ -86,10 +87,8 @@ namespace RewindNotary
             const string rea = "GameArt/sprites/rea-sheet";
             if (resource == rea || resource.StartsWith(rea + "-tier", StringComparison.Ordinal))
             {
-                groundAttacks = LoadAttackRows(rea + "-ground-attacks", 4, 2.65f);
-                airAttacks = LoadAttackRows(rea + "-air-attacks", 2, 3.40f);
-                airFinishers = LoadAttackRows(rea + "-air-finishers", 2, 3.40f);
-                runAttack = LoadAttackRows(rea + "-running-attack", 1, 4.30f)[0];
+                groundAttacks = LoadAttackRows(rea + "-ground-attacks", 4, 2.43f);
+                airAttacks = LoadAttackRows(rea + "-air-attacks", 4, 2.59f);
                 const string starter = rea + "-starter-attacks";
                 if (Resources.Load<Texture2D>(starter) != null)
                     starterAttacks = LoadAttackRows(starter, 4, 2.45f);
@@ -184,14 +183,12 @@ namespace RewindNotary
         internal void BeginAttack(int step, bool grounded, bool moving, int starter = -1)
         {
             if (!ready) return;
+            skipGuard = starter < 0 && step == 1 && grounded && moving && groundAttacks != null;
             if (starter >= 0 && starterAttacks != null) activeAttack = starterAttacks[starter];
             else if (groundAttacks == null || step == 0) activeAttack = clips[Pose.Attack];
-            else if (!grounded && step <= airAttacks.Length) activeAttack = airAttacks[step - 1];
-            else if (!grounded) activeAttack = airFinishers[step - airAttacks.Length - 1];
-            else if (step == 1 && grounded && moving) activeAttack = runAttack;
-            else activeAttack = groundAttacks[step - 1];
+            else activeAttack = (grounded ? groundAttacks : airAttacks)[step - 1];
             state = Pose.Attack;
-            view.sprite = activeAttack[0];
+            view.sprite = activeAttack[skipGuard ? 1 : 0];
         }
 
         public void PlayAttack(float attackElapsed, float strikeTime, float duration)
@@ -199,7 +196,7 @@ namespace RewindNotary
             if (!ready) return;
             state = Pose.Attack;
             // The motor owns this clock, so the hit and slash frame cannot drift apart.
-            int index = attackElapsed < strikeTime * 0.5f ? 0 : attackElapsed < strikeTime ? 1
+            int index = !skipGuard && attackElapsed < strikeTime * 0.5f ? 0 : attackElapsed < strikeTime ? 1
                 : attackElapsed < strikeTime + (duration - strikeTime) * 0.5f ? 2 : 3;
             view.sprite = (activeAttack ?? clips[Pose.Attack])[index];
         }

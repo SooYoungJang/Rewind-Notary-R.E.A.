@@ -93,10 +93,6 @@ namespace RewindNotary
                     if (step == PlaytestStep.DistrictTwo && Shell.MenuIndex == clockIndex) keys.Tap(KeyCode.Return);
                     return;
                 case ShellPage.StoryDialogue:
-                    if (Area?.ActiveRow?.sceneId == "intro_attic" &&
-                        (Area.ActiveRow.stepId == "01_wake" || Area.ActiveRow.stepId == "02_candy_pickup" ||
-                        Area.ActiveRow.stepId == "04_receive_copy")) return;
-                    if (Area?.ActiveRow?.sceneId == "intro_forge" && Area.ActiveRow.stepId == "02_three_notches") return;
                     Select(0);
                     return;
                 case ShellPage.Pause:

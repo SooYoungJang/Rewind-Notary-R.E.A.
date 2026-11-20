@@ -8,7 +8,7 @@ namespace RewindNotary
     [DefaultExecutionOrder(-50)] // Finish/advance attacks before this frame's player input.
     public sealed partial class CombatMotor2D : MonoBehaviour
     {
-        internal const float ReaVisualScale = .76f;
+        internal const float ReaVisualScale = .70f;
         public Rigidbody2D Body { get; private set; }
         public Health Health { get; private set; }
         public SpriteAnimator Animation { get; private set; }
@@ -62,10 +62,10 @@ namespace RewindNotary
         }
         private static readonly AttackSpec[] PlayerCombo =
         {
-            new AttackSpec(0.40f, 0.16f, 0.08f, 0.90f, 1.70f, 1.55f, 1, 1f),
-            new AttackSpec(0.36f, 0.14f, 0.07f, 1.00f, 1.90f, 1.45f, 2, 1f),
-            new AttackSpec(0.44f, 0.22f, 0.10f, 1.10f, 2.10f, 1.75f, 3, 1f),
-            new AttackSpec(0.56f, 0.28f, 0.14f, 1.20f, 2.40f, 1.90f, 4, 1.7f),
+            new AttackSpec(0.36f, 0.135f, 0.06f, 0.90f, 1.70f, 1.55f, 1, 1f),
+            new AttackSpec(0.34f, 0.13f, 0.06f, 1.00f, 1.90f, 1.45f, 2, 1f),
+            new AttackSpec(0.40f, 0.175f, 0.075f, 1.10f, 2.10f, 1.75f, 3, 1f),
+            new AttackSpec(0.48f, 0.215f, 0.09f, 1.20f, 2.40f, 1.90f, 4, 1.7f),
         };
         private static readonly AttackSpec BossAttack =
             new AttackSpec(AttackDuration, 0.16f, AttackDuration, 0.9f, 1.7f, 1.55f, 1, 1f);
@@ -88,7 +88,7 @@ namespace RewindNotary
             Body.interpolation = RigidbodyInterpolation2D.Interpolate;
             Body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
             capsule = GetComponent<CapsuleCollider2D>();
-            capsule.size = new Vector2(0.62f, isPlayer ? 1.66f : 1.9f);
+            capsule.size = isPlayer ? new Vector2(.57f, 1.53f) : new Vector2(.62f, 1.9f);
             capsule.offset = Vector2.up * (capsule.size.y * .5f);
             capsule.sharedMaterial = new PhysicsMaterial2D("No wall friction") { friction = 0f, bounciness = 0f };
             Health = GetComponent<Health>();
@@ -358,6 +358,7 @@ namespace RewindNotary
         {
             // Mark even a whiff/immune target as delivered: one contact query per swing.
             strikeDelivered = true;
+            if (Health.IsPlayer && attackStep > 0) SwordSwipe.Show(this, attackStep, aerialSwing);
             float centerY = activeStarter < 0 ? 1f : StarterAttacks[activeStarter].centerY;
             Bounds blade = AttackDirectionY == -1
                 ? new Bounds(transform.position + new Vector3(0f, -0.35f, 0f), new Vector3(1.95f, 1.85f, 2f))
