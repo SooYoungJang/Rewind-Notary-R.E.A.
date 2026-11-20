@@ -17,6 +17,7 @@ namespace RewindNotary
         internal int Facing { get; private set; } = 1;
         internal bool Walking { get; private set; }
         internal bool FeetSupported => footing == null || footing.Grounded;
+        internal bool AirPinned => footing != null && footing.Hanging;
         private CombatMotor2D player;
         private string setupNameKey;
         private string setupLabel => string.IsNullOrEmpty(setupNameKey) ? "" : Loc.Get(setupNameKey);
@@ -62,9 +63,9 @@ namespace RewindNotary
         {
             if (State.RearmSwitch()) visual.enabled = true;
         }
-        public bool Cut(UseContext use, bool echo = false)
+        public bool Cut(UseContext use, bool echo = false, int comboStep = 0)
         {
-            if (!State.Cut(use, Time.time, echo)) return false;
+            if (!State.Cut(use, Time.time, echo, comboStep)) return false;
             FinishAttack(Time.time);
             if (State.Cleared) visual.enabled = false;
             return true;
@@ -117,12 +118,17 @@ namespace RewindNotary
             transform.position = next;
         }
 
-        internal void ReactToStarter(int starter, float originX)
+        internal void ReactToSword(int starter, float originX, int comboStep, bool juggle)
         {
-            if (footing == null || State.Cleared || !footing.Grounded || State.NeedsSetup) return;
+            if (footing == null || State.Cleared || !State.TakesComboHits) return;
+            if (!footing.Grounded)
+            {
+                if (juggle) footing.HoldAir(comboStep == 4 ? .29f : CombatMotor2D.JuggleSeconds);
+                return;
+            }
             if (starter == QuickSkills.Rising)
             {
-                footing.Launch();
+                footing.Launch(CombatMotor2D.RisingLaunchSpeed);
                 return;
             }
             if (starter != QuickSkills.Sweep) return;

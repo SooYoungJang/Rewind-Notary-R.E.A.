@@ -1,7 +1,7 @@
 namespace RewindNotary
 {
     // Finite material segments. Every cut really removes one segment; follow-up combo hits
-    // meet the interlock until that whole originating sequence has closed.
+    // can hit ordinary enemies while guarded targets keep their interlock.
     public sealed class WaveTargetState
     {
         public int Remaining { get; private set; }
@@ -17,13 +17,16 @@ namespace RewindNotary
         private int hits;
         private bool prepared;
         private bool echoed;
+        private int lastComboStep;
         private float openUntil = float.NegativeInfinity;
         public WaveTargetState(WaveArchetype kind, WaveSpawn spawn, int setupHits = 1, bool skillOnly = false)
         {
             archetype = kind; setupSkill = spawn.setupSkill; Remaining = spawn.segments;
             this.setupHits = System.Math.Max(1, setupHits); this.skillOnly = skillOnly;
+            if (TakesComboHits && Remaining >= 3) Remaining = System.Math.Max(Remaining, 5);
         }
         public bool NeedsSetup => archetype.gate == "skill" || !string.IsNullOrEmpty(setupSkill);
+        internal bool TakesComboHits => !archetype.mechanism && !NeedsSetup && archetype.gate != "defense";
         public bool Ready(float now) => NeedsSetup ? prepared
             : archetype.gate != "defense" || now < openUntil;
         public bool Setup(UseContext use)
@@ -51,20 +54,20 @@ namespace RewindNotary
             openUntil = now + archetype.openingSeconds;
             return true;
         }
-        public bool Cut(UseContext use, float now, bool echo = false)
+        public bool Cut(UseContext use, float now, bool echo = false, int comboStep = 0)
         {
             if (Cleared || use == null || use.Closed || use.SkillId != SkillRules.BasicSword || !Ready(now)) return false;
             if (LastSword == use)
             {
-                // The delayed wave follows its first hit only on ordinary moving enemies.
-                if (!echo || echoed || archetype.mechanism || NeedsSetup || archetype.gate == "defense") return false;
-                echoed = true;
+                if (!TakesComboHits || (echo ? echoed : comboStep <= lastComboStep)) return false;
+                if (echo) echoed = true;
             }
             else
             {
                 if (LastSword != null && !LastSword.Closed) return false;
                 echoed = false;
             }
+            lastComboStep = comboStep;
             Remaining--;
             LastSword = use;
             CrossLoopFinish = NeedsSetup && prepared;

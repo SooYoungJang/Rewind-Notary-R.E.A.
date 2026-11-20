@@ -295,7 +295,7 @@ namespace RewindNotary
             float t = animClock + phaseOffset;
             bool winding = target.TryGetAttackCue(out var threat, out var warningTint);
             bool ready = target.State.Ready(Time.time);
-            bool recoiling = Time.time < hitRecoilUntil;
+            bool recoiling = Time.time < hitRecoilUntil || target.AirPinned;
 
             if (player != null && target.Kind == EffectTargetKind.Enemy)
                 pictureRenderer.flipX = target.Facing < 0;

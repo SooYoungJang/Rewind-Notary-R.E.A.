@@ -14,6 +14,7 @@ namespace RewindNotary
         private Collider2D support;
         private Vector2 localFoot;
         private float fallSpeed;
+        private float airborneUntil;
 
         internal WaveFooting2D(Vector2 spawn)
         {
@@ -25,10 +26,13 @@ namespace RewindNotary
 
         internal float HomeX { get; private set; }
         internal bool Grounded => support != null;
-        internal void Launch() { support = null; fallSpeed = -8f; }
+        internal bool Hanging => Time.time < airborneUntil;
+        internal void Launch(float speed) { support = null; fallSpeed = -speed; airborneUntil = 0f; }
+        internal void HoldAir(float seconds) { support = null; fallSpeed = 0f; airborneUntil = Time.time + seconds; }
 
         internal Vector2 FollowGround(Vector2 feet, float dt)
         {
+            if (Hanging) return feet;
             if (support != null && support.enabled && support.gameObject.activeInHierarchy)
             {
                 Vector2 carried = support.transform.TransformPoint(localFoot);

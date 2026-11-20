@@ -29,13 +29,16 @@ namespace RewindNotary
         public event System.Action AttackStarted;
         private float attackStartedAt, comboExpiresAt, stunUntil, landUntil, lastHitAt;
         private bool strikeDelivered, groundSampled, queuedAttack;
-        private int comboStep, attackStep;
+        private int comboStep, attackStep, airStrikesUsed;
+        private bool aerialSwing, holdingAir;
+        private float airGravity;
         private int activeStarter = -1;
         private Health opponent;
         private int damage, strikeDamage;
         private UseContext chainUse, activeUse;
         private SkillStageDefinition chainProfile;
-        private int ComboLimit => Health.IsPlayer && chainProfile != null ? chainProfile.comboLimit : PlayerCombo.Length;
+        internal const float RisingLaunchSpeed = 14.2f, JuggleSeconds = .53f;
+        private static int ComboLimit => PlayerCombo.Length;
         public const float AttackDuration = 0.32f;
         public const float ComboGraceSeconds = 0.18f;
         public const float AirAcceleration = 45f, AirDrag = 6f;
@@ -59,7 +62,7 @@ namespace RewindNotary
             new AttackSpec(0.40f, 0.16f, 0.08f, 0.90f, 1.70f, 1.55f, 1, 1f),
             new AttackSpec(0.36f, 0.14f, 0.07f, 1.00f, 1.90f, 1.45f, 2, 1f),
             new AttackSpec(0.44f, 0.22f, 0.10f, 1.10f, 2.10f, 1.75f, 3, 1f),
-            new AttackSpec(0.56f, 0.28f, 0.56f, 1.20f, 2.40f, 1.90f, 4, 1.7f),
+            new AttackSpec(0.56f, 0.28f, 0.14f, 1.20f, 2.40f, 1.90f, 4, 1.7f),
         };
         private static readonly AttackSpec BossAttack =
             new AttackSpec(AttackDuration, 0.16f, AttackDuration, 0.9f, 1.7f, 1.55f, 1, 1f);
@@ -144,6 +147,8 @@ namespace RewindNotary
             }
             if (Grounded && !wasGrounded)
             {
+                airStrikesUsed = 0;
+                ReleaseAirSwing();
                 Defense?.State.Land();
                 landUntil = Time.time + 0.09f;
                 LastLandedAt = Time.time;
@@ -199,23 +204,20 @@ namespace RewindNotary
             if (Attacking)
             {
                 if (activeStarter == QuickSkills.Rising && !Grounded && strikeDelivered &&
-                    Time.time - attackStartedAt >= activeAttack.StrikeTime + .10f)
+                    airStrikesUsed < ComboLimit && Time.time - attackStartedAt >= activeAttack.StrikeTime + .10f)
                 {
                     CancelAttack();
-                    BeginAttack(1);
-                    return true;
+                    return BeginNextPlayerSwing();
                 }
-                // The final step and a chain reset by landing cannot reserve another swing.
-                if (!Health.IsPlayer || comboStep == 0 || comboStep >= ComboLimit || queuedAttack) return false;
+                if (!Health.IsPlayer || comboStep == 0 || queuedAttack ||
+                    (!Grounded && airStrikesUsed >= ComboLimit)) return false;
                 float elapsed = Time.time - attackStartedAt;
                 if (elapsed < activeAttack.BufferOpen || elapsed >= activeAttack.Duration) return false;
                 queuedAttack = true;
                 return true; // Accepted input, not a swing/audio event yet.
             }
             if (!Health.IsPlayer) { BeginAttack(0); return true; }
-            if (Time.time > comboExpiresAt) ResetCombo();
-            BeginAttack(comboStep + 1);
-            return true;
+            return BeginNextPlayerSwing();
         }
 
         internal bool UseStarterSkill(int index, int direction = 0, bool command = false)
@@ -229,6 +231,7 @@ namespace RewindNotary
             activeUse = chainUse = Skills.Progression.BeginUse(SkillRules.BasicSword, Skills.PreviewStage);
             chainProfile = null;
             activeStarter = index;
+            aerialSwing = false;
             float steering = direction != 0 ? direction : GameInput.Horizontal;
             starterFacing = steering == 0f ? Facing : (int)Mathf.Sign(steering);
             Face(starterFacing);
@@ -239,9 +242,20 @@ namespace RewindNotary
             return true;
         }
 
+        private bool BeginNextPlayerSwing(bool fromBuffer = false)
+        {
+            bool airborne = !Grounded;
+            if (airborne && airStrikesUsed >= ComboLimit) return false;
+            if (comboStep >= ComboLimit || (comboStep > 0 && aerialSwing != airborne) ||
+                (!fromBuffer && Time.time > comboExpiresAt))
+                ResetCombo();
+            BeginAttack(airborne ? ++airStrikesUsed : comboStep + 1);
+            return true;
+        }
+
         private void BeginAttack(int step)
         {
-            if (step == 1 && Skills != null)
+            if (step > 0 && comboStep == 0 && Skills != null)
             {
                 chainUse = Skills.Progression.BeginUse(SkillRules.BasicSword, Skills.PreviewStage);
                 chainProfile = Skills.Progression.Catalog.Get(SkillRules.BasicSword).Profile(chainUse.Stage);
@@ -249,6 +263,7 @@ namespace RewindNotary
             activeUse = chainUse;
             attackStep = comboStep = step;
             activeStarter = -1;
+            aerialSwing = step > 0 && !Grounded;
             AttackDirectionY = 0;
             if (Health.IsPlayer && step > 0 && AutoTestRuntime.Report == null)
             {
@@ -256,6 +271,8 @@ namespace RewindNotary
                 if (!Grounded && vy < -0.5f) AttackDirectionY = -1;
                 else if (vy > 0.5f) AttackDirectionY = 1;
             }
+            if (aerialSwing && AttackDirectionY >= 0) HoldAirSwing();
+            else ReleaseAirSwing();
             bool moving = Mathf.Abs(Body.linearVelocity.x - carrierSpeed) >= PlayerController2D.MoveSpeed * .5f;
             StartSwing(step == 0 ? BossAttack : PlayerCombo[step - 1], step, moving);
         }
@@ -293,12 +310,31 @@ namespace RewindNotary
         }
         private void CancelAttack()
         {
+            ReleaseAirSwing();
             Skills?.Progression.EndUse(activeUse);
             activeUse = null;
             Attacking = false;
             ResetCombo();
         }
         internal void ClearComboForDefense() { CancelAttack(); }
+
+        private void HoldAirSwing()
+        {
+            if (!holdingAir)
+            {
+                airGravity = Body.gravityScale;
+                Body.gravityScale = 0f;
+                holdingAir = true;
+            }
+            Body.linearVelocity = new Vector2(Body.linearVelocity.x, 0f);
+        }
+
+        private void ReleaseAirSwing()
+        {
+            if (!holdingAir) return;
+            Body.gravityScale = airGravity;
+            holdingAir = false;
+        }
         private void DeliverStrike()
         {
             // Mark even a whiff/immune target as delivered: one contact query per swing.
@@ -334,7 +370,7 @@ namespace RewindNotary
                 SkillStroke.Afterimage(Animation.GetComponent<SpriteRenderer>(), chainProfile.afterimageSeconds);
             swingConnected = ApplySwordBounds(blade, activeUse, strikeDamage, activeAttack.Knockback, attackStep, activeStarter);
             if (activeStarter >= 0) ShowStarterStrike(blade, swingConnected);
-            if (activeStarter == QuickSkills.Rising && Grounded) Jump(8.4f);
+            if (activeStarter == QuickSkills.Rising && Grounded) Jump(RisingLaunchSpeed);
             if (Health.IsPlayer && AttackDirectionY == -1 && swingConnected)
             {
                 Body.linearVelocity = new Vector2(Body.linearVelocity.x, 10.8f);
@@ -347,20 +383,22 @@ namespace RewindNotary
         private bool ApplySwordBounds(Bounds blade, UseContext use, int amount, float knockback, int step, int starter, bool echo = false)
         {
             bool contact = false;
+            bool pogo = starter < 0 && AttackDirectionY == -1;
             if (Skills != null)
             {
-                if (AttackDirectionY == -1)
+                if (pogo)
                 {
                     foreach (var wt in WaveCombatTargets.All)
                         if (wt != null && wt.State != null && !wt.State.Cleared && blade.Intersects(wt.Bounds))
                             contact = true;
                 }
-                contact |= WaveCombatTargets.Sword(Skills, use, blade, step == PlayerCombo.Length, starter, echo);
+                bool juggle = starter < 0 && aerialSwing && !Grounded && AttackDirectionY >= 0;
+                contact |= WaveCombatTargets.Sword(Skills, use, blade, step, starter, echo, juggle);
                 foreach (var destructible in DestructibleTarget2D.All)
                     if (blade.Intersects(destructible.Bounds))
                     {
                         bool hitOk = destructible.Hit(amount);
-                        contact |= hitOk || AttackDirectionY == -1;
+                        contact |= hitOk || pogo;
                         if (hitOk) CombatFloatingText2D.SpawnDamage(destructible.Bounds.center + Vector3.up * 0.4f, amount, false, false);
                         Skills.Progression.Apply(use, new CombatEffectResult(EffectTargetKind.Destructible,
                             destructible.TargetId, hitOk, amount));
@@ -369,7 +407,7 @@ namespace RewindNotary
                     if (blade.Intersects(surface.Bounds))
                     {
                         bool cut = surface.Cut(false);
-                        contact |= cut || AttackDirectionY == -1;
+                        contact |= cut || pogo;
                         Skills.Progression.Apply(use, new CombatEffectResult(EffectTargetKind.TerrainMechanism,
                             surface.TargetId, cut));
                     }
@@ -379,7 +417,10 @@ namespace RewindNotary
             {
                 var target = opponent.GetComponent<Collider2D>();
                 if (target != null && blade.Intersects(target.bounds)
-                    && opponent.Hit(amount, starter == QuickSkills.BladeWave ? blade.center : transform.position, knockback))
+                    && (Health.IsPlayer
+                        ? opponent.HitBySword(amount, starter == QuickSkills.BladeWave ? blade.center : transform.position,
+                            step > 0 && step < ComboLimit ? knockback * .45f : knockback)
+                        : opponent.Hit(amount, transform.position, knockback)))
                 {
                     contact = true;
                     Skills?.Progression.Apply(use, new CombatEffectResult(EffectTargetKind.Enemy,
@@ -411,9 +452,9 @@ namespace RewindNotary
                 if (elapsed >= activeAttack.Duration)
                 {
                     Attacking = false;
-                    if (queuedAttack && comboStep > 0 && comboStep < ComboLimit)
-                        BeginAttack(comboStep + 1);
-                    else if (comboStep > 0 && comboStep < ComboLimit)
+                    if (queuedAttack && comboStep > 0 && BeginNextPlayerSwing(fromBuffer: true)) return;
+                    ReleaseAirSwing();
+                    if (comboStep > 0 && comboStep < ComboLimit)
                     {
                         comboExpiresAt = attackStartedAt + activeAttack.Duration + ComboGraceSeconds;
                     }
@@ -466,6 +507,7 @@ namespace RewindNotary
             CancelAttack();
             stunUntil = landUntil = 0f; LastLandedAt = float.NegativeInfinity;
             Grounded = false;
+            airStrikesUsed = 0;
             groundSampled = false;
             Health.Refill();
             Animation.ResetVisual();

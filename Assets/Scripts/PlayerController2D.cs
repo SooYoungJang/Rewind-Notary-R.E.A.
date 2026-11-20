@@ -115,7 +115,7 @@ namespace RewindNotary
             }
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
             bool attackBuffered = Time.time - attackPressed <= AttackBuffer;
-            bool repeatAttack = attackHeld && !attackHoldBlocked && !motor.Attacking;
+            bool repeatAttack = attackHeld && !attackHoldBlocked;
             if (!castDown && !pendingCast.HasValue && !pendingStarter.HasValue &&
                 (attackBuffered || repeatAttack) && motor.Attack())
             {

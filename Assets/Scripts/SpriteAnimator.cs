@@ -16,7 +16,7 @@ namespace RewindNotary
         private readonly Dictionary<Pose, Sprite[]> clips = new Dictionary<Pose, Sprite[]>();
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private SpriteRenderer view;
-        private Sprite[][] groundAttacks, airAttacks, starterAttacks;
+        private Sprite[][] groundAttacks, airAttacks, airFinishers, starterAttacks;
         private Sprite[] runAttack, activeAttack;
         private Pose state;
         private float elapsed;
@@ -74,7 +74,7 @@ namespace RewindNotary
             foreach (Sprite sprite in ownedSprites) if (sprite != null) Destroy(sprite);
             ownedSprites.Clear();
             ActiveResource = resource;
-            groundAttacks = airAttacks = starterAttacks = null;
+            groundAttacks = airAttacks = airFinishers = starterAttacks = null;
             runAttack = activeAttack = null;
             var layout = LoadLayout(resource);
             clips[Pose.Idle] = Slice(texture, layout, 8, 4, 0, 0, 4, 2.5f);
@@ -88,6 +88,7 @@ namespace RewindNotary
             {
                 groundAttacks = LoadAttackRows(rea + "-ground-attacks", 4, 2.65f);
                 airAttacks = LoadAttackRows(rea + "-air-attacks", 2, 3.40f);
+                airFinishers = LoadAttackRows(rea + "-air-finishers", 2, 3.40f);
                 runAttack = LoadAttackRows(rea + "-running-attack", 1, 4.30f)[0];
                 const string starter = rea + "-starter-attacks";
                 if (Resources.Load<Texture2D>(starter) != null)
@@ -186,6 +187,7 @@ namespace RewindNotary
             if (starter >= 0 && starterAttacks != null) activeAttack = starterAttacks[starter];
             else if (groundAttacks == null || step == 0) activeAttack = clips[Pose.Attack];
             else if (!grounded && step <= airAttacks.Length) activeAttack = airAttacks[step - 1];
+            else if (!grounded) activeAttack = airFinishers[step - airAttacks.Length - 1];
             else if (step == 1 && grounded && moving) activeAttack = runAttack;
             else activeAttack = groundAttacks[step - 1];
             state = Pose.Attack;
