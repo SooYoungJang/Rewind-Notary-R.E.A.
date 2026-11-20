@@ -201,6 +201,7 @@ namespace RewindNotary
             Child("Parallax").AddComponent<ParallaxBackground>().Initialize(camera, Area);
             if (camera.GetComponent<AtmospherePostEffect>() == null) camera.gameObject.AddComponent<AtmospherePostEffect>();
             Child("Atmosphere").AddComponent<DistrictAtmosphere2D>().Initialize(camera, Area, finale ? "cassel" : null);
+            Child("Stage2 visual director").AddComponent<Stage2VisualDirector>().Initialize(player);
             if (record.lastStageId == "prototype")
                 Child("Investigation points").AddComponent<InvestigationWorld>().Initialize(player, skills, shell, hudFont);
             skills.PresentRestoredState();
@@ -215,6 +216,16 @@ namespace RewindNotary
             var motor = go.AddComponent<CombatMotor2D>();
             motor.Initialize("GameArt/sprites/" + sheet, hp, immunity, 1, Color.white, isPlayer);
             go.AddComponent<ActorVisualPolish2D>().Initialize(motor, isPlayer);
+            if (isPlayer)
+            {
+                var growth = go.AddComponent<ReaGrowthVisual2D>();
+                growth.Initialize(motor);
+                go.AddComponent<ReaMotionPolish2D>().Initialize(motor, growth);
+            }
+            else
+            {
+                go.AddComponent<BossVisualIdentity2D>().Initialize(motor);
+            }
             return motor;
         }
         private void Update()

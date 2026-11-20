@@ -190,9 +190,17 @@ namespace RewindNotary
             Vector3 at = transform.position + new Vector3(motor.Facing * 0.95f, 1.02f, 0f);
             Color sparkColor = isPlayer ? new Color(0.95f, 0.92f, 0.65f) : new Color(0.62f, 0.86f, 1f);
             EmitBurst(at, sparkColor, 8, 3.0f);
-            SpawnAdditiveSlash(isPlayer ? "fx-basic-sword-mastery-additive" : "fx-silver-stitch-additive",
-                at, motor.Facing, isPlayer ? 2.1f : 1.85f, 0.22f,
-                isPlayer ? new Color(1f, 0.96f, 0.85f, 0.88f) : new Color(0.75f, 0.92f, 1f, 0.82f));
+            if (!isPlayer)
+            {
+                SpawnAdditiveSlash("fx-silver-stitch-additive",
+                    at, motor.Facing, 1.85f, 0.22f,
+                    new Color(0.75f, 0.92f, 1f, 0.82f), 0f);
+            }
+        }
+
+        public static void SpawnRotatedSlash(string resourceName, Vector3 position, int facing, float worldSize, float duration, float angleDeg, Color tint)
+        {
+            SpawnAdditiveSlash(resourceName, position, facing, worldSize, duration, tint, angleDeg);
         }
 
         public static void SpawnSkillFx(string skillId, Vector3 position, int facing, float scale = 2.6f, float duration = 0.34f)
@@ -217,7 +225,7 @@ namespace RewindNotary
             SpawnAdditiveSlash(res, position, facing, scale, duration, tint);
         }
 
-        private static void SpawnAdditiveSlash(string resourceName, Vector3 position, int facing, float worldSize, float duration, Color tint)
+        private static void SpawnAdditiveSlash(string resourceName, Vector3 position, int facing, float worldSize, float duration, Color tint, float angleDeg = 0f)
         {
             if (!FxSprites.TryGetValue(resourceName, out var sprite) || sprite == null)
             {
@@ -234,6 +242,7 @@ namespace RewindNotary
             var go = new GameObject("Additive FX " + resourceName);
             if (SkillStroke.WorldRoot != null) go.transform.SetParent(SkillStroke.WorldRoot, false);
             go.transform.position = position;
+            go.transform.rotation = Quaternion.Euler(0f, 0f, angleDeg);
             go.transform.localScale = new Vector3((facing < 0 ? -1f : 1f) * worldSize, worldSize, 1f);
             var sr = go.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;
