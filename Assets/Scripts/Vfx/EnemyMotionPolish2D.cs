@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,15 @@ namespace RewindNotary
     [DefaultExecutionOrder(300)]
     public sealed class EnemyMotionPolish2D : MonoBehaviour
     {
+        [Serializable] private sealed class SheetLayouts { public SheetLayout[] sheets; }
+        [Serializable] private sealed class SheetLayout
+        {
+            public string name;
+            public float pixelsPerUnit;
+            public float[] footPivots;
+        }
+
+        private static SheetLayout[] sheetLayouts;
         private WaveTarget2D target;
         private CombatMotor2D player;
         private SpriteRenderer pictureRenderer;
@@ -113,20 +123,38 @@ namespace RewindNotary
 
             float cw = sheetTex.width / 4f;
             float ch = sheetTex.height / 2f;
+            var layout = FindSheetLayout(sheetTex.name);
+            bool groundedFrames = layout?.footPivots?.Length == 8 && layout.pixelsPerUnit > 0f;
+            float pixelsPerUnit = groundedFrames ? layout.pixelsPerUnit : ch / 1.8f;
             sheetFrames = new Sprite[8];
             for (int r = 0; r < 2; r++)
             {
                 for (int c = 0; c < 4; c++)
                 {
+                    int frame = r * 4 + c;
+                    float pivotY = groundedFrames ? layout.footPivots[frame] : .5f;
                     var sp = Sprite.Create(sheetTex, new Rect(c * cw, sheetTex.height - (r + 1) * ch, cw, ch),
-                        Vector2.one * 0.5f, ch / 1.8f, 0, SpriteMeshType.FullRect);
+                        new Vector2(.5f, pivotY), pixelsPerUnit, 0, SpriteMeshType.FullRect);
                     ownedSprites.Add(sp);
-                    sheetFrames[r * 4 + c] = sp;
+                    sheetFrames[frame] = sp;
                 }
             }
             pictureTransform.localScale = Vector3.one;
-            baseLocalScale = Vector3.one;
+            if (groundedFrames) pictureTransform.localPosition = Vector3.zero;
             pictureRenderer.sprite = sheetFrames[0];
+        }
+
+        private static SheetLayout FindSheetLayout(string textureName)
+        {
+            if (sheetLayouts == null)
+            {
+                var data = Resources.Load<TextAsset>("GameArt/sprites/enemy-sheet-grounding");
+                sheetLayouts = data == null ? Array.Empty<SheetLayout>() :
+                    JsonUtility.FromJson<SheetLayouts>(data.text)?.sheets ?? Array.Empty<SheetLayout>();
+            }
+            foreach (var sheet in sheetLayouts)
+                if (sheet.name == textureName) return sheet;
+            return null;
         }
 
         private void BuildContactShadow()
@@ -230,7 +258,32 @@ namespace RewindNotary
                 else frame = Mathf.FloorToInt(t * 4f) % 2;
                 pictureRenderer.sprite = sheetFrames[frame];
             }
+            else ApplyStillSpriteMotion(t, recoiling, winding);
 
+            float ringPulse = 0.92f + 0.10f * Mathf.Sin(t * 5.2f);
+            if (ready)
+            {
+                stateRing.color = new Color(0.42f, 0.96f, 0.88f, 0.58f);
+                stateRing.transform.localScale = new Vector3(1.55f * ringPulse, 1.55f * ringPulse, 1f);
+            }
+            else
+            {
+                stateRing.color = new Color(0.84f, 0.72f, 0.45f, 0.28f);
+                stateRing.transform.localScale = new Vector3(1.38f * ringPulse, 1.38f * ringPulse, 1f);
+            }
+            stateRing.transform.localRotation = Quaternion.Euler(0f, 0f, t * 38f);
+
+            telegraphRing.enabled = winding;
+            if (winding)
+            {
+                float s = 1.35f + Mathf.PingPong(Time.time * 5.5f, 0.75f);
+                telegraphRing.transform.localScale = new Vector3(s, s, 1f);
+                telegraphRing.transform.localRotation = Quaternion.Euler(0f, 0f, -Time.time * 160f);
+            }
+        }
+
+        private void ApplyStillSpriteMotion(float t, bool recoiling, bool winding)
+        {
             float sx = 1f, sy = 1f, dy = 0f, rotZ = 0f;
             if (recoiling)
             {
@@ -257,27 +310,6 @@ namespace RewindNotary
             pictureTransform.localScale = new Vector3(baseLocalScale.x * sx, baseLocalScale.y * sy, 1f);
             pictureTransform.localPosition = baseLocalPos + new Vector3(0f, dy, 0f);
             pictureTransform.localRotation = Quaternion.Euler(0f, 0f, rotZ);
-
-            float ringPulse = 0.92f + 0.10f * Mathf.Sin(t * 5.2f);
-            if (ready)
-            {
-                stateRing.color = new Color(0.42f, 0.96f, 0.88f, 0.58f);
-                stateRing.transform.localScale = new Vector3(1.55f * ringPulse, 1.55f * ringPulse, 1f);
-            }
-            else
-            {
-                stateRing.color = new Color(0.84f, 0.72f, 0.45f, 0.28f);
-                stateRing.transform.localScale = new Vector3(1.38f * ringPulse, 1.38f * ringPulse, 1f);
-            }
-            stateRing.transform.localRotation = Quaternion.Euler(0f, 0f, t * 38f);
-
-            telegraphRing.enabled = winding;
-            if (winding)
-            {
-                float s = 1.35f + Mathf.PingPong(Time.time * 5.5f, 0.75f);
-                telegraphRing.transform.localScale = new Vector3(s, s, 1f);
-                telegraphRing.transform.localRotation = Quaternion.Euler(0f, 0f, -Time.time * 160f);
-            }
         }
 
         private void OnDestroy()
