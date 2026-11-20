@@ -55,8 +55,11 @@ namespace RewindNotary.Editor
             if (!assetPath.StartsWith("Assets/Resources/Audio/")) return;
             var importer = (AudioImporter)assetImporter;
             var settings = importer.defaultSampleSettings;
-            settings.loadType = AudioClipLoadType.DecompressOnLoad;
-            settings.compressionFormat = AudioCompressionFormat.PCM;
+            // Long-form OST assets stream; preserve legacy WAV and SFX settings.
+            bool ost = assetPath.StartsWith("Assets/Resources/Audio/Bgm/track-", System.StringComparison.Ordinal)
+                && assetPath.EndsWith(".mp3", System.StringComparison.OrdinalIgnoreCase);
+            settings.loadType = ost ? AudioClipLoadType.Streaming : AudioClipLoadType.DecompressOnLoad;
+            settings.compressionFormat = ost ? AudioCompressionFormat.Vorbis : AudioCompressionFormat.PCM;
             settings.sampleRateSetting = AudioSampleRateSetting.PreserveSampleRate;
             settings.preloadAudioData = true;
             importer.defaultSampleSettings = settings;
