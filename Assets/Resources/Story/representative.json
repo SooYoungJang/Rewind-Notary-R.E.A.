@@ -23,6 +23,10 @@
       ],
       "points": [
         {
+          "id": "marta",
+          "x": 6.5
+        },
+        {
           "id": "mint_candy_pickup",
           "x": 12.6
         },

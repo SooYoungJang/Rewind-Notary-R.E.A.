@@ -58,12 +58,13 @@ namespace RewindNotary
             }
             return go;
         }
-        private void PlaceMarker(string id, float x, float floorY, Sprite sprite, float height)
+        private GameObject PlaceMarker(string id, float x, float floorY, Sprite sprite, float height)
         {
             var view = Place(id, x, floorY + height * .5f).AddComponent<SpriteRenderer>();
             view.sprite = sprite;
             view.transform.localScale = Vector3.one * (height / sprite.bounds.size.y);
             view.sortingOrder = 2;
+            return view.gameObject;
         }
 
         private bool OnFixedFloor()
@@ -371,8 +372,7 @@ namespace RewindNotary
                 if (DistrictHint(action, out string districtHint)) return districtHint;
                 return Loc.Get(key, Loc.Get("area.target." + action[1])) + (p != null ? Arrow(p.x) : "");
             }
-            if (AtticBoardApproach is StoryMark board)
-                return Loc.Get("area.travel", Loc.Get("area.target." + board.id)) + Arrow(board.x);
+            if (AtticDialogueTarget is StoryMark target) return AtticDialogueHint(target);
             if (FightNeeded()) return Loc.Get("area.bout", DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail"));
             if (CanTalkToEthan) return EthanPrompt();
             if (FirstDepartureHint() is string next) return next;

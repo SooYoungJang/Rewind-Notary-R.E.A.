@@ -27,6 +27,7 @@ namespace RewindNotary
         internal int WallJumps { get; private set; }
         internal float AttackSteering => Time.time < kickUntil ? kickDirection : GameInput.Horizontal;
         private float attackPressed = float.NegativeInfinity;
+        private int attackDirectionY;
         internal const float WaveChargeOne = .38f, WaveChargeTwo = 1.02f;
         private const float AttackTapSeconds = .21f;
         private float waveChargeAt = float.NegativeInfinity;
@@ -89,8 +90,17 @@ namespace RewindNotary
             {
                 if (GameInput.AttackDown)
                 {
-                    waveChargeAt = Time.time;
-                    tapMaySwing = true;
+                    float vertical = GameInput.Vertical;
+                    if (vertical > .5f || (vertical < -.5f && !motor.Grounded))
+                    {
+                        ClearWaveCharge();
+                        BufferAttack(vertical > 0f ? 1 : -1);
+                    }
+                    else
+                    {
+                        waveChargeAt = Time.time;
+                        tapMaySwing = true;
+                    }
                 }
                 UpdateWaveCharge(attackHeld);
             }
@@ -134,10 +144,10 @@ namespace RewindNotary
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
             bool attackBuffered = Time.time - attackPressed <= AttackBuffer;
             if (!castDown && !pendingCast.HasValue && !pendingStarter.HasValue &&
-                attackBuffered && motor.Attack())
+                attackBuffered && motor.Attack(attackDirectionY))
             {
                 attackPressed = float.NegativeInfinity;
-                if (attackBuffered) AttackInputAccepted?.Invoke();
+                AttackInputAccepted?.Invoke();
             }
             if (pendingCast.HasValue)
             {
@@ -156,6 +166,12 @@ namespace RewindNotary
             attackPressed = jumpPressed = float.NegativeInfinity;
         }
 
+        private void BufferAttack(int directionY)
+        {
+            attackPressed = Time.time;
+            attackDirectionY = directionY;
+        }
+
         private void UpdateWaveCharge(bool held)
         {
             if (float.IsNegativeInfinity(waveChargeAt)) return;
@@ -170,7 +186,7 @@ namespace RewindNotary
                     attackPressed = float.NegativeInfinity;
                     motor.FireChargedWave(level, axis);
                 }
-                else if (tap) attackPressed = Time.time;
+                else if (tap) BufferAttack(0);
                 return;
             }
 
@@ -243,7 +259,7 @@ namespace RewindNotary
                     motor.Face(kickDirection);
                     WallJumps++;
                 }
-                else if (!usedAirJump && !motor.Attacking)
+                else if (!usedAirJump)
                 {
                     usedAirJump = true;
                     StartJump(AirJumpSpeed, variableHeight: false);

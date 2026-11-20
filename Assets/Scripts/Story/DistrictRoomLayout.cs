@@ -32,6 +32,7 @@ namespace RewindNotary
             if (!BellReady) return false;
             var bell = Room.Point(Benefactor + "_trial_bell");
             if (Distance(bell.x) > 1.25f || !string.IsNullOrEmpty(bell.surface) && !StandingOn(bell.surface)) return false;
+            if (!InteractAt(bell)) return true;
             var arena = Array.Find(script.rooms, r => r.stage == Room.stage && r.boutHealth > 0);
             if (!session.CommitScene(() =>
             {
@@ -303,7 +304,7 @@ namespace RewindNotary
                 else
                 {
                     var door = Array.Find(Room.exits, e => e.room == ActiveRow.alternateRoom);
-                    if (door != null && Gate(door) && door.InReach(player.Body.position) && InspectPressed)
+                    if (door != null && Gate(door) && door.InReach(player.Body.position) && InteractAt(door))
                     {
                         Put("crossed:" + ActiveRow.completionFlag);
                         Travel(script.Room(door.room), door.destinationFloor);

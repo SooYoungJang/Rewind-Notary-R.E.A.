@@ -25,6 +25,7 @@ namespace RewindNotary
             public string ObjectiveHint;
             public string NoticeText;
             public string ControlsText;
+            public Vector2? InteractionAnchor;
             public bool OpeningTutorial;
             public bool BossVisible;
             public string BossName;
@@ -58,6 +59,8 @@ namespace RewindNotary
 
         private Text controlsText;
         private GameObject loadoutStrip;
+        private RectTransform interactionBadge;
+        private Text interactionKey;
 
         private GameObject overlayPanel;
         private Text overlayTitleText, overlayDetailText;
@@ -105,6 +108,7 @@ namespace RewindNotary
             BuildBossBar();
             BuildObjectiveAndNotice();
             BuildControlsFooter();
+            BuildInteractionBadge();
             BuildCenterOverlay();
             currentLang = Loc.Language;
         }
@@ -602,6 +606,7 @@ namespace RewindNotary
             if (hasNotice) noticeText.text = s.NoticeText;
 
             controlsText.text = s.ControlsText ?? "";
+            RenderInteractionBadge(s.OverlayVisible ? null : s.InteractionAnchor);
 
             overlayPanel.SetActive(s.OverlayVisible);
             if (s.OverlayVisible)
@@ -635,7 +640,38 @@ namespace RewindNotary
             objectiveText.font = body;
             noticeText.font = body;
             controlsText.font = body;
+            interactionKey.font = body;
             overlayDetailText.font = body;
+        }
+
+        private void BuildInteractionBadge()
+        {
+            var panel = NotaryUiTheme.CreateBorderedPanel(canvas.transform, "Interaction Key", NotaryUiTheme.PanelBg, NotaryUiTheme.Gold, 1.4f);
+            interactionBadge = panel.rectTransform;
+            interactionBadge.anchorMin = interactionBadge.anchorMax = new Vector2(.5f, .5f);
+            interactionBadge.pivot = new Vector2(.5f, 0f);
+            var pointer = NotaryUiTheme.CreateImage(panel.transform, "Pointer", NotaryUiTheme.Gold).rectTransform;
+            pointer.anchorMin = pointer.anchorMax = new Vector2(.5f, 0f);
+            pointer.sizeDelta = new Vector2(8f, 8f);
+            pointer.localRotation = Quaternion.Euler(0f, 0f, 45f);
+            interactionKey = NotaryUiTheme.CreateText(panel.transform, "Key", "", 18, NotaryUiTheme.Ivory, TextAnchor.MiddleCenter, false, true);
+            NotaryUiTheme.Stretch(interactionKey.rectTransform, 7f, 1f, 7f, 1f);
+            interactionBadge.gameObject.SetActive(false);
+        }
+
+        private void RenderInteractionBadge(Vector2? anchor)
+        {
+            var camera = anchor.HasValue ? Camera.main : null;
+            var screen = camera != null ? camera.WorldToScreenPoint(anchor.Value) : Vector3.zero;
+            bool visible = camera != null && screen.z > 0f && camera.pixelRect.Contains(screen);
+            interactionBadge.gameObject.SetActive(visible);
+            if (!visible) return;
+
+            var canvasRect = (RectTransform)canvas.transform;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screen, null, out var local);
+            interactionKey.text = GameInput.InteractLabel;
+            interactionBadge.sizeDelta = new Vector2(Mathf.Max(38f, interactionKey.preferredWidth + 16f), 32f);
+            interactionBadge.anchoredPosition = local;
         }
 
         private void OnDestroy()

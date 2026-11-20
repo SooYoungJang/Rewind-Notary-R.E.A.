@@ -16,6 +16,7 @@ namespace RewindNotary
         public static KeyCode CastKey { get; private set; } = KeyCode.V;
         public static KeyCode DashKey { get; private set; } = KeyCode.LeftShift;
         public static KeyCode InteractKey { get; private set; } = KeyCode.F;
+        internal static string InteractLabel => UsingGamepad ? "L3" : KeyLabel(InteractKey);
         public static KeyCode MapKey { get; private set; } = KeyCode.M;
 
         public static void ApplyBindings(GameSettings s)

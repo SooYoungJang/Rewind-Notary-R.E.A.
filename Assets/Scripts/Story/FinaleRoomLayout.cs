@@ -15,6 +15,7 @@ namespace RewindNotary
         {
             var point = ForgeReturn;
             if (point == null || Distance(point.x) > 1.25f) return false;
+            if (!InteractAt(point)) return true;
             Checkpoint(script.Room("court_03_lift"), "court_lift_floor");
             Record.lastStageId = EndingCheckpoint.Lift;
             session.Save();
@@ -50,8 +51,9 @@ namespace RewindNotary
         {
             if (ActionToken == "clearDoor:court_02_echo_arena")
             {
-                if (Safe && InspectPressed && Distance(Room.exits[1].x) <= 1.25f &&
-                    roomTargets.TrueForAll(t => t.State.Cleared)) FinishAction();
+                var door = Room.exits[1];
+                if (Safe && Distance(door.x) <= 1.25f &&
+                    roomTargets.TrueForAll(t => t.State.Cleared) && InteractAt(door)) FinishAction();
                 return true;
             }
             if (ActionToken.StartsWith("echoHP:", System.StringComparison.Ordinal))

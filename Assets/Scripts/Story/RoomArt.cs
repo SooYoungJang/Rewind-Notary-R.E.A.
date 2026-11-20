@@ -58,6 +58,7 @@ namespace RewindNotary
     internal sealed class RoomDoorView
     {
         private readonly SpriteRenderer view;
+        internal Vector2 InteractionAnchor => new Vector2(view.bounds.center.x, view.bounds.max.y + .24f);
         private readonly Sprite locked, open;
         private readonly Transform archway;
         private readonly SpriteRenderer portalGlow;

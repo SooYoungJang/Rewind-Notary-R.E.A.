@@ -14,6 +14,8 @@ namespace RewindNotary
         private readonly List<InvestigationPointDefinition> points = new List<InvestigationPointDefinition>();
         private readonly List<SpriteRenderer> markers = new List<SpriteRenderer>();
         private InvestigationPointDefinition nearest;
+        internal Vector2? InteractionAnchor => CanInspect && nearest != null
+            ? new Vector2(nearest.x, nearest.y + .85f) : (Vector2?)null;
         public void Initialize(CombatMotor2D actor, SkillSession skills, GameShell owner, Font uiFont)
         {
             player = actor; session = skills; shell = owner; font = uiFont;
