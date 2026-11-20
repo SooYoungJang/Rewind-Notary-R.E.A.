@@ -144,16 +144,22 @@ namespace RewindNotary
             }
             if (GameInput.CancelDown || ((Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.QuickSlots ||
                 Page == ShellPage.Investigation || Page == ShellPage.CoreReading) && GameInput.PauseDown)) { UiAudioSynth.PlayCancel(); Back(); return; }
+            bool horizontalDialogue = Page == ShellPage.StoryDialogue || Page == ShellPage.ForgeDialogue;
             Vector2 raw = GameInput.MenuAxis;
             var axis = new Vector2(Mathf.Abs(raw.x) >= 0.5f ? Mathf.Sign(raw.x) : 0,
-                Mathf.Abs(raw.y) >= 0.5f ? Mathf.Sign(raw.y) : 0);
+                !horizontalDialogue && Mathf.Abs(raw.y) >= 0.5f ? Mathf.Sign(raw.y) : 0);
             if (axis != Vector2.zero && (axis != previousAxis || Time.unscaledTime >= repeatAt))
             {
-                if (axis.y != 0) { selected = (selected - (int)axis.y + RowCount) % RowCount; UiAudioSynth.PlayMove(); }
+                if (horizontalDialogue)
+                {
+                    int next = axis.x > 0 && RowCount > 1 ? 1 : 0;
+                    if (next != selected) { selected = next; UiAudioSynth.PlayMove(); }
+                }
+                else if (axis.y != 0) { selected = (selected - (int)axis.y + RowCount) % RowCount; UiAudioSynth.PlayMove(); }
                 else if (Page == ShellPage.Settings) { AdjustSetting(selected, (int)axis.x); UiAudioSynth.PlayMove(); }
                 else if (Page == ShellPage.QuickSlots) CycleQuickSlot(selected, (int)axis.x);
                 else if (Page == ShellPage.Investigation) clueScroll.y = Mathf.Max(0, clueScroll.y + axis.x * 85);
-                else if (Page == ShellPage.StoryDialogue || Page == ShellPage.CourtLift) dialogueScroll.y = Mathf.Max(0, dialogueScroll.y + axis.x * 85);
+                else if (Page == ShellPage.CourtLift) dialogueScroll.y = Mathf.Max(0, dialogueScroll.y + axis.x * 85);
                 else if (Page == ShellPage.CoreReading) readingScroll.y = Mathf.Max(0, readingScroll.y + axis.x * 85);
                 repeatAt = Time.unscaledTime + (axis != previousAxis ? 0.35f : 0.12f);
             }
