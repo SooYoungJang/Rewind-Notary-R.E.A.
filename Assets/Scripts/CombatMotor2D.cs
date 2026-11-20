@@ -175,7 +175,7 @@ namespace RewindNotary
                 attackMove = chainProfile != null && Time.time - attackStartedAt < chainProfile.stepSeconds
                     ? Facing * chainProfile.stepSpeed : 0f;
             Body.linearVelocity = new Vector2(Attacking ? attackMove : speed, Body.linearVelocity.y) + Vector2.right * carrierSpeed;
-            if (!Attacking) Face(speed);
+            if (Health.IsPlayer || !Attacking) Face(speed);
         }
         public void Jump(float velocity)
         {
@@ -247,8 +247,15 @@ namespace RewindNotary
             Attacking = true;
             strikeDelivered = false;
             queuedAttack = false;
+            AimPlayerAttack();
             Animation.BeginAttack(art, Grounded, moving);
             AttackStarted?.Invoke();
+        }
+
+        private void AimPlayerAttack()
+        {
+            if (Health.IsPlayer && GameInput.CanPlay && TryGetComponent<PlayerController2D>(out var controller))
+                Face(controller.AttackSteering);
         }
         private void ResetCombo()
         {
@@ -338,6 +345,7 @@ namespace RewindNotary
             if (Attacking)
             {
                 float elapsed = Time.time - attackStartedAt;
+                AimPlayerAttack();
                 Animation.PlayAttack(elapsed, activeAttack.StrikeTime, activeAttack.Duration);
                 if (!strikeDelivered && elapsed >= activeAttack.StrikeTime) DeliverStrike();
                 if (elapsed >= activeAttack.Duration)

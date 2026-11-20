@@ -7,11 +7,14 @@ namespace RewindNotary
     // physics simulation and observe the swing after all input readers have run.
     internal sealed class FeelProbe : MonoBehaviour
     {
-        private enum Phase { Waiting, GroundRun, GroundStop, Tap, Attack, AirRun, Jump, AirStop, MovingRun, MovingAttack, Done, Failed }
+        private enum Phase { Waiting, GroundRun, GroundStop, Tap, Attack, AirRun, Jump, AirStop, MovingRun, MovingAttack,
+            ReverseRun, ReverseAttack, Done, Failed }
         private Phase phase;
         private CombatMotor2D player;
         private FeelResults result;
         private int runTicks, tapFrame;
+        private float reverseStarted;
+        private bool reversedMotion, reversedStrike;
         internal bool Passed => phase == Phase.Done;
 
         internal bool Drive(FirstDepartureBot bot, BotKeyboard keys, FeelResults measurements)
@@ -19,7 +22,7 @@ namespace RewindNotary
             if (Passed) return false;
             if (phase == Phase.Waiting)
             {
-                // This row waits for F on a flat, enemy-free floor. Let the route bot
+                // This row waits for C on a flat, enemy-free floor. Let the route bot
                 // handle the preceding dialogue, then take exclusive ownership of the keys.
                 if (bot.Area?.PendingAction != "use:mint_candy_pickup") return false;
                 player = bot.Area.Rea;
@@ -87,8 +90,29 @@ namespace RewindNotary
                     else
                     {
                         result.movingAttack.status = "pass";
+                        result.reverseAttack = "running";
+                        phase = Phase.ReverseRun;
+                    }
+                    break;
+                case Phase.ReverseRun:
+                    keys.Hold(KeyCode.RightArrow);
+                    if (!player.Grounded || player.Attacking || player.ComboStep != 0 || !AtRunSpeed(speed)) break;
+                    keys.Tap(KeyCode.Z);
+                    player.BasicStrikeDelivered += OnReverseStrike;
+                    reverseStarted = Time.time;
+                    phase = Phase.ReverseAttack;
+                    break;
+                case Phase.ReverseAttack:
+                    keys.Hold(KeyCode.LeftArrow);
+                    if (player.ComboStep == 1 && Time.time - reverseStarted >= .10f) keys.Tap(KeyCode.Z);
+                    if (player.ComboStep == 2 && reversedMotion && reversedStrike && FacingLeft)
+                    {
+                        player.BasicStrikeDelivered -= OnReverseStrike;
+                        result.reverseAttack = "pass";
                         phase = Phase.Done;
                     }
+                    else if (Time.time - reverseStarted > 1f)
+                        Abort("Moving attack did not reverse movement, strike and queued combo together");
                     break;
             }
             // NextFrame starts with all keys released, including during both stop windows.
@@ -107,6 +131,8 @@ namespace RewindNotary
                     runTicks = player.Grounded && AtRunSpeed(player.Body.linearVelocity.x) ? runTicks + 1 : 0;
                 else if (phase == Phase.GroundStop || phase == Phase.AirStop) SampleStop();
                 else if (phase == Phase.MovingAttack && player.Attacking) SampleMovingAttack();
+                else if (phase == Phase.ReverseAttack && player.Attacking && player.ComboStep == 1 &&
+                         player.Grounded && player.Body.linearVelocity.x < -.1f && FacingLeft) reversedMotion = true;
             }
         }
 
@@ -147,6 +173,13 @@ namespace RewindNotary
         }
 
         private void OnAttackStarted() { result.stationaryAttack.attackStartedCount++; }
+        private bool FacingLeft => player.Facing < 0 && player.Animation.GetComponent<SpriteRenderer>().flipX;
+
+        private void OnReverseStrike(Bounds hit, int damage)
+        {
+            if (player.ComboStep == 1)
+                reversedStrike = FacingLeft && hit.center.x < player.transform.position.x;
+        }
 
         private void LateUpdate()
         {
@@ -172,7 +205,12 @@ namespace RewindNotary
             if (result.stationaryAttack.status == "running") result.stationaryAttack.status = "fail";
             if (result.airStop.status == "running") result.airStop.status = "fail";
             if (result.movingAttack.status == "running") result.movingAttack.status = "fail";
-            if (player != null) player.AttackStarted -= OnAttackStarted;
+            if (result.reverseAttack == "running") result.reverseAttack = "fail";
+            if (player != null)
+            {
+                player.AttackStarted -= OnAttackStarted;
+                player.BasicStrikeDelivered -= OnReverseStrike;
+            }
             phase = Phase.Failed;
         }
     }

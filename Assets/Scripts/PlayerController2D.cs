@@ -22,6 +22,7 @@ namespace RewindNotary
         private int kickDirection, lastKickSide;
         internal bool Sliding { get; private set; }
         internal int WallJumps { get; private set; }
+        internal float AttackSteering => Time.time < kickUntil ? kickDirection : GameInput.Horizontal;
         private float attackPressed = float.NegativeInfinity;
         internal event System.Action AttackInputAccepted;
         private SkillCastRequest? pendingCast;
