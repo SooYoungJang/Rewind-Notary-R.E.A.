@@ -91,16 +91,16 @@ namespace RewindNotary
             }
         }
 
-        internal static SpriteRenderer ChargedBlade(int level, Vector2 position, int direction, int crest)
+        internal static SpriteRenderer ChargedBlade(int level, Vector2 position, int direction)
         {
             charged ??= LoadAtlas("GameArt/sprites/rea-charged-blades");
-            var size = level == 2 ? new Vector2(3.3f, 3.72f) : new Vector2(1.95f, 2.12f);
+            var size = level == 2 ? new Vector2(2.45f, 2.72f) : new Vector2(1.95f, 2.12f);
             var blade = charged == null ? Create(QuickSkills.RetreatCut, position, size, direction) :
                 Layer(charged[level - 1], position, size, direction, 15);
             if (blade != null)
             {
-                blade.gameObject.name = "Rea charged blade " + level + " / " + (crest + 1);
-                if (crest > 0) blade.color = new Color(.72f, .92f, 1f, .85f);
+                blade.gameObject.name = "Rea charged blade " + level;
+                if (level == 2) blade.color = new Color(1f, 1f, 1f, .86f);
             }
             return blade;
         }
@@ -119,9 +119,9 @@ namespace RewindNotary
             aura.sprite = sprite;
             aura.transform.localPosition = new Vector3(.43f * facing, .77f, 0f);
             var size = sprite.bounds.size;
-            float width = (level == 2 ? 1.28f : 1.02f) * (1f + .035f * Mathf.Sin(elapsed * 7f));
+            float width = (level == 2 ? 1.16f : 1.02f) * (1f + .035f * Mathf.Sin(elapsed * 7f));
             aura.transform.localScale = new Vector3(width / size.x, width * .82f / size.y, 1f);
-            aura.color = new Color(1f, 1f, 1f, level == 0 ? .14f : level == 1 ? .34f : .52f);
+            aura.color = new Color(1f, 1f, 1f, level == 0 ? .14f : level == 1 ? .34f : .42f);
             return aura;
         }
 
