@@ -19,7 +19,8 @@ namespace RewindNotary
         private readonly ContactPoint2D[] wallContacts = new ContactPoint2D[12];
         internal const float WallSlideSpeed = 2.2f, WallKickX = 7f, WallKickY = 13f, KickControlTime = .14f;
         private float kickUntil;
-        private int kickDirection, lastKickSide;
+        private int kickDirection;
+        private Collider2D kickedWall;
         internal bool Sliding { get; private set; }
         internal int WallJumps { get; private set; }
         internal float AttackSteering => Time.time < kickUntil ? kickDirection : GameInput.Horizontal;
@@ -94,8 +95,9 @@ namespace RewindNotary
                 { jumpPressed = lastGrounded = float.NegativeInfinity; cutJump = false; }
             }
         }
-        private int WallSide()
+        private int WallSide(out Collider2D wall)
         {
+            wall = null;
             if (motor.Grounded || motor.Stunned || motor.Attacking || motor.Skills == null ||
                 !motor.Skills.Progression.Record.storyFlags.Contains("intro_complete") ||
                 motor.Defense.BlocksActions || motor.BenefactorSkills.BlocksActions) return 0;
@@ -107,7 +109,9 @@ namespace RewindNotary
                 if (other == null || other.attachedRigidbody != null || Mathf.Abs(hit.normal.x) < .9f ||
                     !other.TryGetComponent<AuthoredSurface>(out var surface) || !surface.Kickable) continue;
                 int side = other.bounds.center.x > motor.Body.position.x ? 1 : -1;
-                if (axis * side > .25f) return side;
+                if (axis * side <= .25f) continue;
+                wall = other;
+                return side;
             }
             return 0;
         }
@@ -115,8 +119,10 @@ namespace RewindNotary
         {
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead) return;
             motor.RefreshGround();
-            if (motor.Grounded) { lastGrounded = Time.time; lastKickSide = 0; }
-            int side = WallSide();
+            if (motor.Grounded) lastGrounded = Time.time;
+            // Releasing direction or suspending an action can hide a wall without breaking contact.
+            if (motor.Grounded || (kickedWall != null && !actorCollider.IsTouching(kickedWall))) kickedWall = null;
+            int side = WallSide(out var wall);
             Sliding = side != 0 && motor.Body.linearVelocity.y <= 0f;
             if (motor.Stunned || motor.Grounded || motor.Defense.BlocksActions || motor.BenefactorSkills.BlocksActions)
                 kickUntil = 0f;
@@ -128,9 +134,9 @@ namespace RewindNotary
                 AudioManager.Play(AudioManager.Sfx.Jump);
                 jumpPressed = lastGrounded = float.NegativeInfinity;
             }
-            else if (side != 0 && side != lastKickSide && Time.time - jumpPressed <= JumpBuffer)
+            else if (wall != null && wall != kickedWall && Time.time - jumpPressed <= JumpBuffer)
             {
-                lastKickSide = side;
+                kickedWall = wall;
                 kickDirection = -side;
                 kickUntil = Time.time + KickControlTime;
                 motor.Jump(WallKickY);
