@@ -372,7 +372,6 @@ namespace RewindNotary
                 Body.linearVelocity = new Vector2(Body.linearVelocity.x, 10.8f);
                 Defense?.State.Land();
                 AtmospherePostEffect.PulseImpact(0.38f);
-                CombatFloatingText2D.SpawnTag(transform.position + Vector3.up * 1.3f, Loc.Get("combat.pogo"), NotaryUiTheme.GoldGlow, 20);
             }
         }
 
