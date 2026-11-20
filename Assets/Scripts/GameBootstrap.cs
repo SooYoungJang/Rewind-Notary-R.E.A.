@@ -27,6 +27,10 @@ namespace RewindNotary
         private StitchBinding bossBinding;
         private Font hudFont;
         private GameHudCanvas hudCanvas;
+        private CinematicJuiceDirector cinematic;
+        private DistrictMinimapCanvas minimap;
+        private int lastContactSaves;
+        private float currentCameraSize = 5.5f;
         private bool checkpoint, won, initialized, echoDuel;
         private float deathTimer;
         private string failure;
@@ -44,6 +48,10 @@ namespace RewindNotary
                 shell.Initialize(this, hudFont);
                 hudCanvas = gameObject.AddComponent<GameHudCanvas>();
                 hudCanvas.Initialize(transform);
+                cinematic = gameObject.AddComponent<CinematicJuiceDirector>();
+                cinematic.Initialize(transform);
+                minimap = gameObject.AddComponent<DistrictMinimapCanvas>();
+                minimap.Initialize(transform);
             }
             catch (System.Exception exception) { failure = exception.Message; Debug.LogException(exception); }
         }
@@ -201,6 +209,7 @@ namespace RewindNotary
             Child("Parallax").AddComponent<ParallaxBackground>().Initialize(camera, Area);
             if (camera.GetComponent<AtmospherePostEffect>() == null) camera.gameObject.AddComponent<AtmospherePostEffect>();
             Child("Atmosphere").AddComponent<DistrictAtmosphere2D>().Initialize(camera, Area, finale ? "cassel" : null);
+            Child("Room architecture").AddComponent<RoomArchitectureDecorator>().Initialize(camera, Area, world.transform, finale ? "cassel" : null);
             Child("Stage2 visual director").AddComponent<Stage2VisualDirector>().Initialize(player);
             if (record.lastStageId == "prototype")
                 Child("Investigation points").AddComponent<InvestigationWorld>().Initialize(player, skills, shell, hudFont);
@@ -332,6 +341,10 @@ namespace RewindNotary
                 skills.PresentationRequested -= PresentSkill; skills.Close(false);
             }
             initialized = false; SkillStroke.WorldRoot = null;
+            lastContactSaves = 0;
+            currentCameraSize = 5.5f;
+            cinematic?.ResetState();
+            minimap?.CloseFullMap();
             ImpactFeedback.ResetEffects(); AudioManager.ResetPlayback(false);
             if (world != null) { world.SetActive(false); Destroy(world); world = null; }
             player = boss = null; controller = null; skills = null; reward = null; practice = null;
@@ -370,11 +383,32 @@ namespace RewindNotary
         }
         private void LateUpdate()
         {
+            if (virtualCamera != null && shell != null && initialized)
+            {
+                float targetSize = shell.Page == ShellPage.StoryDialogue ? 4.85f : 5.5f;
+                currentCameraSize = Mathf.Lerp(currentCameraSize, targetSize, 1f - Mathf.Exp(-Time.unscaledDeltaTime * 5.5f));
+                var lens = virtualCamera.Lens;
+                if (Mathf.Abs(lens.OrthographicSize - currentCameraSize) > 0.002f)
+                {
+                    lens.OrthographicSize = currentCameraSize;
+                    virtualCamera.Lens = lens;
+                }
+            }
             if (hudCanvas == null) return;
             if (!initialized || shell == null || !shell.Playing || failure != null)
             {
                 hudCanvas.Render(default);
+                cinematic?.Observe(false, false, null, null, null);
+                minimap?.Observe(false, null, false);
                 return;
+            }
+            if (Area != null && Area.ContactSaveCount > lastContactSaves)
+            {
+                lastContactSaves = Area.ContactSaveCount;
+                player.Health.Heal(player.Health.Maximum);
+                UiAudioSynth.PlayCheckpoint();
+                ActorVisualPolish2D.SpawnSkillFx(SkillRules.BasicSword, player.transform.position + Vector3.up, 1, 2.8f, 0.45f);
+                hudCanvas.ShowToast(Loc.Get("hud.checkpoint_saved"));
             }
             var snap = new GameHudCanvas.HudSnapshot
             {
@@ -382,12 +416,19 @@ namespace RewindNotary
                 LocationTitle = Loc.Get("game.title"),
                 PlayerHp = player.Health.Current,
                 PlayerMaxHp = player.Health.Maximum,
-                ControlsText = Loc.Get("input.gameplay")
+                ControlsText = GameInput.FormatControlsPrompt(true),
+                Skills = BuildSkillBadges(),
+                DashReadyRatio = player.Defense != null
+                    ? 1f - Mathf.Clamp01((player.Defense.State.DashReadyAt - Time.time) / Mathf.Max(0.05f, DefenseTuning.DashCooldown))
+                    : 1f,
+                AirDashReady = player.Defense == null || !player.Defense.State.AirDashUsed
             };
             if (Area != null)
             {
                 Area.FillHudSnapshot(ref snap);
                 hudCanvas.Render(snap);
+                cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
+                minimap?.Observe(true, Area, snap.BossVisible);
                 return;
             }
             if (echoDuel)
@@ -403,6 +444,8 @@ namespace RewindNotary
                 snap.OverlayTitle = won ? Loc.Get("finale.result", encounter.Label) : Loc.Get("hud.retrying");
                 snap.OverlayDetail = won ? Loc.Get("area.travel", Loc.Get("ui.stage_select")) : Loc.Get("hud.returning_checkpoint");
                 hudCanvas.Render(snap);
+                cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
+                minimap?.Observe(false, null, true);
                 return;
             }
             var defense = player.Defense.State;
@@ -454,6 +497,40 @@ namespace RewindNotary
                 snap.OverlayDetail = won ? Loc.Get("input.retry_button") : Loc.Get("hud.returning_checkpoint");
             }
             hudCanvas.Render(snap);
+            cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
+            minimap?.Observe(false, null, snap.BossVisible);
+        }
+        private GameHudCanvas.SkillBadge[] BuildSkillBadges()
+        {
+            if (skills?.Progression?.Record == null) return null;
+            var rec = skills.Progression.Record;
+            var cat = skills.Progression.Catalog;
+            string[] cues = { "·", "◀", "▲", "▽", "▼" };
+            Color[] accents =
+            {
+                new Color(0.88f, 0.34f, 0.44f),
+                new Color(0.96f, 0.78f, 0.32f),
+                new Color(0.95f, 0.48f, 0.68f),
+                new Color(0.32f, 0.84f, 0.92f),
+                new Color(0.54f, 0.78f, 1.00f)
+            };
+            var list = new GameHudCanvas.SkillBadge[BenefactorIds.All.Length];
+            for (int i = 0; i < BenefactorIds.All.Length; i++)
+            {
+                string id = BenefactorIds.All[i];
+                var p = rec.Get(id);
+                string dn = cat.Get(id).DisplayName;
+                string shortName = string.IsNullOrEmpty(dn) ? id.Substring(0, 2) : (dn.Length > 2 ? dn.Substring(0, 2) : dn);
+                list[i] = new GameHudCanvas.SkillBadge
+                {
+                    ShortLabel = shortName,
+                    DirCue = cues[i],
+                    Owned = p != null && p.acquired,
+                    Stage = p != null ? p.stage : 1,
+                    Accent = accents[i]
+                };
+            }
+            return list;
         }
         private void OnGUI()
         {

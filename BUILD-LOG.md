@@ -26,3 +26,11 @@ Unity 프로젝트 루트의 `VERSION`을 사용한다. 아래 수동 템플릿�
 | 2026-11-20T03:58:54Z | stage1-20261120c | 0.1.0 | 6000.0.65f1 | Windows64 | Succeeded | 0 | 12302 | 0180a1500289fce4b0af84386fd7962c6858f8b13c88a07984af9d73faa1e123 | C:\Users\장수영\Documents\rea_gemini\Builds\Windows64\stage1-20261120c\Player\RewindNotary.exe | 890510130 | automatic |
 
 | 2026-11-20T04:20:59Z | stage2-20261120a | 0.1.0 | 6000.0.65f1 | Windows64 | Succeeded | 0 | 12302 | 0180a1500289fce4b0af84386fd7962c6858f8b13c88a07984af9d73faa1e123 | C:\Users\장수영\Documents\rea_gemini\Builds\Windows64\stage2-20261120a\Player\RewindNotary.exe | 890528050 | automatic |
+
+| 2026-11-20T04:36:45Z | stage3-20261120a | 0.1.0 | 6000.0.65f1 | Windows64 | Succeeded | 0 | 12302 | 0180a1500289fce4b0af84386fd7962c6858f8b13c88a07984af9d73faa1e123 | C:\Users\장수영\Documents\rea_gemini\Builds\Windows64\stage3-20261120a\Player\RewindNotary.exe | 890537266 | automatic |
+
+| 2026-11-20T04:39:55Z | stage3-20261120b | 0.1.0 | 6000.0.65f1 | Windows64 | Succeeded | 0 | 12302 | 0180a1500289fce4b0af84386fd7962c6858f8b13c88a07984af9d73faa1e123 | C:\Users\장수영\Documents\rea_gemini\Builds\Windows64\stage3-20261120b\Player\RewindNotary.exe | 890536754 | automatic |
+
+| 2026-11-20T04:47:12Z | stage4-20261120a | 0.1.0 | 6000.0.65f1 | Windows64 | Succeeded | 0 | 12302 | 0180a1500289fce4b0af84386fd7962c6858f8b13c88a07984af9d73faa1e123 | C:\Users\장수영\Documents\rea_gemini\Builds\Windows64\stage4-20261120a\Player\RewindNotary.exe | 890554162 | automatic |
+
+| 2026-11-20T05:22:18Z | stage5-20261120a | 0.1.0 | 6000.0.65f1 | Windows64 | Succeeded | 0 | 12302 | 0180a1500289fce4b0af84386fd7962c6858f8b13c88a07984af9d73faa1e123 | C:\Users\장수영\Documents\rea_gemini\Builds\Windows64\stage5-20261120a\Player\RewindNotary.exe | 292407346 | automatic |

@@ -15,6 +15,11 @@ namespace RewindNotary
         private SpriteRenderer shadowRenderer;
         private SpriteRenderer stateRing;
         private SpriteRenderer telegraphRing;
+        private GameObject hpBarRoot;
+        private Transform hpBarFill;
+        private SpriteRenderer hpBarFillSr;
+        private int maxRemaining = 1;
+        private static Sprite sharedWhiteSprite;
         private Sprite[] sheetFrames;
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private int lastRemaining = -1;
@@ -42,12 +47,14 @@ namespace RewindNotary
             baseLocalPos = pictureTransform.localPosition;
             baseLocalScale = pictureTransform.localScale;
             lastRemaining = target.State != null ? target.State.Remaining : 1;
+            maxRemaining = Mathf.Max(1, lastRemaining);
             wasCleared = target.State != null && target.State.Cleared;
 
             EnsureSharedAssets();
             TryLoadAnimatedSheet();
             BuildContactShadow();
             BuildStateRings();
+            BuildOverheadHealthBar();
         }
 
         private static void EnsureSharedAssets()
@@ -99,6 +106,8 @@ namespace RewindNotary
                 var sh = Resources.Load<Shader>("Shaders/AdditiveSprite") ?? Shader.Find("Sprites/Default");
                 sharedAdditiveMat = new Material(sh);
             }
+            if (sharedWhiteSprite == null)
+                sharedWhiteSprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 2, 2), Vector2.one * 0.5f, 2f);
         }
 
         private void TryLoadAnimatedSheet()
@@ -159,6 +168,39 @@ namespace RewindNotary
             telegraphRing.enabled = false;
         }
 
+        private void BuildOverheadHealthBar()
+        {
+            if (target.Kind != EffectTargetKind.Enemy) return;
+            hpBarRoot = new GameObject("EnemyHpBar");
+            hpBarRoot.transform.SetParent(transform, false);
+            hpBarRoot.transform.localPosition = new Vector3(0f, 2.08f, 0f);
+
+            var border = new GameObject("Border");
+            border.transform.SetParent(hpBarRoot.transform, false);
+            border.transform.localScale = new Vector3(1.06f, 0.14f, 1f);
+            var bSr = border.AddComponent<SpriteRenderer>();
+            bSr.sprite = sharedWhiteSprite;
+            bSr.color = new Color(0.84f, 0.70f, 0.42f, 0.85f);
+            bSr.sortingOrder = 14;
+
+            var bg = new GameObject("Track");
+            bg.transform.SetParent(hpBarRoot.transform, false);
+            bg.transform.localScale = new Vector3(1.0f, 0.09f, 1f);
+            var tSr = bg.AddComponent<SpriteRenderer>();
+            tSr.sprite = sharedWhiteSprite;
+            tSr.color = new Color(0.06f, 0.08f, 0.12f, 0.92f);
+            tSr.sortingOrder = 15;
+
+            var fill = new GameObject("Fill");
+            fill.transform.SetParent(hpBarRoot.transform, false);
+            fill.transform.localScale = new Vector3(1.0f, 0.085f, 1f);
+            hpBarFill = fill.transform;
+            hpBarFillSr = fill.AddComponent<SpriteRenderer>();
+            hpBarFillSr.sprite = sharedWhiteSprite;
+            hpBarFillSr.color = new Color(0.86f, 0.34f, 0.32f, 0.96f);
+            hpBarFillSr.sortingOrder = 16;
+        }
+
         private void LateUpdate()
         {
             if (target == null || target.State == null || pictureRenderer == null) return;
@@ -184,6 +226,21 @@ namespace RewindNotary
             bool alive = !cleared && pictureRenderer.enabled;
             shadowRenderer.enabled = alive;
             stateRing.enabled = alive;
+            if (hpBarRoot != null)
+            {
+                bool showBar = alive && (remaining < maxRemaining || (player != null && Vector2.Distance(player.transform.position, transform.position) < 9.5f));
+                hpBarRoot.SetActive(showBar);
+                if (showBar)
+                {
+                    if (remaining > maxRemaining) maxRemaining = remaining;
+                    float ratio = Mathf.Clamp01((float)remaining / Mathf.Max(1, maxRemaining));
+                    hpBarFill.localScale = new Vector3(Mathf.Max(0.02f, ratio), 0.085f, 1f);
+                    hpBarFill.localPosition = new Vector3(-(1f - ratio) * 0.5f, 0f, 0f);
+                    hpBarFillSr.color = target.State.Ready(Time.time)
+                        ? new Color(0.32f, 0.86f, 0.78f, 0.96f)
+                        : new Color(0.86f, 0.34f, 0.32f, 0.96f);
+                }
+            }
             if (!alive)
             {
                 telegraphRing.enabled = false;

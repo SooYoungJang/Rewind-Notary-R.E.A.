@@ -335,7 +335,7 @@ namespace RewindNotary
                 snap.BossMaxHp = opponent.Health.Maximum;
             }
             snap.ObjectiveHint = BuildStoryHint();
-            snap.ControlsText = (mikhailBout != null || NeedsEntryWave) ? Loc.Get("input.gameplay") : Loc.Get("area.help");
+            snap.ControlsText = GameInput.FormatControlsPrompt(mikhailBout != null || NeedsEntryWave);
         }
         private string BuildStoryHint()
         {

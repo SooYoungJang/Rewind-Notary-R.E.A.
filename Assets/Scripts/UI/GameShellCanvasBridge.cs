@@ -11,19 +11,26 @@ namespace RewindNotary
 
         private void InitShellCanvas()
         {
+            UiAudioSynth.Ensure(transform);
             shellCanvas = gameObject.AddComponent<GameShellCanvas>();
             shellCanvas.Initialize(transform);
             shellCanvas.OnActivateRow = index =>
             {
                 selected = index;
+                UiAudioSynth.PlayConfirm();
                 Activate(index);
             };
             shellCanvas.OnAdjustSetting = (index, dir) =>
             {
                 selected = index;
+                UiAudioSynth.PlayMove();
                 AdjustSetting(index, dir);
             };
-            shellCanvas.OnDeleteSlot = slot => RequestDelete(slot);
+            shellCanvas.OnDeleteSlot = slot =>
+            {
+                UiAudioSynth.PlayCancel();
+                RequestDelete(slot);
+            };
         }
 
         private void LateUpdate()
@@ -201,6 +208,7 @@ namespace RewindNotary
                 default:
                     string[] labels = Labels();
                     if (Page == ShellPage.Settings) snap.BodyHeader = Loc.Get("settings.adjust_hint");
+                    else if (Page == ShellPage.Keybinds) snap.BodyHeader = Loc.Get("keybind.hint");
                     for (int i = 0; i < labels.Length; i++)
                     {
                         snap.Buttons.Add(new GameShellCanvas.ButtonItem
@@ -208,7 +216,7 @@ namespace RewindNotary
                             Index = i,
                             Label = labels[i],
                             Selected = selected == i,
-                            IsSetting = Page == ShellPage.Settings && i < 5
+                            IsSetting = Page == ShellPage.Settings && i < 7
                         });
                     }
                     break;

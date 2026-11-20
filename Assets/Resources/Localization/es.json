@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Pasaje de regreso al Ascensor del Gran Tribunal"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Pantalla : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Pantalla completa"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Ventana)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Ventana)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Ventana)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "Sincronización vertical : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Asignación de teclas"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Teclas"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Elige una acción y pulsa una nueva tecla o clic derecho. (Duplicados se intercambian · Esc cancela)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Pulsa nueva tecla… Esc ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Restablecer valores"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Tecla duplicada intercambiada."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Saltar :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Ataque :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Técnica :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Esquive :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "Parada :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interactuar :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "Mapa del distrito :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Mapa"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Explorado: {0} / {1} salas"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Actual   ■ Visitada   □ Sin explorar   ❖ Jefe/Arena   [{0} / Tab / Esc] Cerrar"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Base · Ático Olvidado"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Calle del Sastre"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Distrito del Reloj"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Ópera de Cristal"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Acueducto de la Campana"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Galería del Lienzo"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Tribunal Notarial"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Gran Tribunal"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Mover A/D | Saltar {0} | Ataque {1} | Técnica {2} | Esquive {3} | Parada {4} | Mapa {5} | Esc"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Mover A/D | Interact. {0} | Ataque {1} | Técnica {2} | Esquive {3} | Mapa {4} | Esc Pausa"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "LS | Saltar [A] | Ataque [X] | Técnica [Y] | Esquive [LB] | Parada [RB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "LS | Interact. [L3] | Ataque [X] | Técnica [Y] | Esquive [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Registro notarial actualizado · Salud restaurada"
     }
   ]
 }

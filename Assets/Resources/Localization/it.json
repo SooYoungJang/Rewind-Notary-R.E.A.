@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Passaggio diretto all'ascensore del Gran Tribunale"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Schermo : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Schermo intero"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Finestra)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Finestra)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Finestra)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "Sincronia VSync : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Assegnazione tasti"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Tasti"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Scegli un’azione e premi un nuovo tasto o clic destro. (Scambio automatico · Esc annulla)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Premi nuovo tasto… Esc ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Ripristina predefiniti"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Tasto duplicato scambiato."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Salto :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Attacco :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Abilità :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Scatto :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "Parata :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interagisci :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "Mappa distretto :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Mappa"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Esplorato: {0} / {1} stanze"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Attuale   ■ Visitata   □ Inesplorata   ❖ Boss/Arena   [{0} / Tab / Esc] Chiudi"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Rifugio · Soffitta"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Via del Sarto di Velluto"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Distretto dell’Orologio"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Teatro d’Opera di Vetro"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Acquedotto della Campana"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Galleria della Tela"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Corte Notarile"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Gran Tribunale"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Muovi A/D | Salto {0} | Attacco {1} | Abilità {2} | Scatto {3} | Parata {4} | Mappa {5} | Esc"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Muovi A/D | Interag. {0} | Attacco {1} | Abilità {2} | Scatto {3} | Mappa {4} | Esc Pausa"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "LS | Salto [A] | Attacco [X] | Abilità [Y] | Scatto [LB] | Parata [RB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "LS | Interag. [L3] | Attacco [X] | Abilità [Y] | Scatto [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Registro notarile aggiornato · Salute ripristinata"
     }
   ]
 }

@@ -85,14 +85,19 @@ namespace RewindNotary
             int step = Mathf.Clamp(motor.ComboStep, 1, 4);
             int tier = growth != null ? growth.CurrentTier : 1;
             float size = (step == 1 ? 1.95f : step == 2 ? 2.25f : step == 3 ? 2.65f : 3.25f) * (1f + (tier - 1) * 0.10f);
-            float angle = step == 1 ? 0f : step == 2 ? 18f : step == 3 ? -15f : 6f;
+            int dirY = motor.AttackDirectionY;
+            float angle = dirY == -1 ? -90f : dirY == 1 ? 90f : (step == 1 ? 0f : step == 2 ? 18f : step == 3 ? -15f : 6f) * motor.Facing;
             Color tint = step == 4 || tier >= 3
                 ? new Color(1.0f, 0.92f, 0.60f, 0.95f)
                 : step == 3 ? new Color(1.0f, 0.86f, 0.56f, 0.90f)
                 : step == 2 ? new Color(0.70f, 0.94f, 1.0f, 0.90f)
                 : new Color(0.92f, 0.97f, 1.0f, 0.86f);
-            Vector3 at = transform.position + new Vector3(motor.Facing * (0.92f + step * 0.08f), 1.02f, 0f);
-            ActorVisualPolish2D.SpawnRotatedSlash("fx-basic-sword-mastery-additive", at, motor.Facing, size, 0.22f + step * 0.03f, angle * motor.Facing, tint);
+            Vector3 at = dirY == -1
+                ? transform.position + new Vector3(0f, -0.15f, 0f)
+                : dirY == 1
+                    ? transform.position + new Vector3(0f, 2.05f, 0f)
+                    : transform.position + new Vector3(motor.Facing * (0.92f + step * 0.08f), 1.02f, 0f);
+            ActorVisualPolish2D.SpawnRotatedSlash("fx-basic-sword-mastery-additive", at, motor.Facing, size, 0.22f + step * 0.03f, angle, tint);
             springScale = step == 4 ? new Vector2(1.20f, 0.86f) : new Vector2(1.10f, 0.92f);
             if (step == 4)
             {

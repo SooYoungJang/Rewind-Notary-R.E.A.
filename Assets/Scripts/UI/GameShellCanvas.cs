@@ -77,6 +77,7 @@ namespace RewindNotary
         private Text dialogueRoomText, dialogueSpeakerText, dialogueBodyText, dialogueErrorText;
         private Transform dialogueButtonsRoot;
         private string lastDialogueKey;
+        private string lastDialogueSpeakerId;
         private float dialogueRevealChars;
 
         private GameObject panelView;
@@ -374,8 +375,15 @@ namespace RewindNotary
             {
                 if (dialogueRevealChars < lastDialogueBody.Length)
                 {
+                    int prev = Mathf.FloorToInt(dialogueRevealChars);
                     dialogueRevealChars = Mathf.Min(lastDialogueBody.Length, dialogueRevealChars + Time.unscaledDeltaTime * 58f);
-                    dialogueBodyText.text = lastDialogueBody.Substring(0, Mathf.FloorToInt(dialogueRevealChars));
+                    int next = Mathf.FloorToInt(dialogueRevealChars);
+                    if (next > prev)
+                    {
+                        dialogueBodyText.text = lastDialogueBody.Substring(0, next);
+                        char ch = lastDialogueBody[Mathf.Clamp(next - 1, 0, lastDialogueBody.Length - 1)];
+                        if (!char.IsWhiteSpace(ch)) UiAudioSynth.PlayVoiceBlip(lastDialogueSpeakerId);
+                    }
                 }
             }
         }
@@ -457,6 +465,7 @@ namespace RewindNotary
             if (key != lastDialogueKey)
             {
                 lastDialogueKey = key;
+                lastDialogueSpeakerId = d.SpeakerId ?? "";
                 lastDialogueBody = d.BodyText ?? "";
                 dialogueRevealChars = d.InstantReveal ? lastDialogueBody.Length : 0f;
                 dialogueBodyText.text = d.InstantReveal ? lastDialogueBody : "";

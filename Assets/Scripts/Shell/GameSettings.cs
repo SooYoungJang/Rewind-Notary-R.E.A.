@@ -12,16 +12,32 @@ namespace RewindNotary
         public float bgmVolume = 0.4f, sfxVolume = 0.7f;
         public bool screenShake = true;
         public int stageOverride;
-        // Additive schema-1 field. Older files deserialize this as null.
         public string language;
+        public int displayMode;
+        public bool vsync = true;
+        public string keyJump = "";
+        public string keyAttack = "";
+        public string keyCast = "";
+        public string keyDash = "";
+        public string keyParry = "";
+        public string keyInteract = "";
+        public string keyMap = "";
+
         public void Validate()
         {
             if (schemaVersion != 1 || float.IsNaN(bgmVolume) || float.IsNaN(sfxVolume)
                 || bgmVolume < 0 || bgmVolume > 1 || sfxVolume < 0 || sfxVolume > 1
                 || stageOverride < 0 || stageOverride > 3) throw new InvalidDataException(Loc.Get("settings.invalid_values"));
             language = Loc.Normalize(language);
+            displayMode = Mathf.Clamp(displayMode, 0, 3);
+        }
+
+        public void ResetKeybinds()
+        {
+            keyJump = keyAttack = keyCast = keyDash = keyParry = keyInteract = keyMap = "";
         }
     }
+
     public sealed class SettingsStore
     {
         [Serializable] private sealed class Header { public int schemaVersion; }
@@ -30,11 +46,13 @@ namespace RewindNotary
         public string Error => error?.Invoke();
         private readonly string path;
         private bool blocked;
+
         public SettingsStore(string directory)
         {
             path = Path.Combine(directory, "settings.json");
             Value.language = Loc.DefaultLanguage(Application.systemLanguage);
         }
+
         private GameSettings Read(string file)
         {
             string json = File.ReadAllText(file);
@@ -43,8 +61,10 @@ namespace RewindNotary
             if (header == null || header.schemaVersion != 1) throw new InvalidDataException(Loc.Get("settings.unsupported_version"));
             var value = JsonUtility.FromJson<GameSettings>(json);
             if (value == null) throw new InvalidDataException(Loc.Get("settings.empty_file"));
-            value.Validate(); return value;
+            value.Validate();
+            return value;
         }
+
         public void Load()
         {
             if (!File.Exists(path) && !File.Exists(path + ".bak")) return;
@@ -62,6 +82,7 @@ namespace RewindNotary
                 catch (Exception) { blocked = true; error = () => Loc.Get("settings.recovery_failed"); }
             }
         }
+
         public bool Save()
         {
             if (blocked) return false;
@@ -80,6 +101,7 @@ namespace RewindNotary
             }
             catch (Exception e) { error = () => Loc.Get("settings.save_failed", e.Message); return false; }
         }
+
         public void Apply()
         {
             Value.language = Loc.Normalize(Value.language);
@@ -90,6 +112,38 @@ namespace RewindNotary
                 AudioManager.Instance.SfxVolume = Value.sfxVolume;
             }
             ImpactCameraShake.Enabled = Value.screenShake;
+            QualitySettings.vSyncCount = Value.vsync ? 1 : 0;
+            GameInput.ApplyBindings(Value);
+
+            if (!Application.isEditor && AutoTestRuntime.Report == null)
+            {
+                switch (Value.displayMode)
+                {
+                    case 0:
+                        Screen.SetResolution(Display.main.systemWidth, Display.main.systemHeight, FullScreenMode.FullScreenWindow);
+                        break;
+                    case 1:
+                        Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
+                        break;
+                    case 2:
+                        Screen.SetResolution(1600, 900, FullScreenMode.Windowed);
+                        break;
+                    case 3:
+                        Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+                        break;
+                }
+            }
+        }
+
+        public static string DisplayModeLabel(int mode)
+        {
+            switch (mode)
+            {
+                case 1: return Loc.Get("settings.display_1280");
+                case 2: return Loc.Get("settings.display_1600");
+                case 3: return Loc.Get("settings.display_1920");
+                default: return Loc.Get("settings.display_fullscreen");
+            }
         }
     }
 }

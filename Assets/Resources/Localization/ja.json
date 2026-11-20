@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "大法廷昇降機への帰還通路"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "画面モード : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "ボーダーレス全画面"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (ウィンドウ)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (ウィンドウ)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (ウィンドウ)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "垂直同期 (VSync) : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "キー設定 (割り当て)"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "キー設定"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "変更する操作を選び、新しいキーまたは右クリックを押してください。（重複時は自動入替・Escで中止）"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ 新しいキーを入力… Esc中止 ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "初期設定に戻す"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "重複キーを自動で入れ替えました。"
+    },
+    {
+      "key": "keybind.jump",
+      "value": "ジャンプ :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "剣撃 :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "恩人技 :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "ダッシュ :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "パリィ :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "調査・移動 :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "エリアマップ :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] 地図"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "全体探索: {0} / {1} 部屋"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ 現在地   ■ 探索済   □ 未探索   ❖ ボス/決戦場   [{0} / Tab / Esc] 閉じる"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "拠点・忘却の屋根裏"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "ベルベット仕立屋通り"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "時計塔区画"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "硝子のオペラ座"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "大鐘楼の水路"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "余白の画廊"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "公証法廷"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "最終審判席"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "移動 A/D | ジャンプ {0} | 剣撃(↑/↓) {1} | 技 {2} | ダッシュ {3} | パリィ {4} | 地図 {5} | Esc"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "移動 A/D | 調査・移動 {0} | 剣撃 {1} | 技 {2} | ダッシュ {3} | 地図 {4} | Esc 一時停止"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "移動 LS | ジャンプ [A] | 剣撃 [X] | 技 [Y] | ダッシュ [LB] | パリィ [RB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "移動 LS | 調査 [L3] | 剣撃 [X] | 技 [Y] | ダッシュ [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "公証記録を更新しました・体力回復"
     }
   ]
 }
