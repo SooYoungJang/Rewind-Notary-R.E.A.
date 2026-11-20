@@ -475,7 +475,7 @@ namespace RewindNotary
             if (!initialized || !shell.Playing) { GUI.matrix = previous; return; }
             if (hudCanvas != null)
             {
-                DrawQuickSkills(label, 18);
+                DrawQuickSkills(label, 626);
                 GUI.matrix = previous;
                 return;
             }
