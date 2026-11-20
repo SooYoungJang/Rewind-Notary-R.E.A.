@@ -2,6 +2,22 @@
   "language": "ja",
   "entries": [
     {
+      "key": "story.prologue.city",
+      "value": "この街では、師から受け継いだ技も公証を受け、記録に残される。"
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "明朝六時、五人の受刑者の刑が執行される。"
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "五人の技を記録剣に採録し、公証を受ければ、全員に赦免状が発布される。"
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "公証院はその任務をレアに託した。残された時間は一日もない。"
+    },
+    {
       "key": "finale.ending.true",
       "value": "真エンディング条件達成"
     },

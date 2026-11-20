@@ -2,6 +2,22 @@
   "language": "zh-Hans",
   "entries": [
     {
+      "key": "story.prologue.city",
+      "value": "在这座城里，就连师父传下的技艺也能经过公证，载入记录。"
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "明早六点，五名受刑者将被处决。"
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "只要把五人的招式收录进记录剑并完成公证，他们就能获得赦免。"
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "公证院把这项任务交给了蕾娅。留给她的时间已不足一天。"
+    },
+    {
       "key": "finale.ending.true",
       "value": "已达成真结局条件"
     },

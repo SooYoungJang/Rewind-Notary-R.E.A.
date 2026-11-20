@@ -2,6 +2,22 @@
   "language": "it",
   "entries": [
     {
+      "key": "story.prologue.city",
+      "value": "In questa città persino le tecniche tramandate da un maestro possono essere autenticate e messe a registro."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Domani, alle sei del mattino, è prevista l’esecuzione di cinque prigionieri."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Se le loro tecniche verranno incise nella Spada del Registro e autenticate, tutti e cinque riceveranno la grazia."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "L’Ufficio Notarile ha affidato l’incarico a Rea. Le resta meno di un giorno."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Finale vero sbloccato"
     },

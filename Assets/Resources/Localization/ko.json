@@ -2,6 +2,22 @@
   "language": "ko",
   "entries": [
     {
+      "key": "story.prologue.city",
+      "value": "이 도시에서는 스승에게 배운 기술도 공증을 받아 기록으로 남긴다."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "내일 새벽 여섯 시, 다섯 수형자의 형이 집행된다."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "다섯 사람의 기술을 기록검에 담아 공증하면, 사면장이 발부된다."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "공증원은 그 일을 레아에게 맡겼다. 남은 시간은 하루도 채 되지 않는다."
+    },
+    {
       "key": "finale.ending.true",
       "value": "진 엔딩 조건 충족"
     },

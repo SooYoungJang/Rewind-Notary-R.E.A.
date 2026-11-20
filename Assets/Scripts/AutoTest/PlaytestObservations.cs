@@ -7,6 +7,7 @@ namespace RewindNotary
     {
         internal int MenuIndex => selected;
         internal int OpeningCaption => Page == ShellPage.StoryDialogue ? openingScene?.CaptionIndex ?? -1 : -1;
+        internal bool OpeningPrologue => Page == ShellPage.StoryDialogue && openingScene?.InPrologue == true;
         internal bool EmptyNewSlot => purpose == SlotPurpose.NewGame && selected < records.Length &&
             records[selected] == null && slotErrors[selected] == null;
         internal CoreRecord MenuRecord => selectedRecord;

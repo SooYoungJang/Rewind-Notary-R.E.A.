@@ -2,6 +2,22 @@
   "language": "en",
   "entries": [
     {
+      "key": "story.prologue.city",
+      "value": "In this city, even the skills handed down by a master can be notarized and entered into the record."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "At six tomorrow morning, five prisoners are due to be executed."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "If their skills are captured in the Record Sword and notarized, all five will be pardoned."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "The Notary Bureau has entrusted the job to Rea. She has less than a day."
+    },
+    {
       "key": "finale.ending.true",
       "value": "True ending unlocked"
     },

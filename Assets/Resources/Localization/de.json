@@ -2,6 +2,22 @@
   "language": "de",
   "entries": [
     {
+      "key": "story.prologue.city",
+      "value": "In dieser Stadt werden selbst die von einem Meister erlernten Techniken beglaubigt und ins Register eingetragen."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Morgen früh um sechs sollen fünf Gefangene hingerichtet werden."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Werden ihre Techniken im Aufzeichnungsschwert festgehalten und beglaubigt, erhalten alle fünf eine Begnadigung."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "Das Notariatsamt hat Rea damit betraut. Ihr bleibt weniger als ein Tag."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Wahres Ende freigeschaltet"
     },

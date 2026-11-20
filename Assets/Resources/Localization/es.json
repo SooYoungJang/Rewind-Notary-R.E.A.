@@ -2,6 +2,22 @@
   "language": "es",
   "entries": [
     {
+      "key": "story.prologue.city",
+      "value": "En esta ciudad, hasta las técnicas que enseña un maestro se certifican y quedan por escrito en el registro."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Mañana a las seis de la mañana está prevista la ejecución de cinco reos."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Si sus técnicas se graban en la Espada de Registro y se certifican, los cinco recibirán el indulto."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "La Oficina Notarial le ha confiado la misión a Rea. Le queda menos de un día."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Final verdadero desbloqueado"
     },

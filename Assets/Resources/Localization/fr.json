@@ -2,6 +2,22 @@
   "language": "fr",
   "entries": [
     {
+      "key": "story.prologue.city",
+      "value": "Dans cette ville, même les techniques transmises par un maître peuvent être authentifiées et consignées au registre."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Demain, à six heures du matin, cinq condamnés doivent être exécutés."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Si leurs techniques sont gravées dans l’Épée de consignation et authentifiées, tous les cinq seront graciés."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "Le Bureau du Notariat a confié cette mission à Rea. Il lui reste moins d’un jour."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Fin véritable débloquée"
     },
