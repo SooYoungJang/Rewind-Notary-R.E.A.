@@ -31,9 +31,8 @@ namespace RewindNotary
         private float attackStartedAt, comboExpiresAt, stunUntil, landUntil, lastHitAt;
         private bool strikeDelivered, groundSampled, queuedAttack;
         private int comboStep, attackStep, airStrikesUsed;
-        private bool aerialSwing, holdingAir;
+        private bool aerialSwing;
         internal bool RisingArc { get; private set; }
-        private float airGravity;
         private int activeStarter = -1;
         private bool chargeReleasePose;
         private Health opponent;
@@ -152,7 +151,6 @@ namespace RewindNotary
             {
                 RisingArc = false;
                 airStrikesUsed = 0;
-                ReleaseAirSwing();
                 Defense?.State.Land();
                 landUntil = Time.time + 0.09f;
                 LastLandedAt = Time.time;
@@ -169,11 +167,7 @@ namespace RewindNotary
             if (Temporal != null && Temporal.Frozen) return;
             if (Defense != null && Defense.DriveMovement()) return;
             if (BenefactorSkills != null && BenefactorSkills.DriveMovement()) return;
-            if (RisingArc && Body.linearVelocity.y <= 0f)
-            {
-                RisingArc = false;
-                if (Attacking && aerialSwing && AttackDirectionY >= 0) HoldAirSwing();
-            }
+            if (RisingArc && Body.linearVelocity.y <= 0f) RisingArc = false;
             if (Attacking && activeStarter == QuickSkills.Thrust && !strikeDelivered)
             {
                 Body.linearVelocity = new Vector2(starterFacing * 11f + carrierSpeed, Body.linearVelocity.y);
@@ -287,8 +281,6 @@ namespace RewindNotary
                 if (!Grounded && vy < -0.5f) AttackDirectionY = -1;
                 else if (vy > 0.5f) AttackDirectionY = 1;
             }
-            if (aerialSwing && AttackDirectionY >= 0 && !RisingArc) HoldAirSwing();
-            else ReleaseAirSwing();
             bool moving = Mathf.Abs(Body.linearVelocity.x - carrierSpeed) >= PlayerController2D.MoveSpeed * .5f;
             StartSwing(step == 0 ? BossAttack : PlayerCombo[step - 1], step, moving);
         }
@@ -325,7 +317,6 @@ namespace RewindNotary
         }
         private void CancelAttack()
         {
-            ReleaseAirSwing();
             Skills?.Progression.EndUse(activeUse);
             activeUse = null;
             Attacking = false;
@@ -337,23 +328,6 @@ namespace RewindNotary
             CancelAttack();
         }
 
-        private void HoldAirSwing()
-        {
-            if (!holdingAir)
-            {
-                airGravity = Body.gravityScale;
-                Body.gravityScale = 0f;
-                holdingAir = true;
-            }
-            Body.linearVelocity = new Vector2(Body.linearVelocity.x, 0f);
-        }
-
-        private void ReleaseAirSwing()
-        {
-            if (!holdingAir) return;
-            Body.gravityScale = airGravity;
-            holdingAir = false;
-        }
         private void DeliverStrike()
         {
             // Mark even a whiff/immune target as delivered: one contact query per swing.
@@ -473,7 +447,6 @@ namespace RewindNotary
                 {
                     Attacking = false;
                     if (queuedAttack && comboStep > 0 && BeginNextPlayerSwing(fromBuffer: true)) return;
-                    ReleaseAirSwing();
                     if (comboStep > 0 && comboStep < ComboLimit)
                     {
                         comboExpiresAt = attackStartedAt + activeAttack.Duration + ComboGraceSeconds;
