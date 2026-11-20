@@ -4127,11 +4127,11 @@
     },
     {
       "key": "controls.kb_combat",
-      "value": "Move A/D | Jump {0} | Attack(↑/↓Pogo) {1} | Skill {2} | Dash {3} | Parry {4} | Map {5} | Esc Menu"
+      "value": "Move ←/→ | Jump {0} | Attack(↑/↓Pogo) {1} | Skill {2} | Dash {3} | Parry {4} | Map {5} | Esc Menu"
     },
     {
       "key": "controls.kb_explore",
-      "value": "Move A/D | Interact {0} | Attack {1} | Skill {2} | Dash {3} | Map {4} | Esc Pause"
+      "value": "Move ←/→ | Interact {0} | Attack {1} | Skill {2} | Dash {3} | Map {4} | Esc Pause"
     },
     {
       "key": "controls.pad_combat",

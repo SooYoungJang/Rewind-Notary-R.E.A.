@@ -4127,11 +4127,11 @@
     },
     {
       "key": "controls.kb_combat",
-      "value": "Dépl. A/D | Saut {0} | Attaque {1} | Tech. {2} | Ruée {3} | Parade {4} | Carte {5} | Échap"
+      "value": "Dépl. ←/→ | Saut {0} | Attaque {1} | Tech. {2} | Ruée {3} | Parade {4} | Carte {5} | Échap"
     },
     {
       "key": "controls.kb_explore",
-      "value": "Dépl. A/D | Interag. {0} | Attaque {1} | Tech. {2} | Ruée {3} | Carte {4} | Échap Pause"
+      "value": "Dépl. ←/→ | Interag. {0} | Attaque {1} | Tech. {2} | Ruée {3} | Carte {4} | Échap Pause"
     },
     {
       "key": "controls.pad_combat",

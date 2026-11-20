@@ -4127,11 +4127,11 @@
     },
     {
       "key": "controls.kb_combat",
-      "value": "Muovi A/D | Salto {0} | Attacco {1} | Abilità {2} | Scatto {3} | Parata {4} | Mappa {5} | Esc"
+      "value": "Muovi ←/→ | Salto {0} | Attacco {1} | Abilità {2} | Scatto {3} | Parata {4} | Mappa {5} | Esc"
     },
     {
       "key": "controls.kb_explore",
-      "value": "Muovi A/D | Interag. {0} | Attacco {1} | Abilità {2} | Scatto {3} | Mappa {4} | Esc Pausa"
+      "value": "Muovi ←/→ | Interag. {0} | Attacco {1} | Abilità {2} | Scatto {3} | Mappa {4} | Esc Pausa"
     },
     {
       "key": "controls.pad_combat",
