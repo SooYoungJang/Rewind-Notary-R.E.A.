@@ -32,6 +32,7 @@ namespace RewindNotary
         private bool strikeDelivered, groundSampled, queuedAttack;
         private int comboStep, attackStep, airStrikesUsed;
         private bool aerialSwing, holdingAir;
+        internal bool RisingArc { get; private set; }
         private float airGravity;
         private int activeStarter = -1;
         private bool chargeReleasePose;
@@ -149,6 +150,7 @@ namespace RewindNotary
             }
             if (Grounded && !wasGrounded)
             {
+                RisingArc = false;
                 airStrikesUsed = 0;
                 ReleaseAirSwing();
                 Defense?.State.Land();
@@ -167,6 +169,11 @@ namespace RewindNotary
             if (Temporal != null && Temporal.Frozen) return;
             if (Defense != null && Defense.DriveMovement()) return;
             if (BenefactorSkills != null && BenefactorSkills.DriveMovement()) return;
+            if (RisingArc && Body.linearVelocity.y <= 0f)
+            {
+                RisingArc = false;
+                if (Attacking && aerialSwing && AttackDirectionY >= 0) HoldAirSwing();
+            }
             if (Attacking && activeStarter == QuickSkills.Thrust && !strikeDelivered)
             {
                 Body.linearVelocity = new Vector2(starterFacing * 11f + carrierSpeed, Body.linearVelocity.y);
@@ -199,6 +206,7 @@ namespace RewindNotary
         {
             if (Health.Dead || Stunned) return;
             if (Defense != null && Defense.BlocksActions) return;
+            RisingArc = false;
             Body.linearVelocity = new Vector2(Body.linearVelocity.x, velocity);
             Grounded = false;
             landUntil = 0f;
@@ -279,7 +287,7 @@ namespace RewindNotary
                 if (!Grounded && vy < -0.5f) AttackDirectionY = -1;
                 else if (vy > 0.5f) AttackDirectionY = 1;
             }
-            if (aerialSwing && AttackDirectionY >= 0) HoldAirSwing();
+            if (aerialSwing && AttackDirectionY >= 0 && !RisingArc) HoldAirSwing();
             else ReleaseAirSwing();
             bool moving = Mathf.Abs(Body.linearVelocity.x - carrierSpeed) >= PlayerController2D.MoveSpeed * .5f;
             StartSwing(step == 0 ? BossAttack : PlayerCombo[step - 1], step, moving);
@@ -323,7 +331,11 @@ namespace RewindNotary
             Attacking = false;
             ResetCombo();
         }
-        internal void ClearComboForDefense() { CancelAttack(); }
+        internal void ClearComboForDefense()
+        {
+            RisingArc = false;
+            CancelAttack();
+        }
 
         private void HoldAirSwing()
         {
@@ -372,7 +384,11 @@ namespace RewindNotary
                 SkillStroke.Afterimage(Animation.GetComponent<SpriteRenderer>(), chainProfile.afterimageSeconds);
             swingConnected = ApplySwordBounds(blade, activeUse, strikeDamage, activeAttack.Knockback, attackStep, activeStarter);
             if (activeStarter >= 0) ShowStarterStrike(blade, swingConnected);
-            if (activeStarter == QuickSkills.Rising && Grounded) Jump(RisingLaunchSpeed);
+            if (activeStarter == QuickSkills.Rising && Grounded)
+            {
+                Jump(RisingLaunchSpeed);
+                RisingArc = !Grounded;
+            }
             if (Health.IsPlayer && AttackDirectionY == -1 && swingConnected)
             {
                 Body.linearVelocity = new Vector2(Body.linearVelocity.x, 10.8f);
@@ -475,6 +491,7 @@ namespace RewindNotary
             Defense?.Interrupt();
             BenefactorSkills?.Interrupt();
             Animation.FlashHit();
+            RisingArc = false;
             CancelAttack();
             lastHitAt = Time.time;
             stunUntil = Time.time + 0.18f;
@@ -488,6 +505,7 @@ namespace RewindNotary
             BenefactorSkills?.Interrupt();
             Temporal?.Release();
             Defense?.ResetDefense();
+            RisingArc = false;
             CancelAttack();
             Body.linearVelocity = Vector2.zero;
             Animation.Play(SpriteAnimator.Pose.Land, true);
@@ -507,6 +525,7 @@ namespace RewindNotary
             transform.position = feet;
             Body.position = feet;
             Body.linearVelocity = Vector2.zero;
+            RisingArc = false;
             CancelAttack();
             stunUntil = landUntil = 0f; LastLandedAt = float.NegativeInfinity;
             Grounded = false;
@@ -516,7 +535,14 @@ namespace RewindNotary
             Animation.ResetVisual();
             Animation.Play(SpriteAnimator.Pose.Idle, true);
         }
-        private void OnDisable() { BenefactorSkills?.Interrupt(); Temporal?.Release(); Defense?.ResetDefense(); CancelAttack(); }
+        private void OnDisable()
+        {
+            BenefactorSkills?.Interrupt();
+            Temporal?.Release();
+            Defense?.ResetDefense();
+            RisingArc = false;
+            CancelAttack();
+        }
         private void OnDestroy()
         {
             CancelStarterWaves();

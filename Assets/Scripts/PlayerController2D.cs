@@ -244,7 +244,7 @@ namespace RewindNotary
             if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions) cutJump = false;
             if (cutJump)
             {
-                if (motor.Body.linearVelocity.y > 0f)
+                if (!motor.RisingArc && motor.Body.linearVelocity.y > 0f)
                     motor.Body.linearVelocity = new Vector2(motor.Body.linearVelocity.x, motor.Body.linearVelocity.y * 0.5f);
                 cutJump = false;
             }

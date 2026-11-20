@@ -120,15 +120,16 @@ namespace RewindNotary
 
         internal void ReactToSword(int starter, float originX, int comboStep, bool juggle)
         {
-            if (footing == null || State.Cleared || !State.TakesComboHits) return;
+            if (footing == null || State.Cleared) return;
+            if (starter == QuickSkills.Rising && footing.Grounded)
+            {
+                footing.Launch(CombatMotor2D.RisingLaunchSpeed, -Physics2D.gravity.y * player.Body.gravityScale);
+                return;
+            }
+            if (!State.TakesComboHits) return;
             if (!footing.Grounded)
             {
                 if (juggle) footing.HoldAir(comboStep == 4 ? .29f : CombatMotor2D.JuggleSeconds);
-                return;
-            }
-            if (starter == QuickSkills.Rising)
-            {
-                footing.Launch(CombatMotor2D.RisingLaunchSpeed);
                 return;
             }
             if (starter != QuickSkills.Sweep) return;

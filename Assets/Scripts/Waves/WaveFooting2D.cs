@@ -15,6 +15,8 @@ namespace RewindNotary
         private Vector2 localFoot;
         private float fallSpeed;
         private float airborneUntil;
+        private float launchGravity;
+        private float holdAtApex;
 
         internal WaveFooting2D(Vector2 spawn)
         {
@@ -27,8 +29,25 @@ namespace RewindNotary
         internal float HomeX { get; private set; }
         internal bool Grounded => support != null;
         internal bool Hanging => Time.time < airborneUntil;
-        internal void Launch(float speed) { support = null; fallSpeed = -speed; airborneUntil = 0f; }
-        internal void HoldAir(float seconds) { support = null; fallSpeed = 0f; airborneUntil = Time.time + seconds; }
+        internal void Launch(float speed, float gravity)
+        {
+            support = null;
+            fallSpeed = -speed;
+            launchGravity = gravity;
+            airborneUntil = holdAtApex = 0f;
+        }
+
+        internal void HoldAir(float seconds)
+        {
+            if (fallSpeed < 0f)
+            {
+                holdAtApex = seconds;
+                return;
+            }
+            support = null;
+            fallSpeed = 0f;
+            airborneUntil = Time.time + seconds;
+        }
 
         internal Vector2 FollowGround(Vector2 feet, float dt)
         {
@@ -40,23 +59,45 @@ namespace RewindNotary
                 feet = carried;
             }
 
-            fallSpeed += 28f * dt;
+            fallSpeed += (launchGravity > 0f ? launchGravity : 28f) * dt;
             if (fallSpeed < 0f)
             {
                 float rise = -fallSpeed * dt;
-                if (Physics2D.Raycast(feet + Vector2.up * 1.7f, Vector2.up, rise, GroundMask).collider == null)
-                    return feet + Vector2.up * rise;
+                float clearance = UpwardClearance(feet + Vector2.up * 1.7f, rise);
+                feet.y += clearance;
+                if (clearance >= rise) return feet;
                 fallSpeed = 0f;
             }
-            if (FindFloor(feet, StepHeight + fallSpeed * dt, out var floor))
+            if (holdAtApex > 0f)
+            {
+                HoldAir(holdAtApex);
+                holdAtApex = 0f;
+                return feet;
+            }
+            float floorTolerance = launchGravity > 0f ? Skin : StepHeight;
+            if (FindFloor(feet, floorTolerance + fallSpeed * dt, out var floor, floorTolerance))
                 return Plant(feet.x, floor);
 
             support = null;
             feet.y -= fallSpeed * dt;
             if (feet.y >= spawn.y - 14f) return feet;
-            fallSpeed = 0f;
+            fallSpeed = launchGravity = 0f;
             HomeX = spawn.x;
             return spawn;
+        }
+
+        private float UpwardClearance(Vector2 head, float rise)
+        {
+            int count = Physics2D.Raycast(head, Vector2.up, terrain, hits, rise);
+            for (int i = 0; i < count; i++)
+            {
+                var hit = hits[i];
+                if (hit.fraction <= 0f || hit.normal.y > -.58f) continue;
+                if (hit.collider.usedByEffector &&
+                    hit.collider.TryGetComponent<PlatformEffector2D>(out var platform) && platform.useOneWay) continue;
+                rise = Mathf.Min(rise, Mathf.Max(0f, hit.distance - Skin));
+            }
+            return rise;
         }
 
         internal bool TryStep(Vector2 feet, float nextX, out Vector2 next)
@@ -93,9 +134,9 @@ namespace RewindNotary
                 FindFloor(new Vector2(nextX, feet.y), StepHeight, out floor);
         }
 
-        private bool FindFloor(Vector2 feet, float below, out RaycastHit2D floor)
+        private bool FindFloor(Vector2 feet, float below, out RaycastHit2D floor, float above = StepHeight)
         {
-            int count = Physics2D.Raycast(feet + Vector2.up * StepHeight, Vector2.down, terrain, hits, below + StepHeight);
+            int count = Physics2D.Raycast(feet + Vector2.up * above, Vector2.down, terrain, hits, below + above);
             floor = default;
             for (int i = 0; i < count; i++)
             {
@@ -112,7 +153,7 @@ namespace RewindNotary
             var feet = new Vector2(x, floor.point.y + Skin);
             support = floor.collider;
             localFoot = support.transform.InverseTransformPoint(feet);
-            fallSpeed = 0f;
+            fallSpeed = launchGravity = 0f;
             return feet;
         }
     }
