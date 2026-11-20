@@ -353,6 +353,9 @@ namespace RewindNotary
         }
         private void OnGUI()
         {
+            // Menu drawing belongs to GameShell. Skip HUD setup when there is nothing to draw.
+            if (failure == null && (!initialized || !shell.Playing)) return;
+
             Matrix4x4 previous = GUI.matrix;
             float scale = Mathf.Min(Screen.width / 1280f, Screen.height / 720f);
             GUI.matrix = Matrix4x4.TRS(new Vector3((Screen.width - 1280 * scale) / 2f,
@@ -367,7 +370,6 @@ namespace RewindNotary
                 GUI.Label(new Rect(245, 285, 780, 130), failure, new GUIStyle(label) { wordWrap = true });
                 GUI.matrix = previous; return;
             }
-            if (!initialized || !shell.Playing) { GUI.matrix = previous; return; }
             if (Area != null) { Area.DrawHUD(title, label); GUI.matrix = previous; return; }
             GUI.Box(new Rect(20, 18, 400, 128), "");
             GUI.Label(new Rect(36, 28, 380, 34), Loc.Get("game.title"), title);
