@@ -241,7 +241,7 @@ namespace RewindNotary
             var p = area?.Rea;
             var target = area?.RouteTarget;
             var position = p == null ? Vector2.zero : p.Body.position;
-            string state = string.Join("|", bot.Shell?.Page, bot.Shell?.MenuIndex, area?.Room.id, area?.ActiveRow?.textKey,
+            string state = string.Join("|", bot.Shell?.Page, bot.Shell?.MenuIndex, bot.Shell?.OpeningCaption, area?.Room.id, area?.ActiveRow?.textKey,
                 area?.PendingAction, bot.Record?.storyFlags.Count, bot.Record?.Get(SkillRules.SilverStitch)?.validUseCount,
                 target?.TargetId, target?.State.Remaining, area?.BoutOpponent?.Health.Current,
                 clock != null ? bot.Record?.Get(BenefactorIds.Pendulum)?.validUseCount : null,
@@ -251,6 +251,9 @@ namespace RewindNotary
                 (clock != null || opera != null || bell != null || gallery != null) ? area?.UnclearedClockTarget?.State.Remaining : null);
             if (state != progress || (position - lastPosition).sqrMagnitude >= .25f)
             {
+                if (bot.Shell?.OpeningCaption == 1 && area?.ActiveRow?.sceneId == "intro_attic" &&
+                    (area.ActiveRow.stepId == "01_wake" || area.ActiveRow.stepId == "02_candy_pickup"))
+                    Capture(area.ActiveRow.stepId);
                 lastProgress = now;
                 progress = state;
                 lastPosition = position;

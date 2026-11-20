@@ -6,6 +6,7 @@ namespace RewindNotary
     public sealed partial class GameShell
     {
         internal int MenuIndex => selected;
+        internal int OpeningCaption => Page == ShellPage.StoryDialogue ? openingScene?.CaptionIndex ?? -1 : -1;
         internal bool EmptyNewSlot => purpose == SlotPurpose.NewGame && selected < records.Length &&
             records[selected] == null && slotErrors[selected] == null;
         internal CoreRecord MenuRecord => selectedRecord;

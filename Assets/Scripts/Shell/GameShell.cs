@@ -106,6 +106,13 @@ namespace RewindNotary
             }
             if (Page == ShellPage.StoryDialogue && (GameInput.PauseDown || GameInput.CancelDown))
             { Go(ShellPage.Pause); return; }
+            if (Page == ShellPage.StoryDialogue && openingScene != null)
+            {
+                if (!game.ActiveSkills.LastSaveSucceeded) { Go(ShellPage.StorySaving); return; }
+                if (openingScene.Advance(Time.unscaledDeltaTime, GameInput.SubmitDown) &&
+                    game.Area.ConfirmDialogue(false)) Resume();
+                return;
+            }
             if (Playing)
             {
                 if (GameInput.PauseDown) Pause();
@@ -356,8 +363,13 @@ namespace RewindNotary
             Application.Quit();
 #endif
         }
-        private void OnApplicationFocus(bool focused) { if (!focused && Playing) Pause(); }
-        private void OnApplicationPause(bool paused) { if (paused && Playing) Pause(); }
+        private void OnApplicationFocus(bool focused) { if (!focused) PausePresentation(); }
+        private void OnApplicationPause(bool paused) { if (paused) PausePresentation(); }
+        private void PausePresentation()
+        {
+            if (Page == ShellPage.StoryDialogue && openingScene != null) Go(ShellPage.Pause);
+            else if (Playing) Pause();
+        }
         private void OnDestroy() { GameInput.SetGameplay(false); Time.timeScale = 1f; }
 
         private string SlotLabel(int index)
@@ -381,6 +393,12 @@ namespace RewindNotary
             float scale = Mathf.Min(Screen.width / 1280f, Screen.height / 720f);
             GUI.matrix = Matrix4x4.TRS(new Vector3((Screen.width - 1280 * scale) / 2f,
                 (Screen.height - 720 * scale) / 2f, 0), Quaternion.identity, Vector3.one * scale);
+            if (Page == ShellPage.StoryDialogue && openingScene != null)
+            {
+                openingScene.Draw(font);
+                GUI.matrix = previous;
+                return;
+            }
             if (titleStyle == null)
             {
                 titleStyle = new GUIStyle(GUI.skin.label) { font = font, fontSize = 34, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleCenter };
@@ -465,11 +483,13 @@ namespace RewindNotary
             GUI.matrix = previous;
         }
         private Vector2 dialogueScroll;
+        private OpeningScene openingScene;
         internal void OpenStoryDialogue()
         {
             game.SuspendInput();
             Time.timeScale = 0f;
             dialogueScroll = Vector2.zero;
+            openingScene = OpeningScene.For(DialogueRow);
             Go(ShellPage.StoryDialogue);
         }
         private StoryRow DialogueRow => game.Area != null ? game.Area.ActiveRow : game.ActiveCassel.Scenes.Modal;
