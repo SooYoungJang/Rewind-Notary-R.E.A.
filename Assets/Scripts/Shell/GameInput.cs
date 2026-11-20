@@ -51,6 +51,7 @@ namespace RewindNotary
         public static bool JumpHeld => Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0);
         public static bool JumpUp => Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0);
         public static bool AttackDown => Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.JoystickButton2);
+        internal static bool AttackHeld => Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.JoystickButton2);
         public static bool CastDown => Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.JoystickButton3) ||
             QuickSkillDown >= 0;
         internal static int QuickSkillDown
@@ -63,7 +64,7 @@ namespace RewindNotary
             }
         }
         // Down already chooses canvas. Holding the attack button chooses its first wall instead.
-        public static bool PaintWallHeld => Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.JoystickButton2);
+        public static bool PaintWallHeld => AttackHeld;
         private static bool ShiftHeld => Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         internal static bool SprintHeld => ShiftHeld && KeyboardHorizontal != 0;
         internal static bool PadDashDown => Input.GetKeyDown(KeyCode.JoystickButton4);

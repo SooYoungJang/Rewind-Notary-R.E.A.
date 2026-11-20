@@ -8,13 +8,16 @@ namespace RewindNotary
     internal sealed class FeelProbe : MonoBehaviour
     {
         private enum Phase { Waiting, GroundRun, GroundStop, Tap, Attack, AirRun, Jump, AirStop, MovingRun, MovingAttack,
-            ReverseRun, ReverseAttack, Done, Failed }
+            ReverseRun, ReverseAttack, HoldReady, HoldAttack, Done, Failed }
         private Phase phase;
         private CombatMotor2D player;
         private FeelResults result;
         private int runTicks, tapFrame;
         private float reverseStarted;
         private bool reversedMotion, reversedStrike;
+        private float holdStarted;
+        private int heldSwings;
+        private Sprite firstHeldPose;
         internal bool Passed => phase == Phase.Done;
 
         internal bool Drive(FirstDepartureBot bot, BotKeyboard keys, FeelResults measurements)
@@ -109,10 +112,32 @@ namespace RewindNotary
                     {
                         player.BasicStrikeDelivered -= OnReverseStrike;
                         result.reverseAttack = "pass";
-                        phase = Phase.Done;
+                        result.heldCombo = "running";
+                        phase = Phase.HoldReady;
                     }
                     else if (Time.time - reverseStarted > 1f)
                         Abort("Moving attack did not reverse movement, strike and queued combo together");
+                    break;
+                case Phase.HoldReady:
+                    if (!player.Grounded || player.Attacking || player.ComboStep != 0) break;
+                    holdStarted = Time.time;
+                    player.AttackStarted += OnHeldAttackStarted;
+                    phase = Phase.HoldAttack;
+                    keys.Hold(KeyCode.Z);
+                    break;
+                case Phase.HoldAttack:
+                    if (Time.time - holdStarted > 3f)
+                    {
+                        Abort("Holding Z did not complete and release two full starting combos");
+                        break;
+                    }
+                    if (heldSwings < 4) keys.Hold(KeyCode.Z);
+                    else if (!player.Attacking)
+                    {
+                        player.AttackStarted -= OnHeldAttackStarted;
+                        result.heldCombo = "pass";
+                        phase = Phase.Done;
+                    }
                     break;
             }
             // NextFrame starts with all keys released, including during both stop windows.
@@ -173,6 +198,17 @@ namespace RewindNotary
         }
 
         private void OnAttackStarted() { result.stationaryAttack.attackStartedCount++; }
+
+        private void OnHeldAttackStarted()
+        {
+            int expectedStep = heldSwings % 2 + 1;
+            var sprite = player.Animation.GetComponent<SpriteRenderer>().sprite;
+            if (heldSwings == 0) firstHeldPose = sprite;
+            heldSwings++;
+            if (heldSwings > 4 || player.ComboStep != expectedStep || (sprite == firstHeldPose) != (expectedStep == 1))
+                Abort("Holding Z repeated the wrong swing or reused the first pose for the second hit");
+        }
+
         private bool FacingLeft => player.Facing < 0 && player.Animation.GetComponent<SpriteRenderer>().flipX;
 
         private void OnReverseStrike(Bounds hit, int damage)
@@ -206,10 +242,12 @@ namespace RewindNotary
             if (result.airStop.status == "running") result.airStop.status = "fail";
             if (result.movingAttack.status == "running") result.movingAttack.status = "fail";
             if (result.reverseAttack == "running") result.reverseAttack = "fail";
+            if (result.heldCombo == "running") result.heldCombo = "fail";
             if (player != null)
             {
                 player.AttackStarted -= OnAttackStarted;
                 player.BasicStrikeDelivered -= OnReverseStrike;
+                player.AttackStarted -= OnHeldAttackStarted;
             }
             phase = Phase.Failed;
         }

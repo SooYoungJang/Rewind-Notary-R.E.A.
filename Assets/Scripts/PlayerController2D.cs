@@ -24,6 +24,7 @@ namespace RewindNotary
         internal int WallJumps { get; private set; }
         internal float AttackSteering => Time.time < kickUntil ? kickDirection : GameInput.Horizontal;
         private float attackPressed = float.NegativeInfinity;
+        private bool attackHoldBlocked;
         internal event System.Action AttackInputAccepted;
         private SkillCastRequest? pendingCast;
         private void Awake()
@@ -37,8 +38,15 @@ namespace RewindNotary
         private void OnAttackStarted() { AudioManager.Play(AudioManager.Sfx.Swing); }
         private void Update()
         {
+            bool attackHeld = GameInput.AttackHeld;
             if (!GameInput.CanPlay || motor.Health == null || motor.Health.Dead)
-            { attackPressed = float.NegativeInfinity; pendingCast = null; return; }
+            {
+                attackPressed = float.NegativeInfinity;
+                attackHoldBlocked = attackHeld;
+                pendingCast = null;
+                return;
+            }
+            if (!attackHeld) attackHoldBlocked = false;
             axis = GameInput.Horizontal;
             var runner = motor.BenefactorSkills;
             var input = runner?.InputSnapshot;
@@ -48,6 +56,8 @@ namespace RewindNotary
             if (motor.Stunned) pendingCast = null;
             if (castDown)
             {
+                attackHoldBlocked = attackHeld;
+                attackPressed = float.NegativeInfinity;
                 jumpPressed = float.NegativeInfinity;
                 // One request only: a later press replaces it, even if the requested skill is unlearned.
                 pendingCast = null;
@@ -68,10 +78,12 @@ namespace RewindNotary
                 cutJump = false;
             }
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
-            if (!castDown && !pendingCast.HasValue && Time.time - attackPressed <= AttackBuffer && motor.Attack())
+            bool attackBuffered = Time.time - attackPressed <= AttackBuffer;
+            bool repeatAttack = attackHeld && !attackHoldBlocked && !motor.Attacking;
+            if (!castDown && !pendingCast.HasValue && (attackBuffered || repeatAttack) && motor.Attack())
             {
                 attackPressed = float.NegativeInfinity;
-                AttackInputAccepted?.Invoke();
+                if (attackBuffered) AttackInputAccepted?.Invoke();
             }
             if (pendingCast.HasValue)
             {
@@ -157,6 +169,7 @@ namespace RewindNotary
             motor?.Animation?.SetWallPose(0);
             axis = 0f; cutJump = false;
             attackPressed = jumpPressed = lastGrounded = float.NegativeInfinity;
+            attackHoldBlocked = GameInput.AttackHeld;
         }
         public void ClearInput()
         {
