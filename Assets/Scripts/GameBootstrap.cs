@@ -43,6 +43,7 @@ namespace RewindNotary
             try
             {
                 Application.targetFrameRate = 60;
+                Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
                 Physics2D.gravity = new Vector2(0f, -9.81f);
                 Time.timeScale = 1f;
                 Child("Audio").AddComponent<AudioManager>();
