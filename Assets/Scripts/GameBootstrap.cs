@@ -720,15 +720,13 @@ namespace RewindNotary
             for (int i = 0; i < QuickSkills.Keys.Length; i++)
             {
                 string id = QuickSkills.Equipped(shell.Settings.Value, record, i);
-                float cooldown = player.BenefactorSkills.Cooldown(id);
                 float x = 842 + i * 104;
                 GUI.color = new Color(.05f, .075f, .11f, .94f);
                 string command = QuickSkills.Command(QuickSkills.StarterIndex(id));
                 GUI.DrawTexture(new Rect(x, y, 98, command.Length > 0 ? 68 : 56), Texture2D.whiteTexture);
-                GUI.color = cooldown > 0f ? new Color(.68f, .74f, .81f) : new Color(.62f, 1f, .93f);
+                GUI.color = new Color(.62f, 1f, .93f);
                 var key = QuickSkills.Keys[i].ToString();
-                GUI.Label(new Rect(x + 2, y + 1, 94, 23),
-                    cooldown > 0f ? key + "  " + cooldown.ToString("0.0", Loc.Culture) : key, keyStyle);
+                GUI.Label(new Rect(x + 2, y + 1, 94, 23), key, keyStyle);
                 GUI.color = Color.white;
                 GUI.Label(new Rect(x + 2, y + 22, 94, 32), QuickSkills.Name(skills.Progression.Catalog, id), nameStyle);
                 if (command.Length > 0)

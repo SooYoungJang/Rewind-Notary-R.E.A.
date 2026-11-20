@@ -54,12 +54,6 @@ namespace RewindNotary
             return ok;
         }
 
-        internal float Cooldown(string id)
-        {
-            int starter = QuickSkills.StarterIndex(id);
-            if (starter >= 0) return motor.StarterCooldown(starter);
-            return 0f;
-        }
         public bool DriveMovement()
         { if (skills != null) foreach (var skill in skills) if (skill.DriveMovement()) return true; return false; }
         public void Revoke(string id)

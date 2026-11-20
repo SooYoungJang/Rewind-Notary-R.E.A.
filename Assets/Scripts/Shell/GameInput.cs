@@ -134,10 +134,11 @@ namespace RewindNotary
         {
             get
             {
-                if (Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) return KeyCode.LeftArrow;
-                if (Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)) return KeyCode.RightArrow;
-                if (Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow)) return KeyCode.UpArrow;
-                if (Input.GetKeyDown(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow)) return KeyCode.DownArrow;
+                // Read press edges. The earlier direction may still be held.
+                bool left = Input.GetKeyDown(KeyCode.LeftArrow), right = Input.GetKeyDown(KeyCode.RightArrow);
+                if (left != right) return left ? KeyCode.LeftArrow : KeyCode.RightArrow;
+                bool up = Input.GetKeyDown(KeyCode.UpArrow), down = Input.GetKeyDown(KeyCode.DownArrow);
+                if (up != down) return up ? KeyCode.UpArrow : KeyCode.DownArrow;
                 return KeyCode.None;
             }
         }

@@ -4,7 +4,7 @@ namespace RewindNotary
 {
     internal sealed class StarterCommandInput
     {
-        internal const float SequenceSeconds = .32f, FinishSeconds = .13f;
+        internal const float SequenceSeconds = .45f, FinishSeconds = .28f;
         private KeyCode previous;
         private float previousAt;
         private int ready = -1, facing;

@@ -22,7 +22,8 @@ namespace RewindNotary
                 }
             if (!changed) return false;
             AudioManager.Play(AudioManager.Sfx.Hit);
-            if (finisher) ImpactFeedback.ComboFinisherHit(); else ImpactFeedback.SwordHit();
+            if (finisher) ImpactFeedback.ComboFinisherHit();
+            else if (starter < 0) ImpactFeedback.SwordHit();
             return true;
         }
         public static void Skill(SkillSession session, UseContext use, Bounds area)

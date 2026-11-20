@@ -31,7 +31,6 @@ namespace RewindNotary
         private bool strikeDelivered, groundSampled, queuedAttack;
         private int comboStep, attackStep;
         private int activeStarter = -1;
-        private readonly float[] starterReadyAt = new float[QuickSkills.Keys.Length];
         private Health opponent;
         private int damage, strikeDamage;
         private UseContext chainUse, activeUse;
@@ -64,12 +63,12 @@ namespace RewindNotary
         };
         private static readonly AttackSpec BossAttack =
             new AttackSpec(AttackDuration, 0.16f, AttackDuration, 0.9f, 1.7f, 1.55f, 1, 1f);
-        private static readonly (AttackSpec swing, float centerY, int art, float cooldown)[] StarterAttacks =
+        private static readonly (AttackSpec swing, float centerY, int art)[] StarterAttacks =
         {
-            (new AttackSpec(.34f, .14f, 0f, 1.00f, 1.90f, 1.10f, 2, .8f), 1.05f, 3, 2.5f),
-            (new AttackSpec(.41f, .14f, 0f, .72f, 1.66f, 2.38f, 2, .55f), 1.46f, 2, 3f),
-            (new AttackSpec(.49f, .21f, 0f, 0f, 3.65f, 1.45f, 2, 1.55f), .95f, 4, 4f),
-            (new AttackSpec(.48f, .20f, 0f, 0f, 0f, .95f, 2, .65f), 1.08f, 4, 5f)
+            (new AttackSpec(.34f, .14f, 0f, 1.00f, 1.90f, 1.10f, 2, .8f), 1.05f, 3),
+            (new AttackSpec(.41f, .14f, 0f, .72f, 1.66f, 2.38f, 2, .55f), 1.46f, 2),
+            (new AttackSpec(.49f, .21f, 0f, 0f, 3.65f, 1.45f, 2, 1.55f), .95f, 4),
+            (new AttackSpec(.48f, .20f, 0f, 0f, 0f, .95f, 2, .65f), 1.08f, 4)
         };
         private AttackSpec activeAttack;
         private CapsuleCollider2D capsule;
@@ -219,12 +218,12 @@ namespace RewindNotary
             return true;
         }
 
-        internal float StarterCooldown(int index) => Mathf.Max(0f, starterReadyAt[index] - Time.time);
-
         internal bool UseStarterSkill(int index, int direction = 0, bool command = false)
         {
-            if (!CanSwing || StarterCooldown(index) > 0f ||
-                (Attacking && !(command && activeStarter < 0 && strikeDelivered && swingConnected))) return false;
+            if (!CanSwing) return false;
+            if (Attacking && (!strikeDelivered || (activeStarter >= 0
+                ? Time.time - attackStartedAt < activeAttack.StrikeTime + .085f
+                : !command || !swingConnected))) return false;
             if (Attacking) CancelAttack();
             ResetCombo();
             activeUse = chainUse = Skills.Progression.BeginUse(SkillRules.BasicSword, Skills.PreviewStage);
@@ -236,7 +235,6 @@ namespace RewindNotary
             attackStep = 0;
             AttackDirectionY = 0;
             var starter = StarterAttacks[index];
-            starterReadyAt[index] = Time.time + starter.cooldown;
             StartSwing(starter.swing, starter.art, false);
             return true;
         }
@@ -317,7 +315,6 @@ namespace RewindNotary
                     ? new Bounds(transform.position + new Vector3(0f, 2.15f, 0f), new Vector3(1.95f, 1.85f, 2f))
                     : new Bounds(transform.position + new Vector3(Facing * activeAttack.Reach, centerY, 0),
                         new Vector3(activeAttack.Width, activeAttack.Height, 2f));
-            if (activeStarter >= 0) ShowStarterStrike(blade);
             // The short wave extends only the last strike, with the SAME activation and damage query.
             if (Health.IsPlayer && AttackDirectionY == 0 && chainProfile != null && attackStep == ComboLimit && chainProfile.waveReach > 0f)
             {
@@ -336,6 +333,7 @@ namespace RewindNotary
             if (Health.IsPlayer && chainProfile != null && chainProfile.afterimageSeconds > 0f)
                 SkillStroke.Afterimage(Animation.GetComponent<SpriteRenderer>(), chainProfile.afterimageSeconds);
             swingConnected = ApplySwordBounds(blade, activeUse, strikeDamage, activeAttack.Knockback, attackStep, activeStarter);
+            if (activeStarter >= 0) ShowStarterStrike(blade, swingConnected);
             if (activeStarter == QuickSkills.Rising && Grounded) Jump(8.4f);
             if (Health.IsPlayer && AttackDirectionY == -1 && swingConnected)
             {
@@ -388,7 +386,7 @@ namespace RewindNotary
                         opponent.gameObject.name, true, amount));
                     if (Health.IsPlayer) SwordContact?.Invoke(use, step, step == ComboLimit, amount);
                     AudioManager.Play(AudioManager.Sfx.Hit);
-                    if (!opponent.IsPlayer)
+                    if (!opponent.IsPlayer && starter < 0)
                     {
                         if (step == PlayerCombo.Length) ImpactFeedback.ComboFinisherHit();
                         else ImpactFeedback.SwordHit();
@@ -442,7 +440,7 @@ namespace RewindNotary
         }
         private void Die()
         {
-            CancelStarterWave();
+            CancelStarterWaves();
             BenefactorSkills?.Interrupt();
             Temporal?.Release();
             Defense?.ResetDefense();
@@ -458,7 +456,7 @@ namespace RewindNotary
         }
         public void ResetAt(Vector2 feet)
         {
-            CancelStarterWave();
+            CancelStarterWaves();
             BenefactorSkills?.ResetAttempt();
             Temporal?.Release();
             Defense?.ResetDefense();
@@ -476,6 +474,7 @@ namespace RewindNotary
         private void OnDisable() { BenefactorSkills?.Interrupt(); Temporal?.Release(); Defense?.ResetDefense(); CancelAttack(); }
         private void OnDestroy()
         {
+            CancelStarterWaves();
             if (Health != null) { Health.Damaged -= ReceiveHit; Health.Died -= Die; }
             var collider = GetComponent<CapsuleCollider2D>();
             if (collider != null && collider.sharedMaterial != null) Destroy(collider.sharedMaterial);

@@ -29,6 +29,8 @@ namespace RewindNotary
         internal event System.Action AttackInputAccepted;
         private SkillCastRequest? pendingCast;
         private readonly StarterCommandInput starterCommand = new StarterCommandInput();
+        private const float StarterBuffer = .34f;
+        private (int index, int facing, bool command, float expires)? pendingStarter;
         private void Awake()
         {
             motor = GetComponent<CombatMotor2D>();
@@ -46,6 +48,7 @@ namespace RewindNotary
                 attackPressed = float.NegativeInfinity;
                 attackHoldBlocked = attackHeld;
                 pendingCast = null;
+                pendingStarter = null;
                 starterCommand.Reset();
                 return;
             }
@@ -54,25 +57,24 @@ namespace RewindNotary
             var runner = motor.BenefactorSkills;
             var input = runner?.InputSnapshot;
             bool castDown = input != null && input.CastDown;
+            bool commandDown = false;
             if (motor.Grounded && !castDown && !GameInput.SprintHeld && !motor.Stunned)
             {
                 starterCommand.Press(GameInput.CommandArrowDown, Time.unscaledTime);
                 if (GameInput.KeyboardAttackDown)
                 {
                     int starter = starterCommand.Consume(Time.unscaledTime, out int facing);
-                    if (starter >= 0 && motor.UseStarterSkill(starter, facing, command: true))
+                    if (starter >= 0)
                     {
-                        attackHoldBlocked = true;
-                        attackPressed = jumpPressed = float.NegativeInfinity;
-                        pendingCast = null;
-                        return;
+                        QueueStarter(starter, facing, command: true);
+                        commandDown = true;
                     }
                 }
             }
             else starterCommand.Reset();
             // A cast chord owns its attack modifier. Other taps survive action recovery.
-            if (!castDown && GameInput.AttackDown) attackPressed = Time.time;
-            if (motor.Stunned) pendingCast = null;
+            if (!castDown && !commandDown && GameInput.AttackDown) attackPressed = Time.time;
+            if (motor.Stunned) { pendingCast = null; pendingStarter = null; }
             if (castDown)
             {
                 attackHoldBlocked = attackHeld;
@@ -80,17 +82,32 @@ namespace RewindNotary
                 jumpPressed = float.NegativeInfinity;
                 // One request only: a later press replaces it, even if the requested skill is unlearned.
                 pendingCast = null;
-                if (runner.CanRequest(input.Request) && !motor.Stunned) pendingCast = input.Request;
+                pendingStarter = null;
+                int starter = QuickSkills.StarterIndex(input.Request.SkillId);
+                if (starter >= 0 && !motor.Stunned) QueueStarter(starter, 0, command: false);
+                else if (runner.CanRequest(input.Request) && !motor.Stunned) pendingCast = input.Request;
             }
             if (motor.Defense != null && motor.Defense.BlocksActions)
             {
                 // Dash keeps the press-time ID/modifier until recovery; parry never reserves a cast.
-                if (motor.Defense.State.Phase != DefensePhase.Dash) pendingCast = null;
+                if (motor.Defense.State.Phase != DefensePhase.Dash) { pendingCast = null; pendingStarter = null; }
                 jumpPressed = float.NegativeInfinity; cutJump = false; return;
             }
             if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
-            { pendingCast = null; jumpPressed = float.NegativeInfinity; cutJump = false; return; }
-            if (!castDown && !pendingCast.HasValue && GameInput.JumpDown)
+            { pendingCast = null; pendingStarter = null; jumpPressed = float.NegativeInfinity; cutJump = false; return; }
+
+            if (pendingStarter.HasValue)
+            {
+                var starter = pendingStarter.Value;
+                if (Time.time > starter.expires) pendingStarter = null;
+                else if (motor.UseStarterSkill(starter.index, starter.facing, starter.command))
+                {
+                    pendingStarter = null;
+                    cutJump = false;
+                    return;
+                }
+            }
+            if (!castDown && !pendingCast.HasValue && !pendingStarter.HasValue && GameInput.JumpDown)
             {
                 // A release queued since the previous physics tick belongs to the previous press.
                 jumpPressed = Time.time;
@@ -99,7 +116,8 @@ namespace RewindNotary
             if (!GameInput.JumpHeld && GameInput.JumpUp) cutJump = true;
             bool attackBuffered = Time.time - attackPressed <= AttackBuffer;
             bool repeatAttack = attackHeld && !attackHoldBlocked && !motor.Attacking;
-            if (!castDown && !pendingCast.HasValue && (attackBuffered || repeatAttack) && motor.Attack())
+            if (!castDown && !pendingCast.HasValue && !pendingStarter.HasValue &&
+                (attackBuffered || repeatAttack) && motor.Attack())
             {
                 attackPressed = float.NegativeInfinity;
                 if (attackBuffered) AttackInputAccepted?.Invoke();
@@ -112,6 +130,14 @@ namespace RewindNotary
                 if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
                 { jumpPressed = lastGrounded = float.NegativeInfinity; cutJump = false; }
             }
+        }
+        private void QueueStarter(int index, int facing, bool command)
+        {
+            if (facing == 0) facing = axis == 0f ? motor.Facing : (int)Mathf.Sign(axis);
+            pendingStarter = (index, facing, command, Time.time + StarterBuffer);
+            pendingCast = null;
+            attackHoldBlocked = GameInput.AttackHeld;
+            attackPressed = jumpPressed = float.NegativeInfinity;
         }
         private int WallSide(out Collider2D wall)
         {
@@ -189,6 +215,7 @@ namespace RewindNotary
         public void SuspendInput()
         {
             pendingCast = null;
+            pendingStarter = null;
             starterCommand.Reset();
             kickUntil = 0f; Sliding = false;
             motor?.Animation?.SetWallPose(0);
