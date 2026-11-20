@@ -172,7 +172,7 @@ namespace RewindNotary
         {
             var door = Area.ForwardDoor;
             if (door != null && TryFaceAt(door.x, door.approach.y + door.approach.height / 2, out var exit) &&
-                ClockPosition(exit.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position)) keys.Tap(KeyCode.C);
+                ClockPosition(exit.id, door.x) && Area.OnReturnFloor && door.InReach(Player.Body.position)) keys.Tap(GameInput.InteractKey);
         }
         internal bool RideCounterweight(string carrierId, string bank, float dismountHeight)
         {

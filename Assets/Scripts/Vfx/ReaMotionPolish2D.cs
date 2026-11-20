@@ -10,13 +10,6 @@ namespace RewindNotary
         private Vector2 springScale = Vector2.one;
         private bool wasGrounded = true;
         private float nextDashGhost;
-        private int lastParryCount;
-        private SpriteRenderer parryRing;
-        private Texture2D ringTex;
-        private Sprite ringSprite;
-        private Material additiveMat;
-        private float counterWaveAge = 99f;
-        private SpriteRenderer counterWave;
 
         public void Initialize(CombatMotor2D owner, ReaGrowthVisual2D growthVisual)
         {
@@ -25,54 +18,6 @@ namespace RewindNotary
             visual = owner.Animation.transform;
             motor.Landed += OnLanded;
             motor.AttackStarted += OnAttackStarted;
-            BuildParryVisuals();
-        }
-
-        private void BuildParryVisuals()
-        {
-            const int size = 96;
-            ringTex = new Texture2D(size, size, TextureFormat.RGBA32, false);
-            ringTex.wrapMode = TextureWrapMode.Clamp;
-            var px = new Color[size * size];
-            float half = (size - 1) * 0.5f;
-            for (int y = 0; y < size; y++)
-            {
-                for (int x = 0; x < size; x++)
-                {
-                    float dx = (x - half) / half;
-                    float dy = (y - half) / half;
-                    float d = Mathf.Sqrt(dx * dx + dy * dy);
-                    float outer = Mathf.Exp(-Mathf.Pow((d - 0.84f) / 0.06f, 2f));
-                    float inner = Mathf.Exp(-Mathf.Pow((d - 0.62f) / 0.04f, 2f)) * 0.55f;
-                    float a = Mathf.Clamp01((outer + inner) * Mathf.Clamp01(1.04f - d));
-                    px[y * size + x] = new Color(1f, 1f, 1f, a);
-                }
-            }
-            ringTex.SetPixels(px);
-            ringTex.Apply();
-            ringSprite = Sprite.Create(ringTex, new Rect(0, 0, size, size), Vector2.one * 0.5f, size);
-
-            Shader sh = Resources.Load<Shader>("Shaders/AdditiveSprite") ?? Shader.Find("Sprites/Default");
-            additiveMat = new Material(sh);
-
-            var pGo = new GameObject("ParryNotarySeal");
-            pGo.transform.SetParent(transform, false);
-            pGo.transform.localPosition = Vector3.up * 0.98f;
-            parryRing = pGo.AddComponent<SpriteRenderer>();
-            parryRing.sprite = ringSprite;
-            parryRing.sharedMaterial = additiveMat;
-            parryRing.color = new Color(1.0f, 0.84f, 0.42f, 0.92f);
-            parryRing.sortingOrder = 15;
-            parryRing.enabled = false;
-
-            var cGo = new GameObject("ParryCounterWave");
-            cGo.transform.SetParent(transform, false);
-            cGo.transform.localPosition = Vector3.up * 0.98f;
-            counterWave = cGo.AddComponent<SpriteRenderer>();
-            counterWave.sprite = ringSprite;
-            counterWave.sharedMaterial = additiveMat;
-            counterWave.sortingOrder = 16;
-            counterWave.enabled = false;
         }
 
         private void OnLanded()
@@ -131,40 +76,6 @@ namespace RewindNotary
             }
 
             visual.localScale = new Vector3(springScale.x, springScale.y, 1f);
-
-            bool parrying = phase == DefensePhase.ParryWindow;
-            parryRing.enabled = parrying;
-            if (parrying)
-            {
-                float s = 1.65f + Mathf.Sin(Time.time * 28f) * 0.12f;
-                parryRing.transform.localScale = new Vector3(s, s, 1f);
-                parryRing.transform.localRotation = Quaternion.Euler(0f, 0f, Time.time * 140f);
-            }
-
-            if (motor.Skills != null)
-            {
-                int parryNow = motor.Skills.ParrySuccessCount;
-                if (parryNow > lastParryCount)
-                {
-                    counterWaveAge = 0f;
-                    AtmospherePostEffect.PulseImpact(0.85f);
-                }
-                lastParryCount = parryNow;
-            }
-
-            if (counterWaveAge < 0.34f)
-            {
-                counterWaveAge += Time.unscaledDeltaTime;
-                float u = Mathf.Clamp01(counterWaveAge / 0.34f);
-                counterWave.enabled = true;
-                float s = Mathf.Lerp(1.2f, 4.6f, 1f - (1f - u) * (1f - u));
-                counterWave.transform.localScale = new Vector3(s, s, 1f);
-                counterWave.color = new Color(1.0f, 0.90f, 0.54f, (1f - u) * 0.95f);
-            }
-            else
-            {
-                counterWave.enabled = false;
-            }
         }
 
         private void OnDestroy()
@@ -174,9 +85,6 @@ namespace RewindNotary
                 motor.Landed -= OnLanded;
                 motor.AttackStarted -= OnAttackStarted;
             }
-            if (ringSprite != null) Destroy(ringSprite);
-            if (ringTex != null) Destroy(ringTex);
-            if (additiveMat != null) Destroy(additiveMat);
         }
     }
 }

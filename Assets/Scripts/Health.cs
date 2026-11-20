@@ -27,9 +27,7 @@ namespace RewindNotary
         private bool ApplyHit(int amount, Vector2 source, float knockbackMultiplier, bool sword)
         {
             if (Dead || Time.time < InvulnerableUntil) return false;
-            // Avoidance/parry changes neither HP nor hit immunity and emits no damage/skill event.
-            if (IsPlayer && TryGetComponent<PlayerDefense2D>(out var defense) && defense.TryDefend(source)) return false;
-            if (IsPlayer && TryGetComponent<ResonanceForgeSkill>(out var forge) && forge.TryCounter(source)) return false;
+            if (IsPlayer && TryGetComponent<PlayerDefense2D>(out var defense) && defense.TryEvade()) return false;
             Current = Mathf.Max(MinimumHealth, Current - amount);
             float recovery = IsPlayer ? immunity * AssistImmunityMultiplier : sword ? Mathf.Min(immunity, .075f) : immunity;
             InvulnerableUntil = Time.time + recovery;

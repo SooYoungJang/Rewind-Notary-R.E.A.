@@ -162,7 +162,7 @@ namespace RewindNotary
             : Page == ShellPage.Investigation || Page == ShellPage.CoreReading ? InvestigationRows
             : Page == ShellPage.ReturnSelection ? BenefactorIds.All.Length + 1
             : Page == ShellPage.Skills ? 3 : Page == ShellPage.QuickSlots ? QuickSkills.Keys.Length + 1
-            : Page == ShellPage.Settings ? 11 : Page == ShellPage.Keybinds ? 9 : 2;
+            : Page == ShellPage.Settings ? 11 : Page == ShellPage.Keybinds ? 8 : 2;
         public void Pause()
         {
             if (!Playing) return;
@@ -250,8 +250,8 @@ namespace RewindNotary
                     else AdjustSetting(index, 1);
                     break;
                 case ShellPage.Keybinds:
-                    if (index == 8) Back();
-                    else if (index == 7) { Settings.Value.ResetKeybinds(); Settings.Apply(); Settings.Save(); }
+                    if (index == 7) Back();
+                    else if (index == 6) { Settings.Value.ResetKeybinds(); Settings.Apply(); Settings.Save(); }
                     else remappingSlot = index;
                     break;
                 case ShellPage.DeleteConfirm:
@@ -382,7 +382,7 @@ namespace RewindNotary
         private void AssignKeybind(int slot, KeyCode code)
         {
             var v = Settings.Value;
-            KeyCode[] current = { GameInput.JumpKey, GameInput.AttackKey, GameInput.CastKey, GameInput.DashKey, GameInput.ParryKey, GameInput.InteractKey, GameInput.MapKey };
+            KeyCode[] current = { GameInput.JumpKey, GameInput.AttackKey, GameInput.CastKey, GameInput.DashKey, GameInput.InteractKey, GameInput.MapKey };
             KeyCode previous = current[slot];
             bool swapped = false;
             for (int i = 0; i < current.Length; i++)
@@ -407,9 +407,8 @@ namespace RewindNotary
                 case 1: v.keyAttack = name; break;
                 case 2: v.keyCast = name; break;
                 case 3: v.keyDash = name; break;
-                case 4: v.keyParry = name; break;
-                case 5: v.keyInteract = name; break;
-                case 6: v.keyMap = name; break;
+                case 4: v.keyInteract = name; break;
+                case 5: v.keyMap = name; break;
             }
         }
         public void SetStageOverride(int stage)
@@ -680,9 +679,8 @@ namespace RewindNotary
                     Loc.Get("keybind.attack", Tag(1, GameInput.AttackKey)),
                     Loc.Get("keybind.skill", Tag(2, GameInput.CastKey)),
                     Loc.Get("keybind.dash", Tag(3, GameInput.DashKey)),
-                    Loc.Get("keybind.parry", Tag(4, GameInput.ParryKey)),
-                    Loc.Get("keybind.interact", Tag(5, GameInput.InteractKey)),
-                    Loc.Get("keybind.map", Tag(6, GameInput.MapKey)),
+                    Loc.Get("keybind.interact", Tag(4, GameInput.InteractKey)),
+                    Loc.Get("keybind.map", Tag(5, GameInput.MapKey)),
                     Loc.Get("keybind.reset"),
                     Loc.Get("ui.back")
                 };

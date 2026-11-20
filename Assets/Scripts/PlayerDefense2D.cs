@@ -11,7 +11,7 @@ namespace RewindNotary
         private CombatMotor2D motor;
         private bool dashPhysics;
         private float savedGravity, nextTrail;
-        private Vector2 savedVelocity, dashHeading;
+        private Vector2 savedVelocity, dashHeading, dashOrigin;
         private Vector2 DashVelocity => new Vector2(dashHeading.x,
             motor.Grounded ? Mathf.Max(0f, dashHeading.y) : dashHeading.y) * DefenseTuning.DashSpeed;
 
@@ -20,12 +20,7 @@ namespace RewindNotary
         {
             if (!GameInput.GameplayEnabled || motor == null || motor.Health.Dead) return;
             Advance();
-            if (GameInput.CanPlay)
-            {
-                // Simultaneous defense buttons resolve to dash. No held-button auto-repeat.
-                if (GameInput.DashDown) TryDash(GameInput.DashDirection);
-                else if (GameInput.ParryDown) TryStartParry();
-            }
+            if (GameInput.CanPlay && GameInput.DashDown) TryDash(GameInput.DashDirection);
             if (State.Phase == DefensePhase.Dash && Time.time >= nextTrail)
             {
                 Vector3 at = transform.position + Vector3.up * DefenseTuning.TrailHeight;
@@ -55,6 +50,7 @@ namespace RewindNotary
             if (motor.Grounded && vertical < 0f) vertical = 0f;
             if (!State.TryDash(Time.time, motor.Grounded, facing)) return false;
             dashHeading = new Vector2(State.DashDirection, vertical).normalized;
+            dashOrigin = motor.Body.position;
             motor.ClearComboForDefense();
             motor.Face(facing);
             savedGravity = motor.Body.gravityScale;
@@ -65,52 +61,27 @@ namespace RewindNotary
             nextTrail = Time.time;
             return true;
         }
-        public bool TryStartParry()
-        {
-            if (!CanStart) return false;
-            Advance();
-            if (!State.TryStartParry(Time.time)) return false;
-            motor.ClearComboForDefense();
-            motor.Body.linearVelocity = new Vector2(0f, motor.Body.linearVelocity.y);
-            ShowParry(new Color(1f, 0.85f, 0.35f), DefenseTuning.ParryWindowSeconds);
-            return true;
-        }
         // Called by the normal player FixedUpdate through Move; keeps ordinary air tuning intact.
         public bool DriveMovement()
         {
             Advance();
-            if (State.Phase == DefensePhase.Dash)
-            {
-                motor.Body.linearVelocity = DashVelocity;
-                return true;
-            }
             if (!BlocksActions) return false;
-            motor.Body.linearVelocity = new Vector2(0f, motor.Body.linearVelocity.y);
+            motor.Body.linearVelocity = DashVelocity;
             return true;
         }
-        public bool TryDefend(Vector2 source)
+        public bool TryEvade()
         {
             if (!isActiveAndEnabled || !GameInput.GameplayEnabled || motor.Health.Dead) return false;
             Advance();
-            if (State.Evading(Time.time) || State.SuccessGuard(Time.time)) return true;
-            if (!State.TryParry(Time.time)) return false;
-            motor.Face(source.x - transform.position.x);
-            ImpactFeedback.ParrySuccess();
-            AudioManager.Play(AudioManager.Sfx.Parry);
-            ShowParry(Color.white, DefenseTuning.ParryEffectSeconds);
-            AtmospherePostEffect.PulseImpact(0.65f);
-            GameHudCanvas.PulseParryFlash();
-            CombatFloatingText2D.SpawnTag(transform.position + Vector3.up * 2.0f, Loc.Get("combat.parry"), NotaryUiTheme.TealAccent, 25);
-            motor.Skills?.RecordParrySuccess();
-            return true;
+            return State.Evading(Time.time);
         }
-        private void ShowParry(Color color, float seconds)
+
+        internal bool Evaded(Bounds threat, Bounds body)
         {
-            Vector3 center = transform.position + Vector3.up;
-            Vector3 half = new Vector3(DefenseTuning.ParryEffectLength * 0.5f, DefenseTuning.ParryEffectLength * 0.5f, 0f);
-            SkillStroke.Show(center - half, center + half, color, seconds);
-            half.x = -half.x;
-            SkillStroke.Show(center - half, center + half, color, seconds);
+            if (!TryEvade()) return false;
+            var start = new Bounds(body.center + (Vector3)(dashOrigin - motor.Body.position), body.size);
+            body.Encapsulate(start);
+            return threat.Intersects(body);
         }
         private void RestoreDashPhysics()
         {

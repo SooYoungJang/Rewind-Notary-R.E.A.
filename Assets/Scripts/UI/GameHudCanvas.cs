@@ -70,8 +70,6 @@ namespace RewindNotary
         private float toastAge = 99f;
 
         private Image lowHpVignette;
-        private Image parryFlashImage;
-        private static float parryFlashAge = 99f;
 
         private CanvasGroup skillCardGroup;
         private Image skillCardBorder;
@@ -109,7 +107,6 @@ namespace RewindNotary
             currentLang = Loc.Language;
         }
 
-        public static void PulseParryFlash() { parryFlashAge = 0f; }
 
         public void ShowToast(string text)
         {
@@ -136,9 +133,6 @@ namespace RewindNotary
             NotaryUiTheme.Stretch(lowHpVignette.rectTransform);
             lowHpVignette.raycastTarget = false;
 
-            parryFlashImage = NotaryUiTheme.CreateImage(canvas.transform, "ParryRimFlash", new Color(0.55f, 0.96f, 0.92f, 0f), edgeSprite);
-            NotaryUiTheme.Stretch(parryFlashImage.rectTransform);
-            parryFlashImage.raycastTarget = false;
         }
 
         private void BuildSkillAcquireCard()
@@ -557,17 +551,6 @@ namespace RewindNotary
                     UiAudioSynth.PlayHeartbeat(critical);
                 }
                 else lowHpVignette.color = new Color(0.84f, 0.10f, 0.14f, 0f);
-            }
-
-            if (parryFlashImage != null)
-            {
-                if (parryFlashAge < 0.28f)
-                {
-                    parryFlashAge += Time.unscaledDeltaTime;
-                    float a = Mathf.Clamp01(1f - parryFlashAge / 0.28f);
-                    parryFlashImage.color = new Color(0.56f, 0.96f, 0.90f, a * a * 0.55f);
-                }
-                else parryFlashImage.color = new Color(0.56f, 0.96f, 0.90f, 0f);
             }
 
             if (s.Skills != null && skillSlotBorders != null)

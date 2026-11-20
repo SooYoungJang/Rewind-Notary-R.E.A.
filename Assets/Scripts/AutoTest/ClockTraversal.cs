@@ -183,7 +183,7 @@ namespace RewindNotary
             if (!ReachedCombatSurface(face, at.x)) return;
             if (target.State.NeedsSetup && !target.State.Ready(Time.time))
             {
-                if (ReserveWaveParry(target)) return;
+                if (ReserveWaveDodge(target)) return;
                 // Hit a finite joint from outside its body and recall before the sword cut.
                 var ledge = face.rect;
                 int side = at.x - ledge.x < 3 ? -1 : ledge.x + ledge.width - at.x < 3 ? 1 :

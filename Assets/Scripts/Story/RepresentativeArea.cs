@@ -25,7 +25,7 @@ namespace RewindNotary
         private bool Has(string flag) => Record.storyFlags.Contains(flag);
         private void Put(string flag) { if (!Has(flag)) Record.storyFlags.Add(flag); }
         private bool InspectPressed => GameInput.InvestigateDown && !GameInput.RetryDown && !GameInput.JumpDown
-            && !GameInput.AttackDown && !GameInput.CastDown && !GameInput.DashDown && !GameInput.ParryDown;
+            && !GameInput.AttackDown && !GameInput.CastDown && !GameInput.DashDown;
         private bool Safe => player.Grounded && !player.Health.Dead && !player.Attacking && !player.Stunned
             && !player.Defense.BlocksActions && !player.BenefactorSkills.BlocksActions;
 

@@ -47,7 +47,7 @@ namespace RewindNotary
                 if (distance <= p.radius && distance < best) { nearest = p; best = distance; }
             }
             if (!CanInspect || nearest == null || !GameInput.InvestigateDown || GameInput.RetryDown
-                || GameInput.JumpDown || GameInput.AttackDown || GameInput.CastDown || GameInput.DashDown || GameInput.ParryDown) return;
+                || GameInput.JumpDown || GameInput.AttackDown || GameInput.CastDown || GameInput.DashDown) return;
             if (nearest.kind != "core") session.Investigation.TryCollect(nearest.clueId);
             shell.OpenInvestigation(nearest.clueId, nearest.kind == "core");
         }

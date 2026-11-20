@@ -5,9 +5,9 @@ namespace RewindNotary
 {
     internal static class QuickSkills
     {
-        internal const int Thrust = 0, Rising = 1, Sweep = 2, BladeWave = 3;
+        internal const int Thrust = 0, Rising = 1, Sweep = 2, RetreatCut = 3;
         internal static readonly KeyCode[] Keys = { KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R };
-        internal static readonly string[] Starter = { "rea_thrust", "rea_rising", "rea_sweep", "rea_wave" };
+        internal static readonly string[] Starter = { "rea_thrust", "rea_rising", "rea_sweep", "rea_retreat_cut" };
 
         internal static int StarterIndex(string id) => Array.IndexOf(Starter, id);
         internal static bool IsAssignable(string id) =>
@@ -24,7 +24,6 @@ namespace RewindNotary
 
         internal static string Command(int index)
         {
-            if (index == BladeWave) return Loc.Get("quick_skill.wave_charge", GameInput.AttackKey);
             string sequence = index switch
             {
                 Thrust => "→ →",

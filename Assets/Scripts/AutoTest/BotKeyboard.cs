@@ -17,6 +17,7 @@ namespace RewindNotary
         }
 
         internal void Hold(KeyCode key) => current.Add(key);
+        internal void Release(KeyCode key) => current.Remove(key);
         internal void Tap(KeyCode key)
         {
             if (!previous.Contains(key)) Hold(key);

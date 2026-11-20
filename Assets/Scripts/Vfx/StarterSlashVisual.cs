@@ -86,7 +86,7 @@ namespace RewindNotary
             }
             if (hit)
             {
-                AtmospherePostEffect.PulseImpact(index == QuickSkills.Sweep || index == QuickSkills.BladeWave ? .40f : .28f);
+                AtmospherePostEffect.PulseImpact(index == QuickSkills.Sweep || index == QuickSkills.RetreatCut ? .40f : .28f);
                 ImpactFeedback.StarterHit(index);
             }
         }
@@ -95,7 +95,7 @@ namespace RewindNotary
         {
             charged ??= LoadAtlas("GameArt/sprites/rea-charged-blades");
             var size = level == 2 ? new Vector2(3.3f, 3.72f) : new Vector2(1.95f, 2.12f);
-            var blade = charged == null ? Create(QuickSkills.BladeWave, position, size, direction) :
+            var blade = charged == null ? Create(QuickSkills.RetreatCut, position, size, direction) :
                 Layer(charged[level - 1], position, size, direction, 15);
             if (blade != null)
             {
@@ -105,17 +105,7 @@ namespace RewindNotary
             return blade;
         }
 
-        internal static void ChargedWake(int level, Vector2 position, int direction)
-        {
-            var after = ChargedBlade(level, position, direction, 0);
-            if (after == null) return;
-            after.gameObject.name = "Rea blade wake";
-            after.sortingOrder = 14;
-            var color = level == 2 ? new Color(.82f, .66f, 1f, .31f) : new Color(.40f, .92f, 1f, .28f);
-            Animate(after, color, .17f, .9f, .56f);
-        }
-
-        internal static SpriteRenderer ChargeAura(SpriteRenderer aura, Transform wielder, int level, float elapsed)
+        internal static SpriteRenderer ChargeAura(SpriteRenderer aura, Transform wielder, int facing, int level, float elapsed)
         {
             charged ??= LoadAtlas("GameArt/sprites/rea-charged-blades");
             if (charged == null) return aura;
@@ -125,14 +115,13 @@ namespace RewindNotary
                 aura = Layer(sprite, wielder.position, Vector2.one, 1, 9);
                 aura.gameObject.name = "Rea charging glow";
                 aura.transform.SetParent(wielder, false);
-                aura.transform.localPosition = Vector3.up * .89f;
             }
             aura.sprite = sprite;
+            aura.transform.localPosition = new Vector3(.43f * facing, .77f, 0f);
             var size = sprite.bounds.size;
-            float width = (level == 2 ? 3.1f : 2.35f) * (1f + .065f * Mathf.Sin(elapsed * 13f));
+            float width = (level == 2 ? 1.28f : 1.02f) * (1f + .035f * Mathf.Sin(elapsed * 7f));
             aura.transform.localScale = new Vector3(width / size.x, width * .82f / size.y, 1f);
-            aura.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(elapsed * 7f) * 9f);
-            aura.color = new Color(1f, 1f, 1f, level == 0 ? .27f : level == 1 ? .65f : .92f);
+            aura.color = new Color(1f, 1f, 1f, level == 0 ? .14f : level == 1 ? .34f : .52f);
             return aura;
         }
 

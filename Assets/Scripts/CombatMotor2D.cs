@@ -34,6 +34,7 @@ namespace RewindNotary
         private bool aerialSwing, holdingAir;
         private float airGravity;
         private int activeStarter = -1;
+        private bool chargeReleasePose;
         private Health opponent;
         private int damage, strikeDamage;
         private UseContext chainUse, activeUse;
@@ -72,7 +73,7 @@ namespace RewindNotary
             (new AttackSpec(.34f, .14f, 0f, 1.00f, 1.90f, 1.10f, 2, .8f), 1.05f, 3),
             (new AttackSpec(.41f, .14f, 0f, .72f, 1.66f, 2.38f, 2, .55f), 1.46f, 2),
             (new AttackSpec(.49f, .21f, 0f, 0f, 3.65f, 1.45f, 2, 1.55f), .95f, 4),
-            (new AttackSpec(.48f, .20f, 0f, 0f, 0f, .95f, 2, .65f), 1.08f, 4)
+            (new AttackSpec(.43f, .17f, 0f, 1.12f, 2.1f, 1.62f, 3, 1.05f), 1.02f, 4)
         };
         private AttackSpec activeAttack;
         private CapsuleCollider2D capsule;
@@ -169,6 +170,12 @@ namespace RewindNotary
             if (Attacking && activeStarter == QuickSkills.Thrust && !strikeDelivered)
             {
                 Body.linearVelocity = new Vector2(starterFacing * 11f + carrierSpeed, Body.linearVelocity.y);
+                return;
+            }
+            if (Attacking && activeStarter == QuickSkills.RetreatCut && !chargeReleasePose &&
+                strikeDelivered && Time.time - attackStartedAt < activeAttack.StrikeTime + .18f)
+            {
+                Body.linearVelocity = new Vector2(-starterFacing * 9.8f + carrierSpeed, Body.linearVelocity.y);
                 return;
             }
             if (Health.IsPlayer && !Grounded)
@@ -281,13 +288,12 @@ namespace RewindNotary
         private void StartSwing(AttackSpec swing, int art, bool moving)
         {
             activeAttack = swing;
-            // Consume once at an actual swing start, including a later whiff/interruption.
-            float counter = Defense != null ? Defense.State.ConsumeCounter(Time.time) : 1f;
-            strikeDamage = Mathf.CeilToInt(damage * activeAttack.DamageMultiplier * counter);
+            strikeDamage = damage * activeAttack.DamageMultiplier;
             strikeDamage = FinaleCombat.Scale(Skills, strikeDamage);
             attackStartedAt = Time.time;
             Attacking = true;
             strikeDelivered = false;
+            chargeReleasePose = false;
             swingConnected = false;
             queuedAttack = false;
             AimPlayerAttack();
@@ -340,11 +346,6 @@ namespace RewindNotary
         {
             // Mark even a whiff/immune target as delivered: one contact query per swing.
             strikeDelivered = true;
-            if (activeStarter == QuickSkills.BladeWave)
-            {
-                ReleaseStarterWave();
-                return;
-            }
             float centerY = activeStarter < 0 ? 1f : StarterAttacks[activeStarter].centerY;
             Bounds blade = AttackDirectionY == -1
                 ? new Bounds(transform.position + new Vector3(0f, -0.35f, 0f), new Vector3(1.95f, 1.85f, 2f))
@@ -420,7 +421,7 @@ namespace RewindNotary
                 var target = opponent.GetComponent<Collider2D>();
                 if (target != null && blade.Intersects(target.bounds) && (visited == null || visited.Add(opponent.GetInstanceID()))
                     && (Health.IsPlayer
-                        ? opponent.HitBySword(amount, starter == QuickSkills.BladeWave ? blade.center : transform.position,
+                        ? opponent.HitBySword(amount, pulse > 0 ? blade.center : transform.position,
                             step > 0 && step < ComboLimit ? knockback * .45f : knockback)
                         : opponent.Hit(amount, transform.position, knockback)))
                 {

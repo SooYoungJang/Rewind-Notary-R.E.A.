@@ -26,6 +26,7 @@ namespace RewindNotary
         internal float AttackSteering => Time.time < kickUntil ? kickDirection : GameInput.Horizontal;
         private float attackPressed = float.NegativeInfinity;
         internal const float WaveChargeOne = .38f, WaveChargeTwo = 1.02f;
+        private const float AttackTapSeconds = .21f;
         private float waveChargeAt = float.NegativeInfinity;
         private SpriteRenderer chargeGlow;
         internal int WaveChargeLevel { get; private set; }
@@ -78,7 +79,7 @@ namespace RewindNotary
             if (castDown || commandDown || motor.Stunned) ClearWaveCharge();
             else
             {
-                if (GameInput.AttackDown) attackPressed = waveChargeAt = Time.time;
+                if (GameInput.AttackDown) waveChargeAt = Time.time;
                 UpdateWaveCharge(attackHeld);
             }
             if (motor.Stunned) { pendingCast = null; pendingStarter = null; }
@@ -95,8 +96,7 @@ namespace RewindNotary
             }
             if (motor.Defense != null && motor.Defense.BlocksActions)
             {
-                // Dash keeps the press-time ID/modifier until recovery; parry never reserves a cast.
-                if (motor.Defense.State.Phase != DefensePhase.Dash) { pendingCast = null; pendingStarter = null; }
+                // Dash keeps the press-time skill ID until recovery.
                 jumpPressed = float.NegativeInfinity; cutJump = false; return;
             }
             if (motor.BenefactorSkills != null && motor.BenefactorSkills.BlocksActions)
@@ -152,9 +152,12 @@ namespace RewindNotary
             if (!held)
             {
                 ClearWaveCharge();
-                if (level == 0) return;
-                attackPressed = float.NegativeInfinity;
-                motor.FireChargedWave(level, axis);
+                if (level > 0)
+                {
+                    attackPressed = float.NegativeInfinity;
+                    motor.FireChargedWave(level, axis);
+                }
+                else if (elapsed <= AttackTapSeconds) attackPressed = Time.time;
                 return;
             }
 
@@ -164,8 +167,8 @@ namespace RewindNotary
                 motor.EndSwingRecoveryForCharge();
             }
             WaveChargeLevel = level;
-            if (elapsed >= .14f)
-                chargeGlow = StarterSlashVisual.ChargeAura(chargeGlow, transform, level, elapsed);
+            if (elapsed >= AttackTapSeconds)
+                chargeGlow = StarterSlashVisual.ChargeAura(chargeGlow, transform, motor.Facing, level, elapsed);
         }
 
         private void ClearWaveCharge()

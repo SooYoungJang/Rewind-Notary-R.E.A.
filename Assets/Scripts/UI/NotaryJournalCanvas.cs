@@ -439,7 +439,6 @@ namespace RewindNotary
             ks.AppendLine(Loc.Get("keybind.attack", "[" + GameInput.KeyLabel(GameInput.AttackKey) + "]"));
             ks.AppendLine(Loc.Get("keybind.skill", "[" + GameInput.KeyLabel(GameInput.CastKey) + "]"));
             ks.AppendLine(Loc.Get("keybind.dash", "[" + GameInput.KeyLabel(GameInput.DashKey) + "]"));
-            ks.AppendLine(Loc.Get("keybind.parry", "[" + GameInput.KeyLabel(GameInput.ParryKey) + "]"));
             ks.AppendLine(Loc.Get("keybind.interact", "[" + GameInput.KeyLabel(GameInput.InteractKey) + "]"));
             ks.AppendLine(Loc.Get("keybind.map", "[" + GameInput.KeyLabel(GameInput.MapKey) + "]"));
 

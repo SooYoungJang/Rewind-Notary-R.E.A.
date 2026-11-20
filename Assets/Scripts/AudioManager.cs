@@ -5,7 +5,7 @@ namespace RewindNotary
     // Scene-owned: rebuilding Main also releases every source and static reference.
     public sealed class AudioManager : MonoBehaviour
     {
-        public enum Sfx { Swing, Hit, Hurt, Jump, Land, BossWarning, BossAttack, BossDefeat, PlayerDown, Parry, Evolution }
+        public enum Sfx { Swing, Hit, Hurt, Jump, Land, BossWarning, BossAttack, BossDefeat, PlayerDown, Evolution }
         public enum Music { Field, Boss }
         // Values follow the OST track numbers (minus one).
         public enum Ost { Attic, Belvet, CasselPhase2, Title, Janhyang, CasselPhase1,
@@ -30,7 +30,7 @@ namespace RewindNotary
         [Range(0f, 1f)] public float SfxVolume = 0.7f;
         [Range(0f, 1f)] public float MusicVolume = 0.4f;
         private static readonly string[] Names = { "swing", "hit", "hurt", "jump", "land-thud",
-            "boss-warning", "boss-attack", "boss-defeat", "player-down", "parry", "evolution" };
+            "boss-warning", "boss-attack", "boss-defeat", "player-down", "evolution" };
         private readonly AudioClip[] clips = new AudioClip[Names.Length];
         private readonly AudioSource[] voices = new AudioSource[PoolSize];
         private readonly int[] generations = new int[PoolSize];

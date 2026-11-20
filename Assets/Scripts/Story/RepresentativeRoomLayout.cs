@@ -315,7 +315,7 @@ namespace RewindNotary
             else
             {
                 var defense = player.Defense.State;
-                snap.SubStatusLine = defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
+                snap.SubStatusLine = defense.BlocksActions ? Loc.Get("defense.dashing") : Loc.Get("defense.ready");
             }
             snap.NoticeText = session.Notice;
             if (storyBout != null)

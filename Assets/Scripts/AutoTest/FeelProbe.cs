@@ -25,7 +25,7 @@ namespace RewindNotary
             if (Passed) return false;
             if (phase == Phase.Waiting)
             {
-                // This row waits for C on a flat, enemy-free floor. Let the route bot
+                // This row waits for interaction on a flat, enemy-free floor. Let the route bot
                 // handle the preceding dialogue, then take exclusive ownership of the keys.
                 if (bot.Area?.PendingAction != "use:mint_candy_pickup") return false;
                 player = bot.Area.Rea;
@@ -52,8 +52,8 @@ namespace RewindNotary
                     break;
                 case Phase.Tap:
                     if (!player.Grounded || player.Attacking || Mathf.Abs(speed) >= .1f)
-                    { Abort("Single Z tap requires a stationary idle player"); break; }
-                    keys.Tap(KeyCode.Z);
+                    { Abort("Single attack tap requires a stationary idle player"); break; }
+                    keys.Tap(GameInput.AttackKey);
                     tapFrame = Time.frameCount;
                     player.AttackStarted += OnAttackStarted;
                     phase = Phase.Attack;
@@ -84,12 +84,13 @@ namespace RewindNotary
                     keys.Hold(KeyCode.RightArrow);
                     if (!AtRunSpeed(speed)) break;
                     result.movingAttack.startSpeed = speed;
-                    keys.Hold(KeyCode.Z);
+                    tapFrame = Time.frameCount;
+                    keys.Tap(GameInput.AttackKey);
                     phase = Phase.MovingAttack;
                     break;
                 case Phase.MovingAttack:
-                    if (player.Attacking) keys.Hold(KeyCode.RightArrow);
-                    else if (result.movingAttack.physicsTicks == 0) Abort("Running Z produced no attack physics ticks");
+                    if (player.Attacking || Time.frameCount <= tapFrame + 1) keys.Hold(KeyCode.RightArrow);
+                    else if (result.movingAttack.physicsTicks == 0) Abort("Running attack tap produced no attack physics ticks");
                     else
                     {
                         result.movingAttack.status = "pass";
@@ -100,14 +101,14 @@ namespace RewindNotary
                 case Phase.ReverseRun:
                     keys.Hold(KeyCode.RightArrow);
                     if (!player.Grounded || player.Attacking || player.ComboStep != 0 || !AtRunSpeed(speed)) break;
-                    keys.Tap(KeyCode.Z);
+                    keys.Tap(GameInput.AttackKey);
                     player.BasicStrikeDelivered += OnReverseStrike;
                     reverseStarted = Time.time;
                     phase = Phase.ReverseAttack;
                     break;
                 case Phase.ReverseAttack:
                     keys.Hold(KeyCode.LeftArrow);
-                    if (player.ComboStep == 1 && Time.time - reverseStarted >= .10f) keys.Tap(KeyCode.Z);
+                    if (player.ComboStep == 1 && Time.time - reverseStarted >= .10f) keys.Tap(GameInput.AttackKey);
                     if (player.ComboStep == 2 && reversedMotion && reversedStrike && FacingLeft)
                     {
                         player.BasicStrikeDelivered -= OnReverseStrike;
@@ -123,15 +124,15 @@ namespace RewindNotary
                     holdStarted = Time.time;
                     player.AttackStarted += OnHeldAttackStarted;
                     phase = Phase.HoldAttack;
-                    keys.Hold(KeyCode.Z);
+                    keys.Hold(GameInput.AttackKey);
                     break;
                 case Phase.HoldAttack:
                     if (Time.time - holdStarted > 3f)
                     {
-                        Abort("Tapping Z did not complete the four-hit starting combo");
+                        Abort("Tapping attack did not complete the four-hit starting combo");
                         break;
                     }
-                    if (heldSwings < 4) keys.Tap(KeyCode.Z);
+                    if (heldSwings < 4) keys.Tap(GameInput.AttackKey);
                     else if (!player.Attacking)
                     {
                         player.AttackStarted -= OnHeldAttackStarted;
@@ -206,7 +207,7 @@ namespace RewindNotary
             if (heldSwings == 0) firstHeldPose = sprite;
             heldSwings++;
             if (heldSwings > 4 || player.ComboStep != expectedStep || (sprite == firstHeldPose) != (expectedStep == 1))
-                Abort("Tapping Z played the wrong swing or reused the first pose");
+                Abort("Tapping attack played the wrong swing or reused the first pose");
         }
 
         private bool FacingLeft => player.Facing < 0 && player.Animation.GetComponent<SpriteRenderer>().flipX;
@@ -230,7 +231,7 @@ namespace RewindNotary
                 result.airStop.status = "running";
                 phase = Phase.AirRun;
             }
-            else if (sample.framesSinceTap >= 2) Abort("Stationary Z did not start one swing within two frames");
+            else if (sample.framesSinceTap >= 2) Abort("Stationary attack tap did not start one swing within two frames");
         }
 
         internal void Abort(string reason)

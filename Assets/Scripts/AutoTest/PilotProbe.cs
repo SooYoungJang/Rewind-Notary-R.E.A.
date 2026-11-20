@@ -11,12 +11,12 @@ namespace RewindNotary
         public int activations;
         public float fixedStartX, wallStartX, fixedFinishX, fixedTopY, finishX, topY, slideSpeed;
         public double fixedSeconds, wallSeconds;
-        public bool airDashSpent, heldUntilLanding, landedCharged, parryBlocked, castBlockedKick;
+        public bool airDashSpent, heldUntilLanding, landedCharged, dashBlockedKick, castBlockedKick;
         internal bool WitnessedBothRoutes => fixedKicks == 0 && treads == 2 && wallKicks == 1 &&
             Mathf.Abs(fixedStartX - wallStartX) <= .4f && Mathf.Abs(fixedFinishX - finishX) <= .4f &&
             Mathf.Abs(fixedTopY - topY) <= .12f && slideSpeed < 0 &&
             slideSpeed >= -PlayerController2D.WallSlideSpeed - .05f && airDashSpent && heldUntilLanding &&
-            landedCharged && parryBlocked && castBlockedKick && growthDelta == 0 && activations == 0;
+            landedCharged && dashBlockedKick && castBlockedKick && growthDelta == 0 && activations == 0;
         internal bool Passed => fixedRoute == "pass" && wallRoute == "pass" && WitnessedBothRoutes;
     }
 
@@ -37,8 +37,8 @@ namespace RewindNotary
     // Drives the same physical start, treads, wall and finish twice in each live room.
     internal sealed class PilotProbe
     {
-        private enum Phase { Start, Hit, Recover, ApproachTreads, Treads, FixedFinish, Drop, Return, ToWall, TestParry,
-            CastChord, CheckCast, WaitParry, Land, Launch, SpendDash, Slide, Kick, WallFinish, LeaveCheckpoint,
+        private enum Phase { Start, Hit, Recover, ApproachTreads, Treads, FixedFinish, Drop, Return, ToWall, TestDash,
+            CastChord, CheckCast, WaitDash, Land, Launch, SpendDash, Slide, Kick, WallFinish, LeaveCheckpoint,
             TestLowerDoor, VerifyLowerDoor, Retry, Exit }
         private Phase phase;
         private PilotTraversal route;
@@ -245,7 +245,7 @@ namespace RewindNotary
                         throw new InvalidOperationException("Expected the unlocked upper arena door");
                     if (Walk(keys, player, arenaDoor.x) && area.OnReturnFloor && feet < .15f)
                     {
-                        keys.Tap(KeyCode.C);
+                        keys.Tap(GameInput.InteractKey);
                         if (GameInput.InvestigateDown) phase = Phase.VerifyLowerDoor;
                     }
                     break;
@@ -274,11 +274,11 @@ namespace RewindNotary
                     keys.Hold(KeyCode.RightArrow);
                     if (post.x - player.Body.position.x <= .36f && player.Grounded)
                     {
-                        if (route.parryBlocked) phase = Phase.Launch;
-                        else { keys.Hold(KeyCode.Space); phase = Phase.TestParry; }
+                        if (route.dashBlockedKick) phase = Phase.Launch;
+                        else { keys.Hold(KeyCode.Space); phase = Phase.TestDash; }
                     }
                     break;
-                case Phase.TestParry:
+                case Phase.TestDash:
                     keys.Hold(KeyCode.RightArrow);
                     if (!controller.Sliding) { keys.Hold(KeyCode.Space); break; }
                     phase = Phase.CastChord; // Release Space for a fresh press with the V chord.
@@ -295,22 +295,22 @@ namespace RewindNotary
                     if (Time.fixedTime <= castTick) break;
                     route.castBlockedKick = controller.WallJumps == kicksAtStart && !player.Grounded;
                     if (!route.castBlockedKick) throw new InvalidOperationException("V chord started a wall kick");
-                    phase = Phase.WaitParry;
+                    phase = Phase.WaitDash;
                     break;
-                case Phase.WaitParry:
+                case Phase.WaitDash:
                     keys.Hold(KeyCode.RightArrow);
-                    keys.Tap(KeyCode.Space); keys.Tap(KeyCode.X);
-                    if (!GameInput.ParryDown || !GameInput.JumpDown)
-                        throw new InvalidOperationException("Did not deliver both parry and jump edges");
+                    keys.Tap(KeyCode.Space); keys.Tap(GameInput.DashKey);
+                    if (!GameInput.DashDown || !GameInput.JumpDown)
+                        throw new InvalidOperationException("Did not deliver both dash and jump edges");
                     phase = Phase.Land;
                     break;
                 case Phase.Land:
                     keys.Hold(KeyCode.RightArrow);
-                    if (defense.Phase == DefensePhase.ParryWindow) route.parryBlocked = true;
-                    if (controller.WallJumps != kicksAtStart) throw new InvalidOperationException("Kick during parry");
-                    if (player.Grounded && !defense.BlocksActions)
+                    if (defense.Phase == DefensePhase.Dash) route.dashBlockedKick = true;
+                    if (controller.WallJumps != kicksAtStart) throw new InvalidOperationException("Kick during dash");
+                    if (player.Grounded && !defense.BlocksActions && Time.time >= defense.DashReadyAt)
                     {
-                        if (!route.parryBlocked) throw new InvalidOperationException("Parry window was not observed");
+                        if (!route.dashBlockedKick) throw new InvalidOperationException("Dash state was not observed");
                         phase = loom ? Phase.Hit : Phase.Return;
                     }
                     break;

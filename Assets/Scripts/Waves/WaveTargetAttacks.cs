@@ -131,15 +131,13 @@ namespace RewindNotary
         private bool ResolveStrike(Bounds area, float now, bool countRecentDodge)
         {
             bool contact = PlayerIn(area);
-            int parries = player.Skills?.ParrySuccessCount ?? 0;
             bool evading = contact && player.Defense.State.Evading(now);
             bool hurt = contact && player.Health.Hit(definition.attackDamage, transform.position);
-            bool parried = (player.Skills?.ParrySuccessCount ?? 0) > parries;
             bool dodged = !hurt && (evading || (countRecentDodge && !contact &&
                 now - lastDodge <= DefenseTuning.DashInvulnerableSeconds));
-            if ((parried || dodged) && State.OpenDefense(now))
-                player.Skills?.Progression.EmitSimple("wave_opening", "", TargetId + (parried ? ":parry" : ":dash"));
-            return parried || dodged;
+            if (dodged && State.OpenDefense(now))
+                player.Skills?.Progression.EmitSimple("wave_opening", "", TargetId + ":dash");
+            return dodged;
         }
 
         private Bounds AttackBounds()

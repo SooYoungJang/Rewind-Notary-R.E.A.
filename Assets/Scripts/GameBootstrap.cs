@@ -462,9 +462,7 @@ namespace RewindNotary
             }
             var defense = player.Defense.State;
             string defenseStatus = defense.Phase == DefensePhase.Dash ? Loc.Get("defense.dashing")
-                : defense.Phase == DefensePhase.ParryWindow ? Loc.Get("defense.parry_window")
-                : defense.Phase == DefensePhase.ParryRecovery ? Loc.Get("defense.parry_recovery")
-                : defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
+                : Loc.Get("defense.ready");
             snap.StatusLine = SkillLabel(SkillRules.BasicSword);
             snap.SubStatusLine = defenseStatus + "  ·  " + Loc.Get("hud.dash_cooldown",
                 Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0", Loc.Culture),
@@ -650,9 +648,7 @@ namespace RewindNotary
             GUI.Label(new Rect(36, 474, 408, 44), mode, mapping);
             var defense = player.Defense.State;
             string defenseStatus = defense.Phase == DefensePhase.Dash ? Loc.Get("defense.dashing")
-                : defense.Phase == DefensePhase.ParryWindow ? Loc.Get("defense.parry_window")
-                : defense.Phase == DefensePhase.ParryRecovery ? Loc.Get("defense.parry_recovery")
-                : defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
+                : Loc.Get("defense.ready");
             GUI.Label(new Rect(36, 524, 370, 26), defenseStatus, mapping);
             GUI.Label(new Rect(36, 552, 370, 44), Loc.Get("hud.dash_cooldown", Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0", Loc.Culture), (defense.AirDashUsed ? Loc.Get("defense.air_spent") : Loc.Get("defense.air_available"))), mapping);
             string line = skills.Notice;
@@ -735,6 +731,9 @@ namespace RewindNotary
                     GUI.Label(new Rect(x + 2, y + 47, 94, 17), command, commandStyle);
                 }
             }
+            GUI.color = new Color(.64f, .79f, .89f);
+            GUI.Label(new Rect(842, y + 69, 410, 18),
+                Loc.Get("quick_skill.wave_charge", GameInput.KeyLabel(GameInput.AttackKey)), commandStyle);
             GUI.color = previous;
         }
         private void OnDestroy()
