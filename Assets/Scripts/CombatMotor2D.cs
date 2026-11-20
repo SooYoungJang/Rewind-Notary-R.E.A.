@@ -29,7 +29,8 @@ namespace RewindNotary
         public event System.Action Landed;
         public event System.Action AttackStarted;
         private float attackStartedAt, comboExpiresAt, stunUntil, landUntil, lastHitAt;
-        private bool strikeDelivered, groundSampled, queuedAttack;
+        private bool strikeDelivered, groundSampled;
+        private int? queuedAttackDirectionY;
         private int comboStep, attackStep, airStrikesUsed;
         private bool aerialSwing;
         internal bool RisingArc { get; private set; }
@@ -58,6 +59,9 @@ namespace RewindNotary
                 Reach = reach; Width = width; Height = height;
                 DamageMultiplier = damageMultiplier; Knockback = knockback;
             }
+
+            public AttackSpec WithTiming(float duration, float strikeTime, float bufferOpen) =>
+                new AttackSpec(duration, strikeTime, bufferOpen, Reach, Width, Height, DamageMultiplier, Knockback);
         }
         private static readonly AttackSpec[] PlayerCombo =
         {
@@ -208,26 +212,28 @@ namespace RewindNotary
         private bool CanSwing => !Health.Dead && !Stunned && Temporal?.Frozen != true &&
             Defense?.BlocksActions != true && BenefactorSkills?.BlocksActions != true;
 
-        public bool Attack()
+        public bool Attack() => Attack(0);
+
+        internal bool Attack(int directionY)
         {
-            if (!CanSwing) return false;
+            if (!CanSwing || (directionY < 0 && Grounded)) return false;
             if (Attacking)
             {
                 if (activeStarter == QuickSkills.Rising && !Grounded && strikeDelivered &&
                     airStrikesUsed < ComboLimit && Time.time - attackStartedAt >= activeAttack.StrikeTime + .10f)
                 {
                     CancelAttack();
-                    return BeginNextPlayerSwing();
+                    return BeginNextPlayerSwing(directionY);
                 }
-                if (!Health.IsPlayer || comboStep == 0 || queuedAttack ||
+                if (!Health.IsPlayer || comboStep == 0 || queuedAttackDirectionY.HasValue ||
                     (!Grounded && airStrikesUsed >= ComboLimit)) return false;
                 float elapsed = Time.time - attackStartedAt;
                 if (elapsed < activeAttack.BufferOpen || elapsed >= activeAttack.Duration) return false;
-                queuedAttack = true;
+                queuedAttackDirectionY = directionY;
                 return true; // Accepted input, not a swing/audio event yet.
             }
-            if (!Health.IsPlayer) { BeginAttack(0); return true; }
-            return BeginNextPlayerSwing();
+            if (!Health.IsPlayer) { BeginAttack(0, 0); return true; }
+            return BeginNextPlayerSwing(directionY);
         }
 
         internal bool UseStarterSkill(int index, int direction = 0, bool command = false)
@@ -252,18 +258,18 @@ namespace RewindNotary
             return true;
         }
 
-        private bool BeginNextPlayerSwing(bool fromBuffer = false)
+        private bool BeginNextPlayerSwing(int directionY, bool fromBuffer = false)
         {
             bool airborne = !Grounded;
             if (airborne && airStrikesUsed >= ComboLimit) return false;
             if (comboStep >= ComboLimit || (comboStep > 0 && aerialSwing != airborne) ||
                 (!fromBuffer && Time.time > comboExpiresAt))
                 ResetCombo();
-            BeginAttack(airborne ? ++airStrikesUsed : comboStep + 1);
+            BeginAttack(airborne ? ++airStrikesUsed : comboStep + 1, directionY);
             return true;
         }
 
-        private void BeginAttack(int step)
+        private void BeginAttack(int step, int directionY)
         {
             if (step > 0 && comboStep == 0 && Skills != null)
             {
@@ -274,15 +280,12 @@ namespace RewindNotary
             attackStep = comboStep = step;
             activeStarter = -1;
             aerialSwing = step > 0 && !Grounded;
-            AttackDirectionY = 0;
-            if (Health.IsPlayer && step > 0 && AutoTestRuntime.Report == null)
-            {
-                float vy = GameInput.Vertical;
-                if (!Grounded && vy < -0.5f) AttackDirectionY = -1;
-                else if (vy > 0.5f) AttackDirectionY = 1;
-            }
+            AttackDirectionY = directionY;
+            var swing = step == 0 ? BossAttack : PlayerCombo[step - 1];
+            if (directionY != 0)
+                swing = swing.WithTiming(aerialSwing ? .29f : .33f, directionY < 0 ? .09f : .12f, .06f);
             bool moving = Mathf.Abs(Body.linearVelocity.x - carrierSpeed) >= PlayerController2D.MoveSpeed * .5f;
-            StartSwing(step == 0 ? BossAttack : PlayerCombo[step - 1], step, moving);
+            StartSwing(swing, step, moving);
         }
 
         private void StartSwing(AttackSpec swing, int art, bool moving)
@@ -295,9 +298,9 @@ namespace RewindNotary
             strikeDelivered = false;
             chargeReleasePose = false;
             swingConnected = false;
-            queuedAttack = false;
+            queuedAttackDirectionY = null;
             AimPlayerAttack();
-            Animation.BeginAttack(art, Grounded, moving, activeStarter);
+            Animation.BeginAttack(art, Grounded, moving, activeStarter, AttackDirectionY);
             AttackStarted?.Invoke();
         }
 
@@ -312,7 +315,7 @@ namespace RewindNotary
             if (!Attacking) Skills?.Progression.EndUse(chainUse ?? activeUse);
             chainUse = null;
             comboStep = 0;
-            queuedAttack = false;
+            queuedAttackDirectionY = null;
             comboExpiresAt = float.NegativeInfinity;
         }
         private void CancelAttack()
@@ -364,7 +367,7 @@ namespace RewindNotary
                 Jump(RisingLaunchSpeed);
                 RisingArc = !Grounded;
             }
-            if (Health.IsPlayer && AttackDirectionY == -1 && swingConnected)
+            if (Health.IsPlayer && AttackDirectionY == -1 && swingConnected && !Grounded)
             {
                 Body.linearVelocity = new Vector2(Body.linearVelocity.x, 10.8f);
                 Defense?.State.Land();
@@ -446,7 +449,8 @@ namespace RewindNotary
                 if (elapsed >= activeAttack.Duration)
                 {
                     Attacking = false;
-                    if (queuedAttack && comboStep > 0 && BeginNextPlayerSwing(fromBuffer: true)) return;
+                    if (queuedAttackDirectionY is int directionY && comboStep > 0 &&
+                        BeginNextPlayerSwing(directionY, fromBuffer: true)) return;
                     if (comboStep > 0 && comboStep < ComboLimit)
                     {
                         comboExpiresAt = attackStartedAt + activeAttack.Duration + ComboGraceSeconds;

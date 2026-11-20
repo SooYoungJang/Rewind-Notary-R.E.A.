@@ -17,7 +17,11 @@ namespace RewindNotary
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private SpriteRenderer view;
         private Sprite[][] groundAttacks, airAttacks, starterAttacks;
-        private Sprite[] activeAttack;
+        private Sprite[] activeAttack, groundUp, airUp, airDown;
+        private static readonly float[] AirUpTilt = { 0f, -5f, 10f, 5f };
+        private static readonly float[] AirDownTilt = { 0f, 8f, -24f, -13f };
+        private float[] attackTiltFrames;
+        private float attackTilt;
         private bool skipGuard;
         private Pose state;
         private float elapsed;
@@ -76,7 +80,9 @@ namespace RewindNotary
             ownedSprites.Clear();
             ActiveResource = resource;
             groundAttacks = airAttacks = starterAttacks = null;
-            activeAttack = null;
+            activeAttack = groundUp = airUp = airDown = null;
+            attackTiltFrames = null;
+            SetAttackTilt(0f);
             var layout = LoadLayout(resource);
             clips[Pose.Idle] = Slice(texture, layout, 8, 4, 0, 0, 4, 2.5f);
             clips[Pose.Run] = Slice(texture, layout, 8, 4, 1, 0, 8, 2.5f);
@@ -89,6 +95,9 @@ namespace RewindNotary
             {
                 groundAttacks = LoadAttackRows(rea + "-ground-attacks", 4, 2.43f);
                 airAttacks = LoadAttackRows(rea + "-air-attacks", 4, 2.59f);
+                groundUp = new[] { groundAttacks[0][0], groundAttacks[1][1], groundAttacks[1][3], groundAttacks[1][2] };
+                airUp = new[] { airAttacks[0][0], airAttacks[1][1], airAttacks[1][3], airAttacks[1][2] };
+                airDown = new[] { airAttacks[3][0], airAttacks[3][1], airAttacks[3][2], airAttacks[2][3] };
                 const string starter = rea + "-starter-attacks";
                 if (Resources.Load<Texture2D>(starter) != null)
                     starterAttacks = LoadAttackRows(starter, 4, 2.45f);
@@ -137,14 +146,30 @@ namespace RewindNotary
             return frames;
         }
 
-        public void Face(int direction) { if (view != null) view.flipX = direction < 0; }
+        public void Face(int direction)
+        {
+            bool flip = direction < 0;
+            if (view == null || view.flipX == flip) return;
+            view.flipX = flip;
+            if (attackTilt != 0f) ApplyPoseRotation();
+        }
         private int wallPoseSide;
         public void SetWallPose(int side)
         {
             if (wallPoseSide == side) return;
             wallPoseSide = side;
-            transform.localRotation = Quaternion.Euler(0f, 0f, side * 12f);
+            ApplyPoseRotation();
         }
+
+        private void SetAttackTilt(float tilt)
+        {
+            if (attackTilt == tilt) return;
+            attackTilt = tilt;
+            ApplyPoseRotation();
+        }
+
+        private void ApplyPoseRotation() =>
+            transform.localRotation = Quaternion.Euler(0f, 0f, wallPoseSide * 12f + (view.flipX ? -attackTilt : attackTilt));
         public void Tint(Color color) { baseTint = color; ApplyVisual(); }
         public void SetCombatVisual(bool immune, bool isDead) { invulnerable = immune; dead = isDead; }
         public void SetTelegraph(bool active) { telegraph = active; }
@@ -152,6 +177,7 @@ namespace RewindNotary
         public void ResetVisual()
         {
             SetWallPose(0);
+            SetAttackTilt(0f);
             flashUntil = 0f; dead = invulnerable = telegraph = false;
             ApplyVisual();
         }
@@ -178,17 +204,29 @@ namespace RewindNotary
             if (!ready || (state == next && !restart)) return;
             state = next;
             elapsed = 0f;
+            SetAttackTilt(0f);
             view.sprite = clips[state][0];
         }
-        internal void BeginAttack(int step, bool grounded, bool moving, int starter = -1)
+        internal void BeginAttack(int step, bool grounded, bool moving, int starter, int directionY)
         {
             if (!ready) return;
-            skipGuard = starter < 0 && step == 1 && grounded && moving && groundAttacks != null;
+            attackTiltFrames = null;
+            skipGuard = directionY == 0 && starter < 0 && step == 1 && grounded && moving && groundAttacks != null;
             if (starter >= 0 && starterAttacks != null) activeAttack = starterAttacks[starter];
             else if (groundAttacks == null || step == 0) activeAttack = clips[Pose.Attack];
+            else if (directionY > 0)
+            {
+                activeAttack = grounded ? groundUp : airUp;
+                if (!grounded) attackTiltFrames = AirUpTilt;
+            }
+            else if (directionY < 0)
+            {
+                activeAttack = airDown;
+                attackTiltFrames = AirDownTilt;
+            }
             else activeAttack = (grounded ? groundAttacks : airAttacks)[step - 1];
             state = Pose.Attack;
-            view.sprite = activeAttack[skipGuard ? 1 : 0];
+            ShowAttackFrame(skipGuard ? 1 : 0);
         }
 
         public void PlayAttack(float attackElapsed, float strikeTime, float duration)
@@ -198,7 +236,13 @@ namespace RewindNotary
             // The motor owns this clock, so the hit and slash frame cannot drift apart.
             int index = !skipGuard && attackElapsed < strikeTime * 0.5f ? 0 : attackElapsed < strikeTime ? 1
                 : attackElapsed < strikeTime + (duration - strikeTime) * 0.5f ? 2 : 3;
+            ShowAttackFrame(index);
+        }
+
+        private void ShowAttackFrame(int index)
+        {
             view.sprite = (activeAttack ?? clips[Pose.Attack])[index];
+            SetAttackTilt(attackTiltFrames?[index] ?? 0f);
         }
         private void Update()
         {

@@ -33,10 +33,12 @@ namespace RewindNotary
             new Sweep(new Vector2(.52f, 1.30f), new Vector2(1.68f, 1.02f), new Vector2(1.16f, .30f), .072f, .142f),
             new Sweep(new Vector2(.41f, 1.88f), new Vector2(1.94f, 1.39f), new Vector2(1.10f, .04f), .109f, .180f)
         };
-        private static readonly Sweep Upward = new Sweep(
-            new Vector2(.64f, 1.37f), new Vector2(.84f, 2.42f), new Vector2(-.48f, 2.41f), .082f, .142f);
-        private static readonly Sweep Downward = new Sweep(
-            new Vector2(.58f, .35f), new Vector2(.66f, -.64f), new Vector2(-.42f, -.77f), .090f, .136f);
+        private static readonly Sweep GroundUpward = new Sweep(
+            new Vector2(.68f, 1.05f), new Vector2(.91f, 2.97f), new Vector2(-.60f, 2.24f), .108f, .158f);
+        private static readonly Sweep AirUpward = new Sweep(
+            new Vector2(.71f, 1.43f), new Vector2(.75f, 3.02f), new Vector2(-.52f, 2.49f), .094f, .146f);
+        private static readonly Sweep AirDownward = new Sweep(
+            new Vector2(.83f, .48f), new Vector2(.56f, -1.16f), new Vector2(-.54f, -1.05f), .121f, .151f);
         private static readonly int Tint = Shader.PropertyToID("_Color");
         private static Material material;
         private CombatMotor2D owner;
@@ -48,8 +50,10 @@ namespace RewindNotary
 
         internal static void Show(CombatMotor2D owner, int step, bool airborne)
         {
-            var sweep = owner.AttackDirectionY > 0 ? Upward : owner.AttackDirectionY < 0 ? Downward :
-                (airborne ? Air : Ground)[step - 1];
+            Sweep sweep;
+            if (owner.AttackDirectionY > 0) sweep = airborne ? AirUpward : GroundUpward;
+            else if (owner.AttackDirectionY < 0) sweep = AirDownward;
+            else sweep = (airborne ? Air : Ground)[step - 1];
             var go = new GameObject("Sword swipe");
             go.transform.SetParent(owner.transform, false);
             go.transform.localScale = new Vector3(owner.Facing, 1f, 1f);
