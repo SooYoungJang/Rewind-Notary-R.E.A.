@@ -14,6 +14,8 @@ namespace RewindNotary
         private readonly List<InvestigationPointDefinition> points = new List<InvestigationPointDefinition>();
         private readonly List<SpriteRenderer> markers = new List<SpriteRenderer>();
         private InvestigationPointDefinition nearest;
+        internal Vector2? InteractionAnchor => CanInspect && nearest != null
+            ? new Vector2(nearest.x, nearest.y + .85f) : (Vector2?)null;
         public void Initialize(CombatMotor2D actor, SkillSession skills, GameShell owner, Font uiFont)
         {
             player = actor; session = skills; shell = owner; font = uiFont;
@@ -47,7 +49,7 @@ namespace RewindNotary
                 if (distance <= p.radius && distance < best) { nearest = p; best = distance; }
             }
             if (!CanInspect || nearest == null || !GameInput.InvestigateDown || GameInput.RetryDown
-                || GameInput.JumpDown || GameInput.AttackDown || GameInput.CastDown || GameInput.DashDown || GameInput.ParryDown) return;
+                || GameInput.JumpDown || GameInput.AttackDown || GameInput.CastDown || GameInput.DashDown) return;
             if (nearest.kind != "core") session.Investigation.TryCollect(nearest.clueId);
             shell.OpenInvestigation(nearest.clueId, nearest.kind == "core");
         }

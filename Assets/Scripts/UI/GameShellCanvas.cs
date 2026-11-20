@@ -11,6 +11,9 @@ namespace RewindNotary
         {
             public int Index;
             public string Label;
+            public Sprite Icon;
+            public string Detail;
+            public string Price;
             public bool Selected;
             public bool IsSetting;
             public bool HasDelete;
@@ -34,10 +37,9 @@ namespace RewindNotary
             public string SpeakerId;
             public string SpeakerName;
             public string BodyText;
-            public bool CanSkip;
             public int SelectedIndex;
             public string ContinueLabel;
-            public string SkipLabel;
+            public string SecondaryLabel;
             public string ErrorText;
             public bool InstantReveal;
         }
@@ -81,6 +83,7 @@ namespace RewindNotary
         private float dialogueRevealChars;
 
         private GameObject panelView;
+        private RectTransform panelFrame;
         private Image panelBackdrop;
         private Image panelKeyartTint;
         private Text panelTitleText, panelHeadingText, panelBodyHeaderText, panelBodyText, panelStatusText, panelFooterText;
@@ -280,6 +283,7 @@ namespace RewindNotary
             NotaryUiTheme.Stretch(panelBackdrop.rectTransform);
 
             var frame = NotaryUiTheme.CreateBorderedPanel(panelView.transform, "MainPanel", NotaryUiTheme.PanelBg, NotaryUiTheme.Gold, 2f);
+            panelFrame = frame.rectTransform;
             frame.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             frame.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
             frame.rectTransform.pivot = new Vector2(0.5f, 0.5f);
@@ -405,7 +409,7 @@ namespace RewindNotary
             }
 
             bool isMain = snap.Page == ShellPage.Main;
-            bool isDialogue = snap.Page == ShellPage.StoryDialogue;
+            bool isDialogue = snap.Page == ShellPage.StoryDialogue || snap.Page == ShellPage.ForgeDialogue;
             mainView.SetActive(isMain);
             dialogueView.SetActive(isDialogue);
             panelView.SetActive(!isMain && !isDialogue);
@@ -474,15 +478,17 @@ namespace RewindNotary
             ClearChildren(dialogueButtonsRoot);
             NotaryUiTheme.CreateStyledButton(dialogueButtonsRoot, "ContinueBtn", d.ContinueLabel ?? "", 16, d.SelectedIndex == 0,
                 () => OnActivateRow?.Invoke(0), out _, out _, out _);
-            if (d.CanSkip)
+            if (!string.IsNullOrEmpty(d.SecondaryLabel))
             {
-                NotaryUiTheme.CreateStyledButton(dialogueButtonsRoot, "SkipBtn", d.SkipLabel ?? "", 16, d.SelectedIndex == 1,
+                NotaryUiTheme.CreateStyledButton(dialogueButtonsRoot, "SecondaryBtn", d.SecondaryLabel, 16, d.SelectedIndex == 1,
                     () => OnActivateRow?.Invoke(1), out _, out _, out _);
             }
         }
 
         private void RenderPanel(ShellSnapshot snap)
         {
+            bool supplyMenu = snap.Page == ShellPage.ForgeShop || snap.Page == ShellPage.SupplyBag;
+            panelFrame.sizeDelta = supplyMenu ? new Vector2(850f, 510f) : new Vector2(1140f, 650f);
             panelKeyartTint.enabled = !snap.OverLiveWorld;
             panelBackdrop.color = snap.OverLiveWorld
                 ? new Color(0.025f, 0.036f, 0.068f, 0.78f)
@@ -537,7 +543,13 @@ namespace RewindNotary
             vlg.childControlHeight = true;
             vlg.childForceExpandWidth = true;
             vlg.childForceExpandHeight = false;
-            vlg.padding = new RectOffset(snap.Page == ShellPage.Slots ? 24 : 140, snap.Page == ShellPage.Slots ? 24 : 140, 6, 6);
+            int pad = supplyMenu ? 40 : snap.Page == ShellPage.Slots ? 24 : 140;
+            vlg.padding = new RectOffset(pad, pad, 6, 6);
+            if (supplyMenu)
+            {
+                RenderSupplyRows(snap.Buttons);
+                return;
+            }
 
             float rowHeight = snap.Page == ShellPage.Slots ? 88f
                 : snap.Buttons != null && snap.Buttons.Count > 9 ? 32f
@@ -545,6 +557,37 @@ namespace RewindNotary
                 : snap.Buttons != null && snap.Buttons.Count > 5 ? 46f : 54f;
             int fontSize = snap.Page == ShellPage.Slots ? 16 : rowHeight < 35f ? 14 : rowHeight < 42f ? 15 : 19;
             SpawnButtons(snap.Buttons, fontSize, rowHeight, snap.Page == ShellPage.Slots);
+        }
+
+        private void RenderSupplyRows(List<ButtonItem> items)
+        {
+            foreach (var item in items)
+            {
+                bool product = item.Icon != null;
+                var button = NotaryUiTheme.CreateStyledButton(panelButtonsContainer, "SupplyRow_" + item.Index,
+                    item.Label, product ? 22 : 17, item.Selected, () => OnActivateRow?.Invoke(item.Index),
+                    out var name, out _, out _);
+                button.gameObject.AddComponent<LayoutElement>().preferredHeight = product ? 90f : 46f;
+                if (!product) continue;
+
+                var icon = NotaryUiTheme.CreateImage(button.transform, "ItemIcon", Color.white, item.Icon);
+                icon.preserveAspect = true;
+                icon.rectTransform.anchorMin = icon.rectTransform.anchorMax = new Vector2(0f, .5f);
+                icon.rectTransform.anchoredPosition = new Vector2(44f, 0f);
+                icon.rectTransform.sizeDelta = new Vector2(58f, 58f);
+
+                float rightInset = item.Price == null ? 20f : 148f;
+                NotaryUiTheme.Stretch(name.rectTransform, 91f, 44f, rightInset, 12f);
+                var detail = NotaryUiTheme.CreateText(button.transform, "Detail", item.Detail, 15, NotaryUiTheme.ParchmentMuted);
+                NotaryUiTheme.Stretch(detail.rectTransform, 91f, 10f, rightInset, 46f);
+                if (item.Price == null) continue;
+
+                var price = NotaryUiTheme.CreateText(button.transform, "Price", item.Price, 19, NotaryUiTheme.GoldGlow, TextAnchor.MiddleRight);
+                price.rectTransform.anchorMin = new Vector2(1f, 0f);
+                price.rectTransform.anchorMax = new Vector2(1f, 1f);
+                price.rectTransform.offsetMin = new Vector2(-142f, 10f);
+                price.rectTransform.offsetMax = new Vector2(-19f, -10f);
+            }
         }
 
         private void RenderSkillsGrid(ShellSnapshot snap)
@@ -696,16 +739,17 @@ namespace RewindNotary
               .Append(s.Heading).Append('|').Append(s.BodyHeader).Append('|')
               .Append(s.BodyText).Append('|').Append(s.StatusText).Append('|')
               .Append(s.FooterText).Append('|').Append(Mathf.RoundToInt(s.ScrollNormalized * 100));
-            if (s.Page == ShellPage.StoryDialogue)
+            if (s.Page == ShellPage.StoryDialogue || s.Page == ShellPage.ForgeDialogue)
             {
                 sb.Append('|').Append(s.Dialogue.RoomLabel).Append('|').Append(s.Dialogue.SpeakerId)
-                  .Append('|').Append(s.Dialogue.BodyText).Append('|').Append(s.Dialogue.CanSkip)
+                  .Append('|').Append(s.Dialogue.BodyText).Append('|').Append(s.Dialogue.SecondaryLabel)
                   .Append('|').Append(s.Dialogue.SelectedIndex).Append('|').Append(s.Dialogue.ErrorText);
             }
             if (s.Buttons != null)
             {
                 for (int i = 0; i < s.Buttons.Count; i++)
-                    sb.Append('|').Append(s.Buttons[i].Index).Append(':').Append(s.Buttons[i].Selected ? '1' : '0').Append(':').Append(s.Buttons[i].Label);
+                    sb.Append('|').Append(s.Buttons[i].Index).Append(':').Append(s.Buttons[i].Selected ? '1' : '0')
+                      .Append(':').Append(s.Buttons[i].Label).Append(':').Append(s.Buttons[i].Detail).Append(':').Append(s.Buttons[i].Price);
             }
             if (s.SkillCards != null)
             {

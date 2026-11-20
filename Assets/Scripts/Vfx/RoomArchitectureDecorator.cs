@@ -232,7 +232,7 @@ namespace RewindNotary
 
         private void DecorateAllGrounds(bool initial)
         {
-            if (worldRoot == null) return;
+            if (worldRoot == null || area?.InAttic == true) return;
             var pal = PaletteFor(CurrentDistrict);
             var boxes = worldRoot.GetComponentsInChildren<BoxCollider2D>(false);
             for (int i = 0; i < boxes.Length; i++)

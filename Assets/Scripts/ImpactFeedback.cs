@@ -39,11 +39,12 @@ namespace RewindNotary
             Instance.HitStop(FinisherStopScale, FinisherStopSeconds);
             Instance.cameraShake?.Shake(SwordShake, 0.12f);
         }
-        public static void ParrySuccess()
+        internal static void StarterHit(int index)
         {
             if (Instance == null || !Instance.isActiveAndEnabled) return;
-            Instance.HitStop(DefenseTuning.ParryStopScale, DefenseTuning.ParryStopSeconds);
-            Instance.cameraShake?.Shake(0.13f, 0.14f);
+            bool heavy = index == QuickSkills.Sweep || index == QuickSkills.RetreatCut;
+            Instance.HitStop(.09f, heavy ? .057f : .044f);
+            Instance.cameraShake?.Shake(heavy ? .115f : .085f, .13f);
         }
         public static void BossDefeated()
         {

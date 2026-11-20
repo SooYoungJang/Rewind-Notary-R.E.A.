@@ -106,6 +106,11 @@ namespace RewindNotary
                 if (header.finalBattleAttempt == null) record.finalBattleAttempt = new FinalBattleAttempt();
                 record.schemaVersion = CoreRecord.SchemaVersion;
             }
+            if (header.schemaVersion < 5)
+            {
+                record.supplies = new SupplyPouch();
+                record.schemaVersion = CoreRecord.SchemaVersion;
+            }
             bool debug = !legacy && Path.GetFileName(path).StartsWith(SlotId + "-debug.json", StringComparison.Ordinal);
             if (header.schemaVersion == 1)
             {

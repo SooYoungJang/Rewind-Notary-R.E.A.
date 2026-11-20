@@ -12,22 +12,21 @@ namespace RewindNotary
         public static bool CanPlay => GameplayEnabled && Time.frameCount > suppressedFrame;
         public static void SetGameplay(bool enabled) { GameplayEnabled = enabled; suppressedFrame = Time.frameCount; }
         public static KeyCode JumpKey { get; private set; } = KeyCode.Space;
-        public static KeyCode AttackKey { get; private set; } = KeyCode.Z;
+        public static KeyCode AttackKey { get; private set; } = KeyCode.A;
         public static KeyCode CastKey { get; private set; } = KeyCode.V;
         public static KeyCode DashKey { get; private set; } = KeyCode.LeftShift;
-        public static KeyCode ParryKey { get; private set; } = KeyCode.X;
-        public static KeyCode InteractKey { get; private set; } = KeyCode.C;
+        public static KeyCode InteractKey { get; private set; } = KeyCode.F;
+        internal static string InteractLabel => UsingGamepad ? "L3" : KeyLabel(InteractKey);
         public static KeyCode MapKey { get; private set; } = KeyCode.M;
 
         public static void ApplyBindings(GameSettings s)
         {
             if (s == null) return;
             JumpKey = ParseKey(s.keyJump, KeyCode.Space);
-            AttackKey = ParseKey(s.keyAttack, KeyCode.Z);
+            AttackKey = ParseKey(s.keyAttack, KeyCode.A);
             CastKey = ParseKey(s.keyCast, KeyCode.V);
             DashKey = ParseKey(s.keyDash, KeyCode.LeftShift);
-            ParryKey = ParseKey(s.keyParry, KeyCode.X);
-            InteractKey = ParseKey(s.keyInteract, KeyCode.C);
+            InteractKey = ParseKey(s.keyInteract, KeyCode.F);
             MapKey = ParseKey(s.keyMap, KeyCode.M);
         }
 
@@ -59,7 +58,8 @@ namespace RewindNotary
 
         internal static bool CanRemapTo(KeyCode key) =>
             key > KeyCode.None && key < KeyCode.Mouse0 && key != KeyCode.Escape && key != KeyCode.Backspace &&
-            key != KeyCode.Tab && key != KeyCode.N && key != KeyCode.LeftArrow && key != KeyCode.RightArrow &&
+            key != KeyCode.Tab && key != KeyCode.N && key != KeyCode.X && key != KeyCode.C &&
+            key != KeyCode.LeftArrow && key != KeyCode.RightArrow &&
             key != KeyCode.UpArrow && key != KeyCode.DownArrow && Array.IndexOf(QuickSkills.Keys, key) < 0;
 
         public static string KeyLabel(KeyCode k)
@@ -80,10 +80,14 @@ namespace RewindNotary
                 return Loc.Get(combatMode ? "controls.pad_combat" : "controls.pad_explore");
             if (combatMode)
                 return Loc.Get("controls.kb_combat", KeyLabel(JumpKey), KeyLabel(AttackKey), KeyLabel(CastKey),
-                    KeyLabel(DashKey), KeyLabel(ParryKey), KeyLabel(MapKey));
+                    KeyLabel(DashKey), KeyLabel(MapKey));
             return Loc.Get("controls.kb_explore", KeyLabel(InteractKey), KeyLabel(AttackKey), KeyLabel(CastKey),
                 KeyLabel(DashKey), KeyLabel(MapKey));
         }
+
+        internal static string FormatOpeningControlsPrompt() => UsingGamepad
+            ? Loc.Get("controls.pad_opening")
+            : Loc.Get("controls.kb_opening", KeyLabel(JumpKey), KeyLabel(InteractKey));
 
         private static float KeyboardHorizontal =>
             (Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) - (Input.GetKey(KeyCode.LeftArrow) ? 1f : 0f);
@@ -129,6 +133,19 @@ namespace RewindNotary
         public static bool JumpHeld => Input.GetKey(JumpKey) || (JumpKey != KeyCode.Space && Input.GetKey(KeyCode.Space) && AutoTestRuntime.Report != null) || Input.GetKey(KeyCode.JoystickButton0);
         public static bool JumpUp => Input.GetKeyUp(JumpKey) || (JumpKey != KeyCode.Space && Input.GetKeyUp(KeyCode.Space) && AutoTestRuntime.Report != null) || Input.GetKeyUp(KeyCode.JoystickButton0);
         public static bool AttackDown => Input.GetKeyDown(AttackKey) || Input.GetKeyDown(KeyCode.JoystickButton2);
+        internal static bool KeyboardAttackDown => Input.GetKeyDown(AttackKey);
+        internal static KeyCode CommandArrowDown
+        {
+            get
+            {
+                // Read press edges. The earlier direction may still be held.
+                bool left = Input.GetKeyDown(KeyCode.LeftArrow), right = Input.GetKeyDown(KeyCode.RightArrow);
+                if (left != right) return left ? KeyCode.LeftArrow : KeyCode.RightArrow;
+                bool up = Input.GetKeyDown(KeyCode.UpArrow), down = Input.GetKeyDown(KeyCode.DownArrow);
+                if (up != down) return up ? KeyCode.UpArrow : KeyCode.DownArrow;
+                return KeyCode.None;
+            }
+        }
         internal static bool AttackHeld => Input.GetKey(AttackKey) || Input.GetKey(KeyCode.JoystickButton2);
         public static bool CastDown => Input.GetKeyDown(CastKey) || Input.GetKeyDown(KeyCode.JoystickButton3) ||
             QuickSkillDown >= 0;
@@ -150,8 +167,9 @@ namespace RewindNotary
         public static bool DashDown => PadDashDown || SprintHeld &&
             (Input.GetKeyDown(DashKey) || (DefaultDashKey && Input.GetKeyDown(KeyCode.RightShift)) ||
              Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow));
-        internal static float DashDirection => SprintHeld ? KeyboardHorizontal : Horizontal;
-        public static bool ParryDown => Input.GetKeyDown(ParryKey) || Input.GetKeyDown(KeyCode.JoystickButton5);
+        internal static Vector2 DashDirection => SprintHeld
+            ? new Vector2(KeyboardHorizontal, KeyboardVertical)
+            : new Vector2(Horizontal, Vertical);
         public static bool PauseDown => Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7);
         public static bool SubmitDown => Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)
             || Input.GetKeyDown(KeyCode.JoystickButton0);

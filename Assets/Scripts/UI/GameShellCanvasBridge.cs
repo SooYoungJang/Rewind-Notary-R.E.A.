@@ -47,7 +47,7 @@ namespace RewindNotary
                 Page = Page,
                 OverLiveWorld = Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.QuickSlots || Page == ShellPage.Investigation
                     || Page == ShellPage.CoreReading || Page == ShellPage.ReturnSelection || Page == ShellPage.ReturnConfirm
-                    || Page == ShellPage.StoryDialogue || Page == ShellPage.StorySaving,
+                    || Page == ShellPage.StoryDialogue || Page == ShellPage.StorySaving || ForgeInteractionOpen || Page == ShellPage.SupplyBag,
                 GameTitle = Loc.Get("game.menu_title"),
                 Heading = Heading(),
                 StatusText = CurrentStatusMessage(),
@@ -78,6 +78,15 @@ namespace RewindNotary
         {
             switch (Page)
             {
+                case ShellPage.ForgeDialogue:
+                    snap.Dialogue = ForgeDialogueSnapshot();
+                    break;
+
+                case ShellPage.ForgeShop:
+                case ShellPage.SupplyBag:
+                    PopulateSupplies(ref snap);
+                    break;
+
                 case ShellPage.StoryDialogue:
                     var row = DialogueRow;
                     snap.Dialogue = new GameShellCanvas.DialogueView
@@ -86,10 +95,9 @@ namespace RewindNotary
                         SpeakerId = row?.speakerId ?? "",
                         SpeakerName = row != null ? Loc.Get("area.speaker." + row.speakerId) : "",
                         BodyText = row != null ? Loc.Get(row.textKey) : "",
-                        CanSkip = CanSkipLine,
                         SelectedIndex = selected,
                         ContinueLabel = Loc.Get("area.continue"),
-                        SkipLabel = Loc.Get("area.skip"),
+                        SecondaryLabel = CanSkipLine ? Loc.Get("area.skip") : null,
                         ErrorText = game.ActiveSkills != null && !game.ActiveSkills.LastSaveSucceeded ? game.ActiveSkills.StorageError : null,
                         InstantReveal = AutoTestRuntime.Report != null || CanSkipLine
                     };

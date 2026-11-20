@@ -22,7 +22,6 @@ namespace RewindNotary
         public string keyAttack = "";
         public string keyCast = "";
         public string keyDash = "";
-        public string keyParry = "";
         public string keyInteract = "";
         public string keyMap = "";
 
@@ -36,15 +35,20 @@ namespace RewindNotary
             displayMode = Mathf.Clamp(displayMode, 0, 3);
             shakeStrength = Mathf.Clamp(shakeStrength, 0, 2);
             screenShake = shakeStrength > 0;
+            if (keyAttack == "Z") keyAttack = "";
+            if (keyInteract == "C") keyInteract = "";
             if (quickSkills == null || quickSkills.Length != QuickSkills.Keys.Length)
                 quickSkills = (string[])QuickSkills.Starter.Clone();
             else for (int i = 0; i < quickSkills.Length; i++)
-                if (!QuickSkills.IsAssignable(quickSkills[i])) quickSkills[i] = QuickSkills.Starter[i];
+            {
+                if (quickSkills[i] == "rea_wave") quickSkills[i] = QuickSkills.Starter[QuickSkills.RetreatCut];
+                else if (!QuickSkills.IsAssignable(quickSkills[i])) quickSkills[i] = QuickSkills.Starter[i];
+            }
         }
 
         public void ResetKeybinds()
         {
-            keyJump = keyAttack = keyCast = keyDash = keyParry = keyInteract = keyMap = "";
+            keyJump = keyAttack = keyCast = keyDash = keyInteract = keyMap = "";
         }
     }
 

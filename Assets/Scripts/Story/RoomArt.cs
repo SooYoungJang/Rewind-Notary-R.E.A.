@@ -58,6 +58,7 @@ namespace RewindNotary
     internal sealed class RoomDoorView
     {
         private readonly SpriteRenderer view;
+        internal Vector2 InteractionAnchor => new Vector2(view.bounds.center.x, view.bounds.max.y + .24f);
         private readonly Sprite locked, open;
         private readonly Transform archway;
         private readonly SpriteRenderer portalGlow;
@@ -74,8 +75,10 @@ namespace RewindNotary
             portalGlow = AttachDoorArchitecture(door.transform, stage, out archway);
         }
 
-        internal void Show(bool canPass)
+        internal void Show(bool canPass, bool visible = true)
         {
+            if (view.gameObject.activeSelf != visible) view.gameObject.SetActive(visible);
+            if (!visible) return;
             var sprite = canPass ? open : locked;
             if (portalGlow != null) portalGlow.enabled = canPass;
             if (view.sprite == sprite) return;

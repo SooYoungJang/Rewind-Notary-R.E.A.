@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RewindNotary
 {
-    public enum ShellPage { Main, Slots, Stages, Playing, Pause, Settings, Keybinds, DeleteConfirm, QuitConfirm, Skills, Investigation, CoreReading, ReturnSelection, ReturnConfirm, CourtLift, StoryDialogue, StorySaving, QuickSlots }
+    public enum ShellPage { Main, Slots, Stages, Playing, Pause, Settings, Keybinds, DeleteConfirm, QuitConfirm, Skills, Investigation, CoreReading, ReturnSelection, ReturnConfirm, CourtLift, StoryDialogue, StorySaving, QuickSlots, ForgeDialogue, ForgeShop, SupplyBag }
     public enum SlotPurpose { Continue, NewGame, StageSelect }
 
     // Runs before hit-stop and combat so pause/input transitions have a single owner.
@@ -157,12 +157,13 @@ namespace RewindNotary
             if (Page == ShellPage.Slots && selected < records.Length && GameInput.DeleteDown) { UiAudioSynth.PlayCancel(); RequestDelete(selected + 1); return; }
             if (GameInput.SubmitDown) { UiAudioSynth.PlayConfirm(); Activate(selected); }
         }
-        private int RowCount => Page == ShellPage.StoryDialogue ? (CanSkipLine ? 2 : 1) : Page == ShellPage.CourtLift ? LiftLabels().Length : Page == ShellPage.Main ? 5 : Page == ShellPage.Slots ? records.Length + 1
-            : Page == ShellPage.Stages ? StageCatalog.All.Length + (EndingCheckpoint.Marker(selectedRecord) == null ? 1 : 2) : Page == ShellPage.Pause ? 6
+        private int RowCount => InSupplyMenu ? SupplyProduct.Stock.Length + 1
+            : Page == ShellPage.StoryDialogue ? (CanSkipLine ? 2 : 1) : Page == ShellPage.CourtLift ? LiftLabels().Length : Page == ShellPage.Main ? 5 : Page == ShellPage.Slots ? records.Length + 1
+            : Page == ShellPage.Stages ? StageCatalog.All.Length + (EndingCheckpoint.Marker(selectedRecord) == null ? 1 : 2) : Page == ShellPage.Pause ? (CanManageSupplies ? 7 : 6)
             : Page == ShellPage.Investigation || Page == ShellPage.CoreReading ? InvestigationRows
             : Page == ShellPage.ReturnSelection ? BenefactorIds.All.Length + 1
             : Page == ShellPage.Skills ? 3 : Page == ShellPage.QuickSlots ? QuickSkills.Keys.Length + 1
-            : Page == ShellPage.Settings ? 11 : Page == ShellPage.Keybinds ? 9 : 2;
+            : Page == ShellPage.Settings ? 11 : Page == ShellPage.Keybinds ? 8 : 2;
         public void Pause()
         {
             if (!Playing) return;
@@ -183,6 +184,9 @@ namespace RewindNotary
                 case ShellPage.CourtLift: RefreshSlots(); Go(ShellPage.Slots); break;
                 case ShellPage.ReturnSelection: Resume(); break;
                 case ShellPage.ReturnConfirm: Go(ShellPage.ReturnSelection); break;
+                case ShellPage.ForgeDialogue: Resume(); break;
+                case ShellPage.ForgeShop: message = null; Go(ShellPage.ForgeDialogue); break;
+                case ShellPage.SupplyBag: message = null; Go(ShellPage.Pause); break;
                 case ShellPage.Pause: Resume(); break;
                 case ShellPage.Skills: Go(ShellPage.Pause); break;
                 case ShellPage.QuickSlots: Go(ShellPage.Skills); break;
@@ -209,6 +213,13 @@ namespace RewindNotary
                         game.ActiveCassel.Scenes.Confirm()) Resume();
                     break;
                 case ShellPage.CourtLift: ActivateLift(index); break;
+                case ShellPage.ForgeDialogue:
+                    if (index == 0) Go(ShellPage.ForgeShop); else Resume();
+                    break;
+                case ShellPage.ForgeShop:
+                case ShellPage.SupplyBag:
+                    ActivateSupplyRow(index);
+                    break;
                 case ShellPage.Main:
                     if (index < 3)
                     {
@@ -230,7 +241,8 @@ namespace RewindNotary
                     else if (index == 1) Go(ShellPage.Skills);
                     else if (index == 2) { Resume(); game.OpenJournal(); }
                     else if (index == 3) OpenSettings();
-                    else if (index == 4) ReturnMain(); else RequestQuit();
+                    else if (index == 4 && CanManageSupplies) Go(ShellPage.SupplyBag);
+                    else if (index == RowCount - 2) ReturnMain(); else RequestQuit();
                     break;
                 case ShellPage.Skills:
                     if (index == 0) OpenInvestigation();
@@ -250,8 +262,8 @@ namespace RewindNotary
                     else AdjustSetting(index, 1);
                     break;
                 case ShellPage.Keybinds:
-                    if (index == 8) Back();
-                    else if (index == 7) { Settings.Value.ResetKeybinds(); Settings.Apply(); Settings.Save(); }
+                    if (index == 7) Back();
+                    else if (index == 6) { Settings.Value.ResetKeybinds(); Settings.Apply(); Settings.Save(); }
                     else remappingSlot = index;
                     break;
                 case ShellPage.DeleteConfirm:
@@ -382,7 +394,7 @@ namespace RewindNotary
         private void AssignKeybind(int slot, KeyCode code)
         {
             var v = Settings.Value;
-            KeyCode[] current = { GameInput.JumpKey, GameInput.AttackKey, GameInput.CastKey, GameInput.DashKey, GameInput.ParryKey, GameInput.InteractKey, GameInput.MapKey };
+            KeyCode[] current = { GameInput.JumpKey, GameInput.AttackKey, GameInput.CastKey, GameInput.DashKey, GameInput.InteractKey, GameInput.MapKey };
             KeyCode previous = current[slot];
             bool swapped = false;
             for (int i = 0; i < current.Length; i++)
@@ -407,9 +419,8 @@ namespace RewindNotary
                 case 1: v.keyAttack = name; break;
                 case 2: v.keyCast = name; break;
                 case 3: v.keyDash = name; break;
-                case 4: v.keyParry = name; break;
-                case 5: v.keyInteract = name; break;
-                case 6: v.keyMap = name; break;
+                case 4: v.keyInteract = name; break;
+                case 5: v.keyMap = name; break;
             }
         }
         public void SetStageOverride(int stage)
@@ -654,6 +665,8 @@ namespace RewindNotary
                 case ShellPage.Slots: return Loc.Get("heading.three_slots", SlotHeading);
                 case ShellPage.Stages: return Loc.Get("heading.stages", selectedStore.Slot);
                 case ShellPage.Pause: return Loc.Get("heading.pause");
+                case ShellPage.ForgeShop: return Loc.Get("shop.title");
+                case ShellPage.SupplyBag: return Loc.Get("shop.bag_title");
                 case ShellPage.Skills: return Loc.Get("heading.skills");
                 case ShellPage.QuickSlots: return Loc.Get("quick_skill.menu");
                 case ShellPage.Investigation: return "";
@@ -668,7 +681,7 @@ namespace RewindNotary
         {
             if (Page == ShellPage.CourtLift) return LiftLabels();
             if (Page == ShellPage.Main) return new[] { Loc.Get("ui.continue"), Loc.Get("ui.new_game"), Loc.Get("ui.stage_select"), Loc.Get("ui.settings"), Loc.Get("ui.quit") };
-            if (Page == ShellPage.Pause) return new[] { Loc.Get("ui.resume"), Loc.Get("ui.skills"), Loc.Get("ui.journal") + " [N]", Loc.Get("ui.settings"), Loc.Get("ui.main_menu"), Loc.Get("ui.quit") };
+            if (Page == ShellPage.Pause) return PauseLabels();
             if (Page == ShellPage.DeleteConfirm) return new[] { Loc.Get("ui.cancel"), Loc.Get("ui.delete_record") };
             if (Page == ShellPage.QuitConfirm) return new[] { Loc.Get("ui.cancel"), Loc.Get("ui.save_quit") };
             if (Page == ShellPage.Keybinds)
@@ -680,9 +693,8 @@ namespace RewindNotary
                     Loc.Get("keybind.attack", Tag(1, GameInput.AttackKey)),
                     Loc.Get("keybind.skill", Tag(2, GameInput.CastKey)),
                     Loc.Get("keybind.dash", Tag(3, GameInput.DashKey)),
-                    Loc.Get("keybind.parry", Tag(4, GameInput.ParryKey)),
-                    Loc.Get("keybind.interact", Tag(5, GameInput.InteractKey)),
-                    Loc.Get("keybind.map", Tag(6, GameInput.MapKey)),
+                    Loc.Get("keybind.interact", Tag(4, GameInput.InteractKey)),
+                    Loc.Get("keybind.map", Tag(5, GameInput.MapKey)),
                     Loc.Get("keybind.reset"),
                     Loc.Get("ui.back")
                 };

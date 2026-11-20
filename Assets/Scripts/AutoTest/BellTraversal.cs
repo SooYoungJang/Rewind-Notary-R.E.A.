@@ -59,7 +59,7 @@ namespace RewindNotary
             if (Area.BellPlatePending(at) || !TryFaceAt(at.x, at.y, out var face)) return;
             if (target.State.NeedsSetup && !target.State.Ready(Time.time))
             {
-                if (ReserveWaveParry(target)) return;
+                if (ReserveWaveDodge(target)) return;
                 int direction = at.x - face.rect.x < 1.8f ? -1 : 1;
                 BellStrike(face.id, at.x, direction);
             }

@@ -113,7 +113,7 @@ namespace RewindNotary
                 Mathf.Abs(p.Bounds.max.y - at.y) < .5f && Player.Body.position.x >= face.rect.x && Player.Body.position.x <= face.rect.x + face.rect.width);
             if (!onStroke && !ReachedCombatSurface(face, at.x)) return;
             if (!setup) { FightTarget(target); return; }
-            if (ReserveWaveParry(target)) return;
+            if (ReserveWaveDodge(target)) return;
             int direction = at.x - face.rect.x >= face.rect.x + face.rect.width - at.x ? 1 : -1;
             if (PaintSurface2D.All.Exists(p => !p.Wall && Mathf.Abs(p.Bounds.max.y - at.y) < .5f &&
                 p.Bounds.min.x < at.x && p.Bounds.max.x > at.x))

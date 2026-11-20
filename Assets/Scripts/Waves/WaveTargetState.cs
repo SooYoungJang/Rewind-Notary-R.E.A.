@@ -1,7 +1,7 @@
 namespace RewindNotary
 {
     // Finite material segments. Every cut really removes one segment; follow-up combo hits
-    // meet the interlock until that whole originating sequence has closed.
+    // can hit ordinary enemies while guarded targets keep their interlock.
     public sealed class WaveTargetState
     {
         public int Remaining { get; private set; }
@@ -16,13 +16,16 @@ namespace RewindNotary
         private readonly bool skillOnly;
         private int hits;
         private bool prepared;
+        private int lastComboStep, lastWavePulse;
         private float openUntil = float.NegativeInfinity;
         public WaveTargetState(WaveArchetype kind, WaveSpawn spawn, int setupHits = 1, bool skillOnly = false)
         {
             archetype = kind; setupSkill = spawn.setupSkill; Remaining = spawn.segments;
             this.setupHits = System.Math.Max(1, setupHits); this.skillOnly = skillOnly;
+            if (TakesComboHits && Remaining >= 3) Remaining = System.Math.Max(Remaining, 5);
         }
         public bool NeedsSetup => archetype.gate == "skill" || !string.IsNullOrEmpty(setupSkill);
+        internal bool TakesComboHits => !archetype.mechanism && !NeedsSetup && archetype.gate != "defense";
         public bool Ready(float now) => NeedsSetup ? prepared
             : archetype.gate != "defense" || now < openUntil;
         public bool Setup(UseContext use)
@@ -50,10 +53,19 @@ namespace RewindNotary
             openUntil = now + archetype.openingSeconds;
             return true;
         }
-        public bool Cut(UseContext use, float now)
+        public bool Cut(UseContext use, float now, int comboStep = 0, int pulse = 0)
         {
-            if (Cleared || use == null || use.Closed || use.SkillId != SkillRules.BasicSword
-                || use == LastSword || (LastSword != null && !LastSword.Closed) || !Ready(now)) return false;
+            if (Cleared || use == null || use.Closed || use.SkillId != SkillRules.BasicSword || !Ready(now)) return false;
+            if (LastSword == use)
+            {
+                if (!TakesComboHits || (pulse > 0 ? pulse <= lastWavePulse : comboStep <= lastComboStep)) return false;
+            }
+            else
+            {
+                if (!TakesComboHits && LastSword != null && !LastSword.Closed) return false;
+            }
+            lastComboStep = comboStep;
+            lastWavePulse = pulse;
             Remaining--;
             LastSword = use;
             CrossLoopFinish = NeedsSetup && prepared;

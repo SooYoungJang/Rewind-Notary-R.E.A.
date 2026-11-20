@@ -171,7 +171,7 @@ namespace RewindNotary
                 dirty = true;
             }
 
-            miniRoot.SetActive(!bossActive && !fullOpen);
+            miniRoot.SetActive(!bossActive && !fullOpen && !area.InAtticTutorial);
             fullRoot.SetActive(fullOpen);
 
             if (!dirty) return;

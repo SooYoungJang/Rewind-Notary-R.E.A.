@@ -15,6 +15,7 @@ namespace RewindNotary
         private CinemachineCamera virtualCamera;
         private SkillSession skills;
         public SkillSession ActiveSkills => initialized ? skills : null;
+        internal Health ActivePlayerHealth => initialized ? player?.Health : null;
         internal RepresentativeArea Area { get; private set; }
         private GameShell shell;
         private GameObject world;
@@ -27,13 +28,15 @@ namespace RewindNotary
         private StitchBinding bossBinding;
         private Font hudFont;
         private GameHudCanvas hudCanvas;
+        private InvestigationWorld investigationWorld;
         private CinematicJuiceDirector cinematic;
         private DistrictMinimapCanvas minimap;
         private NotaryJournalCanvas journal;
         private readonly bool[] knownOwnedSkills = new bool[5];
         private bool skillOwnershipSeeded;
         private int lastContactSaves;
-        private float currentCameraSize = 5.5f;
+        private const float GameplayCameraSize = 6.1f;
+        private float currentCameraSize = GameplayCameraSize;
         private bool checkpoint, won, initialized, echoDuel;
         private float deathTimer;
         private string failure;
@@ -43,6 +46,7 @@ namespace RewindNotary
             try
             {
                 Application.targetFrameRate = 60;
+                Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
                 Physics2D.gravity = new Vector2(0f, -9.81f);
                 Time.timeScale = 1f;
                 Child("Audio").AddComponent<AudioManager>();
@@ -95,7 +99,7 @@ namespace RewindNotary
                 var go = new GameObject("Main Camera"); go.tag = "MainCamera";
                 camera = go.AddComponent<Camera>(); go.AddComponent<AudioListener>();
             }
-            camera.orthographic = true; camera.orthographicSize = 5.5f;
+            camera.orthographic = true; camera.orthographicSize = GameplayCameraSize;
             camera.nearClipPlane = 0.1f; camera.farClipPlane = 100f;
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.backgroundColor = new Color(0.53f, 0.70f, 0.85f);
@@ -204,7 +208,7 @@ namespace RewindNotary
             virtualCamera = Child("Cinemachine follow camera").AddComponent<CinemachineCamera>();
             virtualCamera.Follow = cameraTarget.transform;
             var lens = LensSettings.Default;
-            lens.OrthographicSize = 5.5f; lens.NearClipPlane = 0.1f; lens.FarClipPlane = 100f;
+            lens.OrthographicSize = GameplayCameraSize; lens.NearClipPlane = 0.1f; lens.FarClipPlane = 100f;
             virtualCamera.Lens = lens;
             var composer = virtualCamera.gameObject.AddComponent<CinemachinePositionComposer>();
             composer.CameraDistance = 10f;
@@ -219,7 +223,10 @@ namespace RewindNotary
             Child("Room architecture").AddComponent<RoomArchitectureDecorator>().Initialize(camera, Area, world.transform, finale ? "cassel" : null);
             Child("Stage2 visual director").AddComponent<Stage2VisualDirector>().Initialize(player);
             if (record.lastStageId == "prototype")
-                Child("Investigation points").AddComponent<InvestigationWorld>().Initialize(player, skills, shell, hudFont);
+            {
+                investigationWorld = Child("Investigation points").AddComponent<InvestigationWorld>();
+                investigationWorld.Initialize(player, skills, shell, hudFont);
+            }
             skills.PresentRestoredState();
         }
         private GameObject Child(string label)
@@ -236,7 +243,7 @@ namespace RewindNotary
             {
                 var growth = go.AddComponent<ReaGrowthVisual2D>();
                 growth.Initialize(motor);
-                go.AddComponent<ReaMotionPolish2D>().Initialize(motor, growth);
+                go.AddComponent<ReaMotionPolish2D>().Initialize(motor);
             }
             else
             {
@@ -349,13 +356,14 @@ namespace RewindNotary
             }
             initialized = false; SkillStroke.WorldRoot = null;
             lastContactSaves = 0;
-            currentCameraSize = 5.5f;
+            currentCameraSize = GameplayCameraSize;
             cinematic?.ResetState();
             minimap?.CloseFullMap();
             ImpactFeedback.ResetEffects(); AudioManager.ResetPlayback(false);
             if (world != null) { world.SetActive(false); Destroy(world); world = null; }
             player = boss = null; controller = null; skills = null; reward = null; practice = null;
             Area = null; waves = null; trial = null; support = null; bossAI = null; cassel = null;
+            investigationWorld = null;
         }
         public void AbortStage()
         {
@@ -392,7 +400,7 @@ namespace RewindNotary
         {
             if (virtualCamera != null && shell != null && initialized)
             {
-                float targetSize = shell.Page == ShellPage.StoryDialogue ? 4.85f : 5.5f;
+                float targetSize = shell.Page == ShellPage.StoryDialogue ? 4.85f : GameplayCameraSize;
                 currentCameraSize = Mathf.Lerp(currentCameraSize, targetSize, 1f - Mathf.Exp(-Time.unscaledDeltaTime * 5.5f));
                 var lens = virtualCamera.Lens;
                 if (Mathf.Abs(lens.OrthographicSize - currentCameraSize) > 0.002f)
@@ -426,6 +434,8 @@ namespace RewindNotary
                 PlayerHp = player.Health.Current,
                 PlayerMaxHp = player.Health.Maximum,
                 ControlsText = GameInput.FormatControlsPrompt(true),
+                InteractionAnchor = GameInput.CanPlay && minimap?.FullMapOpen != true && !NotaryJournalCanvas.IsOpen
+                    ? Area?.InteractionAnchor ?? investigationWorld?.InteractionAnchor : null,
                 Skills = BuildSkillBadges(),
                 DashReadyRatio = player.Defense != null
                     ? 1f - Mathf.Clamp01((player.Defense.State.DashReadyAt - Time.time) / Mathf.Max(0.05f, DefenseTuning.DashCooldown))
@@ -461,9 +471,7 @@ namespace RewindNotary
             }
             var defense = player.Defense.State;
             string defenseStatus = defense.Phase == DefensePhase.Dash ? Loc.Get("defense.dashing")
-                : defense.Phase == DefensePhase.ParryWindow ? Loc.Get("defense.parry_window")
-                : defense.Phase == DefensePhase.ParryRecovery ? Loc.Get("defense.parry_recovery")
-                : defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
+                : Loc.Get("defense.ready");
             snap.StatusLine = SkillLabel(SkillRules.BasicSword);
             snap.SubStatusLine = defenseStatus + "  ·  " + Loc.Get("hud.dash_cooldown",
                 Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0", Loc.Culture),
@@ -605,14 +613,15 @@ namespace RewindNotary
             if (!initialized || !shell.Playing) { GUI.matrix = previous; return; }
             if (hudCanvas != null)
             {
-                if (minimap?.FullMapOpen != true && !NotaryJournalCanvas.IsOpen) DrawQuickSkills(label, 272);
+                if (Area?.InAtticTutorial != true && minimap?.FullMapOpen != true && !NotaryJournalCanvas.IsOpen)
+                    DrawQuickSkills(label, 272);
                 GUI.matrix = previous;
                 return;
             }
             if (Area != null)
             {
                 Area.DrawHUD(title, label);
-                DrawQuickSkills(label, 18);
+                if (!Area.InAtticTutorial) DrawQuickSkills(label, 18);
                 GUI.matrix = previous;
                 return;
             }
@@ -649,9 +658,7 @@ namespace RewindNotary
             GUI.Label(new Rect(36, 474, 408, 44), mode, mapping);
             var defense = player.Defense.State;
             string defenseStatus = defense.Phase == DefensePhase.Dash ? Loc.Get("defense.dashing")
-                : defense.Phase == DefensePhase.ParryWindow ? Loc.Get("defense.parry_window")
-                : defense.Phase == DefensePhase.ParryRecovery ? Loc.Get("defense.parry_recovery")
-                : defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
+                : Loc.Get("defense.ready");
             GUI.Label(new Rect(36, 524, 370, 26), defenseStatus, mapping);
             GUI.Label(new Rect(36, 552, 370, 44), Loc.Get("hud.dash_cooldown", Mathf.Max(0f, defense.DashReadyAt - Time.time).ToString("0.0", Loc.Culture), (defense.AirDashUsed ? Loc.Get("defense.air_spent") : Loc.Get("defense.air_available"))), mapping);
             string line = skills.Notice;
@@ -713,22 +720,30 @@ namespace RewindNotary
         {
             var keyStyle = new GUIStyle(label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold };
             var nameStyle = new GUIStyle(label) { alignment = TextAnchor.MiddleCenter, fontSize = 13, wordWrap = true };
+            var commandStyle = new GUIStyle(nameStyle) { fontSize = 11 };
             var previous = GUI.color;
             var record = skills.Progression.Record;
             for (int i = 0; i < QuickSkills.Keys.Length; i++)
             {
                 string id = QuickSkills.Equipped(shell.Settings.Value, record, i);
-                float cooldown = player.BenefactorSkills.Cooldown(id);
                 float x = 842 + i * 104;
                 GUI.color = new Color(.05f, .075f, .11f, .94f);
-                GUI.DrawTexture(new Rect(x, y, 98, 56), Texture2D.whiteTexture);
-                GUI.color = cooldown > 0f ? new Color(.68f, .74f, .81f) : new Color(.62f, 1f, .93f);
+                string command = QuickSkills.Command(QuickSkills.StarterIndex(id));
+                GUI.DrawTexture(new Rect(x, y, 98, command.Length > 0 ? 68 : 56), Texture2D.whiteTexture);
+                GUI.color = new Color(.62f, 1f, .93f);
                 var key = QuickSkills.Keys[i].ToString();
-                GUI.Label(new Rect(x + 2, y + 1, 94, 23),
-                    cooldown > 0f ? key + "  " + cooldown.ToString("0.0", Loc.Culture) : key, keyStyle);
+                GUI.Label(new Rect(x + 2, y + 1, 94, 23), key, keyStyle);
                 GUI.color = Color.white;
                 GUI.Label(new Rect(x + 2, y + 22, 94, 32), QuickSkills.Name(skills.Progression.Catalog, id), nameStyle);
+                if (command.Length > 0)
+                {
+                    GUI.color = new Color(.64f, .79f, .89f);
+                    GUI.Label(new Rect(x + 2, y + 47, 94, 17), command, commandStyle);
+                }
             }
+            GUI.color = new Color(.64f, .79f, .89f);
+            GUI.Label(new Rect(842, y + 69, 410, 18),
+                Loc.Get("quick_skill.wave_charge", GameInput.KeyLabel(GameInput.AttackKey)), commandStyle);
             GUI.color = previous;
         }
         private void OnDestroy()

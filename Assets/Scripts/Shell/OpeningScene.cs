@@ -31,7 +31,7 @@ namespace RewindNotary
         private string language;
         private int index;
         private float captionTime, duration;
-        private GUIStyle subtitle, speaker, prologueSubtitle, title;
+        private GUIStyle subtitle, speaker, prologueSubtitle, title, continueHint;
 
         internal static OpeningScene For(StoryRow row)
         {
@@ -109,7 +109,7 @@ namespace RewindNotary
         {
             if (language != Loc.Language) LoadCaptions();
             captionTime += delta;
-            if (!advance && captionTime < duration) return false;
+            if (!advance) return false;
             if (index + 1 == captions.Length) return true;
             index++;
             BeginCaption();
@@ -125,12 +125,16 @@ namespace RewindNotary
                 prologueSubtitle = new GUIStyle(subtitle) { alignment = TextAnchor.MiddleCenter };
                 prologueSubtitle.normal.textColor = new Color(.99f, .97f, .92f);
                 title = new GUIStyle(prologueSubtitle) { fontSize = 42, fontStyle = FontStyle.Bold };
+                continueHint = new GUIStyle(subtitle) { fontSize = 15, alignment = TextAnchor.MiddleRight };
+                continueHint.normal.textColor = new Color(.76f, .85f, .82f);
             }
             var color = GUI.color;
             Fill(new Rect(-Screen.width, -Screen.height, 1280 + 2 * Screen.width, 720 + 2 * Screen.height), Color.black);
             GUI.BeginGroup(new Rect(0, 0, 1280, 720));
             if (InPrologue) DrawPrologue();
             else DrawDialogue();
+            GUI.Label(new Rect(720, 686, 448, 25),
+                (GameInput.UsingGamepad ? "[A]" : "Enter") + "  ·  " + Loc.Get("ui.continue"), continueHint);
             GUI.EndGroup();
             GUI.color = color;
         }
@@ -164,7 +168,7 @@ namespace RewindNotary
             }
             Fill(new Rect(0, CaptionBandTop, 1280, 720 - CaptionBandTop), new Color(.03f, .04f, .06f, .97f));
             Fill(new Rect(620, CaptionBandTop + 24, 40, 2), new Color(.72f, .91f, .82f));
-            GUI.Label(new Rect(115, CaptionBandTop + 38, 1050, 115), Caption, prologueSubtitle);
+            GUI.Label(new Rect(115, CaptionBandTop + 38, 1050, 107), Caption, prologueSubtitle);
         }
 
         private void DrawDialogue()
@@ -189,9 +193,9 @@ namespace RewindNotary
                 Loc.Get(Direction ? "area.room." + row.room : "area.speaker." + row.speakerId), speaker);
             subtitle.normal.textColor = Direction ? new Color(.83f, .84f, .81f) : new Color(.99f, .97f, .92f);
             subtitle.fontSize = 30;
-            while (subtitle.fontSize > 18 && subtitle.CalcHeight(content, 1072) > 124)
+            while (subtitle.fontSize > 18 && subtitle.CalcHeight(content, 1072) > 100)
                 subtitle.fontSize -= 2;
-            GUI.Label(new Rect(96, top + 51, 1072, 124), content, subtitle);
+            GUI.Label(new Rect(96, top + 51, 1072, 100), content, subtitle);
         }
 
         private void DrawActor(int column, float center, bool active, bool gesture)

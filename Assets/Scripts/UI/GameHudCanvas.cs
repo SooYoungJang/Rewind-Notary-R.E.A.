@@ -25,6 +25,8 @@ namespace RewindNotary
             public string ObjectiveHint;
             public string NoticeText;
             public string ControlsText;
+            public Vector2? InteractionAnchor;
+            public bool OpeningTutorial;
             public bool BossVisible;
             public string BossName;
             public string BossPhase;
@@ -56,6 +58,9 @@ namespace RewindNotary
         private Text noticeText;
 
         private Text controlsText;
+        private GameObject loadoutStrip;
+        private RectTransform interactionBadge;
+        private Text interactionKey;
 
         private GameObject overlayPanel;
         private Text overlayTitleText, overlayDetailText;
@@ -70,8 +75,6 @@ namespace RewindNotary
         private float toastAge = 99f;
 
         private Image lowHpVignette;
-        private Image parryFlashImage;
-        private static float parryFlashAge = 99f;
 
         private CanvasGroup skillCardGroup;
         private Image skillCardBorder;
@@ -105,11 +108,11 @@ namespace RewindNotary
             BuildBossBar();
             BuildObjectiveAndNotice();
             BuildControlsFooter();
+            BuildInteractionBadge();
             BuildCenterOverlay();
             currentLang = Loc.Language;
         }
 
-        public static void PulseParryFlash() { parryFlashAge = 0f; }
 
         public void ShowToast(string text)
         {
@@ -136,9 +139,6 @@ namespace RewindNotary
             NotaryUiTheme.Stretch(lowHpVignette.rectTransform);
             lowHpVignette.raycastTarget = false;
 
-            parryFlashImage = NotaryUiTheme.CreateImage(canvas.transform, "ParryRimFlash", new Color(0.55f, 0.96f, 0.92f, 0f), edgeSprite);
-            NotaryUiTheme.Stretch(parryFlashImage.rectTransform);
-            parryFlashImage.raycastTarget = false;
         }
 
         private void BuildSkillAcquireCard()
@@ -272,6 +272,7 @@ namespace RewindNotary
         private void BuildLoadoutStrip()
         {
             var bar = NotaryUiTheme.CreateBorderedPanel(canvas.transform, "LoadoutStrip", NotaryUiTheme.PanelBgSoft, NotaryUiTheme.GoldSoft, 1.2f);
+            loadoutStrip = bar.gameObject;
             var rt = bar.rectTransform;
             rt.anchorMin = new Vector2(0f, 1f);
             rt.anchorMax = new Vector2(0f, 1f);
@@ -504,8 +505,9 @@ namespace RewindNotary
             playerHpGhost.rectTransform.anchorMax = new Vector2(displayedPlayerRatio, 1f);
             playerHpText.text = s.PlayerHp + " / " + s.PlayerMaxHp;
 
-            statusText.text = s.StatusLine ?? "";
-            subStatusText.text = s.SubStatusLine ?? "";
+            loadoutStrip.SetActive(!s.OpeningTutorial);
+            statusText.text = s.OpeningTutorial ? "" : s.StatusLine ?? "";
+            subStatusText.text = s.OpeningTutorial ? "" : s.SubStatusLine ?? "";
 
             if (!string.IsNullOrEmpty(s.RoomKey) && s.RoomKey != lastRoomKey)
             {
@@ -559,17 +561,6 @@ namespace RewindNotary
                 else lowHpVignette.color = new Color(0.84f, 0.10f, 0.14f, 0f);
             }
 
-            if (parryFlashImage != null)
-            {
-                if (parryFlashAge < 0.28f)
-                {
-                    parryFlashAge += Time.unscaledDeltaTime;
-                    float a = Mathf.Clamp01(1f - parryFlashAge / 0.28f);
-                    parryFlashImage.color = new Color(0.56f, 0.96f, 0.90f, a * a * 0.55f);
-                }
-                else parryFlashImage.color = new Color(0.56f, 0.96f, 0.90f, 0f);
-            }
-
             if (s.Skills != null && skillSlotBorders != null)
             {
                 for (int i = 0; i < skillSlotBorders.Length && i < s.Skills.Length; i++)
@@ -615,6 +606,7 @@ namespace RewindNotary
             if (hasNotice) noticeText.text = s.NoticeText;
 
             controlsText.text = s.ControlsText ?? "";
+            RenderInteractionBadge(s.OverlayVisible ? null : s.InteractionAnchor);
 
             overlayPanel.SetActive(s.OverlayVisible);
             if (s.OverlayVisible)
@@ -648,7 +640,38 @@ namespace RewindNotary
             objectiveText.font = body;
             noticeText.font = body;
             controlsText.font = body;
+            interactionKey.font = body;
             overlayDetailText.font = body;
+        }
+
+        private void BuildInteractionBadge()
+        {
+            var panel = NotaryUiTheme.CreateBorderedPanel(canvas.transform, "Interaction Key", NotaryUiTheme.PanelBg, NotaryUiTheme.Gold, 1.4f);
+            interactionBadge = panel.rectTransform;
+            interactionBadge.anchorMin = interactionBadge.anchorMax = new Vector2(.5f, .5f);
+            interactionBadge.pivot = new Vector2(.5f, 0f);
+            var pointer = NotaryUiTheme.CreateImage(panel.transform, "Pointer", NotaryUiTheme.Gold).rectTransform;
+            pointer.anchorMin = pointer.anchorMax = new Vector2(.5f, 0f);
+            pointer.sizeDelta = new Vector2(8f, 8f);
+            pointer.localRotation = Quaternion.Euler(0f, 0f, 45f);
+            interactionKey = NotaryUiTheme.CreateText(panel.transform, "Key", "", 18, NotaryUiTheme.Ivory, TextAnchor.MiddleCenter, false, true);
+            NotaryUiTheme.Stretch(interactionKey.rectTransform, 7f, 1f, 7f, 1f);
+            interactionBadge.gameObject.SetActive(false);
+        }
+
+        private void RenderInteractionBadge(Vector2? anchor)
+        {
+            var camera = anchor.HasValue ? Camera.main : null;
+            var screen = camera != null ? camera.WorldToScreenPoint(anchor.Value) : Vector3.zero;
+            bool visible = camera != null && screen.z > 0f && camera.pixelRect.Contains(screen);
+            interactionBadge.gameObject.SetActive(visible);
+            if (!visible) return;
+
+            var canvasRect = (RectTransform)canvas.transform;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screen, null, out var local);
+            interactionKey.text = GameInput.InteractLabel;
+            interactionBadge.sizeDelta = new Vector2(Mathf.Max(38f, interactionKey.preferredWidth + 16f), 32f);
+            interactionBadge.anchoredPosition = local;
         }
 
         private void OnDestroy()
