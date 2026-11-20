@@ -31,6 +31,8 @@ namespace RewindNotary
         public TrialDialogueKeys dialogue;
         public BenefactorSupportDefinition support;
         public TrialPattern[] patterns;
+        public TrialPattern storyFinisher;
+        public TrialPattern StoryFinisher => string.IsNullOrEmpty(storyFinisher?.action) ? null : storyFinisher;
         public bool Unlocked(CoreRecord record) => record?.Get(skillId)?.acquired == true;
         public bool Qualifies(CombatEffectResult result)
         {
@@ -91,6 +93,11 @@ namespace RewindNotary
                     if (p == null || p.windup < 0.45f || p.duration <= 0 || p.recovery <= 0 || p.reach <= 0 || p.damage <= 0 || p.projectileSpeed <= 0 || p.projectileLifetime <= 0 || p.projectileHeight <= 0
                         || Array.IndexOf(new[] { "thread_sweep", "thread_cross", "pendulum_out", "pendulum_back", "waltz", "volley", "bell", "paint_line" }, p.action) < 0)
                         throw new InvalidOperationException("Invalid trial pattern");
+                var finisher = d.StoryFinisher;
+                if (finisher != null && (finisher.action != "thread_lunge" || string.IsNullOrEmpty(finisher.label) ||
+                    finisher.windup < .45f || finisher.duration <= 0 || finisher.recovery <= 0 ||
+                    finisher.reach <= 0 || finisher.speed <= 0 || finisher.damage <= 0))
+                    throw new InvalidOperationException("Invalid story finisher: " + d.id);
             }
         }
         private static bool ValidKey(string key, string id) => key != null && key.StartsWith("trial." + id + ".", StringComparison.Ordinal)

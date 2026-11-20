@@ -140,7 +140,7 @@ namespace RewindNotary
             }
         }
         internal CombatMotor2D BoutOpponent => opponent.gameObject.activeSelf && FightNeeded() ? opponent : null;
-        internal BenefactorTrialOpponent Bout => mikhailBout;
+        internal BenefactorTrialOpponent Bout => storyBout;
         internal string PendingAction => ReadyForAction ? ActionToken : null;
         internal bool OnReturnFloor => Safe && OnFixedFloor();
         internal StoryDoor ForwardDoor

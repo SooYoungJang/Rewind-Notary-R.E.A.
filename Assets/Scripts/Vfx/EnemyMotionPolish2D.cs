@@ -37,7 +37,6 @@ namespace RewindNotary
         private float hitRecoilUntil;
         private float animClock;
         private float phaseOffset;
-        private Vector3 lastTargetPosition;
         private static Texture2D sharedShadowTex;
         private static Sprite sharedShadowSprite;
         private static Texture2D sharedRingTex;
@@ -48,7 +47,6 @@ namespace RewindNotary
         {
             target = owner;
             player = playerActor;
-            lastTargetPosition = transform.position;
             phaseOffset = Mathf.Abs(transform.position.x * 1.37f + transform.position.y * 0.73f);
             var child = transform.Find("Target silhouette");
             if (child == null) return;
@@ -254,10 +252,7 @@ namespace RewindNotary
             lastRemaining = remaining;
 
             bool alive = !cleared && pictureRenderer.enabled;
-            Vector3 targetPosition = transform.position;
-            bool moving = (targetPosition - lastTargetPosition).sqrMagnitude > 0.000001f;
-            lastTargetPosition = targetPosition;
-            shadowRenderer.enabled = alive;
+            shadowRenderer.enabled = alive && target.FeetSupported;
             stateRing.enabled = alive;
             if (hpBarRoot != null)
             {
@@ -287,7 +282,7 @@ namespace RewindNotary
             bool recoiling = Time.time < hitRecoilUntil;
 
             if (player != null && target.Kind == EffectTargetKind.Enemy)
-                pictureRenderer.flipX = player.transform.position.x < transform.position.x;
+                pictureRenderer.flipX = target.Facing < 0;
 
             if (recoiling)
             {
@@ -311,7 +306,7 @@ namespace RewindNotary
                 else if (winding) frame = 4;
                 else if (sinceStrike < 0.09f) frame = 5;
                 else if (sinceStrike < 0.18f) frame = 6;
-                else if (moving) frame = 2 + (Mathf.FloorToInt(t * 8f) % 2);
+                else if (target.Walking) frame = 2 + (Mathf.FloorToInt(t * 8f) % 2);
                 else frame = Mathf.FloorToInt(t * 4f) % 2;
                 pictureRenderer.sprite = sheetFrames[frame];
             }

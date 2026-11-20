@@ -220,7 +220,7 @@ namespace RewindNotary
                         throw new System.InvalidOperationException("Unknown roster placement in " + Room.id);
                     var go = Place(Room.id + ":" + group.id + "_" + index, point == null ? x : point.x, point == null ? .05f : point.y);
                     var target = go.AddComponent<WaveTarget2D>();
-                    var spawn = new WaveSpawn { segments = group.segments,
+                    var spawn = new WaveSpawn { archetypeId = group.id, segments = group.segments,
                         setupSkill = !string.IsNullOrEmpty(group.setupSkill) ? group.setupSkill : kind.gate == "skill" ? SkillRules.SilverStitch : null };
                     // Before learning stitch, the armour seam is exposed to ordinary sword hits.
                     if (kind.gate == "skill" && string.IsNullOrEmpty(group.setupSkill) &&
@@ -318,11 +318,11 @@ namespace RewindNotary
                 snap.SubStatusLine = defense.CounterReady(Time.time) ? Loc.Get("defense.counter_ready") : Loc.Get("defense.ready");
             }
             snap.NoticeText = session.Notice;
-            if (mikhailBout != null)
+            if (storyBout != null)
             {
                 snap.BossVisible = true;
                 snap.BossName = DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail");
-                snap.BossPhase = mikhailBout.PatternLabel;
+                snap.BossPhase = storyBout.PatternLabel;
                 snap.BossHp = opponent.Health.Current;
                 snap.BossMaxHp = opponent.Health.Maximum;
             }
@@ -335,7 +335,7 @@ namespace RewindNotary
                 snap.BossMaxHp = opponent.Health.Maximum;
             }
             snap.ObjectiveHint = BuildStoryHint();
-            snap.ControlsText = GameInput.FormatControlsPrompt(mikhailBout != null || NeedsEntryWave);
+            snap.ControlsText = GameInput.FormatControlsPrompt(storyBout != null || NeedsEntryWave);
         }
         private string BuildStoryHint()
         {
@@ -380,11 +380,11 @@ namespace RewindNotary
                 GUI.Label(new Rect(34, 92, 950, 34), Loc.Get("stage.finale_survival_locked"), style);
             else if (BenefactorTrialProgress.Has(Record, DistrictTrial ?? mikhailTrial, "unlocked"))
                 GUI.Label(new Rect(34, 92, 950, 34), BenefactorTrialProgress.Status(Record, DistrictTrial ?? mikhailTrial), style);
-            if (mikhailBout != null)
+            if (storyBout != null)
             {
                 GUI.Box(new Rect(215, 138, 850, 78), "");
                 GUI.Label(new Rect(235, 144, 810, 36), Loc.Get("area.bout", DistrictTrial != null ? DistrictTrial.DisplayName : Loc.Get("area.target.mikhail")) + "   " +
-                    opponent.Health.Current + " / " + opponent.Health.Maximum + "   " + mikhailBout.PatternLabel, style);
+                    opponent.Health.Current + " / " + opponent.Health.Maximum + "   " + storyBout.PatternLabel, style);
                 GameBootstrap.Bar(new Rect(235, 190, 810, 12), opponent.Health, new Color(.90f, .48f, .40f));
             }
             DrawHandSignal();
@@ -419,7 +419,7 @@ namespace RewindNotary
                 if (HasBridge && !Has(BridgeFlag)) hint += Loc.Get("area.latch");
                 if (Room.id == "hub_attic" && Has("sixth_bowl_stamped")) hint += Loc.Get("area.sixth");
             }
-            if (mikhailBout != null || NeedsEntryWave) hint += "\n" + Loc.Get("input.gameplay");
+            if (storyBout != null || NeedsEntryWave) hint += "\n" + Loc.Get("input.gameplay");
             GUI.Box(new Rect(20, 534, 1240, 168), "");
             GUI.Label(new Rect(35, 545, 1200, 100), hint, style);
             GUI.Label(new Rect(35, 658, 1200, 36), Loc.Get("area.help"), style);

@@ -1526,6 +1526,10 @@
       "value": "Barrido de hilo de plata"
     },
     {
+      "key": "trial.mikhail.thread_lunge",
+      "value": "Estocada de hilo de plata"
+    },
+    {
       "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
       "value": "Corte cruzado"
     },

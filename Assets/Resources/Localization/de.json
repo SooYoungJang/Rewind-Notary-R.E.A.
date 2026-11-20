@@ -1526,6 +1526,10 @@
       "value": "Silberfaden-Querschnitt"
     },
     {
+      "key": "trial.mikhail.thread_lunge",
+      "value": "Silberfaden-Ausfall"
+    },
+    {
       "key": "data.trials.catalog.trials.mikhail.patterns.2.label",
       "value": "Kreuzschnitt"
     },
