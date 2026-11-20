@@ -29,11 +29,16 @@ namespace RewindNotary
         private void LateUpdate()
         {
             if (shellCanvas == null || Settings == null) return;
+            if (Page == ShellPage.StoryDialogue && openingScene != null)
+            {
+                shellCanvas.Render(default);
+                return;
+            }
             var snap = new GameShellCanvas.ShellSnapshot
             {
                 Visible = !Playing,
                 Page = Page,
-                OverLiveWorld = Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.Investigation
+                OverLiveWorld = Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.QuickSlots || Page == ShellPage.Investigation
                     || Page == ShellPage.CoreReading || Page == ShellPage.ReturnSelection || Page == ShellPage.ReturnConfirm
                     || Page == ShellPage.StoryDialogue || Page == ShellPage.StorySaving,
                 GameTitle = Loc.Get("game.menu_title"),
@@ -133,6 +138,22 @@ namespace RewindNotary
 
                 case ShellPage.Skills:
                     PopulateSkills(ref snap);
+                    break;
+
+                case ShellPage.QuickSlots:
+                    snap.BodyHeader = Loc.Get("quick_skill.assign_hint");
+                    for (int i = 0; i < QuickSkills.Keys.Length; i++)
+                    {
+                        string equipped = QuickSkills.Equipped(Settings.Value, game.ActiveSkills.Progression.Record, i);
+                        snap.Buttons.Add(new GameShellCanvas.ButtonItem
+                        {
+                            Index = i,
+                            Label = QuickSkills.Keys[i] + "   " + QuickSkills.Name(catalog, equipped),
+                            Selected = selected == i
+                        });
+                    }
+                    snap.Buttons.Add(new GameShellCanvas.ButtonItem { Index = QuickSkills.Keys.Length,
+                        Label = Loc.Get("ui.back"), Selected = selected == QuickSkills.Keys.Length });
                     break;
 
                 case ShellPage.Investigation:
@@ -259,8 +280,14 @@ namespace RewindNotary
             snap.Buttons.Add(new GameShellCanvas.ButtonItem
             {
                 Index = 1,
-                Label = Loc.Get("ui.back_to_pause"),
+                Label = Loc.Get("quick_skill.menu"),
                 Selected = selected == 1
+            });
+            snap.Buttons.Add(new GameShellCanvas.ButtonItem
+            {
+                Index = 2,
+                Label = Loc.Get("ui.back_to_pause"),
+                Selected = selected == 2
             });
         }
 

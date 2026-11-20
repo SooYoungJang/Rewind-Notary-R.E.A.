@@ -10,11 +10,13 @@ namespace RewindNotary
     public sealed class SpriteAnimator : MonoBehaviour
     {
         public enum Pose { Idle, Run, Jump, Fall, Land, Attack }
-        [Serializable] private sealed class SheetLayout { public FramePivot[] frames; }
+        [Serializable] private sealed class SheetLayout { public FramePivot[] frames; public int[] columnEdges; }
         [Serializable] private sealed class FramePivot { public int row; public int col; public float x; public float y; }
         private readonly Dictionary<Pose, Sprite[]> clips = new Dictionary<Pose, Sprite[]>();
         private readonly List<Sprite> ownedSprites = new List<Sprite>();
         private SpriteRenderer view;
+        private Sprite[][] groundAttacks, airAttacks;
+        private Sprite[] runAttack, activeAttack;
         private Pose state;
         private float elapsed;
         private bool ready;
@@ -68,32 +70,62 @@ namespace RewindNotary
             foreach (Sprite sprite in ownedSprites) if (sprite != null) Destroy(sprite);
             ownedSprites.Clear();
             ActiveResource = resource;
-            var layoutFile = Resources.Load<TextAsset>(resource + "-layout");
-            SheetLayout layout = layoutFile == null ? null : JsonUtility.FromJson<SheetLayout>(layoutFile.text);
-            float w = texture.width / 8f, h = texture.height / 4f;
-            Sprite[] Slice(int row, int first, int count)
+            groundAttacks = airAttacks = null;
+            runAttack = activeAttack = null;
+            var layout = LoadLayout(resource);
+            clips[Pose.Idle] = Slice(texture, layout, 8, 4, 0, 0, 4, 2.5f);
+            clips[Pose.Run] = Slice(texture, layout, 8, 4, 1, 0, 8, 2.5f);
+            clips[Pose.Jump] = Slice(texture, layout, 8, 4, 2, 0, 1, 2.5f);
+            clips[Pose.Fall] = Slice(texture, layout, 8, 4, 2, 1, 1, 2.5f);
+            clips[Pose.Land] = Slice(texture, layout, 8, 4, 2, 2, 1, 2.5f);
+            clips[Pose.Attack] = Slice(texture, layout, 8, 4, 3, 0, 4, 2.5f);
+            const string rea = "GameArt/sprites/rea-sheet";
+            if (resource == rea || resource.StartsWith(rea + "-tier", StringComparison.Ordinal))
             {
-                var frames = new Sprite[count];
-                for (int i = 0; i < count; i++)
-                {
-                    int col = first + i;
-                    Vector2 pivot = new Vector2(0.5f, 0.04f);
-                    if (layout != null && layout.frames != null)
-                        foreach (FramePivot p in layout.frames)
-                            if (p.row == row && p.col == col) { pivot = new Vector2(p.x, p.y); break; }
-                    frames[i] = Sprite.Create(texture, new Rect(col * w, texture.height - (row + 1) * h, w, h),
-                        pivot, h / 2.5f, 0, SpriteMeshType.FullRect);
-                    frames[i].name = resource + "_" + row + "_" + col;
-                    ownedSprites.Add(frames[i]);
-                }
-                return frames;
+                groundAttacks = LoadAttackRows(rea + "-ground-attacks", 4, 2.65f);
+                airAttacks = LoadAttackRows(rea + "-air-attacks", 2, 3.40f);
+                runAttack = LoadAttackRows(rea + "-running-attack", 1, 4.30f)[0];
             }
-            clips[Pose.Idle] = Slice(0, 0, 4);
-            clips[Pose.Run] = Slice(1, 0, 8);
-            clips[Pose.Jump] = Slice(2, 0, 1);
-            clips[Pose.Fall] = Slice(2, 1, 1);
-            clips[Pose.Land] = Slice(2, 2, 1);
-            clips[Pose.Attack] = Slice(3, 0, 4);
+        }
+
+        private static SheetLayout LoadLayout(string resource)
+        {
+            var layout = Resources.Load<TextAsset>(resource + "-layout");
+            return layout == null ? null : JsonUtility.FromJson<SheetLayout>(layout.text);
+        }
+
+        private Sprite[][] LoadAttackRows(string resource, int rows, float worldHeight)
+        {
+            var texture = Resources.Load<Texture2D>(resource);
+            if (texture == null) throw new InvalidOperationException("Missing GameArt: " + resource);
+            var layout = LoadLayout(resource);
+            var attacks = new Sprite[rows][];
+            for (int row = 0; row < rows; row++)
+                attacks[row] = Slice(texture, layout, 4, rows, row, 0, 4, worldHeight);
+            return attacks;
+        }
+
+        private Sprite[] Slice(Texture2D texture, SheetLayout layout, int columns, int rows,
+            int row, int first, int count, float worldHeight)
+        {
+            var frames = new Sprite[count];
+            float cellWidth = texture.width / (float)columns;
+            float cellHeight = texture.height / (float)rows;
+            int top = texture.height - Mathf.RoundToInt(row * cellHeight);
+            int bottom = texture.height - Mathf.RoundToInt((row + 1) * cellHeight);
+            for (int i = 0; i < count; i++)
+            {
+                int col = first + i;
+                int left = layout?.columnEdges?[col] ?? Mathf.RoundToInt(col * cellWidth);
+                int right = layout?.columnEdges?[col + 1] ?? Mathf.RoundToInt((col + 1) * cellWidth);
+                var pivot = layout?.frames == null ? null : Array.Find(layout.frames, p => p.row == row && p.col == col);
+                var anchor = pivot == null ? new Vector2(.5f, .04f) : new Vector2(pivot.x, pivot.y);
+                frames[i] = Sprite.Create(texture, new Rect(left, bottom, right - left, top - bottom),
+                    anchor, cellHeight / worldHeight, 0, SpriteMeshType.FullRect);
+                frames[i].name = texture.name + "_" + row + "_" + col;
+                ownedSprites.Add(frames[i]);
+            }
+            return frames;
         }
 
         public void Face(int direction) { if (view != null) view.flipX = direction < 0; }
@@ -139,15 +171,25 @@ namespace RewindNotary
             elapsed = 0f;
             view.sprite = clips[state][0];
         }
+        internal void BeginAttack(int step, bool grounded, bool moving)
+        {
+            if (!ready) return;
+            if (groundAttacks == null || step == 0) activeAttack = clips[Pose.Attack];
+            else if (!grounded && step <= airAttacks.Length) activeAttack = airAttacks[step - 1];
+            else if (step == 1 && grounded && moving) activeAttack = runAttack;
+            else activeAttack = groundAttacks[step - 1];
+            state = Pose.Attack;
+            view.sprite = activeAttack[0];
+        }
+
         public void PlayAttack(float attackElapsed, float strikeTime, float duration)
         {
             if (!ready) return;
             state = Pose.Attack;
-            // Existing row 3: preparation -> raised blade -> slash/contact -> recovery.
             // The motor owns this clock, so the hit and slash frame cannot drift apart.
             int index = attackElapsed < strikeTime * 0.5f ? 0 : attackElapsed < strikeTime ? 1
                 : attackElapsed < strikeTime + (duration - strikeTime) * 0.5f ? 2 : 3;
-            view.sprite = clips[Pose.Attack][index];
+            view.sprite = (activeAttack ?? clips[Pose.Attack])[index];
         }
         private void Update()
         {

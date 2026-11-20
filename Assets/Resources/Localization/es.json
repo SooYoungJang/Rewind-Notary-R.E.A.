@@ -2,6 +2,74 @@
   "language": "es",
   "entries": [
     {
+      "key": "quick_skill.rea_thrust",
+      "value": "Estocada"
+    },
+    {
+      "key": "quick_skill.rea_rising",
+      "value": "Corte alto"
+    },
+    {
+      "key": "quick_skill.rea_sweep",
+      "value": "Barrido"
+    },
+    {
+      "key": "quick_skill.rea_wave",
+      "value": "Onda de filo"
+    },
+    {
+      "key": "quick_skill.menu",
+      "value": "Ranuras de técnicas"
+    },
+    {
+      "key": "quick_skill.assign_hint",
+      "value": "↑ ↓ Elige ranura · ← → Equipa una técnica"
+    },
+    {
+      "key": "story.prologue.city",
+      "value": "En Lapis, la ciudad de la certificación, el registro conserva el nombre de cada persona y las técnicas que ha aprendido."
+    },
+    {
+      "key": "story.prologue.craft",
+      "value": "En Lapis se puede certificar tanto la destreza de un sastre veterano como la esgrima aprendida de un maestro."
+    },
+    {
+      "key": "story.prologue.record",
+      "value": "Un espadachín notarial graba una técnica en la Espada de Registro y la demuestra al reproducirla en el nivel 3."
+    },
+    {
+      "key": "story.prologue.deadline",
+      "value": "Mañana a las seis de la mañana está prevista la ejecución de cinco reos."
+    },
+    {
+      "key": "story.prologue.order",
+      "value": "Ha llegado una orden sellada de la Oficina Notarial Central. Una de sus cláusulas les da a los cinco la oportunidad de vivir."
+    },
+    {
+      "key": "story.prologue.condition",
+      "value": "Encuentra a los cinco reos y aprende una técnica de cada uno. Grábalas en la Espada de Registro y certifícalas en el nivel 3."
+    },
+    {
+      "key": "story.prologue.pardon",
+      "value": "Si las cinco certificaciones se completan a tiempo, los cinco reos recibirán un indulto especial."
+    },
+    {
+      "key": "story.prologue.rea",
+      "value": "La oficina ha confiado la misión a Rea, una espadachina notarial recién nombrada. Le queda menos de un día."
+    },
+    {
+      "key": "story.prologue.table",
+      "value": "Esa mañana, Marta escribió en el tablero del ático los nombres de los invitados al desayuno de mañana."
+    },
+    {
+      "key": "story.prologue.place",
+      "value": "En el tablero había cinco nombres. Junto a ellos quedaba un sitio en blanco."
+    },
+    {
+      "key": "story.prologue.dawn",
+      "value": "El aroma del té de menta llegó desde la ventana. Rea abre los ojos en el ático, donde la espera la orden sellada."
+    },
+    {
       "key": "finale.ending.true",
       "value": "Final verdadero desbloqueado"
     },
@@ -27,7 +95,7 @@
     },
     {
       "key": "finale.mirror_open",
-      "value": "Espejo expuesto · F / stick izquierdo: elegir devolución"
+      "value": "Espejo expuesto · C / stick izquierdo: elegir devolución"
     },
     {
       "key": "finale.mirror_closed",
@@ -167,7 +235,7 @@
     },
     {
       "key": "input.gameplay",
-      "value": "Mover A/D·Flechas·Stick | Saltar Espacio·A | Espada J/Z/Clic izq.·X | Técnica Q·Y | Dash Shift/K·LB | Parry L·RB"
+      "value": "← → Moverse · Espacio Saltar · Z Atacar · X Parar · C Interactuar · Mayús+dirección Correr · Q W E R Técnicas"
     },
     {
       "key": "hud.trial_hint",
@@ -187,7 +255,7 @@
     },
     {
       "key": "input.retry_pause",
-      "value": "{0}  R·Vista: reiniciar | Esc·Menú: pausa"
+      "value": "{0}  Backspace·Vista: reiniciar | Esc·Menú: pausa"
     },
     {
       "key": "input.debug",
@@ -195,7 +263,7 @@
     },
     {
       "key": "trial.health",
-      "value": "PV de práctica {0}/{1} · Al agotarse, se reanuda la práctica · R: reiniciar posiciones"
+      "value": "PV de práctica {0}/{1} · Al agotarse, se reanuda la práctica · Backspace: reiniciar posiciones"
     },
     {
       "key": "input.benefactor_support",
@@ -215,7 +283,7 @@
     },
     {
       "key": "input.retry_button",
-      "value": "Pulsa R / Vista para reintentar."
+      "value": "Pulsa Backspace / Vista para reintentar."
     },
     {
       "key": "hud.returning_checkpoint",
@@ -363,7 +431,7 @@
     },
     {
       "key": "input.investigation",
-      "value": "Investigar: F / pulsar stick izquierdo\nEsc → Técnicas → Diario de investigación"
+      "value": "Investigar: C / pulsar stick izquierdo\nEsc → Técnicas → Diario de investigación"
     },
     {
       "key": "investigation.read_core",
@@ -379,7 +447,7 @@
     },
     {
       "key": "input.inspect_action",
-      "value": "F / pulsar stick izquierdo: {0}"
+      "value": "C / pulsar stick izquierdo: {0}"
     },
     {
       "key": "investigation.wait_for_action",
@@ -567,7 +635,7 @@
     },
     {
       "key": "skill.acquired_notice",
-      "value": "Obtuviste {0} — Elegir: 1–5 / E·B · Usar: Q·Y"
+      "value": "Aprendiste {0}. Usa dirección + V o equípala en una ranura."
     },
     {
       "key": "skill.stage_up_notice",
@@ -1315,7 +1383,7 @@
     },
     {
       "key": "wave.all_complete",
-      "value": "3 zonas completadas · Revisa los hitos de espada 151 / 400 en el registro. R: reiniciar"
+      "value": "3 zonas completadas · Revisa los hitos de espada 151 / 400 en el registro. Backspace: reiniciar"
     },
     {
       "key": "wave.zone_complete",
@@ -1815,7 +1883,7 @@
     },
     {
       "key": "input.cast_hint",
-      "value": "Dirección + Q·Y | Pared: mantén ataque + ↓ técnica"
+      "value": "Dirección + V·Y | Pared: mantén ataque + ↓ técnica"
     },
     {
       "key": "input.skill_unlearned",
@@ -1839,7 +1907,7 @@
     },
     {
       "key": "story.intro.attic.02",
-      "value": "“¿Ya despertaste, Rea? Saqué ese caramelo para tu bolsita mientras preparaba el té de menta resonante y se habrá caído rodando. Tráelo y déjalo en el platito vacío junto al sobre.”\n(Controles: Pulsa F / pulsar stick izquierdo frente al caramelo de menta en el suelo para recogerlo y déjalo en el platito junto al sobre en la mesa.)"
+      "value": "“¿Ya despertaste, Rea? Saqué ese caramelo para tu bolsita mientras preparaba el té de menta resonante y se habrá caído rodando. Tráelo y déjalo en el platito vacío junto al sobre.”\n(Controles: Pulsa C / pulsar stick izquierdo frente al caramelo de menta en el suelo para recogerlo y déjalo en el platito junto al sobre en la mesa.)"
     },
     {
       "key": "story.intro.attic.03",
@@ -1847,7 +1915,7 @@
     },
     {
       "key": "story.intro.attic.04",
-      "value": "(Se alisa el vestido, compone una sonrisa radiante y tiende el sobre)\n“Toma, mi Rea. Es una orden de recuperación especial enviada desde la Oficina Notarial Central. Recíbela de una vez.”\n(Controles: Pulsa F / pulsar stick izquierdo frente al sobre del encargo en la mesa para recibirlo. Se registrará la pista [Contrato · Sello de la copia].)"
+      "value": "(Se alisa el vestido, compone una sonrisa radiante y tiende el sobre)\n“Toma, mi Rea. Es una orden de recuperación especial enviada desde la Oficina Notarial Central. Recíbela de una vez.”\n(Controles: Pulsa C / pulsar stick izquierdo frente al sobre del encargo en la mesa para recibirlo. Se registrará la pista [Contrato · Sello de la copia].)"
     },
     {
       "key": "story.intro.attic.05",
@@ -1863,11 +1931,11 @@
     },
     {
       "key": "story.intro.board.03",
-      "value": "“Yo comeré cuando vuelva…… ah, cierto, al volver.\n(Apoyando la mano sobre el sexto hueco vacío junto a los cinco nombres) Sí, tampoco dejaré vacío mi lugar. ¡Mañana por la mañana el sexto tazón lo terminaré yo misma!”\n(Controles: Pulsa F / pulsar stick izquierdo frente al tablero de desayunos para sellar tú misma el sexto lugar.)"
+      "value": "“Yo comeré cuando vuelva…… ah, cierto, al volver.\n(Apoyando la mano sobre el sexto hueco vacío junto a los cinco nombres) Sí, tampoco dejaré vacío mi lugar. ¡Mañana por la mañana el sexto tazón lo terminaré yo misma!”\n(Controles: Pulsa C / pulsar stick izquierdo frente al tablero de desayunos para sellar tú misma el sexto lugar.)"
     },
     {
       "key": "story.intro.forge.01",
-      "value": "“¿Viniste a revisar el filo antes de salir, Rea? A ver, dámela. La apoyaré un momento en la piedra de afilar para comprobar que la ranura del núcleo no baile.”\n(Controles: Pulsa F / pulsar stick izquierdo en el banco de afilar de Ethan para colocar la espada de registros.)"
+      "value": "“¿Viniste a revisar el filo antes de salir, Rea? A ver, dámela. La apoyaré un momento en la piedra de afilar para comprobar que la ranura del núcleo no baile.”\n(Controles: Pulsa C / pulsar stick izquierdo en el banco de afilar de Ethan para colocar la espada de registros.)"
     },
     {
       "key": "story.intro.forge.02",
@@ -1887,7 +1955,7 @@
     },
     {
       "key": "story.velvet.entry.02",
-      "value": "“Asómate a este armario abierto. Desde talla de once años hasta talla de dieciséis, cuelgan en fila seis abrigos de invierno cosidos uno cada año durante los últimos seis años. Aunque su dueña nunca pudo ponérselos, todas las costuras están planchadas con esmero.”\n(Controles: Pulsa F / pulsar stick izquierdo para examinar el armario de Mikhail. Se registrará la pista [Mikhail · Impronta del núcleo].)"
+      "value": "“Asómate a este armario abierto. Desde talla de once años hasta talla de dieciséis, cuelgan en fila seis abrigos de invierno cosidos uno cada año durante los últimos seis años. Aunque su dueña nunca pudo ponérselos, todas las costuras están planchadas con esmero.”\n(Controles: Pulsa C / pulsar stick izquierdo para examinar el armario de Mikhail. Se registrará la pista [Mikhail · Impronta del núcleo].)"
     },
     {
       "key": "story.velvet.entry.03",
@@ -1907,7 +1975,7 @@
     },
     {
       "key": "story.mikhail.i0.04",
-      "value": "(Apoyando las tijeras-espada en el suelo, hinca una rodilla. El núcleo de la espada de registros capta en azul el trazo de nivel 1 de la Puntada de plata mostrado en el duelo)\n“Tsk…… Aunque escondí mi último nudo, esa hoja leyó la hebra de mi puntada simple.\nGrábatelo bien, Rea: si paras aquí es solo defensa personal, pero en cuanto domines esa costura hasta completarla, el tormento de mi corazón pasará a ti. Me retiro a la enfermería…… Por favor, guarda esa espada y vete a casa.”\n(Aviso del sistema: Obtuviste Puntada de plata — Pulsa Q (Y en el mando) sin pulsar ninguna dirección.)"
+      "value": "(Apoyando las tijeras-espada en el suelo, hinca una rodilla. El núcleo de la espada de registros capta en azul el trazo de nivel 1 de la Puntada de plata mostrado en el duelo)\n“Tsk…… Aunque escondí mi último nudo, esa hoja leyó la hebra de mi puntada simple.\nGrábatelo bien, Rea: si paras aquí es solo defensa personal, pero en cuanto domines esa costura hasta completarla, el tormento de mi corazón pasará a ti. Me retiro a la enfermería…… Por favor, guarda esa espada y vete a casa.”\n(Aviso del sistema: Obtuviste Puntada de plata — Pulsa V (Y en el mando) sin pulsar ninguna dirección.)"
     },
     {
       "key": "story.mikhail.i1.01",
@@ -1971,7 +2039,7 @@
     },
     {
       "key": "story.invest.03_theo",
-      "value": "(Cojeando deprisa frente a la terminal de medición, despliega el gráfico de ondas)\n“Mira el registro del libro mayor en la terminal de la sucursal, Rea. Ese ‘anexo de absorción y borrado del núcleo madre’ que anunciaba la Oficina Notarial Central no existe en ningún punto del diseño de la espada de registros.\nLa causalidad del mundo te juzgó ‘la misma persona’ que el dueño original por haber recreado a la perfección una Forma suprema de nivel 3, y transfirió directo a tu cuerpo la Condena prevista.”\n(Controles: Pulsa F / pulsar stick izquierdo para examinar la terminal de registros de la sucursal (point_route_ledger) y revisar la pista [Ruta de transferencia · Terminal de registros].)"
+      "value": "(Cojeando deprisa frente a la terminal de medición, despliega el gráfico de ondas)\n“Mira el registro del libro mayor en la terminal de la sucursal, Rea. Ese ‘anexo de absorción y borrado del núcleo madre’ que anunciaba la Oficina Notarial Central no existe en ningún punto del diseño de la espada de registros.\nLa causalidad del mundo te juzgó ‘la misma persona’ que el dueño original por haber recreado a la perfección una Forma suprema de nivel 3, y transfirió directo a tu cuerpo la Condena prevista.”\n(Controles: Pulsa C / pulsar stick izquierdo para examinar la terminal de registros de la sucursal (point_route_ledger) y revisar la pista [Ruta de transferencia · Terminal de registros].)"
     },
     {
       "key": "story.invest.04_luka",
@@ -1979,7 +2047,7 @@
     },
     {
       "key": "story.invest.05_marta",
-      "value": "(Con manos temblorosas, Marta extiende bajo la lámpara del taller el libro de consignación del ático junto a la copia de la orden de Rea)\n“Rea, esta vieja de verdad no sabía nada cuando te lo entregó. Pero mirándolo a contraluz…… bajo el espacio de [Artículo 3 (Anexo especial)] de tu copia, las fibras del papel original fueron raspadas con punta de cuchillo.\nEncima reimprimieron lo de ‘absorción, borrado e indulto especial’ con los viejos tipos de plomo de nuestro almacén de la Torre del Reloj y tu tinta notarial de lapislázuli. Ahora mira la firma de quien depositó [Registro #01 / Antes del reflujo 06:25] en este libro.”\n(Controles: Pulsa F / pulsar stick izquierdo para comparar el libro de consignación y el sello de la copia en la mesa.)"
+      "value": "(Con manos temblorosas, Marta extiende bajo la lámpara del taller el libro de consignación del ático junto a la copia de la orden de Rea)\n“Rea, esta vieja de verdad no sabía nada cuando te lo entregó. Pero mirándolo a contraluz…… bajo el espacio de [Artículo 3 (Anexo especial)] de tu copia, las fibras del papel original fueron raspadas con punta de cuchillo.\nEncima reimprimieron lo de ‘absorción, borrado e indulto especial’ con los viejos tipos de plomo de nuestro almacén de la Torre del Reloj y tu tinta notarial de lapislázuli. Ahora mira la firma de quien depositó [Registro #01 / Antes del reflujo 06:25] en este libro.”\n(Controles: Pulsa C / pulsar stick izquierdo para comparar el libro de consignación y el sello de la copia en la mesa.)"
     },
     {
       "key": "story.invest.06_rea",
@@ -1987,7 +2055,7 @@
     },
     {
       "key": "story.invest.07_exp1_ethan",
-      "value": "“No sirve de nada adivinar de palabra. Pon la espada en el soporte de medición y veremos qué quedó adentro.\nRea, ¿recuerdas esas tres marcas de referencia en el tercer tramo de la hoja que vimos antes en mi forja? Apoya la espada sin dañar las marcas viejas y encaja justo el perno de medición del taller en esa muesca del tercer tramo.”\n(Controles: Pulsa F / pulsar stick izquierdo en el soporte de medición del taller (calibration_mount) para alinear el perno con las marcas del tercer tramo. Se registrará la pista [Ruta de transferencia · Impronta proyectada del núcleo].)"
+      "value": "“No sirve de nada adivinar de palabra. Pon la espada en el soporte de medición y veremos qué quedó adentro.\nRea, ¿recuerdas esas tres marcas de referencia en el tercer tramo de la hoja que vimos antes en mi forja? Apoya la espada sin dañar las marcas viejas y encaja justo el perno de medición del taller en esa muesca del tercer tramo.”\n(Controles: Pulsa C / pulsar stick izquierdo en el soporte de medición del taller (calibration_mount) para alinear el perno con las marcas del tercer tramo. Se registrará la pista [Ruta de transferencia · Impronta proyectada del núcleo].)"
     },
     {
       "key": "story.invest.08_exp1_rea",
@@ -2003,7 +2071,7 @@
     },
     {
       "key": "story.invest.11_exp3_theo",
-      "value": "“¡Ahora el tercer experimento! Encenderé la placa reflectante reglamentaria de la Oficina Notarial de enfrente para clonar exactamente tu espadazo. ¡Comprobemos hasta dónde copia el reflector tu trayectoria y tu poder de impronta, y si el registro permanece tras apagarlo!”\n(Controles: Pulsa F / pulsar stick izquierdo frente a la placa de medición reflectante (reflection_plate) para realizar la comparación y desconectar el medidor.)"
+      "value": "“¡Ahora el tercer experimento! Encenderé la placa reflectante reglamentaria de la Oficina Notarial de enfrente para clonar exactamente tu espadazo. ¡Comprobemos hasta dónde copia el reflector tu trayectoria y tu poder de impronta, y si el registro permanece tras apagarlo!”\n(Controles: Pulsa C / pulsar stick izquierdo frente a la placa de medición reflectante (reflection_plate) para realizar la comparación y desconectar el medidor.)"
     },
     {
       "key": "story.invest.12_exp4_theo",
@@ -2019,7 +2087,7 @@
     },
     {
       "key": "story.luka.signal",
-      "value": "“¡Luka! ¡Espera, llévame!”\n(Controles: Pulsa F / pulsar stick izquierdo en el puesto de señales (luka_signal_post) para enviarle la señal directamente a Luka.)"
+      "value": "“¡Luka! ¡Espera, llévame!”\n(Controles: Pulsa C / pulsar stick izquierdo en el puesto de señales (luka_signal_post) para enviarle la señal directamente a Luka.)"
     },
     {
       "key": "story.luka.board",
@@ -2467,7 +2535,7 @@
     },
     {
       "key": "area.travel",
-      "value": "F / L3 · {0}"
+      "value": "C / L3 · {0}"
     },
     {
       "key": "area.walk",
@@ -2511,7 +2579,7 @@
     },
     {
       "key": "area.help",
-      "value": "← → Mover   F / L3 Examinar·Entrar   J·Z·Clic izquierdo Espada (mando X)   Q / Y Técnica   Esc Pausa"
+      "value": "← → Moverse · Espacio Saltar · Z Atacar · X Parar · C Interactuar · Mayús+dirección Correr · Q W E R Técnicas · Esc"
     },
     {
       "key": "investigation.clue.route_ledger.body",
@@ -2559,7 +2627,7 @@
     },
     {
       "key": "story.clock.entry.03",
-      "value": "“¡Claro! Mira sobre el terciopelo de esta mesa, Rea. Desde el día, hace seis años, en que mi tío regresó debilitado de la noche a la mañana como un anciano de pelo blanco, no ha faltado ni un solo día en limpiar con un paño seco lo que guarda ahí.”\n(Controles: Pulsa F / pulsar stick izquierdo para examinar la mesa de ajuste de relojes de Julius (julius_workbench). Se registrará la pista [Julius · Impronta del núcleo].)"
+      "value": "“¡Claro! Mira sobre el terciopelo de esta mesa, Rea. Desde el día, hace seis años, en que mi tío regresó debilitado de la noche a la mañana como un anciano de pelo blanco, no ha faltado ni un solo día en limpiar con un paño seco lo que guarda ahí.”\n(Controles: Pulsa C / pulsar stick izquierdo para examinar la mesa de ajuste de relojes de Julius (julius_workbench). Se registrará la pista [Julius · Impronta del núcleo].)"
     },
     {
       "key": "story.clock.entry.04",
@@ -2595,7 +2663,7 @@
     },
     {
       "key": "story.clock.route.07",
-      "value": "“Rea, dejé ajustado el punto de regreso justo aquí en el suelo de la antesala de la esfera. Cuando estés lista, ¡abre el portón y entra!”\n(Controles: Pulsa F / pulsar stick izquierdo en el portón principal de la arena (clock_arena_gate) para entrar.)"
+      "value": "“Rea, dejé ajustado el punto de regreso justo aquí en el suelo de la antesala de la esfera. Cuando estés lista, ¡abre el portón y entra!”\n(Controles: Pulsa C / pulsar stick izquierdo en el portón principal de la arena (clock_arena_gate) para entrar.)"
     },
     {
       "key": "story.julius.i0.01",
@@ -2615,7 +2683,7 @@
     },
     {
       "key": "story.julius.i0.05",
-      "value": "(Clava su espadón con forma de manecilla en el suelo y exhala con fuerza. El núcleo de la espada de registros capta en bronce la impronta de la trayectoria de nivel 1 mostrada por Julius en el duelo)\n“……Aunque oculté mi Forma suprema final, tu espada de registros leyó el trazo de ida y vuelta de mi primer ‘Paso del péndulo’.\nEscucha bien, Rea. Hasta veintinueve veces es solo un paso, y a las treinta apenas resonará la caja del reloj; pero al instante de llegar al octogésimo uso de la Forma suprema, el segundero detenido de tu medio reloj volverá a girar y mi envejecimiento caerá sobre ti.”\n(Aviso del sistema: Obtuviste Retroceso del péndulo — Mantén la dirección contraria a la que mira Rea y pulsa Q (Y en el mando).)"
+      "value": "(Clava su espadón con forma de manecilla en el suelo y exhala con fuerza. El núcleo de la espada de registros capta en bronce la impronta de la trayectoria de nivel 1 mostrada por Julius en el duelo)\n“……Aunque oculté mi Forma suprema final, tu espada de registros leyó el trazo de ida y vuelta de mi primer ‘Paso del péndulo’.\nEscucha bien, Rea. Hasta veintinueve veces es solo un paso, y a las treinta apenas resonará la caja del reloj; pero al instante de llegar al octogésimo uso de la Forma suprema, el segundero detenido de tu medio reloj volverá a girar y mi envejecimiento caerá sobre ti.”\n(Aviso del sistema: Obtuviste Retroceso del péndulo — Mantén la dirección contraria a la que mira Rea y pulsa V (Y en el mando).)"
     },
     {
       "key": "story.julius.i0.06",
@@ -2671,7 +2739,7 @@
     },
     {
       "key": "story.clock.return.01",
-      "value": "“La compuerta de latón de la ruta de retorno superior se cierra rápido. Con el nivel 1 ‘Paso del péndulo’ de ‘Retroceso del péndulo’ que acabo de registrar, puedo dejar una imagen residual, lanzarme a golpear el interruptor y volver a pulsar en 1,5 segundos para rebobinar a salvo al suelo firme!”\n(Controles: Usa Retroceso del péndulo (Q / Y) para golpear el interruptor tras la compuerta y vuelve a pulsar para regresar a salvo a tu imagen residual.)"
+      "value": "“La compuerta de latón de la ruta de retorno superior se cierra rápido. Con el nivel 1 ‘Paso del péndulo’ de ‘Retroceso del péndulo’ que acabo de registrar, puedo dejar una imagen residual, lanzarme a golpear el interruptor y volver a pulsar en 1,5 segundos para rebobinar a salvo al suelo firme!”\n(Controles: Usa Retroceso del péndulo (V / Y) para golpear el interruptor tras la compuerta y vuelve a pulsar para regresar a salvo a tu imagen residual.)"
     },
     {
       "key": "story.clock.return.02",
@@ -2715,7 +2783,7 @@
     },
     {
       "key": "story.opera.entry.03",
-      "value": "“Sí. Ahora mira las zapatillas de punta en el estante y esta tarima del suelo, Rea. Incluso después de no poder subir al escenario, Valeria barría y limpiaba este lugar todos los días.”\n(Controles: Pulsa F / pulsar stick izquierdo para examinar el estante de puntas y la tarima de Valeria (valeria_shoes_rack). Se registrará la pista [Valeria · Impronta del núcleo].)"
+      "value": "“Sí. Ahora mira las zapatillas de punta en el estante y esta tarima del suelo, Rea. Incluso después de no poder subir al escenario, Valeria barría y limpiaba este lugar todos los días.”\n(Controles: Pulsa C / pulsar stick izquierdo para examinar el estante de puntas y la tarima de Valeria (valeria_shoes_rack). Se registrará la pista [Valeria · Impronta del núcleo].)"
     },
     {
       "key": "story.opera.entry.04",
@@ -2751,7 +2819,7 @@
     },
     {
       "key": "story.opera.route.07",
-      "value": "“Abrí un punto de regreso aquí en el suelo de la espera, Rea. ¡Estaré abajo junto a la palanca de la plataforma elevadora debajo del escenario!”\n(Controles: Pulsa F / pulsar stick izquierdo en el telón de terciopelo del escenario principal (opera_arena_gate) para entrar.)"
+      "value": "“Abrí un punto de regreso aquí en el suelo de la espera, Rea. ¡Estaré abajo junto a la palanca de la plataforma elevadora debajo del escenario!”\n(Controles: Pulsa C / pulsar stick izquierdo en el telón de terciopelo del escenario principal (opera_arena_gate) para entrar.)"
     },
     {
       "key": "story.valeria.i0.01",
@@ -2771,7 +2839,7 @@
     },
     {
       "key": "story.valeria.i0.05",
-      "value": "(Apoyando la punta del estoque en la tarima, recobra el aliento. El núcleo de la espada de registros capta en azul verdoso el trazo del salto giratorio de nivel 1 de Valeria)\n“……Ah, aunque oculté el gran final, tu espada copió el ángulo de salto de mi primera ‘Danza giratoria de espadas’.\nPor favor, Rea. Hasta treinta veces solo se te pegará mi saludo de cortesía, pero al instante de completar el octogésimo Gran final, el tormento de mis piernas pasará a ti. Me retiro a la enfermería…… por favor, no bailes esos pasos hasta el final.”\n(Aviso del sistema: Obtuviste Vals del último acto — Mantén la dirección hacia arriba y pulsa Q (Y en el mando).)"
+      "value": "(Apoyando la punta del estoque en la tarima, recobra el aliento. El núcleo de la espada de registros capta en azul verdoso el trazo del salto giratorio de nivel 1 de Valeria)\n“……Ah, aunque oculté el gran final, tu espada copió el ángulo de salto de mi primera ‘Danza giratoria de espadas’.\nPor favor, Rea. Hasta treinta veces solo se te pegará mi saludo de cortesía, pero al instante de completar el octogésimo Gran final, el tormento de mis piernas pasará a ti. Me retiro a la enfermería…… por favor, no bailes esos pasos hasta el final.”\n(Aviso del sistema: Obtuviste Vals del último acto — Mantén la dirección hacia arriba y pulsa V (Y en el mando).)"
     },
     {
       "key": "story.valeria.i0.06",
@@ -2827,7 +2895,7 @@
     },
     {
       "key": "story.opera.return.01",
-      "value": "“¡La ruta de retorno por el tejado este iluminado! Si me impulso hacia los faroles suspendidos usando el nivel 1 ‘Danza giratoria de espadas’ de ‘Vals del último acto’, puedo desviar proyectiles mientras salto más alto!”\n(Controles: Golpea los faroles aéreos con Vals del último acto (Q / Y) para elevarte y aterrizar en la viga metálica del otro lado.)"
+      "value": "“¡La ruta de retorno por el tejado este iluminado! Si me impulso hacia los faroles suspendidos usando el nivel 1 ‘Danza giratoria de espadas’ de ‘Vals del último acto’, puedo desviar proyectiles mientras salto más alto!”\n(Controles: Golpea los faroles aéreos con Vals del último acto (V / Y) para elevarte y aterrizar en la viga metálica del otro lado.)"
     },
     {
       "key": "story.opera.return.02",
@@ -2871,7 +2939,7 @@
     },
     {
       "key": "story.bell.entry.03",
-      "value": "“Sí. Prueba a leer la primera página de esa partitura de la campana matinal que tocaba cada madrugada justo hasta antes de perder el oído, Rea.”\n(Controles: Pulsa F / pulsar stick izquierdo para examinar el atril de la campana matinal y el cuaderno de Gabriel (gabriel_score_desk). Se registrará la pista [Gabriel · Impronta del núcleo].)"
+      "value": "“Sí. Prueba a leer la primera página de esa partitura de la campana matinal que tocaba cada madrugada justo hasta antes de perder el oído, Rea.”\n(Controles: Pulsa C / pulsar stick izquierdo para examinar el atril de la campana matinal y el cuaderno de Gabriel (gabriel_score_desk). Se registrará la pista [Gabriel · Impronta del núcleo].)"
     },
     {
       "key": "story.bell.entry.04",
@@ -2907,7 +2975,7 @@
     },
     {
       "key": "story.bell.route.07",
-      "value": "“Lo que más le preocupa es que te exijas demasiado. Ya dejé el punto de regreso en la antesala, así que abre la puerta de la cámara de tañido cuando estés lista.”\n(Controles: Pulsa F / pulsar stick izquierdo en el portón principal de la cámara superior (bell_arena_gate) para entrar.)"
+      "value": "“Lo que más le preocupa es que te exijas demasiado. Ya dejé el punto de regreso en la antesala, así que abre la puerta de la cámara de tañido cuando estés lista.”\n(Controles: Pulsa C / pulsar stick izquierdo en el portón principal de la cámara superior (bell_arena_gate) para entrar.)"
     },
     {
       "key": "story.gabriel.i0.01",
@@ -2927,7 +2995,7 @@
     },
     {
       "key": "story.gabriel.i0.05",
-      "value": "(Apoya el asta de su martillo-espada en el suelo e hinca la rodilla. El núcleo de la espada de registros capta en brillo dorado la onda del Golpe vibrante de nivel 1 mostrado en el duelo)\n“[Cuaderno: Tu espada captó la onda de mi primer ‘Golpe vibrante’. Hasta treinta veces solo sentirás los oídos algo sordos, pero al llegar al octogésimo uso de la Forma suprema, mi silencio pasará a ti. Bajaré a la enfermería; por favor, detén ese eco.]”\n(Aviso del sistema: Obtuviste Forja resonante — En el aire, mantén la dirección hacia abajo y pulsa Q (Y en el mando).)"
+      "value": "(Apoya el asta de su martillo-espada en el suelo e hinca la rodilla. El núcleo de la espada de registros capta en brillo dorado la onda del Golpe vibrante de nivel 1 mostrado en el duelo)\n“[Cuaderno: Tu espada captó la onda de mi primer ‘Golpe vibrante’. Hasta treinta veces solo sentirás los oídos algo sordos, pero al llegar al octogésimo uso de la Forma suprema, mi silencio pasará a ti. Bajaré a la enfermería; por favor, detén ese eco.]”\n(Aviso del sistema: Obtuviste Forja resonante — En el aire, mantén la dirección hacia abajo y pulsa V (Y en el mando).)"
     },
     {
       "key": "story.gabriel.i0.06",
@@ -2951,7 +3019,7 @@
     },
     {
       "key": "story.gabriel.i1.05",
-      "value": "(Al mirar el rostro de Gabriel, detiene la espada que blandía a la fuerza y niega con la cabeza)\n“……¡No! Si finjo oír cuando no oigo nada, Gabriel jamás confiará en mí. ¡Le haré primero una seña con la mano para pedirle que pare!”\n(Controles: Ve a la losa de señales visuales de la derecha (gabriel_signal_floor) y pulsa F / pulsar stick izquierdo para enviar primero a Gabriel una señal de alto (palma abierta).)"
+      "value": "(Al mirar el rostro de Gabriel, detiene la espada que blandía a la fuerza y niega con la cabeza)\n“……¡No! Si finjo oír cuando no oigo nada, Gabriel jamás confiará en mí. ¡Le haré primero una seña con la mano para pedirle que pare!”\n(Controles: Ve a la losa de señales visuales de la derecha (gabriel_signal_floor) y pulsa C / pulsar stick izquierdo para enviar primero a Gabriel una señal de alto (palma abierta).)"
     },
     {
       "key": "story.gabriel.i1.06",
@@ -2971,7 +3039,7 @@
     },
     {
       "key": "story.gabriel.reunion.02",
-      "value": "(Rodeando con ambas manos el vaso de leche tibia para dar un sorbo, lee las tres señales anotadas en el cuaderno de Gabriel y abre la palma)\n“Palma abierta es alto, dos dedos es prepárate, mano hacia abajo es aterriza y vuelve…… ¡Sí, Gabriel! Cuando no oiga nada jamás me aguantaré: ¡te avisaré enseguida con estas señales!”\n(Controles: Revisa las tres señales del cuaderno de Gabriel en la mesa de la enfermería (gabriel_reunion_table) con F / pulsar stick izquierdo y responde.)"
+      "value": "(Rodeando con ambas manos el vaso de leche tibia para dar un sorbo, lee las tres señales anotadas en el cuaderno de Gabriel y abre la palma)\n“Palma abierta es alto, dos dedos es prepárate, mano hacia abajo es aterriza y vuelve…… ¡Sí, Gabriel! Cuando no oiga nada jamás me aguantaré: ¡te avisaré enseguida con estas señales!”\n(Controles: Revisa las tres señales del cuaderno de Gabriel en la mesa de la enfermería (gabriel_reunion_table) con C / pulsar stick izquierdo y responde.)"
     },
     {
       "key": "story.gabriel.reunion.03",
@@ -2983,7 +3051,7 @@
     },
     {
       "key": "story.bell.return.01",
-      "value": "“El suelo del corredor descendente está agrietado. ¡Si descargo el nivel 1 ‘Golpe vibrante’ de ‘Forja resonante’ sobre el suelo y los escudos agrietados, podré quebrarlo todo de un golpe!”\n(Controles: Golpea el suelo agrietado y los escudos de los guardias cosidos con Forja resonante (↓ En el aire + Q / Y o Forja en tierra).)"
+      "value": "“El suelo del corredor descendente está agrietado. ¡Si descargo el nivel 1 ‘Golpe vibrante’ de ‘Forja resonante’ sobre el suelo y los escudos agrietados, podré quebrarlo todo de un golpe!”\n(Controles: Golpea el suelo agrietado y los escudos de los guardias cosidos con Forja resonante (↓ En el aire + V / Y o Forja en tierra).)"
     },
     {
       "key": "story.bell.return.02",
@@ -3027,7 +3095,7 @@
     },
     {
       "key": "story.gallery.entry.03",
-      "value": "“Incluso después de perder la vista de ambos ojos hace seis años, Irina nunca soltó el pincel. Prueba a tocar el grueso cuaderno táctil colocado sobre ese atril, Rea.”\n(Controles: Pulsa F / pulsar stick izquierdo para examinar el cuaderno en relieve de Irina (irina_sketchbook_stand). Se registrará la pista [Irina · Impronta del núcleo].)"
+      "value": "“Incluso después de perder la vista de ambos ojos hace seis años, Irina nunca soltó el pincel. Prueba a tocar el grueso cuaderno táctil colocado sobre ese atril, Rea.”\n(Controles: Pulsa C / pulsar stick izquierdo para examinar el cuaderno en relieve de Irina (irina_sketchbook_stand). Se registrará la pista [Irina · Impronta del núcleo].)"
     },
     {
       "key": "story.gallery.entry.04",
@@ -3063,7 +3131,7 @@
     },
     {
       "key": "story.gallery.route.07",
-      "value": "“Ajusté el punto de regreso en la losa-paleta de la antesala, Rea. ¡Abre la puerta del atelier cuando estés lista!”\n(Controles: Pulsa F / pulsar stick izquierdo en el portón principal del atelier (gallery_arena_gate) para entrar.)"
+      "value": "“Ajusté el punto de regreso en la losa-paleta de la antesala, Rea. ¡Abre la puerta del atelier cuando estés lista!”\n(Controles: Pulsa C / pulsar stick izquierdo en el portón principal del atelier (gallery_arena_gate) para entrar.)"
     },
     {
       "key": "story.irina.i0.01",
@@ -3083,7 +3151,7 @@
     },
     {
       "key": "story.irina.i0.05",
-      "value": "(Apoyando la espada-pincel en el suelo, recobra el aliento con calma. El núcleo de la espada de registros capta en brillo de acuarela el trazo aéreo de la Pincelada de nivel 1 de Irina)\n“……Aunque escondí el último autorretrato, tu espada leyó la textura de mi primera ‘Pincelada’.\nRecuérdalo, Rea. Hasta treinta veces solo te rozará un tinte de acuarela en la vista, pero en cuanto completes el octogésimo autorretrato, mi Condena de ceguera pasará a tus ojos. Me retiraré a la enfermería…… Por favor, detén ese pincel y regresa.”\n(Aviso del sistema: Obtuviste Recorte del vacío — En el suelo, mantén la dirección hacia abajo y pulsa Q (Y en el mando).)"
+      "value": "(Apoyando la espada-pincel en el suelo, recobra el aliento con calma. El núcleo de la espada de registros capta en brillo de acuarela el trazo aéreo de la Pincelada de nivel 1 de Irina)\n“……Aunque escondí el último autorretrato, tu espada leyó la textura de mi primera ‘Pincelada’.\nRecuérdalo, Rea. Hasta treinta veces solo te rozará un tinte de acuarela en la vista, pero en cuanto completes el octogésimo autorretrato, mi Condena de ceguera pasará a tus ojos. Me retiraré a la enfermería…… Por favor, detén ese pincel y regresa.”\n(Aviso del sistema: Obtuviste Recorte del vacío — En el suelo, mantén la dirección hacia abajo y pulsa V (Y en el mando).)"
     },
     {
       "key": "story.irina.i0.06",
@@ -3107,7 +3175,7 @@
     },
     {
       "key": "story.irina.i1.05",
-      "value": "(Aflojando las comisuras que por costumbre iba a alzar bajo los dedos de Irina, toma suavemente su mano sin sonreír)\n“……No, Irina. No estoy sonriendo.\nHoy tengo miedo. Me da miedo que aún queden huecos en la hipótesis, miedo de perderlos a los cinco y mucho miedo de no volver.”\n(Controles: Junto a la ventana soleada de la derecha (irina_sunlight_floor), pulsa F / pulsar stick izquierdo para confesar tu miedo sin fingir una sonrisa.)"
+      "value": "(Aflojando las comisuras que por costumbre iba a alzar bajo los dedos de Irina, toma suavemente su mano sin sonreír)\n“……No, Irina. No estoy sonriendo.\nHoy tengo miedo. Me da miedo que aún queden huecos en la hipótesis, miedo de perderlos a los cinco y mucho miedo de no volver.”\n(Controles: Junto a la ventana soleada de la derecha (irina_sunlight_floor), pulsa C / pulsar stick izquierdo para confesar tu miedo sin fingir una sonrisa.)"
     },
     {
       "key": "story.irina.i1.06",
@@ -3127,7 +3195,7 @@
     },
     {
       "key": "story.irina.reunion.02",
-      "value": "(Bajando la comisura que iba a alzar, apoya con suavidad la mejilla en los dedos de Irina sin sonreír)\n“No forzaré una sonrisa, Irina. Hoy tengo miedo. Por eso no aguanto sola, sino que buscamos la salida entre todos.”\n(Controles: En la ventana soleada de la enfermería (irina_reunion_window), pulsa F / pulsar stick izquierdo para hablar con franqueza sin forzar una sonrisa.)"
+      "value": "(Bajando la comisura que iba a alzar, apoya con suavidad la mejilla en los dedos de Irina sin sonreír)\n“No forzaré una sonrisa, Irina. Hoy tengo miedo. Por eso no aguanto sola, sino que buscamos la salida entre todos.”\n(Controles: En la ventana soleada de la enfermería (irina_reunion_window), pulsa C / pulsar stick izquierdo para hablar con franqueza sin forzar una sonrisa.)"
     },
     {
       "key": "story.irina.reunion.03",
@@ -3139,7 +3207,7 @@
     },
     {
       "key": "story.gallery.return.01",
-      "value": "“Más allá del borde de la ruta de retorno del invernadero ya no hay suelo. ¡Si trazo desde el suelo el nivel 1 ‘Pincelada’ de ‘Recorte del vacío’, queda una plataforma de pintura lapislázuli flotando delante durante 3 segundos! Pisémosla para saltar al otro lado.”\n(Controles: En el borde del escalón en tierra, pulsa ↓ + Q / Y para crear una plataforma Pincelada en el aire delante y cruza pisándola.)"
+      "value": "“Más allá del borde de la ruta de retorno del invernadero ya no hay suelo. ¡Si trazo desde el suelo el nivel 1 ‘Pincelada’ de ‘Recorte del vacío’, queda una plataforma de pintura lapislázuli flotando delante durante 3 segundos! Pisémosla para saltar al otro lado.”\n(Controles: En el borde del escalón en tierra, pulsa ↓ + V / Y para crear una plataforma Pincelada en el aire delante y cruza pisándola.)"
     },
     {
       "key": "story.gallery.return.02",
@@ -3151,7 +3219,7 @@
     },
     {
       "key": "story.gallery.synergy.01",
-      "value": "“¡Más allá de este suelo partido entre dos puntos fijos se abre el vacío sin apoyo alguno!\nSi primero coso la grieta del suelo real con ‘Puntada de plata’ de Mikhail para cruzar, y desde el borde de esa tela cosida pinto una plataforma en el aire con ‘Recorte del vacío’ de Irina para saltar, ¡combinaré lo mejor de ambas técnicas!”\n(Controles: Sella el suelo partido (gallery_synergy_seam) con Puntada de plata y súbete; en su extremo usa Recorte del vacío (↓ + Q / Y) para pintar una plataforma y pasar a la terraza.)"
+      "value": "“¡Más allá de este suelo partido entre dos puntos fijos se abre el vacío sin apoyo alguno!\nSi primero coso la grieta del suelo real con ‘Puntada de plata’ de Mikhail para cruzar, y desde el borde de esa tela cosida pinto una plataforma en el aire con ‘Recorte del vacío’ de Irina para saltar, ¡combinaré lo mejor de ambas técnicas!”\n(Controles: Sella el suelo partido (gallery_synergy_seam) con Puntada de plata y súbete; en su extremo usa Recorte del vacío (↓ + V / Y) para pintar una plataforma y pasar a la terraza.)"
     },
     {
       "key": "story.gallery.synergy.02",
@@ -3455,7 +3523,7 @@
     },
     {
       "key": "story.echo.entry.02",
-      "value": "(Recorre con la mirada las venas luminosas del enorme pilar de control de lapislázuli expuesto en el centro del salón)\n“Mira esta conexión de control de lapislázuli. El arma madre ‘Espejo de Omnirresonancia’ de arriba y el sistema de aislamiento helado de la Bóveda subterránea están unidos al mismo núcleo de control.\nEs tal como analizó Theo: ¡si destrozamos arriba el núcleo del espejo madre, también se derrumba la contención de la bóveda subterránea!”\n(Controles: Pulsa F / pulsar stick izquierdo para examinar el pilar de enlace de control (court_control_pillar) en el centro del salón.)"
+      "value": "(Recorre con la mirada las venas luminosas del enorme pilar de control de lapislázuli expuesto en el centro del salón)\n“Mira esta conexión de control de lapislázuli. El arma madre ‘Espejo de Omnirresonancia’ de arriba y el sistema de aislamiento helado de la Bóveda subterránea están unidos al mismo núcleo de control.\nEs tal como analizó Theo: ¡si destrozamos arriba el núcleo del espejo madre, también se derrumba la contención de la bóveda subterránea!”\n(Controles: Pulsa C / pulsar stick izquierdo para examinar el pilar de enlace de control (court_control_pillar) en el centro del salón.)"
     },
     {
       "key": "story.echo.entry.03",
@@ -3483,7 +3551,7 @@
     },
     {
       "key": "story.echo.pre.06",
-      "value": "(Saca del bolso el cuaderno del experimento en 4 etapas lleno de la letra de Theo y el mapa del regreso trazado por los cinco benefactores y los extiende ante La Rea de ayer)\n“Yo también tengo miedo. Por eso esta vez se lo mostré a los demás antes de tachar mi parte.\nMira: ¡esa onda de medición que se cortaba cuando la sujetabas sola, hoy Theo y Ethan la sostuvieron conmigo y la medimos hasta el final! ¡Y en vez de cerrar rejas, los cinco prepararon primero los suelos, la hora y las señales para que vuelva viva! ¡No bajaré a la bóveda!”\n(Controles: Pulsa F / pulsar stick izquierdo para mostrar los registros del experimento y la ruta de retorno a La Rea de ayer.)"
+      "value": "(Saca del bolso el cuaderno del experimento en 4 etapas lleno de la letra de Theo y el mapa del regreso trazado por los cinco benefactores y los extiende ante La Rea de ayer)\n“Yo también tengo miedo. Por eso esta vez se lo mostré a los demás antes de tachar mi parte.\nMira: ¡esa onda de medición que se cortaba cuando la sujetabas sola, hoy Theo y Ethan la sostuvieron conmigo y la medimos hasta el final! ¡Y en vez de cerrar rejas, los cinco prepararon primero los suelos, la hora y las señales para que vuelva viva! ¡No bajaré a la bóveda!”\n(Controles: Pulsa C / pulsar stick izquierdo para mostrar los registros del experimento y la ruta de retorno a La Rea de ayer.)"
     },
     {
       "key": "story.echo.battle.01_p1",
@@ -3507,7 +3575,7 @@
     },
     {
       "key": "story.echo.after.01",
-      "value": "(Deteniendo la espada de registros a un palmo del Eco arrodillado, retrocede un paso y baja la hoja)\n“Todavía me duele que me engañaras. Y que quisieras llevarme aunque me negara me asustó todavía más.”\n(Controles: Pulsa F / pulsar stick izquierdo ante el Eco arrodillado para bajar la espada y seguir hablando.)"
+      "value": "(Deteniendo la espada de registros a un palmo del Eco arrodillado, retrocede un paso y baja la hoja)\n“Todavía me duele que me engañaras. Y que quisieras llevarme aunque me negara me asustó todavía más.”\n(Controles: Pulsa C / pulsar stick izquierdo ante el Eco arrodillado para bajar la espada y seguir hablando.)"
     },
     {
       "key": "story.echo.after.02",
@@ -3527,7 +3595,7 @@
     },
     {
       "key": "story.echo.after.06",
-      "value": "(La Rea de hoy avanza, tiende la mano a La Rea de ayer arrodillada, la estrecha y la ayuda a levantarse. El Eco de ayer no se desvanece: se funde junto al pulso de hoy en un claro resplandor azul dentro del núcleo de la espada de registros para acompañarla)\n“No te dejo atrás, yo de ayer. Cada uno de tus ciento veinte golpes básicos ante la puerta cerrada, y cómo le pediste a Ethan un color bonito para la hoja de mañana, todo está dentro de esta espada.\nSubamos las dos juntas al último piso. ¡Y bajemos vivas juntas!”\n(Controles: Pulsa F / pulsar stick izquierdo frente a La Rea de ayer (echo_hand_clasp) para tomar su mano y unirla al núcleo.)"
+      "value": "(La Rea de hoy avanza, tiende la mano a La Rea de ayer arrodillada, la estrecha y la ayuda a levantarse. El Eco de ayer no se desvanece: se funde junto al pulso de hoy en un claro resplandor azul dentro del núcleo de la espada de registros para acompañarla)\n“No te dejo atrás, yo de ayer. Cada uno de tus ciento veinte golpes básicos ante la puerta cerrada, y cómo le pediste a Ethan un color bonito para la hoja de mañana, todo está dentro de esta espada.\nSubamos las dos juntas al último piso. ¡Y bajemos vivas juntas!”\n(Controles: Pulsa C / pulsar stick izquierdo frente a La Rea de ayer (echo_hand_clasp) para tomar su mano y unirla al núcleo.)"
     },
     {
       "key": "story.echo.after.07",
@@ -3535,7 +3603,7 @@
     },
     {
       "key": "story.echo.after.08",
-      "value": "(Mientras la plataforma asciende hacia el estrado del último piso bañado en luz del alba, La Rea de ayer susurra suavemente desde el núcleo)\n“Ahí arriba están el Arconte Cassel y su arma madre ‘Espejo de Omnirresonancia’. También sumo mis ciento veinte golpes a la punta de tus dedos. ¡Vamos, yo de hoy!”\n(Controles: Pulsa F / pulsar stick izquierdo en la consola del ascensor (cassel_lift_console) para entrar al estrado superior (cassel).)"
+      "value": "(Mientras la plataforma asciende hacia el estrado del último piso bañado en luz del alba, La Rea de ayer susurra suavemente desde el núcleo)\n“Ahí arriba están el Arconte Cassel y su arma madre ‘Espejo de Omnirresonancia’. También sumo mis ciento veinte golpes a la punta de tus dedos. ¡Vamos, yo de hoy!”\n(Controles: Pulsa C / pulsar stick izquierdo en la consola del ascensor (cassel_lift_console) para entrar al estrado superior (cassel).)"
     },
     {
       "key": "story.cassel.p1.01",
@@ -3563,11 +3631,11 @@
     },
     {
       "key": "story.cassel.p1.07_mirror",
-      "value": "(Al llegar a 120 PV, Cassel retrocede y alza una mano. Detrás de él, las cinco capas reflectantes del arma madre “Espejo de Omnirresonancia” se abren al unísono con fulgor azul, listas para duplicar las cinco técnicas de benefactor de Rea)\n“Nada mal, Acusada R.E.A.. ¡Pero ante mi arma madre, el ‘Espejo de Omnirresonancia’, hasta las cinco Formas supremas que aprendiste quedarán reflejadas como simples herramientas de mi sentencia!”\n(Guía de combate: Cassel Fase 2 · Espejo de Omnirresonancia — ¡Pulsa F / pulsar stick izquierdo mientras el espejo esté expuesto para elegir una técnica de benefactor y comprometer su devolución!)"
+      "value": "(Al llegar a 120 PV, Cassel retrocede y alza una mano. Detrás de él, las cinco capas reflectantes del arma madre “Espejo de Omnirresonancia” se abren al unísono con fulgor azul, listas para duplicar las cinco técnicas de benefactor de Rea)\n“Nada mal, Acusada R.E.A.. ¡Pero ante mi arma madre, el ‘Espejo de Omnirresonancia’, hasta las cinco Formas supremas que aprendiste quedarán reflejadas como simples herramientas de mi sentencia!”\n(Guía de combate: Cassel Fase 2 · Espejo de Omnirresonancia — ¡Pulsa C / pulsar stick izquierdo mientras el espejo esté expuesto para elegir una técnica de benefactor y comprometer su devolución!)"
     },
     {
       "key": "story.cassel.p2.01_prompt",
-      "value": "“¡El Espejo de Omnirresonancia se abrió! Igual que en nuestro experimento con Theo: en cuanto el espejo copie y refleje mi técnica de nivel 3, ¡si choco espadas ejecutando hasta el final el mismo remate de nivel 3 en el orden que yo elija, puedo fijar un compromiso de devolución hacia Cassel!”\n(Controles: Pulsa F / pulsar stick izquierdo con el espejo expuesto para abrir el menú Contracertificación · Elige una técnica para devolver.)"
+      "value": "“¡El Espejo de Omnirresonancia se abrió! Igual que en nuestro experimento con Theo: en cuanto el espejo copie y refleje mi técnica de nivel 3, ¡si choco espadas ejecutando hasta el final el mismo remate de nivel 3 en el orden que yo elija, puedo fijar un compromiso de devolución hacia Cassel!”\n(Controles: Pulsa C / pulsar stick izquierdo con el espejo expuesto para abrir el menú Contracertificación · Elige una técnica para devolver.)"
     },
     {
       "key": "story.cassel.p2.02_confirm",
@@ -3615,7 +3683,7 @@
     },
     {
       "key": "story.cassel.p2.08_r1_cassel",
-      "value": "(Cuando el primer compromiso 1/5 queda sellado y +20% de poder de impronta brota como fuego azul de la espada de Rea, la ceja de Cassel tiembla por primera vez. Decidido a no entregar las otras cuatro técnicas sin resistencia, pliega el “Espejo de Omnirresonancia” tras su espalda y retrocede con un rápido paso atrás)\n“……¿Aprovechaste el juicio de reflejo del Espejo de Omnirresonancia para registrar una devolución en mi libro?!\nPero si cierro los paneles del espejo, tus técnicas restantes pierden contra qué chocar. ¡Acabaré primero con tu cuerpo usando mi esgrima directa!”\n(Guía táctica: Cassel cierra el espejo y ataca directamente con la serie de 3 arremetidas de Forma Cero de Cassel. ¡No malgastes técnicas de jefe: rebátelas con Parry básico (L / RB)!)"
+      "value": "(Cuando el primer compromiso 1/5 queda sellado y +20% de poder de impronta brota como fuego azul de la espada de Rea, la ceja de Cassel tiembla por primera vez. Decidido a no entregar las otras cuatro técnicas sin resistencia, pliega el “Espejo de Omnirresonancia” tras su espalda y retrocede con un rápido paso atrás)\n“……¿Aprovechaste el juicio de reflejo del Espejo de Omnirresonancia para registrar una devolución en mi libro?!\nPero si cierro los paneles del espejo, tus técnicas restantes pierden contra qué chocar. ¡Acabaré primero con tu cuerpo usando mi esgrima directa!”\n(Guía táctica: Cassel cierra el espejo y ataca directamente con la serie de 3 arremetidas de Forma Cero de Cassel. ¡No malgastes técnicas de jefe: rebátelas con Parry básico (X / RB)!)"
     },
     {
       "key": "story.cassel.p2.09_r1_rea",
@@ -3683,7 +3751,7 @@
     },
     {
       "key": "story.ending.basic.03",
-      "value": "(La Rea de hoy niega con la cabeza, da un paso al frente y abraza primero con calidez a su yo de ayer temblorosa)\n“No te disculpes, yo de ayer. No fue que nos faltara valor ni que no lo mereciéramos.\nPorque ayer no te rendiste frente a la reja cerrada y rebobinaste el tiempo, hoy pudimos salvarlos a los cinco.”\n(Controles: Acércate a La Rea de ayer (rooftop_echo_embrace) y pulsa F / pulsar stick izquierdo para abrazarla primero.)"
+      "value": "(La Rea de hoy niega con la cabeza, da un paso al frente y abraza primero con calidez a su yo de ayer temblorosa)\n“No te disculpes, yo de ayer. No fue que nos faltara valor ni que no lo mereciéramos.\nPorque ayer no te rendiste frente a la reja cerrada y rebobinaste el tiempo, hoy pudimos salvarlos a los cinco.”\n(Controles: Acércate a La Rea de ayer (rooftop_echo_embrace) y pulsa C / pulsar stick izquierdo para abrazarla primero.)"
     },
     {
       "key": "story.ending.basic.04",
@@ -3695,7 +3763,7 @@
     },
     {
       "key": "story.ending.basic.06",
-      "value": "(Uniendo sus manos una sobre otra, ambas Reas escriben con tinta de lapislázuli una frase imborrable en la última línea del libro notarial:\n[Registro notarial #02 Asiento final — Rescate completo de los cinco benefactores. Y la Rea de hoy quiso regresar viva junto a ellos hasta el final.])\n(Controles: Pulsa F / pulsar stick izquierdo frente al último libro notarial (basic_ending_ledger) para sellar la respuesta de hoy sin tacharla.)"
+      "value": "(Uniendo sus manos una sobre otra, ambas Reas escriben con tinta de lapislázuli una frase imborrable en la última línea del libro notarial:\n[Registro notarial #02 Asiento final — Rescate completo de los cinco benefactores. Y la Rea de hoy quiso regresar viva junto a ellos hasta el final.])\n(Controles: Pulsa C / pulsar stick izquierdo frente al último libro notarial (basic_ending_ledger) para sellar la respuesta de hoy sin tacharla.)"
     },
     {
       "key": "story.ending.basic.07",
@@ -3723,7 +3791,7 @@
     },
     {
       "key": "story.ending.true.03_seat",
-      "value": "(Con los ojos humedecidos, la Rea de hoy tiende primero los brazos y estrecha con todas sus fuerzas a su yo de ayer)\n“Sí. Nuestro lugar también sigue ahí.”\n(Controles: Acércate a La Rea de ayer (rooftop_echo_embrace) y pulsa F / pulsar stick izquierdo para abrazarla con fuerza.)"
+      "value": "(Con los ojos humedecidos, la Rea de hoy tiende primero los brazos y estrecha con todas sus fuerzas a su yo de ayer)\n“Sí. Nuestro lugar también sigue ahí.”\n(Controles: Acércate a La Rea de ayer (rooftop_echo_embrace) y pulsa C / pulsar stick izquierdo para abrazarla con fuerza.)"
     },
     {
       "key": "story.ending.true.04_echo",
@@ -3763,7 +3831,7 @@
     },
     {
       "key": "story.ending.true.13_swing_prompt",
-      "value": "“No una esgrima sustituta hecha para cargar la muerte de otro: ¡aquí grabaré el primer movimiento escrito bajo mi propio nombre por la yo que vive el hoy!”\n(Controles: Frente al mirador bañado por el sol matinal (rea_form_one_sky), pulsa el botón de Espada (J / Z / Clic izq. / X) para blandir el primer corte propio de Rea.)"
+      "value": "“No una esgrima sustituta hecha para cargar la muerte de otro: ¡aquí grabaré el primer movimiento escrito bajo mi propio nombre por la yo que vive el hoy!”\n(Controles: Frente al mirador bañado por el sol matinal (rea_form_one_sky), pulsa el botón de Espada (Z / X) para blandir el primer corte propio de Rea.)"
     },
     {
       "key": "story.ending.true.14_registered",
@@ -3775,7 +3843,7 @@
     },
     {
       "key": "story.ending.true.16_to_attic",
-      "value": "“¡Sí! ¡Qué hambre tengo — vamos todos a desayunar juntos!”\n(Controles: Pulsa F / pulsar stick izquierdo en la salida del ascensor de la azotea (rooftop_to_attic_exit) para ir a la mesa del desayuno en el Ático del Olvido.)"
+      "value": "“¡Sí! ¡Qué hambre tengo — vamos todos a desayunar juntos!”\n(Controles: Pulsa C / pulsar stick izquierdo en la salida del ascensor de la azotea (rooftop_to_attic_exit) para ir a la mesa del desayuno en el Ático del Olvido.)"
     },
     {
       "key": "story.ending.true.17_marta_table",
@@ -3787,7 +3855,7 @@
     },
     {
       "key": "story.ending.true.19_sit",
-      "value": "(Mikhail corre suavemente la sexta silla del centro de la mesa y habla con voz ruda pero cargada de calidez)\n“¿Piensas quedarte ahí parada mirando, Rea? Es el sexto sitio que sellaste tú misma. Siéntate antes de que se enfríe la sopa.”\n(Controles: Acércate al sexto asiento de la mesa (sixth_breakfast_seat) y pulsa F / pulsar stick izquierdo para sentarte.)"
+      "value": "(Mikhail corre suavemente la sexta silla del centro de la mesa y habla con voz ruda pero cargada de calidez)\n“¿Piensas quedarte ahí parada mirando, Rea? Es el sexto sitio que sellaste tú misma. Siéntate antes de que se enfríe la sopa.”\n(Controles: Acércate al sexto asiento de la mesa (sixth_breakfast_seat) y pulsa C / pulsar stick izquierdo para sentarte.)"
     },
     {
       "key": "story.ending.true.20_sixth_beat",
@@ -3795,7 +3863,7 @@
     },
     {
       "key": "story.ending.true.21_spoon",
-      "value": "(Sosteniendo el tazón tibio con ambas manos, Rea toma una gran primera cucharada entre el vapor que asciende. Una lágrima tibia rueda por su mejilla mientras la sonrisa más serena y luminosa se dibuja en sus labios)\n“……Está calentito. ¡Está delicioso, Abuela Marta!”\n(Controles: Pulsa F / pulsar stick izquierdo o Enter / A para compartir el desayuno tibio del sexto tazón.)"
+      "value": "(Sosteniendo el tazón tibio con ambas manos, Rea toma una gran primera cucharada entre el vapor que asciende. Una lágrima tibia rueda por su mejilla mientras la sonrisa más serena y luminosa se dibuja en sus labios)\n“……Está calentito. ¡Está delicioso, Abuela Marta!”\n(Controles: Pulsa C / pulsar stick izquierdo o Enter / A para compartir el desayuno tibio del sexto tazón.)"
     },
     {
       "key": "story.ending.true.22_complete",
@@ -3815,7 +3883,7 @@
     },
     {
       "key": "story.resume.crucible.01_ethan",
-      "value": "(Abriendo de par en par la puerta del hogar del enorme horno de lapislázuli “Crisol de resonancia” en la Forja del Canal, Ethan asiente)\n“Ya llegaste, Rea. Para contrarrestar la esgrima madre de Cassel hasta el cuarto y último golpe, tu Espada básica debe alcanzar la cuatrocientésima marca suprema.\nDentro de este crisol esperan blancos resonantes de alta densidad y centinelas listos para recibir sin demora tus parries básicos y tus combos. Con dos minutos basta: ¡blande la espada cuanto quieras!”\n(Controles: Pulsa F / pulsar stick izquierdo para activar el Crisol de resonancia (resonant_crucible).)"
+      "value": "(Abriendo de par en par la puerta del hogar del enorme horno de lapislázuli “Crisol de resonancia” en la Forja del Canal, Ethan asiente)\n“Ya llegaste, Rea. Para contrarrestar la esgrima madre de Cassel hasta el cuarto y último golpe, tu Espada básica debe alcanzar la cuatrocientésima marca suprema.\nDentro de este crisol esperan blancos resonantes de alta densidad y centinelas listos para recibir sin demora tus parries básicos y tus combos. Con dos minutos basta: ¡blande la espada cuanto quieras!”\n(Controles: Pulsa C / pulsar stick izquierdo para activar el Crisol de resonancia (resonant_crucible).)"
     },
     {
       "key": "story.resume.crucible.02_theo",
@@ -3827,11 +3895,11 @@
     },
     {
       "key": "story.resume.crucible.04_rea",
-      "value": "“¡Gracias, Ethan, Theo! Ahora desaparecerá de la pantalla de salida la advertencia de ‘devolución con supervivencia sin asegurar’, y mi Forma original está completamente lista.\nRegreso ante el Ascensor del Gran Tribunal —¡y esta vez sí bajaré viva a la mesa del desayuno!”\n(Controles: Pulsa F / pulsar stick izquierdo en el pasaje directo de la forja (forge_to_court_lift) para volver al Ascensor del Gran Tribunal y desafiar a Cassel por el Final verdadero.)"
+      "value": "“¡Gracias, Ethan, Theo! Ahora desaparecerá de la pantalla de salida la advertencia de ‘devolución con supervivencia sin asegurar’, y mi Forma original está completamente lista.\nRegreso ante el Ascensor del Gran Tribunal —¡y esta vez sí bajaré viva a la mesa del desayuno!”\n(Controles: Pulsa C / pulsar stick izquierdo en el pasaje directo de la forja (forge_to_court_lift) para volver al Ascensor del Gran Tribunal y desafiar a Cassel por el Final verdadero.)"
     },
     {
       "key": "story.epilogue.01_marta",
-      "value": "(La luz matinal reposa en el Ático del Olvido. En lo alto de la pantalla, en vez de la cuenta atrás de ejecución, flota apacible [Certificación completada: El hoy de Rea / Tiempo en curso]. Marta coloca una taza tibia de té de menta resonante ante Rea)\n“Incluso tras vaciar seis tazones de sopa matinal, aún te cabe un poquito de té de menta, ¿verdad, mi Rea? Bébelo despacio y sin prisa: ya nadie nos persigue.”\n(Controles: Pulsa F / pulsar stick izquierdo en el té de menta resonante tibio de la mesa (attic_mint_tea) para beberlo y disfrutar de la tranquila mañana.)"
+      "value": "(La luz matinal reposa en el Ático del Olvido. En lo alto de la pantalla, en vez de la cuenta atrás de ejecución, flota apacible [Certificación completada: El hoy de Rea / Tiempo en curso]. Marta coloca una taza tibia de té de menta resonante ante Rea)\n“Incluso tras vaciar seis tazones de sopa matinal, aún te cabe un poquito de té de menta, ¿verdad, mi Rea? Bébelo despacio y sin prisa: ya nadie nos persigue.”\n(Controles: Pulsa C / pulsar stick izquierdo en el té de menta resonante tibio de la mesa (attic_mint_tea) para beberlo y disfrutar de la tranquila mañana.)"
     },
     {
       "key": "story.epilogue.02_benefactors",

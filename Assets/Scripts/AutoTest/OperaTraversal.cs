@@ -47,7 +47,7 @@ namespace RewindNotary
                             !Area.ChandelierShaded) return false;
                         boarding = false;
                     }
-                    keys.Hold(eastbound ? KeyCode.D : KeyCode.A);
+                    keys.Hold(eastbound ? KeyCode.RightArrow : KeyCode.LeftArrow);
                     return false;
                 }
             }
