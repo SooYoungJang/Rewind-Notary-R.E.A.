@@ -201,6 +201,10 @@ namespace RewindNotary
                 default:
                     string[] labels = Labels();
                     if (Page == ShellPage.Settings) snap.BodyHeader = Loc.Get("settings.adjust_hint");
+                    else if (Page == ShellPage.Keybinds)
+                        snap.BodyHeader = Loc.Language == "ko"
+                            ? "변경할 동작을 선택한 뒤 새 키를 누르세요. (Esc로 취소)"
+                            : "Select an action and press a new key. (Esc to cancel)";
                     for (int i = 0; i < labels.Length; i++)
                     {
                         snap.Buttons.Add(new GameShellCanvas.ButtonItem
@@ -208,7 +212,7 @@ namespace RewindNotary
                             Index = i,
                             Label = labels[i],
                             Selected = selected == i,
-                            IsSetting = Page == ShellPage.Settings && i < 5
+                            IsSetting = Page == ShellPage.Settings && i < 7
                         });
                     }
                     break;

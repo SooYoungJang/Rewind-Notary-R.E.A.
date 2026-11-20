@@ -27,6 +27,8 @@ namespace RewindNotary
         private StitchBinding bossBinding;
         private Font hudFont;
         private GameHudCanvas hudCanvas;
+        private CinematicJuiceDirector cinematic;
+        private DistrictMinimapCanvas minimap;
         private bool checkpoint, won, initialized, echoDuel;
         private float deathTimer;
         private string failure;
@@ -44,6 +46,10 @@ namespace RewindNotary
                 shell.Initialize(this, hudFont);
                 hudCanvas = gameObject.AddComponent<GameHudCanvas>();
                 hudCanvas.Initialize(transform);
+                cinematic = gameObject.AddComponent<CinematicJuiceDirector>();
+                cinematic.Initialize(transform);
+                minimap = gameObject.AddComponent<DistrictMinimapCanvas>();
+                minimap.Initialize(transform);
             }
             catch (System.Exception exception) { failure = exception.Message; Debug.LogException(exception); }
         }
@@ -333,6 +339,8 @@ namespace RewindNotary
                 skills.PresentationRequested -= PresentSkill; skills.Close(false);
             }
             initialized = false; SkillStroke.WorldRoot = null;
+            cinematic?.ResetState();
+            minimap?.CloseFullMap();
             ImpactFeedback.ResetEffects(); AudioManager.ResetPlayback(false);
             if (world != null) { world.SetActive(false); Destroy(world); world = null; }
             player = boss = null; controller = null; skills = null; reward = null; practice = null;
@@ -375,6 +383,8 @@ namespace RewindNotary
             if (!initialized || shell == null || !shell.Playing || failure != null)
             {
                 hudCanvas.Render(default);
+                cinematic?.Observe(false, false, null, null, null);
+                minimap?.Observe(false, null, false);
                 return;
             }
             var snap = new GameHudCanvas.HudSnapshot
@@ -383,12 +393,14 @@ namespace RewindNotary
                 LocationTitle = Loc.Get("game.title"),
                 PlayerHp = player.Health.Current,
                 PlayerMaxHp = player.Health.Maximum,
-                ControlsText = Loc.Get("input.gameplay")
+                ControlsText = GameInput.FormatControlsPrompt(true)
             };
             if (Area != null)
             {
                 Area.FillHudSnapshot(ref snap);
                 hudCanvas.Render(snap);
+                cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
+                minimap?.Observe(true, Area, snap.BossVisible);
                 return;
             }
             if (echoDuel)
@@ -404,6 +416,8 @@ namespace RewindNotary
                 snap.OverlayTitle = won ? Loc.Get("finale.result", encounter.Label) : Loc.Get("hud.retrying");
                 snap.OverlayDetail = won ? Loc.Get("area.travel", Loc.Get("ui.stage_select")) : Loc.Get("hud.returning_checkpoint");
                 hudCanvas.Render(snap);
+                cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
+                minimap?.Observe(false, null, true);
                 return;
             }
             var defense = player.Defense.State;
@@ -455,6 +469,8 @@ namespace RewindNotary
                 snap.OverlayDetail = won ? Loc.Get("input.retry_button") : Loc.Get("hud.returning_checkpoint");
             }
             hudCanvas.Render(snap);
+            cinematic?.Observe(true, snap.BossVisible, snap.BossName, snap.BossPhase, boss);
+            minimap?.Observe(false, null, snap.BossVisible);
         }
         private void OnGUI()
         {

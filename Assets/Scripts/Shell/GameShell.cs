@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RewindNotary
 {
-    public enum ShellPage { Main, Slots, Stages, Playing, Pause, Settings, DeleteConfirm, QuitConfirm, Skills, Investigation, CoreReading, ReturnSelection, ReturnConfirm, CourtLift, StoryDialogue, StorySaving }
+    public enum ShellPage { Main, Slots, Stages, Playing, Pause, Settings, Keybinds, DeleteConfirm, QuitConfirm, Skills, Investigation, CoreReading, ReturnSelection, ReturnConfirm, CourtLift, StoryDialogue, StorySaving }
     public enum SlotPurpose { Continue, NewGame, StageSelect }
 
     // Runs before hit-stop and combat so pause/input transitions have a single owner.
@@ -26,6 +26,7 @@ namespace RewindNotary
         private SlotPurpose purpose;
         private ShellPage settingsReturn, quitReturn;
         private int selected, deleteSlot;
+        private int remappingSlot = -1;
         private Vector2 previousAxis;
         private float repeatAt;
         private Font font;
@@ -54,7 +55,7 @@ namespace RewindNotary
         }
         private void Go(ShellPage page)
         {
-            Page = page; selected = 0; previousAxis = Vector2.zero; repeatAt = Time.unscaledTime + 0.3f;
+            Page = page; selected = 0; remappingSlot = -1; previousAxis = Vector2.zero; repeatAt = Time.unscaledTime + 0.3f;
             if (page == ShellPage.Main && Array.TrueForAll(records, r => r == null)
                 && Array.TrueForAll(slotErrors, e => e == null)) selected = 1;
             GameInput.SetGameplay(page == ShellPage.Playing);
@@ -62,6 +63,22 @@ namespace RewindNotary
         private void Update()
         {
             if (game == null || Settings == null) return;
+            GameInput.TrackActiveDevice();
+            if (Page == ShellPage.Keybinds && remappingSlot >= 0)
+            {
+                if (UnityEngine.Input.GetKeyDown(KeyCode.Escape)) { remappingSlot = -1; return; }
+                foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
+                {
+                    if (code == KeyCode.None || code == KeyCode.Escape || code >= KeyCode.Mouse0) continue;
+                    if (UnityEngine.Input.GetKeyDown(code))
+                    {
+                        AssignKeybind(remappingSlot, code);
+                        remappingSlot = -1;
+                        return;
+                    }
+                }
+                return;
+            }
             if (Playing && game.ActiveSkills != null)
             {
                 string stage = game.ActiveSkills.Progression.Record.lastStageId;
@@ -133,7 +150,7 @@ namespace RewindNotary
             : Page == ShellPage.Stages ? StageCatalog.All.Length + (EndingCheckpoint.Marker(selectedRecord) == null ? 1 : 2) : Page == ShellPage.Pause ? 5
             : Page == ShellPage.Investigation || Page == ShellPage.CoreReading ? InvestigationRows
             : Page == ShellPage.ReturnSelection ? BenefactorIds.All.Length + 1
-            : Page == ShellPage.Skills ? 2 : Page == ShellPage.Settings ? 6 : 2;
+            : Page == ShellPage.Skills ? 2 : Page == ShellPage.Settings ? 9 : Page == ShellPage.Keybinds ? 9 : 2;
         public void Pause()
         {
             if (!Playing) return;
@@ -159,6 +176,7 @@ namespace RewindNotary
                 case ShellPage.Investigation:
                 case ShellPage.CoreReading: CloseInvestigation(); break;
                 case ShellPage.Settings: Settings.Save(); Go(settingsReturn); break;
+                case ShellPage.Keybinds: Settings.Save(); Go(ShellPage.Settings); break;
                 case ShellPage.Stages: RefreshSlots(); Go(ShellPage.Slots); break;
                 case ShellPage.DeleteConfirm: RefreshSlots(); Go(ShellPage.Slots); break;
                 case ShellPage.QuitConfirm: Go(quitReturn); break;
@@ -208,7 +226,14 @@ namespace RewindNotary
                     ActivateInvestigation(index);
                     break;
                 case ShellPage.Settings:
-                    if (index == 5) Back(); else AdjustSetting(index, 1);
+                    if (index == 8) Back();
+                    else if (index == 7) Go(ShellPage.Keybinds);
+                    else AdjustSetting(index, 1);
+                    break;
+                case ShellPage.Keybinds:
+                    if (index == 8) Back();
+                    else if (index == 7) { Settings.Value.ResetKeybinds(); Settings.Apply(); Settings.Save(); }
+                    else remappingSlot = index;
                     break;
                 case ShellPage.DeleteConfirm:
                     if (index == 0) Back(); else DeleteSelected();
@@ -328,7 +353,25 @@ namespace RewindNotary
                 value.language = Loc.NextLanguage(value.language, direction);
                 message = null;
             }
+            else if (index == 5) value.displayMode = (value.displayMode + direction + 4) % 4;
+            else if (index == 6) value.vsync = !value.vsync;
             else return;
+            Settings.Apply(); Settings.Save();
+        }
+        private void AssignKeybind(int slot, KeyCode code)
+        {
+            var v = Settings.Value;
+            string name = code.ToString();
+            switch (slot)
+            {
+                case 0: v.keyJump = name; break;
+                case 1: v.keyAttack = name; break;
+                case 2: v.keyCast = name; break;
+                case 3: v.keyDash = name; break;
+                case 4: v.keyParry = name; break;
+                case 5: v.keyInteract = name; break;
+                case 6: v.keyMap = name; break;
+            }
             Settings.Apply(); Settings.Save();
         }
         public void SetStageOverride(int stage)
@@ -550,6 +593,7 @@ namespace RewindNotary
                 case ShellPage.Investigation: return "";
                 case ShellPage.CoreReading: return Loc.Get("heading.core");
                 case ShellPage.Settings: return Loc.Get("heading.settings");
+                case ShellPage.Keybinds: return Loc.Language == "ko" ? "키 설정 (리매핑)" : "Key Bindings";
                 case ShellPage.DeleteConfirm: return Loc.Get("slot.delete_confirm", deleteSlot);
                 default: return Loc.Get("ui.quit_confirm");
             }
@@ -561,12 +605,33 @@ namespace RewindNotary
             if (Page == ShellPage.Pause) return new[] { Loc.Get("ui.resume"), Loc.Get("ui.skills"), Loc.Get("ui.settings"), Loc.Get("ui.main_menu"), Loc.Get("ui.quit") };
             if (Page == ShellPage.DeleteConfirm) return new[] { Loc.Get("ui.cancel"), Loc.Get("ui.delete_record") };
             if (Page == ShellPage.QuitConfirm) return new[] { Loc.Get("ui.cancel"), Loc.Get("ui.save_quit") };
+            if (Page == ShellPage.Keybinds)
+            {
+                bool ko = Loc.Language == "ko";
+                string Tag(int s, KeyCode k) => remappingSlot == s ? (ko ? "[ 새 키를 누르세요… Esc 취소 ]" : "[ Press new key… Esc cancel ]") : "[" + GameInput.KeyLabel(k) + "]";
+                return new[]
+                {
+                    (ko ? "점프 :  " : "Jump :  ") + Tag(0, GameInput.JumpKey),
+                    (ko ? "검술 공격 :  " : "Attack :  ") + Tag(1, GameInput.AttackKey),
+                    (ko ? "은인 기술 :  " : "Skill :  ") + Tag(2, GameInput.CastKey),
+                    (ko ? "대시 :  " : "Dash :  ") + Tag(3, GameInput.DashKey),
+                    (ko ? "패리 :  " : "Parry :  ") + Tag(4, GameInput.ParryKey),
+                    (ko ? "조사 · 출입 :  " : "Interact :  ") + Tag(5, GameInput.InteractKey),
+                    (ko ? "구역 지도 :  " : "District Map :  ") + Tag(6, GameInput.MapKey),
+                    ko ? "기본 키로 복원" : "Reset Defaults",
+                    Loc.Get("ui.back")
+                };
+            }
             var value = Settings.Value;
+            bool isKo = Loc.Language == "ko";
             return new[] { Loc.Get("settings.music_volume", Mathf.RoundToInt(value.bgmVolume * 100)),
                 Loc.Get("settings.effects_volume", Mathf.RoundToInt(value.sfxVolume * 100)),
                 Loc.Get("settings.screen_shake", (value.screenShake ? Loc.Get("ui.on") : Loc.Get("ui.off"))),
                 Loc.Get("settings.stage_override", (!DebugAvailable ? Loc.Get("settings.development_only") : value.stageOverride == 0 ? Loc.Get("settings.actual_stage") : Loc.Get("settings.preview_stage", value.stageOverride))),
                 Loc.Get("settings.language", Loc.Get("language." + value.language)),
+                (isKo ? "화면 모드 : " : "Display : ") + SettingsStore.DisplayModeLabel(value.displayMode),
+                (isKo ? "수직 동기화 (VSync) : " : "VSync : ") + (value.vsync ? Loc.Get("ui.on") : Loc.Get("ui.off")),
+                isKo ? "키 설정 (리매핑)" : "Key Bindings",
                 Loc.Get("ui.back") };
         }
     }
