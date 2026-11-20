@@ -42,7 +42,12 @@ namespace RewindNotary.Editor
             importer.isReadable = false;
             importer.alphaSource = TextureImporterAlphaSource.FromInput;
             importer.alphaIsTransparency = true;
-            importer.textureCompression = TextureImporterCompression.Uncompressed;
+            bool compress = assetPath.StartsWith("Assets/Resources/GameArt/backgrounds/", System.StringComparison.Ordinal)
+                || assetPath.StartsWith("Assets/Resources/GameArt/portraits/", System.StringComparison.Ordinal)
+                || assetPath.StartsWith("Assets/Resources/GameArt/ui/", System.StringComparison.Ordinal);
+            importer.textureCompression = compress ? TextureImporterCompression.Compressed : TextureImporterCompression.Uncompressed;
+            importer.crunchedCompression = compress;
+            importer.compressionQuality = compress ? 75 : 50;
             importer.filterMode = FilterMode.Bilinear;
             importer.wrapMode = TextureWrapMode.Clamp;
         }
@@ -55,13 +60,16 @@ namespace RewindNotary.Editor
             if (!assetPath.StartsWith("Assets/Resources/Audio/")) return;
             var importer = (AudioImporter)assetImporter;
             var settings = importer.defaultSampleSettings;
-            settings.loadType = AudioClipLoadType.DecompressOnLoad;
-            settings.compressionFormat = AudioCompressionFormat.PCM;
+            bool ost = assetPath.StartsWith("Assets/Resources/Audio/Bgm/track-", System.StringComparison.Ordinal)
+                && assetPath.EndsWith(".mp3", System.StringComparison.OrdinalIgnoreCase);
+            settings.loadType = ost ? AudioClipLoadType.Streaming : AudioClipLoadType.DecompressOnLoad;
+            settings.compressionFormat = ost ? AudioCompressionFormat.Vorbis : AudioCompressionFormat.PCM;
+            settings.quality = ost ? 0.7f : 1f;
             settings.sampleRateSetting = AudioSampleRateSetting.PreserveSampleRate;
-            settings.preloadAudioData = true;
+            settings.preloadAudioData = !ost;
             importer.defaultSampleSettings = settings;
             importer.forceToMono = false;
-            importer.loadInBackground = false;
+            importer.loadInBackground = ost;
         }
     }
 }

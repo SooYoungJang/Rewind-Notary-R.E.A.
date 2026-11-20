@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "大法庭升降机返回通道"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "显示模式 : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "无边框全屏"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (窗口)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (窗口)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (窗口)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "垂直同步 (VSync) : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "按键设置 (改键)"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "按键设置"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "选择要修改的操作后按下新按键或右键。（重复时自动交换 · Esc取消）"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ 请按新键… Esc取消 ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "恢复默认按键"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "已自动交换重复按键。"
+    },
+    {
+      "key": "keybind.jump",
+      "value": "跳跃 :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "剑术攻击 :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "恩人技能 :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "冲刺 :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "格挡 :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "调查 · 出入 :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "区域地图 :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] 地图"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "全局探索: {0} / {1} 房间"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ 当前位置   ■ 已探索   □ 未探索   ❖ 首领/决战场   [{0} / Tab / Esc] 关闭"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "据点 · 遗忘阁楼"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "天鹅绒裁缝街"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "钟楼区"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "玻璃歌剧院"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "大钟楼水道"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "留白画廊"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "公证法庭"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "最终审判席"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "移动 A/D | 跳跃 {0} | 剑术(↑/↓下劈) {1} | 技能 {2} | 冲刺 {3} | 格挡 {4} | 地图 {5} | Esc"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "移动 A/D | 调查·出入 {0} | 剑术 {1} | 技能 {2} | 冲刺 {3} | 地图 {4} | Esc 暂停"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "移动 LS | 跳跃 [A] | 剑术 [X] | 技能 [Y] | 冲刺 [LB] | 格挡 [RB] | 暂停 [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "移动 LS | 调查 [L3] | 剑术 [X] | 技能 [Y] | 冲刺 [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "公证记录已更新 · 体力已恢复"
     }
   ]
 }

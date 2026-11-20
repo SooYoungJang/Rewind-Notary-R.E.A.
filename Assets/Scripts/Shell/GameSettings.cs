@@ -139,10 +139,10 @@ namespace RewindNotary
         {
             switch (mode)
             {
-                case 1: return "1280 × 720 (Windowed)";
-                case 2: return "1600 × 900 (Windowed)";
-                case 3: return "1920 × 1080 (Windowed)";
-                default: return "Fullscreen Window";
+                case 1: return Loc.Get("settings.display_1280");
+                case 2: return Loc.Get("settings.display_1600");
+                case 3: return Loc.Get("settings.display_1920");
+                default: return Loc.Get("settings.display_fullscreen");
             }
         }
     }

@@ -4,8 +4,10 @@ using UnityEngine.UI;
 
 namespace RewindNotary
 {
+    [DefaultExecutionOrder(-250)]
     public sealed class DistrictMinimapCanvas : MonoBehaviour
     {
+        public static int ConsumedCancelFrame { get; private set; } = -1;
         private Canvas canvas;
         private GameObject miniRoot;
         private RectTransform miniGraphRoot;
@@ -119,7 +121,12 @@ namespace RewindNotary
 
         public void CloseFullMap()
         {
-            fullOpen = false;
+            if (fullOpen)
+            {
+                fullOpen = false;
+                if (Time.timeScale == 0f) Time.timeScale = 1f;
+                GameInput.SetGameplay(true);
+            }
             if (fullRoot != null) fullRoot.SetActive(false);
         }
 
@@ -128,7 +135,11 @@ namespace RewindNotary
             if (canvas == null) return;
             if (!playing || area == null || area.Room == null)
             {
-                CloseFullMap();
+                if (fullOpen)
+                {
+                    fullOpen = false;
+                    if (fullRoot != null) fullRoot.SetActive(false);
+                }
                 miniRoot.SetActive(false);
                 return;
             }
@@ -136,11 +147,16 @@ namespace RewindNotary
             if (GameInput.MapDown)
             {
                 fullOpen = !fullOpen;
+                Time.timeScale = fullOpen ? 0f : 1f;
+                GameInput.SetGameplay(!fullOpen);
+                UiAudioSynth.PlayMapToggle(fullOpen);
                 dirty = true;
             }
             else if (fullOpen && GameInput.CancelDown)
             {
+                ConsumedCancelFrame = Time.frameCount;
                 CloseFullMap();
+                UiAudioSynth.PlayMapToggle(false);
             }
 
             string roomId = area.Room.id;
@@ -181,18 +197,14 @@ namespace RewindNotary
             miniTitleText.font = NotaryUiTheme.TitleFont;
             miniHintText.font = NotaryUiTheme.BodyFont;
             miniTitleText.text = districtLabel;
-            miniHintText.text = "[" + GameInput.KeyLabel(GameInput.MapKey) + "] " + (Loc.Language == "ko" ? "지도" : "Map");
+            miniHintText.text = Loc.Get("map.button", GameInput.KeyLabel(GameInput.MapKey));
 
             fullTitleText.font = NotaryUiTheme.TitleFont;
             fullProgressText.font = NotaryUiTheme.BodyFont;
             fullLegendText.font = NotaryUiTheme.BodyFont;
             fullTitleText.text = "◆  " + districtLabel + "  (" + visitedCount + " / " + rooms.Count + ")";
-            fullProgressText.text = Loc.Language == "ko"
-                ? $"전체 탐색: {visited.Count} / {script.rooms.Length} 방"
-                : $"Explored: {visited.Count} / {script.rooms.Length} rooms";
-            fullLegendText.text = Loc.Language == "ko"
-                ? $"◆ 현재 위치   ■ 탐색 완료   □ 미탐색   ◆ 보스/아레나   [{GameInput.KeyLabel(GameInput.MapKey)} / Tab / Esc] 닫기"
-                : $"◆ Current   ■ Visited   □ Unexplored   ◆ Boss/Arena   [{GameInput.KeyLabel(GameInput.MapKey)} / Tab / Esc] Close";
+            fullProgressText.text = Loc.Get("map.explored_total", visited.Count, script.rooms.Length);
+            fullLegendText.text = Loc.Get("map.legend", GameInput.KeyLabel(GameInput.MapKey));
 
             RenderGraph(miniGraphRoot, rooms, false);
             if (fullOpen) RenderGraph(fullGraphRoot, rooms, true);
@@ -291,19 +303,8 @@ namespace RewindNotary
 
         private static string DistrictTitle(string stage)
         {
-            bool ko = Loc.Language == "ko";
-            switch (stage)
-            {
-                case "hub": return ko ? "거점 · 망각 다락방" : "Hub · Forgotten Attic";
-                case "velvet": return ko ? "벨벳 재단 거리" : "Velvet Tailor Street";
-                case "clock": return ko ? "시계탑 구역" : "Clocktower District";
-                case "opera": return ko ? "유리 오페라 극장" : "Glass Opera House";
-                case "bell": return ko ? "대종루 수로" : "Great Bell Aqueduct";
-                case "gallery": return ko ? "여백의 화랑" : "Canvas Gallery";
-                case "janhyang": return ko ? "공증 법정" : "Notary Court";
-                case "cassel": return ko ? "최종 심판석" : "Grand Tribunal";
-                default: return stage ?? "";
-            }
+            string key = "map.district." + (string.IsNullOrEmpty(stage) ? "hub" : stage);
+            return Loc.Contains(key) ? Loc.Get(key) : (stage ?? "");
         }
 
         private void OnDestroy()

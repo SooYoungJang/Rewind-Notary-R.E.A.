@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Passage de retour vers l'Ascenseur du Grand Tribunal"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Affichage : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Plein écran fenêtré"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Fenêtré)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Fenêtré)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Fenêtré)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "Synchronisation VSync : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Raccourcis clavier"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Commandes"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Choisissez une action puis appuyez sur une touche ou clic droit. (Échange auto · Échap annule)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Appuyez sur une touche… Échap ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Réinitialiser"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Touche en double échangée."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Sauter :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Attaque :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Compétence :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Ruée :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "Parade :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interagir :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "Carte du quartier :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Carte"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Exploré : {0} / {1} salles"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Position   ■ Visitée   □ Inexplorée   ❖ Boss/Arène   [{0} / Tab / Esc] Fermer"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Refuge · Grenier Oublié"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Rue du Tailleur Velours"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Quartier de l’Horloge"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Opéra de Verre"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Aqueduc du Grand Beffroi"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Galerie de la Toile"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Cour Notariale"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Grand Tribunal"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Dépl. A/D | Saut {0} | Attaque {1} | Tech. {2} | Ruée {3} | Parade {4} | Carte {5} | Échap"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Dépl. A/D | Interag. {0} | Attaque {1} | Tech. {2} | Ruée {3} | Carte {4} | Échap Pause"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "LS | Saut [A] | Attaque [X] | Tech. [Y] | Ruée [LB] | Parade [RB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "LS | Interag. [L3] | Attaque [X] | Tech. [Y] | Ruée [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Registre notarial mis à jour · Santé restaurée"
     }
   ]
 }

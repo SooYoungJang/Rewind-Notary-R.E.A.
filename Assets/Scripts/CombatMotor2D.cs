@@ -17,6 +17,7 @@ namespace RewindNotary
         public float LastLandedAt { get; private set; } = float.NegativeInfinity;
         public bool Stunned => Time.time < stunUntil;
         public int ComboStep => comboStep;
+        public int AttackDirectionY { get; private set; }
         public SkillSession Skills { get; set; }
         public PlayerDefense2D Defense { get; private set; }
         public BenefactorSkillRunner BenefactorSkills { get; set; }
@@ -204,6 +205,13 @@ namespace RewindNotary
             activeUse = chainUse;
             attackStep = comboStep = step;
             activeAttack = step == 0 ? BossAttack : PlayerCombo[step - 1];
+            AttackDirectionY = 0;
+            if (Health.IsPlayer && step > 0 && AutoTestRuntime.Report == null)
+            {
+                float vy = GameInput.Vertical;
+                if (!Grounded && vy < -0.5f) AttackDirectionY = -1;
+                else if (vy > 0.5f) AttackDirectionY = 1;
+            }
             // Consume once at an actual swing start, including a later whiff/interruption.
             float counter = Defense != null ? Defense.State.ConsumeCounter(Time.time) : 1f;
             strikeDamage = Mathf.CeilToInt(damage * activeAttack.DamageMultiplier * counter);
@@ -236,10 +244,15 @@ namespace RewindNotary
         {
             // Mark even a whiff/immune target as delivered: one contact query per swing.
             strikeDelivered = true;
-            Bounds blade = new Bounds(transform.position + new Vector3(Facing * activeAttack.Reach, 1f, 0),
-                new Vector3(activeAttack.Width, activeAttack.Height, 2f));
+            Bounds blade = AttackDirectionY == -1
+                ? new Bounds(transform.position + new Vector3(0f, -0.35f, 0f), new Vector3(1.95f, 1.85f, 2f))
+                : AttackDirectionY == 1
+                    ? new Bounds(transform.position + new Vector3(0f, 2.15f, 0f), new Vector3(1.95f, 1.85f, 2f))
+                    : new Bounds(transform.position + new Vector3(Facing * activeAttack.Reach, 1f, 0),
+                        new Vector3(activeAttack.Width, activeAttack.Height, 2f));
+            bool pogoContact = false;
             // The short wave extends only the last strike, with the SAME activation and damage query.
-            if (Health.IsPlayer && chainProfile != null && attackStep == ComboLimit && chainProfile.waveReach > 0f)
+            if (Health.IsPlayer && AttackDirectionY == 0 && chainProfile != null && attackStep == ComboLimit && chainProfile.waveReach > 0f)
             {
                 blade.center += new Vector3(Facing * chainProfile.waveReach * 0.5f, 0, 0);
                 blade.size += new Vector3(chainProfile.waveReach, 0, 0);
@@ -247,7 +260,7 @@ namespace RewindNotary
                     transform.position + new Vector3(Facing * (activeAttack.Reach + activeAttack.Width * 0.5f + chainProfile.waveReach), 1, 0),
                     new Color(0.2f, 0.85f, 1f), 0.16f);
             }
-            if (Health.IsPlayer && attackStep == ComboLimit && Skills?.Finale.State.active == true)
+            if (Health.IsPlayer && AttackDirectionY == 0 && attackStep == ComboLimit && Skills?.Finale.State.active == true)
             {
                 float reach = CasselDefinition.Load().Profile(Skills.Finale.State.returnCount).waveReach;
                 blade.center += new Vector3(Facing * reach * 0.5f, 0, 0);
@@ -257,31 +270,52 @@ namespace RewindNotary
                 SkillStroke.Afterimage(Animation.GetComponent<SpriteRenderer>(), chainProfile.afterimageSeconds);
             if (Skills != null)
             {
+                if (AttackDirectionY == -1)
+                {
+                    foreach (var wt in WaveCombatTargets.All)
+                        if (wt != null && wt.State != null && !wt.State.Cleared && blade.Intersects(wt.Bounds))
+                            pogoContact = true;
+                }
                 WaveCombatTargets.Sword(Skills, activeUse, blade, attackStep == PlayerCombo.Length);
                 foreach (var destructible in DestructibleTarget2D.All)
                     if (blade.Intersects(destructible.Bounds))
+                    {
+                        pogoContact = true;
                         Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Destructible,
                             destructible.TargetId, destructible.Hit(strikeDamage), strikeDamage));
+                    }
                 foreach (var surface in StitchSurface2D.All)
                     if (blade.Intersects(surface.Bounds))
+                    {
+                        pogoContact = true;
                         Skills.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.TerrainMechanism,
                             surface.TargetId, surface.Cut(false)));
+                    }
             }
             if (Health.IsPlayer) BasicStrikeDelivered?.Invoke(blade, strikeDamage);
-            if (opponent == null || opponent.Dead) return;
-            var target = opponent.GetComponent<Collider2D>();
-            if (target != null && blade.Intersects(target.bounds)
-                && opponent.Hit(strikeDamage, transform.position, activeAttack.Knockback))
+            if (opponent != null && !opponent.Dead)
             {
-                Skills?.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Enemy,
-                    opponent.gameObject.name, true, strikeDamage));
-                if (Health.IsPlayer) SwordContact?.Invoke(activeUse, attackStep, attackStep == ComboLimit, strikeDamage);
-                AudioManager.Play(AudioManager.Sfx.Hit);
-                if (!opponent.IsPlayer)
+                var target = opponent.GetComponent<Collider2D>();
+                if (target != null && blade.Intersects(target.bounds)
+                    && opponent.Hit(strikeDamage, transform.position, activeAttack.Knockback))
                 {
-                    if (attackStep == PlayerCombo.Length) ImpactFeedback.ComboFinisherHit();
-                    else ImpactFeedback.SwordHit();
+                    pogoContact = true;
+                    Skills?.Progression.Apply(activeUse, new CombatEffectResult(EffectTargetKind.Enemy,
+                        opponent.gameObject.name, true, strikeDamage));
+                    if (Health.IsPlayer) SwordContact?.Invoke(activeUse, attackStep, attackStep == ComboLimit, strikeDamage);
+                    AudioManager.Play(AudioManager.Sfx.Hit);
+                    if (!opponent.IsPlayer)
+                    {
+                        if (attackStep == PlayerCombo.Length) ImpactFeedback.ComboFinisherHit();
+                        else ImpactFeedback.SwordHit();
+                    }
                 }
+            }
+            if (Health.IsPlayer && AttackDirectionY == -1 && pogoContact)
+            {
+                Body.linearVelocity = new Vector2(Body.linearVelocity.x, 10.8f);
+                Defense?.State.Land();
+                AtmospherePostEffect.PulseImpact(0.38f);
             }
         }
         private void Update()

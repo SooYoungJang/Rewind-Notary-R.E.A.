@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Rückweg zum Aufzug zum Hohen Gericht"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Anzeige : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Randloses Vollbild"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Fenster)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Fenster)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Fenster)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "VSync : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Tastenbelegung"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Tastenbelegung"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Aktion wählen und neue Taste oder Rechtsklick drücken. (Doppelte tauschen automatisch · Esc bricht ab)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Neue Taste drücken… Esc ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Standard wiederherstellen"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Doppelte Taste automatisch getauscht."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Springen :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Angriff :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Technik :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Sprint :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "Parieren :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interagieren :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "Bezirkskarte :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Karte"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Erkundet: {0} / {1} Räume"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Position   ■ Besucht   □ Offen   ❖ Boss/Arena   [{0} / Tab / Esc] Schließen"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Stützpunkt · Dachboden"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Samtschneider-Gasse"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Uhrturm-Bezirk"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Gläserne Oper"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Glockenturm-Aquädukt"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Leinwand-Galerie"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Notarsgericht"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Großes Tribunal"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Bewegen A/D | Sprung {0} | Angriff {1} | Technik {2} | Sprint {3} | Parieren {4} | Karte {5} | Esc"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Bewegen A/D | Interag. {0} | Angriff {1} | Technik {2} | Sprint {3} | Karte {4} | Esc Pause"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "LS | Sprung [A] | Angriff [X] | Technik [Y] | Sprint [LB] | Parieren [RB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "LS | Interag. [L3] | Angriff [X] | Technik [Y] | Sprint [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Notarsprotokoll aktualisiert · LP geheilt"
     }
   ]
 }

@@ -66,6 +66,8 @@ namespace RewindNotary
                 case KeyCode.RightShift: return "R-Shift";
                 case KeyCode.LeftControl: return "L-Ctrl";
                 case KeyCode.Return: return "Enter";
+                case KeyCode.Mouse1: return "R-Click";
+                case KeyCode.Mouse2: return "M-Click";
                 default: return k.ToString();
             }
         }
@@ -73,20 +75,12 @@ namespace RewindNotary
         public static string FormatControlsPrompt(bool combatMode)
         {
             if (UsingGamepad)
-            {
-                return combatMode
-                    ? "Move: LS/D-Pad   Jump: [A]   Attack: [X]   Skill: [Y]   Dash: [LB]   Parry: [RB]   Pause: [Start]"
-                    : "Move: LS/D-Pad   Interact: [L3]   Attack: [X]   Skill: [Y]   Dash: [LB]   Parry: [RB]   Pause: [Start]";
-            }
-            if (Loc.Language == "ko")
-            {
-                return combatMode
-                    ? $"이동 A/D·방향키 | 점프 {KeyLabel(JumpKey)} | 검술 {KeyLabel(AttackKey)}·좌클릭 | 기술 {KeyLabel(CastKey)} | 대시 {KeyLabel(DashKey)} | 패리 {KeyLabel(ParryKey)} | 지도 {KeyLabel(MapKey)} | Esc 메뉴"
-                    : $"이동 A/D·방향키 | 조사·출입 {KeyLabel(InteractKey)} | 검술 {KeyLabel(AttackKey)} | 기술 {KeyLabel(CastKey)} | 대시 {KeyLabel(DashKey)} | 지도 {KeyLabel(MapKey)} | Esc 일시정지";
-            }
-            return combatMode
-                ? $"Move A/D | Jump {KeyLabel(JumpKey)} | Attack {KeyLabel(AttackKey)} | Skill {KeyLabel(CastKey)} | Dash {KeyLabel(DashKey)} | Parry {KeyLabel(ParryKey)} | Map {KeyLabel(MapKey)} | Esc Pause"
-                : $"Move A/D | Interact {KeyLabel(InteractKey)} | Attack {KeyLabel(AttackKey)} | Skill {KeyLabel(CastKey)} | Map {KeyLabel(MapKey)} | Esc Pause";
+                return Loc.Get(combatMode ? "controls.pad_combat" : "controls.pad_explore");
+            if (combatMode)
+                return Loc.Get("controls.kb_combat", KeyLabel(JumpKey), KeyLabel(AttackKey), KeyLabel(CastKey),
+                    KeyLabel(DashKey), KeyLabel(ParryKey), KeyLabel(MapKey));
+            return Loc.Get("controls.kb_explore", KeyLabel(InteractKey), KeyLabel(AttackKey), KeyLabel(CastKey),
+                KeyLabel(DashKey), KeyLabel(MapKey));
         }
 
         public static float Horizontal

@@ -66,7 +66,9 @@ namespace RewindNotary
             GameInput.TrackActiveDevice();
             if (Page == ShellPage.Keybinds && remappingSlot >= 0)
             {
-                if (UnityEngine.Input.GetKeyDown(KeyCode.Escape)) { remappingSlot = -1; return; }
+                if (UnityEngine.Input.GetKeyDown(KeyCode.Escape)) { remappingSlot = -1; UiAudioSynth.PlayCancel(); return; }
+                if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse1)) { AssignKeybind(remappingSlot, KeyCode.Mouse1); remappingSlot = -1; return; }
+                if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse2)) { AssignKeybind(remappingSlot, KeyCode.Mouse2); remappingSlot = -1; return; }
                 foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
                 {
                     if (code == KeyCode.None || code == KeyCode.Escape || code >= KeyCode.Mouse0) continue;
@@ -125,26 +127,26 @@ namespace RewindNotary
             { Go(ShellPage.Pause); return; }
             if (Playing)
             {
-                if (GameInput.PauseDown) Pause();
+                if (GameInput.PauseDown && DistrictMinimapCanvas.ConsumedCancelFrame != Time.frameCount) Pause();
                 else if (GameInput.InvestigateDown && game.ActiveCassel?.CanChooseReturn == true) OpenReturnSelection();
                 return;
             }
-            if (GameInput.CancelDown || ((Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.Investigation || Page == ShellPage.CoreReading) && GameInput.PauseDown)) { Back(); return; }
+            if (GameInput.CancelDown || ((Page == ShellPage.Pause || Page == ShellPage.Skills || Page == ShellPage.Investigation || Page == ShellPage.CoreReading) && GameInput.PauseDown)) { UiAudioSynth.PlayCancel(); Back(); return; }
             Vector2 raw = GameInput.MenuAxis;
             var axis = new Vector2(Mathf.Abs(raw.x) >= 0.5f ? Mathf.Sign(raw.x) : 0,
                 Mathf.Abs(raw.y) >= 0.5f ? Mathf.Sign(raw.y) : 0);
             if (axis != Vector2.zero && (axis != previousAxis || Time.unscaledTime >= repeatAt))
             {
-                if (axis.y != 0) selected = (selected - (int)axis.y + RowCount) % RowCount;
-                else if (Page == ShellPage.Settings) AdjustSetting(selected, (int)axis.x);
+                if (axis.y != 0) { selected = (selected - (int)axis.y + RowCount) % RowCount; UiAudioSynth.PlayMove(); }
+                else if (Page == ShellPage.Settings) { AdjustSetting(selected, (int)axis.x); UiAudioSynth.PlayMove(); }
                 else if (Page == ShellPage.Investigation) clueScroll.y = Mathf.Max(0, clueScroll.y + axis.x * 85);
                 else if (Page == ShellPage.StoryDialogue || Page == ShellPage.CourtLift) dialogueScroll.y = Mathf.Max(0, dialogueScroll.y + axis.x * 85);
                 else if (Page == ShellPage.CoreReading) readingScroll.y = Mathf.Max(0, readingScroll.y + axis.x * 85);
                 repeatAt = Time.unscaledTime + (axis != previousAxis ? 0.35f : 0.12f);
             }
             previousAxis = axis;
-            if (Page == ShellPage.Slots && selected < records.Length && GameInput.DeleteDown) { RequestDelete(selected + 1); return; }
-            if (GameInput.SubmitDown) Activate(selected);
+            if (Page == ShellPage.Slots && selected < records.Length && GameInput.DeleteDown) { UiAudioSynth.PlayCancel(); RequestDelete(selected + 1); return; }
+            if (GameInput.SubmitDown) { UiAudioSynth.PlayConfirm(); Activate(selected); }
         }
         private int RowCount => Page == ShellPage.StoryDialogue ? (CanSkipLine ? 2 : 1) : Page == ShellPage.CourtLift ? LiftLabels().Length : Page == ShellPage.Main ? 5 : Page == ShellPage.Slots ? records.Length + 1
             : Page == ShellPage.Stages ? StageCatalog.All.Length + (EndingCheckpoint.Marker(selectedRecord) == null ? 1 : 2) : Page == ShellPage.Pause ? 5
@@ -361,7 +363,25 @@ namespace RewindNotary
         private void AssignKeybind(int slot, KeyCode code)
         {
             var v = Settings.Value;
-            string name = code.ToString();
+            KeyCode[] current = { GameInput.JumpKey, GameInput.AttackKey, GameInput.CastKey, GameInput.DashKey, GameInput.ParryKey, GameInput.InteractKey, GameInput.MapKey };
+            KeyCode previous = current[slot];
+            bool swapped = false;
+            for (int i = 0; i < current.Length; i++)
+            {
+                if (i != slot && current[i] == code)
+                {
+                    SetKeyField(v, i, previous.ToString());
+                    swapped = true;
+                }
+            }
+            SetKeyField(v, slot, code.ToString());
+            Settings.Apply();
+            Settings.Save();
+            UiAudioSynth.PlayConfirm();
+            message = swapped ? Loc.Get("keybind.swapped") : null;
+        }
+        private static void SetKeyField(GameSettings v, int slot, string name)
+        {
             switch (slot)
             {
                 case 0: v.keyJump = name; break;
@@ -372,7 +392,6 @@ namespace RewindNotary
                 case 5: v.keyInteract = name; break;
                 case 6: v.keyMap = name; break;
             }
-            Settings.Apply(); Settings.Save();
         }
         public void SetStageOverride(int stage)
         {
@@ -593,7 +612,7 @@ namespace RewindNotary
                 case ShellPage.Investigation: return "";
                 case ShellPage.CoreReading: return Loc.Get("heading.core");
                 case ShellPage.Settings: return Loc.Get("heading.settings");
-                case ShellPage.Keybinds: return Loc.Language == "ko" ? "키 설정 (리매핑)" : "Key Bindings";
+                case ShellPage.Keybinds: return Loc.Get("heading.keybinds");
                 case ShellPage.DeleteConfirm: return Loc.Get("slot.delete_confirm", deleteSlot);
                 default: return Loc.Get("ui.quit_confirm");
             }
@@ -607,31 +626,29 @@ namespace RewindNotary
             if (Page == ShellPage.QuitConfirm) return new[] { Loc.Get("ui.cancel"), Loc.Get("ui.save_quit") };
             if (Page == ShellPage.Keybinds)
             {
-                bool ko = Loc.Language == "ko";
-                string Tag(int s, KeyCode k) => remappingSlot == s ? (ko ? "[ 새 키를 누르세요… Esc 취소 ]" : "[ Press new key… Esc cancel ]") : "[" + GameInput.KeyLabel(k) + "]";
+                string Tag(int s, KeyCode k) => remappingSlot == s ? Loc.Get("keybind.listening") : "[" + GameInput.KeyLabel(k) + "]";
                 return new[]
                 {
-                    (ko ? "점프 :  " : "Jump :  ") + Tag(0, GameInput.JumpKey),
-                    (ko ? "검술 공격 :  " : "Attack :  ") + Tag(1, GameInput.AttackKey),
-                    (ko ? "은인 기술 :  " : "Skill :  ") + Tag(2, GameInput.CastKey),
-                    (ko ? "대시 :  " : "Dash :  ") + Tag(3, GameInput.DashKey),
-                    (ko ? "패리 :  " : "Parry :  ") + Tag(4, GameInput.ParryKey),
-                    (ko ? "조사 · 출입 :  " : "Interact :  ") + Tag(5, GameInput.InteractKey),
-                    (ko ? "구역 지도 :  " : "District Map :  ") + Tag(6, GameInput.MapKey),
-                    ko ? "기본 키로 복원" : "Reset Defaults",
+                    Loc.Get("keybind.jump", Tag(0, GameInput.JumpKey)),
+                    Loc.Get("keybind.attack", Tag(1, GameInput.AttackKey)),
+                    Loc.Get("keybind.skill", Tag(2, GameInput.CastKey)),
+                    Loc.Get("keybind.dash", Tag(3, GameInput.DashKey)),
+                    Loc.Get("keybind.parry", Tag(4, GameInput.ParryKey)),
+                    Loc.Get("keybind.interact", Tag(5, GameInput.InteractKey)),
+                    Loc.Get("keybind.map", Tag(6, GameInput.MapKey)),
+                    Loc.Get("keybind.reset"),
                     Loc.Get("ui.back")
                 };
             }
             var value = Settings.Value;
-            bool isKo = Loc.Language == "ko";
             return new[] { Loc.Get("settings.music_volume", Mathf.RoundToInt(value.bgmVolume * 100)),
                 Loc.Get("settings.effects_volume", Mathf.RoundToInt(value.sfxVolume * 100)),
                 Loc.Get("settings.screen_shake", (value.screenShake ? Loc.Get("ui.on") : Loc.Get("ui.off"))),
                 Loc.Get("settings.stage_override", (!DebugAvailable ? Loc.Get("settings.development_only") : value.stageOverride == 0 ? Loc.Get("settings.actual_stage") : Loc.Get("settings.preview_stage", value.stageOverride))),
                 Loc.Get("settings.language", Loc.Get("language." + value.language)),
-                (isKo ? "화면 모드 : " : "Display : ") + SettingsStore.DisplayModeLabel(value.displayMode),
-                (isKo ? "수직 동기화 (VSync) : " : "VSync : ") + (value.vsync ? Loc.Get("ui.on") : Loc.Get("ui.off")),
-                isKo ? "키 설정 (리매핑)" : "Key Bindings",
+                Loc.Get("settings.display_mode", SettingsStore.DisplayModeLabel(value.displayMode)),
+                Loc.Get("settings.vsync", value.vsync ? Loc.Get("ui.on") : Loc.Get("ui.off")),
+                Loc.Get("settings.keybinds"),
                 Loc.Get("ui.back") };
         }
     }

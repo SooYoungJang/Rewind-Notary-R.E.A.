@@ -5,6 +5,15 @@ namespace RewindNotary
 {
     public sealed class GameHudCanvas : MonoBehaviour
     {
+        public struct SkillBadge
+        {
+            public string ShortLabel;
+            public string DirCue;
+            public bool Owned;
+            public int Stage;
+            public Color Accent;
+        }
+
         public struct HudSnapshot
         {
             public bool Visible;
@@ -23,6 +32,9 @@ namespace RewindNotary
             public bool OverlayVisible;
             public string OverlayTitle;
             public string OverlayDetail;
+            public SkillBadge[] Skills;
+            public float DashReadyRatio;
+            public bool AirDashReady;
         }
 
         private Canvas canvas;
@@ -53,6 +65,17 @@ namespace RewindNotary
         private string lastRoomKey;
         private float roomBannerAge = 99f;
 
+        private CanvasGroup toastGroup;
+        private Text toastText;
+        private float toastAge = 99f;
+
+        private Image[] skillSlotBorders;
+        private Image[] skillSlotFills;
+        private Text[] skillSlotLabels;
+        private Text[] skillSlotPips;
+        private Image dashCooldownFill;
+        private Image airDashPip;
+
         private float displayedPlayerRatio = 1f;
         private float displayedBossRatio = 1f;
         private string currentLang;
@@ -65,12 +88,21 @@ namespace RewindNotary
             rootGroup.interactable = false;
 
             BuildPlayerCluster();
+            BuildLoadoutStrip();
             BuildRoomBanner();
+            BuildCheckpointToast();
             BuildBossBar();
             BuildObjectiveAndNotice();
             BuildControlsFooter();
             BuildCenterOverlay();
             currentLang = Loc.Language;
+        }
+
+        public void ShowToast(string text)
+        {
+            if (toastText == null) return;
+            toastText.text = "◆  " + (text ?? "") + "  ◆";
+            toastAge = 0f;
         }
 
         private void BuildPlayerCluster()
@@ -140,6 +172,78 @@ namespace RewindNotary
             subStatusText.rectTransform.pivot = new Vector2(0f, 0f);
             subStatusText.rectTransform.offsetMin = new Vector2(92f, 6f);
             subStatusText.rectTransform.offsetMax = new Vector2(-12f, 22f);
+        }
+
+        private void BuildLoadoutStrip()
+        {
+            var bar = NotaryUiTheme.CreateBorderedPanel(canvas.transform, "LoadoutStrip", NotaryUiTheme.PanelBgSoft, NotaryUiTheme.GoldSoft, 1.2f);
+            var rt = bar.rectTransform;
+            rt.anchorMin = new Vector2(0f, 1f);
+            rt.anchorMax = new Vector2(0f, 1f);
+            rt.pivot = new Vector2(0f, 1f);
+            rt.anchoredPosition = new Vector2(20f, -114f);
+            rt.sizeDelta = new Vector2(420f, 36f);
+
+            skillSlotBorders = new Image[5];
+            skillSlotFills = new Image[5];
+            skillSlotLabels = new Text[5];
+            skillSlotPips = new Text[5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                var slot = NotaryUiTheme.CreateBorderedPanel(bar.transform, "SkillSlot_" + i, NotaryUiTheme.CardBg, NotaryUiTheme.GoldSoft, 1f);
+                slot.rectTransform.anchorMin = new Vector2(0f, 0.5f);
+                slot.rectTransform.anchorMax = new Vector2(0f, 0.5f);
+                slot.rectTransform.pivot = new Vector2(0f, 0.5f);
+                slot.rectTransform.anchoredPosition = new Vector2(8f + i * 64f, 0f);
+                slot.rectTransform.sizeDelta = new Vector2(58f, 26f);
+                skillSlotBorders[i] = slot;
+                skillSlotFills[i] = slot.transform.Find("Inner").GetComponent<Image>();
+
+                skillSlotLabels[i] = NotaryUiTheme.CreateText(slot.transform, "Lbl", "", 11, NotaryUiTheme.Ivory, TextAnchor.MiddleLeft, false, false);
+                skillSlotLabels[i].rectTransform.anchorMin = new Vector2(0f, 0f);
+                skillSlotLabels[i].rectTransform.anchorMax = new Vector2(0.72f, 1f);
+                skillSlotLabels[i].rectTransform.offsetMin = new Vector2(5f, 0f);
+                skillSlotLabels[i].rectTransform.offsetMax = Vector2.zero;
+
+                skillSlotPips[i] = NotaryUiTheme.CreateText(slot.transform, "Pips", "", 9, NotaryUiTheme.GoldGlow, TextAnchor.MiddleRight, false, false);
+                skillSlotPips[i].rectTransform.anchorMin = new Vector2(0.45f, 0f);
+                skillSlotPips[i].rectTransform.anchorMax = new Vector2(1f, 1f);
+                skillSlotPips[i].rectTransform.offsetMin = Vector2.zero;
+                skillSlotPips[i].rectTransform.offsetMax = new Vector2(-4f, 0f);
+            }
+
+            var dashTrack = NotaryUiTheme.CreateBorderedPanel(bar.transform, "DashTrack", NotaryUiTheme.BarTrack, NotaryUiTheme.GoldSoft, 1f);
+            dashTrack.rectTransform.anchorMin = new Vector2(1f, 0.5f);
+            dashTrack.rectTransform.anchorMax = new Vector2(1f, 0.5f);
+            dashTrack.rectTransform.pivot = new Vector2(1f, 0.5f);
+            dashTrack.rectTransform.anchoredPosition = new Vector2(-24f, 0f);
+            dashTrack.rectTransform.sizeDelta = new Vector2(62f, 12f);
+
+            dashCooldownFill = NotaryUiTheme.CreateImage(dashTrack.transform, "DashFill", NotaryUiTheme.GoldGlow);
+            NotaryUiTheme.Stretch(dashCooldownFill.rectTransform, 1f, 1f, 1f, 1f);
+
+            airDashPip = NotaryUiTheme.CreateImage(bar.transform, "AirDashPip", NotaryUiTheme.TealAccent);
+            airDashPip.rectTransform.anchorMin = new Vector2(1f, 0.5f);
+            airDashPip.rectTransform.anchorMax = new Vector2(1f, 0.5f);
+            airDashPip.rectTransform.pivot = new Vector2(1f, 0.5f);
+            airDashPip.rectTransform.anchoredPosition = new Vector2(-8f, 0f);
+            airDashPip.rectTransform.sizeDelta = new Vector2(10f, 10f);
+        }
+
+        private void BuildCheckpointToast()
+        {
+            var go = NotaryUiTheme.CreateBorderedPanel(canvas.transform, "CheckpointToast", NotaryUiTheme.PanelBg, NotaryUiTheme.Gold, 1.5f);
+            go.rectTransform.anchorMin = new Vector2(0.5f, 0f);
+            go.rectTransform.anchorMax = new Vector2(0.5f, 0f);
+            go.rectTransform.pivot = new Vector2(0.5f, 0f);
+            go.rectTransform.anchoredPosition = new Vector2(0f, 112f);
+            go.rectTransform.sizeDelta = new Vector2(460f, 40f);
+            toastGroup = go.gameObject.AddComponent<CanvasGroup>();
+            toastGroup.alpha = 0f;
+
+            toastText = NotaryUiTheme.CreateText(go.transform, "Text", "", 15, NotaryUiTheme.GoldGlow, TextAnchor.MiddleCenter, true, true);
+            NotaryUiTheme.Stretch(toastText.rectTransform, 12f, 2f, 12f, 2f);
         }
 
         private void BuildRoomBanner()
@@ -312,9 +416,14 @@ namespace RewindNotary
             {
                 lastRoomKey = s.RoomKey;
                 roomBannerText.text = s.LocationTitle ?? "";
-                roomBannerAge = 0f;
+                roomBannerAge = s.BossVisible ? 99f : 0f;
             }
-            if (roomBannerAge < 2.6f)
+            if (s.BossVisible)
+            {
+                roomBannerAge = 99f;
+                roomBannerGroup.alpha = 0f;
+            }
+            else if (roomBannerAge < 2.6f)
             {
                 roomBannerAge += Time.unscaledDeltaTime;
                 float a = roomBannerAge < 0.35f ? roomBannerAge / 0.35f
@@ -322,6 +431,37 @@ namespace RewindNotary
                 roomBannerGroup.alpha = a;
             }
             else roomBannerGroup.alpha = 0f;
+
+            if (toastAge < 2.8f)
+            {
+                toastAge += Time.unscaledDeltaTime;
+                float a = toastAge < 0.25f ? toastAge / 0.25f
+                    : toastAge > 2.1f ? Mathf.Clamp01((2.8f - toastAge) / 0.7f) : 1f;
+                toastGroup.alpha = a;
+            }
+            else if (toastGroup != null) toastGroup.alpha = 0f;
+
+            if (s.Skills != null && skillSlotBorders != null)
+            {
+                for (int i = 0; i < skillSlotBorders.Length && i < s.Skills.Length; i++)
+                {
+                    var sk = s.Skills[i];
+                    skillSlotBorders[i].color = sk.Owned ? NotaryUiTheme.Gold : new Color(0.28f, 0.32f, 0.40f, 0.55f);
+                    skillSlotFills[i].color = sk.Owned
+                        ? new Color(sk.Accent.r * 0.38f, sk.Accent.g * 0.38f, sk.Accent.b * 0.38f, 0.94f)
+                        : new Color(0.07f, 0.085f, 0.125f, 0.85f);
+                    skillSlotLabels[i].color = sk.Owned ? NotaryUiTheme.Ivory : new Color(0.45f, 0.47f, 0.52f, 0.75f);
+                    skillSlotLabels[i].text = sk.DirCue + sk.ShortLabel;
+                    skillSlotPips[i].text = sk.Owned ? new string('•', Mathf.Clamp(sk.Stage, 1, 3)) : "";
+                }
+            }
+            if (dashCooldownFill != null)
+            {
+                dashCooldownFill.rectTransform.anchorMax = new Vector2(Mathf.Clamp01(s.DashReadyRatio), 1f);
+                dashCooldownFill.color = s.DashReadyRatio >= 0.99f ? NotaryUiTheme.GoldGlow : NotaryUiTheme.GoldSoft;
+            }
+            if (airDashPip != null)
+                airDashPip.color = s.AirDashReady ? NotaryUiTheme.TealAccent : new Color(0.24f, 0.28f, 0.34f, 0.55f);
 
             bossPanel.SetActive(s.BossVisible);
             if (s.BossVisible)
@@ -363,7 +503,11 @@ namespace RewindNotary
             roomBannerText.font = title;
             bossNameText.font = title;
             overlayTitleText.font = title;
+            if (toastText != null) toastText.font = title;
             playerHpText.font = body;
+            if (skillSlotLabels != null)
+                for (int i = 0; i < skillSlotLabels.Length; i++)
+                    if (skillSlotLabels[i] != null) skillSlotLabels[i].font = body;
             statusText.font = body;
             subStatusText.font = body;
             bossPhaseText.font = body;

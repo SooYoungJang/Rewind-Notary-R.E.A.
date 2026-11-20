@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "대법정 승강기 복귀 통로"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "화면 모드 : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "전체 창모드"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (창모드)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (창모드)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (창모드)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "수직 동기화 (VSync) : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "키 설정 (리매핑)"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "키 설정 (리매핑)"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "변경할 동작을 선택한 뒤 새 키 또는 마우스 우클릭을 누르세요. (중복 시 자동 교환 · Esc 취소)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ 새 키 입력 대기… Esc 취소 ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "기본 키로 복원"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "중복 키를 기존 동작과 교환했습니다."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "점프 :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "검술 공격 :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "은인 기술 :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "대시 :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "패리 :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "조사 · 출입 :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "구역 지도 :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] 지도"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "전체 탐색: {0} / {1} 방"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ 현재 위치   ■ 탐색 완료   □ 미탐색   ❖ 보스/아레나   [{0} / Tab / Esc] 닫기"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "거점 · 망각 다락방"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "벨벳 재단 거리"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "시계탑 구역"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "유리 오페라 극장"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "대종루 수로"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "여백의 화랑"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "공증 법정"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "최종 심판석"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "이동 A/D | 점프 {0} | 검술(↑/↓포고) {1} | 기술 {2} | 대시 {3} | 패리 {4} | 지도 {5} | Esc 메뉴"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "이동 A/D | 조사·출입 {0} | 검술 {1} | 기술 {2} | 대시 {3} | 지도 {4} | Esc 일시정지"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "이동 LS/십자 | 점프 [A] | 검술 [X] | 기술 [Y] | 대시 [LB] | 패리 [RB] | 일시정지 [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "이동 LS/십자 | 조사·출입 [L3] | 검술 [X] | 기술 [Y] | 대시 [LB] | 일시정지 [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "공증 기록이 갱신되었습니다 · 체력 회복"
     }
   ]
 }

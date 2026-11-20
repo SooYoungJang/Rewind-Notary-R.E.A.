@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Обратный проход к лифту Большого суда"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Экран : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Окно без рамки"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Окно)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Окно)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Окно)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "Вертикальная синхр. : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Назначение клавиш"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Клавиши"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Выберите действие и нажмите новую клавишу или ПКМ. (Дубли меняются местами · Esc отмена)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Нажмите клавишу… Esc ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Сбросить по умолчанию"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Дублирующая клавиша заменена."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Прыжок :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Атака :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Навык :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Рывок :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "Парирование :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Взаимодействие :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "Карта района :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Карта"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Изучено: {0} / {1} комн."
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Вы здесь   ■ Посещено   □ Закрыто   ❖ Босс/Арена   [{0} / Tab / Esc] Закрыть"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Убежище · Чердак"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Бархатная улица"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Часовая башня"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Стеклянная опера"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Акведук Колокольни"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Галерея Холстов"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Суд Нотариуса"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Великий Трибунал"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Ход A/D | Прыжок {0} | Атака {1} | Навык {2} | Рывок {3} | Парир. {4} | Карта {5} | Esc"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Ход A/D | Взаим. {0} | Атака {1} | Навык {2} | Рывок {3} | Карта {4} | Esc Пауза"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "LS | Прыжок [A] | Атака [X] | Навык [Y] | Рывок [LB] | Парир. [RB] | [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "LS | Взаим. [L3] | Атака [X] | Навык [Y] | Рывок [LB] | [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Запись нотариуса обновлена · Здоровье восстановлено"
     }
   ]
 }

@@ -3932,6 +3932,146 @@
     {
       "key": "area.target.forge_to_court_lift",
       "value": "Return passage to Grand Court elevator"
+    },
+    {
+      "key": "settings.display_mode",
+      "value": "Display : {0}"
+    },
+    {
+      "key": "settings.display_fullscreen",
+      "value": "Fullscreen Window"
+    },
+    {
+      "key": "settings.display_1280",
+      "value": "1280 × 720 (Windowed)"
+    },
+    {
+      "key": "settings.display_1600",
+      "value": "1600 × 900 (Windowed)"
+    },
+    {
+      "key": "settings.display_1920",
+      "value": "1920 × 1080 (Windowed)"
+    },
+    {
+      "key": "settings.vsync",
+      "value": "VSync : {0}"
+    },
+    {
+      "key": "settings.keybinds",
+      "value": "Key Bindings"
+    },
+    {
+      "key": "heading.keybinds",
+      "value": "Key Bindings"
+    },
+    {
+      "key": "keybind.hint",
+      "value": "Select an action and press a new key or right-click. (Duplicates auto-swap · Esc cancels)"
+    },
+    {
+      "key": "keybind.listening",
+      "value": "[ Press new key… Esc cancel ]"
+    },
+    {
+      "key": "keybind.reset",
+      "value": "Reset to Defaults"
+    },
+    {
+      "key": "keybind.swapped",
+      "value": "Swapped duplicate binding automatically."
+    },
+    {
+      "key": "keybind.jump",
+      "value": "Jump :  {0}"
+    },
+    {
+      "key": "keybind.attack",
+      "value": "Attack :  {0}"
+    },
+    {
+      "key": "keybind.skill",
+      "value": "Skill :  {0}"
+    },
+    {
+      "key": "keybind.dash",
+      "value": "Dash :  {0}"
+    },
+    {
+      "key": "keybind.parry",
+      "value": "Parry :  {0}"
+    },
+    {
+      "key": "keybind.interact",
+      "value": "Interact :  {0}"
+    },
+    {
+      "key": "keybind.map",
+      "value": "District Map :  {0}"
+    },
+    {
+      "key": "map.button",
+      "value": "[{0}] Map"
+    },
+    {
+      "key": "map.explored_total",
+      "value": "Explored: {0} / {1} rooms"
+    },
+    {
+      "key": "map.legend",
+      "value": "◆ Current   ■ Visited   □ Unexplored   ❖ Boss/Arena   [{0} / Tab / Esc] Close"
+    },
+    {
+      "key": "map.district.hub",
+      "value": "Hub · Forgotten Attic"
+    },
+    {
+      "key": "map.district.velvet",
+      "value": "Velvet Tailor Street"
+    },
+    {
+      "key": "map.district.clock",
+      "value": "Clocktower District"
+    },
+    {
+      "key": "map.district.opera",
+      "value": "Glass Opera House"
+    },
+    {
+      "key": "map.district.bell",
+      "value": "Great Bell Aqueduct"
+    },
+    {
+      "key": "map.district.gallery",
+      "value": "Canvas Gallery"
+    },
+    {
+      "key": "map.district.janhyang",
+      "value": "Notary Court"
+    },
+    {
+      "key": "map.district.cassel",
+      "value": "Grand Tribunal"
+    },
+    {
+      "key": "controls.kb_combat",
+      "value": "Move A/D | Jump {0} | Attack(↑/↓Pogo) {1} | Skill {2} | Dash {3} | Parry {4} | Map {5} | Esc Menu"
+    },
+    {
+      "key": "controls.kb_explore",
+      "value": "Move A/D | Interact {0} | Attack {1} | Skill {2} | Dash {3} | Map {4} | Esc Pause"
+    },
+    {
+      "key": "controls.pad_combat",
+      "value": "Move LS/D-Pad | Jump [A] | Attack [X] | Skill [Y] | Dash [LB] | Parry [RB] | Pause [Start]"
+    },
+    {
+      "key": "controls.pad_explore",
+      "value": "Move LS/D-Pad | Interact [L3] | Attack [X] | Skill [Y] | Dash [LB] | Pause [Start]"
+    },
+    {
+      "key": "hud.checkpoint_saved",
+      "value": "Notary Record Updated · Health Restored"
     }
   ]
 }
