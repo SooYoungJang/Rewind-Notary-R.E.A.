@@ -15,8 +15,8 @@ namespace RewindNotary
         private int runTicks, tapFrame;
         private float reverseStarted;
         private bool reversedMotion, reversedStrike;
-        private float holdStarted;
-        private int heldSwings;
+        private float holdStarted, nextComboTapAt;
+        private int heldSwings, comboTaps;
         private Sprite firstHeldPose;
         internal bool Passed => phase == Phase.Done;
 
@@ -124,6 +124,7 @@ namespace RewindNotary
                     player.AttackStarted += OnHeldAttackStarted;
                     phase = Phase.HoldAttack;
                     keys.Hold(GameInput.AttackKey);
+                    comboTaps = 1;
                     break;
                 case Phase.HoldAttack:
                     if (Time.time - holdStarted > 3f)
@@ -131,8 +132,12 @@ namespace RewindNotary
                         Abort("Tapping attack did not complete the four-hit starting combo");
                         break;
                     }
-                    if (heldSwings < 4) keys.Tap(GameInput.AttackKey);
-                    else if (!player.Attacking)
+                    if (comboTaps == heldSwings && comboTaps < 4 && Time.time >= nextComboTapAt)
+                    {
+                        keys.Tap(GameInput.AttackKey);
+                        comboTaps++;
+                    }
+                    else if (heldSwings == 4 && !player.Attacking)
                     {
                         player.AttackStarted -= OnHeldAttackStarted;
                         result.heldCombo = "pass";
@@ -205,8 +210,9 @@ namespace RewindNotary
             var sprite = player.Animation.GetComponent<SpriteRenderer>().sprite;
             if (heldSwings == 0) firstHeldPose = sprite;
             heldSwings++;
-            if (heldSwings > 4 || player.ComboStep != expectedStep || (sprite == firstHeldPose) != (expectedStep == 1))
-                Abort("Tapping attack played the wrong swing or reused the first pose");
+            nextComboTapAt = Time.time + .12f;
+            if (heldSwings != comboTaps || player.ComboStep != expectedStep || (sprite == firstHeldPose) != (expectedStep == 1))
+                Abort($"Tap combo failed at swing {expectedStep} (step {player.ComboStep}, pose {sprite?.name}, first pose {firstHeldPose?.name})");
         }
 
         private bool FacingLeft => player.Facing < 0 && player.Animation.GetComponent<SpriteRenderer>().flipX;
