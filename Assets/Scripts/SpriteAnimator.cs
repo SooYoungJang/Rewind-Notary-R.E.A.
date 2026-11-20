@@ -33,8 +33,11 @@ namespace RewindNotary
         public bool IsTelegraphing => telegraph;
         public string ActiveResource { get; private set; }
 
-        public void Initialize(string resource)
+        private float spriteScale = 1f;
+
+        public void Initialize(string resource, float scale = 1f)
         {
+            spriteScale = scale;
             view = GetComponent<SpriteRenderer>();
             var shader = Resources.Load<Shader>("Shaders/HitFlash");
             if (shader != null)
@@ -121,7 +124,7 @@ namespace RewindNotary
                 var pivot = layout?.frames == null ? null : Array.Find(layout.frames, p => p.row == row && p.col == col);
                 var anchor = pivot == null ? new Vector2(.5f, .04f) : new Vector2(pivot.x, pivot.y);
                 frames[i] = Sprite.Create(texture, new Rect(left, bottom, right - left, top - bottom),
-                    anchor, cellHeight / worldHeight, 0, SpriteMeshType.FullRect);
+                    anchor, cellHeight / (worldHeight * spriteScale), 0, SpriteMeshType.FullRect);
                 frames[i].name = texture.name + "_" + row + "_" + col;
                 ownedSprites.Add(frames[i]);
             }

@@ -7,6 +7,7 @@ namespace RewindNotary
     [DefaultExecutionOrder(-50)] // Finish/advance attacks before this frame's player input.
     public sealed class CombatMotor2D : MonoBehaviour
     {
+        internal const float ReaVisualScale = .76f;
         public Rigidbody2D Body { get; private set; }
         public Health Health { get; private set; }
         public SpriteAnimator Animation { get; private set; }
@@ -83,8 +84,8 @@ namespace RewindNotary
             Body.interpolation = RigidbodyInterpolation2D.Interpolate;
             Body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
             capsule = GetComponent<CapsuleCollider2D>();
-            capsule.size = new Vector2(0.62f, 1.9f);
-            capsule.offset = new Vector2(0f, 0.95f);
+            capsule.size = new Vector2(0.62f, isPlayer ? 1.66f : 1.9f);
+            capsule.offset = Vector2.up * (capsule.size.y * .5f);
             capsule.sharedMaterial = new PhysicsMaterial2D("No wall friction") { friction = 0f, bounciness = 0f };
             Health = GetComponent<Health>();
             Health.Initialize(hp, immunity, isPlayer);
@@ -96,7 +97,7 @@ namespace RewindNotary
             var renderer = visual.AddComponent<SpriteRenderer>();
             renderer.sortingOrder = 10;
             Animation = visual.AddComponent<SpriteAnimator>();
-            Animation.Initialize(sheet);
+            Animation.Initialize(sheet, isPlayer ? ReaVisualScale : 1f);
             Animation.Tint(tint);
             if (isPlayer)
             {

@@ -208,6 +208,7 @@ namespace RewindNotary
                 Vector3 handOffset = attacking
                     ? new Vector3(f * 0.82f, 0.96f, 0f)
                     : new Vector3(f * 0.46f, 0.62f, 0f);
+                handOffset *= CombatMotor2D.ReaVisualScale;
                 swordGlow.transform.localPosition = handOffset;
                 swordGlow.transform.localRotation = Quaternion.Euler(0f, 0f, attacking ? (f * -8f) : (f * -32f));
                 float baseScaleX = currentTier == 1 ? 0.78f : currentTier == 2 ? 1.18f : currentTier == 3 ? 1.52f : 1.78f;
@@ -223,7 +224,7 @@ namespace RewindNotary
 
             if (ribbonNodes[0].enabled)
             {
-                Vector3 anchor = transform.position + new Vector3(-f * 0.24f, 1.08f, 0f);
+                Vector3 anchor = transform.position + new Vector3(-f * 0.24f, 1.08f, 0f) * CombatMotor2D.ReaVisualScale;
                 ribbonPositions[0] = anchor;
                 for (int i = 1; i < ribbonPositions.Length; i++)
                 {
@@ -236,7 +237,7 @@ namespace RewindNotary
 
             if (pendulumOrb.enabled)
             {
-                pendulumOrb.transform.localPosition = new Vector3(-f * 0.42f + Mathf.Sin(t * 3.2f) * 0.10f, 1.48f + Mathf.Cos(t * 3.2f) * 0.08f, 0f);
+                pendulumOrb.transform.localPosition = new Vector3(-f * 0.42f + Mathf.Sin(t * 3.2f) * 0.10f, 1.48f + Mathf.Cos(t * 3.2f) * 0.08f, 0f) * CombatMotor2D.ReaVisualScale;
                 pendulumOrb.transform.localRotation = Quaternion.Euler(0f, 0f, t * 90f);
             }
 
@@ -256,7 +257,7 @@ namespace RewindNotary
 
             if (canvasOrb.enabled)
             {
-                canvasOrb.transform.localPosition = new Vector3(f * 0.38f + Mathf.Cos(t * 4.4f) * 0.12f, 1.32f + Mathf.Sin(t * 4.4f) * 0.10f, 0f);
+                canvasOrb.transform.localPosition = new Vector3(f * 0.38f + Mathf.Cos(t * 4.4f) * 0.12f, 1.32f + Mathf.Sin(t * 4.4f) * 0.10f, 0f) * CombatMotor2D.ReaVisualScale;
             }
         }
 
