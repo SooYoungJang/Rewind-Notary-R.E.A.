@@ -150,7 +150,9 @@ namespace RewindNotary
         public static bool DashDown => PadDashDown || SprintHeld &&
             (Input.GetKeyDown(DashKey) || (DefaultDashKey && Input.GetKeyDown(KeyCode.RightShift)) ||
              Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow));
-        internal static float DashDirection => SprintHeld ? KeyboardHorizontal : Horizontal;
+        internal static Vector2 DashDirection => SprintHeld
+            ? new Vector2(KeyboardHorizontal, KeyboardVertical)
+            : new Vector2(Horizontal, Vertical);
         public static bool ParryDown => Input.GetKeyDown(ParryKey) || Input.GetKeyDown(KeyCode.JoystickButton5);
         public static bool PauseDown => Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7);
         public static bool SubmitDown => Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)

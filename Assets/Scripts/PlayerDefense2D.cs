@@ -11,7 +11,9 @@ namespace RewindNotary
         private CombatMotor2D motor;
         private bool dashPhysics;
         private float savedGravity, nextTrail;
-        private Vector2 savedVelocity;
+        private Vector2 savedVelocity, dashHeading;
+        private Vector2 DashVelocity => new Vector2(dashHeading.x,
+            motor.Grounded ? Mathf.Max(0f, dashHeading.y) : dashHeading.y) * DefenseTuning.DashSpeed;
 
         public void Initialize(CombatMotor2D owner) { motor = owner; }
         private void Update()
@@ -27,7 +29,8 @@ namespace RewindNotary
             if (State.Phase == DefensePhase.Dash && Time.time >= nextTrail)
             {
                 Vector3 at = transform.position + Vector3.up * DefenseTuning.TrailHeight;
-                SkillStroke.Show(at, at - Vector3.right * State.DashDirection * DefenseTuning.TrailLength,
+                Vector3 heading = DashVelocity.normalized;
+                SkillStroke.Show(at, at - heading * DefenseTuning.TrailLength,
                     new Color(1f, 0.68f, 0.25f, 0.55f), DefenseTuning.TrailSeconds);
                 nextTrail = Time.time + DefenseTuning.TrailInterval;
             }
@@ -41,20 +44,24 @@ namespace RewindNotary
         }
         private bool CanStart => GameInput.CanPlay && motor != null && !motor.Health.Dead
             && !motor.Stunned && !motor.Attacking && (motor.BenefactorSkills == null || !motor.BenefactorSkills.BlocksActions);
-        public bool TryDash(float direction)
+        public bool TryDash(Vector2 direction)
         {
             if (!CanStart) return false;
             Advance();
             motor.RefreshGround();
-            int facing = Mathf.Abs(direction) > 0.01f ? (direction < 0 ? -1 : 1) : motor.Facing;
+            bool hasHorizontal = Mathf.Abs(direction.x) > .01f;
+            int facing = hasHorizontal ? (direction.x < 0f ? -1 : 1) : motor.Facing;
+            float vertical = hasHorizontal && Mathf.Abs(direction.y) > .01f ? Mathf.Sign(direction.y) : 0f;
+            if (motor.Grounded && vertical < 0f) vertical = 0f;
             if (!State.TryDash(Time.time, motor.Grounded, facing)) return false;
+            dashHeading = new Vector2(State.DashDirection, vertical).normalized;
             motor.ClearComboForDefense();
             motor.Face(facing);
             savedGravity = motor.Body.gravityScale;
             savedVelocity = motor.Body.linearVelocity;
             dashPhysics = true;
             motor.Body.gravityScale = 0f;
-            motor.Body.linearVelocity = new Vector2(facing * DefenseTuning.DashSpeed, 0f);
+            motor.Body.linearVelocity = DashVelocity;
             nextTrail = Time.time;
             return true;
         }
@@ -74,7 +81,7 @@ namespace RewindNotary
             Advance();
             if (State.Phase == DefensePhase.Dash)
             {
-                motor.Body.linearVelocity = new Vector2(State.DashDirection * DefenseTuning.DashSpeed, 0f);
+                motor.Body.linearVelocity = DashVelocity;
                 return true;
             }
             if (!BlocksActions) return false;
